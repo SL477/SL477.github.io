@@ -5,9 +5,10 @@
 
 header {
 	text-align: center;
+	font-weight: bold;
 }
 
-#projects {
+.even-section {
 	text-align: center;
 	vertical-align: center;
 	height: 100vh;
@@ -20,7 +21,7 @@ header {
 	position: fixed;
 }
 
-#welcome-section {
+.odd-section {
 	height: 100vh;
 	text-align: center;
 	vertical-align: center;
@@ -28,11 +29,11 @@ header {
 }
 
 @media (max-height: 300px){
-	#welcome-section {
+	.odd-section {
 		height: 300px;
 	}
 	
-	#projects {
+	.even-section {
 		height: 300px;
 	}
 }
