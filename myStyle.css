@@ -1,0 +1,38 @@
+#container {
+	display: grid;
+	grid-template-rows: auto auto;
+}
+
+header {
+	text-align: center;
+}
+
+#projects {
+	text-align: center;
+	vertical-align: center;
+	height: 100vh;
+	background-color: #FFE89C;
+	color: #001763;
+}
+
+#navbar {
+	grid-row: 1/2;
+	position: fixed;
+}
+
+#welcome-section {
+	height: 100vh;
+	text-align: center;
+	vertical-align: center;
+	background-color: #69ABAA80;
+}
+
+@media (max-height: 300px){
+	#welcome-section {
+		height: 300px;
+	}
+	
+	#projects {
+		height: 300px;
+	}
+}
