@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html manifest="myCache.appcache">
+<head>
+<link rel="stylesheet" type="text/css" href="myStyle.css">
+<script src="myScript.js"></script>
+<link rel="apple-touch-icon" href="Logo.png">
+<link rel="icon" href="Logo.png">
+<meta charset="UTF-8">
+<title>Colour Grid</title>
+</Head>
+<body onload="startGame()">
+<div id="wrapper">
+	<br id="hi"/>
+	<button onclick="changeColor('White')" class="White"></button>
+	<button onclick="changeColor('Blue')" class="Blue"></button>
+	<button onclick="changeColor('Green')" class="Green"></button>
+	<button onclick="changeColor('Purple')" class="Purple"></button>
+	<button onclick="changeColor('#e6e600')" class="Yellow"></button>
+	<button onclick="changeColor('Red')" class="Red"></button>
+	<br/>
+	<p id="NumMoves">Number of Moves: 0</p>
+	<button onclick="restartGame()" class="button">Restart</button><br/><br/>
+	<a href="Index.html"><img src="home.png" alt="Home" style="width:35px; height:35px;"></a>
+</div>
+</body>
+</html>
