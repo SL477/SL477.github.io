@@ -5,10 +5,11 @@ var hasWon = false;
 
 //when it restarts the new canvas isn't tied to the buttons
 var myGameArea = {
-    canvas : document.createElement("canvas"),
+    canvas : document.getElementById("canvas"),//document.createElement("canvas"),
     start : function() {
-        this.canvas.width = 280;
-        this.canvas.height = 280;
+		console.log('canvas',canvas);
+        //this.canvas.width = 280;
+       // this.canvas.height = 280;
         this.context = this.canvas.getContext("2d");
 		var parElement = document.getElementById("wrapper");
 		parElement.insertBefore(this.canvas, parElement.childNodes[0]);
