@@ -40,8 +40,9 @@ function resetBall() {
 
 function updateGameArea() {
 	myGameArea.clear();
-	console.log("playerY",playerY);
-	console.log("myGameArea.canvas.height", myGameArea.canvas.height);
+	//console.log("playerY",playerY);
+	//console.log("myGameArea.canvas.height", myGameArea.canvas.height);
+	
 	
 	//Draw the background
 	myGameArea.context.fillStyle = "#000000";
@@ -69,25 +70,47 @@ function updateGameArea() {
 	myGameArea.context.fill();
 	
 	//Update the ball
+	//console.log("paddleYtop", playerY - (paddleHeight / 2));
+	//console.log("paddleYbottom", playerY - (paddleHeight / 2) + paddleHeight);
 	ballX += vballX;
 	ballY += vballY;
+	//console.log("ballX", ballX);
+	//console.log("ballY", ballY);
 	
 	//Check for collisions
-	if (ballX <= 0) {
+	if (ballX - 20 >= 0 && ballX - 20 <= 15 && ballY >= playerY - (paddleHeight / 2) && ballY <= playerY - (paddleHeight / 2) + paddleHeight) {
+		vballX = -vballX;
+		//vballY = -vballY;
+	}
+	else if (ballX <= 0) {
 		//AI scored
 		aiScore += 1;
+		console.log("paddleYtop", playerY - (paddleHeight / 2));
+		console.log("paddleYbottom", playerY - (paddleHeight / 2) + paddleHeight);
+		console.log("ballX", ballX);
+		console.log("ballX -20", ballX - 20);
+		console.log("ballY", ballY);
+		console.log("ballY + 20", ballY + 20);
+		console.log("ballY - 20", ballY - 20);
 		resetBall();
+		
 	}
-	else if (ballX >= myGameArea.canvas.width) {
+	else if (ballX + 20 >= myGameArea.canvas.width) {
 		//Player Scored
 		playerScore += 1;
 		resetBall();
 	}
-	else if (ballY <= 0 || ballY >= myGameArea.canvas.height)
+	else if (ballY - 20 <= 0 || ballY + 20 >= myGameArea.canvas.height)
 	{
 		//Hit the top or bottom of the area
 		//vballX = -vballX;
 		vballY = -vballY;
+	}
+	//else if (ballX >= myGameArea.canvas.width - 20 && ballX <= myGameArea.canvas.width && ballY <= ballY - (paddleHeight / 2) && ballY >= ballY - (paddleHeight / 2) + paddleHeight) {
+	else if (ballX + 20 >= myGameArea.canvas.width - 20 && ballX + 20 <= myGameArea.canvas.width) {
+		//alert("hit");
+		vballX = -vballX;
+		//vballY = -vballY;
 	}
 }
 
