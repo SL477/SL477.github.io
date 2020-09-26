@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="audiosynth.js"></script>
+        <script src="playKeyboard.js"></script>
+        <link rel="icon" href="../SL477.png"/>
+        <link rel="stylesheet" type="text/css" href="piano.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>JS Keyboard</title>
+    </head>
+    <body>
+        <h1>Javascript Keyboard</h1>
+        <p>From <a href="https://www.freecodecamp.org/news/javascript-piano-keyboard/">freecodecamp.org/news/javascript-piano-keyboard/</a> tutorial</p>
+        <fieldset onchange="instrumentChange()" id="instrument">
+            <legend>Choose instrument:</legend>
+            <input type="radio" value="0" name="instument" id="piano"><label for="piano">Piano</label><br/>
+            <input type="radio" value="1" name="instument" id="organ"><label for="organ">Organ</label><br/>
+            <input type="radio" value="2" name="instument" id="accoustic"><label for="accoustic">Accoustic</label><br/>
+            <input type="radio" value="3" name="instument" id="edm"><label for="edm">EDM</label><br/>
+        </fieldset>
+        <div id="kbordContainer"></div>
+        
+        <script type="text/javascript">
+            let instrument = "0";
+
+            function instrumentChange() {
+                instrument = $("#instrument :checked").val();
+                $("#kbordContainer").empty();
+                $("#kbordContainer").append("<div id='keyboard'></div>");
+                $("#instrument").remove();
+                playKeyboard(instrument);
+            }
+        </script>
+    </body>
+</html>
