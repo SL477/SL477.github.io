@@ -9,8 +9,7 @@
 		<link href="modelRailway.css" rel="stylesheet"/>
 	</head>
 	<body>
-		<div id="container" class="container-fluid">
-			<nav class="navbar navbar-default navbar-fixed-top">
+			<!--<nav class="navbar navbar-default navbar-fixed-top">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="index.html">Link477</a>
 				</div>
@@ -30,7 +29,8 @@
 			<br/>
 			<br/>
 			<br/>
-			<br/>
+			<br/>-->
+			<div id="navbar"></div>
 			<!--Container-->
 			<div class="container-fluid">
 				<!--Based on https://www.w3schools.com/howto/howto_js_slideshow_gallery.asp-->
@@ -76,7 +76,12 @@
 					</div>
 				</div>
 			</div>
-		</div>
 		<script src="modelRailway.js"></script>
+		<!-- Load React. -->
+  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+		<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+		  <!--Component-->
+		<script src="navbar.js"></script>
 	</body>
 </html>
