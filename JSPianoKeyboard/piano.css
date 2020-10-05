@@ -30,6 +30,6 @@
 .keyLabel {
     text-align: center;
 }
-div :hover {
+div > div :hover {
     background-color: lime;
 }
