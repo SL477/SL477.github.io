@@ -59,7 +59,7 @@ function NavBar() {
                 null,
                 React.createElement(
                     "a",
-                    { href: "*/weather/index.html" },
+                    { href: "./weather/index.html" },
                     "Weather"
                 )
             )
