@@ -53,6 +53,15 @@ function NavBar() {
                     { href: "./PongGame/index.html" },
                     "Pong Game"
                 )
+            ),
+            React.createElement(
+                "li",
+                null,
+                React.createElement(
+                    "a",
+                    { href: "*/weather/index.html" },
+                    "Weather"
+                )
             )
         )
     );
