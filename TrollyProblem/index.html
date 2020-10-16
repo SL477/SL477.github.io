@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Trolly Problem</title>
+		<link rel="icon" href="../SL477.png"/>
+		<link href="trolly.css" rel="stylesheet"/>
+		<meta charset="utf-8" />
+		<meta content="Trolly Problem"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    </head>
+    <body>
+        <h1>Trolly Problem</h1>
+        <canvas id="myCanvas" width="620" height="540">
+            Your browser does not support the HTML5 canvas tag.
+        </canvas>
+        <div id="hiddenImages">
+            <img id="train" src="./img/train.png"/>
+            <img id="overlay" src="./img/overlay.png"/>
+            <img id="track" src="./img/track.png"/>
+        </div>
+        <br/>
+        <label for="trackImg">Track Image</label>
+        <input id="trackImg" placeholder="Track Image" type="number" class="form-control" onchange="changeTrack();"/>
+
+        <svg id="mySvg" height="72" width="72">
+            <polygon id="myPoly" points="36,0 72,19 72,54 36,72 0,54 0,19" style="fill: lime; stroke: purple; stroke-width: 1;"/>
+        </svg>
+
+        <script src="trolly.js"></script>
+    </body>
+</html>
