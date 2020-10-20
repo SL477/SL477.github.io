@@ -5,14 +5,14 @@ var e = React.createElement;
 function NavBar() {
     return React.createElement(
         "nav",
-        { className: "navbar navbar-default navbar-static-top" },
+        { className: "navbar navbar-inverse navbar-static-top" },
         React.createElement(
             "div",
             { className: "navbar-header" },
             React.createElement(
                 "a",
-                { className: "navbar-brand", href: "https://link477.com" },
-                "Link477"
+                { className: "pull-left", href: "https://link477.com" },
+                React.createElement("img", { src: "https://link477.com/images/link477.png", alt: "Link477", style: { height: 50 + 'px', width: 50 + 'px', backgroundColor: 'white' } })
             )
         ),
         React.createElement(

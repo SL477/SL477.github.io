@@ -2,11 +2,12 @@
 <html>
 	<head>
 		<title>Tom Fishwick</title>
-		<link rel="icon" href="SL477.png"/>
+		<link rel="icon" href="./images/link477.png"/>
 		<link href="myStyle.css" rel="stylesheet"/>
 		<meta charset="utf-8" />
 		<meta content="Tom Fishwick"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 	<body>
 		<!--<nav class="navbar navbar-default navbar-static-top">
@@ -30,34 +31,105 @@
 				<li><a href="#projects">Projects</a></li>
 			</ul>
 		</nav>-->
+		<style>
+			.sidebar {
+				margin: 0;
+				padding: 0;
+				width: 160px;
+				/*background-color: #111111;*/
+				position: fixed;
+				height: 100%;
+				overflow: auto;
+			}
+
+			.sidebarContent {
+				padding: 6px 8px 6px 16px;
+				/*color: aliceblue;*/
+				/*display: block;*/
+			}
+
+			main {
+				margin-left: 160px;
+				padding: 0px 10px;
+			}
+
+			@media screen and (max-width: 700px) {
+				.sidebar {
+					width: 100%;
+					height: auto;
+					position: relative;
+				}
+
+				.sidebarContent {
+					float: left;
+				}
+
+				main {
+					margin-left: 0;
+				}
+			}
+
+			@media screen and (max-width: 400px) {
+				.sidebarContent {
+					text-align: center;
+					float: none;
+				}
+			}
+
+			.card {
+				box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+				max-width: 300px;
+				margin: auto;
+				text-align: center;
+			}
+
+			.title {
+				color: gray;
+				font-size: 18px;
+			}
+		</style>
+
 		<div id="navbar"></div>
 
+		<!--Sidebar-->
+		<div class="sidebar">
+			<!--<p class="sidebarContent">hee</p>-->
+			<div class="card">
+				<img src="./images/emmet.jpg" alt="Emmet" style="width: 100%;"/>
+				<h1>Tom Fishwick</h1>
+				<p class="title">Developer</p>
+				<a href="https://www.linkedin.com/in/thomas-fishwick-313459172/" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a>
+				<a href="https://github.com/sl477" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i></i></a>
+			</div>
+		</div>
 			
 		<div class="container-fluid">
-			<section id="welcome-section" class="odd-section">
+			<main>
+				<section id="welcome-section" class="odd-section">
 
-				<h1>Hi I&apos;m Tom</h1>
-				<p><a href="https://github.com/sl477" target="_blank">GitHub Profile</a></p>
-				<p>I work at a law firm as a developer for their <a href="https://www.elite.com/3e/" target="_blank" >Elite 3E</a> &amp; <a href="https://www.elite.com/3e/matter-management/" target="_blank">MatterSphere</a> systems using VB.Net, C# and SQL.
-				In my spare time I am working on various apps using JavaScript and Python.</p>
-				<p>When I&apos;m not on the PC, I&apos;m either playing with Lego or the model railway.</p>
-			</section>
-			
-			<section id="projects" class="even-section">
-				<br/>
-				<br/>
-				<h2>Projects</h2>
-				<article class="project-title">
-					<header><a href="https://codepen.io" target="_blank">CodePen.IO</a> Projects</header>
-					<p>These are various sites I created as part of the <a href="https://learn.freecodecamp.org" target="_blank">FreeCodeCamp Responsive Web Design Certification</a>,
-					to view them <a href="https://codepen.io/sl477" target="_blank">click here</a>.</p>
-				</article>
-				<article class="project-title">
-					<header><a href="https://glitch.com/@SL477" target="_blank">Node.js/Glitch</a> Projects</header>
-					<p>The are various Node.js applications I created as part of the <a href="https://learn.freecodecamp.org" target="_blank">FreeCodeCamp APIs and Microservices Cetification and 
-					Information Security and Quality Assurance Certification</a>, to view them <a href="https://glitch.com/@SL477" target="_blank">click here</a>.</p>
-				</article>
-			</section>
+					<h1>Hi I&apos;m Tom</h1>
+					<p><a href="https://github.com/sl477" target="_blank" rel="noopener noreferrer">GitHub Profile</a></p>
+					<p>I work at a law firm as a developer for their <a href="https://www.elite.com/3e/" target="_blank" rel="noopener noreferrer">Elite 3E</a> &amp; <a href="https://www.elite.com/3e/matter-management/" target="_blank" rel="noopener noreferrer">MatterSphere</a> systems using VB.Net, C# and SQL.
+					In my spare time I am working on various apps using JavaScript and Python.</p>
+					<p>When I&apos;m not on the PC, I&apos;m either playing with Lego or the model railway.</p>
+				</section>
+				
+				<section id="projects" class="even-section">
+					<br/>
+					<br/>
+					<h2>Projects</h2>
+					<article class="project-title">
+						<header><a href="https://codepen.io" target="_blank" rel="noopener noreferrer">CodePen.IO</a> Projects</header>
+						<p>These are various sites I created as part of the <a href="https://learn.freecodecamp.org" target="_blank" rel="noopener noreferrer">FreeCodeCamp Responsive Web Design Certification</a>,
+						to view them <a href="https://codepen.io/sl477" target="_blank" rel="noopener noreferrer">click here</a>.</p>
+					</article>
+					<article class="project-title">
+						<header><a href="https://glitch.com/@SL477" target="_blank" rel="noopener noreferrer">Node.js/Glitch</a> Projects</header>
+						<p>The are various Node.js applications I created as part of the <a href="https://learn.freecodecamp.org" target="_blank" rel="noopener noreferrer">FreeCodeCamp APIs and Microservices Cetification and 
+						Information Security and Quality Assurance Certification</a>, to view them <a href="https://glitch.com/@SL477" target="_blank" rel="noopener noreferrer">click here</a>.</p>
+					</article>
+				</section>
+			</main>
 		</div>
 
 		<!-- Load React. -->
