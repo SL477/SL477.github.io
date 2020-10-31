@@ -25,7 +25,7 @@
     width: auto;
     padding: 16px;
     margin-top: -50px;
-    color: white;
+    color: red;
     font-weight: bold;
     font-size: 20px;
     border-radius: 0 3px 3px 0;
@@ -46,7 +46,7 @@
 
 /*Number text (1/3 etc)*/
 .numbertext {
-    color: #f2f2f2;
+    color: red;
     font-size: 12px;
     padding: 8px 12px;
     position: absolute;
@@ -70,7 +70,7 @@
 /*3 columns side by side*/
 .column {
     float: left;
-    width: 33.33%;
+    /*width: 33.33%;*/
 }
 
 /*Add a transparency effect for thumbnail images*/
@@ -80,4 +80,12 @@
 
 .active, .demo:hover {
     opacity: 1;
+}
+
+.mainPic {
+    width: 80%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
