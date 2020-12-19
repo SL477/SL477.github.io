@@ -62,6 +62,15 @@ function NavBar() {
                     { href: "https://link477.com/weather/index.html" },
                     "Weather"
                 )
+            ),
+            React.createElement(
+                "li",
+                null,
+                React.createElement(
+                    "a",
+                    { href: "https://link477.com/TicTacToe/index.html" },
+                    "Tic Tac Toe"
+                )
             )
         )
     );

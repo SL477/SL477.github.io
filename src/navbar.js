@@ -13,6 +13,7 @@ function NavBar() {
                 <li><a href="./JSPianoKeyboard/index.html">JavaScript Keyboard</a></li>
                 <li><a href="./PongGame/index.html">Pong Game</a></li>
                 <li><a href="./weather/index.html">Weather</a></li>
+                <li><a href="./TicTacToe/index.html">Tic Tac Toe</a></li>
             </ul>
         </nav>
     );

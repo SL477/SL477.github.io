@@ -62,6 +62,15 @@ function NavBar() {
                     { href: "./weather/index.html" },
                     "Weather"
                 )
+            ),
+            React.createElement(
+                "li",
+                null,
+                React.createElement(
+                    "a",
+                    { href: "./TicTacToe/index.html" },
+                    "Tic Tac Toe"
+                )
             )
         )
     );

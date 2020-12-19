@@ -14,6 +14,7 @@ function NavBar() {
                 <li><a href="https://link477.com/JSPianoKeyboard/index.html">JavaScript Keyboard</a></li>
                 <li><a href="https://link477.com/PongGame/index.html">Pong Game</a></li>
                 <li><a href="https://link477.com/weather/index.html">Weather</a></li>
+                <li><a href="https://link477.com/TicTacToe/index.html">Tic Tac Toe</a></li>
             </ul>
         </nav>
     );
