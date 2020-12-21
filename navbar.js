@@ -5,7 +5,7 @@ var e = React.createElement;
 function NavBar() {
     return React.createElement(
         "nav",
-        { className: "navbar navbar-inverse navbar-static-top" },
+        { className: "navbar navbar-inverse navbar-static-top navbar-inverted" },
         React.createElement(
             "div",
             { className: "conotainer" },
@@ -27,7 +27,7 @@ function NavBar() {
             ),
             React.createElement(
                 "div",
-                { className: "navbar-collapse collapse" },
+                { className: "collapse navbar-collapse" },
                 React.createElement(
                     "ul",
                     { className: "nav navbar-nav" },

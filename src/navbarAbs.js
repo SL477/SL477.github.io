@@ -14,7 +14,7 @@ function NavBar() {
                     {/*<a className="navbar-brand" href="https://link477.com">Link477</a>*/}
                     <a className="pull-left" href="https://link477.com"><img src="https://link477.com/images/link477.png" alt="Link477" style={{height: 50 + 'px', width: 50 + 'px', backgroundColor: 'white'}}/></a>
                 </div>
-                <div className="navbar-collapse collapse">
+                <div className="collapse navbar-collapse">
                     <ul className="nav navbar-nav">
                         <li><a href="https://link477.com/ColorGridGame/Index.html">Colour Grid Game</a></li>
                         <li><a href="https://link477.com/modelrailway.html">Model Railway</a></li>

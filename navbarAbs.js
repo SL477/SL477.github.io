@@ -27,7 +27,7 @@ function NavBar() {
             ),
             React.createElement(
                 "div",
-                { className: "navbar-collapse collapse" },
+                { className: "collapse navbar-collapse" },
                 React.createElement(
                     "ul",
                     { className: "nav navbar-nav" },
