@@ -5,10 +5,10 @@ var e = React.createElement;
 function NavBar() {
     return React.createElement(
         "nav",
-        { className: "navbar navbar-inverse navbar-static-top navbar-inverted" },
+        { className: "navbar navbar-inverse navbar-static-top navbar-inverted", role: "navigation" },
         React.createElement(
             "div",
-            { className: "conotainer" },
+            { className: "container-fluid" },
             React.createElement(
                 "div",
                 { className: "navbar-header" },

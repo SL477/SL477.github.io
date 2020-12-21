@@ -3,8 +3,8 @@ const e = React.createElement;
 
 function NavBar() {
     return (
-        <nav className="navbar navbar-inverse navbar-static-top navbar-inverted">
-            <div className="conotainer">
+        <nav className="navbar navbar-inverse navbar-static-top navbar-inverted" role="navigation">
+            <div className="container-fluid">
                 <div className="navbar-header">
                     <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span className="icon-bar"></span>
