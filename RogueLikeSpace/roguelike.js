@@ -18,6 +18,8 @@ let level = 1;
 let exp = 0;
 let levelExp = 100;
 
+let width = 800;
+
 const draw = () => {
     if (canvas.getContext) {
         let ctx = canvas.getContext('2d');
@@ -88,6 +90,9 @@ document.addEventListener("DOMContentLoaded", function() {
 function gameLoop() {
     if (left) {
         x -= speed;
+        if (x <= 0) {
+            x = 0;
+        }
     }
     if (right) {
         x += speed;
