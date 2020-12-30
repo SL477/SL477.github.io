@@ -3,8 +3,15 @@ const healthBox = document.getElementById('health');
 const levelBox = document.getElementById('level');
 const expBox = document.getElementById('exp');
 
-let x = 75;
-let y = 50;
+const xBox = document.getElementById('x');
+const yBox = document.getElementById('y');
+const mapYBox = document.getElementById('mapY');
+
+let width = 800;
+let height = 600;
+
+let x = (width + 10) / 2;
+let y = (height + 10) / 2;
 let left = false;
 let right = false;
 let up = false;
@@ -18,9 +25,35 @@ let level = 1;
 let exp = 0;
 let levelExp = 100;
 
-let width = 800;
+const cellWidth = 40;
 
-const draw = () => {
+//let mapY = 8 * 40;
+let mapY = 7.5 * cellWidth;
+
+let map = [
+    [0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1],
+    [0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,1,1,1]
+];
+
+let maxMapY = map.length * cellWidth;
+
+const draw = (reducedMap) => {
     if (canvas.getContext) {
         let ctx = canvas.getContext('2d');
 
@@ -35,6 +68,17 @@ const draw = () => {
         ctx.fill();*/
         //console.log('test');
         //console.log('width',canvas.width, 'height', canvas.height);
+
+        //Draw the map
+        ctx.fillStyle = "brown";
+        reducedMap.map((m,i) => {
+            m.map((block, blockIndex) => {
+                if (block === 1) {
+                    ctx.fillRect(blockIndex * cellWidth, (height - cellWidth) - (i * cellWidth), cellWidth,cellWidth);
+                    //console.log('blockIndex', blockIndex, 'i',i);
+                }
+            });
+        });
 
         ctx.fillStyle = "blue";
         //ctx.fillRect(10,10,10,10);
@@ -85,6 +129,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     setInterval(gameLoop, 1000 / 60);
+    console.log('maxMapY',maxMapY);
 });
 
 function gameLoop() {
@@ -96,6 +141,9 @@ function gameLoop() {
     }
     if (right) {
         x += speed;
+        if (x >= width) {
+            x = width - 20;
+        }
     }
     if (up) {
         y -= speed;
@@ -103,9 +151,35 @@ function gameLoop() {
     if (down) {
         y += speed;
     }
-    draw();
+
+    //Starts with showing the bottom fifteen cells
+    //need the 7.5 cells above and the 7.5 cells below the current position
+    //console.log('map stuff', mapY / cellWidth);
+    let curCell = mapY / cellWidth;
+    //console.log('Map stuff', map.filter((m,i) => {
+        /*if (curCell < 15 && i <= 15) {
+            return true;
+        }
+        else if (map.length - curCell < 15 && i >= map.length - 15) {
+            return true
+        }
+        else {
+            return false;
+        }*/
+     //   return (curCell < 15 && i < 15);
+    //}));
+    
+    let reducedMap = map.filter((m,i) => {
+        return (curCell < 15 && i < 15);
+    });
+    //console.log('reducedMap', reducedMap);
+    draw(reducedMap);
 
     healthBox.innerHTML = health.toString() + '/' + maxHealth.toString();
     levelBox.innerHTML = level.toString();
     expBox.innerHTML = exp.toString() + '/' + levelExp.toString();
+
+    xBox.innerHTML = x.toString();
+    yBox.innerHTML = y.toString();
+    mapYBox.innerHTML = mapY.toString();
 }
