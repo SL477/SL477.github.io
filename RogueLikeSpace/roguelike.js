@@ -52,7 +52,7 @@ let map = [
     [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
@@ -217,10 +217,23 @@ function gameLoop() {
         y = maxMapY - mapY;
     }*/
     //console.log('curCell',curCell);
+
+    //default y = (height + 10) / 2
+    if (curCell <= 10) {
+        //allow to move to the bottom of the screen
+        y = height - mapY;
+    }
+    else if (curCell >= map.length - 10) {
+        //allow to move to the top of the screen
+        y = height - (mapY - height);
+    }
+    else {
+        y = (height + 10) / 2;
+    }
     
     let reducedMap = map.filter((m,i) => {
         //return (curCell < 15 && i < 15) || (curCell > 15 && map.length - curCell < 15 && i >= map.length - 15);
-        return (curCell <= 20 && i >= map.length - 20) || (curCell >= map.length - 20 && i < 20) || (curCell > 20 && curCell < map.length - 20 && i > Math.floor(curCell) - 10 && i < Math.floor(curCell) + 10);
+        return (curCell <= 10 && i >= map.length - 20) || (curCell >= map.length - 10 && i < 20) || (curCell > 10 && curCell < map.length - 10 && i > map.length - Math.floor(curCell) - 10 && i < map.length - Math.floor(curCell) + 10);
     });
     console.log('reducedMap', reducedMap);
     draw(reducedMap);
