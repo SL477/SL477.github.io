@@ -6,6 +6,7 @@ const expBox = document.getElementById('exp');
 const xBox = document.getElementById('x');
 const yBox = document.getElementById('y');
 const mapYBox = document.getElementById('mapY');
+const curCellBox = document.getElementById('curCell');
 
 let width = 800;
 let height = 600;
@@ -25,16 +26,39 @@ let level = 1;
 let exp = 0;
 let levelExp = 100;
 
-const cellWidth = 40;
+const cellWidth = 30;
 
 //let mapY = 8 * 40;
-let mapY = 7.5 * cellWidth;
+
 
 let map = [
     [0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1],
     [0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -52,6 +76,8 @@ let map = [
 ];
 
 let maxMapY = map.length * cellWidth;
+let mapY = maxMapY - (7.5 * cellWidth);//7.5 * cellWidth;
+//let mapY = 7.5 * cellWidth;
 
 const draw = (reducedMap) => {
     if (canvas.getContext) {
@@ -74,7 +100,8 @@ const draw = (reducedMap) => {
         reducedMap.map((m,i) => {
             m.map((block, blockIndex) => {
                 if (block === 1) {
-                    ctx.fillRect(blockIndex * cellWidth, (height - cellWidth) - (i * cellWidth), cellWidth,cellWidth);
+                    //ctx.fillRect(blockIndex * cellWidth, (height - cellWidth) - (i * cellWidth), cellWidth,cellWidth);
+                    ctx.fillRect(blockIndex * cellWidth, i * cellWidth, cellWidth,cellWidth);
                     //console.log('blockIndex', blockIndex, 'i',i);
                 }
             });
@@ -146,10 +173,24 @@ function gameLoop() {
         }
     }
     if (up) {
-        y -= speed;
+        /*mapY -= speed;
+        if (mapY <= 0) {
+            mapY = 0;
+        }*/
+        mapY += speed;
+        if (mapY >= maxMapY) {
+            mapY = maxMapY;
+        }
     }
     if (down) {
-        y += speed;
+        /*mapY += speed;
+        if (mapY >= maxMapY) {
+            mapY = maxMapY;
+        }*/
+        mapY -= speed;
+        if (mapY <= 0) {
+            mapY = 0;
+        }
     }
 
     //Starts with showing the bottom fifteen cells
@@ -168,11 +209,20 @@ function gameLoop() {
         }*/
      //   return (curCell < 15 && i < 15);
     //}));
+
+    /*if (curCell <= 7.5) {
+        y = mapY;
+    }*/
+    /*if ((maxMapY / cellWidth) - curCell <= 7.5) {
+        y = maxMapY - mapY;
+    }*/
+    //console.log('curCell',curCell);
     
     let reducedMap = map.filter((m,i) => {
-        return (curCell < 15 && i < 15);
+        //return (curCell < 15 && i < 15) || (curCell > 15 && map.length - curCell < 15 && i >= map.length - 15);
+        return (curCell <= 20 && i >= map.length - 20) || (curCell >= map.length - 20 && i < 20) || (curCell > 20 && curCell < map.length - 20 && i > Math.floor(curCell) - 10 && i < Math.floor(curCell) + 10);
     });
-    //console.log('reducedMap', reducedMap);
+    console.log('reducedMap', reducedMap);
     draw(reducedMap);
 
     healthBox.innerHTML = health.toString() + '/' + maxHealth.toString();
@@ -182,4 +232,5 @@ function gameLoop() {
     xBox.innerHTML = x.toString();
     yBox.innerHTML = y.toString();
     mapYBox.innerHTML = mapY.toString();
+    curCellBox.innerHTML = curCell.toString();
 }
