@@ -160,6 +160,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function gameLoop() {
+    let lastX = x;
+    let lastY = mapY;
     if (left) {
         x -= speed;
         if (x <= 0) {
@@ -192,6 +194,11 @@ function gameLoop() {
             mapY = 0;
         }
     }
+
+    
+    let colCheck = collisionCheck(lastX, x, lastY, mapY);
+    //console.log('collisionCheck', colCheck);
+    x = colCheck.x;
 
     //Starts with showing the bottom fifteen cells
     //need the 7.5 cells above and the 7.5 cells below the current position
@@ -235,7 +242,7 @@ function gameLoop() {
         //return (curCell < 15 && i < 15) || (curCell > 15 && map.length - curCell < 15 && i >= map.length - 15);
         return (curCell <= 10 && i >= map.length - 20) || (curCell >= map.length - 10 && i < 20) || (curCell > 10 && curCell < map.length - 10 && i > map.length - Math.floor(curCell) - 10 && i < map.length - Math.floor(curCell) + 10);
     });
-    console.log('reducedMap', reducedMap);
+    //console.log('reducedMap', reducedMap);
     draw(reducedMap);
 
     healthBox.innerHTML = health.toString() + '/' + maxHealth.toString();
@@ -246,4 +253,26 @@ function gameLoop() {
     yBox.innerHTML = y.toString();
     mapYBox.innerHTML = mapY.toString();
     curCellBox.innerHTML = curCell.toString();
+}
+
+function collisionCheck(x, nextX, y, nextY) {
+    //return the closest x and y that you can get to withou hitting anything
+    let retX = x;
+    let retY = y;
+
+    //check x
+    let nextCellX = Math.floor(nextX / cellWidth);
+    let nextCellY = Math.floor(y / cellWidth);
+    let nextCell = map[map.length - nextCellY][nextCellX];
+    if (nextCell > 0) {
+        x = (nextCellX * cellWidth) - cellWidth;
+        console.log('Hit X', nextCellX, nextCellY);
+    }
+    else {
+        x = nextX;
+    }
+
+    //check y
+
+    return {'x': x, 'y': y};
 }
