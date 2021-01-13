@@ -25,11 +25,12 @@ let maxHealth = 100;
 let level = 1;
 let exp = 0;
 let levelExp = 100;
+let damageAmt = 30;
 
 const cellWidth = 30;
 
 //let mapY = 8 * 40;
-
+let myTimer;
 
 let map = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -76,9 +77,9 @@ let map = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [1,0,0,0,0,0,0,0,0,0,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -91,6 +92,8 @@ let maxMapY = 1300;
 //let mapY = maxMapY - (7.5 * cellWidth);//7.5 * cellWidth;
 //let mapY = 7.5 * cellWidth;
 let mapY = 160;
+
+let enemyArray = [];
 
 const draw = (reducedMap) => {
     if (canvas.getContext) {
@@ -116,6 +119,24 @@ const draw = (reducedMap) => {
                     //ctx.fillRect(blockIndex * cellWidth, (height - cellWidth) - (i * cellWidth), cellWidth,cellWidth);
                     ctx.fillRect(blockIndex * cellWidth, i * cellWidth, cellWidth,cellWidth);
                     //console.log('blockIndex', blockIndex, 'i',i);
+                }
+                else if (block === -1) {
+                    ctx.fillStyle = "green";
+                    ctx.fillRect(blockIndex * cellWidth, i * cellWidth, cellWidth,cellWidth);
+                    ctx.fillStyle = "brown";
+                }
+                /*else if (block === 2) {
+                    ctx.fillStyle = "orange";
+                    ctx.fillRect(blockIndex * cellWidth, i * cellWidth, cellWidth,cellWidth);
+                    ctx.fillStyle = "brown";
+                }*/
+                else if (block > 1) {
+                    let enemy = enemyArray[block -2];
+                    if (enemy.hp > 0) {
+                        ctx.fillStyle = enemy.color;
+                        ctx.fillRect(blockIndex * cellWidth, i * cellWidth, cellWidth,cellWidth);
+                        ctx.fillStyle = "brown";
+                    }
                 }
             });
         });
@@ -167,8 +188,8 @@ document.addEventListener("DOMContentLoaded", function() {
             down = true;
         }
     });
-
-    setInterval(gameLoop, 1000 / 60);
+    startGame();
+    myTimer = setInterval(gameLoop, 1000 / 60);
     console.log('maxMapY',maxMapY);
 });
 
@@ -279,6 +300,7 @@ function collisionCheck(x, nextX, y, nextY) {
     let nextCellX = Math.floor(nextX / cellWidth);
     let nextCellY = Math.floor(y / cellWidth) - 1;
     let nextCell = map[map.length - nextCellY][nextCellX];
+    let hasFought = false;
     if (nextCell > 0) {
         if (nextX <= x) {
             //console.log('right');
@@ -289,6 +311,10 @@ function collisionCheck(x, nextX, y, nextY) {
             x = (nextCellX * cellWidth) - cellWidth;
         }
         //console.log('Hit X', nextCellX, nextCellY);
+        if (nextCell > 1) {
+            fight(map.length - nextCellY, nextCellX);
+            hasFought = true;
+        }
     }
     else {
         x = nextX;
@@ -311,10 +337,73 @@ function collisionCheck(x, nextX, y, nextY) {
             y = y + cellWidth;
         }
         //console.log('Hit Y', nextCellX, nextCellY);
+        if (nextCell > 1 && !hasFought) {
+            fight(map.length - nextCellY, nextCellX);
+        }
     }
     else {
         y = nextY;
+        if (nextCell === -1) {
+            //console.log('Health');
+            map[map.length - nextCellY][nextCellX] = 0;
+            if (health < maxHealth) {
+                health = maxHealth;
+            }
+            else {
+                increaseExp(50);
+            }
+        }
     }
 
     return {'x': x, 'y': y};
+}
+
+function increaseExp(amount) {
+    //if new exp > 100 then increase the level
+    let newExp = exp + amount;
+    while (newExp >= levelExp) {
+        level += 1;
+        newExp -= levelExp;
+        maxHealth = level * 100;
+        health = maxHealth;
+    }
+    exp = newExp;
+}
+
+//Enemies
+class Enemy {
+    constructor(hp, damage, color) {
+        this.hp = hp;
+        this.damage = damage;
+        this.color = color;
+    }
+}
+
+function startGame() {
+    enemyArray.push(new Enemy(100, 30, "purple"));
+
+    console.log('Enemy array', enemyArray);
+}
+
+function fight(row, column) {
+    let enemy = enemyArray[map[row][column] - 2];
+    //you strike first
+    enemy.hp -= damageAmt * level;
+    console.log('enemy', enemy);
+    if (enemy.hp > 0) {
+        takeHealth(enemy.damage);
+        //enemyArray[map[row][column] - 2] = enemy;
+    }
+    else {
+        map[row][column] = 0;
+        increaseExp(enemy.damage);
+    }
+}
+
+function takeHealth(amt) {
+    health -= amt;
+    if (health <= 0) {
+        alert('You lose!');
+        clearInterval(myTimer);
+    }
 }
