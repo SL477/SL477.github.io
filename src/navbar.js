@@ -21,6 +21,7 @@ function NavBar() {
                         <li><a href="./PongGame/index.html">Pong Game</a></li>
                         <li><a href="./weather/index.html">Weather</a></li>
                         <li><a href="./TicTacToe/index.html">Tic Tac Toe</a></li>
+                        <li><a href="./RogueLikeSpace/index.html">Dungeon Crawler WIP</a></li>
                     </ul>
                 </div>
             </div>

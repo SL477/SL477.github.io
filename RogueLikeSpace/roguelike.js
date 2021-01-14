@@ -31,8 +31,9 @@ const cellWidth = 30;
 
 //let mapY = 8 * 40;
 let myTimer;
+let map;
 
-let map = [
+const orgmap = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -43,7 +44,7 @@ let map = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-    [0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,1,0,0,0,0,3,0,0,0,0,0,0,1,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -72,8 +73,8 @@ let map = [
     [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -189,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
     startGame();
-    myTimer = setInterval(gameLoop, 1000 / 60);
+    //myTimer = setInterval(gameLoop, 1000 / 60);
     console.log('maxMapY',maxMapY);
 });
 
@@ -350,7 +351,7 @@ function collisionCheck(x, nextX, y, nextY) {
                 health = maxHealth;
             }
             else {
-                increaseExp(50);
+                increaseExp(100);
             }
         }
     }
@@ -372,17 +373,34 @@ function increaseExp(amount) {
 
 //Enemies
 class Enemy {
-    constructor(hp, damage, color) {
+    constructor(hp, damage, color, boss) {
         this.hp = hp;
         this.damage = damage;
         this.color = color;
+        this.boss = boss;
     }
 }
 
 function startGame() {
-    enemyArray.push(new Enemy(100, 30, "purple"));
+    enemyArray = [];
+    enemyArray.push(new Enemy(100, 30, "purple", false));
+    enemyArray.push(new Enemy(200, 100, 'cyan', true));
+    enemyArray.push(new Enemy(100, 40, "purple", false));
+    enemyArray.push(new Enemy(100, 50, "purple", false));
 
     console.log('Enemy array', enemyArray);
+    map = JSON.parse(JSON.stringify(orgmap));
+    health = 100;
+    maxHealth = 100;
+    level = 1;
+    exp = 0;
+    levelExp = 100;
+    x = (width + 10) / 2;
+    mapY = 160;
+    if (myTimer) {
+        clearInterval(myTimer);
+    }
+    myTimer = setInterval(gameLoop, 1000 / 60);
 }
 
 function fight(row, column) {
@@ -396,7 +414,11 @@ function fight(row, column) {
     }
     else {
         map[row][column] = 0;
+        health = maxHealth;
         increaseExp(enemy.damage);
+        if (enemy.boss) {
+            won();
+        }
     }
 }
 
@@ -405,5 +427,18 @@ function takeHealth(amt) {
     if (health <= 0) {
         alert('You lose!');
         clearInterval(myTimer);
+        left = false;
+        right = false;
+        up = false;
+        down = false;
     }
 }
+
+const won = () => {
+    alert('You win!');
+    clearInterval(myTimer);
+    left = false;
+    right = false;
+    up = false;
+    down = false;
+};
