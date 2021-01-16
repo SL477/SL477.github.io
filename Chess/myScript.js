@@ -64,7 +64,7 @@ const makeRandomMove = () => {
     if (possibleMoves.length === 0) {
         return;
     }
-
+    console.log('possible moves', possibleMoves);
     let randomIdx = Math.floor(Math.random() * possibleMoves.length);
     game.move(possibleMoves[randomIdx]);
     board.position(game.fen());
@@ -146,7 +146,7 @@ const updateStatus = () => {
             status += ', ' + moveColor + ' is in check';
         }
     }
-    
+    console.log('status', status);
     $status.html(status);
     $fen.html(game.fen());
     $pgn.html(game.pgn());
