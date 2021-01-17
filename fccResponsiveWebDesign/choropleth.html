@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FCC - Visualise Data Choropleth Map</title>
+		<link rel="icon" href="../images/link477.png"/>
+		<link href="../myStyle.css" rel="stylesheet"/>
+		<meta charset="utf-8" />
+		<meta content="Tom Fishwick"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<style>
+            #title {
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .tooltip {
+                fill: blue;
+                background-color: blue;
+                color: white;
+                text-align: center;
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            #holder, svg {
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+            }
+        </style>
+
+		<div id="navbar"></div>
+        <script src="http://d3js.org/d3.v4.min.js"></script>
+        
+        <!--D3 topojson-->
+        <script src="http://d3js.org/topojson.v1.min.js"></script>
+
+        <h1 id="title">United States Educational Attainment</h1>
+        <div id="holder" class="holder">
+            <span id="description">Percentage of adults age 25 and older with a bachelor's degree or higher (2010-2014)</span>
+        </div>
+        <div id="legend"></div>
+
+        <script>
+            //Variables
+            const w = 1000;
+            const h = 600;
+            const padding = 50;
+            console.log("geo", d3.geoPath());
+            let path = d3.geoPath();
+
+            //var eduData = "";
+            //var countryData = "";
+
+            let data = {};
+
+            //Get Data function
+            const getDataJson = (url, variable) => {
+                const req = new XMLHttpRequest();
+                req.open("GET", url, true);
+                
+                req.send();
+                req.onload = () => {
+                    const json = JSON.parse(req.responseText);
+                    data[variable] = json;
+                    visualise();
+                }
+            };
+
+            const getEduData = (eduData, fips) => {
+            return eduData.find(o => o.fips == fips);
+            };
+
+            const visualise = (error, eduData, countryData) => {
+                /* if (data["eduData"] == "" || data["countryData"] == "") {
+                    console.log("awaiting data");
+                    return "";
+                }
+                console.log(data);*/
+                console.log("countryData", countryData);
+                console.log("eduData", eduData);
+                
+                //SVG
+                let svg = d3.select("#holder")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h);
+                
+                //let geojson = topojson.feature(data["countryData"], data["countryData"].objects.countries);
+                console.log(countryData.objects.counties);
+                let geojson = topojson.feature(countryData, countryData.objects.counties);
+                console.log("geojson", geojson);
+                
+                //colour scale
+                let minEdu = d3.min(eduData, (d,i) => d.bachelorsOrHigher);
+                
+                let maxEdu = d3.max(eduData, (d,i) => d.bachelorsOrHigher);
+                
+                let fillScale = d3.scaleLinear()
+                    .domain([minEdu, maxEdu])
+                    .range([1,255]);
+                
+                //Tooltip
+                let tooltip = d3.select("body").append("div")
+                    .style("position", "absolute")
+                    .style("z-index", "10")
+                    .style("visibility", "hidden")
+                    .text("test")
+                    .attr("class", "tooltip")
+                    .attr("id", "tooltip");
+                
+                //Map
+                svg.selectAll("path")
+                    .data(geojson.features)
+                    .enter()
+                    .append("path")
+                    .attr("d", path)
+                    .attr("class", "county")
+                    .attr("data-fips", (d,i) => d.id)
+                    .attr("data-education", (d,i) => {
+                    return getEduData(eduData, d.id).bachelorsOrHigher;
+                })
+                    .style("fill", (d,i) => {
+                    let ed = getEduData(eduData, d.id);
+                    //fillScale
+                    return "rgb(0," + fillScale(ed.bachelorsOrHigher) + ",0)";
+                })
+                .on("mouseover", (d,i) => {
+                    let ed = getEduData(eduData, d.id);
+                    return tooltip
+                        .style("visibility", "visible")
+                        .style("left", d3.event.pageX + 20 + "px")
+                        .style("top", d3.event.pageY + 20 + "px")
+                        .html(ed.area_name + ", " + ed.state + ": " + ed.bachelorsOrHigher + "%")
+                        .attr("data-education", ed.bachelorsOrHigher)
+                        .style("opacity", 1);
+                })
+                .on("mouseout", (d,i) => {
+                    return tooltip.style("visibility", "hidden").style("opacity", 0);
+                });
+                
+                //Legend
+                let h2 = h / 3;
+                let svg2 = d3.select("#legend")
+                    .append("svg")
+                    .attr("width", w)
+                    .attr("height", h2);
+                
+                let data2 = [0, 0.25, 0.5, 0.75, 1];
+                
+                svg2.selectAll("rect")
+                    .data(data2)
+                    .enter()
+                    .append("rect")
+                    .style("fill", (d,i) => {
+                    return "rgb(0," + (d * 255) + ",0)"})
+                    .attr("width", w / 5)
+                    .attr("y", 0)
+                    .attr("x", (d,i) => (w / 5) * i )
+                    .attr("height", h2)
+                    .append("title")
+                    .text((d,i) => (maxEdu - minEdu) * d + minEdu)
+                };
+
+                //getDataJson("https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/for_user_education.json", "eduData");
+                //getDataJson("https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json", "countryData");
+
+                d3.queue()
+                .defer(d3.json, "https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/for_user_education.json")
+                .defer(d3.json, "https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json")
+                .await(visualise);
+        </script>
+        
+        <!--Testing-->
+        <!--<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>-->
+
+		<!-- Load React. -->
+  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  		<!--<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>-->
+		
+		<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+		  <!--Component-->
+		<script src="../navbarAbs.js"></script>
+	</body>
+</html>
