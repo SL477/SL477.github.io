@@ -146,7 +146,7 @@ const updateStatus = () => {
             status += ', ' + moveColor + ' is in check';
         }
     }
-    console.log('status', status);
+
     $status.html(status);
     $fen.html(game.fen());
     $pgn.html(game.pgn());
