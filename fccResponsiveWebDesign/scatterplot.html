@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FCC - Visualise Data with a Scatter Plot</title>
+		<link rel="icon" href="../images/link477.png"/>
+		<link href="../myStyle.css" rel="stylesheet"/>
+		<meta charset="utf-8" />
+		<meta content="Tom Fishwick"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<style>
+            .red {
+                fill: red;
+                background-color: red;
+                color: red;
+            }
+
+            .green {
+                background-color: green;
+                color: green;
+            }
+
+            .tooltip {
+                fill: blue;
+                background-color: blue;
+                color: white;
+                text-align: center;
+            }
+
+            #title {
+                font-weight: bold;
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            #holder, svg {
+                display: block;
+                margin: 0 auto;
+            }
+        </style>
+
+		<div id="navbar"></div>
+		<script src="http://d3js.org/d3.v4.min.js"></script>
+
+        <h1 id="title">Doping in Professional Bike Racing</h1>
+        <div id="holder" class="holder">
+            <div id="legend">
+                <span class="red">-- </span>-Dopers<br/>
+                <span class="green">-- </span>-Non-Dopers
+            </div>
+        </div>
+
+        <script>
+            //Variables
+            const w = 1000;
+            const h = 500;
+            const padding = 50;
+
+            //Get the data
+            const req = new XMLHttpRequest();
+            req.open("GET", 'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json', true);
+            req.send();
+            req.onload = function() {
+                const json = JSON.parse(req.responseText);
+                //console.log(json);
+                visualize(json);
+            };
+
+            function toDate (timeStr, yearStr) {
+                let now = new Date();
+                //now.setYear(yearStr);
+                now.setHours(0);
+                now.setMinutes(timeStr.substr(0, timeStr.indexOf(":")));
+                
+                now.setSeconds(timeStr.substr(timeStr.indexOf(":") + 1));
+                
+                return now;
+            };
+
+            function visualize(dataset) {
+                /*d3.select("#holder")
+                .append("h1")
+                .text("test")*/
+                
+                let dat = dataset.map(d => {
+                    //console.log(d);
+                    let ret = {};
+                    ret["Time"] = d.Time;
+                    ret["Place"] = d.Place;
+                    ret["Seconds"] = d.Seconds;
+                    ret["Name"] = d.Name;
+                    ret["Year"] = d.Year;
+                    ret["Nationality"] = d.Nationality;
+                    ret["Doping"] = d.Doping;
+                    ret["URL"] = d.URL;
+                    ret["timeObj"] = toDate(ret.Time, ret.Year);
+                    return ret;
+                });
+                
+                
+                let xScale = d3.scaleLinear()
+                    .domain([d3.min(dat, (d,i) => d.Year) - 1, d3.max(dat,(d, i) => d.Year)])
+                    .range([padding, w- padding]);
+                
+                let yScale = d3.scaleTime()
+                    .domain([d3.min(dat, (d,i) => d.timeObj), d3.max(dat, (d,i) => d.timeObj)])
+                    .range([h - padding, padding]);
+                
+                let svg = d3.select("#holder")
+                    .append("svg")
+                    .attr("width", w)
+                    .attr("height", h);
+                
+                //tooltip
+                /*let tooltip = d3.select("body")
+                    .append("div")
+                    .style("position", "absolute")
+                    .style("z-index", "10")
+                    .style("visibility", "hidden")
+                    .text("a simple tooltip")
+                    .attr("class", "tooltip")
+                    .attr("id", "tooltip");*/
+
+                let tooltip = d3.select("#holder")
+                    .append("div")
+                    .style("opacity", 0)
+                    .attr("class", "tooltip")
+                    .style("background-color", "blue")
+                    .style("border", "solid")
+                    .style("border-width", "2px")
+                    .style("border-radius", "5px")
+                    .style("padding", "5px")
+                    .attr("id", "tooltip")
+                    .attr("class", "tooltip");
+                
+                //Add the circles
+                svg.selectAll("circle")
+                    .data(dat)
+                    .enter()
+                    .append("circle")
+                    .attr("cx", (d,i) => xScale(d.Year))
+                    .attr("cy", (d,i) =>yScale(d.timeObj))
+                    .attr("r", 5)
+                    .attr("class", "dot")
+                    .attr("data-xvalue", (d,i) => {return d.Year;})
+                    .attr("data-yvalue", (d,i) => {return d.timeObj;})
+                    .style("fill", (d,i) => {
+                    if (d.Doping == "") {
+                        return "green";
+                    }
+                    return "red";
+                })
+                .on("mouseover", (d,i) => {
+                    console.log("hi");
+                    tooltip
+                        .style("visibility", "visible")
+                        .style("opacity", 1);
+                        
+                    /*d3.select(this)
+                        .style("opacity", 1);*/
+                })
+                .on("mousemove", function (d,i) {
+                    tooltip
+                        .html(d.Name + ": " + d.Nationality + "<br/>Year:" + d.Year + ", Time: " + d.Time + "<br/><br/>" + d.Doping)
+                        .attr("data-year", d.Year)
+                        .attr("data-time", d.Time)
+                        .style("left", (d3.mouse(this)[0] + 70) + "px")
+                        .style("top", (d3.mouse(this)[1]) + "px");
+                })
+                .on("mouseleave", (d,i) => {
+                    tooltip
+                        .style("visibility", "hidden")
+                        .style("opacity", 0);
+                    /*d3.select(this)
+                    .style("opacity", 0);*/
+                });
+                /*.on("mouseover", function (d) {
+                    tooltip.style("opacity", 1);
+                        
+                    d3.select(this)
+                        .style("stroke", "black")
+                        .style("opacity", 1)
+                })
+                .on("mousemove", function(d) {
+                    tooltip
+                        .html((d[0]) + " " + d[2] + " <br/>$" + d[1] + " billion")
+                        .style("left", (d3.mouse(this)[0] + 70) + "px")
+                        .style("top", (d3.mouse(this)[1]) + "px")
+                        .attr("data-gdp", d[1])
+                        .attr("data-date", d[4]);
+                })
+                .on("mouseleave", function(d) {
+                    tooltip.style("opacity", 0);
+                    d3.select(this)
+                        .style("stroke", "none");
+                });*/
+                
+                //Legend
+                /*let legend = svg.append("g")
+                    .attr("class", "legend")
+                    .attr("id", "legend")
+                    .attr("x", w - padding)
+                    .attr("y", h / 2)
+                    .text("test")*/
+                
+                //Axes
+                const xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d"));
+                svg.append("g")
+                    .attr("transform", "translate(0, " + (h - padding) + ")")
+                    .attr("id", "x-axis")
+                    .call(xAxis);
+                
+                const yAxis = d3.axisLeft(yScale).tickFormat(d3.timeFormat("%M:%S"));
+                svg.append("g")
+                    .attr("transform", "translate(" + padding + ",0)")
+                    .attr("id", "y-axis")
+                    .call(yAxis);
+                //console.log(xScale(2006))
+                console.log(dat);
+
+                //Labels
+                //X label
+                d3.select("svg").append("text")
+                    .attr("class", "x label")
+                    .attr("text-anchor", "end")
+                    .style("text-align", "center")
+                    .attr("x", w / 2)
+                    .attr("y", h - 6)
+                    .text("Year");
+
+                //Y Label
+                d3.select("svg").append("text")
+                    .attr("class", "y label")
+                    .attr("text-anchor", "end")
+                    .style("text-align", "end")
+                    .attr("y", 6)
+                    .attr("dy", ".75em")
+                    .attr("x", -200)
+                    .attr("transform", "rotate(-90)")
+                    .text("Time");
+            }
+        </script>
+        
+        <!--Testing-->
+        <!--<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>-->
+
+		<!-- Load React. -->
+  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  		<!--<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>-->
+		
+		<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+		  <!--Component-->
+		<script src="../navbarAbs.js"></script>
+	</body>
+</html>

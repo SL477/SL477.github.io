@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FCC - Pomodoro Clock</title>
+		<link rel="icon" href="../images/link477.png"/>
+		<link href="../myStyle.css" rel="stylesheet"/>
+		<meta charset="utf-8" />
+		<meta content="Tom Fishwick"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<style>
+            h1 {
+                text-align: center;
+            }
+
+            #main {
+                border: 1px solid black;
+                padding: 4px;
+                border-radius: 5%;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+
+		<div id="navbar"></div>
+			
+        <div id="main" class="container-fluid">
+            <h1>Pomodoro Clock</h1>
+            <fieldset>
+                <label id="break-label" for="break-length">Break Length:</label>
+                <input id="break-length" type="number" value="5" min="1" max="60" class="form-control"/>
+                <button id="break-decrement" onclick="breakDecrement(-1)">&#8897;</button>
+                <button id="break-increment" onclick="breakDecrement(1)">&#8896;</button>
+                <br/>
+                
+                <label id="session-label">Session Length:</label>
+                <input id="session-length" type="number" value="25" min="1" max="60" class="form-control"/>
+                <button id="session-decrement" onclick="sessionDecrement(-1)">&#8897;</button>
+                <button id="session-increment" onclick="sessionDecrement(1)">&#8896;</button>
+            </fieldset>
+            
+            <div id="timerBox" class="container-fluid">
+            <br/>
+              <div id="timer-label">Session</div>
+              <br/>
+              <span id="time-left">25:00</span>
+              <br/>
+              <button id="start_stop" onclick="startStop()">&#8883;||</button>
+              <button id="reset" onclick="reseter()">&#8635;</button>
+            </div>
+            <audio id="beep" src="./audio/BeepSound.wav"></audio>
+        </div>
+
+        <script>
+            let running = false;
+            let myTimer;
+            let isSession = true;
+            let remainingTime;
+
+            const breakDecrement = (i) => {
+                //console.log("breakDecrement");
+                var b = parseInt($("#break-length").val()) + i;
+                console.log(b);
+                if (b < 1) {
+                    b = 1;
+                }
+                if (b > 60) {
+                    b = 60;
+                }
+                $("#break-length").val(b);            
+            };
+
+            const sessionDecrement = (i) => {
+                //console.log("sessionDecrement");
+                var b = parseInt($("#session-length").val()) + i;
+                console.log(b);
+                
+                if (b < 1) {
+                    b = 1;
+                }
+                if (b > 60) {
+                    b = 60;
+                }
+                $("#session-length").val(b);
+                if (!running) {
+                    $("#time-left").text(b + ":00");
+                }
+            };
+
+            const startStop = () => {
+                console.log("startStop");
+                if (running == false)
+                    {
+                    console.log("start timer");
+                    running = true;
+                    var i = $("#time-left").text().split(":");
+                    remainingTime = parseInt(i[0]) * 60 + parseInt(i[1]);
+                    console.log(remainingTime);
+                    
+                    myTimer = window.setInterval(eachSecond, 30);
+                    console.log("myTimer: " + myTimer);
+                    }
+                else {
+                    running = false;
+                    if (myTimer != null) {
+                        window.clearInterval(myTimer);
+                        myTimer = null;
+                    }
+                }
+            };
+
+            const reseter = () => {
+                console.log("reset");
+                running = false;
+                $("#time-left").text("25:00");
+                $("#break-length").val("5");
+                $("#session-length").val("25");
+                $("#timer-label").text("Session");
+                myTimer = null;
+                var e = document.getElementById("beep");
+                e.pause();
+                //e.load();
+                e.currentTime = 0;
+            };
+
+            function eachSecond() {
+                /*var i = $("#time-left").text().split(":");
+                remainingTime = parseInt(i[0]) * 60 + parseInt(i[1]);
+                remainingTime =  remainingTime - 1;
+                var mins = math.floor(remainingTime / 60);
+                var secs = remainingTime - mins;
+                var s = (mins < 10? "0" : "") + mins + ":" + (secs < 10? "0" : "") + secs;
+                console.log("clock text: " + s);
+                $("#time-left").text(s);*/
+                //alert(s);
+                if (running == false) {
+                    return;
+                }
+                /*if (isSession == null)
+                    {
+                    isSession = true;
+                    }*/
+                var i = $("#time-left").text().split(":");
+                remainingTime = parseInt(i[0]) * 60 + parseInt(i[1]);
+                remainingTime -= 1;
+                /*if (remainingTime <= 0)
+                    {
+                    if (isSession == true) 
+                    {
+                        $("#timer-label").text("Break");
+                    }
+                    else
+                    {
+                        $("#timer-label").text("Session");
+                    }
+                    }*/
+                
+                
+                if (remainingTime < 0) {
+                    if ($("#timer-label").text() == "Break") {
+                        remainingTime = parseInt(($("#break-length").val()) * 60) + 1;
+                        //$("#timer-label").text("Break");
+                        isSession = false;
+                    }
+                    else {
+                        remainingTime = parseInt(($("#session-length").val()) * 60) + 0;
+                        //$("#timer-label").text("Session");
+                        isSession = true;
+                    }
+                }
+                
+                var mins = Math.floor(remainingTime / 60);
+                var secs = remainingTime - (mins * 60);
+                
+                var s = (mins < 10? "0" : "") + mins + ":" + (secs < 10? "0" : "") + secs;
+                $("#time-left").text(s);
+                if (remainingTime == 0) {
+                    var e = document.getElementById("beep");
+                    e.play();
+                    $("#time-left").text("00:00");
+                    $("#timer-label").text($("#timer-label").text() == "Session"? "Break" : "Session");
+                }
+                console.log("clock text: " + s);
+                //alert(remainingTime);
+            }
+        </script>
+        
+        <!--Testing-->
+        <!--<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>-->
+
+		<!-- Load React. -->
+  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  		<!--<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>-->
+		
+		<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+		  <!--Component-->
+		<script src="../navbarAbs.js"></script>
+	</body>
+</html>

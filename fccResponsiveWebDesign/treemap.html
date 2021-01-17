@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FCC - Visualise Data Treemap</title>
+		<link rel="icon" href="../images/link477.png"/>
+		<link href="../myStyle.css" rel="stylesheet"/>
+		<meta charset="utf-8" />
+		<meta content="Tom Fishwick"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<style>
+            #title {
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .tooltip {
+                fill: blue;
+                background-color: blue;
+                color: white;
+                text-align: center;
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            #holder, svg {
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+            }
+        </style>
+
+		<div id="navbar"></div>
+        <script src="http://d3js.org/d3.v4.min.js"></script>
+        <script src="./scripts/fitText.js"></script>
+
+        <h1 id="title">Movie Sales</h1>
+        <div id="holder" class="holder">
+            <span id="description">Top 100 Movies</span>
+        </div>
+        <div id="legend"></div>
+
+        <script>
+            //Variables
+            const w = 1000;
+            const h = 500;
+            const padding = 50;
+
+            //Movie Sales
+            d3.json("https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-data.json", (data) => {
+            console.log("data",data);
+            
+            let svg = d3.select("#holder")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h);
+            
+            //Flatten the data
+            let dat = [];
+            data.children.forEach((e) => {
+                //console.log(e);
+                e.children.forEach((mov) => {
+                //console.log(mov);
+                dat.push(mov);
+                });
+            });
+            
+            //Colours
+            let colorDict = {
+                "Action": "blue",
+                "Drama" : "yellow",
+                "Adventure": "green",
+                "Family": "purple",
+                "Animation": "red",
+                "Comedy": "brown",
+                "Biography": "orange"
+            };
+            
+            console.log("dat", dat);
+            
+            //Give the data to the cluster layout
+            let root = d3.hierarchy(data)
+                .sum((d) => {
+                    //console.log("d",d)
+                    //console.log("value", d.value)
+                    return d.value;
+                }
+            );
+            console.log("root",root)
+            //calculate the x & y values for the treemap
+            d3.treemap()
+                .size([w,h])
+                .padding(1)
+                (root)
+            console.log("root",root);
+            
+            //Tooltip
+            let tooltip = d3.select("body")
+                .append("div")
+                .style("position", "absolute")
+                .style("z-index", "10")
+                .style("visibility", "hidden")
+                .text("a simple tooltip")
+                .attr("class", "tooltip")
+                .attr("id", "tooltip");
+            
+            //Start adding rectangles
+            /* svg.selectAll("rect")
+                .data(root.leaves())
+                .enter()
+                .append("rect")
+                .attr("x", (d,i) => d.x0)
+                .attr("y", (d,i) => d.y0)
+                .attr("width", (d,i) => {
+                return d.x1 - d.x0;
+            })
+                .attr("height", (d,i) => {
+                return d.y1 - d.y0;
+            })
+            .style("fill", (d,i) => {
+                return colorDict[d.data.category];
+            })
+            .attr("class", "tile")
+            .attr("data-name", (d,i) => {
+                //console.log("d - name", d.data.name)
+                return d.data.name;
+            })
+            .attr("data-category", (d,i) => d.data.category)
+            .attr("data-value", (d,i) => d.data.value)
+            .on("mouseover", (d,i) => {
+                return tooltip
+                .style("visibility", "visible")
+                .style("left", d3.event.pageX + 20 + "px")
+                .style("top", d3.event.pageY + 20 + "px")
+                .html("Name: " + d.data.name + "<br/>Category: " + d.data.category + "<br/>Value: " + d.data.value)
+                .attr("data-value", d.data.value)
+                .attr("data-name", d.data.name)
+                .attr("data-category", d.data.category)
+            })
+            .on("mouseout", (d,i) => {
+                return tooltip.style("visibility", "hidden");
+            })*/
+            
+            let box = svg.selectAll("g")
+                .data(root.leaves())
+                .enter()
+                .append("g");
+            
+            //Rect
+            box.append("rect")
+                .attr("x", (d,i) => d.x0)
+                .attr("y", (d,i) => d.y0)
+                .attr("width", (d,i) => {
+                return d.x1 - d.x0;
+            })
+                .attr("height", (d,i) => {
+                return d.y1 - d.y0;
+            })
+            .style("fill", (d,i) => {
+                return colorDict[d.data.category];
+            })
+            .attr("class", "tile")
+            .attr("data-name", (d,i) => {
+                //console.log("d - name", d.data.name)
+                return d.data.name;
+            })
+            .attr("data-category", (d,i) => d.data.category)
+            .attr("data-value", (d,i) => d.data.value)
+            .on("mouseover", (d,i) => {
+                return tooltip
+                .style("visibility", "visible")
+                .style("left", d3.event.pageX + 20 + "px")
+                .style("top", d3.event.pageY + 20 + "px")
+                .html("Name: " + d.data.name + "<br/>Category: " + d.data.category + "<br/>Value: " + d.data.value)
+                .attr("data-value", d.data.value)
+                .attr("data-name", d.data.name)
+                .attr("data-category", d.data.category)
+                .style("opacity", 1);
+            })
+            .on("mouseout", (d,i) => {
+                return tooltip.style("visibility", "hidden").style("opacity", 0);
+            });
+            
+            //Text
+            box.append("text")
+                .attr("x", (d,i) => d.x0 + 10)
+                .attr("y", (d,i) => d.y0 + 10)
+                .text((d,i) => d.data.name)
+                .attr("dy", ".35em")
+                .attr("class", "dynamicText");
+
+            $(".dynamicText").fitText(0.8, { minFontSize: '12px', maxFontSize: '36px' });
+            
+            //Legend
+            let h2 = h / 5;
+            let svg2 = d3.select("#legend")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h2);
+            
+            let dat2 = ["Action", "Drama", "Adventure", "Family", "Animation", "Comedy", "Biography"];
+            
+            let box2 = svg2.selectAll("g")
+                .data(dat2)
+                .enter()
+                .append("g");
+            
+            //Legend Items
+            box2.append("rect")
+                .style("fill", (d,i) => {
+                return colorDict[d];
+            })
+            .attr("width", w / 7)
+            .attr("y", 0)
+            .attr("x", (d,i) => {
+                return w / 7 * i;
+            })
+            .attr("height", h2)
+            .attr("class", "legend-item");
+            
+            //Text
+            box2.append("text")
+                .attr("x", (d,i) => {
+                return w / 7 * i + 10;
+            })
+                .attr("y", 10)
+                .text((d,i) => d)
+                .attr("dy", ".35em");
+            })
+        </script>
+        
+        <!--Testing-->
+        <!--<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>-->
+
+		<!-- Load React. -->
+  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  		<!--<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>-->
+		
+		<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+		  <!--Component-->
+		<script src="../navbarAbs.js"></script>
+	</body>
+</html>
