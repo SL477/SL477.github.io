@@ -182,13 +182,199 @@ const phoneNumberChecker = () => {
 const cashRegisterChecker = () => {
     let price = $('#price').val();
     let cash = $('#cash').val();
-    let penny = $('#penny').val();
-    let nickel = $('#nickel').val();
-    let dime = $('#dime').val();
-    let quarter = $('#quarter').val();
-    let dollar = $('#dollar').val();
-    let five = $('#five').val();
-    let ten = $('#ten').val();
-    let twenty = $('#twenty').val();
-    let hundred = $('#hundred').val();
+    let $penny = $('#penny');
+    let $nickel = $('#nickel');
+    let $dime = $('#dime');
+    let $quarter = $('#quarter');
+    let $dollar = $('#dollar');
+    let $five = $('#five');
+    let $ten = $('#ten');
+    let $twenty = $('#twenty');
+    let $hundred = $('#hundred');
+
+    let changeDict = {
+        "ONE HUNDRED": {value: 100, html: $hundred, desc: "Hundred Dollar Notes"},
+        "TWENTY": {value: 20, html: $twenty, desc: "Twenty Dollar Notes"},
+        "TEN": {value: 10, html: $ten, desc: "Ten Dollar Notes"},
+        "FIVE": {value: 5, html: $five, desc: "Five Dollar Notes"},
+        "ONE": {value: 1, html: $dollar, desc: "Dollar Coins"},
+        "QUARTER": {value: 0.25, html: $quarter, desc: "Quarters"},
+        "DIME": {value: 0.1, html: $dime, desc: "Dimes"},
+        "NICKEL": {value: 0.05, html: $nickel, desc: "Nickels"},
+        "PENNY": {value: 0.01, html: $penny, desc: "Pennies"}
+    };
+
+    let changeArr = [
+        ["PENNY", $penny.val() * changeDict["PENNY"].value],
+        ["NICKEL", $nickel.val() * changeDict["NICKEL"].value],
+        ["DIME", $dime.val() * changeDict["DIME"].value],
+        ["QUARTER", $quarter.val() * changeDict["QUARTER"].value],
+        ["ONE", $dollar.val() * changeDict["ONE"].value],
+        ["FIVE", $five.val() * changeDict["FIVE"].value],
+        ["TEN", $ten.val() * changeDict["TEN"].value],
+        ["TWENTY", $twenty.val() * changeDict["TWENTY"].value],
+        ["ONE HUNDRED", $hundred.val() * changeDict["ONE HUNDRED"].value]
+    ];
+    console.log('changeArr', changeArr);
+    let res = checkCashRegister(price, cash, changeArr);
+
+    $('#cashRegisterStatus').text(res.status);
+
+    let changeText = "";
+    console.log(res.change);
+
+    res.change.forEach((c) => {
+        let key = c[0];
+        let amt = c[1];
+
+        changeText += changeDict[key].desc + " " + (amt / changeDict[key].value).toString() + '<br/>';
+        changeDict[key].html.val(changeDict[key].html.val() - (amt / changeDict[key].value));
+    });
+    $('#cashRegisterChange').html(changeText);
 };
+
+const checkCashRegister = (price, cash, cid) => {
+    //var change;
+    // Here is your change, ma'am.
+    //return change;
+    let changeobj = {status: '', change:[]};
+  
+
+    let cashobj = {};
+    //console.log(cid.length);
+    let totalCash = 0;
+    for(let i = 0; i < cid.length; i++) {
+      //console.log(cid[i][0]);
+      //console.log(cid[i][1]);
+        cashobj[cid[i][0]] = cid[i][1];
+        totalCash += cid[i][1];
+    }
+    //console.log(cashobj);
+    //console.log(Object.entries(cashobj))
+  
+    //let changearr = [];
+    let changeRet = cash - price;
+  
+    //console.log('total cash ' + totalCash + ' change due ' + changeRet);
+    
+    if (totalCash < changeRet) {
+        //console.log('INSUFFICIENT_FUNDS');
+        return {status: "INSUFFICIENT_FUNDS", change: []};
+    }
+    else if (totalCash == changeRet) {
+        //convert cashobj to an array and return it
+        //console.log('CLOSED');
+        return {status: "CLOSED", change: Object.entries(cashobj)};
+    }
+    else {
+        //need to work out the change to return
+        changeobj.status = "OPEN";
+  
+      //100
+        //console.log('100');
+        //console.log('c' + cashobj["ONE HUNDRED"]);
+        //console.log('change due ' + changeRet)
+        let temp = getNumMoney("ONE HUNDRED", 100, cashobj["ONE HUNDRED"], changeRet);
+        //console.log('hi')
+        //console.log('temp ' + temp);
+        //console.log(changeRet);
+        if (temp[1] > 0) {
+            changeobj.change.push(temp);
+            changeRet -= temp[1];
+            changeRet = changeRet.toFixed(2);
+            //console.log('100 change due ' + changeRet);
+        }
+  
+      //20
+        temp = getNumMoney("TWENTY", 20, cashobj["TWENTY"], changeRet);
+        if (temp[1] > 0) {
+            changeobj.change.push(temp);
+            changeRet -= temp[1];
+            changeRet = changeRet.toFixed(2);
+            //console.log('20 change due ' + changeRet);
+        }
+  
+        //10
+        temp = getNumMoney("TEN", 10, cashobj["TEN"], changeRet);
+        if (temp[1] > 0) {
+            changeobj.change.push(temp);
+            changeRet -= temp[1];
+            changeRet = changeRet.toFixed(2);
+            //console.log('10 change due ' + changeRet);
+        }
+  
+        //5
+        temp = getNumMoney("FIVE", 5, cashobj["FIVE"], changeRet);
+        if (temp[1] > 0) {
+            changeobj.change.push(temp);
+            changeRet -= temp[1];
+            changeRet = changeRet.toFixed(2);
+            //console.log('5 change due ' + changeRet);
+        }
+  
+        //1
+        temp = getNumMoney("ONE", 1, cashobj["ONE"], changeRet);
+        if (temp[1] > 0) {
+            changeobj.change.push(temp);
+            changeRet -= temp[1];
+            changeRet = changeRet.toFixed(2);
+            //console.log('1 change due ' + changeRet);
+        }
+  
+        //0.25
+        temp = getNumMoney("QUARTER", 0.25, cashobj["QUARTER"], changeRet);
+        if (temp[1] > 0) {
+            changeobj.change.push(temp);
+            changeRet -= temp[1];
+            changeRet = changeRet.toFixed(2);
+            //console.log('0.25 change due ' + changeRet);
+        }
+  
+        //0.1
+        temp = getNumMoney("DIME", 0.1, cashobj["DIME"], changeRet);
+        if (temp[1] > 0) {
+            changeobj.change.push(temp);
+            changeRet -= temp[1];
+            changeRet = changeRet.toFixed(2);
+            //console.log('0.1 change due ' + changeRet);
+        }
+  
+        //0.05
+        temp = getNumMoney("NICKEL", 0.05, cashobj["NICKEL"], changeRet);
+        if (temp[1] > 0) {
+            changeobj.change.push(temp);
+            changeRet -= temp[1];
+            changeRet = changeRet.toFixed(2);
+            //console.log('0.05 change due ' + changeRet);
+        }
+  
+        //0.01
+        temp = getNumMoney("PENNY", 0.01, cashobj["PENNY"], changeRet);
+        if (temp[1] > 0) {
+            changeobj.change.push(temp);
+            changeRet -= temp[1];
+            changeRet = changeRet.toFixed(2);
+            //console.log('0.01 change due ' + changeRet);
+        }
+        if (changeRet > 0) {
+            return {status: "INSUFFICIENT_FUNDS", change: []};
+        }
+        //console.log(changeobj);
+        return changeobj;
+    }
+};
+
+  //e.g. "HUNDRED", 100, 2, 270
+const getNumMoney = (moneyType, moneyValue, drawerNum, changeDue) => {
+    let NumNeeded = Math.floor(changeDue / moneyValue);
+    //console.log(NumNeeded);
+    let hasNum = Math.floor(drawerNum / moneyValue);
+    //let retNum = 0;
+    //console.log('NUm needed ' + NumNeeded + ' drawernum ' + hasNum);
+    if (hasNum < NumNeeded) {
+        return [moneyType, hasNum * moneyValue];
+    }
+    else {
+        return [moneyType, NumNeeded * moneyValue];
+    }
+}

@@ -84,31 +84,39 @@
                     <input id="cash" name="cash" type="number" class="form-control" min="0" value="20"/>
 
                     <label for="penny">Pennies:</label>
-                    <input id="penny" name="penny" type="number" class="form-control" min="0" value="1.01"/>
+                    <input id="penny" name="penny" type="number" class="form-control" min="0" value="101"/>
                     
                     <label for="nickel">Nickels (5p):</label>
-                    <input id="nickel" name="nickel" type="number" class="form-control" min="0" value="2.05"/>
+                    <input id="nickel" name="nickel" type="number" class="form-control" min="0" value="41"/>
 
                     <label for="dime">Dimes (10p):</label>
-                    <input id="dime" name="dime" type="number" class="form-control" min="0" value="3.1"/>
+                    <input id="dime" name="dime" type="number" class="form-control" min="0" value="31"/>
 
                     <label for="quarter">Quarters (25p):</label>
-                    <input id="quarter" name="quarter" type="number" class="form-control" min="0" value="4.25"/>
+                    <input id="quarter" name="quarter" type="number" class="form-control" min="0" value="17"/>
 
                     <label for="dollar">Dollar coins ($1):</label>
                     <input id="dollar" name="dollar" type="number" class="form-control" min="0" value="90"/>
 
                     <label for="five">Five Dollar Notes:</label>
-                    <input id="five" name="five" type="number" class="form-control" min="0" value="55"/>
+                    <input id="five" name="five" type="number" class="form-control" min="0" value="11"/>
 
                     <label for="ten">Ten Dollar Notes:</label>
-                    <input id="ten" name="ten" type="number" class="form-control" min="0" value="20"/>
+                    <input id="ten" name="ten" type="number" class="form-control" min="0" value="2"/>
 
                     <label for="twenty">Twenty Dollar Notes:</label>
-                    <input id="twenty" name="twenty" type="number" class="form-control" min="0" value="60"/>
+                    <input id="twenty" name="twenty" type="number" class="form-control" min="0" value="3"/>
 
                     <label for="hundred">Hundred Dollar Notes:</label>
-                    <input id="hundred" name="hundred" type="number" class="form-control" min="0" value="100"/>
+                    <input id="hundred" name="hundred" type="number" class="form-control" min="0" value="1"/>
+
+                    <button onclick="cashRegisterChecker();" class="btn btn-primary">Test</button>
+
+                    <p>
+                        Status: <span id="cashRegisterStatus"></span>
+                    </p>
+                    <p id="cashRegisterChange"></p>
+                    <br/>
                 </fieldset>
 			</main>
         </div>
