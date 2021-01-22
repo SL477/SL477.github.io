@@ -57,17 +57,56 @@ const onDragStart = (source, piece, position, orientation) => {
     }
 };
 
+const pieceValues = {
+    bp: -10,//black pawn
+    bn: -30,//black knight
+    bb: -30,//black bishop
+    br: -50,//black rook
+    bq: -90,//black queen
+    bk: -900,//black king
+    wp: 10,//white pawn
+    wn: 30,//white knight
+    wb: 30,//white bishop
+    wr: 50,//white rook
+    wq: 90,//white queen
+    wk: 900,//white king
+};
+
 const makeRandomMove = () => {
-    let possibleMoves = game.moves();
+    let possibleMoves = game.moves({verbose: true});
 
     //Game over
     if (possibleMoves.length === 0) {
         return;
     }
+
     console.log('possible moves', possibleMoves);
-    let randomIdx = Math.floor(Math.random() * possibleMoves.length);
-    game.move(possibleMoves[randomIdx]);
+
+    //look for captures
+    let captureMoves = possibleMoves.filter(m => {
+        return m.flags.includes('c');
+    });
+
+    if (captureMoves.length > 0) {
+        let bestMove = 0;
+        let bestScore = 0;
+        captureMoves.forEach((m,i) => {
+            let score = pieceValues['w' + m.captured];
+            console.log('capure score',score, 'w' + m.captured);
+            if (score > bestScore) {
+                bestMove = i;
+                bestScore = score;
+            }
+        });
+        console.log('best score', bestScore);
+        game.move(captureMoves[bestMove]);
+    }
+    else {
+        let randomIdx = Math.floor(Math.random() * possibleMoves.length);
+        game.move(possibleMoves[randomIdx]);
+    }
     board.position(game.fen());
+    updateStatus();
 };
 
 const onDrop = (source, target) => {
