@@ -36,7 +36,15 @@
         <label for="fen">FEN:</label>
         <div id="fen"></div>
         <label for="pgn">PGN:</label>
-        <div id="pgn"></div>
+		<div id="pgn"></div>
+		
+		<fieldset>
+			<label for="loadpgn">Load PGN:</label>
+			<input id="loadpgn" type="text" class="form-control"/>
+			<label for="loadfen">Load FEN:</label>
+			<input id="loadfen" type="text" class="form-control"/>
+			<button onclick="loadpgncheck();" class="btn btn-primary">Load Game</button>
+		</fieldset>
 
         <script src="myScript.js"></script>
 

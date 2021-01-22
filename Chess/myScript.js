@@ -208,3 +208,14 @@ let config = {
 board = Chessboard(mb, config);
 
 updateStatus();
+
+//Load game
+const loadpgncheck = () => {
+    loadpgn($('#loadpgn').val(), $('#loadfen').val());
+};
+
+const loadpgn = (pgn, fen) => {
+    game.load(fen);
+    game.load_pgn(pgn);
+    board.position(fen);
+};
