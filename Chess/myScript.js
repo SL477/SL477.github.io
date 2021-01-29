@@ -87,6 +87,7 @@ const makeRandomMove = () => {
         return m.flags.includes('c');
     });
 
+    //old logic
     if (captureMoves.length > 0) {
         let bestMove = 0;
         let bestScore = 0;
@@ -105,6 +106,12 @@ const makeRandomMove = () => {
         let randomIdx = Math.floor(Math.random() * possibleMoves.length);
         game.move(possibleMoves[randomIdx]);
     }
+
+    /*let currentFen = game.fen();
+    let currentPgn = game.pgn();*/
+
+
+
     board.position(game.fen());
     updateStatus();
 };
