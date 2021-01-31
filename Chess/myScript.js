@@ -23,6 +23,9 @@ let board = null;
 const WHITESQUAREGREY = '#a9a9a9';
 const BLACKSQUAREGREY = '#696969';
 
+const AI = 'AI';
+const HUMAN = 'HUMAN';
+
 const restart = () => {
     board.start();
 };
@@ -82,38 +85,110 @@ const makeRandomMove = () => {
 
     console.log('possible moves', possibleMoves);
 
-    //look for captures
+    let currentFen = game.fen();
+    let currentPgn = game.pgn();
+
+    let bestMove = minimax(currentFen, AI, 2, possibleMoves);
+    console.log('bestMove', bestMove);
+    //reset game
+    loadpgn(currentPgn, currentFen);
+
+    //make the move
+    if (bestMove >= 0) {
+        game.move(possibleMoves[bestMove]);
+    }
+    else {
+        //use the old logic
+        //look for captures
+        let captureMoves = possibleMoves.filter(m => {
+            return m.flags.includes('c');
+        });
+
+        
+        if (captureMoves.length > 0) {
+            let bestMove = 0;
+            let bestScore = 0;
+            captureMoves.forEach((m,i) => {
+                let score = pieceValues['w' + m.captured];
+                //console.log('capure score',score, 'w' + m.captured);
+                if (score > bestScore) {
+                    bestMove = i;
+                    bestScore = score;
+                }
+            });
+            //console.log('best score', bestScore);
+            game.move(captureMoves[bestMove]);
+        }
+        else {
+            let randomIdx = Math.floor(Math.random() * possibleMoves.length);
+            game.move(possibleMoves[randomIdx]);
+        }
+    }
+
+    board.position(game.fen());
+    updateStatus();
+};
+
+const minimax = (currentFen, player, depth, possibleMoves) => {
+    //Get the best move index
+    let ret = -1;
+    let bestScore = 0;
+    for (let i = 0; i < possibleMoves.length; i++) {
+        //look at all of the moves, get their score then take away the player one
+        game.load(currentFen);//reset back to how the board was
+        let move = possibleMoves[i];
+        let score = 0;
+        if (move.flags.includes('c')) {
+            //capturing something
+            score = score + pieceValues['w' + move.captured];
+            console.log('ai capture score', score);
+        }
+        if (score == 900) {
+            //If AI wins immediately break and stop there
+            ret = i;
+            break;
+        }
+        //If AI doesn't win find the worst move that the human could make
+        game.move(possibleMoves[i]);
+        let humanMove = minScoreOfboardPlayer(game.fen());
+        score = score + humanMove.score;
+        console.log('human capture score', score, humanMove.score);
+
+        if (score > bestScore) {
+            bestScore = score;
+            ret = i;
+            //alert(i);
+        }
+        console.log('ret', ret);
+    }
+
+    return ret;
+};
+
+const minScoreOfboardPlayer = (currentFen) => {
+    //look for the worst outcome
+    let ret = {score: 0, index: -1};
+    game.load(currentFen);
+    let possibleMoves = game.moves({verbose: true});
     let captureMoves = possibleMoves.filter(m => {
         return m.flags.includes('c');
     });
-
-    //old logic
     if (captureMoves.length > 0) {
         let bestMove = 0;
         let bestScore = 0;
         captureMoves.forEach((m,i) => {
-            let score = pieceValues['w' + m.captured];
-            console.log('capure score',score, 'w' + m.captured);
-            if (score > bestScore) {
+            let score = pieceValues['b' + m.captured];
+            //console.log('capure score',score, 'b' + m.captured);
+            if (score < bestScore) {
                 bestMove = i;
                 bestScore = score;
             }
         });
-        console.log('best score', bestScore);
-        game.move(captureMoves[bestMove]);
-    }
-    else {
-        let randomIdx = Math.floor(Math.random() * possibleMoves.length);
-        game.move(possibleMoves[randomIdx]);
+        ret.index = bestMove;
+        ret.score = bestScore;
     }
 
-    /*let currentFen = game.fen();
-    let currentPgn = game.pgn();*/
-
-
-
-    board.position(game.fen());
-    updateStatus();
+    return ret;
 };
 
 const onDrop = (source, target) => {
