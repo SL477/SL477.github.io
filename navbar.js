@@ -84,15 +84,6 @@ function NavBar() {
                             { href: "./TicTacToe/index.html" },
                             "Tic Tac Toe"
                         )
-                    ),
-                    React.createElement(
-                        "li",
-                        null,
-                        React.createElement(
-                            "a",
-                            { href: "./RogueLikeSpace/index.html" },
-                            "Dungeon Crawler WIP"
-                        )
                     )
                 )
             )

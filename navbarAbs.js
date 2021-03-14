@@ -84,15 +84,6 @@ function NavBar() {
                             { href: "https://link477.com/TicTacToe/index.html" },
                             "Tic Tac Toe"
                         )
-                    ),
-                    React.createElement(
-                        "li",
-                        null,
-                        React.createElement(
-                            "a",
-                            { href: "https://link477.com//RogueLikeSpace/index.html" },
-                            "Dungeon Crawler WIP"
-                        )
                     )
                 )
             )
