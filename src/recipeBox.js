@@ -9,12 +9,16 @@ class RecipeBox extends React.Component {
             currentItem: 0,
             editName: '',
             editRecipe: '',
-            editIndex: -1
+            editIndex: -1,
+            action: 'Add'
         };
         this.updatePreview = this.updatePreview.bind(this);
         this.updateCurrentIndex = this.updateCurrentIndex.bind(this);
         this.saveToLocalStorage = this.saveToLocalStorage.bind(this);
         this.saveModal = this.saveModal.bind(this);
+        this.addAction = this.addAction.bind(this);
+        this.editAction = this.editAction.bind(this);
+        this.deleteAction = this.deleteAction.bind(this);
     }
 
     componentDidMount() {
@@ -63,70 +67,99 @@ class RecipeBox extends React.Component {
         let saveData = JSON.stringify({data: this.state.recipes});
         console.log('saveData', saveData);
         localStorage.setItem("recipeBox", saveData);
+        console.log('save to local');
     }
 
     saveModal() {
         let arr = [...this.state.recipes];
-        if (this.state.editIndex > -1) {
-            arr[this.state.editIndex].name = this.state.editName;
-            arr[this.state.editIndex].recipe = this.state.editRecipe;
+        let curIndex = this.state.currentItem;
+        if (this.state.action === 'Delete') {
+            arr.splice(this.state.editIndex,1);
+            curIndex -= 1;
         }
         else {
-            arr.push({
-                name: this.state.editName,
-                recipe: this.state.editRecipe
-            });
+            if (this.state.editIndex > -1) {
+                arr[this.state.editIndex].name = this.state.editName;
+                arr[this.state.editIndex].recipe = this.state.editRecipe;
+            }
+            else {
+                arr.push({
+                    name: this.state.editName,
+                    recipe: this.state.editRecipe
+                });
+                curIndex = arr.length - 1;
+            }
         }
         this.setState({
             recipes: arr,
             editName: '',
             editRecipe: '',
-            editIndex: -1
+            editIndex: -1,
+            currentItem: curIndex
+        },
+        this.saveToLocalStorage
+        );
+    }
+
+    addAction() {
+        this.setState({'action': 'Add'});
+    }
+
+    editAction() {
+        this.setState({
+            'action': 'Edit',
+            'editRecipe': this.state.recipes[this.state.currentItem].recipe,
+            'editName': this.state.recipes[this.state.currentItem].name,
+            'editIndex': this.state.currentItem
         });
-        //this.saveToLocalStorage();
+    }
+
+    deleteAction() {
+        this.setState({
+            'action': 'Delete',
+            'editRecipe': this.state.recipes[this.state.currentItem].recipe,
+            'editName': this.state.recipes[this.state.currentItem].name,
+            'editIndex': this.state.currentItem
+        });
     }
 
     render() {
-        let receipeGrid = this.state.recipes.map((r,i) => {
-            return (<tr key={i}><td id={i} onClick={
-                () => {this.updateCurrentIndex(i);}
-            }>{r.name}</td></tr>);
-        });
         let recipeName;
         if (this.state.recipes.length > this.state.currentItem) {
             recipeName = this.state.recipes[this.state.currentItem].name;
         }
 
-
+        let recipeTable = this.state.recipes.map((r,i) => {
+            return (
+                <div key={i} onClick={() => {this.updateCurrentIndex(i);}}>
+                    <p>{r.name}</p>
+                    <hr/>
+                </div>
+            );
+        });
 
         return (
             <div>
-                <div className="table-responsive">
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>Recipe Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {receipeGrid}
-                        </tbody>
-                    </table>
-                </div>
-                <div>
+                <h1>Recipe Box</h1>
+                <div className="fixedBox30">{recipeTable}</div>
+                <br/>
+                <div className="fixedBox60">
                     <h2>{recipeName}</h2>
                     <div className="container-fluid" dangerouslySetInnerHTML={{__html: this.updatePreview()}}></div>
                 </div>
-                <button className="btn btn-primary" onClick={this.saveToLocalStorage}>Save</button>
 
-                <button type="button" className="btn btn-info" data-toggle="modal" data-target="#myModal">Add</button>
-
+                <div className="center">
+                    <button type="button" className="btn btn-info" data-toggle="modal" data-target="#myModal" onClick={this.addAction}>Add</button>
+                    <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal" onClick={this.editAction}>Edit</button>
+                    <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#myModal" onClick={this.deleteAction}>Delete</button>
+                </div>
+                
                 {/*Modal */}
                 <div className="modal fade" id="myModal" role="dialog">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h4 className="modal-title">Add</h4>
+                                <h4 className="modal-title">{this.state.action}</h4>
                             </div>
                             <div className="modal-body">
                                 <label>Recipe Name:</label>
@@ -137,7 +170,7 @@ class RecipeBox extends React.Component {
                                 </textarea>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.saveModal}>Save</button>
+                                <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.saveModal}>{this.state.action == "Delete"? 'Confirm' : 'Save'}</button>
                                 <button type="button" className="btn btn-warning" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>

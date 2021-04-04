@@ -25,12 +25,16 @@ var RecipeBox = function (_React$Component) {
             currentItem: 0,
             editName: '',
             editRecipe: '',
-            editIndex: -1
+            editIndex: -1,
+            action: 'Add'
         };
         _this.updatePreview = _this.updatePreview.bind(_this);
         _this.updateCurrentIndex = _this.updateCurrentIndex.bind(_this);
         _this.saveToLocalStorage = _this.saveToLocalStorage.bind(_this);
         _this.saveModal = _this.saveModal.bind(_this);
+        _this.addAction = _this.addAction.bind(_this);
+        _this.editAction = _this.editAction.bind(_this);
+        _this.deleteAction = _this.deleteAction.bind(_this);
         return _this;
     }
 
@@ -81,83 +85,103 @@ var RecipeBox = function (_React$Component) {
             var saveData = JSON.stringify({ data: this.state.recipes });
             console.log('saveData', saveData);
             localStorage.setItem("recipeBox", saveData);
+            console.log('save to local');
         }
     }, {
         key: 'saveModal',
         value: function saveModal() {
             var arr = [].concat(_toConsumableArray(this.state.recipes));
-            if (this.state.editIndex > -1) {
-                arr[this.state.editIndex].name = this.state.editName;
-                arr[this.state.editIndex].recipe = this.state.editRecipe;
+            var curIndex = this.state.currentItem;
+            if (this.state.action === 'Delete') {
+                arr.splice(this.state.editIndex, 1);
+                curIndex -= 1;
             } else {
-                arr.push({
-                    name: this.state.editName,
-                    recipe: this.state.editRecipe
-                });
+                if (this.state.editIndex > -1) {
+                    arr[this.state.editIndex].name = this.state.editName;
+                    arr[this.state.editIndex].recipe = this.state.editRecipe;
+                } else {
+                    arr.push({
+                        name: this.state.editName,
+                        recipe: this.state.editRecipe
+                    });
+                    curIndex = arr.length - 1;
+                }
             }
             this.setState({
                 recipes: arr,
                 editName: '',
                 editRecipe: '',
-                editIndex: -1
+                editIndex: -1,
+                currentItem: curIndex
+            }, this.saveToLocalStorage);
+        }
+    }, {
+        key: 'addAction',
+        value: function addAction() {
+            this.setState({ 'action': 'Add' });
+        }
+    }, {
+        key: 'editAction',
+        value: function editAction() {
+            this.setState({
+                'action': 'Edit',
+                'editRecipe': this.state.recipes[this.state.currentItem].recipe,
+                'editName': this.state.recipes[this.state.currentItem].name,
+                'editIndex': this.state.currentItem
             });
-            //this.saveToLocalStorage();
+        }
+    }, {
+        key: 'deleteAction',
+        value: function deleteAction() {
+            this.setState({
+                'action': 'Delete',
+                'editRecipe': this.state.recipes[this.state.currentItem].recipe,
+                'editName': this.state.recipes[this.state.currentItem].name,
+                'editIndex': this.state.currentItem
+            });
         }
     }, {
         key: 'render',
         value: function render() {
             var _this2 = this;
 
-            var receipeGrid = this.state.recipes.map(function (r, i) {
-                return React.createElement(
-                    'tr',
-                    { key: i },
-                    React.createElement(
-                        'td',
-                        { id: i, onClick: function onClick() {
-                                _this2.updateCurrentIndex(i);
-                            } },
-                        r.name
-                    )
-                );
-            });
             var recipeName = void 0;
             if (this.state.recipes.length > this.state.currentItem) {
                 recipeName = this.state.recipes[this.state.currentItem].name;
             }
 
+            var recipeTable = this.state.recipes.map(function (r, i) {
+                return React.createElement(
+                    'div',
+                    { key: i, onClick: function onClick() {
+                            _this2.updateCurrentIndex(i);
+                        } },
+                    React.createElement(
+                        'p',
+                        null,
+                        r.name
+                    ),
+                    React.createElement('hr', null)
+                );
+            });
+
             return React.createElement(
                 'div',
                 null,
                 React.createElement(
-                    'div',
-                    { className: 'table-responsive' },
-                    React.createElement(
-                        'table',
-                        { className: 'table' },
-                        React.createElement(
-                            'thead',
-                            null,
-                            React.createElement(
-                                'tr',
-                                null,
-                                React.createElement(
-                                    'th',
-                                    null,
-                                    'Recipe Name'
-                                )
-                            )
-                        ),
-                        React.createElement(
-                            'tbody',
-                            null,
-                            receipeGrid
-                        )
-                    )
+                    'h1',
+                    null,
+                    'Recipe Box'
                 ),
                 React.createElement(
                     'div',
-                    null,
+                    { className: 'fixedBox30' },
+                    recipeTable
+                ),
+                React.createElement('br', null),
+                React.createElement(
+                    'div',
+                    { className: 'fixedBox60' },
                     React.createElement(
                         'h2',
                         null,
@@ -166,14 +190,23 @@ var RecipeBox = function (_React$Component) {
                     React.createElement('div', { className: 'container-fluid', dangerouslySetInnerHTML: { __html: this.updatePreview() } })
                 ),
                 React.createElement(
-                    'button',
-                    { className: 'btn btn-primary', onClick: this.saveToLocalStorage },
-                    'Save'
-                ),
-                React.createElement(
-                    'button',
-                    { type: 'button', className: 'btn btn-info', 'data-toggle': 'modal', 'data-target': '#myModal' },
-                    'Add'
+                    'div',
+                    { className: 'center' },
+                    React.createElement(
+                        'button',
+                        { type: 'button', className: 'btn btn-info', 'data-toggle': 'modal', 'data-target': '#myModal', onClick: this.addAction },
+                        'Add'
+                    ),
+                    React.createElement(
+                        'button',
+                        { type: 'button', className: 'btn btn-primary', 'data-toggle': 'modal', 'data-target': '#myModal', onClick: this.editAction },
+                        'Edit'
+                    ),
+                    React.createElement(
+                        'button',
+                        { type: 'button', className: 'btn btn-danger', 'data-toggle': 'modal', 'data-target': '#myModal', onClick: this.deleteAction },
+                        'Delete'
+                    )
                 ),
                 React.createElement(
                     'div',
@@ -190,7 +223,7 @@ var RecipeBox = function (_React$Component) {
                                 React.createElement(
                                     'h4',
                                     { className: 'modal-title' },
-                                    'Add'
+                                    this.state.action
                                 )
                             ),
                             React.createElement(
@@ -225,7 +258,7 @@ var RecipeBox = function (_React$Component) {
                                 React.createElement(
                                     'button',
                                     { type: 'button', className: 'btn btn-primary', 'data-dismiss': 'modal', onClick: this.saveModal },
-                                    'Save'
+                                    this.state.action == "Delete" ? 'Confirm' : 'Save'
                                 ),
                                 React.createElement(
                                     'button',

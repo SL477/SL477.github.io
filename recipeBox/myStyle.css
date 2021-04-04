@@ -1,0 +1,45 @@
+.fixedBox60 {
+    overflow: scroll;
+    scrollbar-width: thin;
+    height: 60vh;
+    overflow-x: hidden;
+    background: rgba(255,255,255,0.7);
+    border-radius: 5rem;
+    padding: 3rem;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fixedBox30 {
+    overflow: scroll;
+    height: 20vh;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    background: rgba(255,255,255,0.7);
+    border-radius: 5rem;
+    padding: 3rem;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+body {
+    background: #24415470;
+    background: linear-gradient(90deg, #24415470 0, #c4caef 58%);
+}
+
+h1 {
+    text-align: center;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
