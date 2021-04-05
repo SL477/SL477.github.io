@@ -15,8 +15,9 @@
 }
 
 .white {
-    background-color: ivory;
+    background-color: rgb(126, 214, 226);
     z-index: 0;
+    
 }
 
 .label {
@@ -30,6 +31,6 @@
 .keyLabel {
     text-align: center;
 }
-div > div :hover {
+/*#keyboard > .key :hover {
     background-color: lime;
-}
+}*/
