@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tom Fishwick - Linked Lists</title>
+		<link rel="icon" href="../images/link477.png"/>
+		<link href="../myStyle.css" rel="stylesheet"/>
+		<meta charset="utf-8" />
+		<meta content="Tom Fishwick"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<div id="navbar"></div>
+		<h1>Linked Lists</h1>
+		<p>My answers to the exercises in <a href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms &amp; Data Structures with JS</a></p>
+
+        <div id="cities"></div>
+		<p>Exercise 1 - Advance</p>
+        <div id="citiesNext"></div>
+		<p>Exercise 2 - Prev</p>
+		<div id="citiesPrev"></div>
+		<p>Exercise 3 - Show</p>
+		<p id="ex3Show"></p>
+
+		<p>Exercise 4/5:</p>
+		<fieldset>
+			<label for="grade">Grade:</label>
+			<input id="grade" name="grade" type="text" class="form-control"/>
+			<button class="btn btn-primary" onclick="addGrade();">Add Grade</button>
+		</fieldset>
+		<div id="grades"></div>
+
+		<p>Exercise 6:</p>
+		<fieldset>
+			<label for="startingNumber">Number of Soldiers:</label>
+			<input id="startingNumber" name="startingNumber" class="form-control" value="40" type="number"/>
+			<label for="everymth">Remove Every Nth Soldier:</label>
+			<input id="everymth" name="everymth" class="form-control" value="3" type="number"/>
+			<button class="btn btn-primary" onclick="determineSurvivors();">Determine Survivors</button>
+			<p>Answer: <span id="ex6Ans"></span></p>
+			<div id="ex6Show"></div>
+		</fieldset>
+
+    	<!-- Load React. -->
+  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  		<!--<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>-->
+		
+		<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+		  <!--Component-->
+		<script src="../navbarAbs.js"></script>
+		
+        <script src="./linkedList.js"></script>
+	</body>
+</html>
