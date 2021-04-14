@@ -36,10 +36,257 @@ function NavBar() {
                         { className: "nav navbar-nav" },
                         React.createElement(
                             "li",
+                            { className: "dropdown" },
+                            React.createElement(
+                                "a",
+                                { className: "dropdown-toggle", "data-toggle": "dropdown", href: "#" },
+                                "FreeCodeCamp",
+                                React.createElement("span", { className: "caret" })
+                            ),
+                            React.createElement(
+                                "ul",
+                                { className: "dropdown-menu" },
+                                React.createElement(
+                                    "li",
+                                    { className: "dropdown-header" },
+                                    "Responsive Web Design"
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/fccResponsiveWebDesign/tributePage.html" },
+                                        "Tribute Page"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/fccResponsiveWebDesign/surveyForm.html" },
+                                        "Survey Form"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/fccResponsiveWebDesign/productLandingPage.html" },
+                                        "Product Landing Page"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/fccResponsiveWebDesign/technicalDocPage.html" },
+                                        "Technical Documentation Page"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    { className: "dropdown-header" },
+                                    "JavaScript Algorithms and Data Structures"
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/fccResponsiveWebDesign/fccJs.html" },
+                                        "All five projects on this page"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    { className: "dropdown-header" },
+                                    "Front End Libraries Projects"
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/fccResponsiveWebDesign/randomQuoteMachine.html" },
+                                        "Random Quote Machine"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/fccResponsiveWebDesign/markdownPreviewer.html" },
+                                        "Markdown Previewer"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/fccResponsiveWebDesign/drumMachine.html" },
+                                        "Drum Machine"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/fccResponsiveWebDesign/calculator.html" },
+                                        "Javascript Calculator"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/fccResponsiveWebDesign/pomodoroClock.html" },
+                                        "25 + 5 Clock"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    { className: "dropdown-header" },
+                                    "Data Visualisation Projects"
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/fccResponsiveWebDesign/barChart.html" },
+                                        "Bar Chart"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/fccResponsiveWebDesign/scatterplot.html" },
+                                        "Scatterplot Graph"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/fccResponsiveWebDesign/heatmap.html" },
+                                        "Heat Map"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/fccResponsiveWebDesign/choropleth.html" },
+                                        "Choropleth Map"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/fccResponsiveWebDesign/treemap.html" },
+                                        "Treemap Diagram"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    { className: "dropdown-header" },
+                                    "Take Home Projects"
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/weather/index.html" },
+                                        "Weather"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/TicTacToe/index.html" },
+                                        "Tic Tac Toe"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/recipeBox/index.html" },
+                                        "Recipe Box"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/PongGame/index.html" },
+                                        "Pong Game"
+                                    )
+                                )
+                            )
+                        ),
+                        React.createElement(
+                            "li",
+                            { className: "dropdown" },
+                            React.createElement(
+                                "a",
+                                { className: "dropdown-toggle", "data-toggle": "dropdown", href: "#" },
+                                "Project Odin",
+                                React.createElement("span", { className: "caret" })
+                            ),
+                            React.createElement(
+                                "ul",
+                                { className: "dropdown-menu" },
+                                React.createElement(
+                                    "li",
+                                    { className: "dropdown-header" },
+                                    "Project Odin"
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "./etchASketch/index.html" },
+                                        "Etch A Sketch"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "./rockPaperScissors.html" },
+                                        "Rock, Paper, Scissors"
+                                    )
+                                )
+                            )
+                        ),
+                        React.createElement(
+                            "li",
                             null,
                             React.createElement(
                                 "a",
-                                { href: "https://link477.com/ColorGridGame/Index.html" },
+                                { href: "./ColorGridGame/Index.html" },
                                 "Colour Grid Game"
                             )
                         ),
@@ -48,7 +295,7 @@ function NavBar() {
                             null,
                             React.createElement(
                                 "a",
-                                { href: "https://link477.com/modelrailway.html" },
+                                { href: "modelrailway.html" },
                                 "Model Railway"
                             )
                         ),
@@ -57,35 +304,8 @@ function NavBar() {
                             null,
                             React.createElement(
                                 "a",
-                                { href: "https://link477.com/JSPianoKeyboard/index.html" },
+                                { href: "./JSPianoKeyboard/index.html" },
                                 "JavaScript Keyboard"
-                            )
-                        ),
-                        React.createElement(
-                            "li",
-                            null,
-                            React.createElement(
-                                "a",
-                                { href: "https://link477.com/PongGame/index.html" },
-                                "Pong Game"
-                            )
-                        ),
-                        React.createElement(
-                            "li",
-                            null,
-                            React.createElement(
-                                "a",
-                                { href: "https://link477.com/weather/index.html" },
-                                "Weather"
-                            )
-                        ),
-                        React.createElement(
-                            "li",
-                            null,
-                            React.createElement(
-                                "a",
-                                { href: "https://link477.com/TicTacToe/index.html" },
-                                "Tic Tac Toe"
                             )
                         )
                     )
