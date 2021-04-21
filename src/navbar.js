@@ -66,7 +66,16 @@ function NavBar() {
                                 </ul>
                             </li>
 
-                            <li><a href="./ColorGridGame/Index.html">Colour Grid Game</a></li>
+                            {/*<li><a href="./ColorGridGame/Index.html">Colour Grid Game</a></li>*/}
+                            <li className="dropdown">
+                                <a className="dropdown-toggle" data-toggle="dropdown" href="#">Games
+                                <span className="caret"></span></a>
+                                <ul className="dropdown-menu">
+                                    <li className="dropdown-header">Games</li>
+                                    <li><a href="./ColorGridGame/Index.html">Colour Grid</a></li>
+                                    <li><a href="./Snake/index.html">Snake</a></li>
+                                </ul>
+                            </li>
                             <li><a href="modelrailway.html">Model Railway</a></li>
                             <li><a href="./JSPianoKeyboard/index.html">JavaScript Keyboard</a></li>
                         </ul>

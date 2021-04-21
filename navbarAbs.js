@@ -266,7 +266,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "./etchASketch/index.html" },
+                                        { href: "https://link477.com/etchASketch/index.html" },
                                         "Etch A Sketch"
                                     )
                                 ),
@@ -275,7 +275,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "./rockPaperScissors.html" },
+                                        { href: "https://link477.com/rockPaperScissors.html" },
                                         "Rock, Paper, Scissors"
                                     )
                                 )
@@ -283,11 +283,39 @@ function NavBar() {
                         ),
                         React.createElement(
                             "li",
-                            null,
+                            { className: "dropdown" },
                             React.createElement(
                                 "a",
-                                { href: "./ColorGridGame/Index.html" },
-                                "Colour Grid Game"
+                                { className: "dropdown-toggle", "data-toggle": "dropdown", href: "#" },
+                                "Games",
+                                React.createElement("span", { className: "caret" })
+                            ),
+                            React.createElement(
+                                "ul",
+                                { className: "dropdown-menu" },
+                                React.createElement(
+                                    "li",
+                                    { className: "dropdown-header" },
+                                    "Games"
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/ColorGridGame/Index.html" },
+                                        "Colour Grid"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/Snake/index.html" },
+                                        "Snake"
+                                    )
+                                )
                             )
                         ),
                         React.createElement(
@@ -304,7 +332,7 @@ function NavBar() {
                             null,
                             React.createElement(
                                 "a",
-                                { href: "./JSPianoKeyboard/index.html" },
+                                { href: "https://link477.com/JSPianoKeyboard/index.html" },
                                 "JavaScript Keyboard"
                             )
                         )

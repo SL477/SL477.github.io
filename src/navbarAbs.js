@@ -60,14 +60,23 @@ function NavBar() {
                                 <span className="caret"></span></a>
                                 <ul className="dropdown-menu">
                                     <li className="dropdown-header">Project Odin</li>
-                                    <li><a href="./etchASketch/index.html">Etch A Sketch</a></li>
-                                    <li><a href="./rockPaperScissors.html">Rock, Paper, Scissors</a></li>
+                                    <li><a href="https://link477.com/etchASketch/index.html">Etch A Sketch</a></li>
+                                    <li><a href="https://link477.com/rockPaperScissors.html">Rock, Paper, Scissors</a></li>
                                 </ul>
                             </li>
 
-                            <li><a href="./ColorGridGame/Index.html">Colour Grid Game</a></li>
+                            {/*<li><a href="./ColorGridGame/Index.html">Colour Grid Game</a></li>*/}
+                            <li className="dropdown">
+                                <a className="dropdown-toggle" data-toggle="dropdown" href="#">Games
+                                <span className="caret"></span></a>
+                                <ul className="dropdown-menu">
+                                    <li className="dropdown-header">Games</li>
+                                    <li><a href="https://link477.com/ColorGridGame/Index.html">Colour Grid</a></li>
+                                    <li><a href="https://link477.com/Snake/index.html">Snake</a></li>
+                                </ul>
+                            </li>
                             <li><a href="modelrailway.html">Model Railway</a></li>
-                            <li><a href="./JSPianoKeyboard/index.html">JavaScript Keyboard</a></li>
+                            <li><a href="https://link477.com/JSPianoKeyboard/index.html">JavaScript Keyboard</a></li>
                         </ul>
                     </div>
                 </div>

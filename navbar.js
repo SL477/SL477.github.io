@@ -283,11 +283,39 @@ function NavBar() {
                         ),
                         React.createElement(
                             "li",
-                            null,
+                            { className: "dropdown" },
                             React.createElement(
                                 "a",
-                                { href: "./ColorGridGame/Index.html" },
-                                "Colour Grid Game"
+                                { className: "dropdown-toggle", "data-toggle": "dropdown", href: "#" },
+                                "Games",
+                                React.createElement("span", { className: "caret" })
+                            ),
+                            React.createElement(
+                                "ul",
+                                { className: "dropdown-menu" },
+                                React.createElement(
+                                    "li",
+                                    { className: "dropdown-header" },
+                                    "Games"
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "./ColorGridGame/Index.html" },
+                                        "Colour Grid"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "./Snake/index.html" },
+                                        "Snake"
+                                    )
+                                )
                             )
                         ),
                         React.createElement(
