@@ -24,6 +24,7 @@ function NavBar() {
                             <li><a href="https://link477.com/weather/index.html">Weather</a></li>
                             <li><a href="https://link477.com/TicTacToe/index.html">Tic Tac Toe</a></li>
                             {/*<li><a href="https://link477.com//RogueLikeSpace/index.html">Dungeon Crawler WIP</a></li>*/}
+                            <li><a href="https://link477.com/dataScience/index.html">Data Science</a></li>
                             <li className="dropdown">
                                 <a className="dropdown-toggle" data-toggle="dropdown" href="#">FreeCodeCamp
                                 <span className="caret"></span></a>
