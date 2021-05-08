@@ -52,7 +52,7 @@ var Ship = function () {
     }
 
     _createClass(Ship, [{
-        key: "hit",
+        key: 'hit',
         value: function hit(x, y) {
             //this position has been hit
             for (var i = 0; i < this.positions.length; i++) {
@@ -64,7 +64,7 @@ var Ship = function () {
             return false;
         }
     }, {
-        key: "isSunk",
+        key: 'isSunk',
         value: function isSunk() {
             if (this.sunk) {
                 return true;
@@ -82,31 +82,92 @@ var Ship = function () {
     return Ship;
 }();
 
-var Gameboard = function (_React$Component) {
-    _inherits(Gameboard, _React$Component);
-
-    function Gameboard(props) {
+var Gameboard = function () {
+    function Gameboard() {
         _classCallCheck(this, Gameboard);
 
-        var _this = _possibleConstructorReturn(this, (Gameboard.__proto__ || Object.getPrototypeOf(Gameboard)).call(this, props));
+        this.ships = [];
+        this.misses = [];
+    }
+
+    _createClass(Gameboard, [{
+        key: 'placeShip',
+        value: function placeShip(position, length, direction) {
+            var newShip = new Ship(position, length, direction);
+            //Make sure that the new ship isn't on top of any other ships
+            for (var i = 0; i < this.ships.length; i++) {
+                //console.log('i',i);
+                for (var j = 0; j < this.ships[i].positions.length; j++) {
+                    //console.log('j',j);
+                    for (var s = 0; s < newShip.positions.length; s++) {
+                        //console.log('current ship x', this.ships[i].positions[j].x, 'new ship x',newShip.positions[s].x, 'current ship y',this.ships[i].positions[j].y, 'new ship y',newShip.positions[s].y);
+                        if (newShip.positions[s].x == this.ships[i].positions[j].x && newShip.positions[s].y == this.ships[i].positions[j].y) {
+                            //It overlaps with an existing ship
+                            return false;
+                        }
+                    }
+                }
+            }
+            this.ships.push(newShip);
+            return true;
+        }
+    }, {
+        key: 'receiveAttack',
+        value: function receiveAttack(x, y) {
+            for (var i = 0; i < this.ships.length; i++) {
+                if (this.ships[i].hit(x, y)) {
+                    this.ships[i].isSunk();
+                    return 'HIT';
+                }
+            }
+            this.misses.push({ x: x, y: y });
+            return 'MISS';
+        }
+    }, {
+        key: 'getStats',
+        value: function getStats() {
+            //console.log(this.ships.filter(ship => {return ship.sunk;}));
+            return {
+                numShips: this.ships.length,
+                numSunkShips: this.ships.filter(function (ship) {
+                    return ship.sunk;
+                }).length,
+                numMisses: this.misses.length,
+                allSunk: this.ships.length == this.ships.filter(function (ship) {
+                    return ship.sunk;
+                }).length
+            };
+        }
+    }]);
+
+    return Gameboard;
+}();
+
+var Battleship = function (_React$Component) {
+    _inherits(Battleship, _React$Component);
+
+    function Battleship(props) {
+        _classCallCheck(this, Battleship);
+
+        var _this = _possibleConstructorReturn(this, (Battleship.__proto__ || Object.getPrototypeOf(Battleship)).call(this, props));
 
         _this.state = {};
         return _this;
     }
 
-    _createClass(Gameboard, [{
-        key: "render",
+    _createClass(Battleship, [{
+        key: 'render',
         value: function render() {
             return React.createElement(
-                "p",
+                'p',
                 null,
-                "Test"
+                'Test'
             );
         }
     }]);
 
-    return Gameboard;
+    return Battleship;
 }(React.Component);
 
 var domContainer = document.querySelector("#battleship");
-ReactDOM.render(e(Gameboard), domContainer);
+ReactDOM.render(e(Battleship), domContainer);

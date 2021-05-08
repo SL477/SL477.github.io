@@ -65,7 +65,55 @@ class Ship {
     }
 }
 
-class Gameboard extends React.Component {
+class Gameboard {
+    constructor() {
+        this.ships = [];
+        this.misses = [];
+    }
+
+    placeShip(position, length, direction) {
+        let newShip = new Ship(position,length,direction);
+        //Make sure that the new ship isn't on top of any other ships
+        for (let i = 0; i < this.ships.length; i++) {
+            //console.log('i',i);
+            for (let j = 0; j < this.ships[i].positions.length; j++) {
+                //console.log('j',j);
+                for (let s = 0; s < newShip.positions.length; s++) {
+                    //console.log('current ship x', this.ships[i].positions[j].x, 'new ship x',newShip.positions[s].x, 'current ship y',this.ships[i].positions[j].y, 'new ship y',newShip.positions[s].y);
+                    if ((newShip.positions[s].x == this.ships[i].positions[j].x) && (newShip.positions[s].y == this.ships[i].positions[j].y)) {
+                        //It overlaps with an existing ship
+                        return false;
+                    }
+                }
+            }
+        }
+        this.ships.push(newShip);
+        return true;
+    }
+
+    receiveAttack(x,y) {
+        for (let i = 0; i < this.ships.length; i++) {
+            if (this.ships[i].hit(x,y)) {
+                this.ships[i].isSunk();
+                return 'HIT';
+            }
+        }
+        this.misses.push({x: x, y: y});
+        return 'MISS';
+    }
+
+    getStats() {
+        //console.log(this.ships.filter(ship => {return ship.sunk;}));
+        return {
+            numShips: this.ships.length,
+            numSunkShips: this.ships.filter(ship => {return ship.sunk;}).length,
+            numMisses: this.misses.length,
+            allSunk: this.ships.length == this.ships.filter(ship => {return ship.sunk;}).length
+        };
+    }
+}
+
+class Battleship extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -81,4 +129,4 @@ class Gameboard extends React.Component {
 }
 
 const domContainer = document.querySelector("#battleship");
-ReactDOM.render(e(Gameboard), domContainer);
+ReactDOM.render(e(Battleship), domContainer);

@@ -58,4 +58,26 @@ $( document ).ready(function() {
         console.error("Battleship isSunk didn't work");
     }
     console.log('Battleship',bs);
+
+    //Test gameboard
+    let gb = new Gameboard();
+    if (!gb.placeShip(position,5,directions.UP)) {
+        console.error("Failed to place battleship on gameboard");
+    }
+    if (gb.placeShip(new Position(4,2),5, directions.UP)) {
+        console.error("Placed ship over another ship");
+    }
+
+    if (gb.receiveAttack(4,1) != 'HIT') {
+        console.error("Gameboard receive attack not working");
+    }
+    if (gb.receiveAttack(1,2) != 'MISS') {
+        console.error("Gameboard receive attack not working");
+    }
+    if (gb.misses.length <= 0) {
+        console.error("Gameboard should record misses");
+    }
+
+    console.log("Gameboard",gb);
+    console.log("Gameboard stats", gb.getStats());
 });
