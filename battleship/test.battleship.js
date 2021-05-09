@@ -80,4 +80,11 @@ $( document ).ready(function() {
 
     console.log("Gameboard",gb);
     console.log("Gameboard stats", gb.getStats());
+    console.log("Gameboard allowed moves", gb.getLegalMovesAgainstThisGameboard());
+    
+    //Players
+    let p = new Player(playerType.AI);
+    p.setupBoard();
+    console.log('Player',p);
+    console.log('Random move against player',p.getRandomMoveAgainstPlayer());
 });

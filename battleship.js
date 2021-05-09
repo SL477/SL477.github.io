@@ -6,6 +6,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var e = React.createElement;
@@ -19,18 +21,48 @@ var Position = function Position(x, y) {
 };
 
 var directions = {
-    UP: 1,
-    DOWN: -1,
+    UP: 0,
+    DOWN: 1,
     LEFT: 2,
-    RIGHT: -2
+    RIGHT: 3
 };
 
+var randomDirection = function randomDirection() {
+    var rnd = Math.floor(Math.random() * 4);
+    var ret = directions.UP;
+    Object.keys(directions).forEach(function (d) {
+        if (directions[d] == rnd) {
+            ret = directions[d];
+        }
+    });
+    return ret;
+};
+
+//this is on a 10 x 10 grid
+var MAX = 9;
+
+var playerType = {
+    'HUMAN': 'human',
+    'AI': 'ai'
+};
+
+var ShipType = function ShipType(type, quantity, size) {
+    _classCallCheck(this, ShipType);
+
+    this.type = type;
+    this.quantity = quantity;
+    this.size = size;
+};
+
+var fleet = [new ShipType('Aircraft', 1, 5), new ShipType('Battleship', 1, 4), new ShipType('Cruiser', 1, 3), new ShipType('Destroyer', 2, 2), new ShipType('Submarine', 2, 1)];
+
 var Ship = function () {
-    function Ship(postion, length, direction) {
+    function Ship(postion, length, direction, type) {
         _classCallCheck(this, Ship);
 
         this.positions = [];
         this.sunk = false;
+        this.type = type;
         for (var i = 0; i < length; i++) {
             var pos = JSON.parse(JSON.stringify(postion));
             switch (direction) {
@@ -77,6 +109,17 @@ var Ship = function () {
             this.sunk = true;
             return true;
         }
+    }, {
+        key: 'checkValid',
+        value: function checkValid() {
+            //makes sure that the x & y are greater than or equal to 0 and less than or equal to 10
+            for (var i = 0; i < this.positions.length; i++) {
+                if (this.positions[i].x < 0 || this.positions[i].y < 0 || this.positions[i].x > MAX || this.positions[i].y > MAX) {
+                    return false;
+                }
+            }
+            return true;
+        }
     }]);
 
     return Ship;
@@ -92,8 +135,8 @@ var Gameboard = function () {
 
     _createClass(Gameboard, [{
         key: 'placeShip',
-        value: function placeShip(position, length, direction) {
-            var newShip = new Ship(position, length, direction);
+        value: function placeShip(position, length, direction, type) {
+            var newShip = new Ship(position, length, direction, type);
             //Make sure that the new ship isn't on top of any other ships
             for (var i = 0; i < this.ships.length; i++) {
                 //console.log('i',i);
@@ -108,8 +151,11 @@ var Gameboard = function () {
                     }
                 }
             }
-            this.ships.push(newShip);
-            return true;
+            if (newShip.checkValid()) {
+                this.ships.push(newShip);
+                return true;
+            }
+            return false;
         }
     }, {
         key: 'receiveAttack',
@@ -138,9 +184,79 @@ var Gameboard = function () {
                 }).length
             };
         }
+    }, {
+        key: 'getLegalMovesAgainstThisGameboard',
+        value: function getLegalMovesAgainstThisGameboard() {
+            //This should return a grid of the board that hasn't been shot at
+            var ret = [];
+            var hitBoard = [].concat(_toConsumableArray(this.misses));
+            this.ships.forEach(function (ship) {
+                ship.positions.forEach(function (pos) {
+                    if (pos.hit) {
+                        hitBoard.push({ x: pos.x, y: pos.y });
+                    }
+                });
+            });
+
+            for (var i = 0; i <= MAX; i++) {
+                for (var j = 0; j <= MAX; j++) {
+                    ret.push({ x: i, y: j });
+                }
+            }
+
+            //console.log('hitboard',hitBoard);
+
+            //ret = ret.filter(element => !hitBoard.includes(element));
+            ret = ret.filter(function (element) {
+                return !hitBoard.find(function (obj) {
+                    return obj.x == element.x && obj.y == element.y;
+                });
+            });
+            return ret;
+        }
     }]);
 
     return Gameboard;
+}();
+
+var Player = function () {
+    function Player(playerType) {
+        _classCallCheck(this, Player);
+
+        this.playerType = playerType;
+        this.gameBoard = new Gameboard();
+    }
+
+    _createClass(Player, [{
+        key: 'setupBoard',
+        value: function setupBoard() {
+            var _this = this;
+
+            //This is to setup the board with the ships in fleet
+            fleet.forEach(function (st) {
+                var dir = randomDirection();
+                var x = Math.floor(Math.random() * MAX);
+                var y = Math.floor(Math.random() * MAX);
+                var pos = new Position(x, y);
+                while (!_this.gameBoard.placeShip(pos, st.size, dir, st.type)) {
+                    dir = randomDirection();
+                    x = Math.floor(Math.random() * MAX);
+                    y = Math.floor(Math.random() * MAX);
+                    pos.x = x;
+                    pos.y = y;
+                }
+            });
+        }
+    }, {
+        key: 'getRandomMoveAgainstPlayer',
+        value: function getRandomMoveAgainstPlayer() {
+            var possibleMoves = this.gameBoard.getLegalMovesAgainstThisGameboard();
+            var moveNo = Math.floor(Math.random() * possibleMoves.length);
+            return possibleMoves[moveNo];
+        }
+    }]);
+
+    return Player;
 }();
 
 var Battleship = function (_React$Component) {
@@ -149,10 +265,10 @@ var Battleship = function (_React$Component) {
     function Battleship(props) {
         _classCallCheck(this, Battleship);
 
-        var _this = _possibleConstructorReturn(this, (Battleship.__proto__ || Object.getPrototypeOf(Battleship)).call(this, props));
+        var _this2 = _possibleConstructorReturn(this, (Battleship.__proto__ || Object.getPrototypeOf(Battleship)).call(this, props));
 
-        _this.state = {};
-        return _this;
+        _this2.state = {};
+        return _this2;
     }
 
     _createClass(Battleship, [{
