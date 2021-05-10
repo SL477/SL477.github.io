@@ -143,12 +143,12 @@ class Gameboard {
     receiveAttack(x,y) {
         for (let i = 0; i < this.ships.length; i++) {
             if (this.ships[i].hit(x,y)) {
-                this.ships[i].isSunk();
-                return 'HIT';
+                let didsink = this.ships[i].isSunk();
+                return {result: 'HIT', msg: (didsink? 'Sunk ' + this.ships[i].type : 'Hit')};
             }
         }
         this.misses.push({x: x, y: y});
-        return 'MISS';
+        return {result: 'MISS', msg: 'Miss'};
     }
 
     getStats() {
@@ -320,7 +320,8 @@ class Battleship extends React.Component {
         this.setState({
             turn: this.state.turn + (this.state.currentPlayer == 1? 0 : 1),
             currentPlayer: this.state.currentPlayer == 1? 2 : 1,
-            changeOver: !this.state.oppenentAI
+            changeOver: !this.state.oppenentAI,
+            msg: (this.state.currentPlayer == 2 && this.state.oppenentAI)? this.state.msg : result.msg
         }, () => {
             //callback event
             if (this.state.oppenentAI && this.state.currentPlayer == 2) {
@@ -352,6 +353,7 @@ class Battleship extends React.Component {
                     <div>
                         <h1 className="centerItem">Battleship</h1>
                         <p>Please pass device to player {this.state.currentPlayer}</p>
+                        <p><b>Message:</b> {this.state.msg}</p>
                         <button className="btn btn-primary" onClick={this.recieveDevice}>Continue</button>
                     </div>
                 );

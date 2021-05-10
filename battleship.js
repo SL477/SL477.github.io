@@ -162,12 +162,12 @@ var Gameboard = function () {
         value: function receiveAttack(x, y) {
             for (var i = 0; i < this.ships.length; i++) {
                 if (this.ships[i].hit(x, y)) {
-                    this.ships[i].isSunk();
-                    return 'HIT';
+                    var didsink = this.ships[i].isSunk();
+                    return { result: 'HIT', msg: didsink ? 'Sunk ' + this.ships[i].type : 'Hit' };
                 }
             }
             this.misses.push({ x: x, y: y });
-            return 'MISS';
+            return { result: 'MISS', msg: 'Miss' };
         }
     }, {
         key: 'getStats',
@@ -381,7 +381,8 @@ var Battleship = function (_React$Component) {
             this.setState({
                 turn: this.state.turn + (this.state.currentPlayer == 1 ? 0 : 1),
                 currentPlayer: this.state.currentPlayer == 1 ? 2 : 1,
-                changeOver: !this.state.oppenentAI
+                changeOver: !this.state.oppenentAI,
+                msg: this.state.currentPlayer == 2 && this.state.oppenentAI ? this.state.msg : result.msg
             }, function () {
                 //callback event
                 if (_this3.state.oppenentAI && _this3.state.currentPlayer == 2) {
@@ -426,6 +427,17 @@ var Battleship = function (_React$Component) {
                             null,
                             'Please pass device to player ',
                             this.state.currentPlayer
+                        ),
+                        React.createElement(
+                            'p',
+                            null,
+                            React.createElement(
+                                'b',
+                                null,
+                                'Message:'
+                            ),
+                            ' ',
+                            this.state.msg
                         ),
                         React.createElement(
                             'button',

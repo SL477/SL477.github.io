@@ -68,10 +68,10 @@ $( document ).ready(function() {
         console.error("Placed ship over another ship");
     }
 
-    if (gb.receiveAttack(4,1) != 'HIT') {
+    if (gb.receiveAttack(4,1).result != 'HIT') {
         console.error("Gameboard receive attack not working");
     }
-    if (gb.receiveAttack(1,2) != 'MISS') {
+    if (gb.receiveAttack(1,2).result != 'MISS') {
         console.error("Gameboard receive attack not working");
     }
     if (gb.misses.length <= 0) {
