@@ -63,6 +63,7 @@ function NavBar() {
                                     <li className="dropdown-header">Project Odin</li>
                                     <li><a href="./etchASketch/index.html">Etch A Sketch</a></li>
                                     <li><a href="./rockPaperScissors.html">Rock, Paper, Scissors</a></li>
+                                    <li><a href="./battleship/index.html">Battleship</a></li>
                                 </ul>
                             </li>
 

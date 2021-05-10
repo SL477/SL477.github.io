@@ -287,6 +287,15 @@ function NavBar() {
                                         { href: "https://link477.com/rockPaperScissors.html" },
                                         "Rock, Paper, Scissors"
                                     )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/battleship/index.html" },
+                                        "Battleship"
+                                    )
                                 )
                             )
                         ),
