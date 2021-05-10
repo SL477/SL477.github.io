@@ -198,7 +198,8 @@ class Gameboard {
                     x: pos.x,
                     y: pos.y,
                     ship: true,
-                    hit: pos.hit
+                    hit: pos.hit,
+                    shiptype: ship.type
                 });
             });
         });
@@ -207,7 +208,8 @@ class Gameboard {
                 x: miss.x,
                 y: miss.y,
                 ship: false,
-                hit: true
+                hit: true,
+                shiptype: ''
             })
         });
 
@@ -236,21 +238,27 @@ class Player {
     constructor(playerType) {
         this.playerType = playerType;
         this.gameBoard = new Gameboard();
+        //if (playerType == playerType.AI) {
+            this.setupBoard();
+            console.log('setup board');
+        //}
     }
 
     setupBoard() {
         //This is to setup the board with the ships in fleet
         fleet.forEach(st => {
-            let dir = randomDirection();
-            let x = Math.floor(Math.random() * MAX);
-            let y = Math.floor(Math.random() * MAX);
-            let pos = new Position(x,y);
-            while (!this.gameBoard.placeShip(pos, st.size,dir, st.type)) {
-                dir = randomDirection();
-                x = Math.floor(Math.random() * MAX);
-                y = Math.floor(Math.random() * MAX);
-                pos.x = x;
-                pos.y = y;
+            for (let i = 0; i < st.quantity; i++) {
+                let dir = randomDirection();
+                let x = Math.floor(Math.random() * MAX);
+                let y = Math.floor(Math.random() * MAX);
+                let pos = new Position(x,y);
+                while (!this.gameBoard.placeShip(pos, st.size,dir, st.type)) {
+                    dir = randomDirection();
+                    x = Math.floor(Math.random() * MAX);
+                    y = Math.floor(Math.random() * MAX);
+                    pos.x = x;
+                    pos.y = y;
+                }
             }
         });
     }
@@ -271,16 +279,16 @@ class Battleship extends React.Component {
             turn: 1,
             msg: 'Please setup your ships',
             currentPlayer: 1,
-            changeOver: false
+            changeOver: false,
+            oppenentAI: false
         };
 
         this.chooseHuman = this.chooseHuman.bind(this);
         this.chooseAI = this.chooseAI.bind(this);
         this.recieveDevice = this.recieveDevice.bind(this);
-        this.yourBoard = this.yourBoard.bind(this);
-        this.theirBoard = this.theirBoard.bind(this);
+        this.sendAttack = this.sendAttack.bind(this);
 
-        this.state.player1.setupBoard();
+        //this.state.player1.setupBoard();
     }
 
     chooseHuman() {
@@ -293,30 +301,33 @@ class Battleship extends React.Component {
     chooseAI() {
         this.setState({
             hasChosenOpponent: true,
-            player2: new Player(playerType.AI)
+            player2: new Player(playerType.AI),
+            oppenentAI: true
         });
     }
 
     recieveDevice() {
         this.setState({
-            changeOver: false,
+            changeOver: false/*,
             currentPlayer: this.state.currentPlayer == 1? 2 : 1,
-            turn: this.state.turn + (this.state.currentPlayer == 2? 1 : 0)
+            turn: this.state.turn + (this.state.currentPlayer == 2? 1 : 0)*/
         });
     }
 
-    yourBoard(player) {
-        let ret;
-        for (let i = 0; i < MAX; i++) {
-            for (let j = 0; j < MAX; j++) {
-                ret 
+    sendAttack(x,y) {
+        let result = (this.state.currentPlayer == 1? this.state.player2 : this.state.player1).gameBoard.receiveAttack(x,y);
+        console.log('result', result, 'x',x,'y',y, 'current player', this.state.currentPlayer);
+        this.setState({
+            turn: this.state.turn + (this.state.currentPlayer == 1? 0 : 1),
+            currentPlayer: this.state.currentPlayer == 1? 2 : 1,
+            changeOver: !this.state.oppenentAI
+        }, () => {
+            //callback event
+            if (this.state.oppenentAI && this.state.currentPlayer == 2) {
+                let rndMove = this.state.player1.getRandomMoveAgainstPlayer();
+                this.sendAttack(rndMove.x, rndMove.y);
             }
-        }
-        return ret;
-    }
-
-    theirBoard(player) {
-
+        });
     }
 
     render() {
@@ -330,7 +341,8 @@ class Battleship extends React.Component {
             if (this.state.changeOver) {
                 disp = (
                     <div>
-                        <p>Please pass device to player {this.state.currentPlayer == 1? 2 : 1}</p>
+                        <h1 className="centerItem">Battleship</h1>
+                        <p>Please pass device to player {this.state.currentPlayer}</p>
                         <button className="btn btn-primary" onClick={this.recieveDevice}>Continue</button>
                     </div>
                 );
@@ -340,25 +352,26 @@ class Battleship extends React.Component {
                 //TODO if turn is 0 then allow user to setup the board
                 //show your board to the left and their board to the right (without the ships)
                 
-                /*disp = (
-                    <div>
-                        {this.yourBoard(this.state.currentPlayer == 1? this.state.player1 : this.state.player2)}
-                    </div>
-                );*/
                 let tbl = (
                     (this.state.currentPlayer == 1? this.state.player1 : this.state.player2).gameBoard.getCurrentGrid().map((arr, rowIndex) => {
-                        {/*<div className="row" key={rowIndex}>
-                            {arr.map((a, colIndex) => {
-                                return (
-                                    <div className={"col " + (a.ship? 'ship ' : '') + (a.hit? 'hit' : '')} key={colIndex}></div>
-                                );
-                            })}
-                        </div>*/}
                         return (
                             <tr key={rowIndex}>
                                 {arr.map((a, colIndex) => {
                                     return (
-                                        <td key={colIndex} className={(a.ship? 'ship ' : '') + (a.hit? 'hit' : '')}>{a.hit? 'X' : ''}</td>
+                                        <td key={colIndex} className={(a.ship? 'ship ' : '') + (a.hit? 'hit' : '')}>{a.hit? 'X' : a.shiptype? a.shiptype[0] : ''}</td>
+                                    );
+                                })}
+                            </tr>
+                        );
+                    })
+                );
+                let tblTheirBoard = (
+                    (this.state.currentPlayer == 1? this.state.player2 : this.state.player1).gameBoard.getCurrentGrid().map((arr, rowIndex) => {
+                        return (
+                            <tr key={rowIndex}>
+                                {arr.map((a, colIndex) => {
+                                    return (
+                                        <td key={colIndex} className={(a.hit? 'hit' : '') + (a.ship? ' ship' : '')} onClick={() => {if (!a.hit) {this.sendAttack(colIndex,rowIndex)}}}></td>
                                     );
                                 })}
                             </tr>
@@ -366,21 +379,61 @@ class Battleship extends React.Component {
                     })
                 );
                 disp = (
-                    <table>
-                        <tbody>
-                            {tbl}
-                        </tbody>
-                    </table>
+                    <div>
+                        <h1 className="centerItem">Battleship</h1>
+                        <div className="container">
+                            <div className="board">
+                                <table className="grid">
+                                    <thead>
+                                        <tr>
+                                            <th colSpan="10" className="center">
+                                                Your Board
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {tbl}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="board">
+                                <table className="grid">
+                                    <thead>
+                                        <tr>
+                                            <th colSpan="10" className="center">
+                                                Oppenent Board
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {tblTheirBoard}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p>
+                            <b>Current Player:</b> {this.state.currentPlayer}
+                        </p>
+                        <p>
+                            <b>Turn:</b> {this.state.turn}
+                        </p>
+                        <p>
+                            <b>Message:</b> {this.state.msg}
+                        </p>
+                    </div>
                 );
             }
         }
         else {
             disp = (
-                <fieldset>
-                    <legend>Please chose oppenent</legend>
-                    <button className="btn btn-primary" onClick={this.chooseHuman}>Human</button>
-                    <button className="btn btn-primary" onClick={this.chooseAI}>AI</button>
-                </fieldset>
+                <div>
+                    <h1 className="centerItem">Battleship</h1>
+                    <fieldset>
+                        <legend>Please chose oppenent</legend>
+                        <button className="btn btn-primary" onClick={this.chooseHuman}>Human</button>
+                        <button className="btn btn-primary" onClick={this.chooseAI}>AI</button>
+                    </fieldset>
+                </div>
             );
         }
         return (

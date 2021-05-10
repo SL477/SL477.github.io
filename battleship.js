@@ -224,7 +224,8 @@ var Gameboard = function () {
                         x: pos.x,
                         y: pos.y,
                         ship: true,
-                        hit: pos.hit
+                        hit: pos.hit,
+                        shiptype: ship.type
                     });
                 });
             });
@@ -233,7 +234,8 @@ var Gameboard = function () {
                     x: miss.x,
                     y: miss.y,
                     ship: false,
-                    hit: true
+                    hit: true,
+                    shiptype: ''
                 });
             });
 
@@ -276,6 +278,10 @@ var Player = function () {
 
         this.playerType = playerType;
         this.gameBoard = new Gameboard();
+        //if (playerType == playerType.AI) {
+        this.setupBoard();
+        console.log('setup board');
+        //}
     }
 
     _createClass(Player, [{
@@ -285,16 +291,18 @@ var Player = function () {
 
             //This is to setup the board with the ships in fleet
             fleet.forEach(function (st) {
-                var dir = randomDirection();
-                var x = Math.floor(Math.random() * MAX);
-                var y = Math.floor(Math.random() * MAX);
-                var pos = new Position(x, y);
-                while (!_this.gameBoard.placeShip(pos, st.size, dir, st.type)) {
-                    dir = randomDirection();
-                    x = Math.floor(Math.random() * MAX);
-                    y = Math.floor(Math.random() * MAX);
-                    pos.x = x;
-                    pos.y = y;
+                for (var i = 0; i < st.quantity; i++) {
+                    var dir = randomDirection();
+                    var x = Math.floor(Math.random() * MAX);
+                    var y = Math.floor(Math.random() * MAX);
+                    var pos = new Position(x, y);
+                    while (!_this.gameBoard.placeShip(pos, st.size, dir, st.type)) {
+                        dir = randomDirection();
+                        x = Math.floor(Math.random() * MAX);
+                        y = Math.floor(Math.random() * MAX);
+                        pos.x = x;
+                        pos.y = y;
+                    }
                 }
             });
         }
@@ -324,16 +332,16 @@ var Battleship = function (_React$Component) {
             turn: 1,
             msg: 'Please setup your ships',
             currentPlayer: 1,
-            changeOver: false
+            changeOver: false,
+            oppenentAI: false
         };
 
         _this2.chooseHuman = _this2.chooseHuman.bind(_this2);
         _this2.chooseAI = _this2.chooseAI.bind(_this2);
         _this2.recieveDevice = _this2.recieveDevice.bind(_this2);
-        _this2.yourBoard = _this2.yourBoard.bind(_this2);
-        _this2.theirBoard = _this2.theirBoard.bind(_this2);
+        _this2.sendAttack = _this2.sendAttack.bind(_this2);
 
-        _this2.state.player1.setupBoard();
+        //this.state.player1.setupBoard();
         return _this2;
     }
 
@@ -350,35 +358,43 @@ var Battleship = function (_React$Component) {
         value: function chooseAI() {
             this.setState({
                 hasChosenOpponent: true,
-                player2: new Player(playerType.AI)
+                player2: new Player(playerType.AI),
+                oppenentAI: true
             });
         }
     }, {
         key: 'recieveDevice',
         value: function recieveDevice() {
             this.setState({
-                changeOver: false,
-                currentPlayer: this.state.currentPlayer == 1 ? 2 : 1,
-                turn: this.state.turn + (this.state.currentPlayer == 2 ? 1 : 0)
+                changeOver: false /*,
+                                  currentPlayer: this.state.currentPlayer == 1? 2 : 1,
+                                  turn: this.state.turn + (this.state.currentPlayer == 2? 1 : 0)*/
             });
         }
     }, {
-        key: 'yourBoard',
-        value: function yourBoard(player) {
-            var ret = void 0;
-            for (var i = 0; i < MAX; i++) {
-                for (var j = 0; j < MAX; j++) {
-                    ret;
+        key: 'sendAttack',
+        value: function sendAttack(x, y) {
+            var _this3 = this;
+
+            var result = (this.state.currentPlayer == 1 ? this.state.player2 : this.state.player1).gameBoard.receiveAttack(x, y);
+            console.log('result', result, 'x', x, 'y', y, 'current player', this.state.currentPlayer);
+            this.setState({
+                turn: this.state.turn + (this.state.currentPlayer == 1 ? 0 : 1),
+                currentPlayer: this.state.currentPlayer == 1 ? 2 : 1,
+                changeOver: !this.state.oppenentAI
+            }, function () {
+                //callback event
+                if (_this3.state.oppenentAI && _this3.state.currentPlayer == 2) {
+                    var rndMove = _this3.state.player1.getRandomMoveAgainstPlayer();
+                    _this3.sendAttack(rndMove.x, rndMove.y);
                 }
-            }
-            return ret;
+            });
         }
-    }, {
-        key: 'theirBoard',
-        value: function theirBoard(player) {}
     }, {
         key: 'render',
         value: function render() {
+            var _this4 = this;
+
             var disp = void 0;
             if (this.state.hasChosenOpponent) {
                 /*disp = (
@@ -391,10 +407,15 @@ var Battleship = function (_React$Component) {
                         'div',
                         null,
                         React.createElement(
+                            'h1',
+                            { className: 'centerItem' },
+                            'Battleship'
+                        ),
+                        React.createElement(
                             'p',
                             null,
                             'Please pass device to player ',
-                            this.state.currentPlayer == 1 ? 2 : 1
+                            this.state.currentPlayer
                         ),
                         React.createElement(
                             'button',
@@ -407,19 +428,7 @@ var Battleship = function (_React$Component) {
                     //TODO if turn is 0 then allow user to setup the board
                     //show your board to the left and their board to the right (without the ships)
 
-                    /*disp = (
-                        <div>
-                            {this.yourBoard(this.state.currentPlayer == 1? this.state.player1 : this.state.player2)}
-                        </div>
-                    );*/
                     var tbl = (this.state.currentPlayer == 1 ? this.state.player1 : this.state.player2).gameBoard.getCurrentGrid().map(function (arr, rowIndex) {
-                        {/*<div className="row" key={rowIndex}>
-                               {arr.map((a, colIndex) => {
-                                   return (
-                                       <div className={"col " + (a.ship? 'ship ' : '') + (a.hit? 'hit' : '')} key={colIndex}></div>
-                                   );
-                               })}
-                            </div>*/}
                         return React.createElement(
                             'tr',
                             { key: rowIndex },
@@ -427,39 +436,150 @@ var Battleship = function (_React$Component) {
                                 return React.createElement(
                                     'td',
                                     { key: colIndex, className: (a.ship ? 'ship ' : '') + (a.hit ? 'hit' : '') },
-                                    a.hit ? 'X' : ''
+                                    a.hit ? 'X' : a.shiptype ? a.shiptype[0] : ''
                                 );
                             })
                         );
                     });
+                    var tblTheirBoard = (this.state.currentPlayer == 1 ? this.state.player2 : this.state.player1).gameBoard.getCurrentGrid().map(function (arr, rowIndex) {
+                        return React.createElement(
+                            'tr',
+                            { key: rowIndex },
+                            arr.map(function (a, colIndex) {
+                                return React.createElement('td', { key: colIndex, className: (a.hit ? 'hit' : '') + (a.ship ? ' ship' : ''), onClick: function onClick() {
+                                        if (!a.hit) {
+                                            _this4.sendAttack(colIndex, rowIndex);
+                                        }
+                                    } });
+                            })
+                        );
+                    });
                     disp = React.createElement(
-                        'table',
+                        'div',
                         null,
                         React.createElement(
-                            'tbody',
+                            'h1',
+                            { className: 'centerItem' },
+                            'Battleship'
+                        ),
+                        React.createElement(
+                            'div',
+                            { className: 'container' },
+                            React.createElement(
+                                'div',
+                                { className: 'board' },
+                                React.createElement(
+                                    'table',
+                                    { className: 'grid' },
+                                    React.createElement(
+                                        'thead',
+                                        null,
+                                        React.createElement(
+                                            'tr',
+                                            null,
+                                            React.createElement(
+                                                'th',
+                                                { colSpan: '10', className: 'center' },
+                                                'Your Board'
+                                            )
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'tbody',
+                                        null,
+                                        tbl
+                                    )
+                                )
+                            ),
+                            React.createElement(
+                                'div',
+                                { className: 'board' },
+                                React.createElement(
+                                    'table',
+                                    { className: 'grid' },
+                                    React.createElement(
+                                        'thead',
+                                        null,
+                                        React.createElement(
+                                            'tr',
+                                            null,
+                                            React.createElement(
+                                                'th',
+                                                { colSpan: '10', className: 'center' },
+                                                'Oppenent Board'
+                                            )
+                                        )
+                                    ),
+                                    React.createElement(
+                                        'tbody',
+                                        null,
+                                        tblTheirBoard
+                                    )
+                                )
+                            )
+                        ),
+                        React.createElement(
+                            'p',
                             null,
-                            tbl
+                            React.createElement(
+                                'b',
+                                null,
+                                'Current Player:'
+                            ),
+                            ' ',
+                            this.state.currentPlayer
+                        ),
+                        React.createElement(
+                            'p',
+                            null,
+                            React.createElement(
+                                'b',
+                                null,
+                                'Turn:'
+                            ),
+                            ' ',
+                            this.state.turn
+                        ),
+                        React.createElement(
+                            'p',
+                            null,
+                            React.createElement(
+                                'b',
+                                null,
+                                'Message:'
+                            ),
+                            ' ',
+                            this.state.msg
                         )
                     );
                 }
             } else {
                 disp = React.createElement(
-                    'fieldset',
+                    'div',
                     null,
                     React.createElement(
-                        'legend',
+                        'h1',
+                        { className: 'centerItem' },
+                        'Battleship'
+                    ),
+                    React.createElement(
+                        'fieldset',
                         null,
-                        'Please chose oppenent'
-                    ),
-                    React.createElement(
-                        'button',
-                        { className: 'btn btn-primary', onClick: this.chooseHuman },
-                        'Human'
-                    ),
-                    React.createElement(
-                        'button',
-                        { className: 'btn btn-primary', onClick: this.chooseAI },
-                        'AI'
+                        React.createElement(
+                            'legend',
+                            null,
+                            'Please chose oppenent'
+                        ),
+                        React.createElement(
+                            'button',
+                            { className: 'btn btn-primary', onClick: this.chooseHuman },
+                            'Human'
+                        ),
+                        React.createElement(
+                            'button',
+                            { className: 'btn btn-primary', onClick: this.chooseAI },
+                            'AI'
+                        )
                     )
                 );
             }
