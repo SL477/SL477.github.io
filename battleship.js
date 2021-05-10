@@ -329,7 +329,7 @@ var Battleship = function (_React$Component) {
         _this2.state = {
             hasChosenOpponent: false,
             player1: new Player(playerType.HUMAN),
-            turn: 1,
+            turn: 0,
             msg: 'Please setup your ships',
             currentPlayer: 1,
             changeOver: false,
@@ -340,7 +340,7 @@ var Battleship = function (_React$Component) {
         _this2.chooseAI = _this2.chooseAI.bind(_this2);
         _this2.recieveDevice = _this2.recieveDevice.bind(_this2);
         _this2.sendAttack = _this2.sendAttack.bind(_this2);
-
+        _this2.win = _this2.win.bind(_this2);
         //this.state.player1.setupBoard();
         return _this2;
     }
@@ -391,6 +391,16 @@ var Battleship = function (_React$Component) {
             });
         }
     }, {
+        key: 'win',
+        value: function win() {
+            this.setState({
+                turn: 0,
+                hasChosenOpponent: false,
+                currentPlayer: 1,
+                player1: new Player(playerType.HUMAN)
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             var _this4 = this;
@@ -427,6 +437,12 @@ var Battleship = function (_React$Component) {
                     //Show the boards.
                     //TODO if turn is 0 then allow user to setup the board
                     //show your board to the left and their board to the right (without the ships)
+                    var p1Stats = this.state.player1.gameBoard.getStats();
+                    var p2Stats = this.state.player2.gameBoard.getStats();
+
+                    if (p1Stats.allSunk || p2Stats.allSunk) {
+                        this.win();
+                    }
 
                     var tbl = (this.state.currentPlayer == 1 ? this.state.player1 : this.state.player2).gameBoard.getCurrentGrid().map(function (arr, rowIndex) {
                         return React.createElement(
@@ -446,7 +462,7 @@ var Battleship = function (_React$Component) {
                             'tr',
                             { key: rowIndex },
                             arr.map(function (a, colIndex) {
-                                return React.createElement('td', { key: colIndex, className: (a.hit ? 'hit' : '') + (a.ship ? ' ship' : ''), onClick: function onClick() {
+                                return React.createElement('td', { key: colIndex, className: a.hit ? 'hit' : '', onClick: function onClick() {
                                         if (!a.hit) {
                                             _this4.sendAttack(colIndex, rowIndex);
                                         }
@@ -550,6 +566,28 @@ var Battleship = function (_React$Component) {
                             ),
                             ' ',
                             this.state.msg
+                        ),
+                        React.createElement(
+                            'p',
+                            null,
+                            React.createElement(
+                                'b',
+                                null,
+                                'Number of own ships:'
+                            ),
+                            ' ',
+                            (this.currentPlayer == 1 ? p1Stats : p2Stats).numShips - (this.currentPlayer == 1 ? p1Stats : p2Stats).numSunkShips
+                        ),
+                        React.createElement(
+                            'p',
+                            null,
+                            React.createElement(
+                                'b',
+                                null,
+                                'Number of oppenent ships:'
+                            ),
+                            ' ',
+                            (this.currentPlayer == 2 ? p1Stats : p2Stats).numShips - (this.currentPlayer == 2 ? p1Stats : p2Stats).numSunkShips
                         )
                     );
                 }

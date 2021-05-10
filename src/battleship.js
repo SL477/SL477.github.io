@@ -276,7 +276,7 @@ class Battleship extends React.Component {
         this.state = {
             hasChosenOpponent: false,
             player1: new Player(playerType.HUMAN),
-            turn: 1,
+            turn: 0,
             msg: 'Please setup your ships',
             currentPlayer: 1,
             changeOver: false,
@@ -287,7 +287,7 @@ class Battleship extends React.Component {
         this.chooseAI = this.chooseAI.bind(this);
         this.recieveDevice = this.recieveDevice.bind(this);
         this.sendAttack = this.sendAttack.bind(this);
-
+        this.win = this.win.bind(this);
         //this.state.player1.setupBoard();
     }
 
@@ -330,6 +330,15 @@ class Battleship extends React.Component {
         });
     }
 
+    win() {
+        this.setState({
+            turn: 0,
+            hasChosenOpponent: false,
+            currentPlayer: 1,
+            player1: new Player(playerType.HUMAN)
+        });
+    }
+
     render() {
         let disp;
         if (this.state.hasChosenOpponent) {
@@ -351,6 +360,12 @@ class Battleship extends React.Component {
                 //Show the boards.
                 //TODO if turn is 0 then allow user to setup the board
                 //show your board to the left and their board to the right (without the ships)
+                let p1Stats = this.state.player1.gameBoard.getStats();
+                let p2Stats = this.state.player2.gameBoard.getStats();
+
+                if (p1Stats.allSunk || p2Stats.allSunk) {
+                    this.win();
+                }
                 
                 let tbl = (
                     (this.state.currentPlayer == 1? this.state.player1 : this.state.player2).gameBoard.getCurrentGrid().map((arr, rowIndex) => {
@@ -371,7 +386,7 @@ class Battleship extends React.Component {
                             <tr key={rowIndex}>
                                 {arr.map((a, colIndex) => {
                                     return (
-                                        <td key={colIndex} className={(a.hit? 'hit' : '') + (a.ship? ' ship' : '')} onClick={() => {if (!a.hit) {this.sendAttack(colIndex,rowIndex)}}}></td>
+                                        <td key={colIndex} className={(a.hit? 'hit' : '')/* + (a.ship? ' ship' : '')*/} onClick={() => {if (!a.hit) {this.sendAttack(colIndex,rowIndex)}}}></td>
                                     );
                                 })}
                             </tr>
@@ -419,6 +434,12 @@ class Battleship extends React.Component {
                         </p>
                         <p>
                             <b>Message:</b> {this.state.msg}
+                        </p>
+                        <p>
+                            <b>Number of own ships:</b> {(this.currentPlayer == 1? p1Stats : p2Stats).numShips - (this.currentPlayer == 1? p1Stats : p2Stats).numSunkShips}
+                        </p>
+                        <p>
+                            <b>Number of oppenent ships:</b> {(this.currentPlayer == 2? p1Stats : p2Stats).numShips - (this.currentPlayer == 2? p1Stats : p2Stats).numSunkShips}
                         </p>
                     </div>
                 );
