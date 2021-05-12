@@ -8,6 +8,8 @@ class CArray {
         for (let i = 0; i < numElements; ++i) {
             this.dataStore[i] = i;
         }
+
+        this.gaps = [5,3,1];
     }
 
     setData() {
@@ -89,28 +91,184 @@ class CArray {
                 --inner;
             }
             this.dataStore[inner] = temp;
-            ret += this.toString()
+            ret += this.toString();
         }
         return ret;
+    }
+
+    //Shell Sort
+    setGaps(arr) {
+        this.gaps = arr;
+    }
+
+    shellsort() {
+        let ret = '';
+        for (let g = 0; g < this.gaps.length; ++g) {
+            for (let i = this.gaps[g]; i < this.dataStore.length; ++i) {
+                let temp = this.dataStore[i];
+                let j;
+                for (j = i; j >= this.gaps[g] && this.dataStore[j - this.gaps[g]] > temp; j -= this.gaps[g]) {
+                    this.dataStore[j] = this.dataStore[j - this.gaps[g]];
+                }
+                this.dataStore[j] = temp;
+                ret += this.toString();
+            }
+        }
+        return ret;
+    }
+
+    shellsort1() {
+        let ret = '';
+        let N = this.dataStore.length;
+        let h = 1;
+        while (h < N / 3) {
+            h = 3 * h + 1;
+        }
+        while (h >= 1) {
+            for (let i = h; i < N; i++) {
+                for (let j = i; j >= h && this.dataStore[j] < this.dataStore[j - h]; j -= h) {
+                    this.swap(this.dataStore, j, j - h);
+                    ret += this.toString();
+                }
+            }
+            h = (h - 1) / 3;
+        }
+        return ret;
+    }
+
+    mergeSort() {
+        if (this.dataStore.length < 2) {
+            return;
+        }
+        let step = 1;
+        let left, right;
+        while (step < this.dataStore.length) {
+            left = 0;
+            right = step;
+            while (right + step <= this.dataStore.length) {
+                this.mergeArrays(this.dataStore, left, left + step, right, right + step);
+                left = right + step;
+                right = left + step;
+            }
+            if (right < this.dataStore.length) {
+                this.mergeArrays(this.dataStore, left, left + step, right, this.dataStore.length);
+            }
+            step *= 2;
+        }
+    }
+
+    mergeArrays(arr, startLeft, stopLeft, startRight, stopRight) {
+        let rightArr = new Array(stopRight - startRight + 1);
+        let leftArr = new Array(stopLeft - startLeft + 1);
+        let k = startRight;
+        for (let i = 0; i < (rightArr.length - 1); ++i) {
+            rightArr[i] = arr[k];
+            ++k;
+        }
+        k = startLeft;
+        for (let i = 0; i < (leftArr.length - 1); ++i) {
+            leftArr[i] = arr[k];
+            ++k;
+        }
+
+        rightArr[rightArr.length - 1] = Infinity; //a sentinel value
+        leftArr[leftArr.length - 1] = Infinity;
+        let m = 0;
+        let n = 0;
+        for (k = startLeft; k < stopRight; ++k) {
+            if (leftArr[m] <= rightArr[n]) {
+                arr[k] = leftArr[m];
+                m++;
+            }
+            else {
+                arr[k] = rightArr[n];
+                n++;
+            }
+        }
+        console.log('left array - ', leftArr);
+        console.log('right array - ', rightArr);
+    }
+
+    //Quick Sort
+    qSort(list) {
+        if (list.length == 0) {
+            return [];
+        }
+        let lesser = [];
+        let greater = [];
+        let pivot = list[0];
+        for (let i = 1; i < list.length; i++) {
+            if (list[i] < pivot) {
+                lesser.push(list[i]);
+            }
+            else {
+                greater.push(list[i]);
+            }
+        }
+        return this.qSort(lesser).concat(pivot, this.qSort(greater));
     }
 }
 
 $( document ).ready(() => {
     let myNums = new CArray(10);
     myNums.setData();
+    let start = new Date().getTime();
     $('#testCArray').append('<h4>Unsorted</h4>' + myNums.toString());
     $('#testCArray').append('<h4>Intermediate Sorting</h4>' + myNums.bubbleSort());
     $('#testCArray').append('<h4>Bubble Sorted</h4>' + myNums.toString());
+    let stop = new Date().getTime();
+    let elapsed = stop - start;
+    $('#testCArray').append('<p>Elapsed time ' + elapsed + ' milliseconds<p>');
 
     let selNums = new CArray(10);
     selNums.setData();
+    start = new Date().getTime();
     $('#testCArray').append('<h4>Unsorted</h4>' + selNums.toString());
     $('#testCArray').append('<h4>Intermediate Sorting</h4>' + selNums.selectionSort());
     $('#testCArray').append('<h4>Selection Sorted</h4>' + selNums.toString());
+    stop = new Date().getTime();
+    elapsed = stop - start;
+    $('#testCArray').append('<p>Elapsed time ' + elapsed + ' milliseconds<p>');
 
     let insNums = new CArray(10);
     insNums.setData();
+    start = new Date().getTime();
     $('#testCArray').append('<h4>Unsorted</h4>' + insNums.toString());
     $('#testCArray').append('<h4>Intermediate Sorting</h4>' + insNums.insertionSort());
     $('#testCArray').append('<h4>Insertion Sorted</h4>' + insNums.toString());
+    stop = new Date().getTime();
+    elapsed = stop - start;
+    $('#testCArray').append('<p>Elapsed time ' + elapsed + ' milliseconds<p>');
+
+    let shellNums = new CArray(10);
+    shellNums.setData();
+    start = new Date().getTime();
+    $('#testCArray').append('<h4>Unsorted</h4>' + shellNums.toString());
+    $('#testCArray').append('<h4>Intermediate Sorting</h4>' + shellNums.shellsort());
+    $('#testCArray').append('<h4>Shell Sorted</h4>' + shellNums.toString());
+    stop = new Date().getTime();
+    elapsed = stop - start;
+    $('#testCArray').append('<p>Elapsed time ' + elapsed + ' milliseconds<p>');
+
+    let shellNums1 = new CArray(10);
+    shellNums1.setData();
+    start = new Date().getTime();
+    $('#testCArray').append('<h4>Unsorted</h4>' + shellNums1.toString());
+    $('#testCArray').append('<h4>Intermediate Sorting</h4>' + shellNums1.shellsort1());
+    $('#testCArray').append('<h4>Shell Sorted v2</h4>' + shellNums1.toString());
+    stop = new Date().getTime();
+    elapsed = stop - start;
+    $('#testCArray').append('<p>Elapsed time ' + elapsed + ' milliseconds<p>');
+
+    let mergeNums = new CArray(10);
+    mergeNums.setData();
+    $('#testCArray').append('<h4>Unsorted</h4>' + mergeNums.toString());
+    mergeNums.mergeSort();
+    $('#testCArray').append('<h4>Merge Sorted</h4>' + mergeNums.toString());
+
+    let quickNums = new CArray(100);
+    quickNums.setData();
+    $('#testCArray').append('<h3>Quick Sort</h3><h4>Unsorted</h4>' + quickNums.toString());
+    quickNums.dataStore = quickNums.qSort(quickNums.dataStore);
+    $('#testCArray').append('<h4>Quick Sorted</h4>' + quickNums.toString());
 });
