@@ -8,6 +8,15 @@ function sequentialSearch(arr, data) {
     return -1;
 }
 
+function sequentialSearchReverse(arr, data) {
+    for (let i = arr.length - 1; i > -1; i--) {
+        if (arr[i] == data) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 function sequentialSearchSelfOrganizing(arr, data) {
     for (let i = 0; i < arr.length; ++i) {
         if (arr[i] == data) {
@@ -99,6 +108,12 @@ function seqSeach() {
     $('#seqSearchRes').text(sequentialSearch(nums, searchNum));
 }
 
+function seqSearchReverse() {
+    //Exercise 1
+    let searchNum = Number($('#seqSearchNum').val());
+    $('#seqSearchRes').text(sequentialSearchReverse(nums, searchNum));
+}
+
 function seqSeach1() {
     let searchNum = Number($('#seqSearchNum1').val());
     //console.log('searchNum',searchNum,nums);
@@ -172,4 +187,60 @@ function count(arr, data) {
     }
     console.log('count',count);
     return count;
+}
+
+function compareTimings() {
+    //Exercise 2
+    //compare timings of sequential search and binary search on nums
+    let searchNum = Number($('#seqSearchNum').val());
+    let start = new Date().getTime();
+    let seqRes = sequentialSearch(nums, searchNum);
+    let end = new Date().getTime();
+    $('#seqSearchRes').text(seqRes);
+    $('#seqSearchTiming').text(end - start);
+    //binary search
+    let binNumsArr = [...nums];
+    start = new Date().getTime();
+    insertionSort(binNumsArr);
+    seqRes = binSearcher(binNumsArr, searchNum);
+    end = new Date().getTime();
+    $('#binSearchTiming').text(end - start);
+}
+
+//Exersise 3
+//Find smallest element in dataset, generalise to any other position
+class Minset {
+    constructor(arr) {
+        this.datastore = [];
+        let newArr = [...arr];
+        insertionSort(newArr);
+        for (let i = 0; i < newArr.length; i++) {
+            if (this.datastore.indexOf(newArr[i]) == -1) {
+                this.datastore.push(newArr[i]);
+            }
+        }
+    }
+}
+
+function nthSmallestElement(arr, n) {
+    let s = new Minset(arr);
+    if (n > -1 && n < s.datastore.length) {
+        return  s.datastore[n];
+    }
+    else {
+        return "Invalid N";
+    }
+}
+
+function minSeach() {
+    let posSearch = Number($('#minSearch').val());
+    let num1k = [];
+    for (let i = 0; i < 1000; i++) {
+        num1k.push(Math.floor(Math.random() * 1001));
+    }
+    $('#minSearchRes').text(nthSmallestElement(num1k, posSearch));
+
+    let words = "the quick brown fox jumped over the lazy dog";
+    let wordArr = words.split(' ');
+    $('#minWordSearchRes').text(nthSmallestElement(wordArr, posSearch));
 }

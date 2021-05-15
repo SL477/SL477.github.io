@@ -22,8 +22,11 @@
             <legend>Sequential Search</legend>
             <label for="seqSearchNum">Search For:</label>
             <input type="number" id="seqSearchNum" name="seqSearchNum" class="form-control"/>
-            <button class="btn btn-primary" onclick="seqSeach();">Search For Number</button>
+            <button class="btn btn-primary" onclick="seqSeach();">Search For Number</button><br/>
+            <button class="btn btn-primary" onclick="seqSearchReverse();">Search for last occurance of number</button><br/>
+            <button class="btn btn-primary" onclick="compareTimings();">Compare Timings</button>
             <p>Number Array Position: <span id="seqSearchRes"></span></p>
+            <p>Sequential Search took <span id="seqSearchTiming"></span> milliseconds. Binary Search took: <span id="binSearchTiming"></span> milliseconds.</p>
         </fieldset>
 
         <h3>Self Sorting</h3>
@@ -49,6 +52,15 @@
 
         <h2>Word Search</h2>
         <div id="wordSearch"></div>
+
+        <fieldset>
+            <legend>Exercise 3 minimum number search</legend>
+            <label for="minSearch">Enter Nth minimimum to search for:</label>
+            <input type="number" id="minSearch" name="minSearch" class="form-control"/>
+            <button class="btn btn-primary" onclick="minSeach();">Search For Minimum</button>
+            <p>Number Result: <span id="minSearchRes"></span></p>
+            <p>Word Result: <span id="minWordSearchRes"></span></p>
+        </fieldset>
         
     	<!-- Load React. -->
   		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
