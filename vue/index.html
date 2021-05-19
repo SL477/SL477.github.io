@@ -26,11 +26,46 @@
             <a v-bind:[attribute_name]="url">Visit my website</a><br/>
             <a v-on:[event_name]="runFunction">Some link</a><br/>
             <div>{{ getFullName() }}</div>
+            <label for="age">What is your age?</label>
+            <input type="number" v-model="age" class="form-control" id="age"/>
             <h2 v-if="age > 21">{{ movieTitle }}</h2>
             <h2 v-else-if="age > 18">{{ movieTitle }} | Watch with an adult</h2>
             <p v-else>Sorry you are too young to see this movie</p>
             <ul>
                 <li v-for="(project, index) in projects" :key="index">{{ project.title }}</li>
+            </ul>
+
+            <div class="projects" v-for="(project, index) in projects">
+                <h1>{{ project.title.toUpperCase() }}</h1>
+                <input type="text" v-model="project.title"/>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <div>Like
+                    <i class="fas fa-heart fa-lg fa-fw" 
+                        @click.left="likeProject(project)"
+                        @click.right.prevent="removeLike(project, $event)">
+                    </i>
+                    {{ project.likes }}
+                </div>
+            </div>
+
+            <h2>What do you want to tweet about today?</h2>
+            <form v-on:submit.prevent="submitData">
+                <div class="form_group">
+                    <label for="tweet">Tweet:</label>
+                    <textarea id="tweet" name="tweet" v-model="tweet" placeholder="What's happening today?" class="form-control" cols="80" rows="10" maxlength="200"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Tweet</button>
+            </form>
+            <!--<div>
+                <span v-if="tweet.length <= max_length">{{ `Max: ${tweet.length} of ${max_length} characters` }}</span>
+                <span class="errorMessage" v-else>{{ `Max char limit reached! Excess chars: ${max_length - tweet.length}` }}</span>
+            </div>-->
+            <div>
+                <span v-if="tweet.length <= max_length">{{ maxCharsText }}</span>
+                <span class="errorMessage" v-else>{{ errorMessage }}</span>
+            </div>
+            <ul>
+                <li v-for="text in tweets">{{ text }}</li>
             </ul>
         </div>
 
