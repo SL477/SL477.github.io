@@ -11,6 +11,8 @@
   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
   		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+        integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 	</head>
 	<body>
 		<div id="navbar"></div>
@@ -67,6 +69,15 @@
             <ul>
                 <li v-for="text in tweets">{{ text }}</li>
             </ul>
+            <test-component></test-component>
+            <tweet-message text="This is a component" date="25/12/2020"></tweet-message>
+
+            <tweet-section title="Latest Tweets">
+                <tweet-message text="This is my first tweet"></tweet-message>
+                <tweet-message text="This is my second tweet"></tweet-message>
+                <tweet-message text="This is my third tweet"></tweet-message>
+                <tweet-message text="This is my fourth tweet"></tweet-message>
+            </tweet-section>
         </div>
 
         <!--Vue-->

@@ -1,3 +1,20 @@
+Vue.component('tweet-message', {
+    props: {
+        'tweet': Object
+    },
+    template: `
+    <div class="tweetMsg">
+        <p>{{tweet.tweet}}</p>
+        <div class="tweetDate">
+            <i class="fas fa-calendar-alt fa-sm fa-fw"></i>{{tweet.date}}
+        </div>
+        <div class="tweet_remove" @click="$emit('removeTweet', index)">
+            <span class="remove">Delete this tweet <i class="fas fa-trash fa-fw"></i></span>
+        </div>
+    </div>
+    `
+});
+
 let app = new Vue({
     el: '#app',
     data: {
@@ -16,16 +33,17 @@ let app = new Vue({
     },
     mounted(){
         /* Check if the user is registered and set the registered to true */
-        /*if (localStorage.getItem("simple_tweet_registered") == 'true'){
-            this.registeredd = true;
-        }*/
+        if (localStorage.getItem("simple_tweet_registered") == 'true'){
+            this.registered = true;
+        }
         // repopulate the userData object
-        //if(localStorage.getItem('simple_tweet_registered_user')) {
-           // this.userData = JSON.parse(localStorage.getItem('simple_tweet_registered_user'))
-        //}
-        //this.name = 't';
-        //this.registeredd = true;
-       console.log('mounted', localStorage.getItem("simple_tweet_registered"));
+        if(localStorage.getItem('simple_tweet_registered_user')) {
+            this.userData = JSON.parse(localStorage.getItem('simple_tweet_registered_user'))
+        }
+       //console.log('mounted', localStorage.getItem("simple_tweet_registered"));
+       if (localStorage.getItem('simple_tweet_tweets')) {
+           this.tweets = JSON.parse(localStorage.getItem('simple_tweet_tweets'))
+       }
     },
     methods: {
         registerAccount() {
@@ -64,6 +82,14 @@ let app = new Vue({
 
             //Add to the local storage the stringified tweet object
             localStorage.setItem('simple_tweet_tweets',stringTweets);
+        },
+        removeTweet(index) {
+            let removeIt = confirm("Are you sure you want to remove this tweet?");
+            if (removeIt) {
+                this.tweets.splice(index, 1);
+                //Update local storage
+                localStorage.simple_tweet_tweets = JSON.stringify(this.tweets);
+            }
         }
     },
     computed: {
@@ -77,26 +103,7 @@ let app = new Vue({
             return '(' + this.password.length + '/' + this.max_pass_length + ')';
         },
         tweetChars:function() {
-            return '(' + this.tweetChars.length + '/' + this.max_tweet + ')';
+            return '(' + this.tweetMsg.length + '/' + this.max_tweet + ')';
         }
     }
-    /*created() {
-        /* Check if the user is registered and set the registered to true */
-       // console.log(localStorage.getItem("simple_tweet_registered"));
-        /*if (localStorage.getItem("simple_tweet_registered") === 'true') {
-            
-        }*/
-        //this.registered = true;
-        //Repopulated the userData object
-        /*if (localStorage.getItem("simple_tweet_registered_user")) {
-            this.userData = JSON.parse(localStorage.getItem("simple_tweet_registered_user"));
-        }*/
-
-        /*if (localStorage.getItem("simple_tweet_tweets")) {
-            this.tweets = JSON.parse(localStorage.getItem('simple_tweet_tweets'));
-        }
-        else {
-            console.log("No tweets here");
-        }*/
-    //}*/
 });

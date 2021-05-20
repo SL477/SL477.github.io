@@ -59,6 +59,45 @@ let methodObject = {
     }
 };
 
+Vue.component('test-component', {
+    // component properties here
+    template: `<p>I am a component</p>`
+});
+
+Vue.component('tweet-message', {
+    //props: ['text','date'],//array
+    props: {
+        text: String,
+        date: String
+    },
+    template: `
+    <div :class="tweetBoxWrapper">
+        <p>{{text}}</p>
+        <p :class="dateClass">{{now}}</p>
+    </div>
+    `,
+    data() {
+        return {
+            //Data properties go here
+            tweetBoxWrapper: "tweet-message",
+            dateClass: "tweet-date",
+            now: new Date().toDateString()
+        };
+    }
+});
+
+Vue.component('tweet-section',{
+    props: {
+        'title': String
+    },
+    template: `
+        <div class="tweet_section">
+            <h2>{{title}}</h2>
+            <slot></slot>
+        </div>
+    `
+});
+
 let app = new Vue({
     //options object
     el: "#app",
@@ -81,3 +120,4 @@ let app = new Vue({
         }
     }
 });
+
