@@ -79,6 +79,24 @@ function NavBar() {
                             </li>
                             <li><a href="modelrailway.html">Model Railway</a></li>
                             <li><a href="./JSPianoKeyboard/index.html">JavaScript Keyboard</a></li>
+                            <li className="dropdown">
+                                <a className="dropdown-toggle" data-toggle="dropdown" href="#">Data Structures<span className="caret"></span></a>
+                                <ul className="dropdown-menu">
+                                    <li className="dropdown-header">Data Structures and Algorithms Answers</li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/arrays.html">Arrays</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/lists.html">Lists</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/queues.html">Queues</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/linkedLists.html">Linked Lists</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/dictionaries.html">Dictionaries</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/hashing.html">Hashing</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/sets.html">Sets</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/binaryTrees.html">Binary Trees</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/graphs.html">Graphs</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/sortingAlgorithms.html">Sorting Algorithms</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/searchingAlgorithms.html">Searching Algorithms</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/advancedAlgorithms.html">Advanced Algorithms</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>

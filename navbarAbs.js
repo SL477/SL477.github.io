@@ -353,6 +353,133 @@ function NavBar() {
                                 { href: "https://link477.com/JSPianoKeyboard/index.html" },
                                 "JavaScript Keyboard"
                             )
+                        ),
+                        React.createElement(
+                            "li",
+                            { className: "dropdown" },
+                            React.createElement(
+                                "a",
+                                { className: "dropdown-toggle", "data-toggle": "dropdown", href: "#" },
+                                "Data Structures",
+                                React.createElement("span", { className: "caret" })
+                            ),
+                            React.createElement(
+                                "ul",
+                                { className: "dropdown-menu" },
+                                React.createElement(
+                                    "li",
+                                    { className: "dropdown-header" },
+                                    "Data Structures and Algorithms Answers"
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/dataStructuresAlgorithms/arrays.html" },
+                                        "Arrays"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/dataStructuresAlgorithms/lists.html" },
+                                        "Lists"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/dataStructuresAlgorithms/queues.html" },
+                                        "Queues"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/dataStructuresAlgorithms/linkedLists.html" },
+                                        "Linked Lists"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/dataStructuresAlgorithms/dictionaries.html" },
+                                        "Dictionaries"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/dataStructuresAlgorithms/hashing.html" },
+                                        "Hashing"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/dataStructuresAlgorithms/sets.html" },
+                                        "Sets"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/dataStructuresAlgorithms/binaryTrees.html" },
+                                        "Binary Trees"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/dataStructuresAlgorithms/graphs.html" },
+                                        "Graphs"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/dataStructuresAlgorithms/sortingAlgorithms.html" },
+                                        "Sorting Algorithms"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/dataStructuresAlgorithms/searchingAlgorithms.html" },
+                                        "Searching Algorithms"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/dataStructuresAlgorithms/advancedAlgorithms.html" },
+                                        "Advanced Algorithms"
+                                    )
+                                )
+                            )
                         )
                     )
                 )
