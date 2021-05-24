@@ -1,0 +1,50 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
+    row-gap: 0px;
+    column-gap: 0px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.grid-item {
+    border: 1px solid black;
+    padding: 20px;
+    /*display: flex;*/
+}
+
+.button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    box-shadow: 0 9px #999;
+    width: 200px;
+    height: 200px;
+}
+
+.button:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.red {
+    border-radius: 50% 0px 0px 0px;
+    background-color: red;
+}
+
+.yellow {
+    border-radius: 0px 50% 0px 0px;
+    background-color: yellow;
+}
+
+.green {
+    border-radius: 0px 0px 0px 50%;
+    background-color: green;
+}
+
+.blue {
+    border-radius: 0px 0px 50% 0px;
+    background-color: blue;
+}
