@@ -34,6 +34,10 @@
     background-color: red;
 }
 
+.activeButton {
+    filter: brightness(85%);
+}
+
 .yellow {
     border-radius: 0px 50% 0px 0px;
     background-color: yellow;
@@ -47,4 +51,8 @@
 .blue {
     border-radius: 0px 0px 50% 0px;
     background-color: blue;
+}
+
+h1 {
+    text-align: center;
 }

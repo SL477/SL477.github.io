@@ -250,6 +250,15 @@ function NavBar() {
                                         { href: "https://link477.com/PongGame/index.html" },
                                         "Pong Game"
                                     )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/simonGame/index.html" },
+                                        "Simon Game"
+                                    )
                                 )
                             )
                         ),

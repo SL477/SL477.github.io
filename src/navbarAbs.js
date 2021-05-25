@@ -53,6 +53,7 @@ function NavBar() {
                                     <li><a href="https://link477.com/TicTacToe/index.html">Tic Tac Toe</a></li>
                                     <li><a href="https://link477.com/recipeBox/index.html">Recipe Box</a></li>
                                     <li><a href="https://link477.com/PongGame/index.html">Pong Game</a></li>
+                                    <li><a href="https://link477.com/simonGame/index.html">Simon Game</a></li>
                                 </ul>
                             </li>
                             
