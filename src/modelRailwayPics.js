@@ -7,13 +7,7 @@ class ModelRailwayPics extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pics: [
-                {src: "images/HogwartsExpress2.jpg", alt: "Hogwarts Express"},
-                {src: "images/GamesShop.JPEG", alt: "Games Shop"},
-                {src: "images/Platform934.JPEG", alt: "Platform 9 3/4 with train"},
-                {src: "images/Platform934NoTrain.jpg", alt: "Plaftorm 9 3/4"},
-                {src: "images/cargoTrain.jpg", alt: "Cargo Train"}
-            ],
+            pics: pics,
             slideIndex: 1
         }
         this.showSlides = this.showSlides.bind(this);

@@ -21,7 +21,7 @@ var ModelRailwayPics = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (ModelRailwayPics.__proto__ || Object.getPrototypeOf(ModelRailwayPics)).call(this, props));
 
         _this.state = {
-            pics: [{ src: "images/HogwartsExpress2.jpg", alt: "Hogwarts Express" }, { src: "images/GamesShop.JPEG", alt: "Games Shop" }, { src: "images/Platform934.JPEG", alt: "Platform 9 3/4 with train" }, { src: "images/Platform934NoTrain.jpg", alt: "Plaftorm 9 3/4" }, { src: "images/cargoTrain.jpg", alt: "Cargo Train" }],
+            pics: pics,
             slideIndex: 1
         };
         _this.showSlides = _this.showSlides.bind(_this);
