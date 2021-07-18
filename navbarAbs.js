@@ -39,7 +39,7 @@ function NavBar() {
                             null,
                             React.createElement(
                                 "a",
-                                { href: "https://link477.com/dataScience/index.html" },
+                                { href: "https://link477.com/dataScience/" },
                                 "Data Science"
                             )
                         ),
@@ -65,7 +65,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/fccResponsiveWebDesign/tributePage.html" },
+                                        { href: "https://link477.com/fccResponsiveWebDesign/tributePage" },
                                         "Tribute Page"
                                     )
                                 ),
@@ -74,7 +74,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/fccResponsiveWebDesign/surveyForm.html" },
+                                        { href: "https://link477.com/fccResponsiveWebDesign/surveyForm" },
                                         "Survey Form"
                                     )
                                 ),
@@ -83,7 +83,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/fccResponsiveWebDesign/productLandingPage.html" },
+                                        { href: "https://link477.com/fccResponsiveWebDesign/productLandingPage" },
                                         "Product Landing Page"
                                     )
                                 ),
@@ -92,7 +92,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/fccResponsiveWebDesign/technicalDocPage.html" },
+                                        { href: "https://link477.com/fccResponsiveWebDesign/technicalDocPage" },
                                         "Technical Documentation Page"
                                     )
                                 ),
@@ -106,7 +106,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/fccResponsiveWebDesign/fccJs.html" },
+                                        { href: "https://link477.com/fccResponsiveWebDesign/fccJs" },
                                         "All five projects on this page"
                                     )
                                 ),
@@ -120,7 +120,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/fccResponsiveWebDesign/randomQuoteMachine.html" },
+                                        { href: "https://link477.com/fccResponsiveWebDesign/randomQuoteMachine" },
                                         "Random Quote Machine"
                                     )
                                 ),
@@ -129,7 +129,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/fccResponsiveWebDesign/markdownPreviewer.html" },
+                                        { href: "https://link477.com/fccResponsiveWebDesign/markdownPreviewer" },
                                         "Markdown Previewer"
                                     )
                                 ),
@@ -138,7 +138,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/fccResponsiveWebDesign/drumMachine.html" },
+                                        { href: "https://link477.com/fccResponsiveWebDesign/drumMachine" },
                                         "Drum Machine"
                                     )
                                 ),
@@ -147,7 +147,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/fccResponsiveWebDesign/calculator.html" },
+                                        { href: "https://link477.com/fccResponsiveWebDesign/calculator" },
                                         "Javascript Calculator"
                                     )
                                 ),
@@ -156,7 +156,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/fccResponsiveWebDesign/pomodoroClock.html" },
+                                        { href: "https://link477.com/fccResponsiveWebDesign/pomodoroClock" },
                                         "25 + 5 Clock"
                                     )
                                 ),
@@ -170,7 +170,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/fccResponsiveWebDesign/barChart.html" },
+                                        { href: "https://link477.com/fccResponsiveWebDesign/barChart" },
                                         "Bar Chart"
                                     )
                                 ),
@@ -179,7 +179,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/fccResponsiveWebDesign/scatterplot.html" },
+                                        { href: "https://link477.com/fccResponsiveWebDesign/scatterplot" },
                                         "Scatterplot Graph"
                                     )
                                 ),
@@ -188,7 +188,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/fccResponsiveWebDesign/heatmap.html" },
+                                        { href: "https://link477.com/fccResponsiveWebDesign/heatmap" },
                                         "Heat Map"
                                     )
                                 ),
@@ -197,7 +197,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/fccResponsiveWebDesign/choropleth.html" },
+                                        { href: "https://link477.com/fccResponsiveWebDesign/choropleth" },
                                         "Choropleth Map"
                                     )
                                 ),
@@ -206,7 +206,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/fccResponsiveWebDesign/treemap.html" },
+                                        { href: "https://link477.com/fccResponsiveWebDesign/treemap" },
                                         "Treemap Diagram"
                                     )
                                 ),
@@ -220,7 +220,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/weather/index.html" },
+                                        { href: "https://link477.com/weather/" },
                                         "Weather"
                                     )
                                 ),
@@ -229,7 +229,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/TicTacToe/index.html" },
+                                        { href: "https://link477.com/TicTacToe/" },
                                         "Tic Tac Toe"
                                     )
                                 ),
@@ -238,7 +238,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/recipeBox/index.html" },
+                                        { href: "https://link477.com/recipeBox/" },
                                         "Recipe Box"
                                     )
                                 ),
@@ -247,7 +247,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/PongGame/index.html" },
+                                        { href: "https://link477.com/PongGame/" },
                                         "Pong Game"
                                     )
                                 ),
@@ -256,8 +256,22 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/simonGame/index.html" },
+                                        { href: "https://link477.com/simonGame/" },
                                         "Simon Game"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    { className: "dropdown-header" },
+                                    "Other Projects"
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "https://link477.com/JSPianoKeyboard/" },
+                                        "JavaScript Keyboard"
                                     )
                                 )
                             )
@@ -284,7 +298,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/etchASketch/index.html" },
+                                        { href: "https://link477.com/etchASketch/" },
                                         "Etch A Sketch"
                                     )
                                 ),
@@ -293,7 +307,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/rockPaperScissors.html" },
+                                        { href: "https://link477.com/rockPaperScissors" },
                                         "Rock, Paper, Scissors"
                                     )
                                 ),
@@ -302,7 +316,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/battleship/index.html" },
+                                        { href: "https://link477.com/battleship/" },
                                         "Battleship"
                                     )
                                 )
@@ -339,7 +353,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/Snake/index.html" },
+                                        { href: "https://link477.com/Snake/" },
                                         "Snake"
                                     )
                                 )
@@ -350,17 +364,8 @@ function NavBar() {
                             null,
                             React.createElement(
                                 "a",
-                                { href: "modelrailway.html" },
+                                { href: "https://link477.com/modelrailway" },
                                 "Model Railway"
-                            )
-                        ),
-                        React.createElement(
-                            "li",
-                            null,
-                            React.createElement(
-                                "a",
-                                { href: "https://link477.com/JSPianoKeyboard/index.html" },
-                                "JavaScript Keyboard"
                             )
                         ),
                         React.createElement(
@@ -385,7 +390,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/arrays.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/arrays" },
                                         "Arrays"
                                     )
                                 ),
@@ -394,7 +399,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/lists.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/lists" },
                                         "Lists"
                                     )
                                 ),
@@ -403,7 +408,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/queues.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/queues" },
                                         "Queues"
                                     )
                                 ),
@@ -412,7 +417,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/linkedLists.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/linkedLists" },
                                         "Linked Lists"
                                     )
                                 ),
@@ -421,7 +426,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/dictionaries.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/dictionaries" },
                                         "Dictionaries"
                                     )
                                 ),
@@ -430,7 +435,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/hashing.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/hashing" },
                                         "Hashing"
                                     )
                                 ),
@@ -439,7 +444,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/sets.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/sets" },
                                         "Sets"
                                     )
                                 ),
@@ -448,7 +453,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/binaryTrees.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/binaryTrees" },
                                         "Binary Trees"
                                     )
                                 ),
@@ -457,7 +462,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/graphs.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/graphs" },
                                         "Graphs"
                                     )
                                 ),
@@ -466,7 +471,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/sortingAlgorithms.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/sortingAlgorithms" },
                                         "Sorting Algorithms"
                                     )
                                 ),
@@ -475,7 +480,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/searchingAlgorithms.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/searchingAlgorithms" },
                                         "Searching Algorithms"
                                     )
                                 ),
@@ -484,7 +489,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/advancedAlgorithms.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/advancedAlgorithms" },
                                         "Advanced Algorithms"
                                     )
                                 )

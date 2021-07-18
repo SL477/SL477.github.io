@@ -259,6 +259,20 @@ function NavBar() {
                                         { href: "./simonGame/index.html" },
                                         "Simon Game"
                                     )
+                                ),
+                                React.createElement(
+                                    "li",
+                                    { className: "dropdown-header" },
+                                    "Other Projects"
+                                ),
+                                React.createElement(
+                                    "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "./JSPianoKeyboard/index.html" },
+                                        "JavaScript Keyboard"
+                                    )
                                 )
                             )
                         ),
@@ -356,15 +370,6 @@ function NavBar() {
                         ),
                         React.createElement(
                             "li",
-                            null,
-                            React.createElement(
-                                "a",
-                                { href: "./JSPianoKeyboard/index.html" },
-                                "JavaScript Keyboard"
-                            )
-                        ),
-                        React.createElement(
-                            "li",
                             { className: "dropdown" },
                             React.createElement(
                                 "a",
@@ -385,7 +390,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/arrays.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/arrays" },
                                         "Arrays"
                                     )
                                 ),
@@ -394,7 +399,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/lists.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/lists" },
                                         "Lists"
                                     )
                                 ),
@@ -403,7 +408,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/queues.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/queues" },
                                         "Queues"
                                     )
                                 ),
@@ -412,7 +417,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/linkedLists.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/linkedLists" },
                                         "Linked Lists"
                                     )
                                 ),
@@ -421,7 +426,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/dictionaries.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/dictionaries" },
                                         "Dictionaries"
                                     )
                                 ),
@@ -430,7 +435,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/hashing.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/hashing" },
                                         "Hashing"
                                     )
                                 ),
@@ -439,7 +444,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/sets.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/sets" },
                                         "Sets"
                                     )
                                 ),
@@ -448,7 +453,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/binaryTrees.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/binaryTrees" },
                                         "Binary Trees"
                                     )
                                 ),
@@ -457,7 +462,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/graphs.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/graphs" },
                                         "Graphs"
                                     )
                                 ),
@@ -466,7 +471,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/sortingAlgorithms.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/sortingAlgorithms" },
                                         "Sorting Algorithms"
                                     )
                                 ),
@@ -475,7 +480,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/searchingAlgorithms.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/searchingAlgorithms" },
                                         "Searching Algorithms"
                                     )
                                 ),
@@ -484,7 +489,7 @@ function NavBar() {
                                     null,
                                     React.createElement(
                                         "a",
-                                        { href: "https://link477.com/dataStructuresAlgorithms/advancedAlgorithms.html" },
+                                        { href: "https://link477.com/dataStructuresAlgorithms/advancedAlgorithms" },
                                         "Advanced Algorithms"
                                     )
                                 )

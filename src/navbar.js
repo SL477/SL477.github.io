@@ -15,15 +15,7 @@ function NavBar() {
                         <a className="pull-left" href="index.html"><img src="./images/link477.png" alt="Link477" style={{height: 50 + 'px', width: 50 + 'px', backgroundColor: 'white'}}/></a>
                     </div>
                     <div className="collapse navbar-collapse">
-                        <ul className="nav navbar-nav">
-                            {/*<li><a href="./ColorGridGame/Index.html">Colour Grid Game</a></li>
-                            <li><a href="modelrailway.html">Model Railway</a></li>
-                            <li><a href="./JSPianoKeyboard/index.html">JavaScript Keyboard</a></li>
-                            <li><a href="./PongGame/index.html">Pong Game</a></li>
-                            <li><a href="./weather/index.html">Weather</a></li>
-                            <li><a href="./TicTacToe/index.html">Tic Tac Toe</a></li>
-                            {/*<li><a href="./RogueLikeSpace/index.html">Dungeon Crawler WIP</a></li>-->*/}
-                            
+                        <ul className="nav navbar-nav">                           
                             <li><a href="./dataScience/index.html">Data Science</a></li>
                             <li className="dropdown">
                                 <a className="dropdown-toggle" data-toggle="dropdown" href="#">FreeCodeCamp
@@ -54,6 +46,8 @@ function NavBar() {
                                     <li><a href="./recipeBox/index.html">Recipe Box</a></li>
                                     <li><a href="./PongGame/index.html">Pong Game</a></li>
                                     <li><a href="./simonGame/index.html">Simon Game</a></li>
+                                    <li className="dropdown-header">Other Projects</li>
+                                    <li><a href="./JSPianoKeyboard/index.html">JavaScript Keyboard</a></li>
                                 </ul>
                             </li>
                             
@@ -79,23 +73,22 @@ function NavBar() {
                                 </ul>
                             </li>
                             <li><a href="modelrailway.html">Model Railway</a></li>
-                            <li><a href="./JSPianoKeyboard/index.html">JavaScript Keyboard</a></li>
                             <li className="dropdown">
                                 <a className="dropdown-toggle" data-toggle="dropdown" href="#">Data Structures<span className="caret"></span></a>
                                 <ul className="dropdown-menu">
                                     <li className="dropdown-header">Data Structures and Algorithms Answers</li>
-                                    <li><a href="https://link477.com/dataStructuresAlgorithms/arrays.html">Arrays</a></li>
-                                    <li><a href="https://link477.com/dataStructuresAlgorithms/lists.html">Lists</a></li>
-                                    <li><a href="https://link477.com/dataStructuresAlgorithms/queues.html">Queues</a></li>
-                                    <li><a href="https://link477.com/dataStructuresAlgorithms/linkedLists.html">Linked Lists</a></li>
-                                    <li><a href="https://link477.com/dataStructuresAlgorithms/dictionaries.html">Dictionaries</a></li>
-                                    <li><a href="https://link477.com/dataStructuresAlgorithms/hashing.html">Hashing</a></li>
-                                    <li><a href="https://link477.com/dataStructuresAlgorithms/sets.html">Sets</a></li>
-                                    <li><a href="https://link477.com/dataStructuresAlgorithms/binaryTrees.html">Binary Trees</a></li>
-                                    <li><a href="https://link477.com/dataStructuresAlgorithms/graphs.html">Graphs</a></li>
-                                    <li><a href="https://link477.com/dataStructuresAlgorithms/sortingAlgorithms.html">Sorting Algorithms</a></li>
-                                    <li><a href="https://link477.com/dataStructuresAlgorithms/searchingAlgorithms.html">Searching Algorithms</a></li>
-                                    <li><a href="https://link477.com/dataStructuresAlgorithms/advancedAlgorithms.html">Advanced Algorithms</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/arrays">Arrays</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/lists">Lists</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/queues">Queues</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/linkedLists">Linked Lists</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/dictionaries">Dictionaries</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/hashing">Hashing</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/sets">Sets</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/binaryTrees">Binary Trees</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/graphs">Graphs</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/sortingAlgorithms">Sorting Algorithms</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/searchingAlgorithms">Searching Algorithms</a></li>
+                                    <li><a href="https://link477.com/dataStructuresAlgorithms/advancedAlgorithms">Advanced Algorithms</a></li>
                                 </ul>
                             </li>
                         </ul>
