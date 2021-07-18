@@ -46,6 +46,7 @@ function NavBar() {
                                     <li><a href="./recipeBox/index.html">Recipe Box</a></li>
                                     <li><a href="./PongGame/index.html">Pong Game</a></li>
                                     <li><a href="./simonGame/index.html">Simon Game</a></li>
+                                    <li><a href="./fccResponsiveWebDesign/fccForum.html">Free Code Camp Forum Homepage</a></li>
                                     <li className="dropdown-header">Other Projects</li>
                                     <li><a href="./JSPianoKeyboard/index.html">JavaScript Keyboard</a></li>
                                 </ul>

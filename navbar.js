@@ -262,6 +262,15 @@ function NavBar() {
                                 ),
                                 React.createElement(
                                     "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "./fccResponsiveWebDesign/fccForum.html" },
+                                        "Free Code Camp Forum Homepage"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
                                     { className: "dropdown-header" },
                                     "Other Projects"
                                 ),
