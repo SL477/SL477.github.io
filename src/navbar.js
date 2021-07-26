@@ -16,7 +16,7 @@ function NavBar() {
                     </div>
                     <div className="collapse navbar-collapse">
                         <ul className="nav navbar-nav">                           
-                            <li><a href="./dataScience/index.html">Data Science</a></li>
+                            {/*<li><a href="./dataScience/index.html">Data Science</a></li>*/}
                             <li className="dropdown">
                                 <a className="dropdown-toggle" data-toggle="dropdown" href="#">FreeCodeCamp
                                 <span className="caret"></span></a>

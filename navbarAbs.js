@@ -36,15 +36,6 @@ function NavBar() {
                         { className: "nav navbar-nav" },
                         React.createElement(
                             "li",
-                            null,
-                            React.createElement(
-                                "a",
-                                { href: "https://link477.com/dataScience/" },
-                                "Data Science"
-                            )
-                        ),
-                        React.createElement(
-                            "li",
                             { className: "dropdown" },
                             React.createElement(
                                 "a",
