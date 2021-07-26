@@ -48,6 +48,7 @@ function NavBar() {
                                     <li><a href="https://link477.com/PongGame/">Pong Game</a></li>
                                     <li><a href="https://link477.com/simonGame/">Simon Game</a></li>
                                     <li><a href="https://link477.com/fccResponsiveWebDesign/fccForum">Free Code Camp Forum Homepage</a></li>
+                                    <li><a href="https://link477.com/gameOfLife/">Game of Life</a></li>
                                     <li className="dropdown-header">Other Projects</li>
                                     <li><a href="https://link477.com/JSPianoKeyboard/">JavaScript Keyboard</a></li>
                                 </ul>

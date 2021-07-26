@@ -271,6 +271,15 @@ function NavBar() {
                                 ),
                                 React.createElement(
                                     "li",
+                                    null,
+                                    React.createElement(
+                                        "a",
+                                        { href: "./gameOfLife/index.html" },
+                                        "Game of Life"
+                                    )
+                                ),
+                                React.createElement(
+                                    "li",
                                     { className: "dropdown-header" },
                                     "Other Projects"
                                 ),
