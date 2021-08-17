@@ -503,6 +503,15 @@ function NavBar() {
                                     )
                                 )
                             )
+                        ),
+                        React.createElement(
+                            "li",
+                            null,
+                            React.createElement(
+                                "a",
+                                { href: "https://link477255648240.wordpress.com/", rel: "noopener noreferrer" },
+                                "Blog"
+                            )
                         )
                     )
                 )

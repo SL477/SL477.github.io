@@ -93,6 +93,7 @@ function NavBar() {
                                     <li><a href="https://link477.com/dataStructuresAlgorithms/advancedAlgorithms">Advanced Algorithms</a></li>
                                 </ul>
                             </li>
+                            <li><a href="https://link477255648240.wordpress.com/" rel="noopener noreferrer">Blog</a></li>
                         </ul>
                     </div>
                 </div>
