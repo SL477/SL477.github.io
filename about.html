@@ -1,38 +1,64 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Tom Fishwick</title>
+		<meta name="description" content="Tom Fishwick is a software developer in C#, JavaScript, Python, React, SQL and others"/>
 		<link rel="icon" href="./images/link477.png"/>
 		<link href="myStyle.css" rel="stylesheet"/>
 		<meta charset="utf-8" />
-		<meta content="Tom Fishwick"/>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="./styles/home.css"/>
+		<link href="./styles/flipbox.css" rel="stylesheet"/>
+		<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 	</head>
 	<body>
-		<div id="container" class="container-fluid">
-			<nav class="navbar navbar-default navbar-fixed-top">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="index.html">Link477</a>
-				</div>
-				<ul class="nav navbar-nav">
-					<li>
-						<div class="dropdown">
-							<button class="dropbtn">Menu</button>
-							<div class="dropdown-content">
-								<a href="index.html">Home</a>
-								<a href="./ColorGridGame/Index.html">Colour Grid Game</a>
-								<a href="modelrailway.html">Model Railway</a>
-							</div>
-						</div>
-					</li>
-					<li><a href="#welcome-section">Welcome</a></li>
-					<li><a href="#projects">Projects</a></li>
-				</ul>
-			</nav>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<p>Coming soon</p>
+
+		<div id="navbar"></div>
+		<!--Sidebar-->
+		<div class="sidebar">
+			<!--<div class="card">
+				<img src="./images/emmet.jpg" alt="Emmet" style="width: 100%;"/>
+				<h1>Tom Fishwick</h1>
+				<p class="title">Developer</p>
+				<a href="https://www.linkedin.com/in/thomas-fishwick-313459172/" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a>
+				<a href="https://github.com/sl477" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i></i></a>
+			</div>-->
+			<div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="thomas-fishwick-313459172" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://uk.linkedin.com/in/thomas-fishwick-313459172?trk=profile-badge">Thomas Fishwick</a></div>
+              
+			<div class="sidenav">
+			</div>
 		</div>
+
+		<div class="container-fluid">
+			<main>
+				<div id="flipbox"></div>
+			</main>
+		</div>
+
+		<script>
+			var flipboxes = [
+				{img: "https://seeklogo.com/images/P/python-logo-A32636CAA3-seeklogo.com.png", alt: 'Python'},
+				{img: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png", alt: "JavaScript"},
+				{img: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg", alt: 'React'},
+				{img: "https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg", alt: 'Vue JS'},
+				{img: "https://seeklogo.com/images/C/c-sharp-c-logo-02F17714BA-seeklogo.com.png", alt: 'C#'},
+				{img: "https://brandslogos.com/wp-content/uploads/images/large/microsoft-sql-server-logo.png", alt: 'MS SQL Server'}
+			];
+		</script>
+
+		<!-- Load React. -->
+  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  		<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+		
+		<!--<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>-->
+		  <!--Component-->
+		<script src="navbar.js"></script>
+		<script src="flipbox.js"></script>
 	</body>
 </html>
