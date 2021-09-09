@@ -64,15 +64,15 @@
 							This project originally started as my answer to <a href="https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/neural-network-sms-text-classifier" target="_blank" rel="noopener noreferrer">FreeCodeCamp SMS Classifier</a> and my answer is <a target="_blank" rel="noopener noreferrer" href="https://colab.research.google.com/drive/19jhS_47-0m7Et4vjutHWq9ftKHvPyl62#scrollTo=J9tD9yACG6M9">here</a>.
 						</p>
 						<p>
-							In this project I created my first Flask Web App (not including the tutorial I did). Plus my first Docker Container (outside of a tutorial).
+							In this project I created my first Flask Web App (not including the tutorial I did). Plus my first Docker Container (outside of a tutorial). Originally this used TensorFlow as the machine learning library, but I have now changed this to SciKit Learn.
 						</p>
 						<figure>
 							<img src="./dataScience/SMSClassifier.JPG" alt="SMS Classifier Screenshot" class="borderimage"/>
 							<figcaption>Screenshot of the SMS Classifier</figcaption>
 						</figure>
 						<p>
-							In the web app you can test the classification of various texts, the client side JavaScript will post a request to the API which in turn will consult the saved TensorFlow model. You can then press the "Add to database" button, this will push it into the local database (a SQLite database inside the Docker container). In the data table at the front end you can flip the classification of messages between spam and ham. You can also delete that entry out of the database.
-							Pressing the "Retrain Model" button will cause the Flask server to retrain the Machine Learning model on the data in the SQLite database. It will then test the model against the validation data from FreeCodeCamp (the main data is also from FreeCodeCamp). This may take a little while, it will then save the model in the Docker container and then use that. When starting the docker file for the first time it will build the model from scratch. To build the model manually you can run the file modelmaker.py.
+							In the web app you can test the classification of various texts, the client side JavaScript will post a request to the API which in turn will consult the saved SKLearn model. You can then press the "Add to database" button, this will push it into the local database (a SQLite database inside the Docker container). In the data table at the front end you can flip the classification of messages between spam and ham. You can also delete that entry out of the database.
+							Pressing the "Retrain Model" button will cause the Flask server to retrain the Machine Learning model on the data in the SQLite database. It will then test the model against the validation data from FreeCodeCamp (the main data is also from FreeCodeCamp). This may take a little while, it will then save the model in the Docker container and then use that. To build the model manually you can run the file modelmaker.py.
 						</p>
 						<p>
 							The source code can be found <a target="_blank" rel="noopener noreferrer" href="https://github.com/SL477/flaskSMSClassifier">here</a>.
