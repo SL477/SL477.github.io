@@ -5,16 +5,16 @@ var e = React.createElement;
 function FlipBox() {
     var ret = flipboxes.map(function (f, idx) {
         return React.createElement(
-            "div",
-            null,
+            "span",
+            { key: idx },
             React.createElement(
-                "div",
+                "span",
                 { className: "flip-box", key: idx },
                 React.createElement(
-                    "div",
+                    "span",
                     { className: "flip-box-inner" },
                     React.createElement(
-                        "div",
+                        "span",
                         { className: "flip-box-front" },
                         React.createElement(
                             "h2",
@@ -23,18 +23,17 @@ function FlipBox() {
                         )
                     ),
                     React.createElement(
-                        "div",
+                        "span",
                         { className: "flip-box-back" },
                         React.createElement("img", { alt: f.alt, src: f.img, className: "hundredi" })
                     )
                 )
-            ),
-            React.createElement("br", null)
+            )
         );
     });
     return React.createElement(
         "div",
-        null,
+        { className: "center" },
         ret
     );
 }
