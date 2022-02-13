@@ -59,18 +59,12 @@ button.Yellow {
 button.Yellow:hover {
 	background-color:#cccc00;
 }
-/*@media only screen and (orientation:portrait){
-	#wrapper { display:none; }
-}*/
+
 #wrapper {
-	/*width: 100%
-	height:100%
-	margin: auto;
-	text-align: center;*/
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	width: 50%;
+	min-width: 280px;
 }
 #wrapper1 {
 	text-align: center;
@@ -80,7 +74,12 @@ button.Yellow:hover {
 }
 .center {
 	display: block;
+	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
-	width: 50%;
+}
+
+#home {
+	width:35px;
+	height:35px;
 }
