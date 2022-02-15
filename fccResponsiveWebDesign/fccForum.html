@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
+        <meta charset="utf-8" />
 		<title>Tom Fishwick - Free Code Camp Forum</title>
 		<link rel="icon" href="../images/link477.png"/>
 		<link href="../myStyle.css" rel="stylesheet"/>
-		<meta charset="utf-8" />
 		<meta content="Tom Fishwick"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.css">
@@ -18,6 +18,11 @@
 	<body>
 		<div id="navbar"></div>
         <h1>FreeCodeCamp Forum Home Page</h1>
+        <style>
+            .usrImg {
+                height: 30px; width: 30px;
+            }
+        </style>
 
         <div id="app" class="table-responsive">
             <table class="table table-striped table-bordered table-hover">
@@ -37,7 +42,7 @@
                         <td>{{ topic.title }}</td>
                         <td>
                             <a v-for="user in topic.posters" :href="getUserLink(user)">
-                                <img :src="getUserImg(user)" style="height: 30px; width: 30px;" :alt="getUserName(user)"/>
+                                <img :src="getUserImg(user)" class="usrImg" :alt="getUserName(user)"/>
                             </a>
                         </td>
                         <td>{{ topic.reply_count }}</td>
