@@ -14,7 +14,6 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Thomas Fishwick
-email: fishwickt@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Thomas Fishwick is a software developer and data scientist
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -22,6 +21,11 @@ url: "https://link477.com" # the base hostname & protocol for your site, e.g. ht
 twitter_username: TomFishwick477
 github_username:  SL477
 linkedin_username: thomas-fishwick-313459172
+stackoverflow_username: 14416333/link477
+kaggle_username: tomfishwick
+datacamp_username: fishwickt
+credly_username: thomas-fishwick.519c62f9
+exercism_username: Link477
 
 # Build settings
 markdown: kramdown
