@@ -1,3 +1,4 @@
+'use strict'
 //need a 14 by 14 grid and 6 colours
 var colorGrid = [];
 var numMoves = 0;
@@ -39,7 +40,7 @@ function restartGame() {
 
 function updateGameArea () {
 	myGameArea.clear();
- 	for (i = 0; i < colorGrid.length; i++) {
+ 	for (var i = 0; i < colorGrid.length; i++) {
 		colorGrid[i].update();
 	}
 	checkGrid()
@@ -53,7 +54,7 @@ function component(X, Y, color, grouped) {
 	this.color = color;
 	this.grouped = grouped;
 	this.update = function() {
-		ctx = myGameArea.context;
+		var ctx = myGameArea.context;
 		ctx.fillStyle = this.color;
 		ctx.fillRect(this.X, this.Y, this.width, this.height);
 	}
@@ -66,8 +67,8 @@ function component(X, Y, color, grouped) {
 }
 
 function fillGrid () {
-	for (i = 0; i < 14; i++){
-		for (j = 0; j < 14; j++) {
+	for (var i = 0; i < 14; i++){
+		for (var j = 0; j < 14; j++) {
 			var connected
 			if (i == 0 && j == 0) {
 				connected = true;
@@ -104,7 +105,7 @@ function fillGrid () {
  
  function checkGrid () {
 	 var numConnected = 0
-	 for (i = 0; i < 196; i++) {
+	 for (var i = 0; i < 196; i++) {
 		 if (colorGrid[i].grouped == true){
 			 if ((i + 1) % 14 > 0) {
 				 if (colorGrid[i].color == colorGrid[i + 1].color) {
@@ -157,7 +158,7 @@ function fillGrid () {
  
  function changeColor(colorCode){
 	 if (hasWon == false) {
-	 for (i = 0; i < 196; i++) {
+	 for (var i = 0; i < 196; i++) {
 		  if (colorGrid[i].grouped == true){
  			  colorGrid[i].SetColor(colorCode) 
 		  }
