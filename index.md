@@ -6,7 +6,7 @@ layout: home_modified
 title: Home
 ---
 
-## Developer
+<h1 class="centertext">Thomas Fishwick</h1>
 
 My main experience from work is as a developer for [Elite 3E](https://www.elite.com/3e/) (VB.Net & SQL) and [MatterSphere](https://www.elite.com/3e/matter-management/) (C#). This involves creating new screens and workflows and integrating them with various APIs. As well as these I have made an ASP.Net site serving a Vue.JS application, and various other JavaScript applications.
 

@@ -13,3 +13,14 @@ Use "bundle exec jekyll serve" to run locally and then browse to [localhost:4000
 > bundle exec jekyll serve --livereload
 
 Use "bundle info --path minima" to get the original templates to update
+
+## React
+
+To build use
+> nom run-script watcher
+
+## FOAF file
+
+To visualise use [the visualiser](https://foaf-visualizer.gnu.org.ua/?uri=https://link477.com/foaf.rdf)
+
+To edit it use [the foaf-a-matic](http://ldodds.com/foaf/foaf-a-matic.en.html)
