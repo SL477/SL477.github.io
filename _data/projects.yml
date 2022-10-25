@@ -22,6 +22,8 @@
     Here I created my first Streamlit App, and then discovered how hard it was to put streamlit into a Docker container.
 
     Here you can see the difference between the model's predictions and the actual data. You can then use the controls to predict your health costs.
+
+    I later revisited it to tear out all of the TensorFlow code and replace its model with a Random Forest Regressor
 - name: Chart the Stock Market
   url: https://limitless-ridge-52978.herokuapp.com/
   repository: flask-stockMarketChart
