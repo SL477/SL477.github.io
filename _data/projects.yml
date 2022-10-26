@@ -25,7 +25,7 @@
 
     I later revisited it to tear out all of the TensorFlow code and replace its model with a Random Forest Regressor
 - name: Chart the Stock Market
-  url: https://limitless-ridge-52978.herokuapp.com/
+  url: https://limitless-ridge-52978.up.railway.app/
   repository: flask-stockMarketChart
   picture: ChartTheStockMarket
   picture_text: Chart the Stock Market Screenshot
