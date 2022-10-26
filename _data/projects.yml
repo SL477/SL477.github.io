@@ -12,7 +12,7 @@
     
     Pressing the "Retrain Model" button will cause the Flask server to retrain the Machine Learning model on the data in the SQLite database. It will then test the model against the validation data from FreeCodeCamp (the main data is also from FreeCodeCamp). This may take a little while, it will then save the model in the Docker container and then use that. To build the model manually you can run the file modelmaker.py.
 - name: Predict Health Costs With Regression
-  url: /
+  url: https://sl477-fccpredicthealthcostswithregression-main-tdzqp8.streamlitapp.com
   repository: fccPredictHealthCostsWithRegression
   picture: HealthCostPredictions
   picture_text: Health Cost Predictor Screenshot
