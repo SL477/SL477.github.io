@@ -17,7 +17,7 @@ Use "bundle info --path minima" to get the original templates to update
 ## React
 
 To build use
-> nom run-script watcher
+> npm run-script watcher
 
 ## FOAF file
 

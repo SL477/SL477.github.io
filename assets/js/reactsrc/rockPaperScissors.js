@@ -1,8 +1,11 @@
+/* eslint-disable react/react-in-jsx-scope */
 'use strict';
+// eslint-disable-next-line no-undef
 const e = React.createElement;
 
-const RPS = ['ROCK', "PAPER", "SCISSORS"];
+const RPS = ['ROCK', 'PAPER', 'SCISSORS'];
 
+// eslint-disable-next-line no-undef
 class RockPaperScissors extends React.Component {
     constructor(props) {
         super(props);
@@ -89,13 +92,14 @@ class RockPaperScissors extends React.Component {
                 <p>Last Computer Play: {this.state.lastPC}</p>
                 <p>Last Player Play: {this.state.lastHuman}</p>
                 <p>Last Result: {this.state.lastResult}</p>
-                <button className="btn btn-primary" onClick={() =>{this.humanPlay(RPS[0])}}>Rock</button>
-                <button className="btn btn-primary" onClick={() =>{this.humanPlay(RPS[1])}}>Paper</button>
-                <button className="btn btn-primary" onClick={() =>{this.humanPlay(RPS[2])}}>Scissors</button>
+                <button className="btn btn-primary" onClick={() =>this.humanPlay(RPS[0])}>Rock</button>
+                <button className="btn btn-primary" onClick={() =>this.humanPlay(RPS[1])}>Paper</button>
+                <button className="btn btn-primary" onClick={() =>this.humanPlay(RPS[2])}>Scissors</button>
             </div>
         );
     }
 }
-const domContainer = document.querySelector("#rockpaperscissors");
+const domContainer = document.querySelector('#rockpaperscissors');
+// eslint-disable-next-line no-undef
 const root = ReactDOM.createRoot(domContainer);
 root.render(e(RockPaperScissors));

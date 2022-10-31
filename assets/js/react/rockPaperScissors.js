@@ -1,4 +1,6 @@
+/* eslint-disable react/react-in-jsx-scope */
 'use strict';
+// eslint-disable-next-line no-undef
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -10,7 +12,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var e = React.createElement;
 
-var RPS = ['ROCK', "PAPER", "SCISSORS"];
+var RPS = ['ROCK', 'PAPER', 'SCISSORS'];
+
+// eslint-disable-next-line no-undef
 
 var RockPaperScissors = function (_React$Component) {
     _inherits(RockPaperScissors, _React$Component);
@@ -140,21 +144,21 @@ var RockPaperScissors = function (_React$Component) {
                 React.createElement(
                     'button',
                     { className: 'btn btn-primary', onClick: function onClick() {
-                            _this2.humanPlay(RPS[0]);
+                            return _this2.humanPlay(RPS[0]);
                         } },
                     'Rock'
                 ),
                 React.createElement(
                     'button',
                     { className: 'btn btn-primary', onClick: function onClick() {
-                            _this2.humanPlay(RPS[1]);
+                            return _this2.humanPlay(RPS[1]);
                         } },
                     'Paper'
                 ),
                 React.createElement(
                     'button',
                     { className: 'btn btn-primary', onClick: function onClick() {
-                            _this2.humanPlay(RPS[2]);
+                            return _this2.humanPlay(RPS[2]);
                         } },
                     'Scissors'
                 )
@@ -165,6 +169,7 @@ var RockPaperScissors = function (_React$Component) {
     return RockPaperScissors;
 }(React.Component);
 
-var domContainer = document.querySelector("#rockpaperscissors");
+var domContainer = document.querySelector('#rockpaperscissors');
+// eslint-disable-next-line no-undef
 var root = ReactDOM.createRoot(domContainer);
 root.render(e(RockPaperScissors));

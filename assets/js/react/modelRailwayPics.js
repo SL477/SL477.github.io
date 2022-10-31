@@ -1,4 +1,6 @@
+/* eslint-disable react/react-in-jsx-scope */
 'use strict';
+// eslint-disable-next-line no-undef
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -12,6 +14,8 @@ var e = React.createElement;
 
 //Based on https://www.w3schools.com/howto/howto_js_slideshow_gallery.asp originally, then turned into a react component
 
+// eslint-disable-next-line no-undef
+
 var ModelRailwayPics = function (_React$Component) {
     _inherits(ModelRailwayPics, _React$Component);
 
@@ -21,6 +25,7 @@ var ModelRailwayPics = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (ModelRailwayPics.__proto__ || Object.getPrototypeOf(ModelRailwayPics)).call(this, props));
 
         _this.state = {
+            // eslint-disable-next-line no-undef
             pics: pics,
             slideIndex: 1
         };
@@ -47,12 +52,14 @@ var ModelRailwayPics = function (_React$Component) {
     }, {
         key: "plusSlides",
         value: function plusSlides(n) {
-            this.showSlides(this.state.slideIndex += n);
+            this.setState({ slideIndex: this.state.slideIndex + n });
+            this.showSlides(this.state.slideIndex + n);
         }
     }, {
         key: "currentSlide",
         value: function currentSlide(n) {
-            this.showSlides(this.state.slideIndex = n);
+            this.setState({ slideIndex: n });
+            this.showSlides(n);
         }
     }, {
         key: "render",
@@ -103,7 +110,7 @@ var ModelRailwayPics = function (_React$Component) {
                             return React.createElement(
                                 "div",
                                 { className: "column", key: index, style: { width: 100 / _this2.state.pics.length + "%" } },
-                                React.createElement("img", { className: "demo cursor" + (_this2.state.slideIndex - 1 == index ? " active" : ""), src: item.src, style: { width: "100%" }, alt: item.alt, onClick: function onClick() {
+                                React.createElement("img", { className: 'demo cursor' + (_this2.state.slideIndex - 1 == index ? ' active' : ''), src: item.src, style: { width: '100%' }, alt: item.alt, onClick: function onClick() {
                                         _this2.currentSlide(index + 1);
                                     } })
                             );
@@ -117,6 +124,7 @@ var ModelRailwayPics = function (_React$Component) {
     return ModelRailwayPics;
 }(React.Component);
 
-var domContainer = document.querySelector("#modelRailwayPics");
+var domContainer = document.querySelector('#modelRailwayPics');
+// eslint-disable-next-line no-undef
 var root = ReactDOM.createRoot(domContainer);
 root.render(e(ModelRailwayPics));

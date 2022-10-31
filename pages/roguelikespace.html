@@ -1,0 +1,37 @@
+---
+layout: default_modified
+title: Rogue Like
+---
+<link rel="stylesheet" href="/assets/css/roguelikespace.css">
+<script src="/assets/js/roguelikespace.js" async></script>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Health</th>
+            <th>Level</th>
+            <th>Exp</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td id="health"></td>
+            <td id="level"></td>
+            <td id="exp"></td>
+        </tr>
+    </tbody>
+</table>
+<canvas id="canvas" height="600" width="800"></canvas>
+<p>
+    X: <span id="x"></span><br/>
+    Y: <span id="y"></span><br/>
+    MapY: <span id="mapY"></span><br/>
+    CurCell: <span id="curCell"></span>
+</p>
+<button onclick="startGame();" class="btn btn-primary">Start Game</button>
+<br/>
+<br/>
+<p>
+    I made this as part of FreeCodeCamp's <a href="https://www.freecodecamp.org/learn/coding-interview-prep/take-home-projects/build-a-roguelike-dungeon-crawler-game" target="_blank" rel="noopener noreferrer">Dungeon Crawler challenge</a>.
+    Which was a good way to make me appreciate the uses of GameMaker/Unity/Other Game Engines that take care of collision checks/drawing.
+</p>
