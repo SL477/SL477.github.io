@@ -1,0 +1,53 @@
+---
+title: Lists
+permalink: dataStructuresAlgorithms/lists
+layout: jquery_page
+---
+<p>My answers to the exercises in <a href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms &amp; Data Structures with JS</a></p>
+
+<fieldset>
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender">
+        <option value="all">All</option>
+        <option value="Female">Female</option>
+        <option value="Male">Male</option>
+    </select>
+    <button class="btn btn-primary" onclick="showPeople();">Search</button>
+</fieldset>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Gender
+            </th>
+        </tr>
+    </thead>
+    <tbody id='peopleList'>
+
+    </tbody>
+</table>
+
+<fieldset>
+    <label for="checkoutMovie">Checkout Movie:</label>
+    <select id="checkoutMovie" name="checkoutMovie"></select><br/>
+    <label for="customerName">Customer Name:</label>
+    <input type="text" id="customerName" name="customerName"/><br/>
+    <button class="btn btn-primary" onclick="checkoutMovie();">Checkout Movie</button>
+    <br/>
+    <label for="checkinMovie">Checkin Movie:</label>
+    <select id="checkinMovie" name="checkinMovie"></select><br/>
+    <button class="btn btn-primary" onclick="checkinMovie();">Checkin Movie</button>
+</fieldset>
+
+<h3>Available Movies</h3>
+<div id="movies"></div>
+<h3>Customer Rentals</h3>
+<div id="customers"></div>
+<h3>Checked Out Films</h3>
+<div id="checkedoutmovies"></div>
+
+<script src="/assets/js/list.js"></script>

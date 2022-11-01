@@ -1,0 +1,53 @@
+---
+layout: vue_page
+title: Advanced Algorithms
+permalink: /dataStructuresAlgorithms/advancedAlgorithms
+---
+{% raw %}
+<p>My answers to the exercises in <a href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms &amp; Data Structures with JS</a></p>
+
+<div id="app">
+    <h3>Exercise 1</h3>
+    <fieldset>
+        <legend>Brute force algorithm to find the longest common substring</legend>
+        <label for="string1">String 1:</label>
+        <input v-model="string1" type="text" class="form-control" id="string1" name="string1"/>
+        <label for="string2">String 2:</label>
+        <input v-model="string2" type="text" class="form-control" id="string2" name="string2"/>
+        <button v-on:click="bruteForceSubstring" class="btn btn-primary">Find Longest Substring</button>
+        <p>Result: {{ longsubstring }}</p>
+    </fieldset>
+    <h3>Exercise 2</h3>
+    <fieldset>
+        <legend>Knapsack problem</legend>
+        <label for="capacity">Capacity:</label>
+        <input v-model="capacity" type="number" id="capacity" name="capacity" class="form-control"/>
+        <div v-for="(item, itemIndex) in potentialItems">
+            <h4>Item {{itemIndex + 1}}</h4>
+            <label for="name">Name:</label>
+            <input v-model="item.name" type="text" class="form-control" id="name"/>
+            <label for="value">Value:</label>
+            <input v-model="item.value" type="number" class="form-control" id="value"/>
+            <label for="weight">Weight:</label>
+            <input v-model="item.weight" type="number" class="form-control" id="weight"/>
+        </div>
+        <button class="btn btn-primary" v-on:click="addPotentialItem">Add Potential Item</button>
+        <button class="btn btn-primary" v-on:click="knapSackSolution">Solve Knapsack</button>
+        <p>Max value: {{knapsackResult}}</p>
+    </fieldset>
+    <h3>Exercise 3</h3>
+    <fieldset>
+        <legend>Coin Changing</legend>
+        <label for="amount">Amount:</label>
+        <input type="number" v-model="amount" class="form-control" id="amount"/>
+        <label for="useDimes">Use Dimes (10c):</label>
+        <input type="checkbox" v-model="useDimes" id="useDimes"/><br/>
+        <button class="btn btn-primary" v-on:click="workoutChange">Solution</button>
+        <div v-for="coin in coins">
+            <p v-if="coin.quantity > 0">Number of ${{coin.amt}}: {{coin.quantity}}</p>
+        </div>
+    </fieldset>
+</div>
+
+<script src="/assets/js/advancedAlgorithms.js" async></script>
+{% endraw %}
