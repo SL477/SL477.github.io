@@ -1,0 +1,89 @@
+---
+title: FCC - Drum Machine
+layout: jquery_page
+permalink: fccresponsivewebdesign/drummachine
+---
+<style>
+    h1 {
+        text-align: center;
+    }
+</style>
+
+<div id="navbar"></div>
+    
+<br/><br/>
+<div id="drum-machine" class="container-fluid">
+    <h1>Drum Machine</h1>
+    <p>
+        Last played: <span id="display"></span>
+    </p>
+    <button class="drum-pad" id="q" onclick="player('Q')"><audio id="Q" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3" class="clip"></audio>Q</button>
+    
+    <button class="drum-pad" id="w" onclick="player('W')"><audio id="W" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3" class="clip"></audio>W</button>
+    
+    <button class="drum-pad" id="e" onclick="player('E')"><audio id="E" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3" class="clip"></audio>E</button>
+    
+    <button class="drum-pad" id="a" onclick="player('A')"><audio id="A" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3" class="clip"></audio>A</button>
+    
+    <button class="drum-pad" id="s" onclick="player('S')"><audio id="S" src="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3" class="clip"></audio>S</button>
+    
+    <button class="drum-pad" id="d" onclick="player('D')"><audio id="D" src="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3" class="clip"></audio>D</button>
+
+    <button class="drum-pad" id="z" onclick="player('Z')"><audio id="Z" src="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3" class="clip"></audio>Z</button>
+    
+    <button class="drum-pad" id="x" onclick="player('X')"><audio id="X" src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3" class="clip"></audio>X</button>
+    
+    <button class="drum-pad" id="c" onclick="player('C')"><audio id="C" class="clip" src="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"></audio>C</button>
+
+</div>
+<!-- <img src="https://images.unsplash.com/photo-1530917203633-106d4a1a0967?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ" height ="100px" class="drum-pad"></img>
+</div>-->
+
+<script>
+    const player = (element) => {
+    // console.log("hi");
+    //console.log(document.getElementById(element)); 
+    let elem = document.getElementById(element);
+        elem.play();
+        console.log(element); 
+        document.getElementById("display").textContent = element;
+    };
+
+    $(this).on('keydown', function(event) {
+        /*if (event.keyCode == 13) {
+            alert('hi.')
+        }*/
+        //console.log(event.keyCode);
+        switch (event.keyCode) {
+            case 65:
+                player("A");
+                break;
+            case 81:
+                player("Q");
+                break;
+            case 87:
+                player("W");
+                break;
+            case 69:
+                player("E");
+                break;
+            case 83:
+                player("S");
+                break;
+            case 68:
+                player("D");
+                break;
+            case 90:
+                player("Z");
+                break;
+            case 88:
+                player("X");
+                break;
+            case 67:
+                player("C");
+                break;
+            default:
+                break;
+        }
+    });
+</script>
