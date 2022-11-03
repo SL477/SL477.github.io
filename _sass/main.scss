@@ -1,0 +1,46 @@
+.current {
+    color: green;
+}
+
+.icon_my {
+    width: 15px;
+    height: 15px;
+}
+
+.black {
+    color: black;
+}
+
+.borderimage {
+    border: 1px solid black; 
+    border-radius: 5px;
+    max-width: 100%;
+    height: auto;
+}
+
+.centertext {
+    text-align: center;
+}
+
+// .icon_big {
+//     height: 50px;
+//     width: 50px;
+//     background-color: white;
+// }
+
+// .nav-header {
+//     position: fixed;
+//     top: 0;
+//     z-index: 999;
+//     background-color: black;
+//     height: 55px;
+//     width: 100vw;
+// }
+.svg-icon {
+    width: 32px;
+    height: 16px;
+    display: inline-block;
+    fill: #828282;
+    padding-right: 5px;
+    vertical-align: text-top;
+}

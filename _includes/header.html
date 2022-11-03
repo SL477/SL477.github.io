@@ -1,0 +1,92 @@
+<header role="banner">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><img src="/assets/images/link477.png" alt="Link477" style="height: 50px; width: 50px; background-color: white;"/></a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">FreeCodeCamp</a>
+            <ul class="dropdown-menu">
+              <li><h6 class="dropdown-header">Responsive Web Design</h6></li>
+                <li><a href="/fccResponsiveWebDesign/tributePage.html">Tribute Page</a></li>
+                <li><a href="/fccResponsiveWebDesign/surveyForm.html">Survey Form</a></li>
+                <li><a href="/fccResponsiveWebDesign/productLandingPage.html">Product Landing Page</a></li>
+                <li><a href="/fccResponsiveWebDesign/technicalDocPage.html">Technical Documentation Page</a></li>
+                <li><h6 class="dropdown-header">JavaScript Algorithms and Data Structures</h6></li>
+                <li><a href="/fccResponsiveWebDesign/fccJs.html">All five projects on this page</a></li>
+                <li><h6 class="dropdown-header">Front End Libraries Projects</h6></li>
+                <li><a href="/fccResponsiveWebDesign/randomQuoteMachine.html">Random Quote Machine</a></li>
+                <li><a href="/fccResponsiveWebDesign/markdownPreviewer.html">Markdown Previewer</a></li>
+                <li><a href="/fccResponsiveWebDesign/drumMachine.html">Drum Machine</a></li>
+                <li><a href="/fccResponsiveWebDesign/calculator.html">Javascript Calculator</a></li>
+                <li><a href="/fccResponsiveWebDesign/pomodoroClock.html">25 + 5 Clock</a></li>
+                <li><h6 class="dropdown-header">Data Visualisation Projects</h6></li>
+                <li><a href="/fccResponsiveWebDesign/barChart.html">Bar Chart</a></li>
+                <li><a href="/fccResponsiveWebDesign/scatterplot.html">Scatterplot Graph</a></li>
+                <li><a href="/fccResponsiveWebDesign/heatmap.html">Heat Map</a></li>
+                <li><a href="/fccResponsiveWebDesign/choropleth.html">Choropleth Map</a></li>
+                <li><a href="/fccResponsiveWebDesign/treemap.html">Treemap Diagram</a></li>
+                <li><h6 class="dropdown-header">Take Home Projects</h6></li>
+                <li><a href="/pages/weather.html">Weather</a></li>
+                <li><a href="/pages/tictactoe.html">Tic Tac Toe</a></li>
+                <li><a href="/pages/recipebox.html">Recipe Box</a></li>
+                <li><a href="/pages/ponggame.html">Pong Game</a></li>
+                <li><a href="/pages/simonGame.html">Simon Game</a></li>
+                <li><a href="/fccResponsiveWebDesign/fccForum.html">Free Code Camp Forum Homepage</a></li>
+                <li><a href="/pages/gameoflife.html">Game of Life</a></li>
+                <li><h6 class="dropdown-header">Other Projects</h6></li>
+                <li><a href="/pages/jspianokeyboard.html">JavaScript Keyboard</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Project Odin</a>
+            <ul class="dropdown-menu">
+              <li><a href="/pages/etchasketch.html">Etch A Sketch</a></li>
+              <li><a href="/pages/rockPaperScissors.html">Rock, Paper, Scissors</a></li>
+              <li><a href="/pages/battleship.html">Battleship</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Games</a>
+            <ul class="dropdown-menu">
+              <li><a href="/ColorGridGame/index.html">Colour Grid</a></li>
+              <li><a href="/pages/snake.html">Snake</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="/pages/modelrailway.html">Model Railway</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Data Structures</a>
+            <ul class="dropdown-menu">
+                <li><a href="/dataStructuresAlgorithms/arrays.html">Arrays</a></li>
+                <li><a href="/dataStructuresAlgorithms/lists.html">Lists</a></li>
+                <li><a href="/dataStructuresAlgorithms/queues.html">Queues</a></li>
+                <li><a href="/dataStructuresAlgorithms/linkedLists.html">Linked Lists</a></li>
+                <li><a href="/dataStructuresAlgorithms/dictionaries.html">Dictionaries</a></li>
+                <li><a href="/dataStructuresAlgorithms/hashing.html">Hashing</a></li>
+                <li><a href="/dataStructuresAlgorithms/sets.html">Sets</a></li>
+                <li><a href="/dataStructuresAlgorithms/binaryTrees.html">Binary Trees</a></li>
+                <li><a href="/dataStructuresAlgorithms/graphs.html">Graphs</a></li>
+                <li><a href="/dataStructuresAlgorithms/sortingAlgorithms.html">Sorting Algorithms</a></li>
+                <li><a href="/dataStructuresAlgorithms/searchingAlgorithms.html">Searching Algorithms</a></li>
+                <li><a href="/dataStructuresAlgorithms/advancedAlgorithms.html">Advanced Algorithms</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
+            <ul class="dropdown-menu">
+                {%- for post in site.posts -%}
+                  <li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></li>
+                {%- endfor -%}
+            </ul>
+          </li>
+        </ul>
+      </div>
+  </div>
+  </nav>
+</header>

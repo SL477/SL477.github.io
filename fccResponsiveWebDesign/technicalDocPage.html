@@ -1,146 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-        <meta charset="utf-8" />
-		<title>FCC - Technical Documentation Page</title>
-		<link rel="icon" href="../images/link477.png"/>
-		<link href="../myStyle.css" rel="stylesheet"/>
-		<meta content="Tom Fishwick"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	</head>
-	<body>
-		<style>
-            #container {
-                display: grid;
-                grid-template-columns: 250px auto;
-            }
+---
+title: FCC - Technical Documentation Page
+layout: jquery_page
+permalink: fccresponsivewebdesign/technicalDocPage
+---
+<style>
+    #container {
+        display: grid;
+        grid-template-columns: 250px auto;
+    }
 
-            header{
-                text-align: center;
-                font-weight: bold;
-            }
+    header{
+        text-align: center;
+        font-weight: bold;
+    }
 
-            #main-doc {
-                border: 1px solid black;
-                padding: 4px;
-                border-radius: 5%;
-                grid-column: 2/3;
-            }
+    #main-doc {
+        border: 1px solid black;
+        padding: 4px;
+        border-radius: 5%;
+        grid-column: 2/3;
+    }
 
-            #navbar2 {
-                grid-column: 1/2;
-                position: fixed;
-                text-align: left;
-            }
+    #navbar2 {
+        grid-column: 1/2;
+        position: fixed;
+        text-align: left;
+    }
 
-            @media (max-width: 300px){
-                code {
-                    background-color: darkgray;
-                    color: yellow;
-                }
-            }
+    @media (max-width: 300px){
+        code {
+            background-color: darkgray;
+            color: yellow;
+        }
+    }
 
-            @media (min-width: 301px){
-                code {
-                    background-color: #a73517;
-                    color: #f2f2f2;
-                }
-            }
-            
-            .ulnone {
-                list-style-type:none;
-            }
-        </style>
+    @media (min-width: 301px){
+        code {
+            background-color: #a73517;
+            color: #f2f2f2;
+        }
+    }
+    
+    .ulnone {
+        list-style-type:none;
+    }
+</style>
 
-		<div id="navbar"></div>
-			
-		<div id="container">
-            <div id="nav">
-                <nav id="navbar2">
-                    <header>SQL Documentation</header>
-                    <ul>
-                        <li></li><a class="nav-link" href="#SQL_Overview">SQL Overview</a></li>
-                        <li><a class="nav-link" href="#SQL_Joins">SQL Joins</a></li>
-                        <li><a class="nav-link" href="#SQL_Views">SQL Views</a></li>
-                        <li><a class="nav-link" href="#Creating_databases_and_tables">Creating databases and tables</a></li>
-                        <li><a class="nav-link" href="#Inserts_and_updates">Inserts and updates</a></li>
-                    </ul>
-                </nav>
-            </div>
-              
-            <main id="main-doc">
-            
-                <section class="main-section" id="SQL_Overview">
-                    <header>
-                        <h1>SQL Overview</h1>
-                    </header>
-                    <p>SQL is a language for the easy retrieval of data from databases. It stores data in various data tables and can store various data types.</p>
-                    <p>To retrieve the first five rows from the table customers you would use:</p>
-                    <code>SELECT TOP 5 * FROM customers</code>
-                </section>
-                
-                <section class="main-section" id="SQL_Joins">
-                    <header>SQL Joins</header>
-                    <p>
-                        There are various types of SQL joins with various effects.
-                    </p>
-                    <p>
-                        Here are some of the joins:
-                    </p>
-                    <ul>
-                        <li>INNER JOIN - the most basic type of join to retrieve data from both tables on the join</li>
-                        <li>LEFT OUTER JOIN - this returns all records on the left side and the right side when there is data there</li>
-                        <li>RIGHT OUTER JOIN - this returns all records on the right side and the left side when there is data there</li>
-                        <li>FULL OUTER JOIN - this returns all data from both sides of the join regardless of whether there is data there</li>
-                        <li>CROSS JOIN - this will join every individual record from the left table with every individual record on the right</li>
-                    </ul>
-                    <p>For example:</p>
-                    <code>SELECT * FROM T1<br>INNER JOIN T2 ON T1.id=T2.id</code>
-                </section>
-                
-                <section class="main-section" id="SQL_Views">
-                    <header>SQL Views</header>
-                    <p>SQL Views are a way to store a SQL Query and then after that it will be treated as a table.</p>
-                    <code>CREATE VIEW dbo.view1<br>AS<br>SELECT * FROM table1<br>GO</code>
-                    <p>Stored Procedures work in a similar way, but they can run all sorts of other SQL commands as well. But they are slightly harder to use in SQL views, on the other hand they're faster as they are cached on the SQL server.</p>
-                    <code>CREATE PROCEDURE dbo.p1<br>AS<br>BEGIN<br>SELECT * FROM dbo.t1</code>
-                </section>
-                
-                <section class="main-section" id="Creating_databases_and_tables">
-                    <header>Creating databases and tables</header>
-                    <p>You can create a database to hold data using the following code:</p>
-                    <code>CREATE DATABASE testDB</code>
-                    <p>Or alternatively use SQL Server management studio to create the database.</p>
-                    <p>You can create tables in the same way. Either by using SSMS's table editor or by using:</p>
-                    <code>CREATE TABLE t1 (<br> column1 datatype,<br>column2 datatype<br>...<br>)</code>
-                </section>
-                
-                <section class="main-section" id="Inserts_and_updates">
-                    <header>Inserts and updates</header>
-                    <p>You can insert data into the database using:</p>
-                    <code>INSERT INTO dbo.t1(c1,c2,...)<br>VALUES ('hi',1,...)</code>
-                    <p>You can update data in the database using:</p>
-                    <code>UPDATE dbo.t1<br>SET c1='hi'<br>,c2=1<br>WHERE c3=id</code><br><br><br>
-                </section>
-            
-            </main>
-        </div>
+<div id="navbar"></div>
+    
+<div id="container">
+    <div id="nav">
+        <nav id="navbar2">
+            <header>SQL Documentation</header>
+            <ul>
+                <li><a class="nav-link" href="#SQL_Overview">SQL Overview</a></li>
+                <li><a class="nav-link" href="#SQL_Joins">SQL Joins</a></li>
+                <li><a class="nav-link" href="#SQL_Views">SQL Views</a></li>
+                <li><a class="nav-link" href="#Creating_databases_and_tables">Creating databases and tables</a></li>
+                <li><a class="nav-link" href="#Inserts_and_updates">Inserts and updates</a></li>
+            </ul>
+        </nav>
+    </div>
+      
+    <main id="main-doc">
+    
+        <section class="main-section" id="SQL_Overview">
+            <header>
+                <h1>SQL Overview</h1>
+            </header>
+            <p>SQL is a language for the easy retrieval of data from databases. It stores data in various data tables and can store various data types.</p>
+            <p>To retrieve the first five rows from the table customers you would use:</p>
+            <code>SELECT TOP 5 * FROM customers</code>
+        </section>
         
-        <!--Testing-->
-        <!--<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>-->
-
-		<!-- Load React. -->
-  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-  		<!--<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>-->
-		
-		<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
-		  <!--Component-->
-		<script src="../navbarAbs.js"></script>
-	</body>
-</html>
+        <section class="main-section" id="SQL_Joins">
+            <header>SQL Joins</header>
+            <p>
+                There are various types of SQL joins with various effects.
+            </p>
+            <p>
+                Here are some of the joins:
+            </p>
+            <ul>
+                <li>INNER JOIN - the most basic type of join to retrieve data from both tables on the join</li>
+                <li>LEFT OUTER JOIN - this returns all records on the left side and the right side when there is data there</li>
+                <li>RIGHT OUTER JOIN - this returns all records on the right side and the left side when there is data there</li>
+                <li>FULL OUTER JOIN - this returns all data from both sides of the join regardless of whether there is data there</li>
+                <li>CROSS JOIN - this will join every individual record from the left table with every individual record on the right</li>
+            </ul>
+            <p>For example:</p>
+            <code>SELECT * FROM T1<br>INNER JOIN T2 ON T1.id=T2.id</code>
+        </section>
+        
+        <section class="main-section" id="SQL_Views">
+            <header>SQL Views</header>
+            <p>SQL Views are a way to store a SQL Query and then after that it will be treated as a table.</p>
+            <code>CREATE VIEW dbo.view1<br>AS<br>SELECT * FROM table1<br>GO</code>
+            <p>Stored Procedures work in a similar way, but they can run all sorts of other SQL commands as well. But they are slightly harder to use in SQL views, on the other hand they're faster as they are cached on the SQL server.</p>
+            <code>CREATE PROCEDURE dbo.p1<br>AS<br>BEGIN<br>SELECT * FROM dbo.t1</code>
+        </section>
+        
+        <section class="main-section" id="Creating_databases_and_tables">
+            <header>Creating databases and tables</header>
+            <p>You can create a database to hold data using the following code:</p>
+            <code>CREATE DATABASE testDB</code>
+            <p>Or alternatively use SQL Server management studio to create the database.</p>
+            <p>You can create tables in the same way. Either by using SSMS's table editor or by using:</p>
+            <code>CREATE TABLE t1 (<br> column1 datatype,<br>column2 datatype<br>...<br>)</code>
+        </section>
+        
+        <section class="main-section" id="Inserts_and_updates">
+            <header>Inserts and updates</header>
+            <p>You can insert data into the database using:</p>
+            <code>INSERT INTO dbo.t1(c1,c2,...)<br>VALUES ('hi',1,...)</code>
+            <p>You can update data in the database using:</p>
+            <code>UPDATE dbo.t1<br>SET c1='hi'<br>,c2=1<br>WHERE c3=id</code><br><br><br>
+        </section>
+    
+    </main>
+</div>

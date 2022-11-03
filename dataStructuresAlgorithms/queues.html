@@ -1,66 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<title>Tom Fishwick - Queues</title>
-		<link rel="icon" href="../images/link477.png"/>
-		<link href="../myStyle.css" rel="stylesheet"/>
-		<meta content="Tom Fishwick"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	</head>
-	<body>
-		<div id="navbar"></div>
-		<h1>Queues</h1>
-		<p>My answers to the exercises in <a href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms &amp; Data Structures with JS</a></p>
+---
+title: Queues
+permalink: dataStructuresAlgorithms/queues
+layout: jquery_page
+---
+<p>My answers to the exercises in <a href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms &amp; Data Structures with JS</a></p>
 
-        <textarea id="ex1" rows="5" cols="50"></textarea>
+<textarea id="ex1" rows="5" cols="50"></textarea>
 
-		<fieldset>
-			<label for="palindromechecker">Palindrome Checker</label>
-			<input id="palindromechecker" name="palindromechecker" type="text" class="form-control"/>
-			<button class="btn btn-primary" onclick="palindromeCheck();">Check</button>
-			<p>Answer: <span id="palindromeAnswer"></span></p>
-		</fieldset>
+<fieldset>
+    <label for="palindromechecker">Palindrome Checker</label>
+    <input id="palindromechecker" name="palindromechecker" type="text" class="form-control"/>
+    <button class="btn btn-primary" onclick="palindromeCheck();">Check</button>
+    <p>Answer: <span id="palindromeAnswer"></span></p>
+</fieldset>
 
-		<fieldset>
-			<label for="patientName">Patient Name:</label>
-			<input id="patientName" name="patientName" type="text" class="form-control"/>
-			<label for="patientCode">Patient Priority Code:</label>
-			<input id="patientCode" name="patientCode" type="number" class="form-control"/>
-			<button class="btn btn-primary" onclick="addPatient();">Add Patient</button>
-		</fieldset>
+<fieldset>
+    <label for="patientName">Patient Name:</label>
+    <input id="patientName" name="patientName" type="text" class="form-control"/>
+    <label for="patientCode">Patient Priority Code:</label>
+    <input id="patientCode" name="patientCode" type="number" class="form-control"/>
+    <button class="btn btn-primary" onclick="addPatient();">Add Patient</button>
+</fieldset>
 
-		<table class="table table-striped table-bordered table-hover table-responsive">
-			<thead>
-				<tr>
-					<th>
-						Patient Name
-					</th>
-					<th>
-						Patient Code
-					</th>
-					<th>
-						Remove Patient
-					</th>
-				</tr>
-			</thead>
-			<tbody id="patientList"></tbody>
-		</table>
+<table class="table table-striped table-bordered table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>
+                Patient Name
+            </th>
+            <th>
+                Patient Code
+            </th>
+            <th>
+                Remove Patient
+            </th>
+        </tr>
+    </thead>
+    <tbody id="patientList"></tbody>
+</table>
 
-    	<!-- Load React. -->
-  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-  		<!--<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>-->
-		
-		<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
-		  <!--Component-->
-		<script src="../navbarAbs.js"></script>
-		
-        <script src="./queues.js"></script>
-	</body>
-</html>
+<script src="/assets/js/queues.js"></script>

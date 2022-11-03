@@ -1,0 +1,28 @@
+---
+layout: vue_page
+title: Simon Game
+---
+{% raw %}
+<link rel="stylesheet" href="/assets/css/simonGame.css">
+<div id="app">
+    <audio v-for="aud in audioList" :id="aud.id" :src="aud.url"></audio>
+    <fieldset>
+        <label for="useStrict">Strict Mode:</label>
+        <input id="useStrict" v-model="strict" type="checkbox"/>
+    </fieldset>
+
+    <p><b>Current Step:</b> {{currentStep}}</p>
+
+    <div class="grid-container">
+        <button aria-label="red" class="grid-item button red" v-on:click="simonButton(0,true)" id="btn0"></button>
+        <button aria-label="yellow" class="grid-item button yellow" v-on:click="simonButton(1,true)" id="btn1"></button>
+        <button aria-label="green" class="grid-item button green" v-on:click="simonButton(2,true)" id="btn2"></button>
+        <button aria-label="blue" class="grid-item button blue" v-on:click="simonButton(3,true)" id="btn3"></button>
+    </div>
+    <div v-if="!correct">
+        <p>Wrong!!!</p>
+    </div>
+    <button class="btn btn-danger" v-on:click="reset">Reset</button>
+</div>
+{% endraw %}
+<script src="/assets/js/simonGame.js"></script>

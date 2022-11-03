@@ -1,22 +1,33 @@
 # SL477.github.io
 
 GitHub Pages
-
 This is the code for my GitHub Pages site
 
-## Install
+Install ruby
 
 ```bash
-Run npm init -y
-Run npm install babel-cli@6 babel-preset-react-app@3
+gem install jekyll bundler
+bundle install
 ```
 
-## Run the preprocessor
+Use "bundle exec jekyll serve" to run locally and then browse to [localhost:4000](http://localhost:4000/)
 
->npx babel --watch src --out-dir . --presets react-app/prod 
+```bash
+bundle exec jekyll serve --livereload
+```
+
+Use "bundle info --path minima" to get the original templates to update
+
+## React
+
+To build use
+
+```bash
+npm run-script watcher
+```
 
 ## FOAF file
 
-To visualise use https://foaf-visualizer.gnu.org.ua/?uri=https://link477.com/foaf.rdf
+To visualise use [the visualiser](https://foaf-visualizer.gnu.org.ua/?uri=https://link477.com/foaf.rdf)
 
-To edit it use http://ldodds.com/foaf/foaf-a-matic.en.html
+To edit it use [the foaf-a-matic](http://ldodds.com/foaf/foaf-a-matic.en.html)

@@ -1,0 +1,18 @@
+---
+layout: page
+title: JS Keyboard
+---
+<link rel="stylesheet" type="text/css" href="/assets/css/piano.css">
+<script src="/assets/js/jspiano/audiosynth.js"></script>
+<script src="/assets/js/jspiano/playKeyboard.js"></script>
+<h1>Javascript Keyboard</h1>
+<p>From <a href="https://www.freecodecamp.org/news/javascript-piano-keyboard/">freecodecamp.org/news/javascript-piano-keyboard</a> tutorial. The audiosynth and playKeyboard JavaScript were given. The CSS, HTML and keyboard_me.ts was me.</p>
+<fieldset onchange="instrumentChange()" id="instrument">
+    <legend>Choose instrument:</legend>
+    <input type="radio" value="0" name="instrument" id="piano"><label for="piano">Piano</label><br/>
+    <input type="radio" value="1" name="instrument" id="organ"><label for="organ">Organ</label><br/>
+    <input type="radio" value="2" name="instrument" id="acoustic"><label for="acoustic">Acoustic</label><br/>
+    <input type="radio" value="3" name="instrument" id="edm"><label for="edm">EDM</label><br/>
+</fieldset>
+<div id="kbordContainer"></div>
+<script src="/assets/js/jspiano/keyboard_me.js"></script>

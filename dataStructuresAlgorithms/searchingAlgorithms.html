@@ -1,78 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-        <meta charset="utf-8" />
-		<title>Tom Fishwick - Searching Algorithms</title>
-		<link rel="icon" href="../images/link477.png"/>
-		<link href="../myStyle.css" rel="stylesheet"/>
-		<meta content="Tom Fishwick"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	</head>
-	<body>
-		<div id="navbar"></div>
-		<h1>Searching Algorithms</h1>
-		<p>My answers to the exercises in <a href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms &amp; Data Structures with JS</a></p>
+---
+title: Searching Algorithms
+permalink: dataStructuresAlgorithms/searchingAlgorithms
+layout: jquery_page
+---
+<p>My answers to the exercises in <a href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms &amp; Data Structures with JS</a></p>
 
-        <div id="searchDiv"></div>
-        <fieldset>
-            <legend>Sequential Search</legend>
-            <label for="seqSearchNum">Search For:</label>
-            <input type="number" id="seqSearchNum" name="seqSearchNum" class="form-control"/>
-            <button class="btn btn-primary" onclick="seqSeach();">Search For Number</button><br/>
-            <button class="btn btn-primary" onclick="seqSearchReverse();">Search for last occurance of number</button><br/>
-            <button class="btn btn-primary" onclick="compareTimings();">Compare Timings</button>
-            <p>Number Array Position: <span id="seqSearchRes"></span></p>
-            <p>Sequential Search took <span id="seqSearchTiming"></span> milliseconds. Binary Search took: <span id="binSearchTiming"></span> milliseconds.</p>
-        </fieldset>
+<div id="searchDiv"></div>
+<fieldset>
+    <legend>Sequential Search</legend>
+    <label for="seqSearchNum">Search For:</label>
+    <input type="number" id="seqSearchNum" name="seqSearchNum" class="form-control"/>
+    <button class="btn btn-primary" onclick="seqSeach();">Search For Number</button><br/>
+    <button class="btn btn-primary" onclick="seqSearchReverse();">Search for last occurance of number</button><br/>
+    <button class="btn btn-primary" onclick="compareTimings();">Compare Timings</button>
+    <p>Number Array Position: <span id="seqSearchRes"></span></p>
+    <p>Sequential Search took <span id="seqSearchTiming"></span> milliseconds. Binary Search took: <span id="binSearchTiming"></span> milliseconds.</p>
+</fieldset>
 
-        <h3>Self Sorting</h3>
-        <div id="selfSort"></div>
-        <fieldset>
-            <legend>Sequential Search Self Sorting</legend>
-            <label for="seqSearchNum1">Search For:</label>
-            <input type="number" id="seqSearchNum1" name="seqSearchNum1" class="form-control"/>
-            <button class="btn btn-primary" onclick="seqSeach1();">Search For Number</button>
-            <p>Is in array: <span id="seqSearchRes1"></span></p>
-        </fieldset>
+<h3>Self Sorting</h3>
+<div id="selfSort"></div>
+<fieldset>
+    <legend>Sequential Search Self Sorting</legend>
+    <label for="seqSearchNum1">Search For:</label>
+    <input type="number" id="seqSearchNum1" name="seqSearchNum1" class="form-control"/>
+    <button class="btn btn-primary" onclick="seqSeach1();">Search For Number</button>
+    <p>Is in array: <span id="seqSearchRes1"></span></p>
+</fieldset>
 
-        <h2>Binary Search</h2>
-        <div id="binArr"></div>
-        <fieldset>
-            <legend>Binary Search</legend>
-            <label for="binSearchNum">Search For:</label>
-            <input type="number" id="binSearchNum" name="binSearchNum" class="form-control"/>
-            <button class="btn btn-primary" onclick="binSeach();">Search For Number</button>
-            <p>Number Array Position: <span id="binSearchRes"></span></p>
-            <p>Number of occurrances: <span id="binCount"></span></p>
-        </fieldset>
+<h2>Binary Search</h2>
+<div id="binArr"></div>
+<fieldset>
+    <legend>Binary Search</legend>
+    <label for="binSearchNum">Search For:</label>
+    <input type="number" id="binSearchNum" name="binSearchNum" class="form-control"/>
+    <button class="btn btn-primary" onclick="binSeach();">Search For Number</button>
+    <p>Number Array Position: <span id="binSearchRes"></span></p>
+    <p>Number of occurrances: <span id="binCount"></span></p>
+</fieldset>
 
-        <h2>Word Search</h2>
-        <div id="wordSearch"></div>
+<h2>Word Search</h2>
+<div id="wordSearch"></div>
 
-        <fieldset>
-            <legend>Exercise 3 minimum number search</legend>
-            <label for="minSearch">Enter Nth minimimum to search for:</label>
-            <input type="number" id="minSearch" name="minSearch" class="form-control"/>
-            <button class="btn btn-primary" onclick="minSeach();">Search For Minimum</button>
-            <p>Number Result: <span id="minSearchRes"></span></p>
-            <p>Word Result: <span id="minWordSearchRes"></span></p>
-        </fieldset>
-        
-    	<!-- Load React. -->
-  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-  		<!--<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>-->
-		
-		<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
-		  <!--Component-->
-		<script src="../navbarAbs.js"></script>
-		
-        <!--Searching Algorithms-->
-        <script src="searchingAlgorithms.js"></script>
-	</body>
-</html>
+<fieldset>
+    <legend>Exercise 3 minimum number search</legend>
+    <label for="minSearch">Enter Nth minimimum to search for:</label>
+    <input type="number" id="minSearch" name="minSearch" class="form-control"/>
+    <button class="btn btn-primary" onclick="minSeach();">Search For Minimum</button>
+    <p>Number Result: <span id="minSearchRes"></span></p>
+    <p>Word Result: <span id="minWordSearchRes"></span></p>
+</fieldset>
+
+<script src="/assets/js/searchingAlgorithms.js"></script>

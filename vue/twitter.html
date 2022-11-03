@@ -1,98 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-        <meta charset="utf-8" />
-		<title>Tom Fishwick - VueJS Tutorial - Simple Twitter</title>
-		<link rel="icon" href="../images/link477.png"/>
-		<link href="../myStyle.css" rel="stylesheet"/>
-		<meta content="Tom Fishwick"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+---
+title: VueJS Tutorial - Simple Twitter
+layout: vue_page
+---
+{% raw %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
         integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-	</head>
-	<body>
-		<div id="navbar"></div>
-        <h1>Simple Twitter Clone</h1>
-        <p>What I did following along to <a href="https://www.freecodecamp.org/news/build-a-portfolio-with-vuejs/">FreeCodeCamp VueJS tutorial</a></p>
+<p>What I did following along to <a href="https://www.freecodecamp.org/news/build-a-portfolio-with-vuejs/">FreeCodeCamp VueJS tutorial</a></p>
 
-        <div id="app">
-            
-            <div class="card">
-                <i class="fab fa-twitter fa-lg fa-fw"></i>
-                <!--Register an account-->
-                <div class="register" v-if="!registered">
-                    <h2>Create your account</h2>
-                    <form v-on:submit.prevent="registerAccount">
-                        <div class="form_group">
-                            <label for="name">Name <span>{{ nameChars }}</span></label>
-                            <input type="text" v-model="name" :maxlength="max_length" required class="form-control"/>
-                        </div>
-                        <div class="form_group">
-                            <label for="email">Email <span>{{ emailChars }}</span></label>
-                            <input type="email" v-model="email" :maxlength="max_length" required class="form-control"/>
-                        </div>
-                        <div class="form_group">
-                            <label for="password">Password <span>{{ passwordChars }}</span></label>
-                            <input type="password" v-model="password" :maxlength="max_pass_length" required class="form-control"/>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Register</button>
-                    </form>
+<div id="app">
+    
+    <div class="card">
+        <i class="fab fa-twitter fa-lg fa-fw"></i>
+        <!--Register an account-->
+        <div class="register" v-if="!registered">
+            <h2>Create your account</h2>
+            <form v-on:submit.prevent="registerAccount">
+                <div class="form_group">
+                    <label for="name">Name <span>{{ nameChars }}</span></label>
+                    <input type="text" v-model="name" :maxlength="max_length" required class="form-control" id="name"/>
+                </div>
+                <div class="form_group">
+                    <label for="email">Email <span>{{ emailChars }}</span></label>
+                    <input type="email" v-model="email" :maxlength="max_length" required class="form-control" id="email"/>
+                </div>
+                <div class="form_group">
+                    <label for="password">Password <span>{{ passwordChars }}</span></label>
+                    <input type="password" v-model="password" :maxlength="max_pass_length" required class="form-control" id="password"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
 
-                    <div v-if="error.length > 0">{{ error }}</div>
-                </div>
-            
-                <!--Add a tweet-->
-                <div class="tweetBox" v-if="registered">
-                    <h2>Welcome {{ userData.name }} write your first Tweet</h2>
-                    <form v-on:submit.prevent="sendTweet">
-                        <div class="form_group">
-                            <label for="tweet">Send your tweet <span>{{ tweetChars }}</span></label>
-                            <textarea name="tweet" id="tweet" cols="30" rows="10" v-model="tweetMsg" maxlength="max_tweet" class="form-control" placeholder="Tweet"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Tweet</button>
-                    </form>
-                </div>
-            
-                <!--Show all tweets-->
-                <div class="card_tweets">
-                    <section class="tweets" v-if="tweets.length > 0">
-                        <h2>Tweets</h2>
-                        <!--<div class="tweetMsg" v-for="(tweet, index) in tweets">
-                            <p>{{tweet.tweet}}</p>
-                            <div class="tweetDate">
-                                <i class="fas fa-calendar-alt fa-sm fa-fw"></i>{{tweet.date}}
-                            </div>
-                            <div class="tweet_remove" @click="removeTweet(index)">
-                                <span class="remove">Delete this tweet <i class="fas fa-trash fa-fw"></i></span>
-                            </div>
-                        </div>-->
-                        <tweet-message v-for="(tweet, index) in tweets" v-bind:tweet="tweet" :key="index" @remove-tweet="removeTweet(index)"></tweet-message>
-                    </section>
-                    <div v-else>No tweets to show</div>
-                </div>
-            </div>
+            <div v-if="error.length > 0">{{ error }}</div>
         </div>
-
-        <!--Vue-->
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-        <!-- Production version -->
-        <!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>-->
-
-		<!-- Load React. -->
-  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-  		<!--<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>-->
-		
-		<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
-		  <!--Component-->
-		<script src="../navbarAbs.js"></script>
-
-        <!--Vue Component-->
-        <script src="twitter.js"></script>
-	</body>
-</html>
+    
+        <!--Add a tweet-->
+        <div class="tweetBox" v-if="registered">
+            <h2>Welcome {{ userData.name }} write your first Tweet</h2>
+            <form v-on:submit.prevent="sendTweet">
+                <div class="form_group">
+                    <label for="tweet">Send your tweet <span>{{ tweetChars }}</span></label>
+                    <textarea name="tweet" id="tweet" cols="30" rows="10" v-model="tweetMsg" maxlength="max_tweet" class="form-control" placeholder="Tweet"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Tweet</button>
+            </form>
+        </div>
+    
+        <!--Show all tweets-->
+        <div class="card_tweets">
+            <section class="tweets" v-if="tweets.length > 0">
+                <h2>Tweets</h2>
+                <!--<div class="tweetMsg" v-for="(tweet, index) in tweets">
+                    <p>{{tweet.tweet}}</p>
+                    <div class="tweetDate">
+                        <i class="fas fa-calendar-alt fa-sm fa-fw"></i>{{tweet.date}}
+                    </div>
+                    <div class="tweet_remove" @click="removeTweet(index)">
+                        <span class="remove">Delete this tweet <i class="fas fa-trash fa-fw"></i></span>
+                    </div>
+                </div>-->
+                <tweet-message v-for="(tweet, index) in tweets" v-bind:tweet="tweet" :key="index" @remove-tweet="removeTweet(index)"></tweet-message>
+            </section>
+            <div v-else>No tweets to show</div>
+        </div>
+    </div>
+</div>
+{% endraw %}
+<script src="/assets/js/vue/twitter.js" async></script>

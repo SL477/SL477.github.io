@@ -1,101 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-        <meta charset="utf-8" />
-		<title>Tom Fishwick - VueJS Tutorial</title>
-		<link rel="icon" href="../images/link477.png"/>
-		<link href="../myStyle.css" rel="stylesheet"/>
-		<meta content="Tom Fishwick"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
-        integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-	</head>
-	<body>
-		<div id="navbar"></div>
-        <h1>Vue</h1>
-        <p>What I did following along to <a href="https://www.freecodecamp.org/news/build-a-portfolio-with-vuejs/">FreeCodeCamp VueJS tutorial</a></p>
+---
+title: VueJS Tutorial
+layout: vue_page
+---
+{% raw %}
+<p>What I did following along to <a href="https://www.freecodecamp.org/news/build-a-portfolio-with-vuejs/">FreeCodeCamp VueJS tutorial</a></p>
 
-        <div id="app">
-            <h1>{{ title }}</h1>
-            <div class="title">{{ title }}</div>
-            <div v-html="titleHTML"></div>
-            <div v-bind:class="dynamicClass" v-bind:id="dynamicId">Dynamically assign a class and an ID to the div</div>
-            <button v-bind:disabled="disabled">You can't click this button</button><br/>
-            <a v-bind:[attribute_name]="url">Visit my website</a><br/>
-            <a v-on:[event_name]="runFunction">Some link</a><br/>
-            <div>{{ getFullName() }}</div>
-            <label for="age">What is your age?</label>
-            <input type="number" v-model="age" class="form-control" id="age"/>
-            <h2 v-if="age > 21">{{ movieTitle }}</h2>
-            <h2 v-else-if="age > 18">{{ movieTitle }} | Watch with an adult</h2>
-            <p v-else>Sorry you are too young to see this movie</p>
-            <ul>
-                <li v-for="(project, index) in projects" :key="index">{{ project.title }}</li>
-            </ul>
+<div id="app">
+    <h1>{{ title }}</h1>
+    <div class="title">{{ title }}</div>
+    <div v-html="titleHTML"></div>
+    <div v-bind:class="dynamicClass" v-bind:id="dynamicId">Dynamically assign a class and an ID to the div</div>
+    <button v-bind:disabled="disabled">You can't click this button</button><br/>
+    <a v-bind:[attribute_name]="url">Visit my website</a><br/>
+    <a v-on:[event_name]="runFunction">Some link</a><br/>
+    <div>{{ getFullName() }}</div>
+    <label for="age">What is your age?</label>
+    <input type="number" v-model="age" class="form-control" id="age"/>
+    <h2 v-if="age > 21">{{ movieTitle }}</h2>
+    <h2 v-else-if="age > 18">{{ movieTitle }} | Watch with an adult</h2>
+    <p v-else>Sorry you are too young to see this movie</p>
+    <ul>
+        <li v-for="(project, index) in projects" :key="index">{{ project.title }}</li>
+    </ul>
 
-            <div class="projects" v-for="(project, index) in projects">
-                <h1>{{ project.title.toUpperCase() }}</h1>
-                <input type="text" v-model="project.title"/>
-                <p>Lorem ipsum dolor sit amet.</p>
-                <div>Like
-                    <i class="fas fa-heart fa-lg fa-fw" 
-                        @click.left="likeProject(project)"
-                        @click.right.prevent="removeLike(project, $event)">
-                    </i>
-                    {{ project.likes }}
-                </div>
-            </div>
-
-            <h2>What do you want to tweet about today?</h2>
-            <form v-on:submit.prevent="submitData">
-                <div class="form_group">
-                    <label for="tweet">Tweet:</label>
-                    <textarea id="tweet" name="tweet" v-model="tweet" placeholder="What's happening today?" class="form-control" cols="80" rows="10" maxlength="200"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Tweet</button>
-            </form>
-            <!--<div>
-                <span v-if="tweet.length <= max_length">{{ `Max: ${tweet.length} of ${max_length} characters` }}</span>
-                <span class="errorMessage" v-else>{{ `Max char limit reached! Excess chars: ${max_length - tweet.length}` }}</span>
-            </div>-->
-            <div>
-                <span v-if="tweet.length <= max_length">{{ maxCharsText }}</span>
-                <span class="errorMessage" v-else>{{ errorMessage }}</span>
-            </div>
-            <ul>
-                <li v-for="text in tweets">{{ text }}</li>
-            </ul>
-            <test-component></test-component>
-            <tweet-message text="This is a component" date="25/12/2020"></tweet-message>
-
-            <tweet-section title="Latest Tweets">
-                <tweet-message text="This is my first tweet"></tweet-message>
-                <tweet-message text="This is my second tweet"></tweet-message>
-                <tweet-message text="This is my third tweet"></tweet-message>
-                <tweet-message text="This is my fourth tweet"></tweet-message>
-            </tweet-section>
+    <div class="projects" v-for="(project, index) in projects">
+        <h1>{{ project.title.toUpperCase() }}</h1>
+        <input type="text" v-model="project.title" aria-label="project title"/>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <div>Like
+            <i class="fas fa-heart fa-lg fa-fw" 
+                @click.left="likeProject(project)"
+                @click.right.prevent="removeLike(project, $event)">
+            </i>
+            {{ project.likes }}
         </div>
+    </div>
 
-        <!--Vue-->
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-        <!-- Production version -->
-        <!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>-->
+    <h2>What do you want to tweet about today?</h2>
+    <form v-on:submit.prevent="submitData">
+        <div class="form_group">
+            <label for="tweet">Tweet:</label>
+            <textarea id="tweet" name="tweet" v-model="tweet" placeholder="What's happening today?" class="form-control" cols="80" rows="10" maxlength="200"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Tweet</button>
+    </form>
+    <!--<div>
+        <span v-if="tweet.length <= max_length">{{ `Max: ${tweet.length} of ${max_length} characters` }}</span>
+        <span class="errorMessage" v-else>{{ `Max char limit reached! Excess chars: ${max_length - tweet.length}` }}</span>
+    </div>-->
+    <div>
+        <span v-if="tweet.length <= max_length">{{ maxCharsText }}</span>
+        <span class="errorMessage" v-else>{{ errorMessage }}</span>
+    </div>
+    <ul>
+        <li v-for="text in tweets">{{ text }}</li>
+    </ul>
+    <test-component></test-component>
+    <tweet-message text="This is a component" date="25/12/2020"></tweet-message>
 
-		<!-- Load React. -->
-  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-  		<!--<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>-->
-		
-		<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
-		  <!--Component-->
-		<script src="../navbarAbs.js"></script>
-
-        <!--Vue Component-->
-        <script src="main.js"></script>
-	</body>
-</html>
+    <tweet-section title="Latest Tweets">
+        <tweet-message text="This is my first tweet"></tweet-message>
+        <tweet-message text="This is my second tweet"></tweet-message>
+        <tweet-message text="This is my third tweet"></tweet-message>
+        <tweet-message text="This is my fourth tweet"></tweet-message>
+    </tweet-section>
+</div>
+{% endraw %}
+<script src="/assets/js/vue/main.js" async></script>

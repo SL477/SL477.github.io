@@ -1,140 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-        <meta charset="utf-8" />
-		<title>FCC - JavaScript Algorithms and Data Structures</title>
-		<link rel="icon" href="../images/link477.png"/>
-		<link href="../myStyle.css" rel="stylesheet"/>
-		<meta content="Tom Fishwick"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	</head>
-	<body>
-		<style>
-            img {
-                max-width: 100%;
-                display: block;
-                height: auto;
-                margin: auto;
-            }
+---
+title: FCC - JavaScript Algorithms and Data Structures
+layout: jquery_page
+permalink: fccresponsivewebdesign/fccJS
+---
+<style>
+    img {
+        max-width: 100%;
+        display: block;
+        height: auto;
+        margin: auto;
+    }
 
-            #main {
-                border: 1px solid black;
-                padding: 4px;
-                border-radius: 5%;
-                width: -moz-fit-content;
-                width: fit-content;
-                margin-left: auto;
-                margin-right: auto;
-            }
+    #main {
+        border: 1px solid black;
+        padding: 4px;
+        border-radius: 5%;
+        width: -moz-fit-content;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-            h1, p, figcaption {
-                text-align: center;
-            }
-		</style>
+    h1, p, figcaption {
+        text-align: center;
+    }
+</style>
 
-		<div id="navbar"></div>
-			
-		<div class="container-fluid">
-			<main id="main">
-                <h1>JavaScript Algorithms and Data Structures</h1>
-                <h2>Palindrome Checker</h2>
-                <fieldset>
-                    <label for="palindromeInput">Test Value:</label>
-                    <input id="palindromeInput" name="palindromeInput" type="text" class="form-control"/>
-                    <button onclick="palidromeChecker();" class="btn btn-primary">Test</button>
-                    <p>Result: <span id="palidromeResult"></span></p>
-                </fieldset>
-                <hr/>
-                <h2>Roman Numeral Converter</h2>
-                <fieldset>
-                    <label for="romanInput">Test Value:</label>
-                    <input id="romanInput" name="romanInput" type="number" min="0" class="form-control"/>
-                    <button onclick="romanNumeralChecker();" class="btn btn-primary">Test</button>
-                    <p>Result: <span id="romanResult"></span></p>
-                </fieldset>
+<div id="navbar"></div>
+    
+<div class="container-fluid">
+    <main id="main">
+        <h1>JavaScript Algorithms and Data Structures</h1>
+        <h2>Palindrome Checker</h2>
+        <fieldset>
+            <label for="palindromeInput">Test Value:</label>
+            <input id="palindromeInput" name="palindromeInput" type="text" class="form-control"/>
+            <button onclick="palidromeChecker();" class="btn btn-primary">Test</button>
+            <p>Result: <span id="palidromeResult"></span></p>
+        </fieldset>
+        <hr/>
+        <h2>Roman Numeral Converter</h2>
+        <fieldset>
+            <label for="romanInput">Test Value:</label>
+            <input id="romanInput" name="romanInput" type="number" min="0" class="form-control"/>
+            <button onclick="romanNumeralChecker();" class="btn btn-primary">Test</button>
+            <p>Result: <span id="romanResult"></span></p>
+        </fieldset>
 
-                <hr/>
-                <h2>Caesars Cipher</h2>
-                <fieldset>
-                    <label for="cipherInput">Test Value:</label>
-                    <input id="cipherInput" name="cipherInput" type="text" class="form-control" value="GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT."/>
-                    <button onclick="caesarCipherChecker();" class="btn btn-primary">Test</button>
-                    <p>Result: <span id="cipherResult"></span></p>
-                </fieldset>
+        <hr/>
+        <h2>Caesars Cipher</h2>
+        <fieldset>
+            <label for="cipherInput">Test Value:</label>
+            <input id="cipherInput" name="cipherInput" type="text" class="form-control" value="GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT."/>
+            <button onclick="caesarCipherChecker();" class="btn btn-primary">Test</button>
+            <p>Result: <span id="cipherResult"></span></p>
+        </fieldset>
 
-                <hr/>
-                <h2>American Phone Number Checker</h2>
-                <fieldset>
-                    <label for="phoneInput">Test Value:</label>
-                    <input id="phoneInput" name="phoneInput" type="text" class="form-control" value="555-555-5555"/>
-                    <button onclick="phoneNumberChecker();" class="btn btn-primary">Test</button>
-                    <p>Valid: <span id="phoneResult"></span></p>
-                </fieldset>
+        <hr/>
+        <h2>American Phone Number Checker</h2>
+        <fieldset>
+            <label for="phoneInput">Test Value:</label>
+            <input id="phoneInput" name="phoneInput" type="text" class="form-control" value="555-555-5555"/>
+            <button onclick="phoneNumberChecker();" class="btn btn-primary">Test</button>
+            <p>Valid: <span id="phoneResult"></span></p>
+        </fieldset>
 
-                <hr/>
-                <h2>Cash Register</h2>
-                <fieldset>
-                    <label for="price">Price:</label>
-                    <input id="price" name="price" type="number" class="form-control" min="0" value="19.5"/>
+        <hr/>
+        <h2>Cash Register</h2>
+        <fieldset>
+            <label for="price">Price:</label>
+            <input id="price" name="price" type="number" class="form-control" min="0" value="19.5"/>
 
-                    <label for="cash">Cash Received:</label>
-                    <input id="cash" name="cash" type="number" class="form-control" min="0" value="20"/>
+            <label for="cash">Cash Received:</label>
+            <input id="cash" name="cash" type="number" class="form-control" min="0" value="20"/>
 
-                    <label for="penny">Pennies:</label>
-                    <input id="penny" name="penny" type="number" class="form-control" min="0" value="101"/>
-                    
-                    <label for="nickel">Nickels (5p):</label>
-                    <input id="nickel" name="nickel" type="number" class="form-control" min="0" value="41"/>
+            <label for="penny">Pennies:</label>
+            <input id="penny" name="penny" type="number" class="form-control" min="0" value="101"/>
+            
+            <label for="nickel">Nickels (5p):</label>
+            <input id="nickel" name="nickel" type="number" class="form-control" min="0" value="41"/>
 
-                    <label for="dime">Dimes (10p):</label>
-                    <input id="dime" name="dime" type="number" class="form-control" min="0" value="31"/>
+            <label for="dime">Dimes (10p):</label>
+            <input id="dime" name="dime" type="number" class="form-control" min="0" value="31"/>
 
-                    <label for="quarter">Quarters (25p):</label>
-                    <input id="quarter" name="quarter" type="number" class="form-control" min="0" value="17"/>
+            <label for="quarter">Quarters (25p):</label>
+            <input id="quarter" name="quarter" type="number" class="form-control" min="0" value="17"/>
 
-                    <label for="dollar">Dollar coins ($1):</label>
-                    <input id="dollar" name="dollar" type="number" class="form-control" min="0" value="90"/>
+            <label for="dollar">Dollar coins ($1):</label>
+            <input id="dollar" name="dollar" type="number" class="form-control" min="0" value="90"/>
 
-                    <label for="five">Five Dollar Notes:</label>
-                    <input id="five" name="five" type="number" class="form-control" min="0" value="11"/>
+            <label for="five">Five Dollar Notes:</label>
+            <input id="five" name="five" type="number" class="form-control" min="0" value="11"/>
 
-                    <label for="ten">Ten Dollar Notes:</label>
-                    <input id="ten" name="ten" type="number" class="form-control" min="0" value="2"/>
+            <label for="ten">Ten Dollar Notes:</label>
+            <input id="ten" name="ten" type="number" class="form-control" min="0" value="2"/>
 
-                    <label for="twenty">Twenty Dollar Notes:</label>
-                    <input id="twenty" name="twenty" type="number" class="form-control" min="0" value="3"/>
+            <label for="twenty">Twenty Dollar Notes:</label>
+            <input id="twenty" name="twenty" type="number" class="form-control" min="0" value="3"/>
 
-                    <label for="hundred">Hundred Dollar Notes:</label>
-                    <input id="hundred" name="hundred" type="number" class="form-control" min="0" value="1"/>
+            <label for="hundred">Hundred Dollar Notes:</label>
+            <input id="hundred" name="hundred" type="number" class="form-control" min="0" value="1"/>
 
-                    <button onclick="cashRegisterChecker();" class="btn btn-primary">Test</button>
+            <button onclick="cashRegisterChecker();" class="btn btn-primary">Test</button>
 
-                    <p>
-                        Status: <span id="cashRegisterStatus"></span>
-                    </p>
-                    <p id="cashRegisterChange"></p>
-                    <br/>
-                </fieldset>
-			</main>
-        </div>
+            <p>
+                Status: <span id="cashRegisterStatus"></span>
+            </p>
+            <p id="cashRegisterChange"></p>
+            <br/>
+        </fieldset>
+    </main>
+</div>
 
-        <script src="fccjs.js"></script>
-        
-        <!--Testing-->
-        <!--<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>-->
-
-		<!-- Load React. -->
-  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-  		<!--<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>-->
-		
-		<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
-		  <!--Component-->
-		<script src="../navbarAbs.js"></script>
-	</body>
-</html>
+<script src="/assets/js/fccjs.js"></script>
