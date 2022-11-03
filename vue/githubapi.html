@@ -1,0 +1,22 @@
+---
+layout: vue_page
+title: VueJS Tutorial GitHub API
+---
+{% raw %}
+<p>What I did following along to <a href="https://www.freecodecamp.org/news/build-a-portfolio-with-vuejs/">FreeCodeCamp VueJS tutorial</a></p>
+
+<div id="app">
+    <div v-for="project in projects">
+        <h2 class="title">{{project.full_name}}</h2>
+
+        <div class="author">
+            <img width="50px" :src="project.owner.avatar_url" alt="me"/>
+        </div>
+        <div class="view">
+            <a :href="project.html_url">View</a>
+        </div>
+    </div>
+</div>
+{% endraw %}
+<script src="https://unpkg.com/axios/dist/axios.min.js" async></script>
+<script src="/assets/js/vue/githubapi.js" async></script>
