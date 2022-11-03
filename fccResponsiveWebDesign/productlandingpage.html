@@ -52,34 +52,21 @@ permalink: fccresponsivewebdesign/productLandingPage
         text-align: center;
     }
 </style>
-    
-<div class="container-fluid">
-    <main id="main">
-        <header id="header">
-           <img id="header-img" src="/assets/images/Nimbus_2000_1.jpg" alt="Company Logo">
-            <nav id="nav-bar">
-              <a class="nav-link" href="#emailForm">Email</a>
-              <a class="nav-link" href="#videoPage">Video</a>
-              <a class="nav-link" href="#blub">Description</a>
-            </nav>
-        </header>
 
-        <h1>Nimbus 2000</h1>
+<div id="emailForm" class="box">
+    <form id="form">
+        <label for="email">To receive notifications about our product enter your email address:</label><br>
+        <input id="email" type="email" name="email" placeholder="Email address" class="form-control">
+        <input id="submit" type="submit" value="Submit" class="btn btn-primary">
+    </form>
+</div>
 
-        <div id="emailForm" class="box">
-            <form id="form">
-              <label for="email">To receive notifications about our product enter your email address:</label><br>
-              <input id="email" type="email" name="email" placeholder="Email address" class="form-control">
-              <input id="submit" type="submit" value="Submit" class="btn btn-primary">
-            </form>
-        </div>
-
-        <div id="videoPage" class="box">
-            <!--<video id="video" controls="true" src="https://youtu.be/z-WEzhyc3DY?t=70&html5=True"></video>-->
-            <p id="videoWrapper">
-                <!-- <iframe id="video" width="320" height="180" src="https://www.youtube.com/embed/z-WEzhyc3DY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Nimbus 2000"></iframe> -->
-            </p>
-        </div>
+<div id="videoPage" class="box">
+    <!--<video id="video" controls="true" src="https://youtu.be/z-WEzhyc3DY?t=70&html5=True"></video>-->
+    <!-- <p id="videoWrapper">
+        <iframe id="video" width="320" height="180" src="https://www.youtube.com/embed/z-WEzhyc3DY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Nimbus 2000"></iframe>
+    </p> -->
+</div>
 
         <div id="blub" class="box">
             <p>

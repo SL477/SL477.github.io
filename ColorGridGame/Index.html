@@ -1,36 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="myStyle.css">
-		<link rel="apple-touch-icon" href="Logo.png">
-		<link rel="icon" href="Logo.png">
-		<title>Colour Grid</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	</head>
-	<body>
-		<div id="navbar"></div>
-		<div id="wrapper1">
-			<img src="BigLogo.png" alt="Logo">
-			<form method="GET" action="Game.html">
-				<button type="submit" class="button">Start Game</button>
-			</form>
-			<form method="GET" action="About.html">
-				<button type="submit" class="button">About</button>
-			</form>
-			<!--<form method="GET" action="Scores.html">
-				<button type="submit" class="button">High Scores</button>
-			</form>-->
-
-			<!-- Load React. -->
-  			<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-			<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-			<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
-		  	<!--Component-->
-			<script src="../navbarAbs.js"></script>
-		</div>
-	</body>
-</html>
+---
+layout: page
+title: Colour Grid
+---
+<link rel="stylesheet" type="text/css" href="/assets/css/colorGrid.css">
+<div id="wrapper1">
+    <img src="/assets/images/BigLogo.png" alt="Logo">
+    <br/>
+    <a href="game.html" class="btn">Start Game</a>
+    <br/>
+    <a href="about.html" class="btn">About</a>
+</div>
