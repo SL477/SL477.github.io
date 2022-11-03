@@ -31,23 +31,23 @@
                 <li><a href="/fccResponsiveWebDesign/choropleth.html">Choropleth Map</a></li>
                 <li><a href="/fccResponsiveWebDesign/treemap.html">Treemap Diagram</a></li>
                 <li><h6 class="dropdown-header">Take Home Projects</h6></li>
-                <li><a href="/weather/index.html">Weather</a></li>
-                <li><a href="/TicTacToe/index.html">Tic Tac Toe</a></li>
-                <li><a href="/recipeBox/index.html">Recipe Box</a></li>
-                <li><a href="/PongGame/index.html">Pong Game</a></li>
-                <li><a href="/simonGame/index.html">Simon Game</a></li>
+                <li><a href="/pages/weather.html">Weather</a></li>
+                <li><a href="/pages/tictactoe.html">Tic Tac Toe</a></li>
+                <li><a href="/pages/recipebox.html">Recipe Box</a></li>
+                <li><a href="/pages/ponggame.html">Pong Game</a></li>
+                <li><a href="/pages/simonGame.html">Simon Game</a></li>
                 <li><a href="/fccResponsiveWebDesign/fccForum.html">Free Code Camp Forum Homepage</a></li>
-                <li><a href="/gameOfLife/index.html">Game of Life</a></li>
+                <li><a href="/pages/gameoflife.html">Game of Life</a></li>
                 <li><h6 class="dropdown-header">Other Projects</h6></li>
-                <li><a href="/JSPianoKeyboard/index.html">JavaScript Keyboard</a></li>
+                <li><a href="/pages/jspianokeyboard.html">JavaScript Keyboard</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Project Odin</a>
             <ul class="dropdown-menu">
-              <li><a href="/etchASketch/index.html">Etch A Sketch</a></li>
-              <li><a href="/rockPaperScissors.html">Rock, Paper, Scissors</a></li>
-              <li><a href="/battleship/index.html">Battleship</a></li>
+              <li><a href="/pages/etchasketch.html">Etch A Sketch</a></li>
+              <li><a href="/pages/rockPaperScissors.html">Rock, Paper, Scissors</a></li>
+              <li><a href="/pages/battleship.html">Battleship</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -77,8 +77,13 @@
                 <li><a href="/dataStructuresAlgorithms/advancedAlgorithms.html">Advanced Algorithms</a></li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="https://link477255648240.wordpress.com/">Blog</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
+            <ul class="dropdown-menu">
+                {%- for post in site.posts -%}
+                  <li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></li>
+                {%- endfor -%}
+            </ul>
           </li>
         </ul>
       </div>
