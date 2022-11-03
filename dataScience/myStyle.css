@@ -1,0 +1,64 @@
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 160px;
+    /*background-color: #111111;*/
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.sidebarContent {
+    padding: 6px 8px 6px 16px;
+    /*color: aliceblue;*/
+    /*display: block;*/
+}
+
+main {
+    margin-left: 160px;
+    padding: 0px 10px;
+}
+
+@media screen and (max-width: 700px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .sidebarContent {
+        float: left;
+    }
+
+    main {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .sidebarContent {
+        text-align: center;
+        float: none;
+    }
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.title {
+    color: gray;
+    font-size: 18px;
+}
+
+.borderimage {
+    border: 1px solid black; 
+    border-radius: 5px;
+}
+
+header {
+    font-weight: bold;
+}

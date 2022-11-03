@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Tom Fishwick</title>
+		<link rel="icon" href="../images/link477.png"/>
+		<link href="myStyle.css" rel="stylesheet"/>
+		<meta content="Tom Fishwick"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<div id="navbar"></div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Health</th>
+                    <th>Level</th>
+                    <th>Exp</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="health"></td>
+                    <td id="level"></td>
+                    <td id="exp"></td>
+                </tr>
+            </tbody>
+        </table>
+		<canvas id="canvas" height="600" width="800"></canvas>
+		<p>
+			X: <span id="x"></span><br/>
+			Y: <span id="y"></span><br/>
+			MapY: <span id="mapY"></span><br/>
+			CurCell: <span id="curCell"></span>
+		</p>
+		<button onclick="startGame();" class="btn btn-primary">Start Game</button>
+		<br/>
+		<br/>
+		<p>
+			I made this as part of FreeCodeCamp's <a href="https://www.freecodecamp.org/learn/coding-interview-prep/take-home-projects/build-a-roguelike-dungeon-crawler-game" target="_blank" rel="noopener noreferrer">Dungeon Crawler challenge</a>.
+			Which was a good way to make me appreciate the uses of GameMaker/Unity/Other Game Engines that take care of collision checks/drawing.
+		</p>
+
+		<!-- Load React. -->
+  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  		<!--<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>-->
+		
+		<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+		  <!--Component-->
+        <script src="../navbarAbs.js"></script>
+        
+        <script src="roguelike.js"></script>
+	</body>
+</html>

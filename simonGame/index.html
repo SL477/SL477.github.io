@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="utf-8" />
+		<title>Tom Fishwick - Simon Game</title>
+		<link rel="icon" href="../images/link477.png"/>
+		<link href="../myStyle.css" rel="stylesheet"/>
+		<meta content="Tom Fishwick"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="simonGame.css"/>
+	</head>
+	<body>
+		<div id="navbar"></div>
+        <h1>Simon Game</h1>
+
+        <div id="app">
+            <audio v-for="aud in audioList" :id="aud.id" :src="aud.url"></audio>
+            <fieldset>
+                <label for="useStrict">Strict Mode:</label>
+                <input id="useStrict" v-model="strict" type="checkbox"/>
+            </fieldset>
+
+            <p><b>Current Step:</b> {{currentStep}}</p>
+
+            <div class="grid-container">
+                <button class="grid-item button red" v-on:click="simonButton(0,true)" id="btn0"></button>
+                <button class="grid-item button yellow" v-on:click="simonButton(1,true)" id="btn1"></button>
+                <button class="grid-item button green" v-on:click="simonButton(2,true)" id="btn2"></button>
+                <button class="grid-item button blue" v-on:click="simonButton(3,true)" id="btn3"></button>
+            </div>
+            <div v-if="!correct">
+                <p>Wrong!!!</p>
+            </div>
+            <button class="btn btn-danger" v-on:click="reset">Reset</button>
+        </div>
+
+        <!--Vue-->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <!-- Production version -->
+        <!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>-->
+
+		<!-- Load React. -->
+  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  		<!--<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>-->
+		
+		<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+		  <!--Component-->
+		<script src="../navbarAbs.js"></script>
+
+        <!--Vue Component-->
+        <script src="simonGame.js"></script>
+	</body>
+</html>

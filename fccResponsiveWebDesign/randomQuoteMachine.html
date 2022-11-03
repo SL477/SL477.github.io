@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="utf-8" />
+		<title>FCC - Random Quote Machine</title>
+		<link rel="icon" href="../images/link477.png"/>
+		<link href="../myStyle.css" rel="stylesheet"/>
+		<meta content="Tom Fishwick"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<style>
+            .center {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border: 2px solid red;
+                border-radius: 5px;
+                padding: 10px;
+            }
+        </style>
+
+		<div id="navbar"></div>
+
+        <script>
+            const quotes = [
+                {quote: "It's not my fault.", author: "Han Solo"},
+                {quote: "Your focus determines your reality.", author: "Qui-Gon Jinn"},
+                {quote: "Do. Or do not. There is no try.", author: "Yoda"},
+                {quote: "Somebody has to save our skins.", author: "Leia Organa"},
+                {quote: "In my experience there is no such thing as luck.", author: "Obi-Wan Kenobi"},
+                {quote: "I find your lack of faith disturbing.", author: "Darth Vader"},
+                {quote: "I've got a bad feeling about this.", author: "Luke Skywalker"},
+                {quote: "It's a trap!", author: "Admiral Ackbar"},
+                {quote: "So this is how liberty dies...with thunderous applause.", author: "Padmé Amidala"},
+                {quote: "Your eyes can deceive you. Don't trust them.", author: "Obi-Wan Kenobi"},
+                {quote: "Never tell me the odds.", author: "Han Solo"},
+                {quote: "Mind tricks don't work on me.", author: "Watto"},
+                {quote: "Great, kid. Don't get cocky.", author: "Han Solo"},
+                {quote: "Stay on target.", author: "Gold Five"},
+                {quote: "This is a new day, a new beginning.", author: "Ahsoka Tano"}
+            ];
+
+            $(document).ready(function(){
+                newQuote();
+            });
+
+            const newQuote = () => {
+                let rand = Math.floor(Math.random() * 15);
+
+                let quote = quotes[rand];
+                $("#text").text(quote.quote);
+                $("#author").text(quote.author);
+            };
+        </script>
+
+        <main>
+            <div id="quote-box" class="container-fluid text-center center">
+                <p>"<span id="text"></span>"</p>
+                <p>-<span id="author"></span></p>
+                <button id="new-quote" onClick="newQuote();" class="btn btn-primary">New Quote</button><br/>
+                <a id="tweet-quote" href="twitter.com/intent/tweet">Tweet</a>
+              </div>
+        </main>
+        
+        <!--Testing-->
+        <!--<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>-->
+
+		<!-- Load React. -->
+  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  		<!--<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>-->
+		
+		<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+		  <!--Component-->
+		<script src="../navbarAbs.js"></script>
+	</body>
+</html>

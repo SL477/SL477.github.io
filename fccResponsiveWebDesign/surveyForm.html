@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="utf-8" />
+		<title>FCC - Survey Form</title>
+		<link rel="icon" href="../images/link477.png"/>
+		<link href="../myStyle.css" rel="stylesheet"/>
+		<meta content="Tom Fishwick"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<style>
+            h1, p, figcaption {
+                text-align: center;
+            }
+
+            fieldset {
+                background-color: #eeeeee;
+            }
+
+            legend {
+                padding: 5px 10px;
+            }
+
+            #main {
+                border: 1px solid black;
+                padding: 4px;
+                border-radius: 5%;
+                width: -moz-fit-content;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #submit {
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+        </style>
+        
+
+
+		<div id="navbar"></div>
+			
+		<div class="container-fluid">
+			<main id="main">
+				<header>
+                    <h1 id="title">
+                        Alien Spaceship Sightings
+                    </h1>
+                    <hr/>
+                </header>
+                <p id="description">This survey is to find out about UFO sighting in order to gather information about how many alien spaceships have visited the planet.</p>
+                <form id="survey-form">
+                    <legend>UFO Survey</legend>
+                    <fieldset>
+                        <label id="name-label" for="name">Please enter your name:</label>
+                        <input id="name" type="text" placeholder="Your Name" class="form-control" required/>
+                        <br/>
+                        <label id="email-label" for="email">Email Address:</label>
+                        <input id="email" type="email" placeholder="Email Address" class="form-control" required>
+                        <br/>
+                        <label id="number-label" for="number">Number of UFOs seen:</label>
+                        <input id="number" type="number" min="0" max="100" placeholder="0" class="form-control">
+                        <br/>
+                        <!--drop down box-->
+                        <label id="dropdown-label" for="dropdown">Type of alien seen:</label>  
+                        <select id="dropdown" class="form-control">
+                            <option value="" disabled selected>--Please Select--</option>
+                            <option value="grey">Greys</option>
+                            <option value="humanoid">Humanoid</option>
+                            <option value="lgm">Little Green Men</option>
+                            <option value="unknown">Unknown</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <br/>
+                        
+                        <!--Radio Buttons-->
+                        <label>Please select whether or not you took a photo:</label><br/>
+                        <input type="radio" name="hasPhoto" value="yes" id="hasPhotoYes">
+                        <label id="hasPhotoYes-label" for="hasPhotoYes">Yes</label><br/>
+                        <input type="radio" name="hasPhoto" value="no" id="hasPhotoNo">
+                        <label id="hasPhotoNo-label" for="hasPhotoNo">No</label><br/>
+
+                        <!--Checkboxes-->
+                        <label>Please select what happened in your encounter:</label><br/>
+                        <input id="beamedShip" value="beamedShip" type="checkbox" name="encounterEvents">
+                        <label id="beamedShip-label" for="beamedShip">Beamed onto ship</label><br/>
+                        <input id="probed" value="probed" type="checkbox" name="encounterEvents">
+                        <label id="probed-label" for="probed">Mind probed</label><br/>
+                        <input id="medic" value="medic" type="checkbox" name="encounterEvents">
+                        <label id="medic-label" for="medic">Medically examined</label><br/>
+                        <input id="questioned" value="questioned" type="checkbox" name="encounterEvents">
+                        <label id="questioned-label" for="questionsd">Questioned by aliens/others</label>
+                        <br/>
+                        <br/>
+                        <label for="comments">Any other comments:</label><br/>
+                        <textarea id="comments" name="comments" rows="5" columns="145" class="form-control">Any other comments</textarea>
+                    </fieldset>
+                    <input id="submit" type="submit" class="btn btn-primary" value="Submit"/>             
+                </form>
+            </main>
+            <br/>
+        </div>
+
+        <script>
+            $('#survey-form').submit(function(e) {
+                e.preventDefault();
+                alert("Thank you for your help!");
+            });
+        </script>
+        
+        <!--Testing-->
+        <!--<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>-->
+
+		<!-- Load React. -->
+  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  		<!--<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>-->
+		
+		<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+		  <!--Component-->
+		<script src="../navbarAbs.js"></script>
+	</body>
+</html>

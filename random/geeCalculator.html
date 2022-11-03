@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="utf-8" />
+		<title>Tom Fishwick - VueJS Tutorial Github API</title>
+		<link rel="icon" href="../images/link477.png"/>
+		<link href="../myStyle.css" rel="stylesheet"/>
+		<meta content="Tom Fishwick"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div id="navbar"></div>
+        <h1>How fast will 1 gee get you there?</h1>
+
+        <div id="app">
+            <p>Acceleration: {{ acceleration }}</p>
+            <fieldset>
+                <label for="distkm">Distance (KM):</label>
+                <input id="distkm" type="number" v-model="distance" class="form-control"/>
+            </fieldset>
+            <fieldset>
+                <label for="acceleration">Acceleration (m per second):</label>
+                <input id="acceleration" type="number" v-model="acceleration" class="form-control"/>
+            </fieldset>
+            <p>Time (hours): {{ hours.toLocaleString() }}</p>
+            <button class="btn btn-primary" v-on:click="calctime">Calculate Time</button>
+
+            <fieldset>
+                <label for="hours">Time (hours):</label>
+                <input id="hours" type="number" v-model="hours" class="form-control"/>
+            </fieldset>
+            <button class="btn btn-primary" v-on:click="calcdist">Calculate Time</button>
+            <p>Distance (KM): {{ distance.toLocaleString() }}</p>
+        </div>
+
+        <!--Vue-->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <!-- Production version -->
+        <!--<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>-->
+
+		<!-- Load React. -->
+  		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  		<!--<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>-->
+		
+		<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+		  <!--Component-->
+		<script src="../navbarAbs.js"></script>
+
+        <!--Vue Component-->
+        <script src="geeCalculator.js"></script>
+	</body>
+</html>
