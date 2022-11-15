@@ -1,0 +1,56 @@
+.page-content, .site-footer {
+    /*, .site-footer*/
+    background-color: black;
+    color: aliceblue;
+}
+
+.site-footer .black {
+    color: aliceblue;
+}
+
+.site-footer .credly {
+    background-color: aliceblue;
+}
+
+.page-content {
+    text-align: center;
+}
+
+.imgmain {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    height: 250px;
+    border-radius: 1%;
+}
+
+.top-group {
+    text-align: center;
+}
+
+.project-title {
+    text-align: center;
+    display: inline-block;
+    width: 200px;
+}
+
+@media screen and (min-width: 600px) {
+    /* for bigger screens float the image next to the text */
+    .imgmain {
+        float: right;
+    }
+
+    h2:nth-of-type(2) {
+        clear: both;
+    }
+
+    .project-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .project-tile {
+        height: 340px;
+    }
+}

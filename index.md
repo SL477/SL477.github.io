@@ -8,37 +8,48 @@ title: Home
 
 <h1 class="centertext">Thomas Fishwick</h1>
 
-My main experience from work is as a developer for [Elite 3E](https://www.elite.com/3e/) (VB.Net & SQL) and [MatterSphere](https://www.elite.com/3e/matter-management/) (C#). This involves creating new screens and workflows and integrating them with various APIs. As well as these I have made an ASP.Net site serving a Vue.JS application, and various other JavaScript applications.
+<div class="top-group">
 
-In my spare time I have created various apps in Python, JavaScript, React Native and Android. Plus I have some experience in PHP.
+<img src="/assets/images/tom.jpg" alt="Tom" class="imgmain">
+
+<div class="inner-group">
+
+<h2>Nice to meet you!<br/>I'm Tom Fishwick</h2>
+
+<p>My main experience from work is as a developer for <a href="https://www.elite.com/3e/" target="_blank" rel="noopener noreferrer">Elite 3E</a> (VB.Net & SQL) and <a href="https://www.elite.com/3e/matter-management/" target="_blank">MatterSphere</a> (C#). This involves creating new screens and workflows and integrating them with various APIs. As well as these I have made an ASP.Net site serving a Vue.JS application, and various other JavaScript applications.</P>
+
+<p>In my spare time I have created various apps in Python, JavaScript, React Native and Android. Plus I have some experience in PHP.</p>
+
+</div>
+
+</div>
 
 ## Projects
-
+<div class="project-container">
 {% for project in site.data.projects %}
 
-### {{ project.name }}
+<div class="project-tile">
+<img src="/assets/images/{{ project.picture }}.jpg" alt="{{ project.picture_text }}" class="borderimage"/>
+
+<h3 class="project-title">{{ project.name }}</h3>
+
+{%- if project.url != "/" or project.repository != "/" -%}
+<br/>
+{%-endif -%}
 
 {%- if project.url != "/" -%}
-<br/>
-
-[Live Link]({{project.url}})
-
+<a href="{{project.url}}" target="_blank" rel="noreferrer noopener">Live Link</a>
 {%- endif -%}
 
-<br/>
+{%- if project.url != "/" and project.repository != "/" -%}
+<span> </span>
+{%- endif -%}
 
-Source: [{{ project.repository }}](https://github.com/SL477/{{proeject.repository}})
+{%- if project.repository != "/" -%}
+<a href="https://github.com/SL477/{{proeject.repository}}" target="_blank" rel="noreferrer noopener">Source</a>
+{%-endif -%}
 
-![{{ project.picture_text }}](/assets/images/{{ project.picture }}.jpg){: .borderimage}
-
-<br/>
-
-{{ project.description}}
+</div>
 
 {% endfor %}
-
-### XKCD Reader
-
-My XKCD Reader app, which uses React-Native to render the [XKCD website](https://xkcd.com).
-
-The Android APK file (tested on my phone and in the Android emulator) is available [here](https://drive.google.com/drive/folders/1_jtg6b4z-SArgA5KvZkewE4TjUxHe29F?usp=sharing).
+</div>

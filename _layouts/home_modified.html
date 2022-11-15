@@ -1,11 +1,11 @@
 ---
 layout: default_modified
 ---
-
+<link rel="stylesheet" href="/assets/css/main.css">
 <div class="home">
   {{ content }}
 
-  {%- if site.posts.size > 0 -%}
+  {%- if site.posts.size > 0 and 1 == 0 -%}
     <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
     <ul class="post-list">
       {%- for post in site.posts -%}
