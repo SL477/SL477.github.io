@@ -56,4 +56,9 @@
     .project-tile {
         height: 340px;
     }
+
+    #contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
 }

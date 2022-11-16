@@ -56,6 +56,36 @@ title: Home
 {% endfor %}
 </div>
 
+<hr/>
+
+## Contact
+
+<div id="contact-container">
+    <p id="contact-text">
+    I would love to hear about your company and how I could help. Please fill in the form, and I'll get back to you as soon as possible.
+    </p>
+
+<form action="https://link477255648240.wordpress.com/contact/" method="post" id="contact-form">
+    <div class="mb-3 row">
+        <label for="g32-name" class="col-sm-2 col-form-label">Name:</label>
+        <div class="col-sm-10">
+            <input type="text" name="g32-name" required id="g32-name" class="form-control"/>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="g32-email" class="col-sm-2 col-form-label">Email:</label>
+        <div class="col-sm-10">
+            <input type="email" name="g32-email" required id="g32-email" class="form-control"/>
+        </div>
+    </div>
+    <div class="mb-3 form-floating">
+        <textarea name="g32-message" id="g32-message" class="form-control" rows="5"></textarea>
+        <label for="g32-message" class="col-sm-2 col-form-input" style="color: black;">Message:</label>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">Send Message</button>
+</form>
+</div>
+
 <!-- Modal -->
 <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalTitle" aria-hidden="true">
     <div class="modal-dialog">
