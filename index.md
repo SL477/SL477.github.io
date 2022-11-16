@@ -5,7 +5,7 @@
 layout: home_modified
 title: Home
 ---
-
+<script src="/assets/js/main.js" async></script>
 <h1 class="centertext">Thomas Fishwick</h1>
 
 <div class="top-group">
@@ -24,12 +24,14 @@ title: Home
 
 </div>
 
+<hr/>
+
 ## Projects
 <div class="project-container">
 {% for project in site.data.projects %}
 
 <div class="project-tile">
-<img src="/assets/images/{{ project.picture }}.jpg" alt="{{ project.picture_text }}" class="borderimage"/>
+<img src="/assets/images/{{ project.picture }}.jpg" alt="{{ project.picture_text }}" class="borderimage" onclick="openModal('{{ project.name }}', '{{ project.picture }}', '{{ project.picture_text }}');" data-bs-toggle="modal" data-bs-target="#projectModal"/>
 
 <h3 class="project-title">{{ project.name }}</h3>
 
@@ -52,4 +54,21 @@ title: Home
 </div>
 
 {% endfor %}
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectModalTitle"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">close</button>
+            </div>
+        </div>
+    </div>
 </div>
