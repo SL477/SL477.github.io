@@ -1,0 +1,20 @@
+- name: Python
+  years: 5
+- name: SQL (MS SQL Server, SQLite, MariaDB)
+  years: 7
+- name: VB.Net
+  years: 7
+- name: C#
+  years: 7
+- name: JavaScript
+  years: 9
+- name: SQL Server Reporting Services (SSRS)
+  years: 6
+- name: MATLAB
+  years: 1
+- name: Tableau
+  years: 1
+- name: HTML
+  years: 9
+- name: Docker
+  years: 2

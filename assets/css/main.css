@@ -38,6 +38,11 @@
     width: 200px;
 }
 
+.skills-card > p:nth-of-type(1) {
+    font-weight: bold;
+    font-size: larger;
+}
+
 @media screen and (min-width: 600px) {
     /* for bigger screens float the image next to the text */
     .imgmain {
@@ -60,5 +65,10 @@
     #contact-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
+    }
+
+    .skills-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }

@@ -26,6 +26,23 @@ title: Home
 
 <hr/>
 
+## Skills
+
+<div class="skills-container">
+
+{% for skill in site.data.skills %}
+
+<div class="skills-card">
+<p>{{ skill.name }}</p>
+<p>{{ skill.years }} Year{% if skill.years > 1 %}s{% endif %} Experience</p>
+</div>
+
+{% endfor %}
+
+</div>
+
+<hr/>
+
 ## Projects
 <div class="project-container">
 {% for project in site.data.projects %}
@@ -97,7 +114,7 @@ title: Home
             <div class="modal-body" id="modalBody">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
