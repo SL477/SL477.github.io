@@ -6,7 +6,7 @@ layout: home_modified
 title: Home
 ---
 <script src="/assets/js/main.js" async></script>
-<script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
 <h1 class="centertext">Thomas Fishwick</h1>
 
 <div class="top-group">
@@ -45,7 +45,9 @@ title: Home
 <hr/>
 
 ## Projects
+
 <div class="project-container">
+
 {% for project in site.data.projects %}
 
 <div class="project-tile">
@@ -78,11 +80,17 @@ title: Home
 
 ## Certifications
 
+<div class="project-container">
+
 {% for cert in site.data.certifications %}
 
-<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="{{ cert.id }}" data-share-badge-host="https://www.credly.com"></div>
+<a href="https://www.credly.com/badges/{{cert.id}}/public_url" target="_blank" rel="noreferrer noopener">
+    <img width="150px" height="150px" src="/assets/images/{{cert.src}}" alt="{{cert.name}}"/>
+</a>
 
 {% endfor %}
+
+</div>
 
 <hr/>
 
