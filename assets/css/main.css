@@ -1,0 +1,74 @@
+.page-content, .site-footer {
+    background-color: black;
+    color: aliceblue;
+}
+
+.site-footer .black {
+    color: aliceblue;
+}
+
+.site-footer .credly {
+    background-color: aliceblue;
+}
+
+#projectModal {
+    color: black;
+}
+
+.page-content {
+    text-align: center;
+}
+
+.imgmain {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    height: 250px;
+    border-radius: 1%;
+}
+
+.top-group {
+    text-align: center;
+}
+
+.project-title {
+    text-align: center;
+    display: inline-block;
+    width: 200px;
+}
+
+.skills-card > p:nth-of-type(1) {
+    font-weight: bold;
+    font-size: larger;
+}
+
+@media screen and (min-width: 600px) {
+    /* for bigger screens float the image next to the text */
+    .imgmain {
+        float: right;
+    }
+
+    h2:nth-of-type(2) {
+        clear: both;
+    }
+
+    .project-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .project-tile {
+        height: 340px;
+    }
+
+    #contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .skills-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
