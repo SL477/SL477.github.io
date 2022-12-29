@@ -27,6 +27,8 @@ datacamp_username: fishwickt
 credly_username: thomas-fishwick.519c62f9
 exercism_username: Link477
 
+show_excerpts: true
+
 # Build settings
 markdown: kramdown
 theme: minima

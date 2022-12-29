@@ -2,6 +2,7 @@
 title: Blood Bowl 1st Match
 layout: post
 categories: Blood-Bowl
+excerpt: My first Blood-Bowl match, with a few embellishments
 ---
 ![Practice Match](/assets/images/bloodbowlscore.jpg)
 *Practice Match*

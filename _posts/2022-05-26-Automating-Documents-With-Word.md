@@ -2,6 +2,7 @@
 categories: Programming
 layout: post
 title: Automating Documents with Word
+excerpt: A brief look at various ways of automating Word documents
 ---
 ![Word VBA](/assets/images/WordVBA.JPG)
 *Word VBA*
