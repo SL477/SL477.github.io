@@ -19,3 +19,7 @@ Google Lens to the rescue. An app for Android & iOS, it detects text, that textâ
 This was significantly easier than trying to look up each of the Japanese words, which for someone with a Latin alphabet on their keyboard could take a while.
 
 Hopefully at some point this will be a completed diorama.
+
+<em>Update <time datetime="2023-01-11">11/01/2023</time></em>
+![Finished diorama](/assets/images/kato-28-889-finished.jpg)
+*Finished diorama*
