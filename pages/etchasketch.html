@@ -14,9 +14,14 @@ layout: jquery_page
         display: flex;
         margin-left: auto;
         margin-right: auto;
+        width: 90%;
+        flex-wrap: nowrap;
     }
     .col {
         border: 1px solid black;
+        min-width: 0;
+        flex-basis: 0;
+        flex: 1;
     }
     h1 {
         color: red;
