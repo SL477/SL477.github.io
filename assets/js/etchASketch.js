@@ -20,17 +20,16 @@ const createGrid = () => {
         $('#' + obj.target.id).addClass('hovered');
     });
     $('.col').css({
-        'width': (900 / gridnum).toString() + 'px',
-        'height': (900 / gridnum).toString() + 'px'
+        'width': (100 / gridnum).toString() + 'vw',
+        'height': (100 / gridnum).toString() + 'vh'
     });
 };
 
 // eslint-disable-next-line no-unused-vars
 const userCreateGrid = () => {
-    console.log('test');
     gridnum = Number(prompt('Select size of grid (max 100)', gridnum));
     if (gridnum < 1 || gridnum > 100 || !gridnum) {
-        gridnum = 100;
+        gridnum = 16;
     }
     console.log('gridnum', gridnum);
     $sketchpad.empty();
