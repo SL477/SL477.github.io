@@ -68,7 +68,7 @@ title: Home
 {%- endif -%}
 
 {%- if project.repository != "/" -%}
-<a href="https://github.com/SL477/{{proeject.repository}}" target="_blank" rel="noreferrer noopener">Source</a>
+<a href="https://github.com/SL477/{{project.repository}}" target="_blank" rel="noreferrer noopener">Source</a>
 {%-endif -%}
 
 </div>
