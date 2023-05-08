@@ -15,7 +15,7 @@ title: Home
 
 <div class="inner-group">
 
-<h2>Nice to meet you!<br/>I'm Tom Fishwick</h2>
+<h2>Nice to meet you!<br>I'm Tom Fishwick</h2>
 
 <p>My main experience from work is as a developer for <a href="https://www.elite.com/3e/" target="_blank" rel="noopener noreferrer">Elite 3E</a> (VB.Net & SQL) and <a href="https://www.elite.com/3e/matter-management/" target="_blank">MatterSphere</a> (C#). This involves creating new screens and workflows and integrating them with various APIs. As well as these I have made an ASP.Net site serving a Vue.JS application, and various other JavaScript applications.</P>
 
@@ -25,7 +25,7 @@ title: Home
 
 </div>
 
-<hr/>
+<hr>
 
 ## Skills
 
@@ -42,7 +42,7 @@ title: Home
 
 </div>
 
-<hr/>
+<hr>
 
 ## Projects
 
@@ -51,12 +51,12 @@ title: Home
 {% for project in site.data.projects %}
 
 <div class="project-tile">
-<img src="/assets/images/{{ project.picture }}.jpg" alt="{{ project.picture_text }}" class="borderimage" onclick="openModal('{{ project.name }}', '{{ project.picture }}', '{{ project.picture_text }}');" data-bs-toggle="modal" data-bs-target="#projectModal"/>
+<img src="/assets/images/{{ project.picture }}.jpg" alt="{{ project.picture_text }}" class="borderimage" onclick="openModal('{{ project.name }}', '{{ project.picture }}', '{{ project.picture_text }}');" data-bs-toggle="modal" data-bs-target="#projectModal">
 
 <h3 class="project-title">{{ project.name }}</h3>
 
 {%- if project.url != "/" or project.repository != "/" -%}
-<br/>
+<br>
 {%-endif -%}
 
 {%- if project.url != "/" -%}
@@ -76,7 +76,7 @@ title: Home
 {% endfor %}
 </div>
 
-<hr/>
+<hr>
 
 ## Certifications
 
@@ -85,14 +85,14 @@ title: Home
 {% for cert in site.data.certifications %}
 
 <a href="https://www.credly.com/badges/{{cert.id}}/public_url" target="_blank" rel="noreferrer noopener">
-    <img width="150px" height="150px" src="/assets/images/{{cert.src}}" alt="{{cert.name}}"/>
+    <img width="150" height="150" src="/assets/images/{{cert.src}}" alt="{{cert.name}}">
 </a>
 
 {% endfor %}
 
 </div>
 
-<hr/>
+<hr>
 
 ## Contact
 
@@ -105,13 +105,13 @@ title: Home
     <div class="mb-3 row">
         <label for="g32-name" class="col-sm-2 col-form-label">Name:</label>
         <div class="col-sm-10">
-            <input type="text" name="g32-name" required id="g32-name" class="form-control"/>
+            <input type="text" name="g32-name" required id="g32-name" class="form-control">
         </div>
     </div>
     <div class="mb-3 row">
         <label for="g32-email" class="col-sm-2 col-form-label">Email:</label>
         <div class="col-sm-10">
-            <input type="email" name="g32-email" required id="g32-email" class="form-control"/>
+            <input type="email" name="g32-email" required id="g32-email" class="form-control">
         </div>
     </div>
     <div class="mb-3 form-floating">
