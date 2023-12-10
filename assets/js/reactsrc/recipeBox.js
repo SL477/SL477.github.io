@@ -13,7 +13,8 @@ class RecipeBox extends React.Component {
             editName: '',
             editRecipe: '',
             editIndex: -1,
-            action: 'Add'
+            action: 'Add',
+            showModal: false,
         };
         this.updatePreview = this.updatePreview.bind(this);
         this.updateCurrentIndex = this.updateCurrentIndex.bind(this);
@@ -22,6 +23,7 @@ class RecipeBox extends React.Component {
         this.addAction = this.addAction.bind(this);
         this.editAction = this.editAction.bind(this);
         this.deleteAction = this.deleteAction.bind(this);
+        this.showModalEvent = this.showModalEvent.bind(this);
     }
 
     componentDidMount() {
@@ -100,14 +102,16 @@ class RecipeBox extends React.Component {
             editName: '',
             editRecipe: '',
             editIndex: -1,
-            currentItem: curIndex
+            currentItem: curIndex,
+            'showModal': false
         },
         this.saveToLocalStorage
         );
     }
 
     addAction() {
-        this.setState({'action': 'Add'});
+        console.log('add action');
+        this.setState({'action': 'Add', 'showModal': true});
     }
 
     editAction() {
@@ -115,7 +119,8 @@ class RecipeBox extends React.Component {
             'action': 'Edit',
             'editRecipe': this.state.recipes[this.state.currentItem].recipe,
             'editName': this.state.recipes[this.state.currentItem].name,
-            'editIndex': this.state.currentItem
+            'editIndex': this.state.currentItem,
+            'showModal': true
         });
     }
 
@@ -124,8 +129,13 @@ class RecipeBox extends React.Component {
             'action': 'Delete',
             'editRecipe': this.state.recipes[this.state.currentItem].recipe,
             'editName': this.state.recipes[this.state.currentItem].name,
-            'editIndex': this.state.currentItem
+            'editIndex': this.state.currentItem,
+            'showModal': true
         });
+    }
+
+    showModalEvent() {
+        this.setState({'showModal': false});
     }
 
     render() {
@@ -145,7 +155,6 @@ class RecipeBox extends React.Component {
 
         return (
             <div>
-                <h1>Recipe Box</h1>
                 <div className="fixedBox30">{recipeTable}</div>
                 <br/>
                 <div className="fixedBox60">
@@ -160,7 +169,7 @@ class RecipeBox extends React.Component {
                 </div>
                 
                 {/*Modal */}
-                <div className="modal fade" id="myModal" role="dialog">
+                {/*<div className="modal fade" id="myModal" role="dialog">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -180,7 +189,33 @@ class RecipeBox extends React.Component {
                             </div>
                         </div>
                     </div>
-                </div>
+        </div>*/}
+                {this.state.showModal? (
+                    <div className="myModalBackground">
+                        <div className="myModal">
+                            <h2>{this.state.action}
+                                <span className="myCloseBtn" onClick={this.showModalEvent}>
+                                    &times;
+                                </span>
+                            </h2>
+                            <hr/>
+                            <div className="myContent">
+                                <label>Recipe Name:
+                                    <input name="recipeName" type="text" className="form-control" value={this.state.editName} onChange={(e) => this.setState({editName: e.target.value})}/>
+                                </label>
+                                <label htmlFor="editor">Recipe Markdown (Markdown Previewer <a target="_blank" rel="noreferrer" href="https://link477.com/fccResponsiveWebDesign/markdownPreviewer.html">here</a>):</label>
+                                <textarea id="editor" rows="10" cols="150" className="form-control" onChange={(e) => this.setState({editRecipe: e.target.value})} value={this.state.editRecipe}>
+                                    
+                                </textarea>
+                            </div>
+                            <hr />
+                            <div className="myActions">
+                                <button type="button" className="btn btn-primary" onClick={this.saveModal}>{this.state.action == 'Delete'? 'Confirm' : 'Save'}</button>
+                                <button type="button" className="btn btn-warning" onClick={this.showModalEvent}>Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                ) : null}
             </div>
         );
     }

@@ -30,7 +30,8 @@ var RecipeBox = function (_React$Component) {
             editName: '',
             editRecipe: '',
             editIndex: -1,
-            action: 'Add'
+            action: 'Add',
+            showModal: false
         };
         _this.updatePreview = _this.updatePreview.bind(_this);
         _this.updateCurrentIndex = _this.updateCurrentIndex.bind(_this);
@@ -39,6 +40,7 @@ var RecipeBox = function (_React$Component) {
         _this.addAction = _this.addAction.bind(_this);
         _this.editAction = _this.editAction.bind(_this);
         _this.deleteAction = _this.deleteAction.bind(_this);
+        _this.showModalEvent = _this.showModalEvent.bind(_this);
         return _this;
     }
 
@@ -118,13 +120,15 @@ var RecipeBox = function (_React$Component) {
                 editName: '',
                 editRecipe: '',
                 editIndex: -1,
-                currentItem: curIndex
+                currentItem: curIndex,
+                'showModal': false
             }, this.saveToLocalStorage);
         }
     }, {
         key: 'addAction',
         value: function addAction() {
-            this.setState({ 'action': 'Add' });
+            console.log('add action');
+            this.setState({ 'action': 'Add', 'showModal': true });
         }
     }, {
         key: 'editAction',
@@ -133,7 +137,8 @@ var RecipeBox = function (_React$Component) {
                 'action': 'Edit',
                 'editRecipe': this.state.recipes[this.state.currentItem].recipe,
                 'editName': this.state.recipes[this.state.currentItem].name,
-                'editIndex': this.state.currentItem
+                'editIndex': this.state.currentItem,
+                'showModal': true
             });
         }
     }, {
@@ -143,8 +148,14 @@ var RecipeBox = function (_React$Component) {
                 'action': 'Delete',
                 'editRecipe': this.state.recipes[this.state.currentItem].recipe,
                 'editName': this.state.recipes[this.state.currentItem].name,
-                'editIndex': this.state.currentItem
+                'editIndex': this.state.currentItem,
+                'showModal': true
             });
+        }
+    }, {
+        key: 'showModalEvent',
+        value: function showModalEvent() {
+            this.setState({ 'showModal': false });
         }
     }, {
         key: 'render',
@@ -174,11 +185,6 @@ var RecipeBox = function (_React$Component) {
             return React.createElement(
                 'div',
                 null,
-                React.createElement(
-                    'h1',
-                    null,
-                    'Recipe Box'
-                ),
                 React.createElement(
                     'div',
                     { className: 'fixedBox30' },
@@ -214,67 +220,66 @@ var RecipeBox = function (_React$Component) {
                         'Delete'
                     )
                 ),
-                React.createElement(
+                this.state.showModal ? React.createElement(
                     'div',
-                    { className: 'modal fade', id: 'myModal', role: 'dialog' },
+                    { className: 'myModalBackground' },
                     React.createElement(
                         'div',
-                        { className: 'modal-dialog' },
+                        { className: 'myModal' },
+                        React.createElement(
+                            'h2',
+                            null,
+                            this.state.action,
+                            React.createElement(
+                                'span',
+                                { className: 'myCloseBtn', onClick: this.showModalEvent },
+                                '\xD7'
+                            )
+                        ),
+                        React.createElement('hr', null),
                         React.createElement(
                             'div',
-                            { className: 'modal-content' },
+                            { className: 'myContent' },
                             React.createElement(
-                                'div',
-                                { className: 'modal-header' },
-                                React.createElement(
-                                    'h4',
-                                    { className: 'modal-title' },
-                                    this.state.action
-                                )
-                            ),
-                            React.createElement(
-                                'div',
-                                { className: 'modal-body' },
-                                React.createElement(
-                                    'label',
-                                    null,
-                                    'Recipe Name:'
-                                ),
-                                React.createElement('input', { type: 'text', className: 'form-control', value: this.state.editName, onChange: function onChange(e) {
+                                'label',
+                                null,
+                                'Recipe Name:',
+                                React.createElement('input', { name: 'recipeName', type: 'text', className: 'form-control', value: this.state.editName, onChange: function onChange(e) {
                                         return _this2.setState({ editName: e.target.value });
-                                    } }),
-                                React.createElement(
-                                    'label',
-                                    { htmlFor: 'editor' },
-                                    'Recipe Markdown (Markdown Previewer ',
-                                    React.createElement(
-                                        'a',
-                                        { target: '_blank', rel: 'noreferrer', href: 'https://link477.com/fccResponsiveWebDesign/markdownPreviewer.html' },
-                                        'here'
-                                    ),
-                                    '):'
-                                ),
-                                React.createElement('textarea', { id: 'editor', rows: '10', cols: '150', className: 'form-control', onChange: function onChange(e) {
-                                        return _this2.setState({ editRecipe: e.target.value });
-                                    }, value: this.state.editRecipe })
+                                    } })
                             ),
                             React.createElement(
-                                'div',
-                                { className: 'modal-footer' },
+                                'label',
+                                { htmlFor: 'editor' },
+                                'Recipe Markdown (Markdown Previewer ',
                                 React.createElement(
-                                    'button',
-                                    { type: 'button', className: 'btn btn-primary', 'data-dismiss': 'modal', onClick: this.saveModal },
-                                    this.state.action == 'Delete' ? 'Confirm' : 'Save'
+                                    'a',
+                                    { target: '_blank', rel: 'noreferrer', href: 'https://link477.com/fccResponsiveWebDesign/markdownPreviewer.html' },
+                                    'here'
                                 ),
-                                React.createElement(
-                                    'button',
-                                    { type: 'button', className: 'btn btn-warning', 'data-dismiss': 'modal' },
-                                    'Cancel'
-                                )
+                                '):'
+                            ),
+                            React.createElement('textarea', { id: 'editor', rows: '10', cols: '150', className: 'form-control', onChange: function onChange(e) {
+                                    return _this2.setState({ editRecipe: e.target.value });
+                                }, value: this.state.editRecipe })
+                        ),
+                        React.createElement('hr', null),
+                        React.createElement(
+                            'div',
+                            { className: 'myActions' },
+                            React.createElement(
+                                'button',
+                                { type: 'button', className: 'btn btn-primary', onClick: this.saveModal },
+                                this.state.action == 'Delete' ? 'Confirm' : 'Save'
+                            ),
+                            React.createElement(
+                                'button',
+                                { type: 'button', className: 'btn btn-warning', onClick: this.showModalEvent },
+                                'Cancel'
                             )
                         )
                     )
-                )
+                ) : null
             );
         }
     }]);
