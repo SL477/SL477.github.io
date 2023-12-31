@@ -2,176 +2,182 @@
 'use strict';
 // eslint-disable-next-line no-undef
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 var e = React.createElement;
 
-// eslint-disable-next-line no-undef
+var actions = {
+    Add: 'Add',
+    Delete: 'Delete',
+    Edit: 'Edit'
+};
 
-var RecipeBox = function (_React$Component) {
-    _inherits(RecipeBox, _React$Component);
+var Recipe = function Recipe(name, recipe) {
+    _classCallCheck(this, Recipe);
 
-    function RecipeBox(props) {
-        _classCallCheck(this, RecipeBox);
+    this.name = '';
+    this.recipe = '';
 
-        var _this = _possibleConstructorReturn(this, (RecipeBox.__proto__ || Object.getPrototypeOf(RecipeBox)).call(this, props));
+    this.name = name;
+    this.recipe = recipe;
+};
 
-        _this.state = {
-            recipes: [],
-            currentItem: 0,
-            editName: '',
-            editRecipe: '',
-            editIndex: -1,
-            action: 'Add',
-            showModal: false
-        };
-        _this.updatePreview = _this.updatePreview.bind(_this);
-        _this.updateCurrentIndex = _this.updateCurrentIndex.bind(_this);
-        _this.saveToLocalStorage = _this.saveToLocalStorage.bind(_this);
-        _this.saveModal = _this.saveModal.bind(_this);
-        _this.addAction = _this.addAction.bind(_this);
-        _this.editAction = _this.editAction.bind(_this);
-        _this.deleteAction = _this.deleteAction.bind(_this);
-        _this.showModalEvent = _this.showModalEvent.bind(_this);
-        return _this;
-    }
+function RecipeBox() {
+    // eslint-disable-next-line no-undef
+    var _React$useState = React.useState([]),
+        _React$useState2 = _slicedToArray(_React$useState, 2),
+        recipes = _React$useState2[0],
+        setRecipes = _React$useState2[1];
+    // eslint-disable-next-line no-undef
 
-    _createClass(RecipeBox, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            console.log('mounted');
-            var existingRecipes = localStorage.getItem('recipeBox');
-            if (!existingRecipes) {
-                var arr = [];
-                var r1 = {
-                    name: 'Beans on toast',
-                    recipe: '# Beans on Toast\n                1. Cook beans\n                2. Make toast\n                3. Put beans on toast'
-                };
-                arr.push(r1);
-                arr.push({ name: 'test', recipe: 'testing' });
-                this.setState({ recipes: arr });
-            } else {
-                this.setState({ recipes: JSON.parse(existingRecipes).data });
-            }
-        }
-    }, {
-        key: 'updatePreview',
-        value: function updatePreview() {
-            if (this.state.recipes.length <= this.state.currentItem) {
-                return '';
-            }
-            // eslint-disable-next-line no-undef
-            var renderer1 = new marked.Renderer();
-            renderer1.link = function (href, title, text) {
-                return '<a target="_blank" href="' + href + '">' + text + '</a>';
+
+    var _React$useState3 = React.useState(0),
+        _React$useState4 = _slicedToArray(_React$useState3, 2),
+        currentItem = _React$useState4[0],
+        setCurrentItem = _React$useState4[1];
+    // eslint-disable-next-line no-undef
+
+
+    var _React$useState5 = React.useState(''),
+        _React$useState6 = _slicedToArray(_React$useState5, 2),
+        editName = _React$useState6[0],
+        setEditName = _React$useState6[1];
+    // eslint-disable-next-line no-undef
+
+
+    var _React$useState7 = React.useState(''),
+        _React$useState8 = _slicedToArray(_React$useState7, 2),
+        editRecipe = _React$useState8[0],
+        setEditRecipe = _React$useState8[1];
+    // eslint-disable-next-line no-undef
+
+
+    var _React$useState9 = React.useState(-1),
+        _React$useState10 = _slicedToArray(_React$useState9, 2),
+        editIndex = _React$useState10[0],
+        setEditIndex = _React$useState10[1];
+    // eslint-disable-next-line no-undef
+
+
+    var _React$useState11 = React.useState(actions.Add),
+        _React$useState12 = _slicedToArray(_React$useState11, 2),
+        action = _React$useState12[0],
+        setAction = _React$useState12[1];
+    // eslint-disable-next-line no-undef
+
+
+    var _React$useState13 = React.useState(false),
+        _React$useState14 = _slicedToArray(_React$useState13, 2),
+        showModal = _React$useState14[0],
+        setShowModal = _React$useState14[1];
+    // eslint-disable-next-line no-undef
+
+
+    React.useEffect(function () {
+        var existingRecipes = localStorage.getItem('recipeBox');
+        if (!existingRecipes) {
+            var arr = [];
+            var r1 = {
+                name: 'Beans on toast',
+                recipe: '1. Cook beans\n2. Make toast\n3. Put beans on toast'
             };
+            arr.push(r1);
+            arr.push(new Recipe('test', 'testing'));
+            arr.push(new Recipe('Cake', '- 4 Eggs\n- 4 ounces butter\n- 4 ounces I can\'t believe it\'s not butter\n- 8 ounces sugar\n- 8 ounces self-raising flour\n\n1. Mix the sugar & butter\n2. Beat in the eggs\n3. Fold in the flour\n4. Bake at 180\xB0c for 20 minutes\n\n## Buttercream Icing\n\n- 4 ounces icing sugar\n- 2 ounces butter\n- Some melted chocolate\n- Some boiling water'));
+            setRecipes(arr);
+        } else {
+            setRecipes(JSON.parse(existingRecipes).data);
+        }
+    }, []);
 
-            // eslint-disable-next-line no-undef
-            var ret = marked(this.state.recipes[this.state.currentItem].recipe, {
-                gfm: true,
-                breaks: true,
-                renderer: renderer1
-            });
-            return ret;
+    var updatePreview = function updatePreview() {
+        if (recipes.length <= currentItem) {
+            return '';
         }
-    }, {
-        key: 'updateCurrentIndex',
-        value: function updateCurrentIndex(ind) {
-            this.setState({ currentItem: ind });
-        }
-    }, {
-        key: 'saveToLocalStorage',
-        value: function saveToLocalStorage() {
-            var saveData = JSON.stringify({ data: this.state.recipes });
-            console.log('saveData', saveData);
-            localStorage.setItem('recipeBox', saveData);
-            console.log('save to local');
-        }
-    }, {
-        key: 'saveModal',
-        value: function saveModal() {
-            var arr = [].concat(_toConsumableArray(this.state.recipes));
-            var curIndex = this.state.currentItem;
-            if (this.state.action === 'Delete') {
-                arr.splice(this.state.editIndex, 1);
-                curIndex -= 1;
+        // eslint-disable-next-line no-undef
+        var renderer1 = new marked.Renderer();
+        renderer1.link = function (href, title, text) {
+            return '<a target="_blank" href="' + href + '">' + text + '</a>';
+        };
+
+        // eslint-disable-next-line no-undef
+        return marked(recipes[currentItem].recipe, {
+            gfm: true,
+            breaks: true,
+            renderer: renderer1
+        });
+    };
+
+    var saveToLocalStorage = function saveToLocalStorage() {
+        var saveData = JSON.stringify({ data: recipes });
+        // console.log('saveData', saveData);
+        localStorage.setItem('recipeBox', saveData);
+        // console.log('save to local');
+    };
+
+    var saveModal = function saveModal() {
+        var arr = [].concat(_toConsumableArray(recipes));
+        var curIndex = currentItem;
+        if (action === actions.Delete) {
+            arr.splice(editIndex, 1);
+            curIndex -= 1;
+        } else {
+            if (editIndex > -1) {
+                arr[editIndex].name = editName;
+                arr[editIndex].recipe = editRecipe;
             } else {
-                if (this.state.editIndex > -1) {
-                    arr[this.state.editIndex].name = this.state.editName;
-                    arr[this.state.editIndex].recipe = this.state.editRecipe;
-                } else {
-                    arr.push({
-                        name: this.state.editName,
-                        recipe: this.state.editRecipe
-                    });
-                    curIndex = arr.length - 1;
-                }
+                arr.push({
+                    name: editName,
+                    recipe: editRecipe
+                });
+                curIndex = arr.length - 1;
             }
-            this.setState({
-                recipes: arr,
-                editName: '',
-                editRecipe: '',
-                editIndex: -1,
-                currentItem: curIndex,
-                'showModal': false
-            }, this.saveToLocalStorage);
         }
-    }, {
-        key: 'addAction',
-        value: function addAction() {
-            console.log('add action');
-            this.setState({ 'action': 'Add', 'showModal': true });
-        }
-    }, {
-        key: 'editAction',
-        value: function editAction() {
-            this.setState({
-                'action': 'Edit',
-                'editRecipe': this.state.recipes[this.state.currentItem].recipe,
-                'editName': this.state.recipes[this.state.currentItem].name,
-                'editIndex': this.state.currentItem,
-                'showModal': true
-            });
-        }
-    }, {
-        key: 'deleteAction',
-        value: function deleteAction() {
-            this.setState({
-                'action': 'Delete',
-                'editRecipe': this.state.recipes[this.state.currentItem].recipe,
-                'editName': this.state.recipes[this.state.currentItem].name,
-                'editIndex': this.state.currentItem,
-                'showModal': true
-            });
-        }
-    }, {
-        key: 'showModalEvent',
-        value: function showModalEvent() {
-            this.setState({ 'showModal': false });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
+        setRecipes(arr);
+        setEditName('');
+        setEditRecipe('');
+        setEditIndex(-1);
+        setCurrentItem(curIndex);
+        setShowModal(false);
+        saveToLocalStorage();
+    };
 
-            var recipeName = void 0;
-            if (this.state.recipes.length > this.state.currentItem) {
-                recipeName = this.state.recipes[this.state.currentItem].name;
-            }
+    var addAction = function addAction() {
+        setAction(actions.Add);
+        setShowModal(true);
+    };
 
-            var recipeTable = this.state.recipes.map(function (r, i) {
+    var editAction = function editAction() {
+        setAction(actions.Edit);
+        setEditRecipe(recipes[currentItem].recipe);
+        setEditName(recipes[currentItem].name);
+        setEditIndex(currentItem);
+        setShowModal(true);
+    };
+
+    var deleteAction = function deleteAction() {
+        setAction(actions.Delete);
+        setEditRecipe(recipes[currentItem].recipe);
+        setEditName(recipes[currentItem].name);
+        setEditIndex(currentItem);
+        setShowModal(true);
+    };
+
+    return React.createElement(
+        'div',
+        null,
+        React.createElement(
+            'div',
+            { className: 'fixedBox30' },
+            recipes.map(function (r, i) {
                 return React.createElement(
                     'div',
                     { key: i, onClick: function onClick() {
-                            _this2.updateCurrentIndex(i);
+                            return setCurrentItem(i);
                         } },
                     React.createElement(
                         'p',
@@ -180,112 +186,104 @@ var RecipeBox = function (_React$Component) {
                     ),
                     React.createElement('hr', null)
                 );
-            });
-
-            return React.createElement(
-                'div',
+            })
+        ),
+        React.createElement('br', null),
+        React.createElement(
+            'div',
+            { className: 'fixedBox60' },
+            React.createElement(
+                'h2',
                 null,
+                recipes.length > currentItem ? recipes[currentItem].name : ''
+            ),
+            React.createElement('div', { className: 'container-fluid', dangerouslySetInnerHTML: { __html: updatePreview() } })
+        ),
+        React.createElement(
+            'div',
+            { className: 'center' },
+            React.createElement(
+                'button',
+                { type: 'button', className: 'btn btn-info', 'data-toggle': 'modal', 'data-target': '#myModal', onClick: addAction },
+                'Add'
+            ),
+            React.createElement(
+                'button',
+                { type: 'button', className: 'btn btn-primary', 'data-toggle': 'modal', 'data-target': '#myModal', onClick: editAction },
+                'Edit'
+            ),
+            React.createElement(
+                'button',
+                { type: 'button', className: 'btn btn-danger', 'data-toggle': 'modal', 'data-target': '#myModal', onClick: deleteAction },
+                'Delete'
+            )
+        ),
+        showModal ? React.createElement(
+            'div',
+            { className: 'myModalBackground' },
+            React.createElement(
+                'div',
+                { className: 'myModal' },
                 React.createElement(
-                    'div',
-                    { className: 'fixedBox30' },
-                    recipeTable
-                ),
-                React.createElement('br', null),
-                React.createElement(
-                    'div',
-                    { className: 'fixedBox60' },
+                    'h2',
+                    null,
+                    action,
                     React.createElement(
-                        'h2',
+                        'span',
+                        { className: 'myCloseBtn', onClick: function onClick() {
+                                return setShowModal(false);
+                            } },
+                        '\xD7'
+                    )
+                ),
+                React.createElement('hr', null),
+                React.createElement(
+                    'div',
+                    { className: 'myContent' },
+                    React.createElement(
+                        'label',
                         null,
-                        recipeName
+                        'Recipe Name:',
+                        React.createElement('input', { name: 'recipeName', type: 'text', className: 'form-control', value: editName, onChange: function onChange(e) {
+                                return setEditName(e.target.value);
+                            } })
                     ),
-                    React.createElement('div', { className: 'container-fluid', dangerouslySetInnerHTML: { __html: this.updatePreview() } })
+                    React.createElement(
+                        'label',
+                        { htmlFor: 'editor' },
+                        'Recipe Markdown (Markdown Previewer ',
+                        React.createElement(
+                            'a',
+                            { target: '_blank', rel: 'noreferrer', href: '/fccResponsiveWebDesign/markdownPreviewer.html' },
+                            'here'
+                        ),
+                        '):'
+                    ),
+                    React.createElement('textarea', { id: 'editor', rows: '10', cols: '150', className: 'form-control', onChange: function onChange(e) {
+                            return setEditRecipe(e.target.value);
+                        }, value: editRecipe })
                 ),
+                React.createElement('hr', null),
                 React.createElement(
                     'div',
-                    { className: 'center' },
+                    { className: 'myActions' },
                     React.createElement(
                         'button',
-                        { type: 'button', className: 'btn btn-info', 'data-toggle': 'modal', 'data-target': '#myModal', onClick: this.addAction },
-                        'Add'
+                        { type: 'button', className: 'btn btn-primary', onClick: saveModal },
+                        action == actions.Delete ? 'Confirm' : 'Save'
                     ),
                     React.createElement(
                         'button',
-                        { type: 'button', className: 'btn btn-primary', 'data-toggle': 'modal', 'data-target': '#myModal', onClick: this.editAction },
-                        'Edit'
-                    ),
-                    React.createElement(
-                        'button',
-                        { type: 'button', className: 'btn btn-danger', 'data-toggle': 'modal', 'data-target': '#myModal', onClick: this.deleteAction },
-                        'Delete'
+                        { type: 'button', className: 'btn btn-warning', onClick: function onClick() {
+                                return setShowModal(false);
+                            } },
+                        'Cancel'
                     )
-                ),
-                this.state.showModal ? React.createElement(
-                    'div',
-                    { className: 'myModalBackground' },
-                    React.createElement(
-                        'div',
-                        { className: 'myModal' },
-                        React.createElement(
-                            'h2',
-                            null,
-                            this.state.action,
-                            React.createElement(
-                                'span',
-                                { className: 'myCloseBtn', onClick: this.showModalEvent },
-                                '\xD7'
-                            )
-                        ),
-                        React.createElement('hr', null),
-                        React.createElement(
-                            'div',
-                            { className: 'myContent' },
-                            React.createElement(
-                                'label',
-                                null,
-                                'Recipe Name:',
-                                React.createElement('input', { name: 'recipeName', type: 'text', className: 'form-control', value: this.state.editName, onChange: function onChange(e) {
-                                        return _this2.setState({ editName: e.target.value });
-                                    } })
-                            ),
-                            React.createElement(
-                                'label',
-                                { htmlFor: 'editor' },
-                                'Recipe Markdown (Markdown Previewer ',
-                                React.createElement(
-                                    'a',
-                                    { target: '_blank', rel: 'noreferrer', href: 'https://link477.com/fccResponsiveWebDesign/markdownPreviewer.html' },
-                                    'here'
-                                ),
-                                '):'
-                            ),
-                            React.createElement('textarea', { id: 'editor', rows: '10', cols: '150', className: 'form-control', onChange: function onChange(e) {
-                                    return _this2.setState({ editRecipe: e.target.value });
-                                }, value: this.state.editRecipe })
-                        ),
-                        React.createElement('hr', null),
-                        React.createElement(
-                            'div',
-                            { className: 'myActions' },
-                            React.createElement(
-                                'button',
-                                { type: 'button', className: 'btn btn-primary', onClick: this.saveModal },
-                                this.state.action == 'Delete' ? 'Confirm' : 'Save'
-                            ),
-                            React.createElement(
-                                'button',
-                                { type: 'button', className: 'btn btn-warning', onClick: this.showModalEvent },
-                                'Cancel'
-                            )
-                        )
-                    )
-                ) : null
-            );
-        }
-    }]);
-
-    return RecipeBox;
-}(React.Component);
+                )
+            )
+        ) : null
+    );
+}
 
 var domContainer = document.querySelector('#recipeBox');
 // eslint-disable-next-line no-undef

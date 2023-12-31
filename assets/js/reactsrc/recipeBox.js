@@ -3,223 +3,200 @@
 // eslint-disable-next-line no-undef
 const e = React.createElement;
 
-// eslint-disable-next-line no-undef
-class RecipeBox extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            recipes: [],
-            currentItem: 0,
-            editName: '',
-            editRecipe: '',
-            editIndex: -1,
-            action: 'Add',
-            showModal: false,
-        };
-        this.updatePreview = this.updatePreview.bind(this);
-        this.updateCurrentIndex = this.updateCurrentIndex.bind(this);
-        this.saveToLocalStorage = this.saveToLocalStorage.bind(this);
-        this.saveModal = this.saveModal.bind(this);
-        this.addAction = this.addAction.bind(this);
-        this.editAction = this.editAction.bind(this);
-        this.deleteAction = this.deleteAction.bind(this);
-        this.showModalEvent = this.showModalEvent.bind(this);
-    }
+const actions = {
+    Add: 'Add',
+    Delete: 'Delete',
+    Edit: 'Edit'
+};
 
-    componentDidMount() {
-        console.log('mounted');
+class Recipe {
+    name = '';
+    recipe = '';
+
+    constructor(name, recipe) {
+        this.name = name;
+        this.recipe = recipe;
+    }
+}
+
+function RecipeBox() {
+    // eslint-disable-next-line no-undef
+    const [recipes, setRecipes] = React.useState([]);
+    // eslint-disable-next-line no-undef
+    const [currentItem, setCurrentItem] = React.useState(0);
+    // eslint-disable-next-line no-undef
+    const [editName, setEditName] = React.useState('');
+    // eslint-disable-next-line no-undef
+    const [editRecipe, setEditRecipe] = React.useState('');
+    // eslint-disable-next-line no-undef
+    const [editIndex, setEditIndex] = React.useState(-1);
+    // eslint-disable-next-line no-undef
+    const [action, setAction] = React.useState(actions.Add);
+    // eslint-disable-next-line no-undef
+    const [showModal, setShowModal] = React.useState(false);
+    // eslint-disable-next-line no-undef
+    React.useEffect(() => {
         let existingRecipes = localStorage.getItem('recipeBox');
         if (!existingRecipes) {
-            let arr = [];
-            let r1 = {
+            const arr = [];
+            const r1 = {
                 name: 'Beans on toast',
-                recipe: `# Beans on Toast
-                1. Cook beans
-                2. Make toast
-                3. Put beans on toast`
+                recipe: `1. Cook beans
+2. Make toast
+3. Put beans on toast`
             };
             arr.push(r1);
-            arr.push({name: 'test', recipe: 'testing'});
-            this.setState({recipes: arr});
+            arr.push(new Recipe('test', 'testing'));
+            arr.push(new Recipe('Cake', `- 4 Eggs
+- 4 ounces butter
+- 4 ounces I can't believe it's not butter
+- 8 ounces sugar
+- 8 ounces self-raising flour
+
+1. Mix the sugar & butter
+2. Beat in the eggs
+3. Fold in the flour
+4. Bake at 180°c for 20 minutes
+
+## Buttercream Icing
+
+- 4 ounces icing sugar
+- 2 ounces butter
+- Some melted chocolate
+- Some boiling water`));
+            setRecipes(arr);
         }
         else {
-            this.setState({recipes: JSON.parse(existingRecipes).data});
+            setRecipes(JSON.parse(existingRecipes).data);
         }
-    }
+    }, []);
 
-    updatePreview() {
-        if (this.state.recipes.length <= this.state.currentItem) {
+    const updatePreview = () => {
+        if (recipes.length <= currentItem) {
             return '';
         }
         // eslint-disable-next-line no-undef
         const renderer1 = new marked.Renderer();
         renderer1.link = function (href, title, text) {
-            return '<a target="_blank" href="' + href + '">' + text + '</a>';
+            return `<a target="_blank" href="${href}">${text}</a>`;
         };
 
         // eslint-disable-next-line no-undef
-        let ret = marked(this.state.recipes[this.state.currentItem].recipe, {
+        return marked(recipes[currentItem].recipe, {
             gfm: true,
             breaks: true, 
             renderer: renderer1
         });
-        return ret;
-    }
+    };
 
-    updateCurrentIndex(ind) {
-        this.setState({currentItem: ind});
-    }
-
-    saveToLocalStorage() {
-        let saveData = JSON.stringify({data: this.state.recipes});
-        console.log('saveData', saveData);
+    const saveToLocalStorage = () => {
+        const saveData = JSON.stringify({data: recipes});
+        // console.log('saveData', saveData);
         localStorage.setItem('recipeBox', saveData);
-        console.log('save to local');
-    }
+        // console.log('save to local');
+    };
 
-    saveModal() {
-        let arr = [...this.state.recipes];
-        let curIndex = this.state.currentItem;
-        if (this.state.action === 'Delete') {
-            arr.splice(this.state.editIndex,1);
+    const saveModal = () => {
+        const arr = [...recipes];
+        let curIndex = currentItem;
+        if (action === actions.Delete) {
+            arr.splice(editIndex, 1);
             curIndex -= 1;
         }
         else {
-            if (this.state.editIndex > -1) {
-                arr[this.state.editIndex].name = this.state.editName;
-                arr[this.state.editIndex].recipe = this.state.editRecipe;
+            if (editIndex > -1) {
+                arr[editIndex].name = editName;
+                arr[editIndex].recipe = editRecipe;
             }
             else {
                 arr.push({
-                    name: this.state.editName,
-                    recipe: this.state.editRecipe
+                    name: editName,
+                    recipe: editRecipe
                 });
                 curIndex = arr.length - 1;
             }
         }
-        this.setState({
-            recipes: arr,
-            editName: '',
-            editRecipe: '',
-            editIndex: -1,
-            currentItem: curIndex,
-            'showModal': false
-        },
-        this.saveToLocalStorage
-        );
-    }
+        setRecipes(arr);
+        setEditName('');
+        setEditRecipe('');
+        setEditIndex(-1);
+        setCurrentItem(curIndex);
+        setShowModal(false);
+        saveToLocalStorage();
+    };
 
-    addAction() {
-        console.log('add action');
-        this.setState({'action': 'Add', 'showModal': true});
-    }
+    const addAction = () => {
+        setAction(actions.Add);
+        setShowModal(true);
+    };
 
-    editAction() {
-        this.setState({
-            'action': 'Edit',
-            'editRecipe': this.state.recipes[this.state.currentItem].recipe,
-            'editName': this.state.recipes[this.state.currentItem].name,
-            'editIndex': this.state.currentItem,
-            'showModal': true
-        });
-    }
+    const editAction = () => {
+        setAction(actions.Edit);
+        setEditRecipe(recipes[currentItem].recipe);
+        setEditName(recipes[currentItem].name);
+        setEditIndex(currentItem);
+        setShowModal(true);
+    };
 
-    deleteAction() {
-        this.setState({
-            'action': 'Delete',
-            'editRecipe': this.state.recipes[this.state.currentItem].recipe,
-            'editName': this.state.recipes[this.state.currentItem].name,
-            'editIndex': this.state.currentItem,
-            'showModal': true
-        });
-    }
+    const deleteAction = () => {
+        setAction(actions.Delete);
+        setEditRecipe(recipes[currentItem].recipe);
+        setEditName(recipes[currentItem].name);
+        setEditIndex(currentItem);
+        setShowModal(true);
+    };
 
-    showModalEvent() {
-        this.setState({'showModal': false});
-    }
-
-    render() {
-        let recipeName;
-        if (this.state.recipes.length > this.state.currentItem) {
-            recipeName = this.state.recipes[this.state.currentItem].name;
-        }
-
-        let recipeTable = this.state.recipes.map((r,i) => {
-            return (
-                <div key={i} onClick={() => {this.updateCurrentIndex(i);}}>
-                    <p>{r.name}</p>
-                    <hr/>
-                </div>
-            );
-        });
-
-        return (
-            <div>
-                <div className="fixedBox30">{recipeTable}</div>
-                <br/>
-                <div className="fixedBox60">
-                    <h2>{recipeName}</h2>
-                    <div className="container-fluid" dangerouslySetInnerHTML={{__html: this.updatePreview()}}></div>
-                </div>
-
-                <div className="center">
-                    <button type="button" className="btn btn-info" data-toggle="modal" data-target="#myModal" onClick={this.addAction}>Add</button>
-                    <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal" onClick={this.editAction}>Edit</button>
-                    <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#myModal" onClick={this.deleteAction}>Delete</button>
-                </div>
-                
-                {/*Modal */}
-                {/*<div className="modal fade" id="myModal" role="dialog">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h4 className="modal-title">{this.state.action}</h4>
-                            </div>
-                            <div className="modal-body">
-                                <label>Recipe Name:</label>
-                                <input type="text" className="form-control" value={this.state.editName} onChange={(e) => this.setState({editName: e.target.value})}/>
-                                <label htmlFor="editor">Recipe Markdown (Markdown Previewer <a target="_blank" rel="noreferrer" href="https://link477.com/fccResponsiveWebDesign/markdownPreviewer.html">here</a>):</label>
-                                <textarea id="editor" rows="10" cols="150" className="form-control" onChange={(e) => this.setState({editRecipe: e.target.value})} value={this.state.editRecipe}>
-                                    
-                                </textarea>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.saveModal}>{this.state.action == 'Delete'? 'Confirm' : 'Save'}</button>
-                                <button type="button" className="btn btn-warning" data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
+    return (
+        <div>
+            <div className="fixedBox30">
+                {recipes.map((r, i) => (
+                    <div key={i} onClick={() => setCurrentItem(i)}>
+                        <p>{r.name}</p>
+                        <hr />
                     </div>
-        </div>*/}
-                {this.state.showModal? (
-                    <div className="myModalBackground">
-                        <div className="myModal">
-                            <h2>{this.state.action}
-                                <span className="myCloseBtn" onClick={this.showModalEvent}>
-                                    &times;
-                                </span>
-                            </h2>
-                            <hr/>
-                            <div className="myContent">
-                                <label>Recipe Name:
-                                    <input name="recipeName" type="text" className="form-control" value={this.state.editName} onChange={(e) => this.setState({editName: e.target.value})}/>
-                                </label>
-                                <label htmlFor="editor">Recipe Markdown (Markdown Previewer <a target="_blank" rel="noreferrer" href="https://link477.com/fccResponsiveWebDesign/markdownPreviewer.html">here</a>):</label>
-                                <textarea id="editor" rows="10" cols="150" className="form-control" onChange={(e) => this.setState({editRecipe: e.target.value})} value={this.state.editRecipe}>
-                                    
-                                </textarea>
-                            </div>
-                            <hr />
-                            <div className="myActions">
-                                <button type="button" className="btn btn-primary" onClick={this.saveModal}>{this.state.action == 'Delete'? 'Confirm' : 'Save'}</button>
-                                <button type="button" className="btn btn-warning" onClick={this.showModalEvent}>Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                ) : null}
+                ))}
             </div>
-        );
-    }
+            <br />
+            <div className="fixedBox60">
+                <h2>{recipes.length > currentItem ? recipes[currentItem].name : ''}</h2>
+                <div className="container-fluid" dangerouslySetInnerHTML={{__html: updatePreview()}}></div>
+            </div>
+            <div className="center">
+                <button type="button" className="btn btn-info" data-toggle="modal" data-target="#myModal" onClick={addAction}>Add</button>
+                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal" onClick={editAction}>Edit</button>
+                <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#myModal" onClick={deleteAction}>Delete</button>
+            </div>
+            {/*Modal */}
+            {showModal? (
+                <div className="myModalBackground">
+                    <div className="myModal">
+                        <h2>{action}
+                            <span className="myCloseBtn" onClick={() => setShowModal(false)}>
+                                &times;
+                            </span>
+                        </h2>
+                        <hr/>
+                        <div className="myContent">
+                            <label>Recipe Name:
+                                <input name="recipeName" type="text" className="form-control" value={editName} onChange={(e) => setEditName(e.target.value)}/>
+                            </label>
+                            <label htmlFor="editor">Recipe Markdown (Markdown Previewer <a target="_blank" rel="noreferrer" href="/fccResponsiveWebDesign/markdownPreviewer.html">here</a>):</label>
+                            <textarea id="editor" rows="10" cols="150" className="form-control" onChange={(e) => setEditRecipe(e.target.value)} value={editRecipe}>
+                            
+                            </textarea>
+                        </div>
+                        <hr />
+                        <div className="myActions">
+                            <button type="button" className="btn btn-primary" onClick={saveModal}>{action == actions.Delete? 'Confirm' : 'Save'}</button>
+                            <button type="button" className="btn btn-warning" onClick={() => setShowModal(false)}>Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            ) : null}
+        </div>
+    );
 }
+
 
 const domContainer = document.querySelector('#recipeBox');
 // eslint-disable-next-line no-undef
