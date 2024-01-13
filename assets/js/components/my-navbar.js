@@ -21,7 +21,7 @@ class MyNavBar extends HTMLElement {
         brandContainer.className = "navbar-brand";
         brandContainer.href = "/";
         const brandImg = document.createElement("img");
-        brandImg.src = "/assets/images/link477.png";
+        brandImg.src = "https://link477.com/assets/images/link477.png";
         brandImg.alt = "Link477";
         brandImg.className = "site-icon";
         brandContainer.appendChild(brandImg);
