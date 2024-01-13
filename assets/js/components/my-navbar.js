@@ -73,7 +73,7 @@ class MyNavBar extends HTMLElement {
             ["Take Home Projects"],
             ["/pages/weather.html", "Weather"],
             ["/pages/tictactoe.html", "Tic Tac Toe"],
-            ["/pages/recipebox.html", "Recipe Box"],
+            ["https://link477.com/RecipeBox/", "Recipe Box"],
             ["/pages/ponggame.html", "Pong Game"],
             ["/pages/simonGame.html", "Simon Game"],
             ["/fccResponsiveWebDesign/fccForum.html", "Free Code Camp Forum Homepage"],
