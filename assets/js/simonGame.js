@@ -1,82 +1,99 @@
-// eslint-disable-next-line no-unused-vars, no-undef
-let app = new Vue({
-    el: '#app',
-    data: {
-        test: 'hi',
-        strict: false,
-        audioList: [
-            {url: 'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3', id: 'aud0'},
-            {url: 'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3', id: 'aud1'},
-            {url: 'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3', id: 'aud2'},
-            {url: 'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3', id: 'aud3'}
-        ]
-        ,buttonArray: []
-        ,currentStep: 1
-        ,humanStep:0
-        ,correct: true
-    },
-    methods: {
-        simonButton(num, human = false) {
-            console.log('num',num, human, this.humanStep, this.currentStep, this.buttonArray[this.humanStep], this.correct);
-            let aud = document.getElementById('aud' + num);
-            let btn = document.getElementById('btn' + num);
-            btn.classList.add('activeButton');
-            aud.play();
-            setTimeout(() => {btn.classList.remove('activeButton');},500);
-            if (human) {
-                if (num == this.buttonArray[this.humanStep]) {
-                    console.log('num equals buttonarray');
-                    this.correct = true;
-                    this.humanStep++;
-                    if (this.humanStep == this.currentStep) {
-                        if (this.currentStep == 20) {
-                            alert('You won!');
-                            setTimeout(() => {this.reset();},1000);
-                        }
-                        else {
-                            this.currentStep++;
-                            this.humanStep = 0;
-                            setTimeout(() => {this.playSteps();},1000);
-                        }
-                    }
+const buttonArray = [];
+let currentStep = 1;
+let humanStep = 0;
+let strict = false;
+
+/**
+ * @param {HTMLInputElement} ev 
+ */
+// eslint-disable-next-line no-unused-vars
+function setStrict(ev) {
+    strict = ev.checked;
+}
+
+/**
+ * @param {number} newVal 
+ */
+function setCurrentStep(newVal) {
+    currentStep = newVal;
+    const currentStepSpn = document.getElementById('currentStep');
+    if (currentStepSpn) {
+        currentStepSpn.textContent = currentStep;
+    }
+}
+
+function generateButtonArray() {
+    buttonArray.length = 0;
+    setCurrentStep(1);
+    humanStep = 0;
+    setCorrect(true);
+    for (let i = 0; i < 20; i++) {
+        buttonArray.push(Math.floor(Math.random() * 4));
+    }
+}
+
+function simonButton(num, human = false) {
+    console.log('num',num, human, humanStep, currentStep, buttonArray[humanStep]);
+    const aud = document.getElementById('aud' + num);
+    const btn = document.getElementById('btn' + num);
+    btn.classList.add('activeButton');
+    aud.play();
+    setTimeout(() => {btn.classList.remove('activeButton');}, 500);
+    if (human) {
+        if (num == buttonArray[humanStep]) {
+            console.log('num equals buttonArray');
+            setCorrect(true);
+            humanStep++;
+            if (humanStep === currentStep) {
+                if (currentStep === 20) {
+                    alert('You won!');
+                    setTimeout(() => {reset();}, 1000);
                 }
                 else {
-                    //mistake made
-                    console.log('mistake made');
-                    this.correct = false;
-                    if (this.strict) {
-                        console.log('mistake made strict');
-                        setTimeout(() => {this.reset();},1000);
-                    }
-                    else {
-                        console.log('mistake made non-strict');
-                        this.humanStep = 0;
-                        setTimeout(() => {this.playSteps();},1000);
-                    }
+                    currentStep++;
+                    setCurrentStep(currentStep);
+                    humanStep = 0;
+                    setTimeout(() => {playSteps();}, 1000);
                 }
             }
-        },
-        generateButtonArray() {
-            this.buttonArray = [];
-            this.currentStep = 1;
-            this.humanStep = 0;
-            this.correct = true;
-            for (let i = 0; i < 20; i++) {
-                this.buttonArray.push(Math.floor(Math.random() * 4));
-            }
-        },
-        playSteps() {
-            for(let i = 0; i < this.currentStep; i++) {
-                setTimeout(() => {this.simonButton(this.buttonArray[i]);}, 1000 * i);
-            }
-        },
-        reset() {
-            this.generateButtonArray();
-            this.playSteps();
         }
-    },
-    mounted(){
-        this.generateButtonArray();
-        this.playSteps();
+        else {
+            // mistake made
+            console.log('mistake made');
+            setCorrect(false);
+            if (strict) {
+                console.log('mistake made strict');
+                setTimeout(() => {this.reset();},1000);
+            }
+            else {
+                console.log('mistake made non-strict');
+                humanStep = 0;
+                setTimeout(() => {this.playSteps();},1000);
+            }
+        }
     }
-});
+}
+
+function playSteps() {
+    for(let i = 0; i < currentStep; i++) {
+        setTimeout(() => {simonButton(buttonArray[i]);}, 1000 * i);
+    }
+}
+
+function reset() {
+    setCorrect(true);
+    generateButtonArray();
+    playSteps();
+}
+
+/**
+ * @param {boolean} value 
+ */
+function setCorrect(value) {
+    const correctDiv = document.getElementById('correct');
+    if (correctDiv) {
+        correctDiv.style.display = value? 'none' : 'block';
+    }
+}
+
+reset();
