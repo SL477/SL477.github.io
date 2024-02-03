@@ -1,9 +1,8 @@
 ---
-layout: vue_page
+layout: page
 title: Advanced Algorithms
 permalink: /dataStructuresAlgorithms/advancedAlgorithms
 ---
-{% raw %}
 <p>My answers to the exercises in <a href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms &amp; Data Structures with JS</a></p>
 
 <div id="app">
@@ -11,43 +10,34 @@ permalink: /dataStructuresAlgorithms/advancedAlgorithms
     <fieldset>
         <legend>Brute force algorithm to find the longest common substring</legend>
         <label for="string1">String 1:</label>
-        <input v-model="string1" type="text" class="form-control" id="string1" name="string1"/>
+        <input type="text" class="form-control" id="string1" name="string1" value="test"/>
         <label for="string2">String 2:</label>
-        <input v-model="string2" type="text" class="form-control" id="string2" name="string2"/>
-        <button v-on:click="bruteForceSubstring" class="btn btn-primary">Find Longest Substring</button>
-        <p>Result: {{ longsubstring }}</p>
+        <input type="text" class="form-control" id="string2" name="string2" value="the short brown fox jumped over the lazy dog"/>
+        <button type="button" onclick="bruteForceSubstring()" class="btn btn-primary">Find Longest Substring</button>
+        <p>Result: <span id="longSubString"></span></p>
     </fieldset>
     <h3>Exercise 2</h3>
     <fieldset>
         <legend>Knapsack problem</legend>
         <label for="capacity">Capacity:</label>
-        <input v-model="capacity" type="number" id="capacity" name="capacity" class="form-control"/>
-        <div v-for="(item, itemIndex) in potentialItems">
-            <h4>Item {{itemIndex + 1}}</h4>
-            <label for="name">Name:</label>
-            <input v-model="item.name" type="text" class="form-control" id="name"/>
-            <label for="value">Value:</label>
-            <input v-model="item.value" type="number" class="form-control" id="value"/>
-            <label for="weight">Weight:</label>
-            <input v-model="item.weight" type="number" class="form-control" id="weight"/>
-        </div>
-        <button class="btn btn-primary" v-on:click="addPotentialItem">Add Potential Item</button>
-        <button class="btn btn-primary" v-on:click="knapSackSolution">Solve Knapsack</button>
-        <p>Max value: {{knapsackResult}}</p>
+        <input type="number" id="capacity" name="capacity" class="form-control" value="16"/>
+        <div id="potentialItems"></div>
+        <button type="button" class="btn btn-primary" onclick="addPotentialItem()">Add Potential Item</button>
+        <button type="button" class="btn btn-primary" onclick="knapSackSolution()">Solve Knapsack</button>
+        <p>Max value: <span id="knapsackResult"></span>{{knapsackResult}}</p>
     </fieldset>
     <h3>Exercise 3</h3>
     <fieldset>
         <legend>Coin Changing</legend>
         <label for="amount">Amount:</label>
-        <input type="number" v-model="amount" class="form-control" id="amount"/>
-        <label for="useDimes">Use Dimes (10c):</label>
-        <input type="checkbox" v-model="useDimes" id="useDimes"/><br/>
-        <button class="btn btn-primary" v-on:click="workoutChange">Solution</button>
-        <div v-for="coin in coins">
-            <p v-if="coin.quantity > 0">Number of ${{coin.amt}}: {{coin.quantity}}</p>
+        <input type="number" class="form-control" id="amount" value="0.3"/>
+        <div class="form-check">
+            <label for="useDimes" class="form-check-label">Use Dimes (10c)</label>
+            <input type="checkbox" id="useDimes" class="form-check-input"/>
         </div>
+        <button type="button" class="btn btn-primary" onclick="workoutChange()">Solution</button>
+        <div id="coins"></div>
     </fieldset>
 </div>
 
 <script src="/assets/js/advancedAlgorithms.js" async></script>
-{% endraw %}
