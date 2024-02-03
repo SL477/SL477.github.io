@@ -24,6 +24,9 @@ class MyNavBar extends HTMLElement {
         brandImg.src = "https://link477.com/assets/images/link477.png";
         brandImg.alt = "Link477";
         brandImg.className = "site-icon";
+        brandImg.height = 50;
+        brandImg.width = 50;
+        brandImg.style.backgroundColor = "white";
         brandContainer.appendChild(brandImg);
         mainContainer.appendChild(brandContainer);
 
