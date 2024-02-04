@@ -48,77 +48,57 @@ permalink: fccresponsivewebdesign/scatterplot
 </div>
 
 <script>
-    //Variables
+    // Variables
     const w = 1000;
     const h = 500;
     const padding = 50;
 
-    //Get the data
+    // Get the data
     const req = new XMLHttpRequest();
     req.open("GET", 'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json', true);
     req.send();
     req.onload = function() {
         const json = JSON.parse(req.responseText);
-        //console.log(json);
         visualize(json);
     };
 
     function toDate (timeStr, yearStr) {
-        let now = new Date();
-        //now.setYear(yearStr);
+        const now = new Date();
         now.setHours(0);
         now.setMinutes(timeStr.substr(0, timeStr.indexOf(":")));
-        
         now.setSeconds(timeStr.substr(timeStr.indexOf(":") + 1));
-        
         return now;
     };
 
     function visualize(dataset) {
-        /*d3.select("#holder")
-        .append("h1")
-        .text("test")*/
-        
-        let dat = dataset.map(d => {
-            //console.log(d);
-            let ret = {};
-            ret["Time"] = d.Time;
-            ret["Place"] = d.Place;
-            ret["Seconds"] = d.Seconds;
-            ret["Name"] = d.Name;
-            ret["Year"] = d.Year;
-            ret["Nationality"] = d.Nationality;
-            ret["Doping"] = d.Doping;
-            ret["URL"] = d.URL;
-            ret["timeObj"] = toDate(ret.Time, ret.Year);
-            return ret;
+        const dat = dataset.map(d => {
+            return {
+                Time: d.Time,
+                Place: d.Place,
+                Seconds: d.Seconds,
+                Name: d.Name,
+                Year: d.Year,
+                Nationality: d.Nationality,
+                Doping: d.Doping,
+                URL: d.URL,
+                timeObj: toDate(d.Time, d.Year),
+            };
         });
-        
-        
-        let xScale = d3.scaleLinear()
-            .domain([d3.min(dat, (d,i) => d.Year) - 1, d3.max(dat,(d, i) => d.Year)])
-            .range([padding, w- padding]);
-        
-        let yScale = d3.scaleTime()
-            .domain([d3.min(dat, (d,i) => d.timeObj), d3.max(dat, (d,i) => d.timeObj)])
+
+        const xScale = d3.scaleLinear()
+            .domain([d3.min(dat, d => d.Year) - 1, d3.max(dat, d => d.Year)])
+            .range([padding, w - padding]);
+
+        const yScale = d3.scaleTime()
+            .domain([d3.min(dat, d => d.timeObj), d3.max(dat, d => d.timeObj)])
             .range([h - padding, padding]);
         
-        let svg = d3.select("#holder")
+        const svg = d3.select("#holder")
             .append("svg")
             .attr("width", w)
             .attr("height", h);
-        
-        //tooltip
-        /*let tooltip = d3.select("body")
-            .append("div")
-            .style("position", "absolute")
-            .style("z-index", "10")
-            .style("visibility", "hidden")
-            .text("a simple tooltip")
-            .attr("class", "tooltip")
-            .attr("id", "tooltip");*/
 
-        let tooltip = d3.select("#holder")
+        const tooltip = d3.select("#holder")
             .append("div")
             .style("opacity", 0)
             .attr("class", "tooltip")
@@ -130,75 +110,38 @@ permalink: fccresponsivewebdesign/scatterplot
             .attr("id", "tooltip")
             .attr("class", "tooltip");
         
-        //Add the circles
+        // Add the circles
         svg.selectAll("circle")
             .data(dat)
             .enter()
             .append("circle")
-            .attr("cx", (d,i) => xScale(d.Year))
-            .attr("cy", (d,i) =>yScale(d.timeObj))
+            .attr("cx", d => xScale(d.Year))
+            .attr("cy", d => yScale(d.timeObj))
             .attr("r", 5)
             .attr("class", "dot")
-            .attr("data-xvalue", (d,i) => {return d.Year;})
-            .attr("data-yvalue", (d,i) => {return d.timeObj;})
-            .style("fill", (d,i) => {
-            if (d.Doping == "") {
-                return "green";
-            }
-            return "red";
-        })
-        .on("mouseover", (d,i) => {
-            console.log("hi");
-            tooltip
-                .style("visibility", "visible")
-                .style("opacity", 1);
-                
-            /*d3.select(this)
-                .style("opacity", 1);*/
-        })
-        .on("mousemove", function (d,i) {
-            tooltip
-                .html(d.Name + ": " + d.Nationality + "<br/>Year:" + d.Year + ", Time: " + d.Time + "<br/><br/>" + d.Doping)
-                .attr("data-year", d.Year)
-                .attr("data-time", d.Time)
-                .style("left", (d3.mouse(this)[0] + 70) + "px")
-                .style("top", (d3.mouse(this)[1]) + "px");
-        })
-        .on("mouseleave", (d,i) => {
-            tooltip
-                .style("visibility", "hidden")
-                .style("opacity", 0);
-            /*d3.select(this)
-            .style("opacity", 0);*/
-        });
-        /*.on("mouseover", function (d) {
-            tooltip.style("opacity", 1);
-                
-            d3.select(this)
-                .style("stroke", "black")
-                .style("opacity", 1)
-        })
-        .on("mousemove", function(d) {
-            tooltip
-                .html((d[0]) + " " + d[2] + " <br/>$" + d[1] + " billion")
-                .style("left", (d3.mouse(this)[0] + 70) + "px")
-                .style("top", (d3.mouse(this)[1]) + "px")
-                .attr("data-gdp", d[1])
-                .attr("data-date", d[4]);
-        })
-        .on("mouseleave", function(d) {
-            tooltip.style("opacity", 0);
-            d3.select(this)
-                .style("stroke", "none");
-        });*/
-        
-        //Legend
-        /*let legend = svg.append("g")
-            .attr("class", "legend")
-            .attr("id", "legend")
-            .attr("x", w - padding)
-            .attr("y", h / 2)
-            .text("test")*/
+            .attr("data-xvalue", d => d.Year)
+            .attr("data-yvalue", d => d.timeObj)
+            .style("fill", d => {
+                return d.Doping == ''? 'green' : 'red';
+            })
+            .on("mouseover", () => {
+                tooltip
+                    .style("visibility", "visible")
+                    .style("opacity", 1);
+            })
+            .on("mousemove", function (d, i) {
+                tooltip
+                    .html(d.Name + ": " + d.Nationality + "<br/>Year:" + d.Year + ", Time: " + d.Time + "<br/><br/>" + d.Doping)
+                    .attr("data-year", d.Year)
+                    .attr("data-time", d.Time)
+                    .style("left", (d3.mouse(this)[0] + 70) + "px")
+                    .style("top", (d3.mouse(this)[1]) + "px");
+            })
+            .on("mouseleave", (d,i) => {
+                tooltip
+                    .style("visibility", "hidden")
+                    .style("opacity", 0);
+            });
         
         //Axes
         const xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d"));
@@ -212,11 +155,10 @@ permalink: fccresponsivewebdesign/scatterplot
             .attr("transform", "translate(" + padding + ",0)")
             .attr("id", "y-axis")
             .call(yAxis);
-        //console.log(xScale(2006))
-        console.log(dat);
+        // console.log(dat);
 
-        //Labels
-        //X label
+        // Labels
+        // X label
         d3.select("svg").append("text")
             .attr("class", "x label")
             .attr("text-anchor", "end")
@@ -225,7 +167,7 @@ permalink: fccresponsivewebdesign/scatterplot
             .attr("y", h - 6)
             .text("Year");
 
-        //Y Label
+        // Y Label
         d3.select("svg").append("text")
             .attr("class", "y label")
             .attr("text-anchor", "end")

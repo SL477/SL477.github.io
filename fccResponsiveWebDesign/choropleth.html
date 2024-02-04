@@ -51,11 +51,10 @@ permalink: fccresponsivewebdesign/choropleth
 
     let data = {};
 
-    //Get Data function
+    // Get Data function
     const getDataJson = (url, variable) => {
         const req = new XMLHttpRequest();
         req.open("GET", url, true);
-        
         req.send();
         req.onload = () => {
             const json = JSON.parse(req.responseText);
@@ -65,7 +64,7 @@ permalink: fccresponsivewebdesign/choropleth
     };
 
     const getEduData = (eduData, fips) => {
-    return eduData.find(o => o.fips == fips);
+        return eduData.find(o => o.fips == fips);
     };
 
     const visualise = (error, eduData, countryData) => {
@@ -76,94 +75,86 @@ permalink: fccresponsivewebdesign/choropleth
         console.log(data);*/
         console.log("countryData", countryData);
         console.log("eduData", eduData);
-        
+
         //SVG
-        let svg = d3.select("#holder")
-        .append("svg")
-        .attr("width", w)
-        .attr("height", h);
-        
+        const svg = d3.select("#holder")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
         //let geojson = topojson.feature(data["countryData"], data["countryData"].objects.countries);
         console.log(countryData.objects.counties);
-        let geojson = topojson.feature(countryData, countryData.objects.counties);
+        const geojson = topojson.feature(countryData, countryData.objects.counties);
         console.log("geojson", geojson);
-        
+
         //colour scale
-        let minEdu = d3.min(eduData, (d,i) => d.bachelorsOrHigher);
-        
-        let maxEdu = d3.max(eduData, (d,i) => d.bachelorsOrHigher);
-        
-        let fillScale = d3.scaleLinear()
+        const minEdu = d3.min(eduData, d => d.bachelorsOrHigher);
+
+        const maxEdu = d3.max(eduData, d => d.bachelorsOrHigher);
+
+        const fillScale = d3.scaleLinear()
             .domain([minEdu, maxEdu])
             .range([1,255]);
-        
-        //Tooltip
-        let tooltip = d3.select("body").append("div")
+
+        // Tooltip
+        const tooltip = d3.select("body").append("div")
             .style("position", "absolute")
             .style("z-index", "10")
             .style("visibility", "hidden")
             .text("test")
             .attr("class", "tooltip")
             .attr("id", "tooltip");
-        
-        //Map
+
+        // Map
         svg.selectAll("path")
             .data(geojson.features)
             .enter()
             .append("path")
             .attr("d", path)
             .attr("class", "county")
-            .attr("data-fips", (d,i) => d.id)
-            .attr("data-education", (d,i) => {
-            return getEduData(eduData, d.id).bachelorsOrHigher;
-        })
-            .style("fill", (d,i) => {
-            let ed = getEduData(eduData, d.id);
-            //fillScale
-            return "rgb(0," + fillScale(ed.bachelorsOrHigher) + ",0)";
-        })
-        .on("mouseover", (d,i) => {
-            let ed = getEduData(eduData, d.id);
-            return tooltip
-                .style("visibility", "visible")
-                .style("left", d3.event.pageX + 20 + "px")
-                .style("top", d3.event.pageY + 20 + "px")
-                .html(ed.area_name + ", " + ed.state + ": " + ed.bachelorsOrHigher + "%")
-                .attr("data-education", ed.bachelorsOrHigher)
-                .style("opacity", 1);
-        })
-        .on("mouseout", (d,i) => {
-            return tooltip.style("visibility", "hidden").style("opacity", 0);
-        });
+            .attr("data-fips", d => d.id)
+            .attr("data-education", d => getEduData(eduData, d.id).bachelorsOrHigher)
+            .style("fill", d => {
+                const ed = getEduData(eduData, d.id);
+                // fillScale
+                return "rgb(0," + fillScale(ed.bachelorsOrHigher) + ",0)";
+            })
+            .on("mouseover", d => {
+                const ed = getEduData(eduData, d.id);
+                return tooltip
+                    .style("visibility", "visible")
+                    .style("left", d3.event.pageX + 20 + "px")
+                    .style("top", d3.event.pageY + 20 + "px")
+                    .html(ed.area_name + ", " + ed.state + ": " + ed.bachelorsOrHigher + "%")
+                    .attr("data-education", ed.bachelorsOrHigher)
+                    .style("opacity", 1);
+            })
+            .on("mouseout", (d,i) => tooltip.style("visibility", "hidden").style("opacity", 0));
         
-        //Legend
-        let h2 = h / 3;
-        let svg2 = d3.select("#legend")
+        // Legend
+        const h2 = h / 3;
+        const svg2 = d3.select("#legend")
             .append("svg")
             .attr("width", w)
             .attr("height", h2);
         
-        let data2 = [0, 0.25, 0.5, 0.75, 1];
+        const data2 = [0, 0.25, 0.5, 0.75, 1];
         
         svg2.selectAll("rect")
             .data(data2)
             .enter()
             .append("rect")
-            .style("fill", (d,i) => {
-            return "rgb(0," + (d * 255) + ",0)"})
+            .style("fill", (d,i) => "rgb(0," + (d * 255) + ",0)")
             .attr("width", w / 5)
             .attr("y", 0)
-            .attr("x", (d,i) => (w / 5) * i )
+            .attr("x", (d, i) => (w / 5) * i )
             .attr("height", h2)
             .append("title")
-            .text((d,i) => (maxEdu - minEdu) * d + minEdu)
+            .text(d => (maxEdu - minEdu) * d + minEdu)
         };
 
-        //getDataJson("https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/for_user_education.json", "eduData");
-        //getDataJson("https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json", "countryData");
-
         d3.queue()
-        .defer(d3.json, "https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/for_user_education.json")
-        .defer(d3.json, "https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json")
-        .await(visualise);
+            .defer(d3.json, "https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/for_user_education.json")
+            .defer(d3.json, "https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json")
+            .await(visualise);
 </script>

@@ -8,7 +8,7 @@ permalink: fccresponsivewebdesign/markdownpreviewer
 
 <style>
     h1 {
-	text-align: center;
+	    text-align: center;
     }
 </style>
 
@@ -17,63 +17,63 @@ permalink: fccresponsivewebdesign/markdownpreviewer
 <div id="edit" class="container-fluid">
     <label for="editor">Raw Markdown:</label>
     <textarea id="editor" rows="10" cols="150" class="form-control" onpropertychange="updatePreview();" onkeyup="updatePreview();">
-
-    </textarea>
-</div>
-<div id="preview" class="container-fluid">
-
-</div>
-
-<script>
-    const renderer1 = new marked.Renderer();
-    renderer1.link = function (href, title, text) {
-	return '<a target="_blank" href="' + href + '">' + text + '</a>';
-    };
-
-    const markedOptions = {
-	gfm: true,
-	breaks: true,
-	renderer: renderer1
-    };
-
-    const updatePreview = () => {
-	//$("#preview").html($("#editor").val());
-	var text = marked($("#editor").val(), markedOptions);
-	//console.log(text);
-	console.log($("#editor").val());
-	$("#preview").html(text);
-    };
-
-let initialText = 
-`# Markdown Previewer
+# Markdown Previewer
 ## By [Link477](https://Link477.com/)
-**Here** is the sort of code you can write: \`<p>Hi</p>\`
+**Here** is the sort of code you can write: `<p>Hi</p>`
 
 Alternatively you can have multiple lines of code:
-\`\`\`
+```
 <div>
-  <p>hi</p>
+    <p>hi</p>
 </div>
-\`\`\`
+```
 
-* \` - lets you escape code
-* # - h1
-* ## - h2
-* ### - h3
-* #### - h4
-* ##### - h5
-* ###### - h6
+* ` - lets you escape code
+* \# - h1
+* \## - h2
+* \### - h3
+* \#### - h4
+* \##### - h5
+* \###### - h6
 
 > There is a great disturbance in the force.
 > I have felt it.
 > We have a new enemy. The young rebel who destroyed the Death Star.
- > He\'s just a boy, Obi-Wan can no longer help him.
+    > He's just a boy, Obi-Wan can no longer help him.
 
 ![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
-`;
+    </textarea>
+</div>
+<div id="preview" class="container-fluid"></div>
 
-    $(document).ready(function(){
-	$("#editor").text(initialText);
-	updatePreview();
-    });
+<script>
+    const renderer1 = new marked.Renderer();
+    renderer1.link = function (href, title, text) {
+	    return '<a target="_blank" href="' + href + '">' + text + '</a>';
+    };
+
+    const markedOptions = {
+        gfm: true,
+        breaks: true,
+        renderer: renderer1
+    };
+
+    const updatePreview = () => {
+        const previewElement = document.getElementById('preview');
+        if (previewElement) {
+            const editorElement = document.getElementById('editor');
+            if (editorElement && editorElement.value) {
+                const rawMarkDown = editorElement.value;
+                const text = marked(rawMarkDown, markedOptions);
+                console.log(rawMarkDown);
+
+                previewElement.innerHTML = text;
+            }
+            else {
+                previewElement.innerHTML = '';
+            }
+        }
+    };
+
+    updatePreview();
 </script>

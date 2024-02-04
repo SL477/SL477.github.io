@@ -26,14 +26,14 @@ permalink: fccresponsivewebdesign/pomodoroclock
     <fieldset>
         <label id="break-label" for="break-length">Break Length:</label>
         <input id="break-length" type="number" value="5" min="1" max="60" class="form-control"/>
-        <button id="break-decrement" onclick="breakDecrement(-1)">&#8897;</button>
-        <button id="break-increment" onclick="breakDecrement(1)">&#8896;</button>
+        <button type="button" id="break-decrement" onclick="breakDecrement(-1)" aria-label="down">&#8897;</button>
+        <button type="button" id="break-increment" onclick="breakDecrement(1)" aria-label="up">&#8896;</button>
         <br/>
         
-        <label id="session-label">Session Length:</label>
+        <label id="session-label" for="session-length">Session Length:</label>
         <input id="session-length" type="number" value="25" min="1" max="60" class="form-control"/>
-        <button id="session-decrement" onclick="sessionDecrement(-1)">&#8897;</button>
-        <button id="session-increment" onclick="sessionDecrement(1)">&#8896;</button>
+        <button type="button" id="session-decrement" onclick="sessionDecrement(-1)" aria-label="down">&#8897;</button>
+        <button type="button" id="session-increment" onclick="sessionDecrement(1)" aria-label="up">&#8896;</button>
     </fieldset>
     
     <div id="timerBox" class="container-fluid">
@@ -42,8 +42,8 @@ permalink: fccresponsivewebdesign/pomodoroclock
       <br/>
       <span id="time-left">25:00</span>
       <br/>
-      <button id="start_stop" onclick="startStop()">&#8883;||</button>
-      <button id="reset" onclick="reseter()">&#8635;</button>
+      <button type="button" id="start_stop" onclick="startStop()" aria-label="start/stop">&#8883;||</button>
+      <button type="button" id="reset" onclick="reseter()" aria-label="reset">&#8635;</button>
     </div>
     <audio id="beep" src="/assets/audio/fccResponsiveWebDesign_audio_BeepSound.wav"></audio>
 </div>

@@ -38,190 +38,130 @@ permalink: fccresponsivewebdesign/treemap
 <div id="legend"></div>
 
 <script>
-    //Variables
+    // Variables
     const w = 1000;
     const h = 500;
     const padding = 50;
 
-    //Movie Sales
+    // Movie Sales
     d3.json("https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-data.json", (data) => {
-    console.log("data",data);
-    
-    let svg = d3.select("#holder")
-        .append("svg")
-        .attr("width", w)
-        .attr("height", h);
-    
-    //Flatten the data
-    let dat = [];
-    data.children.forEach((e) => {
-        //console.log(e);
-        e.children.forEach((mov) => {
-        //console.log(mov);
-        dat.push(mov);
-        });
-    });
-    
-    //Colours
-    let colorDict = {
-        "Action": "blue",
-        "Drama" : "yellow",
-        "Adventure": "green",
-        "Family": "purple",
-        "Animation": "red",
-        "Comedy": "brown",
-        "Biography": "orange"
-    };
-    
-    console.log("dat", dat);
-    
-    //Give the data to the cluster layout
-    let root = d3.hierarchy(data)
-        .sum((d) => {
-            //console.log("d",d)
-            //console.log("value", d.value)
-            return d.value;
-        }
-    );
-    console.log("root",root)
-    //calculate the x & y values for the treemap
-    d3.treemap()
-        .size([w,h])
-        .padding(1)
-        (root)
-    console.log("root",root);
-    
-    //Tooltip
-    let tooltip = d3.select("body")
-        .append("div")
-        .style("position", "absolute")
-        .style("z-index", "10")
-        .style("visibility", "hidden")
-        .text("a simple tooltip")
-        .attr("class", "tooltip")
-        .attr("id", "tooltip");
-    
-    //Start adding rectangles
-    /* svg.selectAll("rect")
-        .data(root.leaves())
-        .enter()
-        .append("rect")
-        .attr("x", (d,i) => d.x0)
-        .attr("y", (d,i) => d.y0)
-        .attr("width", (d,i) => {
-        return d.x1 - d.x0;
-    })
-        .attr("height", (d,i) => {
-        return d.y1 - d.y0;
-    })
-    .style("fill", (d,i) => {
-        return colorDict[d.data.category];
-    })
-    .attr("class", "tile")
-    .attr("data-name", (d,i) => {
-        //console.log("d - name", d.data.name)
-        return d.data.name;
-    })
-    .attr("data-category", (d,i) => d.data.category)
-    .attr("data-value", (d,i) => d.data.value)
-    .on("mouseover", (d,i) => {
-        return tooltip
-        .style("visibility", "visible")
-        .style("left", d3.event.pageX + 20 + "px")
-        .style("top", d3.event.pageY + 20 + "px")
-        .html("Name: " + d.data.name + "<br/>Category: " + d.data.category + "<br/>Value: " + d.data.value)
-        .attr("data-value", d.data.value)
-        .attr("data-name", d.data.name)
-        .attr("data-category", d.data.category)
-    })
-    .on("mouseout", (d,i) => {
-        return tooltip.style("visibility", "hidden");
-    })*/
-    
-    let box = svg.selectAll("g")
-        .data(root.leaves())
-        .enter()
-        .append("g");
-    
-    //Rect
-    box.append("rect")
-        .attr("x", (d,i) => d.x0)
-        .attr("y", (d,i) => d.y0)
-        .attr("width", (d,i) => {
-        return d.x1 - d.x0;
-    })
-        .attr("height", (d,i) => {
-        return d.y1 - d.y0;
-    })
-    .style("fill", (d,i) => {
-        return colorDict[d.data.category];
-    })
-    .attr("class", "tile")
-    .attr("data-name", (d,i) => {
-        //console.log("d - name", d.data.name)
-        return d.data.name;
-    })
-    .attr("data-category", (d,i) => d.data.category)
-    .attr("data-value", (d,i) => d.data.value)
-    .on("mouseover", (d,i) => {
-        return tooltip
-        .style("visibility", "visible")
-        .style("left", d3.event.pageX + 20 + "px")
-        .style("top", d3.event.pageY + 20 + "px")
-        .html("Name: " + d.data.name + "<br/>Category: " + d.data.category + "<br/>Value: " + d.data.value)
-        .attr("data-value", d.data.value)
-        .attr("data-name", d.data.name)
-        .attr("data-category", d.data.category)
-        .style("opacity", 1);
-    })
-    .on("mouseout", (d,i) => {
-        return tooltip.style("visibility", "hidden").style("opacity", 0);
-    });
-    
-    //Text
-    box.append("text")
-        .attr("x", (d,i) => d.x0 + 10)
-        .attr("y", (d,i) => d.y0 + 10)
-        .text((d,i) => d.data.name)
-        .attr("dy", ".35em")
-        .attr("class", "dynamicText");
+        console.log("data", data);
 
-    $(".dynamicText").fitText(0.8, { minFontSize: '12px', maxFontSize: '36px' });
-    
-    //Legend
-    let h2 = h / 5;
-    let svg2 = d3.select("#legend")
-        .append("svg")
-        .attr("width", w)
-        .attr("height", h2);
-    
-    let dat2 = ["Action", "Drama", "Adventure", "Family", "Animation", "Comedy", "Biography"];
-    
-    let box2 = svg2.selectAll("g")
-        .data(dat2)
-        .enter()
-        .append("g");
-    
-    //Legend Items
-    box2.append("rect")
-        .style("fill", (d,i) => {
-        return colorDict[d];
-    })
-    .attr("width", w / 7)
-    .attr("y", 0)
-    .attr("x", (d,i) => {
-        return w / 7 * i;
-    })
-    .attr("height", h2)
-    .attr("class", "legend-item");
-    
-    //Text
-    box2.append("text")
-        .attr("x", (d,i) => {
-        return w / 7 * i + 10;
-    })
-        .attr("y", 10)
-        .text((d,i) => d)
-        .attr("dy", ".35em");
-    })
+        const svg = d3.select("#holder")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+        // Flatten the data
+        let dat = [];
+        data.children.forEach((e) => {
+            //console.log(e);
+            e.children.forEach((mov) => {
+                //console.log(mov);
+                dat.push(mov);
+            });
+        });
+        
+        // Colours
+        const colorDict = {
+            "Action": "blue",
+            "Drama" : "yellow",
+            "Adventure": "green",
+            "Family": "purple",
+            "Animation": "red",
+            "Comedy": "brown",
+            "Biography": "orange"
+        };
+        
+        console.log("dat", dat);
+        
+        //Give the data to the cluster layout
+        const root = d3.hierarchy(data).sum((d) => d.value);
+        console.log("root", root)
+        // calculate the x & y values for the treemap
+        d3.treemap()
+            .size([w,h])
+            .padding(1)
+            (root)
+        console.log("root",root);
+
+        // Tooltip
+        const tooltip = d3.select("body")
+            .append("div")
+            .style("position", "absolute")
+            .style("z-index", "10")
+            .style("visibility", "hidden")
+            .text("a simple tooltip")
+            .attr("class", "tooltip")
+            .attr("id", "tooltip");
+
+        const box = svg.selectAll("g")
+            .data(root.leaves())
+            .enter()
+            .append("g");
+
+        // Rect
+        box.append("rect")
+            .attr("x", d => d.x0)
+            .attr("y", d => d.y0)
+            .attr("width", d => d.x1 - d.x0)
+            .attr("height", d => d.y1 - d.y0)
+            .style("fill", d => colorDict[d.data.category])
+            .attr("class", "tile")
+            .attr("data-name", d => d.data.name)
+            .attr("data-category", d => d.data.category)
+            .attr("data-value", d => d.data.value)
+            .on("mouseover", d => {
+                return tooltip
+                    .style("visibility", "visible")
+                    .style("left", d3.event.pageX + 20 + "px")
+                    .style("top", d3.event.pageY + 20 + "px")
+                    .html("Name: " + d.data.name + "<br/>Category: " + d.data.category + "<br/>Value: " + d.data.value)
+                    .attr("data-value", d.data.value)
+                    .attr("data-name", d.data.name)
+                    .attr("data-category", d.data.category)
+                    .style("opacity", 1);
+            })
+            .on("mouseout", d => tooltip.style("visibility", "hidden").style("opacity", 0));
+        
+        // Text
+        box.append("text")
+            .attr("x", d => d.x0 + 10)
+            .attr("y", d => d.y0 + 10)
+            .text(d => d.data.name)
+            .attr("dy", ".35em")
+            .attr("class", "dynamicText");
+
+        $(".dynamicText").fitText(0.8, { minFontSize: '12px', maxFontSize: '36px' });
+
+        // Legend
+        const h2 = h / 5;
+        const svg2 = d3.select("#legend")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h2);
+
+        const dat2 = ["Action", "Drama", "Adventure", "Family", "Animation", "Comedy", "Biography"];
+
+        const box2 = svg2.selectAll("g")
+            .data(dat2)
+            .enter()
+            .append("g");
+
+        // Legend Items
+        box2.append("rect")
+            .style("fill", d => colorDict[d])
+            .attr("width", w / 7)
+            .attr("y", 0)
+            .attr("x", (d, i) => w / 7 * i)
+            .attr("height", h2)
+            .attr("class", "legend-item");
+
+        // Text
+        box2.append("text")
+            .attr("x", (d,i) => w / 7 * i + 10)
+            .attr("y", 10)
+            .text(d => d)
+            .attr("dy", ".35em");
+    });
 </script>

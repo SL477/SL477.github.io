@@ -48,55 +48,44 @@ permalink: fccresponsivewebdesign/heatmap
     req.send();
     req.onload = function() {
         const json = JSON.parse(req.responseText);
-        //console.log(json);
         visualize(json);
     };
 
     function visualize(dataset) {
-        let svg = d3.select("#holder")
-        .append("svg")
-        .attr("width", w)
-        .attr("height", h);
+        const svg = d3.select("#holder")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
         
-        let temp = document.getElementById("temp");
+        const temp = document.getElementById("temp");
         temp.innerHTML = dataset.baseTemperature;
-        //console.log(dataset.baseTemperature)
         
-        let dat = dataset.monthlyVariance;
+        const dat = dataset.monthlyVariance;
         
-        //Scales
-        //Y months
-        //let yScale = d3.scaleLinear()
-        let yScale = d3.scaleBand()
+        // Scales
+        // Y months
+        const yScale = d3.scaleBand()
             .domain([0,1,2,3,4,5,6,7,8,9,10, 11])
-            .range([h - padding,padding])
+            .range([h - padding,padding]);
     
-        //X years
-        let minYear = d3.min(dat, (d,i) => d.year);
-        let maxYear = d3.max(dat, (d,i) => d.year);
-        let xScale = d3.scaleLinear()
+        // X years
+        const minYear = d3.min(dat, d => d.year);
+        const maxYear = d3.max(dat, d => d.year);
+        const xScale = d3.scaleLinear()
             .domain([minYear, maxYear + 1])
-            .range([padding, w - padding])
+            .range([padding, w - padding]);
     
-        //Z variance
-        let minVar = d3.min(dat, (d,i) => d.variance);
-        let maxVar = d3.max(dat, (d,i) => d.variance);
-        let zScale = d3.scaleLinear()
+        // Z variance
+        const minVar = d3.min(dat, d => d.variance);
+        const maxVar = d3.max(dat, d => d.variance);
+        const zScale = d3.scaleLinear()
             .domain([minVar, maxVar])
             .range([0,255]);
     
-        let mnthLabels = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", ""];
+        const monthLabels = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", ""];
         
         //Tooltip
-        /*let tooltip = d3.select("body")
-            .append("div")
-            .style("position", "absolute")
-            .style("z-index", "10")
-            .style("visibility", "hidden")
-            .text("test")
-            .attr("class", "tooltip")
-            .attr("id", "tooltip")*/
-        let tooltip = d3.select("#holder")
+        const tooltip = d3.select("#holder")
             .append("div")
             .style("opacity", 0)
             .attr("class", "tooltip")
@@ -108,68 +97,52 @@ permalink: fccresponsivewebdesign/heatmap
             .attr("id", "tooltip")
             .attr("class", "tooltip");
     
-        //Rectangles
+        // Rectangles
         svg.selectAll("rect")
             .data(dat)
             .enter()
             .append("rect")
-            .attr("x", (d,i) => {
-            return xScale(d.year);
-        })
-            .attr("y", (d,i) => {
-            return yScale(d.month - 1) //- (h - padding) / 24;
-        })
+            .attr("x", d => xScale(d.year))
+            .attr("y", d => yScale(d.month - 1))
             .attr("width", w / (maxYear - minYear))
-            .attr("height", (h - padding)/12)
-            .style("fill", (d,i) => {
-            return "rgb(" + zScale(d.variance) + ",0,0)";
-        })
+            .attr("height", (h - padding) / 12)
+            .style("fill", d => "rgb(" + zScale(d.variance) + ",0,0)")
             .attr("class", "cell")
-            .attr("data-month", (d,i) => {return d.month - 1;})
-            .attr("data-year", (d,i) => d.year)
-            .attr("data-temp", (d,i) => dataset.baseTemperature + d.variance)
+            .attr("data-month", d => d.month - 1)
+            .attr("data-year", d => d.year)
+            .attr("data-temp", d => dataset.baseTemperature + d.variance)
             .on("mouseover", (d,i) => {
                 return tooltip
                     .style("visibility", "visible")
                     .style("left", d3.event.pageX + 20 + "px")
                     .style("top", d3.event.pageY + 20 + "px")
-                    .html(d.year + " - " + mnthLabels[d.month - 1] + "<br/>" + (dataset.baseTemperature + d.variance).toFixed(1) + "°C<br/>" + d.variance.toFixed(1) + "°C")
+                    .html(d.year + " - " + monthLabels[d.month - 1] + "<br/>" + (dataset.baseTemperature + d.variance).toFixed(1) + "°C<br/>" + d.variance.toFixed(1) + "°C")
                     .attr("data-year", d.year)
                     .attr("data-temp", dataset.baseTemperature + d.variance)
                     .style("opacity", 1);
-        })
-        .on("mouseout", (d,i) => {
-            return tooltip
-            .style("visibility", "hidden").style("opacity", 0);
-        });
-    
-        //console.log(w / (maxYear - minYear))
+            })
+            .on("mouseout", () => {
+                return tooltip
+                    .style("visibility", "hidden").style("opacity", 0);
+            });
         
-        //Axes
-        //x axis year
+        // Axes
+        // x axis year
         const xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d"));
         svg.append("g")
             .attr("transform", "translate(0, " + (h - padding) + ")")
             .attr("id", "x-axis")
             .call(xAxis);
-        
-        //console.log(xScale(2006))
-        
-        
-        
-        //y axis month
-        const yAxis = d3.axisLeft(yScale).tickFormat((d,i) => {
-            console.log(mnthLabels[d]);
-            console.log(d);
-            return mnthLabels[d];
-        });
+
+        // y axis month
+        const yAxis = d3.axisLeft(yScale).tickFormat(d => monthLabels[d]);
         svg.append("g")
             .attr("transform", "translate(" + padding + ",0)")
             .attr("id", "y-axis")
             .call(yAxis);
 
-        //Labels
-        //X label
+        // Labels
+        // X label
         d3.select("svg").append("text")
             .attr("class", "x label")
             .attr("text-anchor", "end")
@@ -189,28 +162,26 @@ permalink: fccresponsivewebdesign/heatmap
             .attr("transform", "rotate(-90)")
             .text("Month");
         
-        console.log(dataset);
+        // console.log(dataset);
         
         //Legend
-        let svg2 = d3.select("#legend")
-        .append("svg")
-        .attr("width", w)
-        .attr("height", h / 3);
+        const svg2 = d3.select("#legend")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h / 3);
     
-        let d2 = [0, 0.25, 0.5, 0.75, 1];
+        const d2 = [0, 0.25, 0.5, 0.75, 1];
         
         svg2.selectAll("rect")
             .data(d2)
             .enter()
             .append("rect")
-            .style("fill", (d,i) => {
-                return "rgb(" + (d * 255) + ",0,0)";
-            })
+            .style("fill", d => "rgb(" + (d * 255) + ",0,0)")
             .attr("width", w + 1 / d2.length)
             .attr("x", (d,i) => (w - 1) * d)
             .attr("y", 0)
             .attr("height", h / 3)
             .append("title")
             .text((d,i) => d)
-    };
+        };
 </script>
