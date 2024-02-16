@@ -20,11 +20,7 @@ Use "bundle info --path minima" to get the original templates to update
 
 ## React
 
-To build use
-
-```bash
-npm run-script watcher
-```
+The React pages now live on [my react repo](https://github.com/SL477/Link477-React) and are live on [its pages](https://link477.com/Link477-React/).
 
 ## FOAF file
 
