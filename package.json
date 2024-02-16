@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watcher": "npx babel --watch assets/js/reactsrc --out-dir assets/js/react --presets react-app/prod"
+    "watcher": "npx babel --watch assets/js/reactsrc --out-dir assets/js/react --presets react-app/prod",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -21,12 +22,7 @@
     "url": "https://github.com/SL477/SL477.github.io/issues"
   },
   "homepage": "https://github.com/SL477/SL477.github.io#readme",
-  "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-react-app": "^3.1.2"
-  },
   "devDependencies": {
-    "eslint": "^8.26.0",
-    "eslint-plugin-react": "^7.31.10"
+    "eslint": "^8.56.0"
   }
 }
