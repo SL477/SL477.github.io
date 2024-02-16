@@ -74,13 +74,13 @@ class MyNavBar extends HTMLElement {
             ["/fccresponsivewebdesign/choropleth", "Choropleth Map"],
             ["/fccresponsivewebdesign/treemap", "Treemap Diagram"],
             ["Take Home Projects"],
-            ["/pages/weather", "Weather"],
-            ["/pages/tictactoe", "Tic Tac Toe"],
+            ["https://link477.com/Link477-React/#/weather", "Weather"],
+            ["https://link477.com/Link477-React/#/tictactoe", "Tic Tac Toe"],
             ["https://link477.com/RecipeBox/", "Recipe Box"],
             ["/pages/ponggame", "Pong Game"],
             ["/pages/simonGame", "Simon Game"],
             ["/fccresponsivewebdesign/fccforum", "Free Code Camp Forum Homepage"],
-            ["/pages/gameoflife", "Game of Life"],
+            ["https://link477.com/Link477-React/#/gameoflife", "Game of Life"],
             ["Other Projects"],
             ["/pages/jspianokeyboard", "JavaScript Keyboard"]
         ];
@@ -89,8 +89,8 @@ class MyNavBar extends HTMLElement {
         // Odin Project
         const odinList = [
             ["/pages/etchasketch.html", "Etch A Sketch"],
-            ["/pages/rockPaperScissors.html", "Rock, Paper, Scissors"],
-            ["/pages/battleship.html", "Battleship"]
+            ["https://link477.com/Link477-React/#/rockPaperScissors", "Rock, Paper, Scissors"],
+            ["https://link477.com/Link477-React/#/battleship", "Battleship"]
         ];
         collapseList.appendChild(this.createSection("Project Odin", odinList));
 
@@ -103,7 +103,7 @@ class MyNavBar extends HTMLElement {
         collapseList.appendChild(this.createSingleNavItem("/pages/modelrailway.html", "Model Railway"));
 
         const dataStructList = [
-            ["/dataStructuresAlgorithms/arrays.html", "Arrays"],
+            ["https://link477.com/Link477-React/#/arrays", "Arrays"],
             ["/dataStructuresAlgorithms/lists.html", "Lists"],
             ["/dataStructuresAlgorithms/queues.html", "Queues"],
             ["/dataStructuresAlgorithms/linkedLists.html", "Linked Lists"],
