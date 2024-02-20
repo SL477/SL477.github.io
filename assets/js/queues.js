@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+
 class Queue {
     constructor() {
         this.dataStore = [];
@@ -77,12 +77,12 @@ class Queue {
     }
 }
 
-//Exercise 2
+// Exercise 2
 function palindromeChecker(input) {
     if (!input) {
         return;
     }
-    let p = new Queue();
+    const p = new Queue();
     input.split('').forEach(l => {
         p.enqueue(l);
     });
@@ -101,13 +101,17 @@ function palindromeChecker(input) {
 
 // eslint-disable-next-line no-unused-vars
 function palindromeCheck() {
-    let input = $('#palindromechecker').val();
-    let ret = palindromeChecker(input);
-    console.log('ans2', ret);
-    $('#palindromeAnswer').text(ret.toString());
+    const palindromeCheckerInput = document.getElementById('palindromeChecker');
+    const palindromeAnswerSpan = document.getElementById('palindromeAnswer');
+    if (palindromeCheckerInput && palindromeAnswerSpan) {
+        const input = palindromeCheckerInput.value;
+        const ret = palindromeChecker(input);
+        console.log('ans2', ret);
+        palindromeAnswerSpan.textContent = ret.toString();
+    }
 }
 
-//Exercise 4
+// Exercise 4
 class Patient {
     constructor(name, code) {
         this.name = name;
@@ -118,35 +122,44 @@ class Patient {
 let patientQueue = new Queue();
 
 function showListOfPatients() {
-    //patientList
-    $('#patientList').empty();
-    $('#patientList').append(patientQueue.toTablePriority());
+    // patientList
+    const patientListTBody = document.getElementById('patientList');
+    if (patientListTBody) {
+        patientListTBody.innerHTML = patientQueue.toTablePriority();
+    }
 }
 
 // eslint-disable-next-line no-unused-vars
 function addPatient() {
-    //patientName
-    //patientCode
-    let pName = $('#patientName').val();
-    let pCode = $('#patientCode').val();
+    // patientName
+    // patientCode
+    const patientNameInput = document.getElementById('patientName');
+    const patientCodeInput = document.getElementById('patientCode');
+    if (patientNameInput && patientCodeInput) {
+        const pName = patientNameInput.value;
+        const pCode = patientCodeInput.value;
 
-    patientQueue.enqueue(new Patient(pName, pCode));
-    showListOfPatients();
+        patientQueue.enqueue(new Patient(pName, pCode));
+        showListOfPatients();
+    }
 }
 
 // eslint-disable-next-line no-unused-vars
 function removePatient(index) {
-    //this.dataStore.splice(' + i +',1)}; showListOfPatients();
     patientQueue.dataStore.splice(index, 1);
     showListOfPatients();
 }
 
-$( document ).ready(() => {
-    //Exercise 1
-    let q1 = new Queue();
+function startUp() {
+    // Exercise 1
+    const q1 = new Queue();
     q1.enqueue('hi');
     q1.enqueue('there');
     q1.insertToFront('front');
-    
-    $('#ex1').val(q1.toString());
-});
+
+    const ex1Input = document.getElementById('ex1');
+    if (ex1Input) {
+        ex1Input.value = q1.toString();
+    }
+}
+startUp();
