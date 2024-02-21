@@ -1,6 +1,6 @@
 ---
 title: FCC - Visualise Data with a Scatter Plot
-layout: jquery_page
+layout: page
 permalink: fccresponsivewebdesign/scatterplot
 ---
 <style>
@@ -143,7 +143,7 @@ permalink: fccresponsivewebdesign/scatterplot
                     .style("opacity", 0);
             });
         
-        //Axes
+        // Axes
         const xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d"));
         svg.append("g")
             .attr("transform", "translate(0, " + (h - padding) + ")")
@@ -155,7 +155,6 @@ permalink: fccresponsivewebdesign/scatterplot
             .attr("transform", "translate(" + padding + ",0)")
             .attr("id", "y-axis")
             .call(yAxis);
-        // console.log(dat);
 
         // Labels
         // X label

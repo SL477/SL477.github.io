@@ -1,6 +1,6 @@
 ---
 title: FCC - Visualise Data with a Heat Map
-layout: jquery_page
+layout: page
 permalink: fccresponsivewebdesign/heatmap
 ---
 <style>
@@ -37,12 +37,12 @@ permalink: fccresponsivewebdesign/heatmap
 <div id="legend"></div>
 
 <script>
-    //Variables
+    // Variables
     const w = 1000;
     const h = 500;
     const padding = 50;
 
-    //Get the data
+    // Get the data
     const req = new XMLHttpRequest();
     req.open("GET", 'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/global-temperature.json', true);
     req.send();
@@ -151,7 +151,7 @@ permalink: fccresponsivewebdesign/heatmap
             .attr("y", h - 6)
             .text("Year");
 
-        //Y Label
+        // Y Label
         d3.select("svg").append("text")
             .attr("class", "y label")
             .attr("text-anchor", "end")
@@ -162,9 +162,7 @@ permalink: fccresponsivewebdesign/heatmap
             .attr("transform", "rotate(-90)")
             .text("Month");
         
-        // console.log(dataset);
-        
-        //Legend
+        // Legend
         const svg2 = d3.select("#legend")
             .append("svg")
             .attr("width", w)
