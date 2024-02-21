@@ -38,31 +38,31 @@ permalink: fccresponsivewebdesign/calculator
                 <td id="formula" colspan="4">&nbsp;</td>
             </tr>
             <tr>
-                <td colspan="2"><button id="equals" onclick="equals()">=</button></td>
-                <td colspan="2"><button id="clear" onclick="clearer()">AC</button></td>
+                <td colspan="2"><button type="button" id="equals" onclick="equals()">=</button></td>
+                <td colspan="2"><button type="button" id="clear" onclick="clearer()">AC</button></td>
             </tr>
             <tr>
-                <td><button id="seven" onclick="number(7)">7</button></td>
-                <td><button id="eight" onclick="number(8)">8</button></td>
-                <td><button id="nine" onclick="number(9)">9</button></td>
-                <td><button id="divide" onclick="operator('/')">/</button></td>
+                <td><button type="button" id="seven" onclick="number(7)">7</button></td>
+                <td><button type="button" id="eight" onclick="number(8)">8</button></td>
+                <td><button type="button" id="nine" onclick="number(9)">9</button></td>
+                <td><button type="button" id="divide" onclick="operator('/')">/</button></td>
             </tr>
             <tr>
-                <td><button id="four" onclick="number(4)">4</button></td>
-                <td><button id="five" onclick="number(5)">5</button></td>
-                <td><button id="six" onclick="number(6)">6</button></td>
-                <td><button id="multiply" onclick="operator('*')">x</button></td>
+                <td><button type="button" id="four" onclick="number(4)">4</button></td>
+                <td><button type="button" id="five" onclick="number(5)">5</button></td>
+                <td><button type="button" id="six" onclick="number(6)">6</button></td>
+                <td><button type="button" id="multiply" onclick="operator('*')">x</button></td>
             </tr>
             <tr>
-                <td><button id="one" onclick="number(1)">1</button></td>
-                <td><button id="two" onclick="number(2)">2</button></td>
-                <td><button id="three" onclick="number(3)">3</button></td>
-                <td><button id="subtract" onclick="operator('-')">-</button></td>
+                <td><button type="button" id="one" onclick="number(1)">1</button></td>
+                <td><button type="button" id="two" onclick="number(2)">2</button></td>
+                <td><button type="button" id="three" onclick="number(3)">3</button></td>
+                <td><button type="button" id="subtract" onclick="operator('-')">-</button></td>
             </tr>
             <tr>
-                <td colspan="2"><button id="zero" onclick="number(0)">0</button></td>
-                <td><button id="decimal" onclick="decimal()">.</button></td>
-                <td><button id="add" onclick="operator('+')">+</button></td>
+                <td colspan="2"><button type="button" id="zero" onclick="number(0)">0</button></td>
+                <td><button type="button" id="decimal" onclick="decimal()">.</button></td>
+                <td><button type="button" id="add" onclick="operator('+')">+</button></td>
             </tr>
         </tbody>
     </table>
@@ -71,83 +71,95 @@ permalink: fccresponsivewebdesign/calculator
 <script>
     let lastOperator = "";
     let operatorRun = 0;
+    const formulaTD = document.getElementById('formula');
+    const displayTD = document.getElementById('display');
 
     const equals = () => {
         console.log("equals");
-        var txt = $("#formula").text();
-        $("#display").text(eval(txt));
-        operatorRun = 0;
-        lastOperator = "";
-        $("#formula").text("0");
+        if (formulaTD && displayTD) {
+            const txt = formulaTD.textContent;
+            displayTD.textContent = eval(txt);
+            operatorRun = 0;
+            lastOperator = "";
+            formulaTD.textContent ="0";
+        }
     };
 
     const number = (num) => {
         console.log(num);
-        if ($("#formula").text() == "0") {
-            $("#formula").text(num);
-        }
-        else {
-            $("#formula").append(num);
-        }
-        
-        if ($("#display").text() == "0" || (lastOperator != "" && lastOperator != ".")) {
-            $("#display").text(num);
-        }
-        else {
-            $("#display").append(num);
-        }
-        if (lastOperator == ".") {
+        if (formulaTD && displayTD) {
+            if (formulaTD.textContent == "0") {
+                formulaTD.textContent = num;
+            }
+            else {
+                formulaTD.textContent += num;
+            }
             
+            if (displayTD.textContent == "0" || (lastOperator != "" && lastOperator != ".")) {
+                displayTD.textContent = num;
+            }
+            else {
+                displayTD.textContent += num;
+            }
+            if (lastOperator == ".") {
+                
+            }
+            else {
+                lastOperator = "";
+            }
+            operatorRun = 0;
         }
-        else {
-            lastOperator = "";
-        }
-        operatorRun = 0;
     };
 
     const operator = (op) => {
-        if (lastOperator == ".") {
-            lastOperator = "";
-        }
-        console.log(op);
-        if ($("#formula").text() == "0") {
-            $("#formula").text($("#display").text());
-        }
-        
-        if (op == "-" && lastOperator == "-") {
+        if (formulaTD && displayTD) {
+            if (lastOperator == ".") {
+                lastOperator = "";
+            }
+            console.log(op);
+            if (formulaTD.textContent == "0") {
+                formulaTD.textContent = displayTD.textContent;
+            }
             
-        }
-        else {
-            if (lastOperator == "" || (op == "-" && lastOperator != "-")) {
-                $("#formula").append(op);
+            if (op == "-" && lastOperator == "-") {
+                
             }
             else {
-                var txt = $("#formula").text();
-                $("#formula").text(txt.substring(0, txt.length - operatorRun) + op);
+                if (lastOperator == "" || (op == "-" && lastOperator != "-")) {
+                    formulaTD.textContent += op;
+                }
+                else {
+                    const txt = formulaTD.textContent;
+                    formulaTD.textContent = txt.substring(0, txt.length - operatorRun) + op;
+                }
+                displayTD.textContent = op;
+                lastOperator = op;
+                operatorRun += 1;
             }
-            $("#display").text(op);
-            lastOperator = op;
-            operatorRun += 1;
         }
     };
 
     const decimal = () => {
-        if (lastOperator == ".") {
-            
+        if (displayTD && formulaTD) {
+            if (lastOperator == ".") {
+                
+            }
+            else {
+                formulaTD.textContent += ".";
+                displayTD.textContent += ".";
+            }
+            lastOperator = ".";
+            operatorRun = 0;
         }
-        else {
-            $("#formula").append(".");
-            $("#display").append(".");
-        }
-        lastOperator = ".";
-        operatorRun = 0;
     };
 
     const clearer = () => {
-        console.log("clear");
-        $("#formula").text("0");
-        $("#display").text("0");
-        lastOperator = "";
-        operatorRun = 0;
+        if (formulaTD && displayTD) {
+            console.log("clear");
+            formulaTD.textContent = '0';
+            displayTD.textContent = '0';
+            lastOperator = "";
+            operatorRun = 0;
+        }
     };
 </script>
