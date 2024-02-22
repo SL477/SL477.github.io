@@ -1,6 +1,6 @@
 ---
 title: FCC - Random Quote Machine
-layout: jquery_page
+layout: page
 permalink: fccresponsivewebdesign/randomquotemachine
 ---
 <style>
@@ -17,6 +17,15 @@ permalink: fccresponsivewebdesign/randomquotemachine
         display: none;
     }
 </style>
+
+<main>
+    <div id="quote-box" class="container-fluid text-center center">
+        <p>"<span id="text"></span>"</p>
+        <p>-<span id="author"></span></p>
+        <button type="button" id="new-quote" onClick="newQuote();" class="btn btn-primary">New Quote</button><br/>
+        <a id="tweet-quote" href="twitter.com/intent/tweet">Tweet</a>
+    </div>
+</main>
 
 <script>
     const quotes = [
@@ -37,24 +46,16 @@ permalink: fccresponsivewebdesign/randomquotemachine
         {quote: "This is a new day, a new beginning.", author: "Ahsoka Tano"}
     ];
 
-    $(document).ready(function(){
-        newQuote();
-    });
+    const textSpan = document.getElementById('text');
+    const authorSpan = document.getElementById('author');
 
     const newQuote = () => {
-        let rand = Math.floor(Math.random() * 15);
-
-        let quote = quotes[rand];
-        $("#text").text(quote.quote);
-        $("#author").text(quote.author);
+        if (textSpan && authorSpan) {
+            const rand = Math.floor(Math.random() * 15);
+            const quote = quotes[rand];
+            textSpan.textContent = quote.quote;
+            authorSpan.textContent = quote.author;
+        }
     };
+    newQuote();
 </script>
-
-<main>
-    <div id="quote-box" class="container-fluid text-center center">
-        <p>"<span id="text"></span>"</p>
-        <p>-<span id="author"></span></p>
-        <button id="new-quote" onClick="newQuote();" class="btn btn-primary">New Quote</button><br/>
-        <a id="tweet-quote" href="twitter.com/intent/tweet">Tweet</a>
-        </div>
-</main>
