@@ -1,6 +1,6 @@
 ---
 title: FCC - Visualise Data Treemap
-layout: jquery_page
+layout: page
 permalink: fccresponsivewebdesign/treemap
 ---
 <style>
@@ -25,11 +25,14 @@ permalink: fccresponsivewebdesign/treemap
         margin: 0 auto;
         text-align: center;
     }
+
+    .dynamicText { 
+        font-size: 12px;
+    }
 </style>
 
 <div id="navbar"></div>
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="/assets/js/fitText.js"></script>
 
 <h1 id="title">Movie Sales</h1>
 <div id="holder" class="holder">
@@ -132,7 +135,7 @@ permalink: fccresponsivewebdesign/treemap
             .attr("dy", ".35em")
             .attr("class", "dynamicText");
 
-        $(".dynamicText").fitText(0.8, { minFontSize: '12px', maxFontSize: '36px' });
+        //$(".dynamicText").fitText(0.8, { minFontSize: '12px', maxFontSize: '36px' });
 
         // Legend
         const h2 = h / 5;
