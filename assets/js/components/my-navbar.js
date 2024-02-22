@@ -95,7 +95,7 @@ class MyNavBar extends HTMLElement {
         collapseList.appendChild(this.createSection("Project Odin", odinList));
 
         const gamesList = [
-            ["/ColorGridGame/index.html", "Colour Grid"],
+            ["/colorGridGame/index.html", "Colour Grid"],
             ["/pages/snake.html", "Snake"]
         ];
         collapseList.appendChild(this.createSection("Games", gamesList));
