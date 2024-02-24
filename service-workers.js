@@ -94,7 +94,9 @@ async function networkFirst(req) {
   const cache = await caches.open(CACHE_NAME);
   try {
     const res = await fetch(req);
-    cache.put(req, res.clone());
+    if (res.ok && res.status !== 206) {
+      cache.put(req, res.clone());
+    }
     return res;
   } 
   catch (err) {
