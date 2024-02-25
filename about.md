@@ -27,3 +27,7 @@ Data Science was something that I found along my programming journey.
 I had been intending to pursue a master's degree in computer science after completing the ACCA qualification but was introduced to the idea of Data Science instead.
 FreeCodeCamp had courses on Python and Data Science, so I went through those and started looking through the free section on DataCamp.
 I managed to get into City University's Data Science course, where I have learnt a lot of theory behind Data Science and Machine Learning (and been reintroduced to MATLAB).
+
+<h3>About me</h3>
+
+In my spare time I enjoy building & painting Warhammer 40k miniatures, playing Blood Bowl (another Games Workshop game), Lego and model railways.
