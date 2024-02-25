@@ -1,6 +1,5 @@
-/* eslint-disable no-undef */
-// eslint-disable-next-line no-redeclare
-class Set {
+
+class SetCls {
     constructor() {
         this.dataStore = [];
     }
@@ -39,7 +38,7 @@ class Set {
     }
 
     union(otherSet) {
-        let tempSet = new Set();
+        const tempSet = new SetCls();
         this.dataStore.forEach(s => {
             tempSet.add(s);
         });
@@ -50,7 +49,7 @@ class Set {
     }
 
     intersect(otherSet) {
-        let tempSet = new Set();
+        const tempSet = new SetCls();
         this.dataStore.forEach(s => {
             if (otherSet.contains(s)) {
                 tempSet.add(s);
@@ -76,7 +75,7 @@ class Set {
     }
 
     difference(otherSet) {
-        let tempSet = new Set();
+        let tempSet = new SetCls();
         this.dataStore.forEach(member => {
             if (!otherSet.contains(member)) {
                 tempSet.add(member);
@@ -105,28 +104,39 @@ class Set {
     }
 }
 
-//Exercise 1
-let one = new Set();
+// Exercise 1
+let one = new SetCls();
 // eslint-disable-next-line no-unused-vars
 function createSet() {
-    let inp = $('#txtInput').val();
-    inp.split('').forEach(s => {
-        one.add(s);
-    });
-    $('#ex1').empty();
-    $('#ex1').append(one.show());
+    const txtInput = document.getElementById('txtInput');
+    const ex1Div = document.getElementById('ex1');
+    if (txtInput && ex1Div) {
+        const inp = txtInput.value;
+        inp.split('').forEach(s => {
+            one.add(s);
+        });
+        ex1Div.innerHTML = one.show();
+    }
 }
 
-//Exercise 3
+// Exercise 3
 // eslint-disable-next-line no-unused-vars
 function getGreater() {
-    let inp = $('#higherElem').val();
-    $('#greaterResult').text(one.higher(inp));
+    const higherElementInput = document.getElementById('higherElement');
+    const greaterResultSpan = document.getElementById('greaterResult');
+    if (higherElementInput && greaterResultSpan) {
+        const inp = higherElementInput.value;
+        greaterResultSpan.textContent = one.higher(inp);
+    }
 }
 
-//Exercise 4
+// Exercise 4
 // eslint-disable-next-line no-unused-vars
 function getLower() {
-    let inp = $('#lowerElem').val();
-    $('#lowerResult').text(one.lower(inp));
+    const lowerElementInput = document.getElementById('lowerElement');
+    const lowerResultSpan = document.getElementById('lowerResult');
+    if (lowerElementInput && lowerResultSpan) {
+        const inp = lowerElementInput.value;
+        lowerResultSpan.textContent = one.lower(inp);
+    }
 }

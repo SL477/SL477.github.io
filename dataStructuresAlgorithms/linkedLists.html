@@ -1,7 +1,7 @@
 ---
 title: Linked Lists
 permalink: dataStructuresAlgorithms/linkedLists
-layout: jquery_page
+layout: page
 ---
 <p>My answers to the exercises in <a href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms &amp; Data Structures with JS</a></p>
 
@@ -17,7 +17,7 @@ layout: jquery_page
 <fieldset>
     <label for="grade">Grade:</label>
     <input id="grade" name="grade" type="text" class="form-control"/>
-    <button class="btn btn-primary" onclick="addGrade();">Add Grade</button>
+    <button type="button" class="btn btn-primary" onclick="addGrade();">Add Grade</button>
 </fieldset>
 <div id="grades"></div>
 
@@ -25,9 +25,9 @@ layout: jquery_page
 <fieldset>
     <label for="startingNumber">Number of Soldiers:</label>
     <input id="startingNumber" name="startingNumber" class="form-control" value="40" type="number"/>
-    <label for="everymth">Remove Every Nth Soldier:</label>
-    <input id="everymth" name="everymth" class="form-control" value="3" type="number"/>
-    <button class="btn btn-primary" onclick="determineSurvivors();">Determine Survivors</button>
+    <label for="everyNth">Remove Every Nth Soldier:</label>
+    <input id="everyNth" name="everyNth" class="form-control" value="3" type="number"/>
+    <button type="button" class="btn btn-primary" onclick="determineSurvivors();">Determine Survivors</button>
     <p>Answer: <span id="ex6Ans"></span></p>
     <div id="ex6Show"></div>
 </fieldset>

@@ -1,100 +1,5 @@
-/* eslint-disable no-undef */
-//From https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf
 
-/*function List() {
-    this.listSize = 0;
-    this.pos = 0;
-    this.dataStore = [];// uses an empty array to store list elements
-    this.clear = clear;
-    this.find = find;
-    this.toString = toString;
-    this.insert = insert;
-    this.append = append;
-    this.remove = remove;
-    this.front = front;
-    this.end = end;
-    this.prev = prev;
-    this.next = next;
-    this.length = length;
-    this.currPos = currPos;
-    this.moveTo = moveTo;
-    this.getElement = getElement;
-    this.length = length;
-    this.contains = contains;
-    function append(element) {
-        this.dataStore[this.listSize++] = element;
-    }
-    function find(element) {
-        for (var i = 0; i < this.dataStore.length; ++i) {
-            if (this.dataStore[i] == element) {
-                return i;
-            }
-        }
-        return -1;
-    }
-    function remove(element) {
-        var foundAt = this.find(element);
-        if (foundAt > -1) {
-            this.dataStore.splice(foundAt,1);
-            --this.listSize;
-            return true;
-        }
-        return false;
-    }
-    function length() {
-        return this.listSize;
-    }
-    function toString() {
-        return this.dataStore;
-    }
-    function insert(element,after) {
-        var insertPos = this.find(after);
-        if (insertPos > -1) {
-            this.dataStore.splice(insertPos + 1, 0, element);
-            ++this.listSize;
-            return true;
-        }
-        return false;
-    }
-    function clear() {
-        delete this.dataStore;
-        this.dataStore = [];
-        this.listSize = this.pos = 0;
-    }
-    function contains(element) {
-        for (var i = 0; i < this.dataStore.length; ++i) {
-            if (this.dataStore[i] == element) {
-                return true;
-            }
-        }
-        return false;
-    }
-    function front() {
-        this.pos = 0;
-    }
-    function end() {
-        this.pos = this.listSize - 1;
-    }
-    function prev() {
-        if (this.pos > 0) {
-            --this.pos;
-        }
-    }
-    function next() {
-        if (this.pos < this.listSize - 1) {
-            ++this.pos;
-        }
-    }
-    function currPos() {
-        return this.pos;
-    }
-    function moveTo(position) {
-        this.pos = position;
-    }
-    function getElement() {
-        return this.dataStore[this.pos];
-    }
-}*/
+//From https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf
 
 class List {
     constructor() {
@@ -212,7 +117,7 @@ class Person {
 }
 
 //People list
-let personList = new List();
+const personList = new List();
 personList.append(new Person('Billy','Male'));
 personList.append(new Person('Tilly','Female'));
 personList.append(new Person('Bob','Male'));
@@ -225,16 +130,18 @@ personList.append(new Person('Jack','Male'));
 personList.append(new Person('Janice','Female'));
 
 function showPeople() {
-    $('#peopleList').empty();
-    let peopleHtml = '';
-    let filter = $('#gender').val();
-    // eslint-disable-next-line no-unused-vars
-    personList.dataStore.forEach((element, i) => {
-        if (filter == 'all' || filter == element.gender) {
-            peopleHtml += '<tr><td>' + element.name + '</td><td>' + element.gender + '</td></tr>';
-        }
-    });
-    $('#peopleList').append(peopleHtml);
+    const peopleListTBody = document.getElementById("peopleList");
+    const genderSelect = document.getElementById("gender");
+    if (peopleListTBody) {
+        let peopleHtml = '';
+        let filter = genderSelect.value;
+        personList.dataStore.forEach(element => {
+            if (filter == 'all' || filter == element.gender) {
+                peopleHtml += '<tr><td>' + element.name + '</td><td>' + element.gender + '</td></tr>';
+            }
+        });
+        peopleListTBody.innerHTML = peopleHtml;
+    }
 }
 
 //Video rental
@@ -277,6 +184,12 @@ let customers = new List();
 
 let checkedOutMovies = new List();
 
+/**
+ * @param {string} name
+ * @param {string} movie
+ * @param {List} filmList 
+ * @param {List} customerList 
+ */
 function checkOut(name, movie, filmList, customerList) {
     if (filmList.contains(movie)) {
         var c = new Customer(name, movie);
@@ -291,115 +204,85 @@ function checkOut(name, movie, filmList, customerList) {
     showLists();
 }
 
-function displayList(list, $container) {
-    $container.empty();
-    let ret = '';
-    /*for (list.front(); list.currPos() < list.listSize; list.next()) {
-        if (list.getElement() instanceof Customer) {
-            ret += "<li>" + list.getElement().name + ", " + list.getElement().movie + "</li>";
+/**
+ * @param {List} list 
+ * @param {string} divID 
+ */
+function displayList(list, divID) {
+    const divItem = document.getElementById(divID);
+    if (divID) {
+        let ret = '';
+        for (list.front(); list.currPos() < list.length(); list.next()) {
+            if (list.getElement() instanceof Customer) {
+                ret += '<li>' + list.getElement().name + ', ' + list.getElement().movie + '</li>';
+            }
+            else {
+                ret += '<li>' + list.getElement() + '</li>';
+            }
         }
-        else {
-            ret += "<li>" + list.getElement() + "</li>";
-        }
-    }*/
-    for (list.front(); list.currPos() < list.length(); list.next()) {
-        if (list.getElement() instanceof Customer) {
-            ret += '<li>' + list.getElement().name + ', ' + list.getElement().movie + '</li>';
-        }
-        else {
-            ret += '<li>' + list.getElement() + '</li>';
-        }
+        divItem.innerHTML = '<ol>' + ret + '</ol>';
+        return ret;
     }
-    $container.append('<ol>' + ret + '</ol>');
-    return ret;
-
-    /*$container.empty();
-    let ret = "";
-    list.dataStore.forEach((element) => {
-        if (element instanceof Customer) {
-            ret += "<li>" + element.name + ", " + element.movie + "</li>";
-        }
-        else {
-            ret += "<li>" + element + "</li>";
-        }
-    });
-    $container.append("<ol>" + ret + "</ol>");*/
 }
 
 function showLists() {
-    displayList(movieList, $('#movies'));
-    displayList(customers, $('#customers'));
-    displayList(checkedOutMovies, $('#checkedoutmovies'));
-    let ret = '';
-    for (movieList.front(); movieList.currPos() < movieList.length(); movieList.next()) {
-        ret += '<option value=\'' + movieList.getElement() + '\'>' + movieList.getElement() + '</option>';
-    }
-    $('#checkoutMovie').empty();
-    $('#checkoutMovie').append(ret);
+    displayList(movieList, 'movies');
+    displayList(customers, 'customers');
+    displayList(checkedOutMovies, 'checkedOutMovies');
 
-    ret = '';
-    for (customers.front(); customers.currPos() < customers.length(); customers.next()) {
-        ret += '<option value=\'' + customers.currPos().toString() + '\'>' + customers.getElement().name + ', ' + customers.getElement().movie + '</option>';
+    const checkoutMovieSelect = document.getElementById('checkoutMovie');
+    const checkInMovieSelect = document.getElementById('checkInMovie');
+    if (checkoutMovieSelect && checkInMovieSelect) {
+        let ret = '';
+        for (movieList.front(); movieList.currPos() < movieList.length(); movieList.next()) {
+            ret += '<option value=\'' + movieList.getElement() + '\'>' + movieList.getElement() + '</option>';
+        }
+        checkoutMovieSelect.innerHTML = ret;
+
+        ret = '';
+        for (customers.front(); customers.currPos() < customers.length(); customers.next()) {
+            ret += '<option value=\'' + customers.currPos().toString() + '\'>' + customers.getElement().name + ', ' + customers.getElement().movie + '</option>';
+        }
+        checkInMovieSelect.innerHTML = ret;
     }
-    $('#checkinMovie').empty();
-    $('#checkinMovie').append(ret);
 }
 
 // eslint-disable-next-line no-unused-vars
 function checkoutMovie() {
-    checkOut($('#customerName').val(), $('#checkoutMovie').val(), movieList, customers);
+    const customerNameInput = document.getElementById('customerName');
+    const checkoutMovieInput = document.getElementById('checkoutMovie');
+    if (customerNameInput && checkoutMovieInput) {
+        checkOut(customerNameInput.value, checkoutMovieInput.value, movieList, customers);
+    }
 }
 
+/**
+ * @param {string} customerName 
+ * @param {string} movie 
+ * @param {number} custIndex 
+ */
 function checkIn(customerName, movie, custIndex) {
-    // eslint-disable-next-line no-unused-vars
-    let elem = new Customer(movie, customerName);
-    console.log('customers removed',customers.removeIndex(custIndex));
+    console.log('customers removed', customers.removeIndex(custIndex));
     movieList.append(movie);
     checkedOutMovies.remove(movie);
 }
 
 // eslint-disable-next-line no-unused-vars
-function checkinMovie() {
-    //checkIn($().val(), $().val());
-    let checkinIndex = $('#checkinMovie').val();
-    customers.moveTo(checkinIndex);
-    console.log();
-    checkIn(customers.getElement().name, customers.getElement().movie, checkinIndex);
-    showLists();
+function checkInMovie() {
+    const checkInMovieSelect = document.getElementById('checkInMovie');
+    if (checkInMovieSelect) {
+        const checkInIndex = checkInMovieSelect.value;
+        customers.moveTo(checkInIndex);
+        console.log();
+        checkIn(customers.getElement().name, customers.getElement().movie, checkInIndex);
+        showLists();
+    }
 }
 
-//ready
-$(document).ready(function() {
-    console.log('hi');
-    
+function startup() {
     showPeople();
     console.log('personList',personList.toString());
-
     checkOut('Jane Doe', 'The Godfather', movieList, customers);
-    /*console.log('movies',movies);
-    console.log('front', movieList.front());
-    console.log('currPos', movieList.currPos());
-    console.log('length', movieList.length());
-    console.log('next', movieList.next());
-    console.log('getElement', movieList.getElement());
-    console.log('getElement name', customers.getElement().name);*/
-    //console.log('displayList', displayList(movieList, $("#movies")));
-    //displayList(movieList, $("#movies"));
-    /*let ret = '';
-    for (movieList.front(); movieList.currPos() < movieList.length(); movieList.next()) {
-        if (movieList.getElement() instanceof Customer) {
-            ret += "<li>" + movieList.getElement().name + ", " + movieList.getElement().movie + "</li>";
-        }
-        else {
-            ret += "<li>" + movieList.getElement() + "</li>";
-        }
-    }*/
-    /*while(movieList.currPos() < movieList.length()) {
-        console.log(movieList.getElement());
-        movieList.next();
-    }*/
-    //console.log('ret',ret);
-
     checkOut('Jane Doe', 'The Godfather', movieList, customers);
-    //displayList(customers, $("#customers"));
-});
+}
+startup();

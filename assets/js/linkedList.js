@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+
 class Nodel {
     constructor(element) {
         this.element = element;
@@ -100,18 +100,30 @@ class LinkedList {
 
 //Exercise 1
 //cities
-let cities = new LinkedList();
+const cities = new LinkedList();
 cities.insert('Conway', 'head');
 cities.insert('Russellville', 'Conway');
-cities.insert('Carlise', 'Russellville');
-cities.insert('Alma', 'Carlise');
-$('#cities').append(cities.display());
+cities.insert('Carlisle', 'Russellville');
+cities.insert('Alma', 'Carlisle');
+const citiesDiv = document.getElementById("cities");
+if (citiesDiv) {
+    citiesDiv.innerHTML = cities.display();
+}
 cities.advance('Conway',2);
 console.log(cities);
-$('#citiesNext').append(cities.display());
+const citiesNextDiv = document.getElementById("citiesNext");
+if (citiesNextDiv) {
+    citiesNextDiv.innerHTML = cities.display();
+}
 cities.back('Alma', 2);
-$('#citiesPrev').append(cities.display());
-$('#ex3Show').text(cities.show('Alma'));
+const citiesPrevDiv = document.getElementById("citiesPrev");
+if (citiesPrevDiv) {
+    citiesPrevDiv.innerHTML = cities.display();
+}
+const ex3ShowDiv = document.getElementById("ex3Show");
+if (ex3ShowDiv) {
+    ex3ShowDiv.innerText = cities.show('Alma');
+}
 
 /*$( document ).load(() => {
 });*/
@@ -242,14 +254,17 @@ class DoublyLinkedList {
     }
 }
 
-let grades = new DoublyLinkedList();
+const grades = new DoublyLinkedList();
+const gradeInput = document.getElementById("grade");
+const gradesDiv = document.getElementById("grades");
 let latestGrade = 'head';
 // eslint-disable-next-line no-unused-vars
 function addGrade() {
-    grades.insert($('#grade').val(), latestGrade);
-    latestGrade = $('#grade').val();
-    $('#grades').empty();
-    $('#grades').append(grades.display());
+    if (gradeInput && gradesDiv) {
+        grades.insert(gradeInput.value, latestGrade);
+        latestGrade = gradeInput.value;
+        gradesDiv.innerHTML = grades.display();
+    }
 }
 
 //Exercise 6
@@ -371,36 +386,41 @@ class CirclularLinkedList {
 
 // eslint-disable-next-line no-unused-vars
 function determineSurvivors() {
-    let startingNumber = Number($('#startingNumber').val());
-    //ex6Show
-    //ex6Ans
-    let soldiers = new CirclularLinkedList();
-    let last = 'head';
-    for (let i = 0; i < startingNumber; i++) {
-        soldiers.insert(i.toString(), last);
-        last = i.toString();
-    }
-    $('#ex6Show').empty();
-    $('#ex6Show').append(soldiers.display());
+    const startingNumberInput = document.getElementById("startingNumber");
+    const ex6ShowDiv = document.getElementById("ex6Show");
+    const everyNthInput = document.getElementById("everyNth");
+    const ex6AnsSpan = document.getElementById("ex6Ans");
 
-    //everymth
-    let everymth = Number($('#everymth').val());
-    //let total = 
-    let currNode = soldiers.head;
-    let j = 0;
-    while (soldiers.total() >= everymth && soldiers.total() > 0 && j < 1000) {
-        let n = everymth;
-        let removeNode = currNode;
-        while ((n > 0 || removeNode.element == 'head') && j < 1000) {
-            removeNode = removeNode.next;
-            n -= 1;
-            j += 1;
+    if (startingNumberInput && ex6ShowDiv && everyNthInput && ex6AnsSpan && ex6ShowDiv) {
+        let startingNumber = Number(startingNumberInput.value);
+        //ex6Show
+        //ex6Ans
+        const soldiers = new CirclularLinkedList();
+        let last = 'head';
+        for (let i = 0; i < startingNumber; i++) {
+            soldiers.insert(i.toString(), last);
+            last = i.toString();
         }
-        currNode = removeNode.next;
-        soldiers.remove(removeNode.element);
+        ex6ShowDiv.innerHTML = soldiers.display();
+
+        // every Nth
+        let everyNth = Number(everyNthInput.value);
+        //let total = 
+        let currNode = soldiers.head;
+        let j = 0;
+        while (soldiers.total() >= everyNth && soldiers.total() > 0 && j < 1000) {
+            let n = everyNth;
+            let removeNode = currNode;
+            while ((n > 0 || removeNode.element == 'head') && j < 1000) {
+                removeNode = removeNode.next;
+                n -= 1;
+                j += 1;
+            }
+            currNode = removeNode.next;
+            soldiers.remove(removeNode.element);
+        }
+        console.log(j);
+        ex6ShowDiv.innerHTML = soldiers.display();
+        ex6AnsSpan.textContent = soldiers.displayText();
     }
-    console.log(j);
-    $('#ex6Show').empty();
-    $('#ex6Show').append(soldiers.display());
-    $('#ex6Ans').text(soldiers.displayText());
 }

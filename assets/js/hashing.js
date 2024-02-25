@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+
 /*class HashTable {
     constructor() {
         this.table = new Array(137);
@@ -142,10 +142,10 @@ class HashTableLinearProbing {
     }
 }*/
 
-// eslint-disable-next-line no-unused-vars
-var called = 0;
+
+// var called = 0;
 var hash = string => {
-    called++;
+    // called++;
     var hashed = 0;
     for (var i = 0; i < string.length; i++) {
         hashed += string.charCodeAt(i);
@@ -220,32 +220,37 @@ class HashTable {
 
 //Exercise 3
 // eslint-disable-next-line no-unused-vars
-function buildHashtable() {
-    let wordcounter = $('#inputText').val();
-    // eslint-disable-next-line no-useless-escape
-    wordcounter = wordcounter.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
-    wordcounter = wordcounter.toLowerCase();
-    console.log('wordcounter',wordcounter);
+function buildHashTable() {
+    const inputText = document.getElementById("inputText");
+    const wordCountDiv = document.getElementById("wordCount");
 
-    let ht = new HashTable();
-    wordcounter.split(' ').forEach(s => {
-        /*let c = ht.get(s);
-        if (c) {
-            ht.put(s, c + 1);
-        }
-        else {
-            ht.put(s, 1);
-        }*/
-        let c = ht.lookup(s);
-        if (c) {
-            ht.add(s, c + 1);
-        }
-        else {
-            ht.add(s, 1);
-        }
-    });
-    console.log(ht.collection);
-    //$('#wordCount').append(ht.showDistro());
-    $('#wordCount').empty();
-    $('#wordCount').append(ht.show());
+    if (inputText && wordCountDiv) 
+        {
+        let wordCounter = inputText.value;
+        // eslint-disable-next-line no-useless-escape
+        wordCounter = wordCounter.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+        wordCounter = wordCounter.toLowerCase();
+        console.log('wordCounter', wordCounter);
+
+        const ht = new HashTable();
+        wordCounter.split(' ').forEach(s => {
+            /*let c = ht.get(s);
+            if (c) {
+                ht.put(s, c + 1);
+            }
+            else {
+                ht.put(s, 1);
+            }*/
+            let c = ht.lookup(s);
+            if (c) {
+                ht.add(s, c + 1);
+            }
+            else {
+                ht.add(s, 1);
+            }
+        });
+        console.log(ht.collection);
+        //$('#wordCount').append(ht.showDistro());
+        wordCountDiv.innerHTML = ht.show();
+    }
 }

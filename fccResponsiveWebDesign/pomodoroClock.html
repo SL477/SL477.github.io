@@ -1,6 +1,6 @@
 ---
 title: FCC - Pomodoro Clock
-layout: jquery_page
+layout: page
 permalink: fccresponsivewebdesign/pomodoroclock
 ---
 <style>
@@ -43,7 +43,7 @@ permalink: fccresponsivewebdesign/pomodoroclock
       <span id="time-left">25:00</span>
       <br/>
       <button type="button" id="start_stop" onclick="startStop()" aria-label="start/stop">&#8883;||</button>
-      <button type="button" id="reset" onclick="reseter()" aria-label="reset">&#8635;</button>
+      <button type="button" id="reset" onclick="resetFunc()" aria-label="reset">&#8635;</button>
     </div>
     <audio id="beep" src="/assets/audio/fccResponsiveWebDesign_audio_BeepSound.wav"></audio>
 </div>
@@ -53,131 +53,114 @@ permalink: fccresponsivewebdesign/pomodoroclock
     let myTimer;
     let isSession = true;
     let remainingTime;
+    const breakLength = document.getElementById('break-length');
+    const sessionLength = document.getElementById('session-length');
+    const timeLeft = document.getElementById('time-left');
+    const timerLabel = document.getElementById('timer-label');
 
     const breakDecrement = (i) => {
-        //console.log("breakDecrement");
-        var b = parseInt($("#break-length").val()) + i;
-        console.log(b);
-        if (b < 1) {
-            b = 1;
-        }
-        if (b > 60) {
-            b = 60;
-        }
-        $("#break-length").val(b);            
+        if (breakLength) {
+            let b = parseInt(breakLength.value) + i;
+            if (b < 1) {
+                b = 1;
+            }
+            else if (b > 60) {
+                b = 60;
+            }
+            console.log('breakDecrement', b);
+            breakLength.value = b;
+        }     
     };
 
     const sessionDecrement = (i) => {
-        //console.log("sessionDecrement");
-        var b = parseInt($("#session-length").val()) + i;
-        console.log(b);
-        
-        if (b < 1) {
-            b = 1;
-        }
-        if (b > 60) {
-            b = 60;
-        }
-        $("#session-length").val(b);
-        if (!running) {
-            $("#time-left").text(b + ":00");
+        if (sessionLength && timeLeft) {
+            let b = parseInt(sessionLength.value) + i;
+            if (b < 1) {
+                b = 1;
+            }
+            else if (b > 60) {
+                b = 60;
+            }
+            console.log('sessionDecrement', b);
+            sessionLength.value = b;
+            if (!running) {
+                timeLeft.textContent = b + ':00';
+            }
         }
     };
 
     const startStop = () => {
         console.log("startStop");
-        if (running == false)
-            {
-            console.log("start timer");
-            running = true;
-            var i = $("#time-left").text().split(":");
-            remainingTime = parseInt(i[0]) * 60 + parseInt(i[1]);
-            console.log(remainingTime);
-            
-            myTimer = window.setInterval(eachSecond, 30);
-            console.log("myTimer: " + myTimer);
-            }
-        else {
-            running = false;
-            if (myTimer != null) {
-                window.clearInterval(myTimer);
-                myTimer = null;
+        if (timeLeft) {
+            if (running == false)
+                {
+                console.log("start timer");
+                running = true;
+                const i = timeLeft.textContent.split(':')
+                remainingTime = parseInt(i[0]) * 60 + parseInt(i[1]);
+                console.log(remainingTime);
+                
+                myTimer = window.setInterval(eachSecond, 30);
+                console.log("myTimer: " + myTimer);
+                }
+            else {
+                running = false;
+                if (myTimer != null) {
+                    window.clearInterval(myTimer);
+                    myTimer = null;
+                }
             }
         }
     };
 
-    const reseter = () => {
+    const resetFunc = () => {
         console.log("reset");
-        running = false;
-        $("#time-left").text("25:00");
-        $("#break-length").val("5");
-        $("#session-length").val("25");
-        $("#timer-label").text("Session");
-        myTimer = null;
-        var e = document.getElementById("beep");
-        e.pause();
-        //e.load();
-        e.currentTime = 0;
+        if (breakLength && sessionLength && timeLeft && timerLabel) {
+            running = false;
+            timeLeft.textContent = '25:00';
+            breakLength.value = '5';
+            sessionLength.value = "25";
+            timerLabel.textContent = 'Session';
+            myTimer = null;
+            const e = document.getElementById("beep");
+            e.pause();
+            e.currentTime = 0;
+        }
     };
 
     function eachSecond() {
-        /*var i = $("#time-left").text().split(":");
-        remainingTime = parseInt(i[0]) * 60 + parseInt(i[1]);
-        remainingTime =  remainingTime - 1;
-        var mins = math.floor(remainingTime / 60);
-        var secs = remainingTime - mins;
-        var s = (mins < 10? "0" : "") + mins + ":" + (secs < 10? "0" : "") + secs;
-        console.log("clock text: " + s);
-        $("#time-left").text(s);*/
-        //alert(s);
-        if (running == false) {
-            return;
+        if (breakLength && sessionLength && timeLeft && timerLabel) {
+            if (running == false) {
+                return;
+            }
+
+            const i = timeLeft.textContent.split(':');
+            remainingTime = parseInt(i[0]) * 60 + parseInt(i[1]);
+            remainingTime -= 1;
+            
+            if (remainingTime < 0) {
+                if (timerLabel.textContent === 'Break') {
+                    remainingTime = parseInt(breakLength.value) * 60 + 1;
+                    isSession = false;
+                }
+                else {
+                    remainingTime = parseInt(sessionLength.value) * 60 + 0;
+                    isSession = true;
+                }
+            }
+            
+            const mins = Math.floor(remainingTime / 60);
+            const secs = remainingTime - (mins * 60);
+            
+            const s = (mins < 10? "0" : "") + mins + ":" + (secs < 10? "0" : "") + secs;
+            timeLeft.textContent = s;
+            if (remainingTime == 0) {
+                const e = document.getElementById("beep");
+                e.play();
+                timeLeft.textContent = '00:00';
+                timerLabel.textContent = timerLabel.textContent === 'Session'? 'Break' : 'Session';
+            }
+            console.log("clock text: " + s);
         }
-        /*if (isSession == null)
-            {
-            isSession = true;
-            }*/
-        var i = $("#time-left").text().split(":");
-        remainingTime = parseInt(i[0]) * 60 + parseInt(i[1]);
-        remainingTime -= 1;
-        /*if (remainingTime <= 0)
-            {
-            if (isSession == true) 
-            {
-                $("#timer-label").text("Break");
-            }
-            else
-            {
-                $("#timer-label").text("Session");
-            }
-            }*/
-        
-        
-        if (remainingTime < 0) {
-            if ($("#timer-label").text() == "Break") {
-                remainingTime = parseInt(($("#break-length").val()) * 60) + 1;
-                //$("#timer-label").text("Break");
-                isSession = false;
-            }
-            else {
-                remainingTime = parseInt(($("#session-length").val()) * 60) + 0;
-                //$("#timer-label").text("Session");
-                isSession = true;
-            }
-        }
-        
-        var mins = Math.floor(remainingTime / 60);
-        var secs = remainingTime - (mins * 60);
-        
-        var s = (mins < 10? "0" : "") + mins + ":" + (secs < 10? "0" : "") + secs;
-        $("#time-left").text(s);
-        if (remainingTime == 0) {
-            var e = document.getElementById("beep");
-            e.play();
-            $("#time-left").text("00:00");
-            $("#timer-label").text($("#timer-label").text() == "Session"? "Break" : "Session");
-        }
-        console.log("clock text: " + s);
-        //alert(remainingTime);
     }
 </script>

@@ -1,11 +1,11 @@
 ---
 title: Etch A Sketch
-layout: jquery_page
+layout: page
 ---
 <p>My answer for <a href="https://www.theodinproject.com/courses/foundations/lessons/etch-a-sketch-project" target="_blank" rel="noopener noreferrer">Project Odin Etch-A-Sketch</a></p>
 		
 <div id="sketchpad" class="flex-container"></div>
-<button class="btn btn-primary" onclick="userCreateGrid();">Reset</button>
+<button type="button" class="btn btn-primary" onclick="userCreateGrid();">Reset</button>
 
 <script src="/assets/js/etchASketch.js"></script>
 
@@ -23,11 +23,12 @@ layout: jquery_page
         flex-basis: 0;
         flex: 1;
     }
-    h1 {
-        color: red;
-    }
+
     .hovered {
         background-color: brown;
         color: brown;
+    }
+    h1 {
+        color: red;
     }
 </style>

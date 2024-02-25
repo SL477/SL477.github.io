@@ -1,5 +1,5 @@
-/* eslint-disable no-undef */
-//Sequential Search
+
+// Sequential Search
 function sequentialSearch(arr, data) {
     for (let i = 0; i < arr.length; ++i) {
         if (arr[i] == data) {
@@ -70,69 +70,89 @@ function findMaximum(arr) {
     return max;
 }
 
-let nums = [];
-let nums2 = [];
-let nums3 = [];
+let numbers = [];
+let numbers2 = [];
+let numbers3 = [];
 
-$( document ).ready(() => {
-    $('#searchDiv').append('<h2>Sequential Search</h2>');
-    
-    for (let i = 0; i < 100; i++) {
-        nums[i] = Math.floor(Math.random() * 101);
+function startUp() {
+    const searchDiv = document.getElementById('searchDiv');
+    const selfSortDiv = document.getElementById('selfSort');
+    const binArrDiv = document.getElementById('binArr');
+    const wordSearchDiv = document.getElementById('wordSearch');
+    if (searchDiv && selfSortDiv && binArrDiv && wordSearchDiv) {
+        searchDiv.innerHTML = '<h2>Sequential Search</h2>';
+        
+        for (let i = 0; i < 100; i++) {
+            numbers[i] = Math.floor(Math.random() * 101);
+        }
+        searchDiv.innerHTML += displayArray(numbers);
+        searchDiv.innerHTML += '<p>The minimum value is: ' + findMinimum(numbers) + '</p>';
+        searchDiv.innerHTML +='<p>The maximum value is: ' + findMaximum(numbers) + '</p>';
+
+        //self sorting
+        
+        for (let i = 0; i < 10; i++) {
+            numbers2[i] = Math.floor(Math.random() * 11);
+        }
+        selfSortDiv.innerHTML += displayArray(numbers2);
+
+        for (let i = 0; i < 100; i++) {
+            numbers3[i] = Math.floor(Math.random() * 101);
+        }
+        insertionSort(numbers3);
+        binArrDiv.innerHTML += displayArray(numbers3);
+
+        const words = 'the quick brown fox jumped over the lazy dog';
+        const wordArr = words.split(' ');
+        wordSearchDiv.innerHTML += '<p>' + wordArr + '</p>';
+        wordSearchDiv.innerHTML += '<p>Find fox at position ' + sequentialSearch(wordArr,'fox') + '</p>';
     }
-    $('#searchDiv').append(displayArray(nums));
-    $('#searchDiv').append('<p>The minimum value is: ' + findMinimum(nums) + '</p>');
-    $('#searchDiv').append('<p>The maximum value is: ' + findMaximum(nums) + '</p>');
-
-    //self sorting
-    
-    for (let i = 0; i < 10; i++) {
-        nums2[i] = Math.floor(Math.random() * 11);
-    }
-    $('#selfSort').append(displayArray(nums2));
-
-    for (let i = 0; i < 100; i++) {
-        nums3[i] = Math.floor(Math.random() * 101);
-    }
-    insertionSort(nums3);
-    $('#binArr').append(displayArray(nums3));
-
-    let words = 'the quick brown fox jumped over the lazy dog';
-    let wordArr = words.split(' ');
-    $('#wordSearch').append('<p>' + wordArr + '</p>');
-    $('#wordSearch').append('<p>Find fox at position ' + sequentialSearch(wordArr,'fox') + '</p>');
-});
+}
+startUp();
 
 // eslint-disable-next-line no-unused-vars
-function seqSeach() {
-    let searchNum = Number($('#seqSearchNum').val());
-    //console.log('searchNum',searchNum,nums);
-    $('#seqSearchRes').text(sequentialSearch(nums, searchNum));
+function seqSearch() {
+    const seqSearchNumInput = document.getElementById('seqSearchNum');
+    const seqSearchResSpan = document.getElementById('seqSearchRes');
+    if (seqSearchNumInput && seqSearchResSpan) {
+        const searchNum = Number(seqSearchNumInput.value);
+        //console.log('searchNum',searchNum,numbers);
+        seqSearchResSpan.textContent = sequentialSearch(numbers, searchNum);
+    }
 }
 
 // eslint-disable-next-line no-unused-vars
 function seqSearchReverse() {
-    //Exercise 1
-    let searchNum = Number($('#seqSearchNum').val());
-    $('#seqSearchRes').text(sequentialSearchReverse(nums, searchNum));
+    // Exercise 1
+    const seqSearchNumInput = document.getElementById('seqSearchNum');
+    const seqSearchResSpan = document.getElementById('seqSearchRes');
+    if (seqSearchNumInput && seqSearchResSpan) {
+        const searchNum = Number(seqSearchNumInput.value);
+        seqSearchResSpan.textContent = sequentialSearchReverse(numbers, searchNum);
+    }
 }
 
 // eslint-disable-next-line no-unused-vars
-function seqSeach1() {
-    let searchNum = Number($('#seqSearchNum1').val());
-    //console.log('searchNum',searchNum,nums);
-    $('#seqSearchRes1').text(sequentialSearchSelfOrganizing(nums2, searchNum));
-    $('#selfSort').empty();
-    $('#selfSort').append(displayArray(nums2));
+function seqSearch1() {
+    const seqSearchNum1Input = document.getElementById('seqSearchNum1');
+    const seqSearchRes1Span = document.getElementById('seqSearchRes1');
+    const selfSortDiv = document.getElementById('selfSort');
+    if (seqSearchNum1Input && seqSearchRes1Span && selfSortDiv) {
+        const searchNum = Number(seqSearchNum1Input.value);
+        seqSearchRes1Span.textContent = sequentialSearchSelfOrganizing(numbers2, searchNum);
+        selfSortDiv.innerHTML = displayArray(numbers2);
+    }
 }
 
-//Binary search
+// Binary search
 function binSearcher(arr, data) {
     let upperBound = arr.length - 1;
     let lowerBound = 0;
-    while (lowerBound <= upperBound) {
+    let cnt = 1000;
+    while (lowerBound <= upperBound && cnt > 0) {
+        cnt -= 1;
         let mid = Math.floor((upperBound + lowerBound) / 2);
-        console.log('Current Midpoint',mid);
+        console.log('Current Midpoint', mid);
         if (arr[mid] < data) {
             lowerBound = mid + 1;
         }
@@ -147,10 +167,15 @@ function binSearcher(arr, data) {
 }
 
 // eslint-disable-next-line no-unused-vars
-function binSeach() {
-    let searchNum = Number($('#binSearchNum').val());
-    $('#binSearchRes').text(binSearcher(nums3, searchNum));
-    $('#binCount').text(count(nums3, searchNum));
+function binSearch() {
+    const binSearchNumInput = document.getElementById('binSearchNum');
+    const binSearchResSpan = document.getElementById('binSearchRes');
+    const binCountSpan = document.getElementById('binCount');
+    if (binSearchNumInput) {
+        const searchNum = Number(binSearchNumInput.value);
+        binSearchResSpan.textContent = binSearcher(numbers3, searchNum);
+        binCountSpan.textContent = count(numbers3, searchNum);
+    }
 }
 
 function insertionSort(arr) {
@@ -167,7 +192,7 @@ function insertionSort(arr) {
     }
 }
 
-//count sorted data
+// count sorted data
 function count(arr, data) {
     let count = 0;
     let position = binSearcher(arr, data);
@@ -190,35 +215,41 @@ function count(arr, data) {
             }
         }
     }
-    console.log('count',count);
+    console.log('count', count);
     return count;
 }
 
 // eslint-disable-next-line no-unused-vars
 function compareTimings() {
-    //Exercise 2
-    //compare timings of sequential search and binary search on nums
-    let searchNum = Number($('#seqSearchNum').val());
-    let start = new Date().getTime();
-    let seqRes = sequentialSearch(nums, searchNum);
-    let end = new Date().getTime();
-    $('#seqSearchRes').text(seqRes);
-    $('#seqSearchTiming').text(end - start);
-    //binary search
-    let binNumsArr = [...nums];
-    start = new Date().getTime();
-    insertionSort(binNumsArr);
-    seqRes = binSearcher(binNumsArr, searchNum);
-    end = new Date().getTime();
-    $('#binSearchTiming').text(end - start);
+    // Exercise 2
+    // compare timings of sequential search and binary search on numbers
+    const seqSearchNumInput = document.getElementById('seqSearchNum');
+    const seqSearchResSpan = document.getElementById('seqSearchRes');
+    const seqSearchTimingSpan = document.getElementById('seqSearchTiming');
+    const binSearchTimingSpan = document.getElementById('binSearchTiming');
+    if (seqSearchNumInput && seqSearchResSpan && seqSearchTimingSpan) {
+        const searchNum = Number(seqSearchNumInput.value);
+        let start = new Date().getTime();
+        let seqRes = sequentialSearch(numbers, searchNum);
+        let end = new Date().getTime();
+        seqSearchResSpan.textContent = seqRes;
+        seqSearchTimingSpan.textContent = end - start;
+        // binary search
+        const binNumbersArr = [...numbers];
+        start = new Date().getTime();
+        insertionSort(binNumbersArr);
+        seqRes = binSearcher(binNumbersArr, searchNum);
+        end = new Date().getTime();
+        binSearchTimingSpan.textContent = end - start;
+    }
 }
 
-//Exersise 3
-//Find smallest element in dataset, generalise to any other position
-class Minset {
+// Exercise 3
+// Find smallest element in dataset, generalise to any other position
+class MinSet {
     constructor(arr) {
         this.datastore = [];
-        let newArr = [...arr];
+        const newArr = [...arr];
         insertionSort(newArr);
         for (let i = 0; i < newArr.length; i++) {
             if (this.datastore.indexOf(newArr[i]) == -1) {
@@ -229,7 +260,7 @@ class Minset {
 }
 
 function nthSmallestElement(arr, n) {
-    let s = new Minset(arr);
+    const s = new MinSet(arr);
     if (n > -1 && n < s.datastore.length) {
         return  s.datastore[n];
     }
@@ -239,15 +270,20 @@ function nthSmallestElement(arr, n) {
 }
 
 // eslint-disable-next-line no-unused-vars
-function minSeach() {
-    let posSearch = Number($('#minSearch').val());
-    let num1k = [];
-    for (let i = 0; i < 1000; i++) {
-        num1k.push(Math.floor(Math.random() * 1001));
-    }
-    $('#minSearchRes').text(nthSmallestElement(num1k, posSearch));
+function minSearch() {
+    const minSearchInput = document.getElementById('minSearch');
+    const minSearchResSpan = document.getElementById('minSearchRes');
+    const minWordSearchResSpan = document.getElementById('minWordSearchRes');
+    if (minSearchInput) {
+        const posSearch = Number(minSearchInput.value);
+        const num1k = [];
+        for (let i = 0; i < 1000; i++) {
+            num1k.push(Math.floor(Math.random() * 1001));
+        }
+        minSearchResSpan.textContent = nthSmallestElement(num1k, posSearch);
 
-    let words = 'the quick brown fox jumped over the lazy dog';
-    let wordArr = words.split(' ');
-    $('#minWordSearchRes').text(nthSmallestElement(wordArr, posSearch));
+        const words = 'the quick brown fox jumped over the lazy dog';
+        const wordArr = words.split(' ');
+        minWordSearchResSpan.textContent = nthSmallestElement(wordArr, posSearch);
+    }
 }

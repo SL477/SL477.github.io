@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-//Palindromes
+
+// Palindromes
 const palindrome = (str) => {
     let str2 = str.toLowerCase();
 
@@ -22,48 +21,56 @@ const palindrome = (str) => {
     return true;
 };
 
-const palidromeChecker = () => {
-    let res = palindrome($('#palindromeInput').val());
-
-    $('#palidromeResult').text(res.toString());
+// eslint-disable-next-line no-unused-vars
+const palindromeChecker = () => {
+    const palindromeInput = document.getElementById('palindromeInput');
+    const palindromeResultSpan = document.getElementById('palindromeResult');
+    if (palindromeInput && palindromeResultSpan) {
+        const res = palindrome(palindromeInput.value);
+        palindromeResultSpan.textContent = res.toString();
+    }
 };
 
 //Roman Numerals
+// eslint-disable-next-line no-unused-vars
 const romanNumeralChecker = () => {
-    let input = $('#romanInput').val();
-
-    $('#romanResult').text(convertToRoman(input));
+    const romanInput = document.getElementById('romanInput');
+    const romanResultSpan = document.getElementById('romanResult');
+    if (romanInput && romanResultSpan) {
+        let input = romanInput.value;
+        romanResultSpan.textContent = convertToRoman(input);
+    }
 };
 
 const convertToRoman = (num) => {
     let x = num;
     let numThousands = 0;//M
-    let numFiveHundreds = 0;//D
+    // let numFiveHundreds = 0;//D
     let numHundreds = 0;//C
-    let numFifties = 0;//L
+    // let numFifties = 0;//L
     let numTens = 0;//X
-    let numFives = 0;//V
-    let numOnes = 0;//I
+    // let numFives = 0;//V
+    // let numOnes = 0;//I
     let str = '';
 
-    //1000s
+    // 1000s
     numThousands = Math.floor(x / 1000);
     x = x - (numThousands * 1000);
     for (let i = 0; i < numThousands ; i++) {
         str += 'M';
     }
 
-    //100s
+    // 100s
     numHundreds = Math.floor(x / 100);
     x = x - (numHundreds * 100);
     str += getSymbolStr(numHundreds, 'C', 'M', 'D');
 
-    //10s
+    // 10s
     numTens = Math.floor(x / 10);
     x = x - (numTens * 10);
     str += getSymbolStr(numTens, 'X', 'C', 'L');
 
-    //1s
+    // 1s
     str += getSymbolStr(x, 'I', 'X', 'V');
 
     console.log('str ' + str);
@@ -109,13 +116,18 @@ const getSymbolStr = (num, currentSym, nextSym, halfSym) => {
 };
 
 //Caesar's Cipher
+// eslint-disable-next-line no-unused-vars
 const caesarCipherChecker = () => {
-    let res = rot13($('#cipherInput').val());
-    $('#cipherResult').text(res);
+    const cipherInput = document.getElementById('cipherInput');
+    const cipherResultSpan = document.getElementById('cipherResult');
+    if (cipherInput) {
+        const res = rot13(cipherInput.value);
+        cipherResultSpan.textContent = res;
+    }
 };
 
 const rot13 = (str) => {
-    let dict = {
+    const dict = {
         A: 'N',
         B: 'O',
         C: 'P',
@@ -146,7 +158,7 @@ const rot13 = (str) => {
     //console.log(getDecodedLetter(dict, '!'))
     
     let retStr = '';
-    let arr = str.split('');
+    const arr = str.split('');
     //console.log(arr);
     //console.log(arr.length);
     for (let i = 0; i < arr.length; i++) {
@@ -176,204 +188,187 @@ const telephoneCheck = (str) => {
     return /^(1|1-|1 |)(\d{3}|\(\d{3}\))(-| |)\d{3}(-| |)\d{4}$/.test(str);
 };
 
+// eslint-disable-next-line no-unused-vars
 const phoneNumberChecker = () => {
-    let res = telephoneCheck($('#phoneInput').val());
-    $('#phoneResult').text(res.toString());
+    const phoneInput = document.getElementById('phoneInput');
+    const phoneResult = document.getElementById('phoneResult')
+    if (phoneInput) {
+        const res = telephoneCheck(phoneInput.value);
+        phoneResult.textContent = res.toString();
+    }
 };
 
-//Cash Register
+// Cash Register
+// eslint-disable-next-line no-unused-vars
 const cashRegisterChecker = () => {
-    let price = $('#price').val();
-    let cash = $('#cash').val();
-    let $penny = $('#penny');
-    let $nickel = $('#nickel');
-    let $dime = $('#dime');
-    let $quarter = $('#quarter');
-    let $dollar = $('#dollar');
-    let $five = $('#five');
-    let $ten = $('#ten');
-    let $twenty = $('#twenty');
-    let $hundred = $('#hundred');
+    const priceInput = document.getElementById('price');
+    const cashInput = document.getElementById('cash');
+    const pennyInput = document.getElementById('penny');
+    const nickelInput = document.getElementById('nickel');
+    const dimeInput = document.getElementById('dime');
+    const quarterInput = document.getElementById('quarter');
+    const dollarInput = document.getElementById('dollar');
+    const fiveInput = document.getElementById('five');
+    const tenInput = document.getElementById('ten');
+    const twentyInput = document.getElementById('twenty');
+    const hundredInput = document.getElementById('hundred');
+    const cashRegisterStatusSpan = document.getElementById('cashRegisterStatus');
+    const cashRegisterChange = document.getElementById('cashRegisterChange');
 
-    let changeDict = {
-        'ONE HUNDRED': {value: 100, html: $hundred, desc: 'Hundred Dollar Notes'},
-        'TWENTY': {value: 20, html: $twenty, desc: 'Twenty Dollar Notes'},
-        'TEN': {value: 10, html: $ten, desc: 'Ten Dollar Notes'},
-        'FIVE': {value: 5, html: $five, desc: 'Five Dollar Notes'},
-        'ONE': {value: 1, html: $dollar, desc: 'Dollar Coins'},
-        'QUARTER': {value: 0.25, html: $quarter, desc: 'Quarters'},
-        'DIME': {value: 0.1, html: $dime, desc: 'Dimes'},
-        'NICKEL': {value: 0.05, html: $nickel, desc: 'Nickels'},
-        'PENNY': {value: 0.01, html: $penny, desc: 'Pennies'}
-    };
+    if (priceInput && cashInput && pennyInput && nickelInput && dimeInput && quarterInput 
+        && dollarInput && fiveInput && tenInput && twentyInput && hundredInput) {
 
-    let changeArr = [
-        ['PENNY', $penny.val() * changeDict['PENNY'].value],
-        ['NICKEL', $nickel.val() * changeDict['NICKEL'].value],
-        ['DIME', $dime.val() * changeDict['DIME'].value],
-        ['QUARTER', $quarter.val() * changeDict['QUARTER'].value],
-        ['ONE', $dollar.val() * changeDict['ONE'].value],
-        ['FIVE', $five.val() * changeDict['FIVE'].value],
-        ['TEN', $ten.val() * changeDict['TEN'].value],
-        ['TWENTY', $twenty.val() * changeDict['TWENTY'].value],
-        ['ONE HUNDRED', $hundred.val() * changeDict['ONE HUNDRED'].value]
-    ];
-    console.log('changeArr', changeArr);
-    let res = checkCashRegister(price, cash, changeArr);
+        let price = priceInput.value;
+        let cash = cashInput.value;
 
-    $('#cashRegisterStatus').text(res.status);
+        const changeDict = {
+            'ONE HUNDRED': {value: 100, html: hundredInput, desc: 'Hundred Dollar Notes'},
+            'TWENTY': {value: 20, html: twentyInput, desc: 'Twenty Dollar Notes'},
+            'TEN': {value: 10, html: tenInput, desc: 'Ten Dollar Notes'},
+            'FIVE': {value: 5, html: fiveInput, desc: 'Five Dollar Notes'},
+            'ONE': {value: 1, html: dollarInput, desc: 'Dollar Coins'},
+            'QUARTER': {value: 0.25, html: quarterInput, desc: 'Quarters'},
+            'DIME': {value: 0.1, html: dimeInput, desc: 'Dimes'},
+            'NICKEL': {value: 0.05, html: nickelInput, desc: 'Nickels'},
+            'PENNY': {value: 0.01, html: pennyInput, desc: 'Pennies'}
+        };
 
-    let changeText = '';
-    console.log(res.change);
+        const changeArr = [
+            ['PENNY', Number(pennyInput.value) * changeDict['PENNY'].value],
+            ['NICKEL', Number(nickelInput.value) * changeDict['NICKEL'].value],
+            ['DIME', Number(dimeInput.value) * changeDict['DIME'].value],
+            ['QUARTER', Number(quarterInput.value) * changeDict['QUARTER'].value],
+            ['ONE', Number(dollarInput.value) * changeDict['ONE'].value],
+            ['FIVE', Number(fiveInput.value) * changeDict['FIVE'].value],
+            ['TEN', Number(tenInput.value) * changeDict['TEN'].value],
+            ['TWENTY', Number(twentyInput.value) * changeDict['TWENTY'].value],
+            ['ONE HUNDRED', Number(hundredInput.value) * changeDict['ONE HUNDRED'].value]
+        ];
+        console.log('changeArr', changeArr);
+        const res = checkCashRegister(price, cash, changeArr);
 
-    res.change.forEach((c) => {
-        let key = c[0];
-        let amt = c[1];
+        cashRegisterStatusSpan.textContent = res.status;
 
-        changeText += changeDict[key].desc + ' ' + (amt / changeDict[key].value).toString() + '<br/>';
-        changeDict[key].html.val(changeDict[key].html.val() - (amt / changeDict[key].value));
-    });
-    $('#cashRegisterChange').html(changeText);
+        let changeText = '';
+        console.log(res.change);
+
+        res.change.forEach((c) => {
+            const key = c[0];
+            const amt = c[1];
+
+            changeText += changeDict[key].desc + ' ' + (amt / changeDict[key].value).toString() + '<br/>';
+            changeDict[key].html.value = Number(changeDict[key].html.value) - (amt / changeDict[key].value);
+        });
+        cashRegisterChange.innerHTML = changeText;
+    }
 };
 
 const checkCashRegister = (price, cash, cid) => {
-    //var change;
     // Here is your change, ma'am.
-    //return change;
-    let changeobj = {status: '', change:[]};
+    const changeObj = {status: '', change:[]};
   
 
-    let cashobj = {};
-    //console.log(cid.length);
+    const cashObj = {};
     let totalCash = 0;
     for(let i = 0; i < cid.length; i++) {
-        //console.log(cid[i][0]);
-        //console.log(cid[i][1]);
-        cashobj[cid[i][0]] = cid[i][1];
+        cashObj[cid[i][0]] = cid[i][1];
         totalCash += cid[i][1];
     }
-    //console.log(cashobj);
-    //console.log(Object.entries(cashobj))
-  
-    //let changearr = [];
     let changeRet = cash - price;
-  
-    //console.log('total cash ' + totalCash + ' change due ' + changeRet);
     
     if (totalCash < changeRet) {
-        //console.log('INSUFFICIENT_FUNDS');
         return {status: 'INSUFFICIENT_FUNDS', change: []};
     }
     else if (totalCash == changeRet) {
-        //convert cashobj to an array and return it
-        //console.log('CLOSED');
-        return {status: 'CLOSED', change: Object.entries(cashobj)};
+        // convert cashObj to an array and return it
+        return {status: 'CLOSED', change: Object.entries(cashObj)};
     }
     else {
-        //need to work out the change to return
-        changeobj.status = 'OPEN';
+        // need to work out the change to return
+        changeObj.status = 'OPEN';
   
-        //100
-        //console.log('100');
-        //console.log('c' + cashobj["ONE HUNDRED"]);
-        //console.log('change due ' + changeRet)
-        let temp = getNumMoney('ONE HUNDRED', 100, cashobj['ONE HUNDRED'], changeRet);
-        //console.log('hi')
-        //console.log('temp ' + temp);
-        //console.log(changeRet);
+        // 100
+        let temp = getNumMoney('ONE HUNDRED', 100, cashObj['ONE HUNDRED'], changeRet);
         if (temp[1] > 0) {
-            changeobj.change.push(temp);
+            changeObj.change.push(temp);
             changeRet -= temp[1];
             changeRet = changeRet.toFixed(2);
-            //console.log('100 change due ' + changeRet);
         }
   
-        //20
-        temp = getNumMoney('TWENTY', 20, cashobj['TWENTY'], changeRet);
+        // 20
+        temp = getNumMoney('TWENTY', 20, cashObj['TWENTY'], changeRet);
         if (temp[1] > 0) {
-            changeobj.change.push(temp);
+            changeObj.change.push(temp);
             changeRet -= temp[1];
             changeRet = changeRet.toFixed(2);
-            //console.log('20 change due ' + changeRet);
         }
   
-        //10
-        temp = getNumMoney('TEN', 10, cashobj['TEN'], changeRet);
+        // 10
+        temp = getNumMoney('TEN', 10, cashObj['TEN'], changeRet);
         if (temp[1] > 0) {
-            changeobj.change.push(temp);
+            changeObj.change.push(temp);
             changeRet -= temp[1];
             changeRet = changeRet.toFixed(2);
-            //console.log('10 change due ' + changeRet);
         }
   
-        //5
-        temp = getNumMoney('FIVE', 5, cashobj['FIVE'], changeRet);
+        // 5
+        temp = getNumMoney('FIVE', 5, cashObj['FIVE'], changeRet);
         if (temp[1] > 0) {
-            changeobj.change.push(temp);
+            changeObj.change.push(temp);
             changeRet -= temp[1];
             changeRet = changeRet.toFixed(2);
-            //console.log('5 change due ' + changeRet);
         }
   
-        //1
-        temp = getNumMoney('ONE', 1, cashobj['ONE'], changeRet);
+        // 1
+        temp = getNumMoney('ONE', 1, cashObj['ONE'], changeRet);
         if (temp[1] > 0) {
-            changeobj.change.push(temp);
+            changeObj.change.push(temp);
             changeRet -= temp[1];
             changeRet = changeRet.toFixed(2);
-            //console.log('1 change due ' + changeRet);
         }
   
-        //0.25
-        temp = getNumMoney('QUARTER', 0.25, cashobj['QUARTER'], changeRet);
+        // 0.25
+        temp = getNumMoney('QUARTER', 0.25, cashObj['QUARTER'], changeRet);
         if (temp[1] > 0) {
-            changeobj.change.push(temp);
+            changeObj.change.push(temp);
             changeRet -= temp[1];
             changeRet = changeRet.toFixed(2);
-            //console.log('0.25 change due ' + changeRet);
         }
   
-        //0.1
-        temp = getNumMoney('DIME', 0.1, cashobj['DIME'], changeRet);
+        // 0.1
+        temp = getNumMoney('DIME', 0.1, cashObj['DIME'], changeRet);
         if (temp[1] > 0) {
-            changeobj.change.push(temp);
+            changeObj.change.push(temp);
             changeRet -= temp[1];
             changeRet = changeRet.toFixed(2);
-            //console.log('0.1 change due ' + changeRet);
         }
   
-        //0.05
-        temp = getNumMoney('NICKEL', 0.05, cashobj['NICKEL'], changeRet);
+        // 0.05
+        temp = getNumMoney('NICKEL', 0.05, cashObj['NICKEL'], changeRet);
         if (temp[1] > 0) {
-            changeobj.change.push(temp);
+            changeObj.change.push(temp);
             changeRet -= temp[1];
             changeRet = changeRet.toFixed(2);
-            //console.log('0.05 change due ' + changeRet);
         }
   
-        //0.01
-        temp = getNumMoney('PENNY', 0.01, cashobj['PENNY'], changeRet);
+        // 0.01
+        temp = getNumMoney('PENNY', 0.01, cashObj['PENNY'], changeRet);
         if (temp[1] > 0) {
-            changeobj.change.push(temp);
+            changeObj.change.push(temp);
             changeRet -= temp[1];
             changeRet = changeRet.toFixed(2);
-            //console.log('0.01 change due ' + changeRet);
         }
         if (changeRet > 0) {
             return {status: 'INSUFFICIENT_FUNDS', change: []};
         }
-        //console.log(changeobj);
-        return changeobj;
+        return changeObj;
     }
 };
 
-//e.g. "HUNDRED", 100, 2, 270
+// e.g. "HUNDRED", 100, 2, 270
 const getNumMoney = (moneyType, moneyValue, drawerNum, changeDue) => {
-    let NumNeeded = Math.floor(changeDue / moneyValue);
-    //console.log(NumNeeded);
-    let hasNum = Math.floor(drawerNum / moneyValue);
-    //let retNum = 0;
-    //console.log('NUm needed ' + NumNeeded + ' drawernum ' + hasNum);
+    const NumNeeded = Math.floor(changeDue / moneyValue);
+    const hasNum = Math.floor(drawerNum / moneyValue);
     if (hasNum < NumNeeded) {
         return [moneyType, hasNum * moneyValue];
     }

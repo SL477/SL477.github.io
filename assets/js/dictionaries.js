@@ -1,5 +1,4 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
+
 class Dictionary {
     constructor() {
         this.datastore = new Array();
@@ -27,8 +26,7 @@ class Dictionary {
 
     count() {
         let n = 0;
-        // eslint-disable-next-line no-unused-vars
-        Object.keys(this.datastore).forEach(key => {
+        Object.keys(this.datastore).forEach(() => {
             ++n;
         });
         return n;
@@ -41,26 +39,51 @@ class Dictionary {
     }
 }
 
+/**
+ * @param {string} textAreaID 
+ * @returns {string}
+ */
+function GetTextAreaValue(textAreaID) {
+    const textAreaItem = document.getElementById(textAreaID);
+    if (textAreaItem) {
+        return textAreaItem.value;
+    }
+    return "";
+}
+
+/**
+ * @param {string} divID 
+ * @param {string} setHtml 
+ */
+function SetDivHtml(divID, setHtml) {
+    const divItem = document.getElementById(divID);
+    if (divItem) {
+        divItem.innerHTML = setHtml;
+    }
+}
+
+// eslint-disable-next-line no-unused-vars
 function phoneDictionary() {
-    let phonenames = $('#phonenames').val();
-    console.log('phonenames',phonenames);
-    let PD = new Dictionary();
-    phonenames.split('\n').forEach(s => {
+    let phoneNames = GetTextAreaValue("phoneNames");
+    console.log('phoneNames',phoneNames);
+    const PD = new Dictionary();
+    phoneNames.split('\n').forEach(s => {
         console.log('s',s);
         let p = s.split(',');
         PD.add(p[0],p[1]);
     });
-    $('#phoneDictAns').append('<ul>' + PD.showAll() + '</ul>');
+    SetDivHtml("phoneDictAns", '<ul>' + PD.showAll() + '</ul>')
 }
 
+// eslint-disable-next-line no-unused-vars
 function wordCounterDict() {
-    let wordcounter = $('#wordcounter').val();
+    let wordCounter = GetTextAreaValue("wordCounter");
     // eslint-disable-next-line no-useless-escape
-    wordcounter = wordcounter.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
-    wordcounter = wordcounter.toLowerCase();
-    console.log('wordcounter',wordcounter);
-    let dict = new Dictionary();
-    wordcounter.split(' ').forEach(s => {
+    wordCounter = wordCounter.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+    wordCounter = wordCounter.toLowerCase();
+    console.log('wordCounter', wordCounter);
+    const dict = new Dictionary();
+    wordCounter.split(' ').forEach(s => {
         let c = dict.find(s);
         if (c) {
             dict.add(s, c + 1);
@@ -69,5 +92,5 @@ function wordCounterDict() {
             dict.add(s, 1);
         }
     });
-    $('#wordCountAns').append('<ul>' + dict.showAll() + '</ul>');
+    SetDivHtml("wordCountAns", '<ul>' + dict.showAll() + '</ul>');
 }

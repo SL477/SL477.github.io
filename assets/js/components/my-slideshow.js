@@ -27,12 +27,15 @@ class MySlideShow extends HTMLElement {
 
         const numberTextDiv = document.createElement('div');
         numberTextDiv.className = 'numbertext';
+        // eslint-disable-next-line no-undef
         numberTextDiv.textContent = `${this.slideIndex} / ${pics.length}`;
         numberTextDiv.id = 'mySlideShowNumberText';
         innerContainer.appendChild(numberTextDiv);
 
         const imgElement = document.createElement('img');
+        // eslint-disable-next-line no-undef
         imgElement.src = pics[this.slideIndex - 1].src;
+        // eslint-disable-next-line no-undef
         imgElement.alt = pics[this.slideIndex - 1].alt;
         imgElement.className = "mainPic app";
         imgElement.id = 'mySlideShowPic';
@@ -48,20 +51,25 @@ class MySlideShow extends HTMLElement {
         captionContainer.className = 'caption-container';
         const captionElement = document.createElement('p');
         captionElement.id = 'mySlideShowCaption';
+        // eslint-disable-next-line no-undef
         captionElement.textContent = pics[this.slideIndex].alt;
         captionContainer.appendChild(captionElement);
         innerContainer.appendChild(captionContainer);
 
         const row = document.createElement('div');
         row.className = 'row';
+        // eslint-disable-next-line no-undef
         for (let i = 0; i < pics.length; i++) {
             const col = document.createElement('div');
             col.className = 'column';
+            // eslint-disable-next-line no-undef
             col.style = `width: ${100 / pics.length}%`;
 
             const innerImg = document.createElement('img');
             innerImg.className = `demo cursor ${this.slideIndex - 1 === i? 'active' : ''}`;
+            // eslint-disable-next-line no-undef
             innerImg.src = pics[i].src;
+            // eslint-disable-next-line no-undef
             innerImg.alt = pics[i].alt;
             innerImg.style = 'width: 100%';
             innerImg.id = `mySlideShowTile${i}`;
@@ -97,7 +105,7 @@ class MySlideShow extends HTMLElement {
      */
     plusSlides(n) {
         this.slideIndex += n;
-        this.showSlides(n);
+        this.showSlides();
     }
 
     nextClick = () => {
@@ -112,18 +120,27 @@ class MySlideShow extends HTMLElement {
      * Make sure the number is in the bounds of the array
      * @param {number} n 
      */
-    showSlides(n) {
+    showSlides() {
+        // eslint-disable-next-line no-undef
         if (this.slideIndex > pics.length) {
             this.slideIndex = 1;
         }
         else if (this.slideIndex < 1) {
+            // eslint-disable-next-line no-undef
             this.slideIndex = pics.length;
         }
 
+        // eslint-disable-next-line no-undef
         this.captionElement.textContent = pics[this.slideIndex - 1].alt;
+        // eslint-disable-next-line no-undef
         this.picElement.src = pics[this.slideIndex - 1].src;
+        // eslint-disable-next-line no-undef
         this.numberText = `${this.slideIndex} / ${pics.length}`;
 
+        const mySlideShowNumberText = document.getElementById('mySlideShowNumberText');
+        mySlideShowNumberText.textContent = this.numberText;
+
+        // eslint-disable-next-line no-undef
         for (let i = 0; i < pics.length; i++) {
             const slideElement = document.querySelector(`#mySlideShowTile${i}`);
             if (slideElement) {
@@ -141,7 +158,7 @@ class MySlideShow extends HTMLElement {
      */
     currentSlide(n) {
         this.slideIndex = n;
-        this.showSlides(n);
+        this.showSlides();
     }
 }
 customElements.define('my-slideshow', MySlideShow);

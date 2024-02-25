@@ -1,6 +1,4 @@
-/* eslint-disable no-redeclare */
-/* eslint-disable no-undef */
-class Node {
+class NodeCls {
     constructor(data, left, right) {
         this.data = data;
         this.left = left;
@@ -22,7 +20,7 @@ class BST {
     }
 
     insert(data) {
-        let n = new Node(data, null, null);
+        let n = new NodeCls(data, null, null);
         if (this.root == null) {
             this.root = n;
         }
@@ -52,9 +50,9 @@ class BST {
 
     inOrder(node) {
         if (!(node == null)) {
-            this.inOrder(node.left) + ' ';
+            this.inOrder(node.left) + " ";
             console.log(node.show());
-            this.inOrder(node.right) + ' ';
+            this.inOrder(node.right) + " ";
         }
     }
 
@@ -207,7 +205,7 @@ class BST {
             }
         }
         catch(e){
-            console.error('error', e, node);
+            console.error("error", e, node);
         }
     }
 
@@ -245,7 +243,7 @@ class BST {
     printBST(node) {
         let ret = '';
         if (node && node != null) {
-            ret += '<li>' + node.data + ': ' + node.count + '</li>';
+            ret += "<li>" + node.data + ": " + node.count + "</li>";
             ret += this.printBST(node.left);
             ret += this.printBST(node.right);
         }
@@ -272,7 +270,7 @@ function getArray(length) {
     return arr;
 }
 
-$(document).ready(function() {
+function startUp() {
     //Test
     let nums = new BST();
     nums.insert(23);
@@ -283,37 +281,37 @@ $(document).ready(function() {
     nums.insert(99);
     nums.insert(22);
 
-    console.log('Count nodes, should be 7: ', nums.countNodes());
-    console.log('max:', nums.max());
-    console.log('min:',nums.min());
+    console.log("Count nodes, should be 7: ", nums.countNodes());
+    console.log("max:", nums.max());
+    console.log("min:",nums.min());
 
-    console.log('Inorder traversals:');
-    nums.inOrder(nums.root);
-    console.log('Preorder traversal:');
-    nums.preOrder(nums.root);
-    console.log('Postorder traversal:');
+    console.log("Inorder traversals:");
+    nums.inOrder(nums.root)
+    console.log("Preorder traversal:");
+    nums.preOrder(nums.root)
+    console.log("Postorder traversal:");
     nums.postOrder(nums.root);
-    console.log('This minimum value of the BST is: ', nums.getMin());
-    console.log('The maximum value of the BST is:', nums.getMax());
+    console.log("This minimum value of the BST is: ", nums.getMin());
+    console.log("The maximum value of the BST is:", nums.getMax());
     let searchFor = 23;
     let found = nums.find(searchFor);
     if (found != null) {
-        console.log('Found ' + searchFor + ' in the BST.');
+        console.log("Found " + searchFor + " in the BST.");
     }
     else {
-        console.log(searchFor + ' was not found in the BST.');
+        console.log(searchFor + " was not found in the BST.");
     }
     searchFor = 13;
     found = nums.find(searchFor);
     if (found != null) {
-        console.log('Found ' + searchFor + ' in the BST.');
+        console.log("Found " + searchFor + " in the BST.");
     }
     else {
-        console.log(searchFor + ' was not found in the BST.');
+        console.log(searchFor + " was not found in the BST.");
     }
 
     let grades = getArray(100);
-    console.log('Print grade array:', prArray(grades));
+    console.log("Print grade array:", prArray(grades));
     let gradeddistro = new BST();
     for (let i = 0; i < grades.length; ++i) {
         let g = grades[i];
@@ -329,17 +327,36 @@ $(document).ready(function() {
 
     //console.log("Inorder traversals:");
     //gradeddistro.inOrder(gradeddistro.root)
-});
+}
+
+function GetTextInput() {
+    const textInputArea = document.getElementById("textInput");
+    if (textInputArea) {
+        return textInputArea.value;
+    }
+    return "";
+}
+
+/**
+ * @param {string} htmlContent 
+ */
+function SetWordCountAns(htmlContent) {
+    const wordCountAnsDiv = document.getElementById("wordCountAns");
+    if (wordCountAnsDiv) {
+        wordCountAnsDiv.innerHTML = htmlContent;
+    }
+}
 
 // eslint-disable-next-line no-unused-vars
 function getTextCounts() {
-    let textInput = $('#textInput').val();
+    let textInput = GetTextInput();
     textInput = textInput.toLowerCase();
+
     // eslint-disable-next-line no-useless-escape
-    textInput = textInput.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,'');
+    textInput = textInput.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
     let txtCounter = new BST();
 
-    textInput.split(' ').forEach(element => {
+    textInput.split(" ").forEach(element => {
         let inp = txtCounter.find(element);
         if (inp == null) {
             txtCounter.insert(element);
@@ -348,11 +365,12 @@ function getTextCounts() {
             txtCounter.update(element);
         }
     });
-    console.log('txtCounter:',txtCounter);
+    console.log("txtCounter:",txtCounter);
 
-    let ret = '<ul>';
+    let ret = "<ul>";
     ret += txtCounter.printBST(txtCounter.root);
-    ret += '</ul>';
-    $('#wordCountAns').empty();
-    $('#wordCountAns').append(ret);
+    ret += "</ul>";
+    SetWordCountAns(ret);
 }
+
+startUp();

@@ -1,6 +1,6 @@
 ---
 title: FCC - JavaScript Algorithms and Data Structures
-layout: jquery_page
+layout: page
 permalink: fccresponsivewebdesign/fccJS
 ---
 <style>
@@ -35,15 +35,15 @@ permalink: fccresponsivewebdesign/fccJS
         <fieldset>
             <label for="palindromeInput">Test Value:</label>
             <input id="palindromeInput" name="palindromeInput" type="text" class="form-control"/>
-            <button onclick="palidromeChecker();" class="btn btn-primary">Test</button>
-            <p>Result: <span id="palidromeResult"></span></p>
+            <button type="button" onclick="palindromeChecker();" class="btn btn-primary">Test</button>
+            <p>Result: <span id="palindromeResult"></span></p>
         </fieldset>
         <hr/>
         <h2>Roman Numeral Converter</h2>
         <fieldset>
             <label for="romanInput">Test Value:</label>
             <input id="romanInput" name="romanInput" type="number" min="0" class="form-control"/>
-            <button onclick="romanNumeralChecker();" class="btn btn-primary">Test</button>
+            <button type="button" onclick="romanNumeralChecker();" class="btn btn-primary">Test</button>
             <p>Result: <span id="romanResult"></span></p>
         </fieldset>
 
@@ -52,7 +52,7 @@ permalink: fccresponsivewebdesign/fccJS
         <fieldset>
             <label for="cipherInput">Test Value:</label>
             <input id="cipherInput" name="cipherInput" type="text" class="form-control" value="GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT."/>
-            <button onclick="caesarCipherChecker();" class="btn btn-primary">Test</button>
+            <button type="button" onclick="caesarCipherChecker();" class="btn btn-primary">Test</button>
             <p>Result: <span id="cipherResult"></span></p>
         </fieldset>
 
@@ -61,7 +61,7 @@ permalink: fccresponsivewebdesign/fccJS
         <fieldset>
             <label for="phoneInput">Test Value:</label>
             <input id="phoneInput" name="phoneInput" type="text" class="form-control" value="555-555-5555"/>
-            <button onclick="phoneNumberChecker();" class="btn btn-primary">Test</button>
+            <button type="button" onclick="phoneNumberChecker();" class="btn btn-primary">Test</button>
             <p>Valid: <span id="phoneResult"></span></p>
         </fieldset>
 
@@ -101,7 +101,7 @@ permalink: fccresponsivewebdesign/fccJS
             <label for="hundred">Hundred Dollar Notes:</label>
             <input id="hundred" name="hundred" type="number" class="form-control" min="0" value="1"/>
 
-            <button onclick="cashRegisterChecker();" class="btn btn-primary">Test</button>
+            <button type="button" onclick="cashRegisterChecker();" class="btn btn-primary">Test</button>
 
             <p>
                 Status: <span id="cashRegisterStatus"></span>
