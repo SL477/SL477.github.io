@@ -126,6 +126,8 @@ class MyNavBar extends HTMLElement {
         ];
         collapseList.appendChild(this.createSection("Blog", postsList));
 
+        collapseList.appendChild(this.createSingleNavItem("/about", "About"));
+
         collapseDiv.appendChild(collapseList);
         mainContainer.appendChild(collapseDiv);
         
