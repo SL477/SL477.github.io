@@ -90,7 +90,8 @@ class MyNavBar extends HTMLElement {
         const odinList = [
             ["/pages/etchasketch.html", "Etch A Sketch"],
             ["https://link477.com/Link477-React/#/rockPaperScissors", "Rock, Paper, Scissors"],
-            ["https://link477.com/Link477-React/#/battleship", "Battleship"]
+            ["https://link477.com/Link477-React/#/battleship", "Battleship"],
+            ["https://link477.com/OdinProject/productLandingPage/", "Product Landing Page"]
         ];
         collapseList.appendChild(this.createSection("Project Odin", odinList));
 

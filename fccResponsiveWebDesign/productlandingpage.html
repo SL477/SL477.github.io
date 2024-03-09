@@ -3,76 +3,108 @@ title: FCC - Product Landing Page
 layout: page
 permalink: fccresponsivewebdesign/productLandingPage
 ---
+
 <style>
-    #main {
-        border: 1px solid black;
-        padding: 4px;
-        border-radius: 5%;
-        width: -moz-fit-content;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  #main {
+    border: 1px solid black;
+    padding: 4px;
+    border-radius: 5px;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
 
-    img {
-        width: 100px;
-        /*display: block;*/
-        height: auto;
-        /*margin: auto;*/
-        padding-left: 30px;
-    }
+  img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    /*margin: auto;*/
+    padding-left: 30px;
+  }
 
-    #header{
-        display: flex;  
-        height: 50px;
-    }
+  #header {
+    display: flex;
+    height: 50px;
+    text-align: center;
+  }
 
-    #nav-bar {
-        text-align: center;
-        position: -webkit-sticky;
-        position: sticky;
-    }
+  #nav-bar {
+    text-align: center;
+    position: -webkit-sticky;
+    position: sticky;
+  }
 
-    .nav-link{
-        text-align: center;
-    }
+  .nav-link {
+    text-align: center;
+  }
 
-    /*#video {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 100%;
-        /*width: 360px;
-    }*/
+  #video {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    width: 360px;
+  }
 
-    #videoWrapper {
-        text-align: center;
-    }
+  #videoWrapper {
+    text-align: center;
+  }
 
-    h1 {
-        text-align: center;
-    }
+  h1 {
+    text-align: center;
+  }
 </style>
 
-<div id="emailForm" class="box">
+<header id="header">
+  <nav id="nav-bar">
+    <a class="nav-link" href="#emailForm">Email</a>
+    <a class="nav-link" href="#videoPage">Video</a>
+    <a class="nav-link" href="#blub">Description</a>
+  </nav>
+  <img
+    id="header-img"
+    src="https://link477.com/OdinProject/productLandingPage/assets/img/UltraTrain.jpg"
+    alt="Calth Type 20 passing signal box"
+    width="100px"
+    height="auto"
+  />
+</header>
+<br />
+<div id="main">
+  <div id="emailForm" class="box">
     <form id="form">
-        <label for="email">To receive notifications about our product enter your email address:</label><br>
-        <input id="email" type="email" name="email" placeholder="Email address" class="form-control">
-        <input id="submit" type="submit" value="Submit" class="btn btn-primary">
+      <label for="email"
+        >To receive notifications about our product enter your email
+        address:</label
+      ><br />
+      <input
+        id="email"
+        type="email"
+        name="email"
+        placeholder="Email address"
+        class="form-control"
+      />
+      <input id="submit" type="submit" value="Submit" class="btn btn-primary" />
     </form>
-</div>
+  </div>
 
-<div id="videoPage" class="box">
+  <div id="videoPage" class="box">
     <!--<video id="video" controls="true" src="https://youtu.be/z-WEzhyc3DY?t=70&html5=True"></video>-->
     <!-- <p id="videoWrapper">
-        <iframe id="video" width="320" height="180" src="https://www.youtube.com/embed/z-WEzhyc3DY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Nimbus 2000"></iframe>
-    </p> -->
-</div>
+            <iframe id="video" width="320" height="180" src="https://www.youtube.com/embed/z-WEzhyc3DY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Nimbus 2000"></iframe>
+        </p> -->
+    <img
+      id="video"
+      src="https://link477.com/OdinProject/productLandingPage/assets/video/Train.gif"
+      alt="Train Video"
+    />
+  </div>
 
-        <div id="blub" class="box">
-            <p>
-                Get the broom flown by the boy who lived! It's amazing buy it now. Ultra fast broom, be the best quidditch player ever.
-            </p>
-        </div>
-    </main>
-    <br/>
+  <div id="blub" class="box">
+    <p>
+      The Calth Type 20 Locomotive. Faithfully serving the Ultramarines for 10
+      thousand years. Bringing supplies to a war zone near you!
+    </p>
+  </div>
 </div>
