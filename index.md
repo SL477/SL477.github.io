@@ -5,7 +5,10 @@
 layout: home_modified
 title: Home
 ---
+
 <script src="/assets/js/main.js" async></script>
+
+<script src="/assets/js/snow.js" async></script>
 
 <h1 class="centertext">Thomas Fishwick</h1>
 
@@ -74,6 +77,7 @@ title: Home
 </div>
 
 {% endfor %}
+
 </div>
 
 <hr>
