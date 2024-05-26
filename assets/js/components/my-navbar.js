@@ -101,7 +101,12 @@ class MyNavBar extends HTMLElement {
         ];
         collapseList.appendChild(this.createSection("Games", gamesList));
 
-        collapseList.appendChild(this.createSingleNavItem("/pages/modelrailway.html", "Model Railway"));
+        const otherList = [
+            ["/pages/modelrailway.html", "Model Railway"],
+            ["https://link477.com/Link477-React/#/terminal", "React Terminal"]
+        ]
+        collapseList.appendChild(this.createSection("Other", otherList));
+        // collapseList.appendChild(this.createSingleNavItem("/pages/modelrailway.html", "Model Railway"));
 
         const dataStructList = [
             ["https://link477.com/Link477-React/#/arrays", "Arrays"],
