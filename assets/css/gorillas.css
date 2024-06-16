@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  padding: 0;
+  /* font-family: monospace;
+  font-size: 14px;
+  color: orange; */
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#info-left {
+  font-family: monospace;
+  font-size: 14px;
+  color: orange;
+  position: absolute;
+  top: 190px;
+  left: 30px;
+}
+
+#info-right {
+  font-family: monospace;
+  font-size: 14px;
+  color: orange;
+  position: absolute;
+  top: 190px;
+  right: 50px;
+  text-align: right;
+}
+
+.wrapper {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#bomb-grab-area {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: grab;
+}
+
+#congratulations {
+  position: absolute;
+  visibility: hidden;
+  text-align: center;
+  left: 50vw;
+  top: 300px;
+}
