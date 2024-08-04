@@ -6,6 +6,8 @@ layout: home_modified
 title: Home
 ---
 
+<script src="/assets/js/mmd.min.js" async></script>
+
 <script src="/assets/js/main.js" async></script>
 
 <script src="/assets/js/snow.js" async></script>
@@ -54,7 +56,7 @@ title: Home
 {% for project in site.data.projects %}
 
 <div class="project-tile">
-<img src="/assets/images/{{ project.picture }}.jpg" alt="{{ project.picture_text }}" class="borderimage" onclick="openModal('{{ project.name }}', '{{ project.picture }}', '{{ project.picture_text }}');" data-bs-toggle="modal" data-bs-target="#projectModal">
+<img src="/assets/images/{{ project.picture }}.jpg" alt="{{ project.picture_text }}" class="borderimage" onclick="openModal('{{ project.name }}', '{{ project.picture }}', '{{ project.picture_text }}', `{{ project.description }}`);" data-bs-toggle="modal" data-bs-target="#projectModal">
 
 <h3 class="project-title">{{ project.name }}</h3>
 
