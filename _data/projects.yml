@@ -3,8 +3,10 @@
   repository: flask-stockMarketChart
   picture: ChartTheStockMarket
   picture_text: Chart the Stock Market Screenshot
+  link_http: https://www.freecodecamp.org/learn/coding-interview-prep/take-home-projects/chart-the-stock-market
+  link_alt: FreeCodeCamp Chart the Stock Market
   description: |
-    This project started as my answer to [FreeCodeCamp Chart the Stock Market](https://www.freecodecamp.org/learn/coding-interview-prep/take-home-projects/chart-the-stock-market).
+    This project started as my answer to @link@.
 
     Here I created a flask app with web sockets.
 
@@ -18,8 +20,10 @@
   repository: fccPredictHealthCostsWithRegression
   picture: HealthCostPredictions
   picture_text: Health Cost Predictor Screenshot
+  link_http: https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/linear-regression-health-costs-calculator
+  link_alt: FreeCodeCamp Predict Health Costs With Regression
   description: |
-    This project started as my answer to [FreeCodeCamp Predict Health Costs With Regression](https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/linear-regression-health-costs-calculator).
+    This project started as my answer to @link@.
 
     Here I created my first Streamlit App, and then discovered how hard it was to put streamlit into a Docker container.
 
@@ -31,8 +35,10 @@
   repository: fccCatAndDog
   picture: CatAndDogImageClassifier
   picture_text: Cat and Dog Image Classifier screenshot
+  link_http: https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/cat-and-dog-image-classifier
+  link_alt: FreeCodeCamp Cat and Dog Image Classifier
   description: |
-    This started out as my answer to [FreeCodeCamp Cat and Dog Image Classifier](https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/cat-and-dog-image-classifier).
+    This started out as my answer to @link@.
 
     I created a Node.JS app which uses TensorFlow.JS with the converted model I made to determine whether the image passed is more likely to be a cat or a dog (with not so great accuracy).
 - name: SMS Classifier
@@ -40,8 +46,10 @@
   repository: flaskSMSClassifier
   picture: SMSClassifier
   picture_text: SMS Classifier Screenshot
+  link_http: https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/neural-network-sms-text-classifier
+  link_alt: FreeCodeCamp SMS Classifier
   description: |
-    This project originally started as my answer to [FreeCodeCamp SMS Classifier](https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/neural-network-sms-text-classifier).
+    This project originally started as my answer to @link@.
 
     In this project I created my first Flask Web App (not including the tutorial I did). Plus my first Docker Container (outside of a tutorial). Originally this used TensorFlow as the machine learning library, but I have now changed this to SciKit Learn.
 
@@ -53,8 +61,10 @@
   repository: /
   picture: XKCDReader
   picture_text: Android Version of the XKCD Reader App
+  link_http: https://xkcd.com/
+  link_alt: XKCD website
   description: |
-    My XKCD Reader app, which uses React-Native to render the [XKCD website](https://xkcd.com/).
+    My XKCD Reader app, which uses React-Native to render the @link@.
 
     The Android APK file (tested on my phone and in the Android emulator) is available at the link above.
 - name: PizzaKG
@@ -63,4 +73,4 @@
   picture: SWTKGClassRelationships
   picture_text: Final class relationships
   description: |
-    This project was something I did after university following the specifications of the SWTKG module which I didn't take
+    This project was something I did after university following the specifications of the SWTKG module which I didn't take.

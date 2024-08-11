@@ -6,14 +6,17 @@ const MODAL_BODY = document.getElementById('modalBody');
  * @param {string} imgSrc
  * @param {string} imgAlt
  * @param {string} projectText The markdown to use
+ * @param {string} [linkHttp=''] 
+ * @param {string} [linkAlt=''] 
  */
 // eslint-disable-next-line no-unused-vars
-function openModal(title, imgSrc, imgAlt, projectText) {
+function openModal(title, imgSrc, imgAlt, projectText, linkHttp = '', linkAlt = '') {
   if (MODAL_TITLE) {
     MODAL_TITLE.textContent = title;
   }
   if (MODAL_BODY) {
     // eslint-disable-next-line no-undef
-    MODAL_BODY.innerHTML = `<img src="/assets/images/${imgSrc}.jpg" alt="${imgAlt}"/><pre style="text-wrap: wrap;">${mmd(projectText)}</pre>`;
+    const linkHtml = `<a href="${linkHttp}" target="_blank" rel="noopener noreferrer">${linkAlt}</a>`;
+    MODAL_BODY.innerHTML = `<img src="/assets/images/${imgSrc}.jpg" alt="${imgAlt}"/><pre style="text-wrap: wrap;">${projectText.replace("@link@", linkHtml)}</pre>`;
   }
 }
