@@ -2,7 +2,9 @@
 layout: post
 title: Different Report Types
 categories: Programming
+author: Tom Fishwick
 ---
+
 In my time at McMillan William's/Taylor Rose MW and as a student at City University I have used various different reporting packages.
 
 The most flexible report type I have used is SQL Server Reporting Services (SSRS). It may not be as modern as Power BI, but is very easy to customise and to create reports which look good both on screen and printed out (though the printed side is interesting to put it mildly). I have used it to create many reports and used it as a way to template some documents.

@@ -1,8 +1,9 @@
 ---
 title: End of University
-layout: page
+layout: post
 categories: Data Science
 excerpt: A brief summary of what I did in my university projects
+author: Tom Fishwick
 ---
 
 I am now (hopefully) finished at university.

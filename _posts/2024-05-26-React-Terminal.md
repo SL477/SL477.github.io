@@ -2,6 +2,7 @@
 title: React Terminal
 layout: post
 categories: React Typescript
+author: Tom Fishwick
 ---
 
 `We do this not because it is easy, but because we thought it would be easy` - Some guy on Reddit

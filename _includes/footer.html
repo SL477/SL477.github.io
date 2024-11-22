@@ -1,22 +1,17 @@
 <footer class="site-footer h-card">
-  <data class="u-url" href="{{ "https://link477.com" | relative_url }}"></data>
-  <data href="https://link477.com/assets/images/tom.jpg" class="u-photo"></data>
-  <data href="https://link477.com/assets/images/link477.png" class="u-logo"></data>
+  <data class="u-url" href="{{ site.site_url | relative_url }}"></data>
+  <data href="{{ site.photo }}" class="u-photo"></data>
+  <data href="{{ site.logo }}" class="u-logo"></data>
 
   <div class="wrapper">
-
     <h2 class="footer-heading p-name">{{ site.title | escape }}</h2>
 
     <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-4">
-        {%- include social.html -%}
-      </div>
+      <div class="footer-col footer-col-4">{%- include social.html -%}</div>
 
       <div class="footer-col footer-col-3">
         <p class="p-note">{{- site.description | escape -}}</p>
       </div>
     </div>
-
   </div>
-
 </footer>

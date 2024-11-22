@@ -1,8 +1,9 @@
 ---
 title: Recipe Box Move
-layout: page
+layout: post
 categories: Hosting Typescript
 edited: Changed links
+author: Tom Fishwick
 ---
 
 The time finally came when this site got too big and I started moving things.

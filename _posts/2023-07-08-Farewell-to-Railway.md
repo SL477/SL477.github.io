@@ -1,7 +1,8 @@
 ---
 title: Farewell to Railway
-layout: page
+layout: post
 categories: Hosting Python Typescript
+author: Tom Fishwick
 ---
 
 Recently Railway.app announced a change to their pricing structure, so I took the opportunity to revamp my flask app that ran on there to chart the stock market. It now uses Chart JS instead of MatPlotLib as the most visible difference from before.

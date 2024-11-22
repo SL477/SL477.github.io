@@ -3,9 +3,11 @@ title: Blood Bowl 1st Match
 layout: post
 categories: Blood-Bowl
 excerpt: My first Blood-Bowl match, with a few embellishments
+author: Tom Fishwick
 ---
+
 ![Practice Match](/assets/images/bloodbowlscore.jpg)
-*Practice Match*
+_Practice Match_
 
 It was a clear and pleasant day in the city of Johnstone, banners fluttered in the wind over the Blood Bowl stadium. The boisterous crowds broke the silence, shouting taunts towards the stands. Sir Guy paced concernedly around his box above the stands surrounding the pitch, neither team had appeared yet and the crowds thirsted for blood. The skies above Johnstone cracked as the warp invaded the mortal realm. Ten thousand orcs appeared as if by magic outside the gates, cries of terror from the guards on the walls greeted them, their sergeants appealed for calm as this had been arranged in advance.
 
@@ -56,6 +58,6 @@ Teef Paris concluded the fight he had been having with Gimli on and off since th
 “And that gentlemen is Blood Bowl,” Captain Jack said, flourishing his hat at the enraged Christoph D’Ancy. Sir Guy gave him an incredulous look.
 
 ![Blood Bowl](/assets/images/bloodbowlscrimmage.jpg)
-*Blood Bowl*
+_Blood Bowl_
 
 On the fields outside Johnstone the Orcs celebrated with the nervous townsfolk. The Tau and Space Marines joining TeefSnatcher and his Lieutenants for a conference of their next steps. As it got dark the warp breached open and in a blinding flash of light the Orcs, Tau and Space Marines vanished into the sky.

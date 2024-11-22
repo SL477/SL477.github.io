@@ -16,16 +16,19 @@
 title: Thomas Fishwick
 description: >- # this means to ignore newlines until "baseurl:"
   Thomas Fishwick is a software developer and data scientist
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://link477.com" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: '' # the subpath of your site, e.g. /blog
+url: 'https://link477.com' # the base hostname & protocol for your site, e.g. http://example.com
+site_url: 'https://link477.com'
 twitter_username: TomFishwick477
-github_username:  SL477
+github_username: SL477
 linkedin_username: thomas-fishwick-313459172
 stackoverflow_username: 14416333/link477
 kaggle_username: tomfishwick
 datacamp_username: fishwickt
 credly_username: thomas-fishwick.519c62f9
 exercism_username: Link477
+logo: https://link477.com/assets/images/link477.png
+photo: https://link477.com/assets/images/tom.jpg
 
 show_excerpts: true
 
@@ -43,7 +46,6 @@ gist: noscript
 kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
-
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
