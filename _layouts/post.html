@@ -29,6 +29,9 @@ layout: default_modified
           >{{ page.author }}</span
         ></span
       >
+      <data href="{{ site.photo }}" class="u-photo"></data>
+      {%- endif -%} {%- if page.categories -%}
+      <data class="p-category" hidden>{{ page.categories }}</data>
       {%- endif -%}
     </p>
   </header>
