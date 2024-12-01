@@ -23,8 +23,8 @@ permalink: /feed.json
   "items": [
     {%- for post in site.posts reversed -%}
     {
-      "id": "{{ post.url | relative_url }}",
-      "title": "{{ post.title | escape }}",
+      "id": {{ post.url | absolute_url | jsonify }},
+      "title": {{ post.title | jsonify }},
       "content_html": {{ post.content | jsonify }},
       "date_published": {{ post.date | date_to_xmlschema | jsonify }},
       {%- if post.last_modified_at -%}
@@ -33,10 +33,10 @@ permalink: /feed.json
         "date_modified": {{ post.date | date_to_xmlschema | jsonify }},
       {%- endif -%}
       "authors": [{"name": {{ post.author | jsonify }}}],
-      "url": "{{ post.url | relative_url }}",
-      "summary": "{{ post.excerpt }}",
+      "url": {{ post.url | absolute_url | jsonify }},
+      "summary": {{ post.excerpt | jsonify }},
       "language": "en-GB",
-      "tags": {{ post.categories | jsonify }}
+      "categories": {{ post.categories | jsonify }}
     }
     {%- endfor -%}
   ]
