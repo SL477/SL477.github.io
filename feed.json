@@ -1,0 +1,43 @@
+---
+layout: none
+permalink: /feed.json
+---
+
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "Link477 JSON Feed",
+  "icon": "{{ site.logo }}",
+  "home_page_url": "{{ site.site_url }}",
+  "feed_url": {{ page.permalink | absolute_url | jsonify }},
+  "favicon": "{{ site.logo }}",
+  "description": "{{ site.description }}",
+  "user_comment": "My JSON feed",
+  "authors": [
+    {
+      "name": "{{ site.title }}",
+      "url": "{{ site.site_url }}",
+      "avatar": "{{ site.photo }}"
+    }
+  ],
+  "language": "en-GB",
+  "items": [
+    {%- for post in site.posts reversed -%}
+    {
+      "id": "{{ post.url | relative_url }}",
+      "title": "{{ post.title | escape }}",
+      "content_html": {{ post.content | jsonify }},
+      "date_published": {{ post.date | date_to_xmlschema | jsonify }},
+      {%- if post.last_modified_at -%}
+        "date_modified": {{ post.last_modified_at | date_to_xmlschema  | jsonify }},
+      {%- else -%}
+        "date_modified": {{ post.date | date_to_xmlschema | jsonify }},
+      {%- endif -%}
+      "authors": [{"name": {{ post.author | jsonify }}}],
+      "url": "{{ post.url | relative_url }}",
+      "summary": "{{ post.excerpt }}",
+      "language": "en-GB",
+      "tags": {{ post.categories | jsonify }}
+    }
+    {%- endfor -%}
+  ]
+}
