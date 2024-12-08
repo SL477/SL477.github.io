@@ -2,165 +2,218 @@
 title: FCC - Pomodoro Clock
 layout: page
 permalink: fccresponsivewebdesign/pomodoroclock
+last_modified_at: 2024-02-25
 ---
-<style>
-    h1 {
-        text-align: center;
-    }
 
-    #main {
-        border: 1px solid black;
-        padding: 4px;
-        border-radius: 5%;
-        width: -moz-fit-content;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-    }
+<style>
+  h1 {
+    text-align: center;
+  }
+
+  #main {
+    border: 1px solid black;
+    padding: 4px;
+    border-radius: 5%;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
 </style>
 
 <div id="navbar"></div>
-    
+
 <div id="main" class="container-fluid">
-    <h1>Pomodoro Clock</h1>
-    <fieldset>
-        <label id="break-label" for="break-length">Break Length:</label>
-        <input id="break-length" type="number" value="5" min="1" max="60" class="form-control"/>
-        <button type="button" id="break-decrement" onclick="breakDecrement(-1)" aria-label="down">&#8897;</button>
-        <button type="button" id="break-increment" onclick="breakDecrement(1)" aria-label="up">&#8896;</button>
-        <br/>
-        
-        <label id="session-label" for="session-length">Session Length:</label>
-        <input id="session-length" type="number" value="25" min="1" max="60" class="form-control"/>
-        <button type="button" id="session-decrement" onclick="sessionDecrement(-1)" aria-label="down">&#8897;</button>
-        <button type="button" id="session-increment" onclick="sessionDecrement(1)" aria-label="up">&#8896;</button>
-    </fieldset>
-    
-    <div id="timerBox" class="container-fluid">
-    <br/>
-      <div id="timer-label">Session</div>
-      <br/>
-      <span id="time-left">25:00</span>
-      <br/>
-      <button type="button" id="start_stop" onclick="startStop()" aria-label="start/stop">&#8883;||</button>
-      <button type="button" id="reset" onclick="resetFunc()" aria-label="reset">&#8635;</button>
-    </div>
-    <audio id="beep" src="/assets/audio/fccResponsiveWebDesign_audio_BeepSound.wav"></audio>
+  <h1>Pomodoro Clock</h1>
+  <fieldset>
+    <label id="break-label" for="break-length">Break Length:</label>
+    <input
+      id="break-length"
+      type="number"
+      value="5"
+      min="1"
+      max="60"
+      class="form-control"
+    />
+    <button
+      type="button"
+      id="break-decrement"
+      onclick="breakDecrement(-1)"
+      aria-label="down"
+    >
+      &#8897;
+    </button>
+    <button
+      type="button"
+      id="break-increment"
+      onclick="breakDecrement(1)"
+      aria-label="up"
+    >
+      &#8896;
+    </button>
+    <br />
+
+    <label id="session-label" for="session-length">Session Length:</label>
+    <input
+      id="session-length"
+      type="number"
+      value="25"
+      min="1"
+      max="60"
+      class="form-control"
+    />
+    <button
+      type="button"
+      id="session-decrement"
+      onclick="sessionDecrement(-1)"
+      aria-label="down"
+    >
+      &#8897;
+    </button>
+    <button
+      type="button"
+      id="session-increment"
+      onclick="sessionDecrement(1)"
+      aria-label="up"
+    >
+      &#8896;
+    </button>
+  </fieldset>
+
+  <div id="timerBox" class="container-fluid">
+    <br />
+    <div id="timer-label">Session</div>
+    <br />
+    <span id="time-left">25:00</span>
+    <br />
+    <button
+      type="button"
+      id="start_stop"
+      onclick="startStop()"
+      aria-label="start/stop"
+    >
+      &#8883;||
+    </button>
+    <button type="button" id="reset" onclick="resetFunc()" aria-label="reset">
+      &#8635;
+    </button>
+  </div>
+  <audio
+    id="beep"
+    src="/assets/audio/fccResponsiveWebDesign_audio_BeepSound.wav"
+  ></audio>
 </div>
 
 <script>
-    let running = false;
-    let myTimer;
-    let isSession = true;
-    let remainingTime;
-    const breakLength = document.getElementById('break-length');
-    const sessionLength = document.getElementById('session-length');
-    const timeLeft = document.getElementById('time-left');
-    const timerLabel = document.getElementById('timer-label');
+  let running = false;
+  let myTimer;
+  let isSession = true;
+  let remainingTime;
+  const breakLength = document.getElementById('break-length');
+  const sessionLength = document.getElementById('session-length');
+  const timeLeft = document.getElementById('time-left');
+  const timerLabel = document.getElementById('timer-label');
 
-    const breakDecrement = (i) => {
-        if (breakLength) {
-            let b = parseInt(breakLength.value) + i;
-            if (b < 1) {
-                b = 1;
-            }
-            else if (b > 60) {
-                b = 60;
-            }
-            console.log('breakDecrement', b);
-            breakLength.value = b;
-        }     
-    };
-
-    const sessionDecrement = (i) => {
-        if (sessionLength && timeLeft) {
-            let b = parseInt(sessionLength.value) + i;
-            if (b < 1) {
-                b = 1;
-            }
-            else if (b > 60) {
-                b = 60;
-            }
-            console.log('sessionDecrement', b);
-            sessionLength.value = b;
-            if (!running) {
-                timeLeft.textContent = b + ':00';
-            }
-        }
-    };
-
-    const startStop = () => {
-        console.log("startStop");
-        if (timeLeft) {
-            if (running == false)
-                {
-                console.log("start timer");
-                running = true;
-                const i = timeLeft.textContent.split(':')
-                remainingTime = parseInt(i[0]) * 60 + parseInt(i[1]);
-                console.log(remainingTime);
-                
-                myTimer = window.setInterval(eachSecond, 30);
-                console.log("myTimer: " + myTimer);
-                }
-            else {
-                running = false;
-                if (myTimer != null) {
-                    window.clearInterval(myTimer);
-                    myTimer = null;
-                }
-            }
-        }
-    };
-
-    const resetFunc = () => {
-        console.log("reset");
-        if (breakLength && sessionLength && timeLeft && timerLabel) {
-            running = false;
-            timeLeft.textContent = '25:00';
-            breakLength.value = '5';
-            sessionLength.value = "25";
-            timerLabel.textContent = 'Session';
-            myTimer = null;
-            const e = document.getElementById("beep");
-            e.pause();
-            e.currentTime = 0;
-        }
-    };
-
-    function eachSecond() {
-        if (breakLength && sessionLength && timeLeft && timerLabel) {
-            if (running == false) {
-                return;
-            }
-
-            const i = timeLeft.textContent.split(':');
-            remainingTime = parseInt(i[0]) * 60 + parseInt(i[1]);
-            remainingTime -= 1;
-            
-            if (remainingTime < 0) {
-                if (timerLabel.textContent === 'Break') {
-                    remainingTime = parseInt(breakLength.value) * 60 + 1;
-                    isSession = false;
-                }
-                else {
-                    remainingTime = parseInt(sessionLength.value) * 60 + 0;
-                    isSession = true;
-                }
-            }
-            
-            const mins = Math.floor(remainingTime / 60);
-            const secs = remainingTime - (mins * 60);
-            
-            const s = (mins < 10? "0" : "") + mins + ":" + (secs < 10? "0" : "") + secs;
-            timeLeft.textContent = s;
-            if (remainingTime == 0) {
-                const e = document.getElementById("beep");
-                e.play();
-                timeLeft.textContent = '00:00';
-                timerLabel.textContent = timerLabel.textContent === 'Session'? 'Break' : 'Session';
-            }
-            console.log("clock text: " + s);
-        }
+  const breakDecrement = (i) => {
+    if (breakLength) {
+      let b = parseInt(breakLength.value) + i;
+      if (b < 1) {
+        b = 1;
+      } else if (b > 60) {
+        b = 60;
+      }
+      console.log('breakDecrement', b);
+      breakLength.value = b;
     }
+  };
+
+  const sessionDecrement = (i) => {
+    if (sessionLength && timeLeft) {
+      let b = parseInt(sessionLength.value) + i;
+      if (b < 1) {
+        b = 1;
+      } else if (b > 60) {
+        b = 60;
+      }
+      console.log('sessionDecrement', b);
+      sessionLength.value = b;
+      if (!running) {
+        timeLeft.textContent = b + ':00';
+      }
+    }
+  };
+
+  const startStop = () => {
+    console.log('startStop');
+    if (timeLeft) {
+      if (running == false) {
+        console.log('start timer');
+        running = true;
+        const i = timeLeft.textContent.split(':');
+        remainingTime = parseInt(i[0]) * 60 + parseInt(i[1]);
+        console.log(remainingTime);
+
+        myTimer = window.setInterval(eachSecond, 30);
+        console.log('myTimer: ' + myTimer);
+      } else {
+        running = false;
+        if (myTimer != null) {
+          window.clearInterval(myTimer);
+          myTimer = null;
+        }
+      }
+    }
+  };
+
+  const resetFunc = () => {
+    console.log('reset');
+    if (breakLength && sessionLength && timeLeft && timerLabel) {
+      running = false;
+      timeLeft.textContent = '25:00';
+      breakLength.value = '5';
+      sessionLength.value = '25';
+      timerLabel.textContent = 'Session';
+      myTimer = null;
+      const e = document.getElementById('beep');
+      e.pause();
+      e.currentTime = 0;
+    }
+  };
+
+  function eachSecond() {
+    if (breakLength && sessionLength && timeLeft && timerLabel) {
+      if (running == false) {
+        return;
+      }
+
+      const i = timeLeft.textContent.split(':');
+      remainingTime = parseInt(i[0]) * 60 + parseInt(i[1]);
+      remainingTime -= 1;
+
+      if (remainingTime < 0) {
+        if (timerLabel.textContent === 'Break') {
+          remainingTime = parseInt(breakLength.value) * 60 + 1;
+          isSession = false;
+        } else {
+          remainingTime = parseInt(sessionLength.value) * 60 + 0;
+          isSession = true;
+        }
+      }
+
+      const mins = Math.floor(remainingTime / 60);
+      const secs = remainingTime - mins * 60;
+
+      const s =
+        (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+      timeLeft.textContent = s;
+      if (remainingTime == 0) {
+        const e = document.getElementById('beep');
+        e.play();
+        timeLeft.textContent = '00:00';
+        timerLabel.textContent =
+          timerLabel.textContent === 'Session' ? 'Break' : 'Session';
+      }
+      console.log('clock text: ' + s);
+    }
+  }
 </script>

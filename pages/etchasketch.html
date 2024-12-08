@@ -1,34 +1,46 @@
 ---
 title: Etch A Sketch
 layout: page
+last_modified_at: 2024-02-25
 ---
-<p>My answer for <a href="https://www.theodinproject.com/courses/foundations/lessons/etch-a-sketch-project" target="_blank" rel="noopener noreferrer">Project Odin Etch-A-Sketch</a></p>
-		
+
+<p>
+  My answer for
+  <a
+    href="https://www.theodinproject.com/courses/foundations/lessons/etch-a-sketch-project"
+    target="_blank"
+    rel="noopener noreferrer"
+    >Project Odin Etch-A-Sketch</a
+  >
+</p>
+
 <div id="sketchpad" class="flex-container"></div>
-<button type="button" class="btn btn-primary" onclick="userCreateGrid();">Reset</button>
+<button type="button" class="btn btn-primary" onclick="userCreateGrid();">
+  Reset
+</button>
 
 <script src="/assets/js/etchASketch.js"></script>
 
 <style>
-    .row {
-        display: flex;
-        margin-left: auto;
-        margin-right: auto;
-        width: 90%;
-        flex-wrap: nowrap;
-    }
-    .col {
-        border: 1px solid black;
-        min-width: 0;
-        flex-basis: 0;
-        flex: 1;
-    }
+  .row {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    flex-wrap: nowrap;
+  }
+  .col {
+    border: 1px solid black;
+    min-width: 0;
+    flex-basis: 0;
+    flex: 1;
+  }
 
-    .hovered {
-        background-color: brown;
-        color: brown;
-    }
-    h1 {
-        color: red;
-    }
+  .hovered {
+    background-color: brown;
+    color: brown;
+  }
+  h1 {
+    color: red;
+  }
 </style>

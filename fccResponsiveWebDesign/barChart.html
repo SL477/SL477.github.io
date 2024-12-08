@@ -2,190 +2,199 @@
 title: FCC - Visualise Data with a Bar Chart
 layout: page
 permalink: fccresponsivewebdesign/barchart
+last_modified_at: 2024-02-04
 ---
 
 <style>
-    .bar {
-        color: green;
-        background-color: green;
-        fill: green;
-    }
+  .bar {
+    color: green;
+    background-color: green;
+    fill: green;
+  }
 
-    .bar:hover {
-        color: red;
-        background-color: red;
-        fill: red;
-    }
+  .bar:hover {
+    color: red;
+    background-color: red;
+    fill: red;
+  }
 
-    .tooltip {
-        fill: blue;
-        background-color: blue;
-        color: white;
-        text-align: center;
-    }
+  .tooltip {
+    fill: blue;
+    background-color: blue;
+    color: white;
+    text-align: center;
+  }
 
-    h1 {
-        text-align: center;
-    }
+  h1 {
+    text-align: center;
+  }
 
-    #holder, svg {
-        display: block;
-        margin: 0 auto;
-    }
+  #holder,
+  svg {
+    display: block;
+    margin: 0 auto;
+  }
 </style>
 
 <div id="navbar"></div>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
 <h1 id="title">USA GDP Bar Chart</h1>
-<div id="holder" class="holder">
-    
-</div>
+<div id="holder" class="holder"></div>
 
 <script>
-    // Variables
-    const w = 1000;
-    const h = 500;
-    const padding = 100;
+  // Variables
+  const w = 1000;
+  const h = 500;
+  const padding = 100;
 
-    //Get the data
-    const req = new XMLHttpRequest();
-    req.open("GET", 'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json', true);
-    req.send();
-    req.onload = function() {
-        const json = JSON.parse(req.responseText);
-        visualize(json);
-    };
+  //Get the data
+  const req = new XMLHttpRequest();
+  req.open(
+    'GET',
+    'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json',
+    true
+  );
+  req.send();
+  req.onload = function () {
+    const json = JSON.parse(req.responseText);
+    visualize(json);
+  };
 
-    function parseDate(dateStr) {
-        var parts = dateStr.split("-");
-        return new Date(parts[0], parts[1] - 1, parts[2]);
+  function parseDate(dateStr) {
+    var parts = dateStr.split('-');
+    return new Date(parts[0], parts[1] - 1, parts[2]);
+  }
+
+  function getQuarter(month) {
+    switch (month) {
+      case 0:
+        return 'Q1';
+      case 3:
+        return 'Q2';
+      case 6:
+        return 'Q3';
+      case 9:
+        return 'Q4';
     }
+  }
 
-    function getQuarter(month) {
-        switch(month) {
-            case 0:
-                return "Q1";
-            case 3:
-                return "Q2";
-            case 6:
-                return "Q3";
-            case 9:
-                return "Q4";
-        }
-    }
+  function visualize(dataset) {
+    const svg = d3
+      .select('#holder')
+      .append('svg')
+      .attr('width', w)
+      .attr('height', h);
 
-    function visualize(dataset) {       
-        const svg = d3.select("#holder")
-            .append("svg")
-            .attr("width", w)
-            .attr("height", h);
+    const dat = dataset.data.map((d, i) => {
+      const ret = [0, 0, 0, 0, 0];
+      // get the year
+      const dat2 = parseDate(d[0]);
+      ret[0] = dat2.getFullYear() + dat2.getMonth();
+      ret[1] = d[1];
+      ret[2] = getQuarter(dat2.getMonth());
+      ret[3] = dat2;
+      ret[4] = d[0];
+      return ret;
+    });
 
-        const dat = dataset.data.map((d, i) => {
-            const ret = [0, 0, 0, 0, 0];
-            // get the year
-            const dat2 = parseDate(d[0]);
-            ret[0] = dat2.getFullYear() + dat2.getMonth();
-            ret[1] = d[1];
-            ret[2] = getQuarter(dat2.getMonth());
-            ret[3] = dat2;
-            ret[4] = d[0];
-            return ret;
-        });
+    const yScale = d3
+      .scaleLinear()
+      .domain([0, d3.max(dat, (d) => d[1])])
+      .range([h - padding, padding]);
 
-        const yScale = d3.scaleLinear()
-            .domain([0, d3.max(dat, (d) => d[1])])
-            .range([h - padding, padding]);
+    let xScale = d3
+      .scaleTime()
+      .domain([d3.min(dat, (d, i) => d[3]), d3.max(dat, (d, i) => d[3])])
+      .range([padding, w - padding]);
 
-        let xScale = d3.scaleTime()
-            .domain([d3.min(dat, (d, i) => d[3]), d3.max(dat, (d, i) => d[3])])
-            .range([padding,w - padding]);
-        
-        let tooltip = d3.select("#holder")
-            .append("div")
-            .style("opacity", 0)
-            .attr("class", "tooltip")
-            .style("background-color", "blue")
-            .style("border", "solid")
-            .style("border-width", "2px")
-            .style("border-radius", "5px")
-            .style("padding", "5px")
-            .attr("id", "tooltip")
-            .attr("class", "tooltip");
+    let tooltip = d3
+      .select('#holder')
+      .append('div')
+      .style('opacity', 0)
+      .attr('class', 'tooltip')
+      .style('background-color', 'blue')
+      .style('border', 'solid')
+      .style('border-width', '2px')
+      .style('border-radius', '5px')
+      .style('padding', '5px')
+      .attr('id', 'tooltip')
+      .attr('class', 'tooltip');
 
-        d3.select("svg")
-            .selectAll("rect")
-            .data(dat)
-            .enter()
-            .append("rect")
-            .attr("class", "bar :hover")
-            .attr("x", (d, i) => {
-                return xScale(d[3]);
-            })
-            .attr("width", w / dat.length)
-            .attr("y", (d, i) => {
-                return yScale(d[1]);
-            })
-            .attr("height", (d, i) => {
-                return h - padding - yScale(d[1]);
-            })
-        .attr("color", "green")
-        .attr("data-date", (d) => d[4])
-        .attr("data-gdp", (d) => d[1])        
-        .on("mouseover", function (d) {
-            tooltip.style("opacity", 1);
-            d3.select(this)
-                .style("stroke", "black")
-                .style("opacity", 1)
-        })
-        .on("mousemove", function(d) {
-            tooltip
-                .html((d[0]) + " " + d[2] + " <br/>$" + d[1] + " billion")
-                .style("left", (d3.mouse(this)[0] + 70) + "px")
-                .style("top", (d3.mouse(this)[1]) + "px")
-                .attr("data-gdp", d[1])
-                .attr("data-date", d[4]);
-        })
-        .on("mouseleave", function(d) {
-            tooltip.style("opacity", 0);
-            d3.select(this)
-                .style("stroke", "none");
-        });
+    d3.select('svg')
+      .selectAll('rect')
+      .data(dat)
+      .enter()
+      .append('rect')
+      .attr('class', 'bar :hover')
+      .attr('x', (d, i) => {
+        return xScale(d[3]);
+      })
+      .attr('width', w / dat.length)
+      .attr('y', (d, i) => {
+        return yScale(d[1]);
+      })
+      .attr('height', (d, i) => {
+        return h - padding - yScale(d[1]);
+      })
+      .attr('color', 'green')
+      .attr('data-date', (d) => d[4])
+      .attr('data-gdp', (d) => d[1])
+      .on('mouseover', function (d) {
+        tooltip.style('opacity', 1);
+        d3.select(this).style('stroke', 'black').style('opacity', 1);
+      })
+      .on('mousemove', function (d) {
+        tooltip
+          .html(d[0] + ' ' + d[2] + ' <br/>$' + d[1] + ' billion')
+          .style('left', d3.mouse(this)[0] + 70 + 'px')
+          .style('top', d3.mouse(this)[1] + 'px')
+          .attr('data-gdp', d[1])
+          .attr('data-date', d[4]);
+      })
+      .on('mouseleave', function (d) {
+        tooltip.style('opacity', 0);
+        d3.select(this).style('stroke', 'none');
+      });
 
-        // Axes
-        // x axis
-        const xAxis = d3.axisBottom(xScale);
-        d3.select("svg").append("g")
-            .attr("transform", "translate(0, " + (h - padding) +")")
-            .attr("id", "x-axis")
-            .call(xAxis);
+    // Axes
+    // x axis
+    const xAxis = d3.axisBottom(xScale);
+    d3.select('svg')
+      .append('g')
+      .attr('transform', 'translate(0, ' + (h - padding) + ')')
+      .attr('id', 'x-axis')
+      .call(xAxis);
 
-        // y axis
-        const yAxis = d3.axisLeft(yScale);
-        d3.select("svg").append("g")
-            .attr("transform", "translate(" + padding + ",0)")
-            .attr("id", "y-axis")
-            .call(yAxis);
+    // y axis
+    const yAxis = d3.axisLeft(yScale);
+    d3.select('svg')
+      .append('g')
+      .attr('transform', 'translate(' + padding + ',0)')
+      .attr('id', 'y-axis')
+      .call(yAxis);
 
-        // Labels
-        // X label
-        d3.select("svg").append("text")
-            .attr("class", "x label")
-            .attr("text-anchor", "end")
-            .style("text-align", "center")
-            .attr("x", w / 2)
-            .attr("y", h - 6)
-            .text("Year");
+    // Labels
+    // X label
+    d3.select('svg')
+      .append('text')
+      .attr('class', 'x label')
+      .attr('text-anchor', 'end')
+      .style('text-align', 'center')
+      .attr('x', w / 2)
+      .attr('y', h - 6)
+      .text('Year');
 
-        // Y Label
-        d3.select("svg").append("text")
-            .attr("class", "y label")
-            .attr("text-anchor", "end")
-            .style("text-align", "end")
-            .attr("y", 6)
-            .attr("dy", ".75em")
-            .attr("x", -200)
-            .attr("transform", "rotate(-90)")
-            .text("Billion $");
-    }
+    // Y Label
+    d3.select('svg')
+      .append('text')
+      .attr('class', 'y label')
+      .attr('text-anchor', 'end')
+      .style('text-align', 'end')
+      .attr('y', 6)
+      .attr('dy', '.75em')
+      .attr('x', -200)
+      .attr('transform', 'rotate(-90)')
+      .text('Billion $');
+  }
 </script>

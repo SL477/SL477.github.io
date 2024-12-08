@@ -2,42 +2,80 @@
 layout: page
 title: Advanced Algorithms
 permalink: /dataStructuresAlgorithms/advancedAlgorithms
+last_modified_at: 2024-02-03
 ---
-<p>My answers to the exercises in <a href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms &amp; Data Structures with JS</a></p>
+
+<p>
+  My answers to the exercises in
+  <a
+    href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf"
+    >Algorithms &amp; Data Structures with JS</a
+  >
+</p>
 
 <div id="app">
-    <h3>Exercise 1</h3>
-    <fieldset>
-        <legend>Brute force algorithm to find the longest common substring</legend>
-        <label for="string1">String 1:</label>
-        <input type="text" class="form-control" id="string1" name="string1" value="test"/>
-        <label for="string2">String 2:</label>
-        <input type="text" class="form-control" id="string2" name="string2" value="the short brown fox jumped over the lazy dog"/>
-        <button type="button" onclick="bruteForceSubstring()" class="btn btn-primary">Find Longest Substring</button>
-        <p>Result: <span id="longSubString"></span></p>
-    </fieldset>
-    <h3>Exercise 2</h3>
-    <fieldset>
-        <legend>Knapsack problem</legend>
-        <label for="capacity">Capacity:</label>
-        <input type="number" id="capacity" name="capacity" class="form-control" value="16"/>
-        <div id="potentialItems"></div>
-        <button type="button" class="btn btn-primary" onclick="addPotentialItem()">Add Potential Item</button>
-        <button type="button" class="btn btn-primary" onclick="knapSackSolution()">Solve Knapsack</button>
-        <p>Max value: <span id="knapsackResult"></span>{{knapsackResult}}</p>
-    </fieldset>
-    <h3>Exercise 3</h3>
-    <fieldset>
-        <legend>Coin Changing</legend>
-        <label for="amount">Amount:</label>
-        <input type="number" class="form-control" id="amount" value="0.3"/>
-        <div class="form-check">
-            <label for="useDimes" class="form-check-label">Use Dimes (10c)</label>
-            <input type="checkbox" id="useDimes" class="form-check-input"/>
-        </div>
-        <button type="button" class="btn btn-primary" onclick="workoutChange()">Solution</button>
-        <div id="coins"></div>
-    </fieldset>
+  <h3>Exercise 1</h3>
+  <fieldset>
+    <legend>Brute force algorithm to find the longest common substring</legend>
+    <label for="string1">String 1:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="string1"
+      name="string1"
+      value="test"
+    />
+    <label for="string2">String 2:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="string2"
+      name="string2"
+      value="the short brown fox jumped over the lazy dog"
+    />
+    <button
+      type="button"
+      onclick="bruteForceSubstring()"
+      class="btn btn-primary"
+    >
+      Find Longest Substring
+    </button>
+    <p>Result: <span id="longSubString"></span></p>
+  </fieldset>
+  <h3>Exercise 2</h3>
+  <fieldset>
+    <legend>Knapsack problem</legend>
+    <label for="capacity">Capacity:</label>
+    <input
+      type="number"
+      id="capacity"
+      name="capacity"
+      class="form-control"
+      value="16"
+    />
+    <div id="potentialItems"></div>
+    <button type="button" class="btn btn-primary" onclick="addPotentialItem()">
+      Add Potential Item
+    </button>
+    <button type="button" class="btn btn-primary" onclick="knapSackSolution()">
+      Solve Knapsack
+    </button>
+    <p>Max value: <span id="knapsackResult"></span>{{knapsackResult}}</p>
+  </fieldset>
+  <h3>Exercise 3</h3>
+  <fieldset>
+    <legend>Coin Changing</legend>
+    <label for="amount">Amount:</label>
+    <input type="number" class="form-control" id="amount" value="0.3" />
+    <div class="form-check">
+      <label for="useDimes" class="form-check-label">Use Dimes (10c)</label>
+      <input type="checkbox" id="useDimes" class="form-check-input" />
+    </div>
+    <button type="button" class="btn btn-primary" onclick="workoutChange()">
+      Solution
+    </button>
+    <div id="coins"></div>
+  </fieldset>
 </div>
 
 <script src="/assets/js/advancedAlgorithms.js" async></script>

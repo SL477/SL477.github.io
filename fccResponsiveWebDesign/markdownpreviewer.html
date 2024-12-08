@@ -2,21 +2,30 @@
 title: Markdown Previewer
 layout: default_modified
 permalink: fccresponsivewebdesign/markdownpreviewer
+last_modified_at: 2024-02-04
 ---
+
 <!--Markdown-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.7.0/marked.js"></script>
 
 <style>
-    h1 {
-	    text-align: center;
-    }
+  h1 {
+    text-align: center;
+  }
 </style>
 
 <div id="navbar"></div>
 <h1>Markdown Previewer</h1>
 <div id="edit" class="container-fluid">
-    <label for="editor">Raw Markdown:</label>
-    <textarea id="editor" rows="10" cols="150" class="form-control" onpropertychange="updatePreview();" onkeyup="updatePreview();">
+  <label for="editor">Raw Markdown:</label>
+  <textarea
+    id="editor"
+    rows="10"
+    cols="150"
+    class="form-control"
+    onpropertychange="updatePreview();"
+    onkeyup="updatePreview();"
+  >
 # Markdown Previewer
 ## By [Link477](https://Link477.com/)
 **Here** is the sort of code you can write: `<p>Hi</p>`
@@ -42,38 +51,38 @@ Alternatively you can have multiple lines of code:
     > He's just a boy, Obi-Wan can no longer help him.
 
 ![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
-    </textarea>
+    </textarea
+  >
 </div>
 <div id="preview" class="container-fluid"></div>
 
 <script>
-    const renderer1 = new marked.Renderer();
-    renderer1.link = function (href, title, text) {
-	    return '<a target="_blank" href="' + href + '">' + text + '</a>';
-    };
+  const renderer1 = new marked.Renderer();
+  renderer1.link = function (href, title, text) {
+    return '<a target="_blank" href="' + href + '">' + text + '</a>';
+  };
 
-    const markedOptions = {
-        gfm: true,
-        breaks: true,
-        renderer: renderer1
-    };
+  const markedOptions = {
+    gfm: true,
+    breaks: true,
+    renderer: renderer1,
+  };
 
-    const updatePreview = () => {
-        const previewElement = document.getElementById('preview');
-        if (previewElement) {
-            const editorElement = document.getElementById('editor');
-            if (editorElement && editorElement.value) {
-                const rawMarkDown = editorElement.value;
-                const text = marked(rawMarkDown, markedOptions);
-                console.log(rawMarkDown);
+  const updatePreview = () => {
+    const previewElement = document.getElementById('preview');
+    if (previewElement) {
+      const editorElement = document.getElementById('editor');
+      if (editorElement && editorElement.value) {
+        const rawMarkDown = editorElement.value;
+        const text = marked(rawMarkDown, markedOptions);
+        console.log(rawMarkDown);
 
-                previewElement.innerHTML = text;
-            }
-            else {
-                previewElement.innerHTML = '';
-            }
-        }
-    };
+        previewElement.innerHTML = text;
+      } else {
+        previewElement.innerHTML = '';
+      }
+    }
+  };
 
-    updatePreview();
+  updatePreview();
 </script>

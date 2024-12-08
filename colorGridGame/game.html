@@ -1,22 +1,58 @@
 ---
 layout: page
 title: Colour Grid
+last_modified_at: 2024-12-08
 ---
-<link rel="stylesheet" type="text/css" href="/assets/css/colorGrid.css">
+
+<link rel="stylesheet" type="text/css" href="/assets/css/colorGrid.css" />
 <script src="/assets/js/colorGrid.js" async></script>
 <div id="wrapper">
-    <canvas id="canvas" width="280" height="280" class="center"></canvas>
-    <br id="hi"/>
-    <div class="center">
-        <button onclick="changeColor('White')" class="White" aria-label="white"></button>
-        <button onclick="changeColor('Blue')" class="Blue" aria-label="blue"></button>
-        <button onclick="changeColor('Green')" class="Green" aria-label="green"></button>
-        <button onclick="changeColor('Purple')" class="Purple" aria-label="purple"></button>
-        <button onclick="changeColor('#e6e600')" class="Yellow" aria-label="yellow"></button>
-        <button onclick="changeColor('Red')" class="Red" aria-label="red"></button>
-    </div>
-    <br/>
-    <p id="NumMoves" class="center">Number of Moves: 0</p>
-    <button onclick="restartGame()" class="button center">Restart</button><br/><br/>
-    <a href="index.html" class="center"><img src="/assets/images/home.png" alt="Home" id="home" class="center"></a>
+  <canvas id="canvas" width="280" height="280" class="center"></canvas>
+  <br id="hi" />
+  <div class="center">
+    <button
+      onclick="changeColor('White')"
+      class="White"
+      aria-label="white"
+      type="button"
+    ></button>
+    <button
+      onclick="changeColor('Blue')"
+      class="Blue"
+      aria-label="blue"
+      type="button"
+    ></button>
+    <button
+      onclick="changeColor('Green')"
+      class="Green"
+      aria-label="green"
+      type="button"
+    ></button>
+    <button
+      onclick="changeColor('Purple')"
+      class="Purple"
+      aria-label="purple"
+      type="button"
+    ></button>
+    <button
+      onclick="changeColor('#e6e600')"
+      class="Yellow"
+      aria-label="yellow"
+      type="button"
+    ></button>
+    <button
+      onclick="changeColor('Red')"
+      class="Red"
+      aria-label="red"
+      type="button"
+    ></button>
+  </div>
+  <br />
+  <p id="NumMoves" class="center">Number of Moves: 0</p>
+  <button onclick="restartGame()" class="button center" type="button">
+    Restart</button
+  ><br /><br />
+  <a href="index.html" class="center"
+    ><img src="/assets/images/home.png" alt="Home" id="home" class="center"
+  /></a>
 </div>

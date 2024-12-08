@@ -2,164 +2,177 @@
 title: FCC - Calculator
 layout: page
 permalink: fccresponsivewebdesign/calculator
+last_modified_at: 2024-02-25
 ---
+
 <style>
-    #display {
-        border-color: black;
-        border-style: solid;
-    }
+  #display {
+    border-color: black;
+    border-style: solid;
+  }
 
-    td button {
-        width: 100%;
-    }
+  td button {
+    width: 100%;
+  }
 
-    td {
-        font-size: large;
-    }
+  td {
+    font-size: large;
+  }
 
-    table {
-        margin-left: auto;
-        margin-right: auto;
-    }
+  table {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    h1 {
-        text-align: center;
-    }
+  h1 {
+    text-align: center;
+  }
 </style>
-    
+
 <div class="container-fluid">
-    <h1>Calculator</h1>
-    <table class="table-bordered">
-        <tbody>
-            <tr>
-                <td id="display" colspan="4">&nbsp;</td>
-            </tr>
-            <tr>
-                <td id="formula" colspan="4">&nbsp;</td>
-            </tr>
-            <tr>
-                <td colspan="2"><button type="button" id="equals" onclick="equals()">=</button></td>
-                <td colspan="2"><button type="button" id="clear" onclick="clearer()">AC</button></td>
-            </tr>
-            <tr>
-                <td><button type="button" id="seven" onclick="number(7)">7</button></td>
-                <td><button type="button" id="eight" onclick="number(8)">8</button></td>
-                <td><button type="button" id="nine" onclick="number(9)">9</button></td>
-                <td><button type="button" id="divide" onclick="operator('/')">/</button></td>
-            </tr>
-            <tr>
-                <td><button type="button" id="four" onclick="number(4)">4</button></td>
-                <td><button type="button" id="five" onclick="number(5)">5</button></td>
-                <td><button type="button" id="six" onclick="number(6)">6</button></td>
-                <td><button type="button" id="multiply" onclick="operator('*')">x</button></td>
-            </tr>
-            <tr>
-                <td><button type="button" id="one" onclick="number(1)">1</button></td>
-                <td><button type="button" id="two" onclick="number(2)">2</button></td>
-                <td><button type="button" id="three" onclick="number(3)">3</button></td>
-                <td><button type="button" id="subtract" onclick="operator('-')">-</button></td>
-            </tr>
-            <tr>
-                <td colspan="2"><button type="button" id="zero" onclick="number(0)">0</button></td>
-                <td><button type="button" id="decimal" onclick="decimal()">.</button></td>
-                <td><button type="button" id="add" onclick="operator('+')">+</button></td>
-            </tr>
-        </tbody>
-    </table>
+  <h1>Calculator</h1>
+  <table class="table-bordered">
+    <tbody>
+      <tr>
+        <td id="display" colspan="4">&nbsp;</td>
+      </tr>
+      <tr>
+        <td id="formula" colspan="4">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button type="button" id="equals" onclick="equals()">=</button>
+        </td>
+        <td colspan="2">
+          <button type="button" id="clear" onclick="clearer()">AC</button>
+        </td>
+      </tr>
+      <tr>
+        <td><button type="button" id="seven" onclick="number(7)">7</button></td>
+        <td><button type="button" id="eight" onclick="number(8)">8</button></td>
+        <td><button type="button" id="nine" onclick="number(9)">9</button></td>
+        <td>
+          <button type="button" id="divide" onclick="operator('/')">/</button>
+        </td>
+      </tr>
+      <tr>
+        <td><button type="button" id="four" onclick="number(4)">4</button></td>
+        <td><button type="button" id="five" onclick="number(5)">5</button></td>
+        <td><button type="button" id="six" onclick="number(6)">6</button></td>
+        <td>
+          <button type="button" id="multiply" onclick="operator('*')">x</button>
+        </td>
+      </tr>
+      <tr>
+        <td><button type="button" id="one" onclick="number(1)">1</button></td>
+        <td><button type="button" id="two" onclick="number(2)">2</button></td>
+        <td><button type="button" id="three" onclick="number(3)">3</button></td>
+        <td>
+          <button type="button" id="subtract" onclick="operator('-')">-</button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button type="button" id="zero" onclick="number(0)">0</button>
+        </td>
+        <td>
+          <button type="button" id="decimal" onclick="decimal()">.</button>
+        </td>
+        <td>
+          <button type="button" id="add" onclick="operator('+')">+</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <script>
-    let lastOperator = "";
-    let operatorRun = 0;
-    const formulaTD = document.getElementById('formula');
-    const displayTD = document.getElementById('display');
+  let lastOperator = '';
+  let operatorRun = 0;
+  const formulaTD = document.getElementById('formula');
+  const displayTD = document.getElementById('display');
 
-    const equals = () => {
-        console.log("equals");
-        if (formulaTD && displayTD) {
-            const txt = formulaTD.textContent;
-            displayTD.textContent = eval(txt);
-            operatorRun = 0;
-            lastOperator = "";
-            formulaTD.textContent ="0";
-        }
-    };
+  const equals = () => {
+    console.log('equals');
+    if (formulaTD && displayTD) {
+      const txt = formulaTD.textContent;
+      displayTD.textContent = eval(txt);
+      operatorRun = 0;
+      lastOperator = '';
+      formulaTD.textContent = '0';
+    }
+  };
 
-    const number = (num) => {
-        console.log(num);
-        if (formulaTD && displayTD) {
-            if (formulaTD.textContent == "0") {
-                formulaTD.textContent = num;
-            }
-            else {
-                formulaTD.textContent += num;
-            }
-            
-            if (displayTD.textContent == "0" || (lastOperator != "" && lastOperator != ".")) {
-                displayTD.textContent = num;
-            }
-            else {
-                displayTD.textContent += num;
-            }
-            if (lastOperator == ".") {
-                
-            }
-            else {
-                lastOperator = "";
-            }
-            operatorRun = 0;
-        }
-    };
+  const number = (num) => {
+    console.log(num);
+    if (formulaTD && displayTD) {
+      if (formulaTD.textContent == '0') {
+        formulaTD.textContent = num;
+      } else {
+        formulaTD.textContent += num;
+      }
 
-    const operator = (op) => {
-        if (formulaTD && displayTD) {
-            if (lastOperator == ".") {
-                lastOperator = "";
-            }
-            console.log(op);
-            if (formulaTD.textContent == "0") {
-                formulaTD.textContent = displayTD.textContent;
-            }
-            
-            if (op == "-" && lastOperator == "-") {
-                
-            }
-            else {
-                if (lastOperator == "" || (op == "-" && lastOperator != "-")) {
-                    formulaTD.textContent += op;
-                }
-                else {
-                    const txt = formulaTD.textContent;
-                    formulaTD.textContent = txt.substring(0, txt.length - operatorRun) + op;
-                }
-                displayTD.textContent = op;
-                lastOperator = op;
-                operatorRun += 1;
-            }
-        }
-    };
+      if (
+        displayTD.textContent == '0' ||
+        (lastOperator != '' && lastOperator != '.')
+      ) {
+        displayTD.textContent = num;
+      } else {
+        displayTD.textContent += num;
+      }
+      if (lastOperator == '.') {
+      } else {
+        lastOperator = '';
+      }
+      operatorRun = 0;
+    }
+  };
 
-    const decimal = () => {
-        if (displayTD && formulaTD) {
-            if (lastOperator == ".") {
-                
-            }
-            else {
-                formulaTD.textContent += ".";
-                displayTD.textContent += ".";
-            }
-            lastOperator = ".";
-            operatorRun = 0;
-        }
-    };
+  const operator = (op) => {
+    if (formulaTD && displayTD) {
+      if (lastOperator == '.') {
+        lastOperator = '';
+      }
+      console.log(op);
+      if (formulaTD.textContent == '0') {
+        formulaTD.textContent = displayTD.textContent;
+      }
 
-    const clearer = () => {
-        if (formulaTD && displayTD) {
-            console.log("clear");
-            formulaTD.textContent = '0';
-            displayTD.textContent = '0';
-            lastOperator = "";
-            operatorRun = 0;
+      if (op == '-' && lastOperator == '-') {
+      } else {
+        if (lastOperator == '' || (op == '-' && lastOperator != '-')) {
+          formulaTD.textContent += op;
+        } else {
+          const txt = formulaTD.textContent;
+          formulaTD.textContent =
+            txt.substring(0, txt.length - operatorRun) + op;
         }
-    };
+        displayTD.textContent = op;
+        lastOperator = op;
+        operatorRun += 1;
+      }
+    }
+  };
+
+  const decimal = () => {
+    if (displayTD && formulaTD) {
+      if (lastOperator == '.') {
+      } else {
+        formulaTD.textContent += '.';
+        displayTD.textContent += '.';
+      }
+      lastOperator = '.';
+      operatorRun = 0;
+    }
+  };
+
+  const clearer = () => {
+    if (formulaTD && displayTD) {
+      console.log('clear');
+      formulaTD.textContent = '0';
+      displayTD.textContent = '0';
+      lastOperator = '';
+      operatorRun = 0;
+    }
+  };
 </script>
