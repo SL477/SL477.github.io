@@ -10,10 +10,9 @@ permalink: /CHANGELOG
 ### Added
 
 - Changelog
+- Feeds page
 
 ### Changed
 
 - Added last modified at data to all pages
 - Humans.txt, fixed it so that it gets the last date of the site. Also changed Twitter to Github
-
-### Removed
