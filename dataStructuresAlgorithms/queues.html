@@ -2,42 +2,58 @@
 title: Queues
 permalink: dataStructuresAlgorithms/queues
 layout: page
+last_modified_at: 2024-02-25
 ---
-<p>My answers to the exercises in <a href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms &amp; Data Structures with JS</a></p>
+
+<p>
+  My answers to the exercises in
+  <a
+    href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf"
+    >Algorithms &amp; Data Structures with JS</a
+  >
+</p>
 
 <label for="ex1">Output from queue</label>
 <textarea id="ex1" rows="5" cols="50" disabled></textarea>
 
 <fieldset>
-    <label for="palindromeChecker">Palindrome Checker</label>
-    <input id="palindromeChecker" name="palindromeChecker" type="text" class="form-control"/>
-    <button type="button" class="btn btn-primary" onclick="palindromeCheck();">Check</button>
-    <p>Answer: <span id="palindromeAnswer"></span></p>
+  <label for="palindromeChecker">Palindrome Checker</label>
+  <input
+    id="palindromeChecker"
+    name="palindromeChecker"
+    type="text"
+    class="form-control"
+  />
+  <button type="button" class="btn btn-primary" onclick="palindromeCheck();">
+    Check
+  </button>
+  <p>Answer: <span id="palindromeAnswer"></span></p>
 </fieldset>
 
 <fieldset>
-    <label for="patientName">Patient Name:</label>
-    <input id="patientName" name="patientName" type="text" class="form-control"/>
-    <label for="patientCode">Patient Priority Code:</label>
-    <input id="patientCode" name="patientCode" type="number" class="form-control"/>
-    <button type="button" class="btn btn-primary" onclick="addPatient();">Add Patient</button>
+  <label for="patientName">Patient Name:</label>
+  <input id="patientName" name="patientName" type="text" class="form-control" />
+  <label for="patientCode">Patient Priority Code:</label>
+  <input
+    id="patientCode"
+    name="patientCode"
+    type="number"
+    class="form-control"
+  />
+  <button type="button" class="btn btn-primary" onclick="addPatient();">
+    Add Patient
+  </button>
 </fieldset>
 
 <table class="table table-striped table-bordered table-hover table-responsive">
-    <thead>
-        <tr>
-            <th>
-                Patient Name
-            </th>
-            <th>
-                Patient Code
-            </th>
-            <th>
-                Remove Patient
-            </th>
-        </tr>
-    </thead>
-    <tbody id="patientList"></tbody>
+  <thead>
+    <tr>
+      <th>Patient Name</th>
+      <th>Patient Code</th>
+      <th>Remove Patient</th>
+    </tr>
+  </thead>
+  <tbody id="patientList"></tbody>
 </table>
 
 <script src="/assets/js/queues.js"></script>

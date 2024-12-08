@@ -1,29 +1,67 @@
 ---
 layout: page
 title: Simon Game
+last_modified_at: 2024-02-03
 ---
+
 <script src="/assets/js/simonGame.js"></script>
-<link rel="stylesheet" href="/assets/css/simonGame.css">
+<link rel="stylesheet" href="/assets/css/simonGame.css" />
 <div id="app">
-    <audio id="aud0" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio>
-    <audio id="aud1" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
-    <audio id="aud2" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
-    <audio id="aud3" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
-    <fieldset>
-        <label for="useStrict">Strict Mode:</label>
-        <input id="useStrict" type="checkbox" onchange="setStrict(this)"/>
-    </fieldset>
+  <audio
+    id="aud0"
+    src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"
+  ></audio>
+  <audio
+    id="aud1"
+    src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"
+  ></audio>
+  <audio
+    id="aud2"
+    src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"
+  ></audio>
+  <audio
+    id="aud3"
+    src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
+  ></audio>
+  <fieldset>
+    <label for="useStrict">Strict Mode:</label>
+    <input id="useStrict" type="checkbox" onchange="setStrict(this)" />
+  </fieldset>
 
-    <p><b>Current Step:</b> <span id="currentStep"></span></p>
+  <p><b>Current Step:</b> <span id="currentStep"></span></p>
 
-    <div class="grid-container">
-        <button type="button" aria-label="red" class="grid-item button red" onclick="simonButton(0, true);" id="btn0"></button>
-        <button type="button" aria-label="yellow" class="grid-item button yellow" onclick="simonButton(1, true);" id="btn1"></button>
-        <button type="button" aria-label="green" class="grid-item button green" onclick="simonButton(2, true);" id="btn2"></button>
-        <button type="button" aria-label="blue" class="grid-item button blue" onclick="simonButton(3, true);" id="btn3"></button>
-    </div>
-    <div id="correct" style="display: none;">
-        <p>Wrong!!!</p>
-    </div>
-    <button type="button" class="btn btn-danger" onclick="reset();">Reset</button>
+  <div class="grid-container">
+    <button
+      type="button"
+      aria-label="red"
+      class="grid-item button red"
+      onclick="simonButton(0, true);"
+      id="btn0"
+    ></button>
+    <button
+      type="button"
+      aria-label="yellow"
+      class="grid-item button yellow"
+      onclick="simonButton(1, true);"
+      id="btn1"
+    ></button>
+    <button
+      type="button"
+      aria-label="green"
+      class="grid-item button green"
+      onclick="simonButton(2, true);"
+      id="btn2"
+    ></button>
+    <button
+      type="button"
+      aria-label="blue"
+      class="grid-item button blue"
+      onclick="simonButton(3, true);"
+      id="btn3"
+    ></button>
+  </div>
+  <div id="correct" style="display: none">
+    <p>Wrong!!!</p>
+  </div>
+  <button type="button" class="btn btn-danger" onclick="reset();">Reset</button>
 </div>

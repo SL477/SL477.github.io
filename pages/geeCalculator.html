@@ -1,24 +1,30 @@
 ---
 title: Gee Calculator
 layout: page
+last_modified_at: 2024-02-03
 ---
+
 <script src="/assets/js/geeCalculator.js"></script>
 <div>
-    <fieldset>
-        <label for="distkm">Distance (KM):</label>
-        <input id="distkm" type="number" value="100" class="form-control"/>
-    </fieldset>
-    <fieldset>
-        <label for="acceleration">Acceleration (m per second):</label>
-        <input id="acceleration" type="number" value="9.78" class="form-control"/>
-    </fieldset>
-    <p>Time (hours): <span id="hoursSpn"></span></p>
-    <button type="button" class="btn btn-primary" onclick="calcTime()">Calculate Time</button>
+  <fieldset>
+    <label for="distkm">Distance (KM):</label>
+    <input id="distkm" type="number" value="100" class="form-control" />
+  </fieldset>
+  <fieldset>
+    <label for="acceleration">Acceleration (m per second):</label>
+    <input id="acceleration" type="number" value="9.78" class="form-control" />
+  </fieldset>
+  <p>Time (hours): <span id="hoursSpn"></span></p>
+  <button type="button" class="btn btn-primary" onclick="calcTime()">
+    Calculate Time
+  </button>
 
-    <fieldset>
-        <label for="hours">Time (hours):</label>
-        <input id="hours" type="number" value="0" class="form-control"/>
-    </fieldset>
-    <button type="button" class="btn btn-primary" onclick="calcDistance()">Calculate Time</button>
-    <p>Distance (KM): <span id="distanceSpn">100</span></p>
+  <fieldset>
+    <label for="hours">Time (hours):</label>
+    <input id="hours" type="number" value="0" class="form-control" />
+  </fieldset>
+  <button type="button" class="btn btn-primary" onclick="calcDistance()">
+    Calculate Time
+  </button>
+  <p>Distance (KM): <span id="distanceSpn">100</span></p>
 </div>

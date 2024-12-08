@@ -2,13 +2,14 @@
 layout: page
 title: About
 permalink: /about/
+last_modified_at: 2024-12-08
 ---
 
 <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 
 <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="thomas-fishwick-313459172" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://uk.linkedin.com/in/thomas-fishwick-313459172?trk=profile-badge">Thomas Fishwick</a></div>
 
-<h3>My programming journey</h3>
+### My programming journey
 
 I first starting programming at school (JavaScript and GameMaker Language), but then took something of a hiatus as first I went through my maths degree (where I learnt a bit of MATLAB) and then I started learning to code again before I got my job at McMillan Williams. As I had got a job in accounting, I then started studying for the ACCA accounting qualification.
 
@@ -28,6 +29,6 @@ I had been intending to pursue a master's degree in computer science after compl
 FreeCodeCamp had courses on Python and Data Science, so I went through those and started looking through the free section on DataCamp.
 I managed to get into City University's Data Science course, where I have learnt a lot of theory behind Data Science and Machine Learning (and been reintroduced to MATLAB).
 
-<h3>About me</h3>
+### About me
 
 In my spare time I enjoy building & painting Warhammer 40k miniatures, playing Blood Bowl (another Games Workshop game), Lego and model railways.

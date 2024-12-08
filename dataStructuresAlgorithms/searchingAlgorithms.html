@@ -2,52 +2,90 @@
 title: Searching Algorithms
 permalink: dataStructuresAlgorithms/searchingAlgorithms
 layout: page
+last_modified_at: 2024-02-25
 ---
-<p>My answers to the exercises in <a href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms &amp; Data Structures with JS</a></p>
+
+<p>
+  My answers to the exercises in
+  <a
+    href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf"
+    >Algorithms &amp; Data Structures with JS</a
+  >
+</p>
 
 <div id="searchDiv"></div>
 <fieldset>
-    <legend>Sequential Search</legend>
-    <label for="seqSearchNum">Search For:</label>
-    <input type="number" id="seqSearchNum" name="seqSearchNum" class="form-control"/>
-    <button type="button" class="btn btn-primary" onclick="seqSearch();">Search For Number</button><br/>
-    <button type="button" class="btn btn-primary" onclick="seqSearchReverse();">Search for last occurrence of number</button><br/>
-    <button type="button" class="btn btn-primary" onclick="compareTimings();">Compare Timings</button>
-    <p>Number Array Position: <span id="seqSearchRes"></span></p>
-    <p>Sequential Search took <span id="seqSearchTiming"></span> milliseconds. Binary Search took: <span id="binSearchTiming"></span> milliseconds.</p>
+  <legend>Sequential Search</legend>
+  <label for="seqSearchNum">Search For:</label>
+  <input
+    type="number"
+    id="seqSearchNum"
+    name="seqSearchNum"
+    class="form-control"
+  />
+  <button type="button" class="btn btn-primary" onclick="seqSearch();">
+    Search For Number</button
+  ><br />
+  <button type="button" class="btn btn-primary" onclick="seqSearchReverse();">
+    Search for last occurrence of number</button
+  ><br />
+  <button type="button" class="btn btn-primary" onclick="compareTimings();">
+    Compare Timings
+  </button>
+  <p>Number Array Position: <span id="seqSearchRes"></span></p>
+  <p>
+    Sequential Search took <span id="seqSearchTiming"></span> milliseconds.
+    Binary Search took: <span id="binSearchTiming"></span> milliseconds.
+  </p>
 </fieldset>
 
 <h3>Self Sorting</h3>
 <div id="selfSort"></div>
 <fieldset>
-    <legend>Sequential Search Self Sorting</legend>
-    <label for="seqSearchNum1">Search For:</label>
-    <input type="number" id="seqSearchNum1" name="seqSearchNum1" class="form-control"/>
-    <button type="button" class="btn btn-primary" onclick="seqSearch1();">Search For Number</button>
-    <p>Is in array: <span id="seqSearchRes1"></span></p>
+  <legend>Sequential Search Self Sorting</legend>
+  <label for="seqSearchNum1">Search For:</label>
+  <input
+    type="number"
+    id="seqSearchNum1"
+    name="seqSearchNum1"
+    class="form-control"
+  />
+  <button type="button" class="btn btn-primary" onclick="seqSearch1();">
+    Search For Number
+  </button>
+  <p>Is in array: <span id="seqSearchRes1"></span></p>
 </fieldset>
 
 <h2>Binary Search</h2>
 <div id="binArr"></div>
 <fieldset>
-    <legend>Binary Search</legend>
-    <label for="binSearchNum">Search For:</label>
-    <input type="number" id="binSearchNum" name="binSearchNum" class="form-control"/>
-    <button type="button" class="btn btn-primary" onclick="binSearch();">Search For Number</button>
-    <p>Number Array Position: <span id="binSearchRes"></span></p>
-    <p>Number of occurrences: <span id="binCount"></span></p>
+  <legend>Binary Search</legend>
+  <label for="binSearchNum">Search For:</label>
+  <input
+    type="number"
+    id="binSearchNum"
+    name="binSearchNum"
+    class="form-control"
+  />
+  <button type="button" class="btn btn-primary" onclick="binSearch();">
+    Search For Number
+  </button>
+  <p>Number Array Position: <span id="binSearchRes"></span></p>
+  <p>Number of occurrences: <span id="binCount"></span></p>
 </fieldset>
 
 <h2>Word Search</h2>
 <div id="wordSearch"></div>
 
 <fieldset>
-    <legend>Exercise 3 minimum number search</legend>
-    <label for="minSearch">Enter Nth minimum to search for:</label>
-    <input type="number" id="minSearch" name="minSearch" class="form-control"/>
-    <button type="button" class="btn btn-primary" onclick="minSearch();">Search For Minimum</button>
-    <p>Number Result: <span id="minSearchRes"></span></p>
-    <p>Word Result: <span id="minWordSearchRes"></span></p>
+  <legend>Exercise 3 minimum number search</legend>
+  <label for="minSearch">Enter Nth minimum to search for:</label>
+  <input type="number" id="minSearch" name="minSearch" class="form-control" />
+  <button type="button" class="btn btn-primary" onclick="minSearch();">
+    Search For Minimum
+  </button>
+  <p>Number Result: <span id="minSearchRes"></span></p>
+  <p>Word Result: <span id="minWordSearchRes"></span></p>
 </fieldset>
 
 <script src="/assets/js/searchingAlgorithms.js"></script>
