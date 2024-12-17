@@ -5,6 +5,12 @@ last_modified_at: 2024-12-08
 permalink: /CHANGELOG
 ---
 
+## Unpublished
+
+### Added
+
+- Sitemap.html
+
 ## 2024-12-08
 
 ### Added
