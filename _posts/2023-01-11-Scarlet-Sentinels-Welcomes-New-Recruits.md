@@ -1,7 +1,7 @@
 ---
 title: Scarlet Sentinels Welcomes New Recruits
 layout: post
-categories: Warhammer 40k Space Marines
+tags: Warhammer 40k Space Marines
 author: Tom Fishwick
 ---
 

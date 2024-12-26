@@ -1,7 +1,7 @@
 ---
 title: Recipe Box Move
 layout: post
-categories: Hosting Typescript
+tags: Hosting Typescript
 edited: Changed links
 author: Tom Fishwick
 ---

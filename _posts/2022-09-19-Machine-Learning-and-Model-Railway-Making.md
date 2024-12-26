@@ -1,7 +1,7 @@
 ---
 title: Machine Learning and Model Railway Making
 layout: post
-categories: Model Railway
+tags: 'Model Railway'
 excerpt: Making a model railway diorama with the help of a machine learning translation model
 author: Tom Fishwick
 ---

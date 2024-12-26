@@ -1,7 +1,7 @@
 ---
 title: Ruby Chess
 layout: post
-categories: Ruby
+tags: Ruby
 author: Tom Fishwick
 ---
 

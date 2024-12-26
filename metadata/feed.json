@@ -36,7 +36,7 @@ permalink: /feed.json
       "url": {{ post.url | absolute_url | jsonify }},
       "summary": {{ post.excerpt | jsonify }},
       "language": "en-GB",
-      "tags": {{ post.categories | jsonify }}
+      "tags": {{ post.tags | jsonify }}
     }{% unless forloop.last %},{% endunless %}
     {%- endfor -%}
   ]

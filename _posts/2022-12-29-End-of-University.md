@@ -1,7 +1,7 @@
 ---
 title: End of University
 layout: post
-categories: Data Science
+tags: 'Data Science'
 excerpt: A brief summary of what I did in my university projects
 author: Tom Fishwick
 ---

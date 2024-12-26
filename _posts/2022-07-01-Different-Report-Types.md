@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Different Report Types
-categories: Programming
+tags: Programming
 author: Tom Fishwick
 ---
 
