@@ -1,7 +1,7 @@
 ---
 title: React Terminal
 layout: post
-categories: React Typescript
+tags: React Typescript
 author: Tom Fishwick
 ---
 

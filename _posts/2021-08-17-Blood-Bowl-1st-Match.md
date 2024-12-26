@@ -1,7 +1,7 @@
 ---
 title: Blood Bowl 1st Match
 layout: post
-categories: Blood-Bowl
+tags: Blood-Bowl
 excerpt: My first Blood-Bowl match, with a few embellishments
 author: Tom Fishwick
 ---

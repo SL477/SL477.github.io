@@ -1,5 +1,5 @@
 ---
-categories: Programming
+tags: Programming
 layout: post
 title: Automating Documents with Word
 excerpt: A brief look at various ways of automating Word documents

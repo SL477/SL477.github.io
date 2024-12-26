@@ -11,6 +11,10 @@ permalink: /CHANGELOG
 
 - Sitemap.html
 
+### Changed
+
+- URL structure of blog
+
 ## 2024-12-08
 
 ### Added

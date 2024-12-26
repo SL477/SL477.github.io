@@ -1,7 +1,7 @@
 ---
 title: Farewell to Railway
 layout: post
-categories: Hosting Python Typescript
+tags: Hosting Python Typescript
 author: Tom Fishwick
 ---
 
