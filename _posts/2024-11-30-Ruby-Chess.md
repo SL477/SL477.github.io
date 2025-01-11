@@ -3,11 +3,12 @@ title: Ruby Chess
 layout: post
 tags: Ruby
 author: Tom Fishwick
+image: /assets/images/rubyChess.jpg
+photo_alt: Chess Game
+last_modified_at: 2025-01-11
 ---
 
 I created a chess game as part of the [Odin Project](https://www.theodinproject.com/).
-
-![Chess Game](/assets/images/rubyChess.jpg)
 
 At the moment it is played through the terminal using:
 

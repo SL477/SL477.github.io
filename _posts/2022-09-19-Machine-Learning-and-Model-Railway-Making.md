@@ -1,13 +1,13 @@
 ---
 title: Machine Learning and Model Railway Making
 layout: post
-tags: 'Model Railway'
+tags: Model-Railway
 excerpt: Making a model railway diorama with the help of a machine learning translation model
 author: Tom Fishwick
+last_modified_at: 2025-01-11
+image: /assets/images/kato-28-889.JPG
+photo_alt: Kato 28-889, mini diorama curve
 ---
-
-![Kato 28-889, mini diorama curve](/assets/images/kato-28-889.JPG)
-_Kato 28-889, mini diorama curve_
 
 Above is the Kato 28-889, mini diorama, which I just finished building and am waiting for the wood glue to dry. A surprising use for Machine Learning.
 

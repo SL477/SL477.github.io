@@ -1,9 +1,24 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2024-12-08
+last_modified_at: 2025-01-01
 permalink: /CHANGELOG
 ---
+
+## 2025-01-11
+
+### Added
+
+- feed.html, the H-feed of my blog
+
+### Changed
+
+- Updated my h-card entries so that I had a relative URL for the pictures
+- Updated the Post layout to display the tags (also fixed the two word tags so that they showed as one tag)
+- Updated the CSS to display the tags in various colours
+- Fixed the month in the Humans.txt (that certainly isn't automated 😉)
+- Moved the various Post's header images into the meta data, so that they are more consistently rendered
+- Added the text content and image into the Feed.json file
 
 ## 2024-12-26
 

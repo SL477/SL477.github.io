@@ -3,11 +3,12 @@ title: React Terminal
 layout: post
 tags: React Typescript
 author: Tom Fishwick
+image: /assets/images/ReactTerminal.jpg
+photo_alt: React Terminal
+last_modified_at: 2025-01-11
 ---
 
 `We do this not because it is easy, but because we thought it would be easy` - Some guy on Reddit
-
-![React Terminal](/assets/images/ReactTerminal.jpg)
 
 I was inspired by this post about [how to create an interactive terminal based portfolio](https://www.freecodecamp.org/news/how-to-create-interactive-terminal-based-portfolio/).
 But they used jQuery Terminal Library, after tearing out all of the jQuery from my site the last thing I wanted to do was to put more of it in.

@@ -1,14 +1,15 @@
 ---
 title: Scarlet Sentinels Welcomes New Recruits
 layout: post
-tags: Warhammer 40k Space Marines
+tags: Warhammer-40k Space-Marines
 author: Tom Fishwick
+last_modified_at: 2025-01-11
+image: /assets/images/SpaceMarinesLibrarianAndLieutenant.jpg
+photo_alt: Lieutenant Kieran Cadmus and Librarian Zao Urbane
+photo_caption: Lieutenant Kieran Cadmus and Librarian Zao Urbane with the Outrider squad
 ---
 
 The Scarlet Sentinels Chapter welcomes Lieutenant Kieran Cadmus and Librarian Zao Urbane as its first Primaris Space Marines.
-
-![Lieutenant Kieran Cadmus and Librarian Zao Urbane](/assets/images/SpaceMarinesLibrarianAndLieutenant.jpg)
-_Lieutenant Kieran Cadmus and Librarian Zao Urbane with the Outrider squad_
 
 Chapter Master Alexander Lima and Captain Lucius Vault welcomed them and a squad of Outriders into the Third Company and to the Angel Bastion on Saint Marilyn.
 
