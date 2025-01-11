@@ -1,8 +1,9 @@
 ---
 title: Scarlet Sentinels Welcomes New Recruits
 layout: post
-tags: Warhammer 40k Space Marines
+tags: Warhammer-40k Space-Marines
 author: Tom Fishwick
+last_modified_at: 2025-01-11
 ---
 
 The Scarlet Sentinels Chapter welcomes Lieutenant Kieran Cadmus and Librarian Zao Urbane as its first Primaris Space Marines.

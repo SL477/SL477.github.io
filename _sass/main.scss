@@ -1,30 +1,30 @@
 .current {
-    color: green;
+  color: green;
 }
 
 .icon_my {
-    width: 15px;
-    height: 15px;
+  width: 15px;
+  height: 15px;
 }
 
 .black {
-    color: black;
+  color: black;
 }
 
 .borderimage {
-    border: 1px solid black; 
-    border-radius: 5px;
-    // max-width: 100%;
-    height: auto;
-    width: 200px;
-    height: 200px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  // max-width: 100%;
+  height: auto;
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .centertext {
-    text-align: center;
+  text-align: center;
 }
 
 // .icon_big {
@@ -42,21 +42,87 @@
 //     width: 100vw;
 // }
 .svg-icon {
-    width: 32px;
-    height: 16px;
-    display: inline-block;
-    fill: #828282;
-    padding-right: 5px;
-    vertical-align: text-top;
+  width: 32px;
+  height: 16px;
+  display: inline-block;
+  fill: #828282;
+  padding-right: 5px;
+  vertical-align: text-top;
 }
 
 .site-icon {
-    height: 50px;
-    width: 50px;
-    background-color: white;
+  height: 50px;
+  width: 50px;
+  background-color: white;
 }
 
 .post-title {
-    padding-top: 3rem;
-    text-align: center;
+  padding-top: 3rem;
+  text-align: center;
+}
+
+.p-category {
+  border: 1px solid #000000;
+  border-radius: 30px;
+  padding: 5px 5px;
+}
+
+.p-category[data-tag='React'] {
+  background-color: orange;
+  color: black;
+}
+
+.p-category[data-tag='Typescript'] {
+  background-color: greenyellow;
+  color: black;
+}
+
+.p-category[data-tag='Ruby'] {
+  background-color: red;
+  color: white;
+}
+
+.p-category[data-tag='Hosting'] {
+  background-color: black;
+  color: white;
+}
+
+.p-category[data-tag='Python'] {
+  background-color: yellow;
+  color: black;
+}
+
+.p-category[data-tag='Warhammer-40k'] {
+  background-color: darkgray;
+  color: #b02734;
+}
+
+.p-category[data-tag='Space-Marines'] {
+  background-color: #41509d;
+  color: white;
+}
+
+.p-category[data-tag='Data-Science'] {
+  background-color: #1cc8ee;
+  color: black;
+}
+
+.p-category[data-tag='Model-Railway'] {
+  background-color: #e6b99a;
+  color: black;
+}
+
+.p-category[data-tag='Programming'] {
+  background-color: green;
+  color: white;
+}
+
+.p-category[data-tag='Kill-Team'] {
+  background-color: #b02734;
+  color: white;
+}
+
+.p-category[data-tag='Blood-Bowl'] {
+  background-color: #264030;
+  color: white;
 }

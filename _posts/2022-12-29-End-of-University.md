@@ -1,9 +1,10 @@
 ---
 title: End of University
 layout: post
-tags: 'Data Science'
+tags: Data-Science
 excerpt: A brief summary of what I did in my university projects
 author: Tom Fishwick
+last_modified_at: 2025-01-11
 ---
 
 I am now (hopefully) finished at university.

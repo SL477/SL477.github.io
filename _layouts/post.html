@@ -30,9 +30,11 @@ layout: default_modified
         ></span
       >
       <data href="{{ site.photo }}" class="u-photo"></data>
-      {%- endif -%} {%- if page.categories -%}
-      <data class="p-category" hidden>{{ page.categories }}</data>
-      {%- endif -%}
+      {%- endif -%} {%- if page.tags -%}
+      <span>• Tags: </span>
+      {%- for tag in page.tags -%}
+      <span class="p-category" data-tag="{{ tag }}">{{ tag }}</span>
+      {%- endfor -%} {%- endif -%}
     </p>
   </header>
 
