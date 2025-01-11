@@ -27,8 +27,8 @@ kaggle_username: tomfishwick
 datacamp_username: fishwickt
 credly_username: thomas-fishwick.519c62f9
 exercism_username: Link477
-logo: https://link477.com/assets/images/link477.png
-photo: https://link477.com/assets/images/tom.jpg
+logo: /assets/images/link477.png
+photo: /assets/images/tom.jpg
 
 show_excerpts: true
 
