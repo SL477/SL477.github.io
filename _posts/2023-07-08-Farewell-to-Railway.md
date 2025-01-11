@@ -3,11 +3,12 @@ title: Farewell to Railway
 layout: post
 tags: Hosting Python Typescript
 author: Tom Fishwick
+image: /assets/images/ChartTheStockMarket.jpg
+photo_alt: Chart the Stock Market
+last_modified_at: 2025-01-11
 ---
 
 Recently Railway.app announced a change to their pricing structure, so I took the opportunity to revamp my flask app that ran on there to chart the stock market. It now uses Chart JS instead of MatPlotLib as the most visible difference from before.
-
-![Chart the Stock Market](/assets/images/ChartTheStockMarket.jpg)
 
 I also moved the front end code's reference to sockets.io into the node modules, minified the CSS and made a few other amendments which massively boosted the performance of the site (running locally this gets it a score of 97 for performance on lighthouse).
 

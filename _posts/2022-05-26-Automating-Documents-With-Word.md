@@ -4,10 +4,10 @@ layout: post
 title: Automating Documents with Word
 excerpt: A brief look at various ways of automating Word documents
 author: Tom Fishwick
+image: /assets/images/WordVBA.JPG
+photo_alt: Word VBA
+last_modified_at: 2025-01-11
 ---
-
-![Word VBA](/assets/images/WordVBA.JPG)
-_Word VBA_
 
 After spending too long dreaming of how I would automate my invoicing solution I finally cracked the main part of creating the document. Here Word VBA came into its own.
 

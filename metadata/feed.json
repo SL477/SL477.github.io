@@ -26,6 +26,7 @@ permalink: /feed.json
       "id": {{ post.url | absolute_url | jsonify }},
       "title": {{ post.title | jsonify }},
       "content_html": {{ post.content | jsonify }},
+      "content_text": {{ post.content | markdownify | strip_html | jsonify }},
       "date_published": {{ post.date | date_to_xmlschema | jsonify }},
       {%- if post.last_modified_at -%}
         "date_modified": {{ post.last_modified_at | date_to_xmlschema  | jsonify }},
@@ -37,6 +38,9 @@ permalink: /feed.json
       "summary": {{ post.excerpt | jsonify }},
       "language": "en-GB",
       "tags": {{ post.tags | jsonify }}
+      {%- if post.image -%}
+        ,"image": {{ post.image | absolute_url | jsonify }}
+      {%- endif -%}
     }{% unless forloop.last %},{% endunless %}
     {%- endfor -%}
   ]

@@ -20,7 +20,11 @@ layout: default_modified
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y"
         -%} {{ page.date | date: date_format }}
       </time>
-      {%- if page.author -%} •
+      {%- if page.last_modified_at -%}
+      <time class="dt-updated" hidden
+        >{{ page.last_modified_at | date: date_format }}</time
+      >
+      {%- endif -%} {%- if page.author -%} •
       <span itemprop="author" itemscope itemtype="http://schema.org/Person"
         ><span
           class="p-author h-card"
@@ -29,13 +33,28 @@ layout: default_modified
           >{{ page.author }}</span
         ></span
       >
-      <data href="{{ site.photo }}" class="u-photo"></data>
       {%- endif -%} {%- if page.tags -%}
       <span>• Tags: </span>
       {%- for tag in page.tags -%}
       <span class="p-category" data-tag="{{ tag }}">{{ tag }}</span>
       {%- endfor -%} {%- endif -%}
+      <data class="p-summary" hidden
+        >{{ page.excerpt | strip_html | normalize_whitespace }}</data
+      >
     </p>
+    {%- if page.image -%}
+    <figure>
+      <img src="{{ page.image }}" alt="{{ page.photo_alt}}" class="u-photo" />
+      <figcaption>
+        <em>
+          {%- if page.photo_caption -%} {{ page.photo_caption }} {%- else -%} {{
+          page.photo_alt }} {%- endif -%}
+        </em>
+      </figcaption>
+    </figure>
+    {%- else -%}
+    <data href="{{ site.photo }}" class="u-photo"></data>
+    {%- endif -%}
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">{{ content }}</div>
@@ -43,5 +62,7 @@ layout: default_modified
   {%- if site.disqus.shortname -%} {%- include disqus_comments.html -%} {%-
   endif -%}
 
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+  <a class="u-url u-uid" href="{{ page.url | relative_url }}" hidden
+    >{{ page.title }}</a
+  >
 </article>

@@ -5,12 +5,12 @@ tags: Data-Science
 excerpt: A brief summary of what I did in my university projects
 author: Tom Fishwick
 last_modified_at: 2025-01-11
+image: /assets/images/qcp.JPG
+photo_alt: QCP Web App
 ---
 
 I am now (hopefully) finished at university.
 My final epic project has been handed in.
-
-![QCP Web App](/assets/images/qcp.JPG)
 
 My project was an internship with QCP, so I cannot go into too much detail, but this is a screenshot of the public test application.
 But it was to do with recommendation engines and predicting the futures of companies.
