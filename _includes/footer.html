@@ -1,7 +1,14 @@
 <footer class="site-footer h-card">
-  <data class="u-url u-uid" href="{{ site.site_url | relative_url }}"></data>
-  <img src="{{ site.photo | relative_url }}" class="u-photo" hidden />
-  <img src="{{ site.logo | relative_url }}" class="u-logo" hidden />
+  <a class="u-url u-uid" href="{{ site.site_url | relative_url }}" hidden
+    >My Site</a
+  >
+  <img src="{{ site.photo | relative_url }}" class="u-photo" hidden alt="Me" />
+  <img
+    src="{{ site.logo | relative_url }}"
+    class="u-logo"
+    hidden
+    alt="{{ site.logo_alt }}"
+  />
 
   <div class="wrapper">
     <h2 class="footer-heading p-name">{{ site.title | escape }}</h2>
