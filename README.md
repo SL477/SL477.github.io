@@ -27,3 +27,11 @@ The React pages now live on [my react repo](https://github.com/SL477/Link477-Rea
 To visualise use [the visualiser](https://foaf-visualizer.gnu.org.ua/?uri=https://link477.com/foaf.rdf)
 
 To edit it use [the foaf-a-matic](http://ldodds.com/foaf/foaf-a-matic.en.html)
+
+## StyleLint
+
+Use
+
+```bash
+npx stylelint "**/*.*css"
+```
