@@ -132,6 +132,15 @@
 }
 
 // from https://pajasevi.github.io/CSSnowflakes/
+
+.snowflakeInner {
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-duration: 10s;
+  animation-name: snowflakes-fall;
+  animation-timing-function: linear;
+}
+
 .snowflake {
   font-size: 1em;
   font-family: Arial, sans-serif;
@@ -148,12 +157,6 @@
   animation-name: snowflakes-shake;
   animation-duration: 3s;
   animation-timing-function: ease-in-out;
-}
-
-.snowflakeInner {
-  animation-duration: 10s;
-  animation-name: snowflakes-fall;
-  animation-timing-function: linear;
 }
 
 @keyframes snowflakes-fall {
@@ -180,7 +183,7 @@
   animation-delay: 0s;
 }
 
-.snowflakeInner:nth-of-type(0) {
+.snowflake:nth-of-type(0) .snowflakeInner {
   animation-delay: 0s;
 }
 
@@ -189,8 +192,8 @@
   animation-delay: 1s;
 }
 
-.snowflakeInner:first-of-type,
-.snowflakeInner:nth-of-type(8) {
+.snowflake:first-of-type .snowflakeInner,
+.snowflake:nth-of-type(8) .snowflakeInner {
   animation-delay: 1s;
 }
 
@@ -199,18 +202,18 @@
   animation-delay: 0.5s;
 }
 
-.snowflakeInner:nth-of-type(2),
-.snowflakeInner:nth-of-type(6) {
+.snowflake:nth-of-type(2) .snowflakeInner,
+.snowflake:nth-of-type(6) .snowflakeInner {
   animation-delay: 6s;
 }
 
-.snowflakeInner:nth-of-type(3) {
+.snowflake:nth-of-type(3) .snowflakeInner {
   left: 30%;
   animation-delay: 2s;
 }
 
-.snowflakeInner:nth-of-type(11),
-.snowflakeInner:nth-of-type(3) {
+.snowflake:nth-of-type(11) .snowflakeInner,
+.snowflake:nth-of-type(3) .snowflakeInner {
   animation-delay: 4s;
 }
 .snowflake:nth-of-type(4) {
@@ -218,8 +221,8 @@
   animation-delay: 2s;
 }
 
-.snowflakeInner:nth-of-type(10),
-.snowflakeInner:nth-of-type(4) {
+.snowflake:nth-of-type(10) .snowflakeInner,
+.snowflake:nth-of-type(4) .snowflakeInner {
   animation-delay: 2s;
 }
 
@@ -228,7 +231,7 @@
   animation-delay: 3s;
 }
 
-.snowflakeInner:nth-of-type(5) {
+.snowflake:nth-of-type(5) .snowflakeInner {
   animation-delay: 8s;
 }
 
@@ -241,7 +244,7 @@
   left: 70%;
   animation-delay: 1s;
 }
-.snowflakeInner:nth-of-type(7) {
+.snowflake:nth-of-type(7) .snowflakeInner {
   animation-delay: 2.5s;
 }
 
@@ -253,7 +256,7 @@
   left: 90%;
   animation-delay: 1.5s;
 }
-.snowflakeInner:nth-of-type(9) {
+.snowflake:nth-of-type(9) .snowflakeInner {
   animation-delay: 3s;
 }
 .snowflake:nth-of-type(10) {

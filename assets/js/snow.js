@@ -1,26 +1,24 @@
 /**
- * Add in snow to a page. Vaguely based on https://codepen.io/scottkellum/pen/LMLwMW
+ * Add in snow to a page. Vaguely based on https://pajasevi.github.io/CSSnowflakes/
  */
 function snow() {
   const main = document.body;
   const snowHolder = document.createElement('div');
-  // snowHolder.style.height = '100%';
-  // snowHolder.style.width = '100vw';
-  // snowHolder.style.margin = 0;
-  // snowHolder.style.display = 'flex';
-  // snowHolder.style.position = 'absolute';
   snowHolder.ariaHidden = true;
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 12; i++) {
     const flake = document.createElement('div');
     flake.style.color = 'white';
-    flake.textContent = '❅';
-    flake.className = 'snowflake snowflakeInner';
+    flake.className = 'snowflake';
+    const inner = document.createElement('div');
+    inner.className = 'snowflakeInner';
+    inner.textContent = '❅';
+    flake.appendChild(inner);
     snowHolder.appendChild(flake);
   }
   main.appendChild(snowHolder);
 }
 
 const now = new Date();
-//if (now.getMonth() == 11) {
-snow();
-//}
+if (now.getMonth() == 11) {
+  snow();
+}
