@@ -1,30 +1,30 @@
 .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 body {
-    background-color: hsl(212, 45%, 89%);
+  background-color: #d6e2f0;
 }
 
 .card {
-    background-color: hsl(0, 0%, 100%);
-    padding: 10px;
-    width: 426px;
-    border-radius: 5%;
+  background-color: #fff;
+  padding: 10px;
+  width: 426px;
+  border-radius: 5%;
 }
 
 .card-text {
-    font-size: 15px;
-    color: hsl(220, 15%, 55%);
-    display: block;
+  font-size: 15px;
+  color: #7b879d;
+  display: block;
 }
 
 .qr-pic {
-    height: 419px;
-    width: 419px;
-    background-color: hsl(218, 44%, 22%);
-    border-radius: 5%;
+  height: 419px;
+  width: 419px;
+  background-color: #1f3251;
+  border-radius: 5%;
 }

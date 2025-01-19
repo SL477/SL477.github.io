@@ -55,7 +55,7 @@ last_modified_at: 2024-08-11
 {% for project in site.data.projects %}
 
 <div class="project-tile">
-<img src="/assets/images/{{ project.picture }}.jpg" alt="{{ project.picture_text }}" class="borderimage" onclick="openModal('{{ project.name }}', '{{ project.picture }}', '{{ project.picture_text }}', `{{ project.description }}`, '{{ project.link_http }}', '{{ project.link_alt }}');" data-bs-toggle="modal" data-bs-target="#projectModal">
+<img src="/assets/images/{{ project.picture }}.jpg" alt="{{ project.picture_text }}" class="borderimage" onclick="openModal('{{ project.name }}', '{{ project.picture }}', '{{ project.picture_text }}', `{{ project.description }}`, '{{ project.link_http }}', '{{ project.link_alt }}');" data-bs-toggle="modal" data-bs-target="#project-modal">
 
 <h3 class="project-title">{{ project.name }}</h3>
 
@@ -128,7 +128,7 @@ last_modified_at: 2024-08-11
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalTitle" aria-hidden="true">
+<div class="modal fade" id="project-modal" tabindex="-1" aria-labelledby="projectModalTitle" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
