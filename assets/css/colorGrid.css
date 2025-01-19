@@ -1,113 +1,113 @@
 body {
-	background-color: #c2dcde;
+  background-color: #c2dcde;
 }
 
 canvas {
-    border:1px solid #d3d3d3;
-    background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  background-color: #f1f1f1;
 }
 
 button {
-	border: 1px solid black;
-	box-shadow: 2px 2px gray;
-	width: 43px;
-	height: 25px;
-	display: inline-block;
+  border: 1px solid black;
+  box-shadow: 2px 2px gray;
+  width: 43px;
+  height: 25px;
+  display: inline-block;
 }
 
 .btn {
-	border: 1px solid black;
-	box-shadow: 2px 2px gray;
-	height: 25px;
-	display: inline-block;
-	background-color: white;
-	text-decoration: none;
-	color: black;
+  border: 1px solid black;
+  box-shadow: 2px 2px gray;
+  height: 25px;
+  display: inline-block;
+  background-color: white;
+  text-decoration: none;
+  color: black;
 }
 
 .button {
-	width: auto;
-	height: auto;
+  width: auto;
+  height: auto;
 }
 
 button:active {
-	box-shadow: 1px 1px gray;
-	transform: translateY(1px);
+  box-shadow: 1px 1px gray;
+  transform: translateY(1px);
 }
 
-button.White {
-	background-color: white;
+.white {
+  background-color: white;
 }
 
-button.White:hover {
-	background-color: gray;
+.white:hover {
+  background-color: gray;
 }
 
-button.Red {
-	background-color: red;
+.red {
+  background-color: red;
 }
 
-button.Red:hover {
-	background-color: darkred;
+.red:hover {
+  background-color: darkred;
 }
 
-button.Blue {
-	background-color: blue;
-	color: white;
+.blue {
+  background-color: blue;
+  color: white;
 }
 
-button.Blue:hover {
-	background-color: darkblue;
+.blue:hover {
+  background-color: darkblue;
 }
 
-button.Green {
-	background-color: green;
-	color: white;
+.green {
+  background-color: green;
+  color: white;
 }
 
-button.Green:hover {
-	background-color: darkgreen;
+.green:hover {
+  background-color: darkgreen;
 }
 
-button.Purple {
-	background-color: purple;
-	color: white;
+.purple {
+  background-color: purple;
+  color: white;
 }
 
-button.Purple:hover {
-	background-color: #660066;
+.purple:hover {
+  background-color: #606;
 }
 
-button.Yellow {
-	background-color: #e6e600;
+.yellow {
+  background-color: #e6e600;
 }
 
-button.Yellow:hover {
-	background-color:#cccc00;
+.yellow:hover {
+  background-color: #cc0;
 }
 
 #wrapper {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	min-width: 280px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 280px;
 }
 
 #wrapper1 {
-	text-align: center;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .center {
-	display: block;
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #home {
-	width:35px;
-	height:35px;
+  width: 35px;
+  height: 35px;
 }

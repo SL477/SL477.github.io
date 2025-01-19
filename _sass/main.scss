@@ -2,7 +2,7 @@
   color: green;
 }
 
-.icon_my {
+.icon-my {
   width: 15px;
   height: 15px;
 }
@@ -14,8 +14,6 @@
 .borderimage {
   border: 1px solid black;
   border-radius: 5px;
-  // max-width: 100%;
-  height: auto;
   width: 200px;
   height: 200px;
   display: block;
@@ -27,20 +25,6 @@
   text-align: center;
 }
 
-// .icon_big {
-//     height: 50px;
-//     width: 50px;
-//     background-color: white;
-// }
-
-// .nav-header {
-//     position: fixed;
-//     top: 0;
-//     z-index: 999;
-//     background-color: black;
-//     height: 55px;
-//     width: 100vw;
-// }
 .svg-icon {
   width: 32px;
   height: 16px;
@@ -62,9 +46,9 @@
 }
 
 .p-category {
-  border: 1px solid #000000;
+  border: 1px solid #000;
   border-radius: 30px;
-  padding: 5px 5px;
+  padding: 5px;
 }
 
 .p-category[data-tag='React'] {
@@ -131,9 +115,9 @@
   list-style-type: none;
 }
 
-// from https://pajasevi.github.io/CSSnowflakes/
+/* from https://pajasevi.github.io/CSSnowflakes/ */
 
-.snowflakeInner {
+.snowflake-inner {
   animation-iteration-count: infinite;
   animation-play-state: running;
   animation-duration: 10s;
@@ -163,6 +147,7 @@
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(110vh);
   }
@@ -173,6 +158,7 @@
   100% {
     transform: translateX(0);
   }
+
   50% {
     transform: translateX(80px);
   }
@@ -183,7 +169,7 @@
   animation-delay: 0s;
 }
 
-.snowflake:nth-of-type(0) .snowflakeInner {
+.snowflake:nth-of-type(0) .snowflake-inner {
   animation-delay: 0s;
 }
 
@@ -192,8 +178,8 @@
   animation-delay: 1s;
 }
 
-.snowflake:first-of-type .snowflakeInner,
-.snowflake:nth-of-type(8) .snowflakeInner {
+.snowflake:first-of-type .snowflake-inner,
+.snowflake:nth-of-type(8) .snowflake-inner {
   animation-delay: 1s;
 }
 
@@ -202,27 +188,28 @@
   animation-delay: 0.5s;
 }
 
-.snowflake:nth-of-type(2) .snowflakeInner,
-.snowflake:nth-of-type(6) .snowflakeInner {
+.snowflake:nth-of-type(2) .snowflake-inner,
+.snowflake:nth-of-type(6) .snowflake-inner {
   animation-delay: 6s;
 }
 
-.snowflake:nth-of-type(3) .snowflakeInner {
+.snowflake:nth-of-type(3) .snowflake-inner {
   left: 30%;
   animation-delay: 2s;
 }
 
-.snowflake:nth-of-type(11) .snowflakeInner,
-.snowflake:nth-of-type(3) .snowflakeInner {
+.snowflake:nth-of-type(11) .snowflake-inner,
+.snowflake:nth-of-type(3) .snowflake-inner {
   animation-delay: 4s;
 }
+
 .snowflake:nth-of-type(4) {
   left: 40%;
   animation-delay: 2s;
 }
 
-.snowflake:nth-of-type(10) .snowflakeInner,
-.snowflake:nth-of-type(4) .snowflakeInner {
+.snowflake:nth-of-type(10) .snowflake-inner,
+.snowflake:nth-of-type(4) .snowflake-inner {
   animation-delay: 2s;
 }
 
@@ -231,7 +218,7 @@
   animation-delay: 3s;
 }
 
-.snowflake:nth-of-type(5) .snowflakeInner {
+.snowflake:nth-of-type(5) .snowflake-inner {
   animation-delay: 8s;
 }
 
@@ -244,7 +231,8 @@
   left: 70%;
   animation-delay: 1s;
 }
-.snowflake:nth-of-type(7) .snowflakeInner {
+
+.snowflake:nth-of-type(7) .snowflake-inner {
   animation-delay: 2.5s;
 }
 
@@ -252,17 +240,21 @@
   left: 80%;
   animation-delay: 0s;
 }
+
 .snowflake:nth-of-type(9) {
   left: 90%;
   animation-delay: 1.5s;
 }
-.snowflake:nth-of-type(9) .snowflakeInner {
+
+.snowflake:nth-of-type(9) .snowflake-inner {
   animation-delay: 3s;
 }
+
 .snowflake:nth-of-type(10) {
   left: 25%;
   animation-delay: 0s;
 }
+
 .snowflake:nth-of-type(11) {
   left: 65%;
   animation-delay: 2.5s;

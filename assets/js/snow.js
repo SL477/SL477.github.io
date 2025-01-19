@@ -10,7 +10,7 @@ function snow() {
     flake.style.color = 'white';
     flake.className = 'snowflake';
     const inner = document.createElement('div');
-    inner.className = 'snowflakeInner';
+    inner.className = 'snowflake-inner';
     inner.textContent = '❅';
     flake.appendChild(inner);
     snowHolder.appendChild(flake);
