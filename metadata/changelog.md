@@ -5,6 +5,24 @@ last_modified_at: 2025-01-01
 permalink: /CHANGELOG
 ---
 
+## 2025-01-21
+
+### Changed
+
+- Rogue Like Space, fixed ESLint issues
+- Keyboard, fixed ESLint issues
+
+## 2025-01-19
+
+### Added
+
+- StyleLint package
+
+### Changed
+
+- Various issues in the head
+- Various StyleLint issues
+
 ## 2025-01-11
 
 ### Added

@@ -2,3 +2,4 @@ _site/*
 assets/js/bootstrap.bundle.min.js
 my-navbar.js
 audiosynth.js
+assets/js/jspiano/playKeyboard.js
