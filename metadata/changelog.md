@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-01-01
+last_modified_at: 2025-01-23
 permalink: /CHANGELOG
 ---
+
+## Unpublished
+
+## Changed
+
+- Issues from WebHint
 
 ## 2025-01-21
 
