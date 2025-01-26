@@ -65,4 +65,8 @@ layout: default_modified
   <a class="u-url u-uid" href="{{ page.url | relative_url }}" hidden
     >{{ page.title }}</a
   >
+  {%- if site.show_comments -%} {%- unless page.no_comments -%}
+  <div id="comments"></div>
+  <script src="/assets/js/webMentions.js" async></script>
+  {%- endunless -%} {%- endif -%}
 </article>

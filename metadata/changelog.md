@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-01-23
+last_modified_at: 2025-01-25
 permalink: /CHANGELOG
 ---
 
@@ -10,6 +10,8 @@ permalink: /CHANGELOG
 ## Changed
 
 - Issues from WebHint
+- Added WebMentions to Posts
+- Added sitemap to footer
 
 ## 2025-01-21
 

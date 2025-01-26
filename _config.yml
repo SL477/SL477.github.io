@@ -34,6 +34,7 @@ logo_height: 256
 logo_alt: My logo of Link477 built in Lego
 
 show_excerpts: true
+show_comments: true
 
 # Build settings
 markdown: kramdown
