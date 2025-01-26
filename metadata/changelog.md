@@ -12,6 +12,7 @@ permalink: /CHANGELOG
 - Issues from WebHint
 - Added WebMentions to Posts
 - Added sitemap to footer
+- Started converting CSS to SCSS, as this is set to minify
 
 ## 2025-01-21
 

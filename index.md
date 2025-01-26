@@ -4,7 +4,7 @@
 
 layout: home_modified
 title: Home
-last_modified_at: 2025-01-23
+last_modified_at: 2025-01-26
 ---
 
 <script src="/assets/js/main.js" async></script>
@@ -121,7 +121,7 @@ last_modified_at: 2025-01-23
     </div>
     <div class="mb-3 form-floating">
         <textarea name="g32-message" id="g32-message" class="form-control" rows="5"></textarea>
-        <label for="g32-message" class="col-sm-2 col-form-input" style="color: black;">Message:</label>
+        <label for="g32-message" class="col-sm-2 col-form-input black">Message:</label>
     </div>
     <button type="submit" class="btn btn-primary mb-3">Send Message</button>
 </form>

@@ -108,7 +108,7 @@ function reset() {
 function setCorrect(value) {
   const correctDiv = document.getElementById('correct');
   if (correctDiv) {
-    correctDiv.style.display = value ? 'none' : 'block';
+    correctDiv.className = value ? 'display-none' : 'display-block';
   }
 }
 

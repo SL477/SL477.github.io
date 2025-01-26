@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watcher": "npx babel --watch assets/js/reactsrc --out-dir assets/js/react --presets react-app/prod",
     "lint": "eslint .",
-    "csslint": "npx stylelint \"**/*.*css\""
+    "csslint": "npx stylelint \"**/*.*css\"",
+    "htmllint": "npx hint \"_site\""
   },
   "repository": {
     "type": "git",
