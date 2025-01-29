@@ -111,6 +111,16 @@
   color: white;
 }
 
+.p-category[data-tag='Indie-Web'] {
+  background-color: #ff5c00;
+  color: black;
+}
+
+.p-category[data-tag='Meta'] {
+  background-color: greenyellow;
+  color: black;
+}
+
 .li-no-decoration {
   list-style-type: none;
 }

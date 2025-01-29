@@ -1,9 +1,18 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-01-01
+last_modified_at: 2025-01-25
 permalink: /CHANGELOG
 ---
+
+## Unpublished
+
+## Changed
+
+- Issues from WebHint
+- Added WebMentions to Posts
+- Added sitemap to footer
+- Started converting CSS to SCSS, as this is set to minify
 
 ## 2025-01-21
 

@@ -4,7 +4,7 @@
 
 layout: home_modified
 title: Home
-last_modified_at: 2025-01-19
+last_modified_at: 2025-01-26
 ---
 
 <script src="/assets/js/main.js" async></script>
@@ -21,7 +21,7 @@ last_modified_at: 2025-01-19
 
 <h2>Nice to meet you!<br>I'm Tom Fishwick</h2>
 
-<p>My main experience from work is as a developer for <a href="https://www.elite.com/3e/" target="_blank" rel="noopener noreferrer">Elite 3E</a> (VB.Net & SQL) and <a href="https://www.elite.com/3e/matter-management/" target="_blank">MatterSphere</a> (C#). This involves creating new screens and workflows and integrating them with various APIs. As well as these I have made an ASP.Net site serving a Vue.JS application, and various other JavaScript applications.</P>
+<p>My main experience from work is as a developer for <a href="https://www.elite.com/3e/" target="_blank" rel="noopener noreferrer">Elite 3E</a> (VB.Net & SQL) and <a href="https://www.elite.com/3e/matter-management/" target="_blank" rel="noopener noreferrer">MatterSphere</a> (C#). This involves creating new screens and workflows and integrating them with various APIs. As well as these I have made an ASP.Net site serving a Vue.JS application, and various other JavaScript applications.</P>
 
 <p>In my spare time I have created various apps in Python, JavaScript, React Native and Android. Plus I have some experience in PHP.</p>
 
@@ -121,7 +121,7 @@ last_modified_at: 2025-01-19
     </div>
     <div class="mb-3 form-floating">
         <textarea name="g32-message" id="g32-message" class="form-control" rows="5"></textarea>
-        <label for="g32-message" class="col-sm-2 col-form-input" style="color: black;">Message:</label>
+        <label for="g32-message" class="col-sm-2 col-form-input black">Message:</label>
     </div>
     <button type="submit" class="btn btn-primary mb-3">Send Message</button>
 </form>

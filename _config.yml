@@ -34,6 +34,7 @@ logo_height: 256
 logo_alt: My logo of Link477 built in Lego
 
 show_excerpts: true
+show_comments: true
 
 # Build settings
 markdown: kramdown
@@ -49,6 +50,12 @@ gist: noscript
 kramdown:
   math_engine: mathjax
   syntax_highlighter: rouge
+sass:
+  style: compressed
+
+collections:
+  notes:
+    output: true
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
