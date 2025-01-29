@@ -8,6 +8,8 @@ author: Tom Fishwick
 last_modified_at: 2025-01-27
 ---
 
+I first saw this challenge [here](https://adactio.com/journal/21674).
+
 ## Why did you start blogging in the first place?
 
 It seemed like a good idea at the time!
@@ -36,19 +38,19 @@ As I still have access to the WordPress site I have very occasionally drafted so
 ## When do you feel most inspired to write?
 
 If I have finished something that I'm especially proud of I might _finish it_ by adding a blog post.
-Otherwise it is at the whims of fate, or when I'm procrastinating on something<sup class="footnote" id="ref1"><a href="#footnote1">1</a></sup>.
+Otherwise it is at the whims of fate, or when I'm procrastinating on something[^1].
 
 ## Do you publish immediately after writing, or do you let it simmer a bit as a draft?
 
 Normally immediately after writing.
-My conscience points out that the rest of my Blood-Bowl series has been languishing in Word for about three years now<sup class="footnote" id="ref2"><a href="#footnote2">2</a></sup>.
+My conscience points out that the rest of my Blood-Bowl series has been languishing in Word for about three years now[^2].
 
 Plus I think I have a couple of other entries in my WordPress drafts!
 
 ## What's your favourite post on your blog?
 
 I think I quite liked [Kill Team](https://link477.com/2022/04/16/Kill-Team.html).
-It was based, more or less, on my first Kill Team match<sup class="footnote" id="ref3"><a href="#footnote3">3</a></sup>.
+It was based, more or less, on my first Kill Team match[^3].
 It had absolutely nothing to do with the tech-blog style theme that was my original inspiration (given that my first post was on Blood Bowl you can tell how religiously I stuck to the professional theme).
 
 I now have two Space Marine Kill Teams (both varieties of the Phobos Strike team, the Infiltrators the originals and the Incursors kit-bashed from Intercessors with the remaining parts).
@@ -57,12 +59,12 @@ No Orks are in my collection yet, so if I ever do a follow up it may have to be 
 ## Any future plans for your blog? Maybe a redesign, a move to another platform, or adding a new feature?
 
 At the moment I am part way through adding notes to the site.
-If you can see this, then hopefully I have finished that<sup class="footnote" id="ref4"><a href="#footnote4">4</a></sup>.
+If you can see this, then hopefully I have finished that[^4].
 I have also been working on [IndieWebifying](https://indieweb.org/) my site and working down the [Front-End Checklist](https://frontendchecklist.io/).
 
-This post has also been encouraging me to work on properly supporting footnotes, rather than hacking the HTML in the MarkDown.
+I discovered footnotes while writing this, and intend to use them a lot more.
 I have also been slowly working through the [Odin Project](https://www.theodinproject.com/) and some of these things will hopefully join the site.
-Plus of course there is everything in the GitHub Issues/Project for this site<sup class="footnote" id="ref5"><a href="#footnote5">5</a></sup>.
+Plus of course there is everything in the GitHub Issues/Project for this site[^5].
 
 At some point I intend to add a toggle for dark-mode/light-mode and to redesign the home page.
 
@@ -71,11 +73,12 @@ At some point I intend to add a toggle for dark-mode/light-mode and to redesign 
 I am slowly approaching the end of another major project, which eventually I will elaborate on (it has taken about 4 years and my aim is to complete it this year).
 Also I have plans to create a computer game of some description.
 
-<div>
-  <h2>Footnotes</h2>
-  <p id="footnote1"><sup>1</sup>Such as now.<a href="#ref1">↩</a></p>
-  <p id="footnote2"><sup>2</sup>Some day I shall edit them and publish them. The first entry is <a href="https://link477.com/2021/08/17/Blood-Bowl-1st-Match.html" target="_blank" rel="norefferrer noopener">here.</a><a href="#ref2">↩</a></p>
-  <p id="footnote3"><sup>3</sup>I was the Orks, Guy Cutler the Imperial Guard. Recollections may vary!<a href="#ref3">↩</a></p>
-  <p id="footnote4"><sup>4</sup>Carefully keeping to the one major change per feature branch!<a href="#ref4">↩</a></p>
-  <p id="footnote5"><sup>5</sup>More a list of shame at this point!<a href="#ref5">↩</a></p>
-</div>
+[^1]: Such as now.
+
+[^2]: Some day I shall edit them and publish them. The first entry is [here](https://link477.com/2021/08/17/Blood-Bowl-1st-Match.html).
+
+[^3]: I was the Orks, Guy Cutler the Imperial Guard. Recollections may vary!
+
+[^4]: Carefully keeping to the one major change per feature branch!
+
+[^5]: More a list of shame at this point!

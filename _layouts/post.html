@@ -33,7 +33,7 @@ layout: default_modified
           >{{ page.author }}</span
         ></span
       >
-      {%- endif -%} {%- if page.tags -%}
+      {%- endif -%} {%- if page.tags != empty -%}
       <span>• Tags: </span>
       {%- for tag in page.tags -%}
       <span class="p-category" data-tag="{{ tag }}">{{ tag }}</span>

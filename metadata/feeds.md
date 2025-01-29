@@ -10,3 +10,4 @@ These are various feeds:
 - [RSS Feed](/feed.xml)
 - [JSON Feed](/feed.json)
 - [H-Feed](/feed.html)
+- [Notes](/notes)
