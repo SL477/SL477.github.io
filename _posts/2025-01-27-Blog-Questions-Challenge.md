@@ -8,7 +8,7 @@ author: Tom Fishwick
 last_modified_at: 2025-01-27
 ---
 
-I first saw this challenge [here](https://adactio.com/journal/21674).
+I first saw this challenge [on Adactio's blog](https://adactio.com/journal/21674).
 
 ## Why did you start blogging in the first place?
 
