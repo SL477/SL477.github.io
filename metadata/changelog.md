@@ -14,6 +14,11 @@ permalink: /CHANGELOG
 - Made JavaScript deferred where possible
 - Fix PageSpeed Insights issues
 - Fixed issue with label on contact form
+- Fixed jumped header on home screen
+
+### Removed
+
+- Font Awesome
 
 ## 2025-01-29
 
