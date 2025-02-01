@@ -5,7 +5,7 @@ last_modified_at: 2025-02-01
 permalink: /CHANGELOG
 ---
 
-## Unpublished
+## 2025-02-01
 
 ### Changed
 
@@ -15,6 +15,7 @@ permalink: /CHANGELOG
 - Fix PageSpeed Insights issues
 - Fixed issue with label on contact form
 - Fixed jumped header on home screen
+- Added Notes to Sitemap HTML
 
 ### Removed
 
