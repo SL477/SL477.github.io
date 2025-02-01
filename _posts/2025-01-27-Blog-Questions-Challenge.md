@@ -5,7 +5,7 @@ tags: Meta Indie-Web
 author: Tom Fishwick
 # image: /assets/images/rubyChess.jpg
 # photo_alt: Chess Game
-last_modified_at: 2025-01-27
+last_modified_at: 2025-02-01
 ---
 
 I first saw this challenge [on Adactio's blog](https://adactio.com/journal/21674).
