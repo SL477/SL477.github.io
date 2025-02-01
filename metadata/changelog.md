@@ -12,6 +12,8 @@ permalink: /CHANGELOG
 - Minified remaining CSS
 - Changed CSS to non-blocking
 - Made JavaScript deferred where possible
+- Fix PageSpeed Insights issues
+- Fixed issue with label on contact form
 
 ## 2025-01-29
 

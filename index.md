@@ -108,20 +108,22 @@ last_modified_at: 2025-01-26
 
 <form action="https://link477255648240.wordpress.com/contact/" method="post" id="contact-form">
     <div class="mb-3 row">
-        <label for="g32-name" class="col-sm-2 col-form-label">Name:</label>
-        <div class="col-sm-10">
+        <label for="g32-name" class="col-sm-3 col-form-label">Name:</label>
+        <div class="col-sm-9">
             <input type="text" name="g32-name" required id="g32-name" class="form-control">
         </div>
     </div>
     <div class="mb-3 row">
-        <label for="g32-email" class="col-sm-2 col-form-label">Email:</label>
-        <div class="col-sm-10">
+        <label for="g32-email" class="col-sm-3 col-form-label">Email:</label>
+        <div class="col-sm-9">
             <input type="email" name="g32-email" required id="g32-email" class="form-control">
         </div>
     </div>
-    <div class="mb-3 form-floating">
-        <textarea name="g32-message" id="g32-message" class="form-control" rows="5"></textarea>
-        <label for="g32-message" class="col-sm-2 col-form-input black">Message:</label>
+    <div class="mb-3 row">
+        <label for="g32-message" class="col-sm-3 col-form-label">Message:</label>
+        <div class="col-sm-9">
+            <textarea name="g32-message" id="g32-message" class="form-control" rows="2"></textarea>
+        </div>
     </div>
     <button type="submit" class="btn btn-primary mb-3">Send Message</button>
 </form>
