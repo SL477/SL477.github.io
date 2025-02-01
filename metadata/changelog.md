@@ -1,11 +1,19 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-01-25
+last_modified_at: 2025-02-01
 permalink: /CHANGELOG
 ---
 
 ## Unpublished
+
+### Changed
+
+- Minified remaining CSS
+- Changed CSS to non-blocking
+- Made JavaScript deferred where possible
+
+## 2025-01-29
 
 ## Changed
 
