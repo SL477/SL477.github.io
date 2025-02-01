@@ -2,20 +2,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- CSS only -->
-  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/css/bootstrap.min.css" rel="preload" as="style" onload="this.rel='stylesheet'">
+  <noscript><link href="/assets/css/bootstrap.min.css" rel="stylesheet"></noscript>
   <!-- JavaScript Bundle with Popper -->
   <script src="/assets/js/bootstrap.bundle.min.js" async></script>
   {%- seo -%}
-  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
-  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="preload" href="{{ "/assets/main.css" | relative_url }}" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}"></noscript>
+  <link rel="preload" href="/assets/css/styles.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/styles.css"></noscript>
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
   {%- endif -%}
   <link rel="icon" href="/assets/images/link477.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
   <meta name="facebook-domain-verification" content="wzpmg9812dx4tnuv0mo7m580wp8r75" >
-  <link type="text/plain" rel="author" href="https://link477.com/humans.txt">
+  <link type="text/plain" rel="author" href="/humans.txt">
   <link rel="meta" type="application/rdf+xml" title="FOAF" href="/foaf.rdf">
   <!--Icons-->
   <link rel="icon" href="/assets/images/icons/favicon-16x16.png" sizes="16x16" type="image/png">

@@ -1,11 +1,27 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-01-25
+last_modified_at: 2025-02-01
 permalink: /CHANGELOG
 ---
 
-## Unpublished
+## 2025-02-01
+
+### Changed
+
+- Minified remaining CSS
+- Changed CSS to non-blocking
+- Made JavaScript deferred where possible
+- Fix PageSpeed Insights issues
+- Fixed issue with label on contact form
+- Fixed jumped header on home screen
+- Added Notes to Sitemap HTML
+
+### Removed
+
+- Font Awesome
+
+## 2025-01-29
 
 ## Changed
 
