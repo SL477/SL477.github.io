@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-02-01
+last_modified_at: 2025-02-02
 permalink: /CHANGELOG
 ---
 
@@ -10,12 +10,19 @@ permalink: /CHANGELOG
 ### Added
 
 - Light-dark mode switcher
+- WebP versions of pictures
 
 ### Modified
+
+- Updated Alt-Texts on Project images.
+- Updated images on homepage to use the Picture tag so that they can use WebP images. And lazy loading.
+- Removed the Modal popup on the homepage and switched to using the details tag.
+- Hide the hint report from Jekyll so that it would not start checking itself.
 
 ### Removed
 
 - LinkedIn Badge from About page
+- CSS/SCSS for the homepage. Combined into the main SCSS.
 
 ## 2025-02-01
 

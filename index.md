@@ -4,10 +4,8 @@
 
 layout: home_modified
 title: Home
-last_modified_at: 2025-01-26
+last_modified_at: 2025-02-02
 ---
-
-<script src="/assets/js/main.js" async></script>
 
 <script src="/assets/js/snow.js" async></script>
 
@@ -15,7 +13,11 @@ last_modified_at: 2025-01-26
 
 <div class="top-group">
 
-<img src="/assets/images/tom.jpg" alt="Tom" class="imgmain">
+<picture class="imgmain">
+    <source srcset="/assets/images/tom.webp" type="image/webp">
+    <source srcset="{{ site.photo }}" type="image/jpg" >
+    <img src="{{ site.photo }}" alt="Tom.">
+</picture>
 
 <div class="inner-group">
 
@@ -55,9 +57,17 @@ last_modified_at: 2025-01-26
 {% for project in site.data.projects %}
 
 <div class="project-tile">
-<img src="/assets/images/{{ project.picture }}.jpg" alt="{{ project.picture_text }}" class="borderimage" onclick="openModal('{{ project.name }}', '{{ project.picture }}', '{{ project.picture_text }}', `{{ project.description }}`, '{{ project.link_http }}', '{{ project.link_alt }}');" data-bs-toggle="modal" data-bs-target="#project-modal">
+<picture class="borderimage">
+    <source srcset="/assets/images/{{ project.picture }}.webp" type="image/webp" loading="lazy">
+    <source srcset="/assets/images/{{ project.picture }}.jpg" type="image/jpeg" loading="lazy">
+    <img src="/assets/images/{{ project.picture }}.jpg" alt="{{ project.picture_text }}" class="borderimage" loading="lazy">
+</picture>
+<!-- <img src="/assets/images/{{ project.picture }}.jpg" alt="{{ project.picture_text }}" class="borderimage"> -->
 
-<h3 class="project-title">{{ project.name }}</h3>
+<details>
+    <summary>{{ project.name }}</summary>
+    <pre style="text-wrap: wrap;">{{ project.description }}</pre>
+</details>
 
 {%- if project.url != "/" or project.repository != "/" -%}
 <br>
@@ -90,7 +100,11 @@ last_modified_at: 2025-01-26
 {% for cert in site.data.certifications %}
 
 <a href="https://www.credly.com/badges/{{cert.id}}/public_url" target="_blank" rel="noreferrer noopener">
-    <img width="150" height="150" src="/assets/images/{{cert.src}}" alt="{{cert.name}}">
+    <picture>
+    <source srcset="/assets/images/{{cert.src}}.webp" type="image/webp" width="150" height="150" loading="lazy">
+    <source srcset="/assets/images/{{cert.src}}.png" type="image/png" width="150" height="150" loading="lazy">
+    <img src="/assets/images/{{cert.src}}.png" alt="{{ project.picture_text }}" width="150" height="150" loading="lazy">
+</picture>
 </a>
 
 {% endfor %}
@@ -127,21 +141,4 @@ last_modified_at: 2025-01-26
     </div>
     <button type="submit" class="btn btn-primary mb-3">Send Message</button>
 </form>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="project-modal" tabindex="-1" aria-labelledby="projectModalTitle" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="projectModalTitle"></h3>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="modalBody">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
 </div>
