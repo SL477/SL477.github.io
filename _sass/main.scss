@@ -1,3 +1,34 @@
+.page-content,
+.site-footer,
+.ui-mode-picker {
+  background-color: light-dark(white, black);
+  color: light-dark(black, aliceblue);
+}
+
+.site-footer .black {
+  color: light-dark(black, aliceblue);
+}
+
+.site-footer .credly {
+  background-color: light-dark(black, aliceblue);
+}
+
+.sitemap {
+  background-color: light-dark(black, aliceblue);
+}
+
+.stackoverflow {
+  background-color: light-dark(black, aliceblue);
+}
+
+.email {
+  background-color: light-dark(black, aliceblue);
+}
+
+#project-modal {
+  color: black;
+}
+
 .current {
   color: green;
 }
@@ -41,7 +72,7 @@
 }
 
 .post-title {
-  padding-top: 3rem;
+  // padding-top: 3rem;
   text-align: center;
 }
 
@@ -123,6 +154,10 @@
 
 .li-no-decoration {
   list-style-type: none;
+}
+
+.ui-mode-picker {
+  padding-top: 5rem;
 }
 
 /* from https://pajasevi.github.io/CSSnowflakes/ */

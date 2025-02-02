@@ -11,6 +11,7 @@
   <noscript><link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}"></noscript>
   <link rel="preload" href="/assets/css/styles.css" as="style" onload="this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="/assets/css/styles.css"></noscript>
+  <script src="/assets/js/dark_mode_picker.js" async></script>
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
@@ -19,6 +20,7 @@
   <meta name="facebook-domain-verification" content="wzpmg9812dx4tnuv0mo7m580wp8r75" >
   <link type="text/plain" rel="author" href="/humans.txt">
   <link rel="meta" type="application/rdf+xml" title="FOAF" href="/foaf.rdf">
+  <meta name="color-scheme" content="light dark">
   <!--Icons-->
   <link rel="icon" href="/assets/images/icons/favicon-16x16.png" sizes="16x16" type="image/png">
   <link rel="icon" href="/assets/images/icons/favicon-32x32.png" sizes="32x32" type="image/png">
