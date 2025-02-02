@@ -2,7 +2,7 @@
   url: https://stocks.link477.com/
   repository: flask-stockMarketChart
   picture: ChartTheStockMarket
-  picture_text: Chart the Stock Market Screenshot
+  picture_text: A screenshot of a graph with two stocks jumping up and down in price over time and an input to add in more stocks.
   link_http: https://www.freecodecamp.org/learn/coding-interview-prep/take-home-projects/chart-the-stock-market
   link_alt: FreeCodeCamp Chart the Stock Market
   description: |
@@ -19,7 +19,7 @@
   url: https://sl477-fccpredicthealthcostswithregression-main-tdzqp8.streamlitapp.com
   repository: fccPredictHealthCostsWithRegression
   picture: HealthCostPredictions
-  picture_text: Health Cost Predictor Screenshot
+  picture_text: A screenshot of a dashboard centred around a graph of Predicted vs actual expenses, on the left are various options to give your demographic data and at the bottom is your predicted health costs.
   link_http: https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/linear-regression-health-costs-calculator
   link_alt: FreeCodeCamp Predict Health Costs With Regression
   description: |
@@ -34,7 +34,7 @@
   url: https://catvdog.link477.com
   repository: fccCatAndDog
   picture: CatAndDogImageClassifier
-  picture_text: Cat and Dog Image Classifier screenshot
+  picture_text: There is a picture of a cute cat balancing on top of a door. Above is a button to pick a different image and below is the result of the prediction (cat).
   link_http: https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/cat-and-dog-image-classifier
   link_alt: FreeCodeCamp Cat and Dog Image Classifier
   description: |
@@ -45,7 +45,7 @@
   url: /
   repository: flaskSMSClassifier
   picture: SMSClassifier
-  picture_text: SMS Classifier Screenshot
+  picture_text: A table of SMSes with their predictions of spam/ham. Above inputs to enter in new messages.
   link_http: https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/neural-network-sms-text-classifier
   link_alt: FreeCodeCamp SMS Classifier
   description: |
@@ -60,7 +60,7 @@
   url: https://drive.google.com/drive/folders/1_jtg6b4z-SArgA5KvZkewE4TjUxHe29F?usp=sharing
   repository: /
   picture: XKCDReader
-  picture_text: Android Version of the XKCD Reader App
+  picture_text: Android Version of the XKCD Reader App, showing the comic of March of the Penguins.
   link_http: https://xkcd.com/
   link_alt: XKCD website
   description: |
@@ -71,6 +71,6 @@
   url: https://link477.com/Pizza_KG/Pizza_KG.html
   repository: Pizza_KG
   picture: SWTKGClassRelationships
-  picture_text: Final class relationships
+  picture_text: A complicated circular graph showing the numbers of different data types in the Knowledge Graph.
   description: |
     This project was something I did after university following the specifications of the SWTKG module which I didn't take.
