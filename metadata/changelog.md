@@ -5,6 +5,18 @@ last_modified_at: 2025-02-01
 permalink: /CHANGELOG
 ---
 
+## Unpublished
+
+### Added
+
+- Light-dark mode switcher
+
+### Modified
+
+### Removed
+
+- LinkedIn Badge from About page
+
 ## 2025-02-01
 
 ### Changed
