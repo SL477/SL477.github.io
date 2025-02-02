@@ -40,7 +40,7 @@ last_modified_at: 2025-02-02
 {% for skill in site.data.skills %}
 
 <div class="skills-card">
-<p>{{ skill.name }}</p>
+<h3>{{ skill.name }}</h3>
 <p>{{ skill.years }} Year{% if skill.years > 1 %}s{% endif %} Experience</p>
 </div>
 
@@ -103,7 +103,7 @@ last_modified_at: 2025-02-02
     <picture>
     <source srcset="/assets/images/{{cert.src}}.webp" type="image/webp" width="150" height="150" loading="lazy">
     <source srcset="/assets/images/{{cert.src}}.png" type="image/png" width="150" height="150" loading="lazy">
-    <img src="/assets/images/{{cert.src}}.png" alt="{{ project.picture_text }}" width="150" height="150" loading="lazy">
+    <img src="/assets/images/{{cert.src}}.png" alt="{{ cert.name }}" width="150" height="150" loading="lazy">
 </picture>
 </a>
 
