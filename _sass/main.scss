@@ -1,6 +1,5 @@
 .page-content,
-.site-footer,
-.ui-mode-picker {
+.site-footer {
   background-color: light-dark(white, black);
   color: light-dark(black, aliceblue);
 }
@@ -220,9 +219,9 @@ code {
   list-style-type: none;
 }
 
-.ui-mode-picker {
-  padding-top: 5em;
-}
+// .ui-mode-picker {
+//   padding-top: 5em;
+// }
 
 /* from https://pajasevi.github.io/CSSnowflakes/ */
 
