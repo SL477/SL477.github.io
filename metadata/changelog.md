@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-02-02
+last_modified_at: 2025-02-08
 permalink: /CHANGELOG
 ---
 
@@ -11,6 +11,7 @@ permalink: /CHANGELOG
 
 - Light-dark mode switcher
 - WebP versions of pictures
+- New Web-Component of the Navbar
 
 ### Modified
 
@@ -23,6 +24,7 @@ permalink: /CHANGELOG
 
 - LinkedIn Badge from About page
 - CSS/SCSS for the homepage. Combined into the main SCSS.
+- Bootstrap
 
 ## 2025-02-01
 
