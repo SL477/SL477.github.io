@@ -14,6 +14,7 @@
   years: 1
 - name: Tableau
   years: 1
+  hide: true
 - name: HTML
   years: 12
 - name: Docker

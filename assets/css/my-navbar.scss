@@ -83,6 +83,9 @@
 
 @media screen and (width >= 900px) {
   .my-nav {
+    display: grid;
+    grid-auto-flow: column;
+
     .hamburger {
       display: none;
     }
@@ -95,7 +98,7 @@
   .inner-nav {
     max-height: fit-content;
     display: inline-block;
-    padding-top: 10px;
+    vertical-align: middle;
 
     .inner-nav-top-level {
       display: grid;

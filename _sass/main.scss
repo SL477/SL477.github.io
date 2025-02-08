@@ -39,7 +39,10 @@ code {
   margin-right: auto;
   width: 250px;
   height: 250px;
-  border-radius: 1%;
+
+  img {
+    border-radius: 50%;
+  }
 }
 
 .top-group {
@@ -50,6 +53,10 @@ code {
   text-align: center;
   display: inline-block;
   width: 200px;
+}
+
+.project-pre {
+  text-wrap: wrap;
 }
 
 .skills-card > h3 {

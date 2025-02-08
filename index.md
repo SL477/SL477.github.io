@@ -23,7 +23,7 @@ last_modified_at: 2025-02-02
 
 <h2>Nice to meet you!<br>I'm Tom Fishwick</h2>
 
-<p>My main experience from work is as a developer for <a href="https://www.elite.com/3e/" target="_blank" rel="noopener noreferrer">Elite 3E</a> (VB.Net & SQL) and <a href="https://www.elite.com/3e/matter-management/" target="_blank" rel="noopener noreferrer">MatterSphere</a> (C#). This involves creating new screens and workflows and integrating them with various APIs. As well as these I have made an ASP.Net site serving a Vue.JS application, and various other JavaScript applications.</P>
+<p>My main experience from work is as a developer for <a href="https://www.elite.com/3e/" target="_blank" rel="noopener noreferrer">Elite 3E</a> (VB.Net & SQL) and <a href="https://www.thomsonreuters.com/content/dam/openweb/documents/pdf/mena/brochures/3e-matter-management-brochure.pdf" target="_blank" rel="noopener noreferrer">MatterSphere</a> (C#). This involves creating new screens and workflows and integrating them with various APIs. As well as these I have made an ASP.Net site serving a Vue.JS application, and various other JavaScript applications.</P>
 
 <p>In my spare time I have created various apps in Python, JavaScript, React Native and Android. Plus I have some experience in PHP.</p>
 
@@ -38,12 +38,13 @@ last_modified_at: 2025-02-02
 <div class="skills-container">
 
 {% for skill in site.data.skills %}
+{% unless skill.hide %}
 
 <div class="skills-card">
 <h3>{{ skill.name }}</h3>
 <p>{{ skill.years }} Year{% if skill.years > 1 %}s{% endif %} Experience</p>
 </div>
-
+{% endunless %}
 {% endfor %}
 
 </div>
@@ -66,7 +67,7 @@ last_modified_at: 2025-02-02
 
 <details>
     <summary>{{ project.name }}</summary>
-    <pre style="text-wrap: wrap;">{{ project.description }}</pre>
+    <pre class="project-pre">{{ project.description }}</pre>
 </details>
 
 {%- if project.url != "/" or project.repository != "/" -%}

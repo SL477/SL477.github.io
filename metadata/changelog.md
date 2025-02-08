@@ -20,6 +20,9 @@ permalink: /CHANGELOG
 - Removed the Modal popup on the homepage and switched to using the details tag.
 - Hide the hint report from Jekyll so that it would not start checking itself.
 - NavBar no longer requires JavaScript to work.
+- Fixed MatterSphere link.
+- Rounded main picture.
+- Hidden the Tableau skill. Although I maintain that it is better than Power BI!
 
 ### Removed
 
