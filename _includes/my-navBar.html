@@ -1,7 +1,12 @@
 <nav class="my-nav">
   <a class="brand" href="/"
-    ><img src="{{ site.logo }}" alt="Link477" height="50" width="50"
-  /></a>
+    >
+    <picture>
+      <source srcset="{{ site.logo_webp }}" height="50" width="50" type="image/webp">
+      <source srcset="{{ site.logo }}" height="50" width="50" type="image/png">
+      <img src="{{ site.logo }}" alt="Link477" height="50" width="50">
+    </picture>
+    </a>
   <label for="expandNavbar" id="expand-navbar-icon">
     <input
       type="checkbox"

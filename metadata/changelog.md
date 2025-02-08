@@ -19,6 +19,7 @@ permalink: /CHANGELOG
 - Updated images on homepage to use the Picture tag so that they can use WebP images. And lazy loading.
 - Removed the Modal popup on the homepage and switched to using the details tag.
 - Hide the hint report from Jekyll so that it would not start checking itself.
+- NavBar no longer requires JavaScript to work.
 
 ### Removed
 
