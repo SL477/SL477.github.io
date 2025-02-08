@@ -1,0 +1,76 @@
+---
+---
+
+.my-nav {
+  .brand > img {
+    background-color: white;
+  }
+
+  .hamburger {
+    float: right;
+    margin-top: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+
+    span {
+      height: 3px;
+      width: 30px;
+      color: black;
+      background-color: black;
+      display: block;
+      position: relative;
+      margin-bottom: 5px;
+      transition:
+        transform 0.3s ease-in-out,
+        opacity 0.3s ease-in-out,
+        top 0.3s ease-in-out;
+    }
+  }
+
+  #expandNavbar:checked ~ .hamburger span:first-child {
+    transform: rotate(45deg);
+    top: 8px;
+  }
+
+  #expandNavbar:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0; /* Hide the middle span */
+  }
+
+  #expandNavbar:checked ~ .hamburger span:last-child {
+    transform: rotate(-45deg);
+    top: -8px;
+  }
+
+  .inner-nav {
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+  }
+
+  #expandNavbar:checked ~ .inner-nav {
+    max-height: 1000px;
+  }
+}
+
+// .expand-navbar:checked ~ #expand-navbar-icon span:nth-child(2) {
+//   transform: rotate(45deg);
+//   top: 8px;
+// }
+
+// .expand-navbar:checked {
+//   background-color: red;
+//   color: green;
+//   width: 200px;
+
+//   #expand-navbar-icon span:nth-child(2) {
+//     transform: rotate(45deg);
+//   }
+
+//   .inner-nav {
+//     background-color: orange !important;
+//   }
+// }
+
+// .inner-nav {
+//   background-color: aqua !important;
+// }
