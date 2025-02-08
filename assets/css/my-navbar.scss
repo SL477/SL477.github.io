@@ -10,6 +10,12 @@
     vertical-align: middle;
   }
 
+  #expandNavbar {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+  }
+
   .brand {
     vertical-align: top;
   }
@@ -60,6 +66,7 @@
 
   #expandNavbar:checked ~ .inner-nav {
     max-height: fit-content;
+    display: block;
   }
 
   a:hover {
@@ -77,6 +84,10 @@
 @media screen and (width >= 900px) {
   .my-nav {
     .hamburger {
+      display: none;
+    }
+
+    #expandNavbar {
       display: none;
     }
   }
@@ -102,7 +113,7 @@
   .my-nav {
     .inner-nav {
       max-height: 0;
-      display: block;
+      display: none;
     }
   }
 }

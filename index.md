@@ -58,9 +58,9 @@ last_modified_at: 2025-02-02
 
 <div class="project-tile">
 <picture class="borderimage">
-    <source srcset="/assets/images/{{ project.picture }}.webp" type="image/webp" loading="lazy">
-    <source srcset="/assets/images/{{ project.picture }}.jpg" type="image/jpeg" loading="lazy">
-    <img src="/assets/images/{{ project.picture }}.jpg" alt="{{ project.picture_text }}" class="borderimage" loading="lazy">
+    <source srcset="/assets/images/{{ project.picture }}.webp" type="image/webp" loading="lazy" width="{{ project.picture_width }}" height="{{ project.picture_height }}">
+    <source srcset="/assets/images/{{ project.picture }}.jpg" type="image/jpeg" loading="lazy" width="{{ project.picture_width }}" height="{{ project.picture_height }}">
+    <img src="/assets/images/{{ project.picture }}.jpg" alt="{{ project.picture_text }}" class="borderimage" loading="lazy" width="{{ project.picture_width }}" height="{{ project.picture_height }}">
 </picture>
 <!-- <img src="/assets/images/{{ project.picture }}.jpg" alt="{{ project.picture_text }}" class="borderimage"> -->
 

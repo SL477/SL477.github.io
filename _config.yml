@@ -70,3 +70,6 @@ exclude:
   - vendor/ruby/
   - hint-report/
   - webp/
+  - package.json
+  - package-lock.json
+  - stylelint.config.mjs

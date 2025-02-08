@@ -95,6 +95,13 @@ code {
   vertical-align: text-top;
 }
 
+.project-tile {
+  max-width: 340px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media screen and (width >= 600px) {
   /** for bigger screens float the image next to the text */
   .imgmain {
@@ -109,10 +116,6 @@ code {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
-  }
-
-  .project-tile {
-    min-height: 340px;
   }
 
   #contact-container {
