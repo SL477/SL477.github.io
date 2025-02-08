@@ -4,11 +4,16 @@
 .my-nav {
   .brand > img {
     background-color: white;
+    vertical-align: middle;
+  }
+
+  .brand {
+    vertical-align: top;
   }
 
   .hamburger {
     float: right;
-    margin-top: 5px;
+    margin-top: 15px;
     margin-right: 10px;
     cursor: pointer;
 
@@ -42,35 +47,48 @@
   }
 
   .inner-nav {
-    max-height: 0;
     transition: max-height 0.3s ease-in-out;
     overflow: hidden;
+
+    ul {
+      list-style: none;
+    }
   }
 
   #expandNavbar:checked ~ .inner-nav {
-    max-height: 1000px;
+    max-height: fit-content;
   }
 }
 
-// .expand-navbar:checked ~ #expand-navbar-icon span:nth-child(2) {
-//   transform: rotate(45deg);
-//   top: 8px;
-// }
+@media screen and (width >= 900px) {
+  .my-nav {
+    .hamburger {
+      display: none;
+    }
+  }
 
-// .expand-navbar:checked {
-//   background-color: red;
-//   color: green;
-//   width: 200px;
+  .inner-nav {
+    max-height: fit-content;
+    display: inline-block;
 
-//   #expand-navbar-icon span:nth-child(2) {
-//     transform: rotate(45deg);
-//   }
+    .inner-nav-top-level {
+      display: grid;
+      grid-auto-flow: column;
+      gap: 5px;
+    }
 
-//   .inner-nav {
-//     background-color: orange !important;
-//   }
-// }
+    .ui-mode-picker {
+      display: inline;
+      padding-block: 0;
+    }
+  }
+}
 
-// .inner-nav {
-//   background-color: aqua !important;
-// }
+@media screen and (width < 900px) {
+  .my-nav {
+    .inner-nav {
+      max-height: 0;
+      display: block;
+    }
+  }
+}
