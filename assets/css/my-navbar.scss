@@ -2,6 +2,9 @@
 ---
 
 .my-nav {
+  background-color: light-dark(#e3f2fd, #212529);
+  color: light-dark(black, #f0f8ff);
+
   .brand > img {
     background-color: white;
     vertical-align: middle;
@@ -21,7 +24,7 @@
       height: 3px;
       width: 30px;
       color: black;
-      background-color: black;
+      background-color: light-dark(black, #f0f8ff);
       display: block;
       position: relative;
       margin-bottom: 5px;
@@ -58,6 +61,17 @@
   #expandNavbar:checked ~ .inner-nav {
     max-height: fit-content;
   }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .ui-mode-picker {
+    padding-block: 0;
+    border: none;
+    padding-inline: 0;
+    margin-inline: 0;
+  }
 }
 
 @media screen and (width >= 900px) {
@@ -79,7 +93,6 @@
 
     .ui-mode-picker {
       display: inline;
-      padding-block: 0;
     }
   }
 }
