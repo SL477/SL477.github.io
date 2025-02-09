@@ -109,6 +109,10 @@ code {
   margin-right: auto;
 }
 
+.col-form-label {
+  vertical-align: top;
+}
+
 @media screen and (width >= 600px) {
   /** for bigger screens float the image next to the text */
   .imgmain {
@@ -133,6 +137,11 @@ code {
   .skills-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  #contact-form > .row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
   }
 }
 
@@ -249,7 +258,8 @@ code {
   background-color: white;
   color: black;
   border-radius: 0.375rem;
-  padding: 0.375rem 0.75rem;
+  padding: 0.375rem 0;
+  width: 100%;
 }
 
 /* from https://pajasevi.github.io/CSSnowflakes/ */
