@@ -7,7 +7,7 @@ last_modified_at: 2024-03-09
 
 <style>
   #main {
-    border: 1px solid black;
+    border: 1px solid light-dark(black, white);
     padding: 4px;
     border-radius: 5px;
     width: -moz-fit-content;
@@ -17,12 +17,10 @@ last_modified_at: 2024-03-09
     text-align: center;
   }
 
-  img {
+  .product-img {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    /*margin: auto;*/
-    padding-left: 30px;
   }
 
   #header {
@@ -51,10 +49,6 @@ last_modified_at: 2024-03-09
   #videoWrapper {
     text-align: center;
   }
-
-  h1 {
-    text-align: center;
-  }
 </style>
 
 <header id="header">
@@ -69,11 +63,12 @@ last_modified_at: 2024-03-09
     alt="Calth Type 20 passing signal box"
     width="100px"
     height="auto"
+    class="product-img"
   />
 </header>
 <br />
 <div id="main">
-  <div id="emailForm" class="box">
+  <div id="emailForm" class="box mb-3">
     <form id="form">
       <label for="email"
         >To receive notifications about our product enter your email
@@ -99,6 +94,7 @@ last_modified_at: 2024-03-09
       id="video"
       src="https://link477.com/OdinProject/productLandingPage/assets/video/Train.gif"
       alt="Train Video"
+      class="product-img"
     />
   </div>
 

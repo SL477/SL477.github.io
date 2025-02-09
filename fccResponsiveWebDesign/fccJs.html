@@ -2,246 +2,206 @@
 title: FCC - JavaScript Algorithms and Data Structures
 layout: page
 permalink: fccresponsivewebdesign/fccJS
-last_modified_at: 2025-02-01
+last_modified_at: 2025-02-09
 ---
 
-<style>
-  img {
-    max-width: 100%;
-    display: block;
-    height: auto;
-    margin: auto;
-  }
+<h2>Palindrome Checker</h2>
+<fieldset>
+  <label for="palindromeInput">Test Value:</label>
+  <input
+    id="palindromeInput"
+    name="palindromeInput"
+    type="text"
+    class="form-control"
+  />
+  <button type="button" onclick="palindromeChecker();" class="btn btn-primary">
+    Test
+  </button>
+  <p>Result: <span id="palindromeResult"></span></p>
+</fieldset>
+<hr />
+<h2>Roman Numeral Converter</h2>
+<fieldset>
+  <label for="romanInput">Test Value:</label>
+  <input
+    id="romanInput"
+    name="romanInput"
+    type="number"
+    min="0"
+    class="form-control"
+  />
+  <button
+    type="button"
+    onclick="romanNumeralChecker();"
+    class="btn btn-primary"
+  >
+    Test
+  </button>
+  <p>Result: <span id="romanResult"></span></p>
+</fieldset>
 
-  #main {
-    border: 1px solid black;
-    padding: 4px;
-    border-radius: 5%;
-    width: -moz-fit-content;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-  }
+<hr />
+<h2>Caesars Cipher</h2>
+<fieldset>
+  <label for="cipherInput">Test Value:</label>
+  <input
+    id="cipherInput"
+    name="cipherInput"
+    type="text"
+    class="form-control"
+    value="GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT."
+  />
+  <button
+    type="button"
+    onclick="caesarCipherChecker();"
+    class="btn btn-primary"
+  >
+    Test
+  </button>
+  <p>Result: <span id="cipherResult"></span></p>
+</fieldset>
 
-  h1,
-  p,
-  figcaption {
-    text-align: center;
-  }
-</style>
+<hr />
+<h2>American Phone Number Checker</h2>
+<fieldset>
+  <label for="phoneInput">Test Value:</label>
+  <input
+    id="phoneInput"
+    name="phoneInput"
+    type="text"
+    class="form-control"
+    value="555-555-5555"
+  />
+  <button type="button" onclick="phoneNumberChecker();" class="btn btn-primary">
+    Test
+  </button>
+  <p>Valid: <span id="phoneResult"></span></p>
+</fieldset>
 
-<div id="navbar"></div>
+<hr />
+<h2>Cash Register</h2>
+<fieldset>
+  <label for="price">Price:</label>
+  <input
+    id="price"
+    name="price"
+    type="number"
+    class="form-control"
+    min="0"
+    value="19.5"
+  />
 
-<div class="container-fluid">
-  <main id="main">
-    <h1>JavaScript Algorithms and Data Structures</h1>
-    <h2>Palindrome Checker</h2>
-    <fieldset>
-      <label for="palindromeInput">Test Value:</label>
-      <input
-        id="palindromeInput"
-        name="palindromeInput"
-        type="text"
-        class="form-control"
-      />
-      <button
-        type="button"
-        onclick="palindromeChecker();"
-        class="btn btn-primary"
-      >
-        Test
-      </button>
-      <p>Result: <span id="palindromeResult"></span></p>
-    </fieldset>
-    <hr />
-    <h2>Roman Numeral Converter</h2>
-    <fieldset>
-      <label for="romanInput">Test Value:</label>
-      <input
-        id="romanInput"
-        name="romanInput"
-        type="number"
-        min="0"
-        class="form-control"
-      />
-      <button
-        type="button"
-        onclick="romanNumeralChecker();"
-        class="btn btn-primary"
-      >
-        Test
-      </button>
-      <p>Result: <span id="romanResult"></span></p>
-    </fieldset>
+  <label for="cash">Cash Received:</label>
+  <input
+    id="cash"
+    name="cash"
+    type="number"
+    class="form-control"
+    min="0"
+    value="20"
+  />
 
-    <hr />
-    <h2>Caesars Cipher</h2>
-    <fieldset>
-      <label for="cipherInput">Test Value:</label>
-      <input
-        id="cipherInput"
-        name="cipherInput"
-        type="text"
-        class="form-control"
-        value="GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT."
-      />
-      <button
-        type="button"
-        onclick="caesarCipherChecker();"
-        class="btn btn-primary"
-      >
-        Test
-      </button>
-      <p>Result: <span id="cipherResult"></span></p>
-    </fieldset>
+  <label for="penny">Pennies:</label>
+  <input
+    id="penny"
+    name="penny"
+    type="number"
+    class="form-control"
+    min="0"
+    value="101"
+  />
 
-    <hr />
-    <h2>American Phone Number Checker</h2>
-    <fieldset>
-      <label for="phoneInput">Test Value:</label>
-      <input
-        id="phoneInput"
-        name="phoneInput"
-        type="text"
-        class="form-control"
-        value="555-555-5555"
-      />
-      <button
-        type="button"
-        onclick="phoneNumberChecker();"
-        class="btn btn-primary"
-      >
-        Test
-      </button>
-      <p>Valid: <span id="phoneResult"></span></p>
-    </fieldset>
+  <label for="nickel">Nickels (5p):</label>
+  <input
+    id="nickel"
+    name="nickel"
+    type="number"
+    class="form-control"
+    min="0"
+    value="41"
+  />
 
-    <hr />
-    <h2>Cash Register</h2>
-    <fieldset>
-      <label for="price">Price:</label>
-      <input
-        id="price"
-        name="price"
-        type="number"
-        class="form-control"
-        min="0"
-        value="19.5"
-      />
+  <label for="dime">Dimes (10p):</label>
+  <input
+    id="dime"
+    name="dime"
+    type="number"
+    class="form-control"
+    min="0"
+    value="31"
+  />
 
-      <label for="cash">Cash Received:</label>
-      <input
-        id="cash"
-        name="cash"
-        type="number"
-        class="form-control"
-        min="0"
-        value="20"
-      />
+  <label for="quarter">Quarters (25p):</label>
+  <input
+    id="quarter"
+    name="quarter"
+    type="number"
+    class="form-control"
+    min="0"
+    value="17"
+  />
 
-      <label for="penny">Pennies:</label>
-      <input
-        id="penny"
-        name="penny"
-        type="number"
-        class="form-control"
-        min="0"
-        value="101"
-      />
+  <label for="dollar">Dollar coins ($1):</label>
+  <input
+    id="dollar"
+    name="dollar"
+    type="number"
+    class="form-control"
+    min="0"
+    value="90"
+  />
 
-      <label for="nickel">Nickels (5p):</label>
-      <input
-        id="nickel"
-        name="nickel"
-        type="number"
-        class="form-control"
-        min="0"
-        value="41"
-      />
+  <label for="five">Five Dollar Notes:</label>
+  <input
+    id="five"
+    name="five"
+    type="number"
+    class="form-control"
+    min="0"
+    value="11"
+  />
 
-      <label for="dime">Dimes (10p):</label>
-      <input
-        id="dime"
-        name="dime"
-        type="number"
-        class="form-control"
-        min="0"
-        value="31"
-      />
+  <label for="ten">Ten Dollar Notes:</label>
+  <input
+    id="ten"
+    name="ten"
+    type="number"
+    class="form-control"
+    min="0"
+    value="2"
+  />
 
-      <label for="quarter">Quarters (25p):</label>
-      <input
-        id="quarter"
-        name="quarter"
-        type="number"
-        class="form-control"
-        min="0"
-        value="17"
-      />
+  <label for="twenty">Twenty Dollar Notes:</label>
+  <input
+    id="twenty"
+    name="twenty"
+    type="number"
+    class="form-control"
+    min="0"
+    value="3"
+  />
 
-      <label for="dollar">Dollar coins ($1):</label>
-      <input
-        id="dollar"
-        name="dollar"
-        type="number"
-        class="form-control"
-        min="0"
-        value="90"
-      />
+  <label for="hundred">Hundred Dollar Notes:</label>
+  <input
+    id="hundred"
+    name="hundred"
+    type="number"
+    class="form-control"
+    min="0"
+    value="1"
+  />
 
-      <label for="five">Five Dollar Notes:</label>
-      <input
-        id="five"
-        name="five"
-        type="number"
-        class="form-control"
-        min="0"
-        value="11"
-      />
+  <button
+    type="button"
+    onclick="cashRegisterChecker();"
+    class="btn btn-primary"
+  >
+    Test
+  </button>
 
-      <label for="ten">Ten Dollar Notes:</label>
-      <input
-        id="ten"
-        name="ten"
-        type="number"
-        class="form-control"
-        min="0"
-        value="2"
-      />
-
-      <label for="twenty">Twenty Dollar Notes:</label>
-      <input
-        id="twenty"
-        name="twenty"
-        type="number"
-        class="form-control"
-        min="0"
-        value="3"
-      />
-
-      <label for="hundred">Hundred Dollar Notes:</label>
-      <input
-        id="hundred"
-        name="hundred"
-        type="number"
-        class="form-control"
-        min="0"
-        value="1"
-      />
-
-      <button
-        type="button"
-        onclick="cashRegisterChecker();"
-        class="btn btn-primary"
-      >
-        Test
-      </button>
-
-      <p>Status: <span id="cashRegisterStatus"></span></p>
-      <p id="cashRegisterChange"></p>
-      <br />
-    </fieldset>
-  </main>
-</div>
+  <p>Status: <span id="cashRegisterStatus"></span></p>
+  <p id="cashRegisterChange"></p>
+  <br />
+</fieldset>
 
 <script src="/assets/js/fccjs.js" async></script>

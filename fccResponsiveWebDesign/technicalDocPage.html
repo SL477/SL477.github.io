@@ -2,31 +2,28 @@
 title: FCC - Technical Documentation Page
 layout: page
 permalink: fccresponsivewebdesign/technicalDocPage
-last_modified_at: 2024-02-25
+last_modified_at: 2025-02-09
 ---
 
 <style>
-  #container {
-    display: grid;
-    grid-template-columns: 250px auto;
-  }
+  @media screen and (width >= 600px) {
+    #container {
+      display: grid;
+      grid-template-columns: 250px auto;
+    }
 
-  header {
-    text-align: center;
-    font-weight: bold;
+    #navbar2 {
+      grid-column: 1/2;
+      position: fixed;
+      text-align: left;
+    }
   }
 
   #main-doc {
     border: 1px solid black;
     padding: 4px;
-    border-radius: 5%;
+    border-radius: 5px;
     grid-column: 2/3;
-  }
-
-  #navbar2 {
-    grid-column: 1/2;
-    position: fixed;
-    text-align: left;
   }
 
   @media (max-width: 300px) {
@@ -47,8 +44,6 @@ last_modified_at: 2024-02-25
     list-style-type: none;
   }
 </style>
-
-<div id="navbar"></div>
 
 <div id="container">
   <div id="nav">
@@ -72,10 +67,10 @@ last_modified_at: 2024-02-25
     </nav>
   </div>
 
-  <main id="main-doc">
+  <div id="main-doc">
     <section class="main-section" id="SQL_Overview">
       <header>
-        <h1>SQL Overview</h1>
+        <h2>SQL Overview</h2>
       </header>
       <p>
         SQL is a language for the easy retrieval of data from databases. It
@@ -156,13 +151,12 @@ last_modified_at: 2024-02-25
       >
     </section>
 
-    <section class="main-section" id="Inserts_and_updates">
+    <section class="main-section mb-3" id="Inserts_and_updates">
       <header>Inserts and updates</header>
       <p>You can insert data into the database using:</p>
       <code>INSERT INTO dbo.t1(c1,c2,...)<br />VALUES ('hi',1,...)</code>
       <p>You can update data in the database using:</p>
-      <code>UPDATE dbo.t1<br />SET c1='hi'<br />,c2=1<br />WHERE c3=id</code
-      ><br /><br /><br />
+      <code>UPDATE dbo.t1<br />SET c1='hi'<br />,c2=1<br />WHERE c3=id</code>
     </section>
-  </main>
+  </div>
 </div>

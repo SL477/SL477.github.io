@@ -2,7 +2,7 @@
 title: FCC - Visualise Data Treemap
 layout: page
 permalink: fccresponsivewebdesign/treemap
-last_modified_at: 2024-02-25
+last_modified_at: 2025-02-09
 ---
 
 <style>
@@ -18,10 +18,6 @@ last_modified_at: 2024-02-25
     text-align: center;
   }
 
-  h1 {
-    text-align: center;
-  }
-
   #holder,
   svg {
     display: block;
@@ -34,10 +30,9 @@ last_modified_at: 2024-02-25
   }
 </style>
 
-<div id="navbar"></div>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
-<h1 id="title">Movie Sales</h1>
+<h2 id="title">Movie Sales</h2>
 <div id="holder" class="holder">
   <span id="description">Top 100 Movies</span>
 </div>
@@ -45,7 +40,8 @@ last_modified_at: 2024-02-25
 
 <script>
   // Variables
-  const w = 1000;
+  const holderDiv = document.querySelector('.post');
+  const w = holderDiv.clientWidth <= 740 ? holderDiv.clientWidth : 740;
   const h = 500;
   const padding = 50;
 
