@@ -30,7 +30,9 @@
   <link rel="icon" href="/assets/images/icons/android-chrome-256x256.png" sizes="256x256" type="image/png">
   <link rel="icon" href="/assets/images/icons/android-chrome-512x512.png" sizes="512x512" type="image/png">
   <meta name="msapplication-config" content="/browserconfig.xml">
+  {% if is_home %}
   <link rel="manifest" href="/site.webmanifest">
+  {% endif %}
   <meta name="theme-color" content="#ffffff">
   <link rel="mask-icon" href="/assets/images/icons/maskicon.svg" color="#ffffff">
   <link rel="alternate" type="application/json" title="JSON Feed" href="/feed.json" >
