@@ -113,6 +113,10 @@ code {
   vertical-align: top;
 }
 
+fieldset {
+  border: none;
+}
+
 @media screen and (width >= 600px) {
   /** for bigger screens float the image next to the text */
   .imgmain {
