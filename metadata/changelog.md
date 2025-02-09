@@ -24,6 +24,7 @@ permalink: /CHANGELOG
 - Rounded main picture.
 - Hidden the Tableau skill. Although I maintain that it is better than Power BI!
 - Converted homepage from MarkDown to HTML (apart from the headings it was all in HTML anyway).
+- Fixed H-feed to remove last line
 
 ### Removed
 

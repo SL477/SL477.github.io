@@ -181,8 +181,8 @@ fieldset {
 }
 
 .p-category[data-tag='Hosting'] {
-  background-color: black;
-  color: white;
+  background-color: light-dark(black, white);
+  color: light-dark(white, black);
 }
 
 .p-category[data-tag='Python'] {
