@@ -8,4 +8,11 @@
   margin-left: auto;
   margin-right: auto;
   display: block;
+  background-color: white;
+}
+
+td,
+th {
+  background-color: light-dark(white, black) !important;
+  color: light-dark(black, white) !important;
 }

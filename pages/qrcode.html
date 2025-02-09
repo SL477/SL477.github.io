@@ -1,12 +1,16 @@
 ---
 layout: page
 title: QR Code
-last_modified_at: 2022-12-21
+last_modified_at: 2025-02-09
 ---
 <link rel="stylesheet" href="/assets/css/qrcode.css"/>
 <div class="center card">
     <a href="https://link477.com" target="_blank" rel="noopener noreferrer">
-        <img src="/assets/images/qrcode_link477_blue.png" alt="link477.com" class="center qr-pic"/>
+        <picture class="center qr-pic">
+            <source srcset="/assets/images/qrcode_link477_blue.webp" type="image/webp" />
+            <source srcset="/assets/images/qrcode_link477_blue.png" type="image/png" />
+            <img src="/assets/images/qrcode_link477_blue.png" alt="link477.com" />
+        </picture>
     </a>
     <h2>Visit <a href="https://link477.com" target="_blank" rel="noopener noreferrer">Link477.com</a></h3>
     <p class="card-text">Scan the QR code to visit <a href="https://link477.com" target="_blank" rel="noopener noreferrer">Link477.com</a></p>
