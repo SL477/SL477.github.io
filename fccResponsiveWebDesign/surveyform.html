@@ -2,18 +2,14 @@
 title: FCC - Survey Form
 layout: page
 permalink: fccresponsivewebdesign/surveyform
-last_modified_at: 2024-02-25
+last_modified_at: 2025-02-09
 ---
 
 <style>
-  h1,
+  h2,
   p,
   figcaption {
     text-align: center;
-  }
-
-  fieldset {
-    background-color: #eeeeee;
   }
 
   legend {
@@ -21,7 +17,7 @@ last_modified_at: 2024-02-25
   }
 
   #main {
-    border: 1px solid black;
+    border: 1px solid light-dark(black, white);
     padding: 4px;
     border-radius: 5%;
     width: -moz-fit-content;
@@ -37,12 +33,9 @@ last_modified_at: 2024-02-25
   }
 </style>
 
-<div class="container-fluid">
-  <main id="main">
-    <header>
-      <h1 id="title">Alien Spaceship Sightings</h1>
+<div id="main">
+      <h2 id="title">Alien Spaceship Sightings</h1>
       <hr />
-    </header>
     <p id="description">
       This survey is to find out about UFO sighting in order to gather
       information about how many alien spaceships have visited the planet.
@@ -83,7 +76,7 @@ last_modified_at: 2024-02-25
         <br />
         <!--drop down box-->
         <label id="dropdown-label" for="dropdown">Type of alien seen:</label>
-        <select id="dropdown" class="form-select">
+        <select id="dropdown" class="form-control">
           <option value="" disabled selected>--Please Select--</option>
           <option value="grey">Greys</option>
           <option value="humanoid">Humanoid</option>
@@ -122,7 +115,7 @@ last_modified_at: 2024-02-25
         </div>
 
         <!--Checkboxes-->
-        <div class="form-check">
+        <div class="form-check mb-3">
           <label>Please select what happened in your encounter:</label><br />
           <input
             id="beamedShip"
@@ -165,8 +158,6 @@ last_modified_at: 2024-02-25
             >Questioned by aliens/others</label
           >
         </div>
-        <br />
-        <br />
         <label for="comments">Any other comments:</label><br />
         <textarea
           id="comments"
@@ -179,6 +170,5 @@ last_modified_at: 2024-02-25
       </fieldset>
       <input id="submit" type="submit" class="btn btn-primary" value="Submit" />
     </form>
-  </main>
   <br />
 </div>

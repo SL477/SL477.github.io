@@ -1,18 +1,18 @@
-- name: "Microsoft Certified: Security, Compliance, and Identity Fundamentals"
+- name: 'Microsoft Certified: Security, Compliance, and Identity Fundamentals'
   id: f0d37a2c-68b3-48fd-b4e0-db03de4b91fd
-  src: microsoft-certified-security-compliance-and-identity-fundamentals.png
-- name: "Microsoft Certified: Azure Data Fundamentals"
+  src: microsoft-certified-security-compliance-and-identity-fundamentals
+- name: 'Microsoft Certified: Azure Data Fundamentals'
   id: aef87a80-3b41-47c1-add7-1a38d79ca175
-  src: microsoft-certified-azure-data-fundamentals.png
-- name: "Microsoft Certified: Power BI Data Analyst Associate"
+  src: microsoft-certified-azure-data-fundamentals
+- name: 'Microsoft Certified: Power BI Data Analyst Associate'
   id: a3b335f2-2719-4a6c-8c3c-282dfdfadb9b
-  src: microsoft-certified-power-bi-data-analyst-associate.png
-- name: "Microsoft Certified: Azure AI Fundamentals"
+  src: microsoft-certified-power-bi-data-analyst-associate
+- name: 'Microsoft Certified: Azure AI Fundamentals'
   id: ab052942-422d-41b5-b924-4bfc5aecf954
-  src: microsoft-certified-azure-ai-fundamentals.png
-- name: "Microsoft Certified: Power Platform Fundamentals"
+  src: microsoft-certified-azure-ai-fundamentals
+- name: 'Microsoft Certified: Power Platform Fundamentals'
   id: c67c3c10-3577-4517-85ad-128acf09d264
-  src: microsoft-certified-power-platform-fundamentals.png
-- name: "Microsoft Certified: Azure Fundamentals"
+  src: microsoft-certified-power-platform-fundamentals
+- name: 'Microsoft Certified: Azure Fundamentals'
   id: 601190b1-5e7f-43b8-b0c9-cecc28c8d94f
-  src: microsoft-certified-azure-fundamentals.png
+  src: microsoft-certified-azure-fundamentals

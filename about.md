@@ -2,12 +2,12 @@
 layout: page
 title: About
 permalink: /about/
-last_modified_at: 2024-12-08
+last_modified_at: 2025-02-02
 ---
 
-<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+<!-- <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 
-<div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="thomas-fishwick-313459172" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://uk.linkedin.com/in/thomas-fishwick-313459172?trk=profile-badge">Thomas Fishwick</a></div>
+<div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="thomas-fishwick-313459172" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://uk.linkedin.com/in/thomas-fishwick-313459172?trk=profile-badge">Thomas Fishwick</a></div> -->
 
 ### My programming journey
 

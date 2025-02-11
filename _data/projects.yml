@@ -2,11 +2,11 @@
   url: https://stocks.link477.com/
   repository: flask-stockMarketChart
   picture: ChartTheStockMarket
-  picture_text: Chart the Stock Market Screenshot
-  link_http: https://www.freecodecamp.org/learn/coding-interview-prep/take-home-projects/chart-the-stock-market
-  link_alt: FreeCodeCamp Chart the Stock Market
+  picture_text: A screenshot of a graph with two stocks jumping up and down in price over time and an input to add in more stocks.
+  picture_width: 340
+  picture_height: 142.91
   description: |
-    This project started as my answer to @link@.
+    This project started as my answer to <a href="https://www.freecodecamp.org/learn/coding-interview-prep/take-home-projects/chart-the-stock-market" target="_blank" rel="noopener noreferrer">FreeCodeCamp Chart the Stock Market</a>.
 
     Here I created a flask app with web sockets.
 
@@ -19,11 +19,11 @@
   url: https://sl477-fccpredicthealthcostswithregression-main-tdzqp8.streamlitapp.com
   repository: fccPredictHealthCostsWithRegression
   picture: HealthCostPredictions
-  picture_text: Health Cost Predictor Screenshot
-  link_http: https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/linear-regression-health-costs-calculator
-  link_alt: FreeCodeCamp Predict Health Costs With Regression
+  picture_text: A screenshot of a dashboard centred around a graph of Predicted vs actual expenses, on the left are various options to give your demographic data and at the bottom is your predicted health costs.
+  picture_width: 340
+  picture_height: 212.59
   description: |
-    This project started as my answer to @link@.
+    This project started as my answer to <a href="https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/linear-regression-health-costs-calculator" target="_blank" rel="noopener noreferrer">FreeCodeCamp Predict Health Costs With Regression</a>.
 
     Here I created my first Streamlit App, and then discovered how hard it was to put streamlit into a Docker container.
 
@@ -34,22 +34,22 @@
   url: https://catvdog.link477.com
   repository: fccCatAndDog
   picture: CatAndDogImageClassifier
-  picture_text: Cat and Dog Image Classifier screenshot
-  link_http: https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/cat-and-dog-image-classifier
-  link_alt: FreeCodeCamp Cat and Dog Image Classifier
+  picture_text: There is a picture of a cute cat balancing on top of a door. Above is a button to pick a different image and below is the result of the prediction (cat).
+  picture_width: 340
+  picture_height: 172.06
   description: |
-    This started out as my answer to @link@.
+    This started out as my answer to <a href="https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/cat-and-dog-image-classifier" target="_blank" rel="noopener noreferrer">FreeCodeCamp Cat and Dog Image Classifier</a>.
 
     I created a Node.JS app which uses TensorFlow.JS with the converted model I made to determine whether the image passed is more likely to be a cat or a dog (with not so great accuracy).
 - name: SMS Classifier
   url: /
   repository: flaskSMSClassifier
   picture: SMSClassifier
-  picture_text: SMS Classifier Screenshot
-  link_http: https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/neural-network-sms-text-classifier
-  link_alt: FreeCodeCamp SMS Classifier
+  picture_text: A table of SMSes with their predictions of spam/ham. Above inputs to enter in new messages.
+  picture_width: 340
+  picture_height: 258.36
   description: |
-    This project originally started as my answer to @link@.
+    This project originally started as my answer to <a href="https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/neural-network-sms-text-classifier" target="_blank" rel="noopener noreferrer">FreeCodeCamp SMS Classifier</a>.
 
     In this project I created my first Flask Web App (not including the tutorial I did). Plus my first Docker Container (outside of a tutorial). Originally this used TensorFlow as the machine learning library, but I have now changed this to SciKit Learn.
 
@@ -60,17 +60,19 @@
   url: https://drive.google.com/drive/folders/1_jtg6b4z-SArgA5KvZkewE4TjUxHe29F?usp=sharing
   repository: /
   picture: XKCDReader
-  picture_text: Android Version of the XKCD Reader App
-  link_http: https://xkcd.com/
-  link_alt: XKCD website
+  picture_text: Android Version of the XKCD Reader App, showing the comic of March of the Penguins.
+  picture_width: 340
+  picture_height: 545.06
   description: |
-    My XKCD Reader app, which uses React-Native to render the @link@.
+    My XKCD Reader app, which uses React-Native to render the <a href="https://xkcd.com/" target="_blank" rel="noopener noreferrer">XKCD website</a>.
 
     The Android APK file (tested on my phone and in the Android emulator) is available at the link above.
 - name: PizzaKG
   url: https://link477.com/Pizza_KG/Pizza_KG.html
   repository: Pizza_KG
   picture: SWTKGClassRelationships
-  picture_text: Final class relationships
+  picture_text: A complicated circular graph showing the numbers of different data types in the Knowledge Graph.
+  picture_width: 340
+  picture_height: 368.2
   description: |
     This project was something I did after university following the specifications of the SWTKG module which I didn't take.

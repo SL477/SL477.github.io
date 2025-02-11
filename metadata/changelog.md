@@ -1,9 +1,37 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-02-01
+last_modified_at: 2025-02-11
 permalink: /CHANGELOG
 ---
+
+## 2025-02-11
+
+### Added
+
+- Light-dark mode switcher
+- WebP versions of pictures
+- New Web-Component of the Navbar
+
+### Modified
+
+- Updated Alt-Texts on Project images.
+- Updated images on homepage to use the Picture tag so that they can use WebP images. And lazy loading.
+- Removed the Modal popup on the homepage and switched to using the details tag.
+- Hide the hint report from Jekyll so that it would not start checking itself.
+- NavBar no longer requires JavaScript to work.
+- Fixed MatterSphere link.
+- Rounded main picture.
+- Hidden the Tableau skill. Although I maintain that it is better than Power BI!
+- Converted homepage from MarkDown to HTML (apart from the headings it was all in HTML anyway).
+- Fixed H-feed to remove last line
+- Fixed issue with PWA
+
+### Removed
+
+- LinkedIn Badge from About page
+- CSS/SCSS for the homepage. Combined into the main SCSS.
+- Bootstrap
 
 ## 2025-02-01
 

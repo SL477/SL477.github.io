@@ -10,6 +10,33 @@
           "meta[name=theme-color]"
         ]
       }
-    ]
+    ],
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "border-color: light-dark(black, white)",
+          "border: 1px solid light-dark(black, white)",
+          "background-color: light-dark(white, black)",
+          "color: light-dark(black, aliceblue)",
+          "color: light-dark(#000, #f0f8ff)",
+          "color: light-dark(#3a3a3a, #828282)",
+          "text-wrap",
+          "text-wrap: wrap",
+          "background-color: light-dark(black, white)",
+          "color: light-dark(white, black)",
+          "color: light-dark(black, white)",
+          "background-color: light-dark(#e3f2fd, #212529)",
+          "color: light-dark(black, #f0f8ff)",
+          "background-color: light-dark(black, #f0f8ff)",
+          "background-color: light-dark(#000, #f0f8ff)",
+          "background-color: light-dark(#fff, #000)",
+          "background-color: light-dark(#000, #fff)",
+          "color: light-dark(#fff, #000)",
+          "color: light-dark(#000, #fff)"
+        ]
+      }
+    ],
+    "manifest-is-valid": "off"
   }
 }

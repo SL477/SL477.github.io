@@ -1,0 +1,122 @@
+---
+---
+
+.my-nav {
+  background-color: light-dark(#e3f2fd, #212529);
+  color: light-dark(black, #f0f8ff);
+
+  .brand > img {
+    background-color: white;
+    vertical-align: middle;
+  }
+
+  #expandNavbar {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+  }
+
+  .brand {
+    vertical-align: top;
+  }
+
+  .hamburger {
+    float: right;
+    margin-top: 15px;
+    margin-right: 10px;
+    cursor: pointer;
+
+    span {
+      height: 3px;
+      width: 30px;
+      color: black;
+      background-color: light-dark(black, #f0f8ff);
+      display: block;
+      position: relative;
+      margin-bottom: 5px;
+      transition:
+        transform 0.3s ease-in-out,
+        opacity 0.3s ease-in-out,
+        top 0.3s ease-in-out;
+    }
+  }
+
+  #expandNavbar:checked ~ .hamburger span:first-child {
+    transform: rotate(45deg);
+    top: 8px;
+  }
+
+  #expandNavbar:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0; /* Hide the middle span */
+  }
+
+  #expandNavbar:checked ~ .hamburger span:last-child {
+    transform: rotate(-45deg);
+    top: -8px;
+  }
+
+  .inner-nav {
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+
+    ul {
+      list-style: none;
+    }
+  }
+
+  #expandNavbar:checked ~ .inner-nav {
+    max-height: fit-content;
+    display: block;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .ui-mode-picker {
+    padding-block: 0;
+    border: none;
+    padding-inline: 0;
+    margin-inline: 0;
+  }
+}
+
+@media screen and (width >= 900px) {
+  .my-nav {
+    display: grid;
+    grid-auto-flow: column;
+
+    .hamburger {
+      display: none;
+    }
+
+    #expandNavbar {
+      display: none;
+    }
+  }
+
+  .inner-nav {
+    max-height: fit-content;
+    display: inline-block;
+    vertical-align: middle;
+
+    .inner-nav-top-level {
+      display: grid;
+      grid-auto-flow: column;
+      gap: 5px;
+    }
+
+    .ui-mode-picker {
+      display: inline;
+    }
+  }
+}
+
+@media screen and (width < 900px) {
+  .my-nav {
+    .inner-nav {
+      max-height: 0;
+      display: none;
+    }
+  }
+}

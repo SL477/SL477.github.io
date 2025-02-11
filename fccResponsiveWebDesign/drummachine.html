@@ -2,144 +2,140 @@
 title: Drum Machine
 layout: page
 permalink: fccresponsivewebdesign/drummachine
-last_modified_at: 2024-02-25
+last_modified_at: 2025-02-09
 ---
 
-<body>
-  <style>
-    h1 {
-      text-align: center;
-    }
-  </style>
-  <div id="drum-machine" class="container-fluid">
-    <p>Last played: <span id="display"></span></p>
-    <button type="button" class="drum-pad" id="q" onclick="player('Q')">
-      <audio
-        id="Q"
-        src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"
-        class="clip"
-      ></audio
-      >Q
-    </button>
+<style>
+  #drum-machine {
+    text-align: center;
+  }
+</style>
+<div id="drum-machine">
+  <p>Last played: <span id="display"></span></p>
+  <button type="button" class="btn btn-primary" id="q" onclick="player('Q')">
+    <audio
+      id="Q"
+      src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"
+      class="clip"
+    ></audio
+    >Q
+  </button>
 
-    <button type="button" class="drum-pad" id="w" onclick="player('W')">
-      <audio
-        id="W"
-        src="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3"
-        class="clip"
-      ></audio
-      >W
-    </button>
+  <button type="button" class="btn btn-primary" id="w" onclick="player('W')">
+    <audio
+      id="W"
+      src="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3"
+      class="clip"
+    ></audio
+    >W
+  </button>
 
-    <button type="button" class="drum-pad" id="e" onclick="player('E')">
-      <audio
-        id="E"
-        src="https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3"
-        class="clip"
-      ></audio
-      >E
-    </button>
+  <button type="button" class="btn btn-primary" id="e" onclick="player('E')">
+    <audio
+      id="E"
+      src="https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3"
+      class="clip"
+    ></audio
+    >E
+  </button>
 
-    <button type="button" class="drum-pad" id="a" onclick="player('A')">
-      <audio
-        id="A"
-        src="https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3"
-        class="clip"
-      ></audio
-      >A
-    </button>
+  <button type="button" class="btn btn-primary" id="a" onclick="player('A')">
+    <audio
+      id="A"
+      src="https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3"
+      class="clip"
+    ></audio
+    >A
+  </button>
 
-    <button type="button" class="drum-pad" id="s" onclick="player('S')">
-      <audio
-        id="S"
-        src="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3"
-        class="clip"
-      ></audio
-      >S
-    </button>
+  <button type="button" class="btn btn-primary" id="s" onclick="player('S')">
+    <audio
+      id="S"
+      src="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3"
+      class="clip"
+    ></audio
+    >S
+  </button>
 
-    <button type="button" class="drum-pad" id="d" onclick="player('D')">
-      <audio
-        id="D"
-        src="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3"
-        class="clip"
-      ></audio
-      >D
-    </button>
+  <button type="button" class="btn btn-primary" id="d" onclick="player('D')">
+    <audio
+      id="D"
+      src="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3"
+      class="clip"
+    ></audio
+    >D
+  </button>
 
-    <button type="button" class="drum-pad" id="z" onclick="player('Z')">
-      <audio
-        id="Z"
-        src="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3"
-        class="clip"
-      ></audio
-      >Z
-    </button>
+  <button type="button" class="btn btn-primary" id="z" onclick="player('Z')">
+    <audio
+      id="Z"
+      src="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3"
+      class="clip"
+    ></audio
+    >Z
+  </button>
 
-    <button type="button" class="drum-pad" id="x" onclick="player('X')">
-      <audio
-        id="X"
-        src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"
-        class="clip"
-      ></audio
-      >X
-    </button>
+  <button type="button" class="btn btn-primary" id="x" onclick="player('X')">
+    <audio
+      id="X"
+      src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"
+      class="clip"
+    ></audio
+    >X
+  </button>
 
-    <button type="button" class="drum-pad" id="c" onclick="player('C')">
-      <audio
-        id="C"
-        class="clip"
-        src="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"
-      ></audio
-      >C
-    </button>
-  </div>
-  <!-- <img src="https://images.unsplash.com/photo-1530917203633-106d4a1a0967?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ" height ="100px" class="drum-pad"></img>
-</div>-->
+  <button type="button" class="btn btn-primary" id="c" onclick="player('C')">
+    <audio
+      id="C"
+      class="clip"
+      src="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"
+    ></audio
+    >C
+  </button>
+</div>
 
-  <script>
-    const player = (element) => {
-      const elem = document.getElementById(element);
-      elem.play();
-      console.log(element);
-      document.getElementById('display').textContent = element;
+<script>
+  const player = (element) => {
+    const elem = document.getElementById(element);
+    elem.play();
+    console.log(element);
+    document.getElementById('display').textContent = element;
+  };
+
+  const body = document.querySelector('body');
+  if (body) {
+    body.onkeydown = (ev) => {
+      switch (event.keyCode) {
+        case 65:
+          player('A');
+          break;
+        case 81:
+          player('Q');
+          break;
+        case 87:
+          player('W');
+          break;
+        case 69:
+          player('E');
+          break;
+        case 83:
+          player('S');
+          break;
+        case 68:
+          player('D');
+          break;
+        case 90:
+          player('Z');
+          break;
+        case 88:
+          player('X');
+          break;
+        case 67:
+          player('C');
+          break;
+        default:
+          break;
+      }
     };
-
-    const body = document.querySelector('body');
-    if (body) {
-      body.onkeydown = (ev) => {
-        switch (event.keyCode) {
-          case 65:
-            player('A');
-            break;
-          case 81:
-            player('Q');
-            break;
-          case 87:
-            player('W');
-            break;
-          case 69:
-            player('E');
-            break;
-          case 83:
-            player('S');
-            break;
-          case 68:
-            player('D');
-            break;
-          case 90:
-            player('Z');
-            break;
-          case 88:
-            player('X');
-            break;
-          case 67:
-            player('C');
-            break;
-          default:
-            break;
-        }
-      };
-    }
-  </script>
-</body>
+  }
+</script>
