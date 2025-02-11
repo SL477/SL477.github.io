@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-02-08
+last_modified_at: 2025-02-11
 permalink: /CHANGELOG
 ---
 
-## Unpublished
+## 2025-02-11
 
 ### Added
 
@@ -25,6 +25,7 @@ permalink: /CHANGELOG
 - Hidden the Tableau skill. Although I maintain that it is better than Power BI!
 - Converted homepage from MarkDown to HTML (apart from the headings it was all in HTML anyway).
 - Fixed H-feed to remove last line
+- Fixed issue with PWA
 
 ### Removed
 
