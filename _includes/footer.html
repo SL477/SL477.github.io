@@ -2,16 +2,39 @@
   <a class="u-url u-uid" href="{{ site.site_url | relative_url }}" hidden
     >My Site</a
   >
-  <img src="{{ site.photo | relative_url }}" class="u-photo" hidden alt="Me" />
-  <img
-    src="{{ site.logo | relative_url }}"
-    class="u-logo"
-    hidden
-    alt="{{ site.logo_alt }}"
-  />
+
+  <picture hidden>
+    <source
+      srcset="{{ site.logo_webp }}"
+      height="50"
+      width="50"
+      type="image/webp"
+    />
+    <source srcset="{{ site.logo }}" height="50" width="50" type="image/png" />
+    <img
+      src="{{ site.logo | relative_url }}"
+      alt="{{ site.logo_alt }}"
+      height="50"
+      width="50"
+      class="u-logo"
+    />
+  </picture>
 
   <div class="wrapper">
-    <h2 class="footer-heading p-name">{{ site.title | escape }}</h2>
+    <h2 class="footer-heading p-name">
+      <picture>
+        <source
+          srcset="{{ site.photo_webp | relative_url }}"
+          type="image/webp"
+        />
+        <source srcset="{{ site.photo | relative_url }}" type="image/jpg" />
+        <img
+          src="{{ site.photo | relative_url }}"
+          alt="Me."
+          class="u-photo img-main-small"
+        /> </picture
+      >{{ site.title | escape }}
+    </h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-4">{%- include social.html -%}</div>

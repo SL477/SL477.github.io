@@ -1,9 +1,23 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-02-11
+last_modified_at: 2025-02-15
 permalink: /CHANGELOG
 ---
+
+## 2025-02-15
+
+### Added
+
+- Added web-p versions of pictures into the footer
+
+### Modified
+
+- Added Change log to Nav
+- Fixed label issue with Dark mode picker
+- Moved NavBar toggle
+- Updated Robots.txt
+- Fixed alt tag of Open Graph Image
 
 ## 2025-02-11
 

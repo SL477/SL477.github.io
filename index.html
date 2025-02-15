@@ -14,7 +14,7 @@ is_home: true
 
 <div class="top-group">
   <picture class="imgmain">
-    <source srcset="/assets/images/tom.webp" type="image/webp" />
+    <source srcset="{{ site.photo_webp }}" type="image/webp" />
     <source srcset="{{ site.photo }}" type="image/jpg" />
     <img src="{{ site.photo }}" alt="Tom." />
   </picture>
@@ -75,14 +75,12 @@ is_home: true
       <source
         srcset="/assets/images/{{ project.picture }}.webp"
         type="image/webp"
-        loading="lazy"
         width="{{ project.picture_width }}"
         height="{{ project.picture_height }}"
       />
       <source
         srcset="/assets/images/{{ project.picture }}.jpg"
         type="image/jpeg"
-        loading="lazy"
         width="{{ project.picture_width }}"
         height="{{ project.picture_height }}"
       />
@@ -140,14 +138,12 @@ is_home: true
         type="image/webp"
         width="150"
         height="150"
-        loading="lazy"
       />
       <source
         srcset="/assets/images/{{cert.src}}.png"
         type="image/png"
         width="150"
         height="150"
-        loading="lazy"
       />
       <img
         src="/assets/images/{{cert.src}}.png"
@@ -155,6 +151,7 @@ is_home: true
         width="150"
         height="150"
         loading="lazy"
+        decoding="async"
       />
     </picture>
   </a>
