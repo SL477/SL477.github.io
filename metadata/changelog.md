@@ -18,6 +18,8 @@ permalink: /CHANGELOG
 - Moved NavBar toggle
 - Updated Robots.txt
 - Fixed alt tag of Open Graph Image
+- Fix issue with Notes feed
+- Add absolute URL to logo in navbar
 
 ## 2025-02-11
 

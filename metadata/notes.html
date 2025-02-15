@@ -71,7 +71,9 @@ last_modified_at: 2025-01-11
       <a class="u-url u-uid" href="{{ post.url | relative_url }}" hidden
         >{{ post.title }}</a
       >
+      {% unless forloop.last %}
       <hr />
+      {% endunless %}
     </li>
     {%- endfor -%}
   </ul>
