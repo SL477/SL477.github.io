@@ -7,6 +7,10 @@ permalink: /CHANGELOG
 
 ## Unpublished
 
+### Added
+
+- Added web-p versions of pictures into the footer
+
 ### Modified
 
 - Added Change log to Nav
