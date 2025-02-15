@@ -10,12 +10,6 @@
     vertical-align: middle;
   }
 
-  #expandNavbar {
-    position: absolute !important;
-    top: -9999px !important;
-    left: -9999px !important;
-  }
-
   .brand {
     vertical-align: top;
   }
@@ -41,20 +35,6 @@
     }
   }
 
-  #expandNavbar:checked ~ .hamburger span:first-child {
-    transform: rotate(45deg);
-    top: 8px;
-  }
-
-  #expandNavbar:checked ~ .hamburger span:nth-child(2) {
-    opacity: 0; /* Hide the middle span */
-  }
-
-  #expandNavbar:checked ~ .hamburger span:last-child {
-    transform: rotate(-45deg);
-    top: -8px;
-  }
-
   .inner-nav {
     transition: max-height 0.3s ease-in-out;
     overflow: hidden;
@@ -62,11 +42,6 @@
     ul {
       list-style: none;
     }
-  }
-
-  #expandNavbar:checked ~ .inner-nav {
-    max-height: fit-content;
-    display: block;
   }
 
   a:hover {
@@ -79,6 +54,31 @@
     padding-inline: 0;
     margin-inline: 0;
   }
+}
+
+#expandNavbar {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+}
+
+#expandNavbar:checked ~ * .inner-nav {
+  max-height: fit-content;
+  display: block;
+}
+
+#expandNavbar:checked ~ * .hamburger > span:first-child {
+  transform: rotate(45deg);
+  top: 8px;
+}
+
+#expandNavbar:checked ~ * .hamburger > span:nth-child(2) {
+  opacity: 0; /* Hide the middle span */
+}
+
+#expandNavbar:checked ~ * .hamburger > span:last-child {
+  transform: rotate(-45deg);
+  top: -8px;
 }
 
 @media screen and (width >= 900px) {

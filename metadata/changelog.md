@@ -1,9 +1,18 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-02-11
+last_modified_at: 2025-02-15
 permalink: /CHANGELOG
 ---
+
+## Unpublished
+
+### Modified
+
+- Added Change log to Nav
+- Fixed label issue with Dark mode picker
+- Moved NavBar toggle
+- Updated Robots.txt
 
 ## 2025-02-11
 

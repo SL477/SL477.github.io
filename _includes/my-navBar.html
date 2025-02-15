@@ -1,3 +1,9 @@
+<input
+      type="checkbox"
+      name="expandNavbar"
+      id="expandNavbar"
+      aria-label="Toggle Navigation"
+    />
 <nav class="my-nav">
   <a class="brand" href="/"
     >
@@ -8,13 +14,8 @@
     </picture>
     </a>
   <label for="expandNavbar" id="expand-navbar-icon">
-    <input
-      type="checkbox"
-      name="expandNavbar"
-      id="expandNavbar"
-      aria-label="Toggle Navigation"
-    />
     <div class="hamburger"><span></span><span></span><span></span></div>
+  </label>
     <div class="inner-nav">
       <ul class="inner-nav-top-level">
         <li>
@@ -155,6 +156,7 @@
                   >React Terminal</a
                 >
               </li>
+              <li><a href="/changelog">Change Log</a></li>
             </ul>
           </details>
         </li>
@@ -228,5 +230,4 @@
         <li>{%- include dark_mode_picker.html -%}</li>
       </ul>
     </div>
-  </label>
 </nav>
