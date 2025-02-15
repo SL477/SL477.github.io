@@ -13,6 +13,7 @@ permalink: /CHANGELOG
 - Fixed label issue with Dark mode picker
 - Moved NavBar toggle
 - Updated Robots.txt
+- Fixed alt tag of Open Graph Image
 
 ## 2025-02-11
 
