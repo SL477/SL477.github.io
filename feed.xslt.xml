@@ -1,0 +1,106 @@
+---
+layout: xslt
+---
+
+<section class="h-feed">
+  <a class="p-author h-card" href="/" hidden="hidden">Tom Fishwick</a>
+  <ul>
+    <xsl:for-each select="atom:feed/atom:entry">
+      <li class="h-entry li-no-decoration">
+        <header class="post-header">
+          <h2 class="post-title p-name" itemprop="name headline">
+            <xsl:value-of select="atom:title"/>
+          </h2>
+          <p class="post-meta">
+            <time class="dt-published" itemprop="datePublished">
+              <xsl:attribute name="datetime">
+                <xsl:value-of select="atom:published"/>
+              </xsl:attribute>
+              <xsl:choose>
+                <xsl:when test="substring(atom:published, 6, 2)='01'">
+                  <xsl:value-of select="'Jan'"/>
+                </xsl:when>
+                <xsl:when test="substring(atom:published, 6, 2)='02'">
+                  <xsl:value-of select="'Feb'"/>
+                </xsl:when>
+                <xsl:when test="substring(atom:published, 6, 2)='03'">
+                  <xsl:value-of select="'Mar'"/>
+                </xsl:when>
+                <xsl:when test="substring(atom:published, 6, 2)='04'">
+                  <xsl:value-of select="'Apr'"/>
+                </xsl:when>
+                <xsl:when test="substring(atom:published, 6, 2)='05'">
+                  <xsl:value-of select="'May'"/>
+                </xsl:when>
+                <xsl:when test="substring(atom:published, 6, 2)='06'">
+                  <xsl:value-of select="'Jun'"/>
+                </xsl:when>
+                <xsl:when test="substring(atom:published, 6, 2)='07'">
+                  <xsl:value-of select="'Jul'"/>
+                </xsl:when>
+                <xsl:when test="substring(atom:published, 6, 2)='08'">
+                  <xsl:value-of select="'Aug'"/>
+                </xsl:when>
+                <xsl:when test="substring(atom:published, 6, 2)='09'">
+                  <xsl:value-of select="'Sep'"/>
+                </xsl:when>
+                <xsl:when test="substring(atom:published, 6, 2)='10'">
+                  <xsl:value-of select="'Oct'"/>
+                </xsl:when>
+                <xsl:when test="substring(atom:published, 6, 2)='11'">
+                  <xsl:value-of select="'Nov'"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="'Dec'"/>
+                </xsl:otherwise>
+              </xsl:choose>
+              <xsl:value-of select="' '"/>
+              <xsl:choose>
+                <xsl:when test="substring(atom:published, 9, 1)='0'">
+                  <xsl:value-of select="substring(atom:published, 10, 1)"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="substring(atom:published, 9, 2)"/>
+                </xsl:otherwise>
+              </xsl:choose>
+              <xsl:value-of select="concat(', ', substring(atom:published, 1, 4))"/>
+            </time>
+            <xsl:if test="atom:author">
+              <xsl:value-of select="' • '"/>
+              <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
+                <span class="p-author h-card" href="{{ site.site_url }}" itemprop="name">
+                  <xsl:value-of select="atom:author"/>
+                </span>
+              </span>
+            </xsl:if>
+            <xsl:if test="atom:category">
+              <span>• Tags: </span>
+              <xsl:for-each select="atom:category">
+                <span class="p-category">
+                  <xsl:attribute name="data-tag">
+                    <xsl:value-of select="@term"/>
+                  </xsl:attribute>
+                  <xsl:value-of select="@term"/>
+                </span>
+              </xsl:for-each>
+            </xsl:if>
+            <data class="p-summary" hidden="hidden">
+              <xsl:value-of select="atom:summary"/>
+            </data>
+          </p>
+          <xsl:if test="media:content">
+            <img class="u-photo">
+              <xsl:attribute name="src">
+                <xsl:value-of select="media:content/@url"/>
+              </xsl:attribute>
+            </img>
+          </xsl:if>
+          <div class="post-content e-content" itemprop="articleBody">
+            <xsl:value-of select="atom:content" disable-output-escaping="yes"/>
+          </div>
+        </header>
+      </li>
+    </xsl:for-each>
+  </ul>
+</section>
+ 
