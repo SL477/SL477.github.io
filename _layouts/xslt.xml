@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+<xsl:template match="/">
+<html lang="{{ page.lang | default: site.lang | default: "en" }}" dir="ltr">
+  {%- include head_modified.html -%}
+  <body>
+
+    {%- include header.html -%}
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </main>
+    {%- include footer.html -%}
+
+  </body>
+
+</html>
+</xsl:template>
+</xsl:stylesheet>

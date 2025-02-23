@@ -1,9 +1,28 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-02-15
+last_modified_at: 2025-02-23
 permalink: /CHANGELOG
 ---
+
+## 2025-02-23
+
+### Added
+
+- Stylesheet for Feed.xml
+
+### Modified
+
+- Explicitly set the size of the main image
+- Fix typo in projects
+- Remove div from NavBar
+- Made Open Graph URL an absolute URL
+- Change link styling in light-mode for more contrast
+- Added more data into the XML feed
+
+### Removed
+
+- Feed.html
 
 ## 2025-02-15
 
