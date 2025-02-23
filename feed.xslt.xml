@@ -1,7 +1,7 @@
 ---
 layout: xslt
 ---
-
+<h1 class="post-title">Posts Feed</h1>
 <section class="h-feed">
   <a class="p-author h-card" href="/" hidden="hidden">Tom Fishwick</a>
   <ul>
@@ -95,10 +95,19 @@ layout: xslt
               </xsl:attribute>
             </img>
           </xsl:if>
-          <div class="post-content e-content" itemprop="articleBody">
-            <xsl:value-of select="atom:content" disable-output-escaping="yes"/>
-          </div>
         </header>
+        <div class="post-content e-content" itemprop="articleBody">
+          <xsl:value-of select="atom:content" disable-output-escaping="yes"/>
+        </div>
+        <a class="u-url u-uid" hidden="hidden">
+          <xsl:attribute name="href">
+            <xsl:value-of select="atom:link/@href"/>
+          </xsl:attribute>
+          <xsl:value-of select="atom:title"/>
+        </a>
+        <xsl:if test="not(position() = last())">
+          <hr/>
+        </xsl:if>
       </li>
     </xsl:for-each>
   </ul>

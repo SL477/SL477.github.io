@@ -7,6 +7,10 @@ permalink: /CHANGELOG
 
 ## Unpublished
 
+### Added
+
+- Stylesheet for Feed.xml
+
 ### Modified
 
 - Explicitly set the size of the main image
@@ -14,6 +18,11 @@ permalink: /CHANGELOG
 - Remove div from NavBar
 - Made Open Graph URL an absolute URL
 - Change link styling in light-mode for more contrast
+- Added more data into the XML feed
+
+### Removed
+
+- Feed.html
 
 ## 2025-02-15
 
