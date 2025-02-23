@@ -5,6 +5,16 @@ last_modified_at: 2025-02-15
 permalink: /CHANGELOG
 ---
 
+## Unpublished
+
+### Modified
+
+- Explicitly set the size of the main image
+- Fix typo in projects
+- Remove div from NavBar
+- Made Open Graph URL an absolute URL
+- Change link styling in light-mode for more contrast
+
 ## 2025-02-15
 
 ### Added

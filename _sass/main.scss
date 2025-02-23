@@ -8,6 +8,11 @@
   color: black;
 }
 
+a,
+a:visited {
+  color: light-dark(blue, #2a7ae2);
+}
+
 .site-footer .black {
   color: light-dark(black, aliceblue);
 }
