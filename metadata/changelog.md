@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-02-23
+last_modified_at: 2025-03-01
 permalink: /CHANGELOG
 ---
+
+## Unpublished
+
+### Modified
+
+- Update to Feed Stylesheet
 
 ## 2025-02-23
 
