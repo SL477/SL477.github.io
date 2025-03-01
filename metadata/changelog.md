@@ -7,9 +7,17 @@ permalink: /CHANGELOG
 
 ## Unpublished
 
+### Added
+
+- Notes feed
+
 ### Modified
 
 - Update to Feed Stylesheet
+
+### Removed
+
+- notes.html
 
 ## 2025-02-23
 
