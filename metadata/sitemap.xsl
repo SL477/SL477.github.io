@@ -3,7 +3,8 @@ layout: xslt
 permalink: /sitemap.xsl
 ---
 <h1 class="post-title">Site Map</h1>
-<ul>
+
+<ul id="sitemap-links">
   <xsl:for-each select="sitemap:urlset/sitemap:url">
     <xsl:sort select="sitemap:loc"/>
     <li>
@@ -26,3 +27,13 @@ permalink: /sitemap.xsl
     </li>
   </xsl:for-each>
 </ul>
+
+<pre class="mermaid hidden">
+  graph LR
+</pre>
+
+<script src="/assets/js/sitemap.js"></script>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+</script>
