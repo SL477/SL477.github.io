@@ -10,6 +10,8 @@ permalink: /CHANGELOG
 ### Added
 
 - Notes feed
+- Sitemap Stylesheet
+- My own way of generating the sitemap.xml
 
 ### Modified
 
@@ -18,6 +20,8 @@ permalink: /CHANGELOG
 ### Removed
 
 - notes.html
+- sitemap.html
+- Jekyll-Sitemap
 
 ## 2025-02-23
 
