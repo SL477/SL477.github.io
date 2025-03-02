@@ -1,0 +1,33 @@
+---
+layout: none
+last_modified_at: 2025-03-02
+permalink: /doap.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns="http://usefulinc.com/ns/doap#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:admin="http://webns.net/mvcb/">
+<rdf:Description rdf:about="">
+  <admin:generatorAgent rdf:resource="https://crschmidt.net/semweb/doapamatic"/>
+</rdf:Description>
+<name>Thomas Fishwick's site</name>
+<shortname>Link477.com</shortname>
+<shortdesc>My personal website</shortdesc>
+<description>My personal website. That I do all sorts of random stuff on.</description>
+<homepage rdf:resource="https://link477.com/"/>
+<bug-database rdf:resource="https://github.com/SL477/SL477.github.io/issues"/>
+<programming-language>Ruby</programming-language>
+<programming-language>HTML</programming-language>
+<programming-language>CSS</programming-language>
+<programming-language>JavaScript</programming-language>
+<programming-language>XML</programming-language>
+<developer>
+<foaf:Person>
+<foaf:name>Thomas Fishwick</foaf:name>
+<foaf:homepage rdf:resource="https://link477.com/foaf.rdf"/>
+</foaf:Person>
+</developer>
+<repository>
+<GITRepository>
+<location rdf:resource="https://github.com/SL477/SL477.github.io"/>
+</GITRepository>
+</repository>
+</Project>

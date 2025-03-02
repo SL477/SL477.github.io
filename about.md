@@ -1,8 +1,8 @@
 ---
 layout: page
 title: About
-permalink: /about/
-last_modified_at: 2025-02-02
+permalink: /about
+last_modified_at: 2025-03-02
 ---
 
 <!-- <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>

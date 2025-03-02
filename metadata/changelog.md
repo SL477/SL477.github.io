@@ -1,9 +1,29 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-02-23
+last_modified_at: 2025-03-02
 permalink: /CHANGELOG
 ---
+
+## 2025-03-02
+
+### Added
+
+- Notes feed
+- Sitemap Stylesheet
+- My own way of generating the sitemap.xml
+- [Description of a project file](/doap.xml)
+
+### Modified
+
+- Update to Feed Stylesheet
+
+### Removed
+
+- notes.html
+- sitemap.html
+- Jekyll-Sitemap
+- Feed.html from the head, on the grounds that I deleted it
 
 ## 2025-02-23
 

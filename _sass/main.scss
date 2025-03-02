@@ -290,6 +290,10 @@ td {
   color: light-dark(black, white) !important;
 }
 
+.hidden {
+  display: none;
+}
+
 /* from https://pajasevi.github.io/CSSnowflakes/ */
 
 .snowflake-inner {

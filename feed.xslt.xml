@@ -1,9 +1,35 @@
 ---
 layout: xslt
 ---
-<h1 class="post-title">Posts Feed</h1>
+<h1 class="post-title">
+  <xsl:choose>
+    <xsl:when test="contains(string(atom:feed/atom:id), 'notes.xml')">
+      <xsl:value-of select="'Notes Feed'"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="'Posts Feed'"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</h1>
 <section class="h-feed">
   <a class="p-author h-card" href="/" hidden="hidden">Tom Fishwick</a>
+  <a class="u-url" hidden="hidden" href="/feed.xml">Posts Feed</a>
+  <picture hidden="hidden">
+    <source
+      srcset="{{ site.logo_webp }}"
+      height="50"
+      width="50"
+      type="image/webp"
+    />
+    <source srcset="{{ site.logo }}" height="50" width="50" type="image/png" />
+    <img
+      src="{{ site.logo | relative_url }}"
+      alt="{{ site.logo_alt }}"
+      height="50"
+      width="50"
+      class="u-photo"
+    />
+  </picture>
   <ul>
     <xsl:for-each select="atom:feed/atom:entry">
       <li class="h-entry li-no-decoration">

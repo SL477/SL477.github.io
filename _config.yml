@@ -35,9 +35,6 @@ logo_height: 256
 logo_alt: My logo of Link477 built in Lego
 logo_webp: /assets/images/link477.webp
 lang: en
-feed:
-  icon: /assets/images/link477.png
-  logo: /assets/images/link477.png
 author:
   name: Thomas Fishwick
   uri: 'https://link477.com'
@@ -50,7 +47,6 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-sitemap
 lsi: false
 safe: true
 incremental: false
@@ -65,6 +61,12 @@ sass:
 collections:
   notes:
     output: true
+
+feed:
+  icon: /assets/images/link477.png
+  logo: /assets/images/link477.png
+  collections:
+    - notes
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
