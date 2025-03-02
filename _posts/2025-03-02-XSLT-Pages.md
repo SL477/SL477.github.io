@@ -57,8 +57,14 @@ It was tempting to get rid of the Jekyll-feed while I was at it, but once I disc
 
 For my site at least, I have created a new Jekyll layout for XSLT, by making the head, header and footer fully valid XML I can use the same includes for these.
 
+At some point I may have to add stylesheets for my [Friend of a friend file](/foaf.rdf) and new [Description of a project file](/doap.xml)[^3][^4].
+
 [^1]:
     I prefer React over VueJS, as demonstrated by the amount in the React site compared to the VueJS one.
     I found that VueJS was a bit more confusing due to everything being separated (I know that this site is confusing for the same reason, but most of my layouts and includes I setup once and then never needed to look again at them).
 
 [^2]: With a preprocessor that tells you when you went wrong and roughly where, rather than the browser's dev tools, which is happy to just stop working & let you guess at what went wrong.
+
+[^3]: Officially I may not have taken City's Semantic Web course, but as I unofficially did, I feel that I may as well add some Semantic Web stuff to the site.
+
+[^4]: [Semantic Web DOAP board](https://www.w3.org/wiki/SemanticWebDOAPBulletinBoard) with some resources of how to make one.
