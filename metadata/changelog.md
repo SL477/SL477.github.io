@@ -5,6 +5,12 @@ last_modified_at: 2025-03-02
 permalink: /CHANGELOG
 ---
 
+## 2025-03-06
+
+### Modified
+
+- Updated Snake game to be playable with a mouse
+
 ## 2025-03-02
 
 ### Added
