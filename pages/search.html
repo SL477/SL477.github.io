@@ -1,0 +1,39 @@
+---
+layout: page
+title: Search
+last_modified_at: 2025-03-08
+permalink: /search
+---
+
+<form>
+  <div>
+    <label for="search">Search</label>
+    <input type="search" id="search" name="q" class="form-control" />
+    <label for="tag">Tags</label>
+    <select id="tag" name="tag" class="form-control">
+      <option value="">--Select a tag--</option>
+      {% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{%
+      unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %} {%
+      assign tags_list = site_tags | split:',' | sort_natural %} {%- for tag in
+      tags_list -%}
+      <option value="{{ tag }}">{{ tag }}</option>
+      {%- endfor -%}
+    </select>
+    <fieldset>
+      <legend>Types</legend>
+      <div>
+        <input type="checkbox" name="posts" id="posts" checked />
+        <label for="posts">Posts</label>
+      </div>
+      <div>
+        <input type="checkbox" name="notes" id="notes" checked />
+        <label for="notes">Notes</label>
+      </div>
+      <div>
+        <input type="checkbox" name="pages" id="pages" checked />
+        <label for="pages">Pages</label>
+      </div>
+    </fieldset>
+  </div>
+  <input type="submit" value="Search" class="btn btn-primary" />
+</form>
