@@ -10,7 +10,7 @@
 
 a,
 a:visited {
-  color: light-dark(blue, #2a7ae2);
+  color: light-dark(#015ed8, #2a7ae2);
 }
 
 .site-footer .black {
@@ -292,6 +292,11 @@ td {
 
 .hidden {
   display: none;
+}
+
+.post-meta {
+  font-size: 14px;
+  color: light-dark(black, white);
 }
 
 /* from https://pajasevi.github.io/CSSnowflakes/ */
