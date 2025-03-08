@@ -1,0 +1,45 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Link477 JSON Feed",
+    "icon": "{{ site.logo }}",
+    "home_page_url": "{{ site.site_url }}",
+    "feed_url": {{ page.permalink | absolute_url | jsonify }},
+    "favicon": "{{ site.logo }}",
+    "description": "{{ site.description }}",
+    "user_comment": "My JSON feed",
+    "authors": [
+      {
+        "name": "{{ site.title }}",
+        "url": "{{ site.site_url }}",
+        "avatar": "{{ site.photo }}"
+      }
+    ],
+    "language": "en-GB",
+    "items": [
+      {%- if page.feed == 'notes' -%}
+        {%- assign posts = site.notes -%}
+      {%- else -%}
+        {%- assign posts = site.posts -%}
+      {%- endif -%}
+      {%- for post in posts reversed -%}
+      {
+        "id": {{ post.url | absolute_url | jsonify }},
+        "title": {{ post.title | jsonify }},
+        "content_html": {{ post.content | jsonify }},
+        "content_text": {{ post.content | markdownify | strip_html | jsonify }},
+        "date_published": {{ post.date | date_to_xmlschema | jsonify }},
+        {%- if post.last_modified_at or post.date -%}
+          "date_modified": {{ post.last_modified_at | default: post.date | date_to_xmlschema  | jsonify }},
+        {%- endif -%}
+        "authors": [{"name": {{ post.author | jsonify }}}],
+        "url": {{ post.url | absolute_url | jsonify }},
+        "summary": {{ post.excerpt | jsonify }},
+        "language": "en-GB",
+        "tags": {{ post.tags | jsonify }}
+        {%- if post.image -%}
+          ,"image": {{ post.image | absolute_url | jsonify }}
+        {%- endif -%}
+      }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+}

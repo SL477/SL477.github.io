@@ -7,6 +7,12 @@ permalink: /CHANGELOG
 
 ## Unpublished
 
+### Added
+
+- Notes.json
+
+### Modified
+
 - Fixed CSS for light-mode links and date for Blog
 
 ## 2025-03-06
