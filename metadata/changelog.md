@@ -10,6 +10,7 @@ permalink: /CHANGELOG
 ### Added
 
 - Notes.json
+- Pages.json
 
 ### Modified
 
