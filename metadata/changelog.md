@@ -1,9 +1,20 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-03-02
+last_modified_at: 2025-03-08
 permalink: /CHANGELOG
 ---
+
+## Unpublished
+
+### Added
+
+- Notes.json
+- Pages.json
+
+### Modified
+
+- Fixed CSS for light-mode links and date for Blog
 
 ## 2025-03-06
 
