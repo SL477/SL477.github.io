@@ -1,16 +1,17 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-03-08
+last_modified_at: 2025-03-09
 permalink: /CHANGELOG
 ---
 
-## Unpublished
+## 2025-03-09
 
 ### Added
 
 - Notes.json
 - Pages.json
+- Way to search the site using OpenSearch
 
 ### Modified
 

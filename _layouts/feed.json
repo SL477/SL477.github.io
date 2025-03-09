@@ -33,7 +33,7 @@
         {%- if post.last_modified_at or post.date -%}
           "date_modified": {{ post.last_modified_at | default: post.date | date_to_xmlschema  | jsonify }},
         {%- endif -%}
-        "authors": [{"name": {{ post.author | jsonify }}}],
+        "authors": [{"name": {{ post.author | default: site.author.name | jsonify }}}],
         "url": {{ post.url | absolute_url | jsonify }},
         "summary": {{ post.excerpt | jsonify }},
         "language": "en-GB",

@@ -160,7 +160,7 @@ function date_to_string(dt) {
     '11': 'Nov',
     '12': 'Dec'
   };
-  return `${monthPicker[dt.substring(5,7)]} ${dt.substring(8,10).startsWith('0')? dt.substring(8,9): dt.substring(8,10)}, ${dt.substring(0, 4)}`
+  return `${monthPicker[dt.substring(5,7)]} ${dt.substring(8,10).startsWith('0')? dt.substring(9,10): dt.substring(8,10)}, ${dt.substring(0, 4)}`
 }
 
 class Feed {
