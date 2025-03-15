@@ -5,6 +5,12 @@ last_modified_at: 2025-03-09
 permalink: /CHANGELOG
 ---
 
+## Unpublished
+
+### Modified
+
+- Updated CSS for a tags in dark mode and some of the blog tags
+
 ## 2025-03-09
 
 ### Added

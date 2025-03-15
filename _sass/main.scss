@@ -71,6 +71,10 @@ code {
   text-wrap: wrap;
 }
 
+.project-a {
+  color: #015ed8;
+}
+
 .skills-card > h3 {
   font-weight: bold;
   font-size: larger;
@@ -189,7 +193,7 @@ fieldset {
 
 .p-category[data-tag='Ruby'] {
   background-color: red;
-  color: white;
+  color: black;
 }
 
 .p-category[data-tag='Hosting'] {
@@ -203,8 +207,8 @@ fieldset {
 }
 
 .p-category[data-tag='Warhammer-40k'] {
-  background-color: darkgray;
-  color: #b02734;
+  background-color: #d6d6d6;
+  color: #791b25;
 }
 
 .p-category[data-tag='Space-Marines'] {

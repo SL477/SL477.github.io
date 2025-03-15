@@ -14,6 +14,11 @@
     vertical-align: top;
   }
 
+  a,
+  a:visited {
+    color: light-dark(#015ed8, #559bf7);
+  }
+
   .hamburger {
     float: right;
     margin-top: 15px;
