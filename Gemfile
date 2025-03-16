@@ -21,6 +21,5 @@ gem "webrick"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # If you have any plugins, put them here!
-group :jekyll_plugins do
-    gem "jekyll-feed", "~> 0.6"
-end
+# group :jekyll_plugins do
+# end

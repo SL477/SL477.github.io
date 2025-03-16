@@ -6,7 +6,9 @@ excerpt: My first Blood-Bowl match, with a few embellishments
 author: Tom Fishwick
 image: /assets/images/bloodbowlscore.jpg
 photo_alt: Practice Match
-last_modified_date: 2025-01-11
+last_modified_date: 2025-03-16
+image_width: 378
+image_height: 504
 ---
 
 It was a clear and pleasant day in the city of Johnstone, banners fluttered in the wind over the Blood Bowl stadium. The boisterous crowds broke the silence, shouting taunts towards the stands. Sir Guy paced concernedly around his box above the stands surrounding the pitch, neither team had appeared yet and the crowds thirsted for blood. The skies above Johnstone cracked as the warp invaded the mortal realm. Ten thousand orcs appeared as if by magic outside the gates, cries of terror from the guards on the walls greeted them, their sergeants appealed for calm as this had been arranged in advance.

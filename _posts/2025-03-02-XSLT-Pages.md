@@ -4,8 +4,10 @@ layout: post
 tags: Meta Programming
 author: Tom Fishwick
 image: /assets/images/sitemap.jpg
+image_height: 493
+image_width: 740
 photo_alt: Sitemap screenshot, showing the links between the pages.
-last_modified_at: 2025-03-02
+last_modified_at: 2025-03-16
 ---
 
 I have updated my Sitemap and Atom feeds to display as though they are HTML. Inspired by the idea of not repeating myself, which I wasn't because generally Jekyll had one copy of this data in the source code, but then two copies in the output.

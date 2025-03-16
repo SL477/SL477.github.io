@@ -4,8 +4,10 @@ layout: post
 tags: Ruby
 author: Tom Fishwick
 image: /assets/images/rubyChess.jpg
+image_width: 273
+image_height: 277
 photo_alt: Chess Game
-last_modified_at: 2025-01-11
+last_modified_at: 2025-03-16
 ---
 
 I created a chess game as part of the [Odin Project](https://www.theodinproject.com/).

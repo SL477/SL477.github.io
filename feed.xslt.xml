@@ -1,6 +1,30 @@
 ---
 layout: xslt
 ---
+{%- comment -%}
+To force FireFox to at least show correctly
+{%- endcomment -%}
+<style>
+p {
+  display: block;
+}
+sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+pre {
+    display: block;
+    font-family: monospace;
+    unicode-bidi: isolate;
+    white-space: pre;
+    margin: 1em 0px;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+}
+</style>
 <h1 class="post-title">
   <xsl:choose>
     <xsl:when test="contains(string(atom:feed/atom:id), 'notes.xml')">
@@ -95,12 +119,12 @@ layout: xslt
               <xsl:value-of select="' • '"/>
               <span itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
                 <span class="p-author h-card" href="{{ site.site_url }}" itemprop="name">
-                  <xsl:value-of select="atom:author"/>
+                  <xsl:value-of select="atom:author/atom:name"/>
                 </span>
               </span>
             </xsl:if>
             <xsl:if test="atom:category">
-              <span>• Tags: </span>
+              <span> • Tags: </span>
               <xsl:for-each select="atom:category">
                 <span class="p-category">
                   <xsl:attribute name="data-tag">
@@ -114,16 +138,11 @@ layout: xslt
               <xsl:value-of select="atom:summary"/>
             </data>
           </p>
-          <xsl:if test="media:content">
-            <img class="u-photo">
-              <xsl:attribute name="src">
-                <xsl:value-of select="media:content/@url"/>
-              </xsl:attribute>
-            </img>
-          </xsl:if>
         </header>
         <div class="post-content e-content" itemprop="articleBody">
-          <xsl:value-of select="atom:content" disable-output-escaping="yes"/>
+          <!-- <xsl:value-of select="atom:content" disable-output-escaping="yes"/> -->
+          <!-- <xsl:copy-of select="atom:content/node()"/> -->
+          <xsl:apply-templates select="atom:content"/>
         </div>
         <a class="u-url u-uid" hidden="hidden">
           <xsl:attribute name="href">
