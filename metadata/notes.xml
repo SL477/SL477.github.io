@@ -1,0 +1,7 @@
+---
+permalink: /feed/notes.xml
+title: 'Toms Notes Feed'
+subtitle: 'My shorter ramblings'
+layout: feed_xml
+feed: notes
+---
