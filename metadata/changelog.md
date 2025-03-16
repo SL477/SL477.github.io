@@ -5,6 +5,13 @@ last_modified_at: 2025-03-09
 permalink: /CHANGELOG
 ---
 
+## 2025-03-16
+
+### Modified
+
+- Updated CSS for a tags in dark mode and some of the blog tags
+- Fixed the XML feed for FireFox
+
 ## 2025-03-09
 
 ### Added

@@ -45,8 +45,6 @@ show_comments: true
 # Build settings
 markdown: kramdown
 theme: minima
-plugins:
-  - jekyll-feed
 lsi: false
 safe: true
 incremental: false
@@ -63,10 +61,11 @@ collections:
     output: true
 
 feed:
-  icon: /assets/images/link477.png
-  logo: /assets/images/link477.png
-  collections:
-    - notes
+  path: /feed/jekyllfeeds.xml
+  # icon: /assets/images/link477.png
+  # logo: /assets/images/link477.png
+#   collections:
+#     - notes
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

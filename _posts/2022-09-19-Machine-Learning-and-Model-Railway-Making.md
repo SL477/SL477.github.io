@@ -7,6 +7,8 @@ author: Tom Fishwick
 last_modified_at: 2025-01-11
 image: /assets/images/kato-28-889.JPG
 photo_alt: Kato 28-889, mini diorama curve
+image_width: 750
+image_height: 566
 ---
 
 Above is the Kato 28-889, mini diorama, which I just finished building and am waiting for the wood glue to dry. A surprising use for Machine Learning.
@@ -23,4 +25,5 @@ Hopefully at some point this will be a completed diorama.
 
 <em>Update <time datetime="2023-01-11">11/01/2023</time></em>
 ![Finished diorama](/assets/images/kato-28-889-finished.jpg)
+
 _Finished diorama_

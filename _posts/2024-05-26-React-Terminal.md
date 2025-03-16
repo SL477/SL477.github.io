@@ -4,6 +4,8 @@ layout: post
 tags: React Typescript
 author: Tom Fishwick
 image: /assets/images/ReactTerminal.jpg
+image_width: 729
+image_height: 340
 photo_alt: React Terminal
 last_modified_at: 2025-01-11
 ---

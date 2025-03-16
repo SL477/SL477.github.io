@@ -6,7 +6,7 @@
   picture_width: 340
   picture_height: 143
   description: |
-    This project started as my answer to <a href="https://www.freecodecamp.org/learn/coding-interview-prep/take-home-projects/chart-the-stock-market" target="_blank" rel="noopener noreferrer">FreeCodeCamp Chart the Stock Market</a>.
+    This project started as my answer to <a class="project-a" href="https://www.freecodecamp.org/learn/coding-interview-prep/take-home-projects/chart-the-stock-market" target="_blank" rel="noopener noreferrer">FreeCodeCamp Chart the Stock Market</a>.
 
     Here I created a flask app with web sockets.
 
@@ -23,7 +23,7 @@
   picture_width: 340
   picture_height: 213
   description: |
-    This project started as my answer to <a href="https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/linear-regression-health-costs-calculator" target="_blank" rel="noopener noreferrer">FreeCodeCamp Predict Health Costs With Regression</a>.
+    This project started as my answer to <a class="project-a" href="https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/linear-regression-health-costs-calculator" target="_blank" rel="noopener noreferrer">FreeCodeCamp Predict Health Costs With Regression</a>.
 
     Here I created my first Streamlit App, and then discovered how hard it was to put streamlit into a Docker container.
 
@@ -38,7 +38,7 @@
   picture_width: 340
   picture_height: 172
   description: |
-    This started out as my answer to <a href="https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/cat-and-dog-image-classifier" target="_blank" rel="noopener noreferrer">FreeCodeCamp Cat and Dog Image Classifier</a>.
+    This started out as my answer to <a class="project-a" href="https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/cat-and-dog-image-classifier" target="_blank" rel="noopener noreferrer">FreeCodeCamp Cat and Dog Image Classifier</a>.
 
     I created a Node.JS app which uses TensorFlow.JS with the converted model I made to determine whether the image passed is more likely to be a cat or a dog (with not so great accuracy).
 - name: SMS Classifier
@@ -49,7 +49,7 @@
   picture_width: 340
   picture_height: 258
   description: |
-    This project originally started as my answer to <a href="https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/neural-network-sms-text-classifier" target="_blank" rel="noopener noreferrer">FreeCodeCamp SMS Classifier</a>.
+    This project originally started as my answer to <a class="project-a" href="https://www.freecodecamp.org/learn/machine-learning-with-python/machine-learning-with-python-projects/neural-network-sms-text-classifier" target="_blank" rel="noopener noreferrer">FreeCodeCamp SMS Classifier</a>.
 
     In this project I created my first Flask Web App (not including the tutorial I did). Plus my first Docker Container (outside of a tutorial). Originally this used TensorFlow as the machine learning library, but I have now changed this to SciKit Learn.
 
@@ -64,7 +64,7 @@
   picture_width: 340
   picture_height: 545
   description: |
-    My XKCD Reader app, which uses React-Native to render the <a href="https://xkcd.com/" target="_blank" rel="noopener noreferrer">XKCD website</a>.
+    My XKCD Reader app, which uses React-Native to render the <a class="project-a" href="https://xkcd.com/" target="_blank" rel="noopener noreferrer">XKCD website</a>.
 
     The Android APK file (tested on my phone and in the Android emulator) is available at the link above.
 - name: PizzaKG
