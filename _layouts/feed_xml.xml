@@ -31,7 +31,7 @@
     <div xmlns="http://www.w3.org/1999/xhtml">
     {%- if post.image -%}
     <figure>
-      <img src="{{ post.image }}" alt="{{ post.photo_alt}}" class="u-photo" height="{{ post.image_height }}" width="{{ post.image_width }}" />
+      <img src="{{ post.image | absolute_url }}" alt="{{ post.photo_alt}}" class="u-photo" height="{{ post.image_height }}" width="{{ post.image_width }}" />
       <figcaption>
         <em>
           {%- if post.photo_caption -%} {{ post.photo_caption }} {%- else -%} {{

@@ -61,6 +61,11 @@ For my site at least, I have created a new Jekyll layout for XSLT, by making the
 
 At some point I may have to add stylesheets for my [Friend of a friend file](/foaf.rdf) and new [Description of a project file](/doap.xml)[^3][^4].
 
+## Update 2025-03-16
+
+To get the Atom/RSS feed working with FireFox I created my own XML feed.
+This used XHTML tags rather than CData, as FireFox does not render CData sections properly.
+
 [^1]:
     I prefer React over VueJS, as demonstrated by the amount in the React site compared to the VueJS one.
     I found that VueJS was a bit more confusing due to everything being separated (I know that this site is confusing for the same reason, but most of my layouts and includes I setup once and then never needed to look again at them).
