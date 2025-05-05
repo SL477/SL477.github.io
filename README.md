@@ -45,3 +45,5 @@ npx stylelint "**/*.*css"
             alt="Valid CSS!" />
     </a>
 </p>
+
+<a href="http://validator.w3.org/feed/check.cgi?url=https%3A//link477.com/feed.xml"><img src="/assets/images/valid-atom.png" alt="[Valid Atom 1.0]" title="Validate my Atom 1.0 feed" /></a>
