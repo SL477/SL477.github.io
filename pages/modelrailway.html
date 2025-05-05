@@ -1,20 +1,17 @@
 ---
 layout: page
 title: Model Railway Pics
-last_modified_at: 2024-01-13
+last_modified_at: 2025-05-05
 ---
 
 <link rel="stylesheet" href="/assets/css/modelRailway.css" />
-<script>
-  // Pictures
-  const pics = [
-    { src: '/assets/images/HogwartsExpress2.jpg', alt: 'Hogwarts Express' },
-    { src: '/assets/images/GamesShop.jpg', alt: 'Games Shop' },
-    { src: '/assets/images/Platform934.jpg', alt: 'Platform 9 3/4 with train' },
-    { src: '/assets/images/Platform934NoTrain.jpg', alt: 'Platform 9 3/4' },
-    { src: '/assets/images/cargoTrain.jpg', alt: 'Cargo Train' },
-    { src: '/assets/images/emmet.jpg', alt: 'Emmet' },
-  ];
-</script>
-<my-slideshow></my-slideshow>
-<script src="/assets/js/components/my-slideshow.js"></script>
+
+<div class="carousel">
+  <ul>
+    {% for pic in site.data.model_rail_pics %}
+    <li>
+      <img src="{{ pic.src }}" alt="{{ pic.alt }}" width="544" height="408" />
+    </li>
+    {% endfor %}
+  </ul>
+</div>
