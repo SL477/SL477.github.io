@@ -35,3 +35,13 @@ Use
 ```bash
 npx stylelint "**/*.*css"
 ```
+
+## Validations
+
+<p>
+    <a href="https://jigsaw.w3.org/css-validator/validator?lang=en&profile=css3svg&uri=https%3A%2F%2Flink477.com&usermedium=all&vextwarning=&warning=1">
+        <img style="border:0;width:88px;height:31px"
+            src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+            alt="Valid CSS!" />
+    </a>
+</p>
