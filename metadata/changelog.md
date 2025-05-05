@@ -15,6 +15,7 @@ permalink: /CHANGELOG
 ### Modified
 
 - Model rail page to use the new CSS scroll properties to be a carousel. Inspired by [Chrome's carousels with CSS](https://developer.chrome.com/blog/carousels-with-css)
+- Robots.txt - Added more crawlers to the ban list
 
 ### Removed
 
