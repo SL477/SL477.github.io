@@ -1,0 +1,15 @@
+---
+permalink: /oembed.json
+---
+{
+  "version": "1.0",
+  "type": "photo",
+  "width": {{ site.logo_width }},
+  "height": {{ site.logo_height }},
+  "title": "Link477",
+  "url": "{{ site.logo | absolute_url }}",
+  "author_name": "Tom Fishwick",
+  "author_url": "{{ site.site_url }}",
+  "provider_name": "Link477",
+  "provider_url": "{{ site.site_url }}"
+}
