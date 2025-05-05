@@ -1,98 +1,83 @@
 ---
 ---
 
-* {
-  box-sizing: border-box;
-}
+.carousel {
+  --accent: red;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-marker-group: after;
+  anchor-name: --myCarousel;
 
-/* Position the image container (needed to position the left and right arrows) */
-.container {
-  position: relative;
-}
+  li {
+    // scroll-snap-type: center;
+    scroll-snap-align: center;
+  }
 
-/* Hide the images by default */
-.my-slides {
-  display: none;
-}
+  &::scroll-button(*) {
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    -webkit-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: none;
+    position-anchor: --myCarousel;
+    align-self: anchor-center;
+  }
 
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-  cursor: pointer;
-}
+  &::scroll-button(left) {
+    content: '<' / 'Scroll Left';
+    cursor: pointer;
+    position: absolute;
+    right: calc(anchor(left) + 45px);
+  }
 
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: red;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  -webkit-user-select: none;
-  user-select: none;
-}
+  &::scroll-button(*):hover {
+    background-color: #000c;
+    color: #ff000080;
+  }
 
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
+  &::scroll-button(*):disabled {
+    background-color: #000c;
+    color: #ff000080;
+  }
 
-/* On hover add a black background colour with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: #000c;
-}
+  &::scroll-button(right) {
+    content: '>' / 'Scroll Right';
+    cursor: pointer;
+    position: absolute;
+    left: calc(anchor(right) + 45px);
+  }
 
-/* Number text (1/3 etc) */
-.numbertext {
-  color: red;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
+  &::scroll-button(*):focus-visible {
+    outline-offset: 5px;
+  }
 
-/* Container for image text */
-.caption-container {
-  text-align: center;
-  background-color: #222;
-  padding: 2px 16px;
-  color: white;
-}
+  li::scroll-marker {
+    content: ' ';
+    border: 1px solid grey;
+    border-radius: 50%;
+    scroll-snap-align: center;
+    outline-offset: 4px;
+  }
 
-.row::after {
-  content: '';
-  display: table;
-  clear: both;
-}
+  li::scroll-marker:target-current {
+    background: var(--accent);
+  }
 
-/* 3 columns side by side */
-.column {
-  float: left;
+  ul {
+    list-style: none;
+    display: grid;
+    grid: 544px / auto-flow 544px;
+  }
 
-  /* width: 33.33%; */
-}
-
-/* Add a transparency effect for thumbnail images */
-.demo {
-  opacity: 0.6;
-}
-
-.active,
-.demo:hover {
-  opacity: 1;
-}
-
-.main-pic {
-  width: 80%;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+  &::scroll-marker-group {
+    justify-content: center;
+    display: grid;
+    grid: 30px / auto-flow 30px;
+  }
 }

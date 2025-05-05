@@ -1,9 +1,24 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-03-09
+last_modified_at: 2025-05-05
 permalink: /CHANGELOG
 ---
+
+## 2025-05-05
+
+### Added
+
+- oembed data for Slack. Inspired by [Kevin Mark's Decaying Silos post](https://www.kevinmarks.com/partialsilos.html).
+- Validations in my Readme for the CSS and Atom Feed.
+
+### Modified
+
+- Model rail page to use the new CSS scroll properties to be a carousel. Inspired by [Chrome's carousels with CSS](https://developer.chrome.com/blog/carousels-with-css)
+
+### Removed
+
+- The old model rail JS component
 
 ## 2025-03-16
 
