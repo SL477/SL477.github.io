@@ -1,9 +1,19 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-05-05
+last_modified_at: 2025-06-01
 permalink: /CHANGELOG
 ---
+
+## 2025-06-01
+
+### Added
+
+- Blogroll
+
+### Modified
+
+- Added Subscribe Openly to the XSLT for the feeds and to the Feeds page.
 
 ## 2025-05-05
 
