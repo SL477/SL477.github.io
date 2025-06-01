@@ -5,13 +5,17 @@ last_modified_at: 2025-06-01
 permalink: /CHANGELOG
 ---
 
-## Unpublished
+## 2025-06-01
 
-## 2025-05-05
+### Added
+
+- Blogroll
 
 ### Modified
 
 - Added Subscribe Openly to the XSLT for the feeds and to the Feeds page.
+
+## 2025-05-05
 
 ### Added
 
