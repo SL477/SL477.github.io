@@ -1,9 +1,16 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-06-01
+last_modified_at: 2025-06-07
 permalink: /CHANGELOG
 ---
+
+## 2025-06-07
+
+### Modified
+
+- Robots.txt
+- NavBar, I finally decided to listen to [why you shouldn't use details as a menu](https://melsumner.github.io/details-as-a-menu). I followed the guide on [CSS only accessible nav menu](https://moderncss.dev/css-only-accessible-dropdown-navigation-menu/) and the [Aria guide on menus](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/). And tried to fill in the many gaps in the two.
 
 ## 2025-06-01
 
