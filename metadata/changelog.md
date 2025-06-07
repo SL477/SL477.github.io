@@ -5,7 +5,7 @@ last_modified_at: 2025-06-07
 permalink: /CHANGELOG
 ---
 
-## Unpublished
+## 2025-06-07
 
 ### Modified
 
