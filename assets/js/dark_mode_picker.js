@@ -68,12 +68,25 @@ for (const dropDownButton of dropDownButtons) {
       dropDownButton.ariaExpanded = false;
       if (dropDownMenu) {
         dropDownMenu.classList.remove('dropdown_expand');
+        dropDownMenu.style.visibility = 'hidden';
+        dropDownMenu.style.height = 0;
       }
     } else {
       dropDownButton.ariaExpanded = true;
       if (dropDownMenu) {
         dropDownMenu.classList.add('dropdown_expand');
+        dropDownMenu.style.visibility = 'visible';
+        dropDownMenu.style.height = 'fit-content';
       }
     }
+  });
+
+  dropDownButton.addEventListener('blur', (e) => {
+    const dropDownMenu = document.getElementById(
+      dropDownButton.getAttribute('aria-controls')
+    );
+    dropDownMenu.style.visibility = '';
+    dropDownMenu.style.height = '';
+    console.log('blur');
   });
 }
