@@ -18,3 +18,62 @@ function get_initial_ui_mode() {
   }
 }
 get_initial_ui_mode();
+
+// Drop down menus
+const dropdowns = document.querySelectorAll('.dropdown_menu a');
+for (const dropdownLink of dropdowns) {
+  dropdownLink.addEventListener('focus', (e) => {
+    dropdownLink.parentNode.parentNode.parentNode.querySelector(
+      'button'
+    ).ariaExpanded = true;
+  });
+
+  dropdownLink.addEventListener('blur', (e) => {
+    const hasFocus = dropdownLink.parentNode.parentNode.contains(
+      e.relatedTarget
+    );
+    if (!hasFocus) {
+      dropdownLink.parentNode.parentNode.parentNode.querySelector(
+        'button'
+      ).ariaExpanded = false;
+    }
+  });
+
+  dropdownLink.addEventListener('keydown', (e) => {
+    console.log(e, 'button');
+    if (e.key === 'Escape') {
+      const btn =
+        dropdownLink.parentNode.parentNode.parentNode.querySelector('button');
+      btn.click();
+      btn.focus();
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      const firstLink = dropdownLink.parentNode.parentNode.querySelector('a');
+      firstLink.focus();
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      const links = dropdownLink.parentNode.parentNode.querySelectorAll('a');
+      links[links.length - 1].focus();
+    }
+  });
+}
+
+const dropDownButtons = document.querySelectorAll('.dropdown_title');
+for (const dropDownButton of dropDownButtons) {
+  dropDownButton.addEventListener('click', (e) => {
+    const dropDownMenu = document.getElementById(
+      dropDownButton.getAttribute('aria-controls')
+    );
+    if (dropDownButton.ariaExpanded === 'true') {
+      dropDownButton.ariaExpanded = false;
+      if (dropDownMenu) {
+        dropDownMenu.classList.remove('dropdown_expand');
+      }
+    } else {
+      dropDownButton.ariaExpanded = true;
+      if (dropDownMenu) {
+        dropDownMenu.classList.add('dropdown_expand');
+      }
+    }
+  });
+}
