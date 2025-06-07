@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-06-01
+last_modified_at: 2025-06-07
 permalink: /CHANGELOG
 ---
+
+## Unpublished
+
+### Modified
+
+- Robots.txt
 
 ## 2025-06-01
 
