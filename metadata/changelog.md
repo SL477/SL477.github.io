@@ -10,6 +10,7 @@ permalink: /CHANGELOG
 ### Added
 
 - Print Stylesheet
+- [AI.txt](https://site.spawning.ai/spawning-ai-txt)
 
 ### Modified
 
