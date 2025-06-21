@@ -1,3 +1,10 @@
 ---
 ---
 @import "main";
+
+{% for category in site.data.categories %}
+    .p-category[data-tag='{{ category.tag }}'] {
+        background-color: {{ category.background }};
+        color: {{ category.colour }};
+    }
+{% endfor %}

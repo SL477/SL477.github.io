@@ -7,6 +7,10 @@ permalink: /CHANGELOG
 
 ## 2025-06-21
 
+### Added
+
+- Print Stylesheet
+
 ### Modified
 
 - Robots.txt
