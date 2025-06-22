@@ -1,9 +1,16 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-06-21
-permalink: /CHANGELOG
+last_modified_at: 2025-06-22
+permalink: /changelog
 ---
+
+## 2025-06-21
+
+### Modified
+
+- Updated changelog permalink to match navigation
+- Fixed typo in blogroll link
 
 ## 2025-06-21
 
