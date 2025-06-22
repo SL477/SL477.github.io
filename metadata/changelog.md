@@ -11,6 +11,7 @@ permalink: /changelog
 
 - Updated changelog permalink to match navigation
 - Fixed typo in blogroll link
+- Updated NavBar to put in the Aria current pages and to make the code more dynamic from data
 
 ## 2025-06-21
 

@@ -40,7 +40,7 @@ for (const dropdownLink of dropdowns) {
   });
 
   dropdownLink.addEventListener('keydown', (e) => {
-    console.log(e, 'button');
+    // console.log(e, 'button');
     if (e.key === 'Escape') {
       const btn =
         dropdownLink.parentNode.parentNode.parentNode.querySelector('button');
@@ -87,6 +87,6 @@ for (const dropDownButton of dropDownButtons) {
     );
     dropDownMenu.style.visibility = '';
     dropDownMenu.style.height = '';
-    console.log('blur');
+    // console.log('blur');
   });
 }

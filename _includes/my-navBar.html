@@ -5,7 +5,7 @@
   aria-label="Toggle Navigation"
 />
 <nav class="my-nav" aria-label="Main Navigation">
-  <a class="brand" href="/">
+  <a class="brand" href="/" {% if page.url=="/" %}aria-current="page"{% endif %}>
     <picture>
       <source
         srcset="{{ site.logo_webp | absolute_url }}"
@@ -32,221 +32,36 @@
   </label>
   <div class="inner-nav">
     <ul class="inner-nav-top-level">
-      <li class="dropdown">
-        <button
-          type="button"
-          class="dropdown_title"
-          aria-expanded="false"
-          aria-controls="freeCodeCamp-dropdown"
-        >
-          FreeCodeCamp
-        </button>
-        <ul class="dropdown_menu" id="freeCodeCamp-dropdown">
-          <li>Responsive Web Design</li>
-          <li>
-            <a href="/fccresponsivewebdesign/tributepage">Tribute Page</a>
-          </li>
-          <li>
-            <a href="/fccresponsivewebdesign/surveyform">Survey Form</a>
-          </li>
-          <li>
-            <a href="/fccresponsivewebdesign/productLandingPage"
-              >Product Landing Page</a
-            >
-          </li>
-          <li>
-            <a href="/fccresponsivewebdesign/technicalDocPage"
-              >Technical Documentation Page</a
-            >
-          </li>
-          <li>JavaScript Algorithms and Data Structures</li>
-          <li>
-            <a href="/fccresponsivewebdesign/fccJS"
-              >All five projects on this page</a
-            >
-          </li>
-          <li>Front End Libraries Projects</li>
-          <li>
-            <a href="/fccresponsivewebdesign/randomquotemachine"
-              >Random Quote Machine</a
-            >
-          </li>
-          <li>
-            <a href="/fccresponsivewebdesign/markdownpreviewer"
-              >Markdown Previewer</a
-            >
-          </li>
-          <li>
-            <a href="/fccresponsivewebdesign/drummachine">Drum Machine</a>
-          </li>
-          <li>
-            <a href="/fccresponsivewebdesign/calculator"
-              >Javascript Calculator</a
-            >
-          </li>
-          <li>
-            <a href="/fccresponsivewebdesign/pomodoroclock">25 + 5 Clock</a>
-          </li>
-          <li>Data Visualisation Projects</li>
-          <li><a href="/fccresponsivewebdesign/barchart">Bar Chart</a></li>
-          <li>
-            <a href="/fccresponsivewebdesign/scatterplot">Scatter Plot Graph</a>
-          </li>
-          <li><a href="/fccresponsivewebdesign/heatmap">Heat Map</a></li>
-          <li>
-            <a href="/fccresponsivewebdesign/choropleth">Choropleth Map</a>
-          </li>
-          <li>
-            <a href="/fccresponsivewebdesign/treemap">Treemap Diagram</a>
-          </li>
-          <li>Take Home Projects</li>
-          <li>
-            <a href="https://link477.com/Link477-React/#/weather">Weather</a>
-          </li>
-          <li>
-            <a href="https://link477.com/Link477-React/#/tictactoe"
-              >Tic Tac Toe</a
-            >
-          </li>
-          <li>
-            <a href="https://link477.com/Link477-React/#/recipeBox"
-              >Recipe Box</a
-            >
-          </li>
-          <li><a href="/pages/ponggame">Pong Game</a></li>
-          <li><a href="/pages/simonGame">Simon Game</a></li>
-          <li>
-            <a href="/fccresponsivewebdesign/fccforum"
-              >Free Code Camp Forum Homepage</a
-            >
-          </li>
-          <li>
-            <a href="https://link477.com/Link477-React/#/gameoflife"
-              >Game of Life</a
-            >
-          </li>
-          <li>Other Projects</li>
-          <li><a href="/pages/jspianokeyboard">JavaScript Keyboard</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <button
-          type="button"
-          class="dropdown_title"
-          aria-expanded="false"
-          aria-controls="projectOdin-dropdown"
-        >
-          Project Odin
-        </button>
-        <ul class="dropdown_menu" id="projectOdin-dropdown">
-          <li><a href="/pages/etchasketch.html">Etch A Sketch</a></li>
-          <li>
-            <a href="https://link477.com/Link477-React/#/rockPaperScissors"
-              >Rock, Paper, Scissors</a
-            >
-          </li>
-          <li>
-            <a href="https://link477.com/Link477-React/#/battleship"
-              >Battleship</a
-            >
-          </li>
-          <li>
-            <a href="https://link477.com/OdinProject/productLandingPage/"
-              >Product Landing Page</a
-            >
-          </li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <button
-          type="button"
-          class="dropdown_title"
-          aria-expanded="false"
-          aria-controls="games-dropdown"
-        >
-          Games
-        </button>
-        <ul class="dropdown_menu" id="games-dropdown">
-          <li><a href="/colorGridGame/index.html">Colour Grid</a></li>
-          <li><a href="/pages/snake.html">Snake</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <button
-          type="button"
-          class="dropdown_title"
-          aria-expanded="false"
-          aria-controls="other-dropdown"
-        >
-          Other
-        </button>
-        <ul class="dropdown_menu" id="other-dropdown">
-          <li><a href="/pages/modelrailway.html">Model Railway</a></li>
-          <li>
-            <a href="https://link477.com/Link477-React/#/terminal"
-              >React Terminal</a
-            >
-          </li>
-          <li><a href="/changelog">Change Log</a></li>
-          <li><a href="/blogroll.xml">Blog Roll</a></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <button
-          type="button"
-          class="dropdown_title"
-          aria-expanded="false"
-          aria-controls="dataStructures-dropdown"
-        >
-          Data Structures
-        </button>
-        <ul class="dropdown_menu" id="dataStructures-dropdown">
-          <li>
-            <a href="https://link477.com/Link477-React/#/arrays">Arrays</a>
-          </li>
-          <li><a href="/dataStructuresAlgorithms/lists.html">Lists</a></li>
-          <li>
-            <a href="/dataStructuresAlgorithms/queues.html">Queues</a>
-          </li>
-          <li>
-            <a href="/dataStructuresAlgorithms/linkedLists.html"
-              >Linked Lists</a
-            >
-          </li>
-          <li>
-            <a href="/dataStructuresAlgorithms/dictionaries.html"
-              >Dictionaries</a
-            >
-          </li>
-          <li>
-            <a href="/dataStructuresAlgorithms/hashing.html">Hashing</a>
-          </li>
-          <li><a href="/dataStructuresAlgorithms/sets.html">Sets</a></li>
-          <li>
-            <a href="/dataStructuresAlgorithms/binaryTrees.html"
-              >Binary Trees</a
-            >
-          </li>
-          <li>
-            <a href="/dataStructuresAlgorithms/graphs.html">Graphs</a>
-          </li>
-          <li>
-            <a href="/dataStructuresAlgorithms/sortingAlgorithms.html"
-              >Sorting Algorithms</a
-            >
-          </li>
-          <li>
-            <a href="/dataStructuresAlgorithms/searchingAlgorithms.html"
-              >Searching Algorithms</a
-            >
-          </li>
-          <li>
-            <a href="/dataStructuresAlgorithms/advancedAlgorithms.html"
-              >Advanced Algorithms</a
-            >
-          </li>
-        </ul>
-      </li>
+      {% for item in site.data.navbar %}
+        <li class="dropdown">
+          <button
+            type="button"
+            class="dropdown_title"
+            aria-expanded="false"
+            aria-controls="{{ item.id }}-dropdown"
+          >
+            {{ item.name }}
+          </button>
+          <ul class="dropdown_menu" id="{{ item.id }}-dropdown">
+            {% for links in item.items %}
+              {% unless item.name == "" %}
+                <li>{{ links.name }}</li>
+                {% for url in links.links %}
+                  <li>
+                    <a href="{{ url.href }}" {% if page.url==url.href %}aria-current="page"{% endif %}>{{ url.name }}</a>
+                  </li>
+                {% endfor %}
+              {% else %}
+                    {% for url in links.links %}
+                    <li>
+                      <a href="{{ url.href }}" {% if page.url==url.href %}aria-current="page"{% endif %}>{{ url.name }}</a>
+                    </li>
+                  {% endfor %}
+              {% endunless %}
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
       <li class="dropdown">
         <button
           type="button"
@@ -259,15 +74,15 @@
         <ul class="dropdown_menu" id="blog-dropdown">
           {%- for post in site.posts -%}
           <li>
-            <a href="{{ post.url | relative_url }}"
+            <a href="{{ post.url | relative_url }}" {% if post.url==page.url %}aria-current="page"{% endif %}
               >{{ post.title | escape }}</a
             >
           </li>
           {%- endfor -%}
         </ul>
       </li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/feeds">Feeds</a></li>
+      <li><a href="/about" {% if page.url=="/about" %}aria-current="page"{% endif %}>About</a></li>
+      <li><a href="/feeds" {% if page.url=="/feeds" %}aria-current="page"{% endif %}>Feeds</a></li>
       <li>{%- include dark_mode_picker.html -%}</li>
     </ul>
   </div>
