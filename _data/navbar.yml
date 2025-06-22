@@ -1,0 +1,121 @@
+- name: FreeCodeCamp
+  id: freeCodeCamp
+  items:
+    - name: 'Responsive Web Design'
+      links:
+        - href: /fccresponsivewebdesign/tributepage
+          name: Tribute Page
+        - href: /fccresponsivewebdesign/surveyform
+          name: Survey Form
+        - href: /fccresponsivewebdesign/productLandingPage
+          name: Product Landing Page
+        - href: /fccresponsivewebdesign/technicalDocPage
+          name: Technical Documentation Page
+    - name: 'JavaScript Algorithms and Data Structures'
+      links:
+        - href: /fccresponsivewebdesign/fccJS
+          name: All five projects on this page
+    - name: Front End Libraries Projects
+      links:
+        - href: /fccresponsivewebdesign/randomquotemachine
+          name: Random Quote Machine
+        - href: /fccresponsivewebdesign/markdownpreviewer
+          name: Markdown Previewer
+        - href: /fccresponsivewebdesign/drummachine
+          name: Drum Machine
+        - href: /fccresponsivewebdesign/calculator
+          name: Javascript Calculator
+        - href: /fccresponsivewebdesign/pomodoroclock
+          name: 25 + 5 Clock
+    - name: Data Visualisation Projects
+      links:
+        - href: /fccresponsivewebdesign/barchart
+          name: Bar Chart
+        - href: /fccresponsivewebdesign/scatterplot
+          name: Scatter Plot Graph
+        - href: /fccresponsivewebdesign/heatmap
+          name: Heat Map
+        - href: /fccresponsivewebdesign/choropleth
+          name: Choropleth Map
+        - href: /fccresponsivewebdesign/treemap
+          name: Treemap Diagram
+    - name: Take Home Projects
+      links:
+        - href: https://link477.com/Link477-React/#/weather
+          name: Weather
+        - href: https://link477.com/Link477-React/#/tictactoe
+          name: Tic Tac Toe
+        - href: https://link477.com/Link477-React/#/recipeBox
+          name: Recipe Box
+        - href: /pages/ponggame
+          name: Pong Game
+        - href: /pages/simonGame
+          name: Simon Game
+        - href: /fccresponsivewebdesign/fccforum
+          name: Free Code Camp Forum Homepage
+        - href: https://link477.com/Link477-React/#/gameoflife
+          name: Game of Life
+    - name: Other Projects
+      links:
+        - href: /pages/jspianokeyboard
+          name: JavaScript Keyboard
+- name: Project Odin
+  id: projectOdin
+  items:
+    - links:
+        - href: /pages/etchasketch.html
+          name: Etch A Sketch
+        - href: https://link477.com/Link477-React/#/rockPaperScissors
+          name: Rock, Paper, Scissors
+        - href: https://link477.com/Link477-React/#/battleship
+          name: Battleship
+        - href: https://link477.com/OdinProject/productLandingPage/
+          name: Product Landing Page
+- name: Games
+  id: games
+  items:
+    - links:
+        - href: /colorGridGame/index.html
+          name: Colour Grid
+        - href: /pages/snake.html
+          name: Snake
+- name: Other
+  id: other
+  items:
+    - links:
+        - href: /pages/modelrailway.html
+          name: Model Railway
+        - href: https://link477.com/Link477-React/#/terminal
+          name: React Terminal
+        - href: /changelog
+          name: Change Log
+        - href: /blogroll.xml
+          name: Blog Roll
+- name: Data Structures
+  id: dataStructures
+  items:
+    - links:
+        - href: https://link477.com/Link477-React/#/arrays
+          name: Arrays
+        - href: /dataStructuresAlgorithms/lists
+          name: Lists
+        - href: /dataStructuresAlgorithms/queues
+          name: Queues
+        - href: /dataStructuresAlgorithms/linkedLists
+          name: Linked Lists
+        - href: /dataStructuresAlgorithms/dictionaries
+          name: Dictionaries
+        - href: /dataStructuresAlgorithms/hashing
+          name: Hashing
+        - href: /dataStructuresAlgorithms/sets
+          name: Sets
+        - href: /dataStructuresAlgorithms/binaryTrees
+          name: Binary Trees
+        - href: /dataStructuresAlgorithms/graphs
+          name: Graphs
+        - href: /dataStructuresAlgorithms/sortingAlgorithms
+          name: Sorting Algorithms
+        - href: /dataStructuresAlgorithms/searchingAlgorithms
+          name: Searching Algorithms
+        - href: /dataStructuresAlgorithms/advancedAlgorithms
+          name: Advanced Algorithms

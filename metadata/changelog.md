@@ -1,9 +1,17 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-06-21
-permalink: /CHANGELOG
+last_modified_at: 2025-06-22
+permalink: /changelog
 ---
+
+## 2025-06-21
+
+### Modified
+
+- Updated changelog permalink to match navigation
+- Fixed typo in blogroll link
+- Updated NavBar to put in the Aria current pages and to make the code more dynamic from data
 
 ## 2025-06-21
 
