@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-06-22
+last_modified_at: 2025-06-29
 permalink: /changelog
 ---
+
+## 2025-06-29
+
+### Added
+
+- Bookmarks page
 
 ## 2025-06-21
 

@@ -1,0 +1,16 @@
+---
+permalink: /bookmarks.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xbel>
+<?xml-stylesheet type="text/xsl" href="/bookmarks.xsl"?>
+<xbel version="1.0">
+    <folder folded="no">
+        <title>Useful bookmarks</title>
+            {% for bookmark in site.data.bookmarks %}
+                <bookmark href="{{ bookmark.url }}">
+                    <title>{{ bookmark.name }}</title>
+                </bookmark>
+            {% endfor %}
+    </folder>
+</xbel>
