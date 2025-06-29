@@ -91,6 +91,8 @@
           name: Change Log
         - href: /blogroll.xml
           name: Blog Roll
+        - href: /bookmarks.xml
+          name: Bookmarks
 - name: Data Structures
   id: dataStructures
   items:
