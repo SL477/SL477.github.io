@@ -233,6 +233,50 @@ td {
   color: light-dark(black, white);
 }
 
+/* Wordle */
+.wordle-card {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 14ch;
+  padding: 5px;
+}
+
+.meter {
+  width: 100%;
+  height: 50px;
+}
+
+.meter::after {
+  content: attr(value);
+  left: 40px;
+  top: -40px;
+  position: relative;
+}
+
+.wordle-label {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.wordle-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (width >= 600px) {
+  .wordle-cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media print and (width >= 600px) {
+  .wordle-cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
 /* from https://pajasevi.github.io/CSSnowflakes/ */
 
 .snowflake-inner {
