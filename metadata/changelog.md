@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-06-29
+last_modified_at: 2025-07-06
 permalink: /changelog
 ---
+
+## 2025-07-06
+
+### Added
+
+- Wordle page
 
 ## 2025-06-29
 
