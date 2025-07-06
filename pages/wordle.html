@@ -1,0 +1,118 @@
+---
+layout: page
+title: Wordle
+last_modified_at: 2025-07-06
+permalink: /wordle
+---
+
+<script src="/assets/js/buildWordleData.js" defer></script>
+<button type="button" id="BuildWordleStats" class="btn btn-primary hidden">
+  Get Wordle Stats
+</button>
+
+<div class="wordle-stats">
+  <table>
+    <caption>
+      STATISTICS
+    </caption>
+    <thead>
+      <tr>
+        <th>Games Played</th>
+        <th>Win %</th>
+        <th>Current Streak</th>
+        <th>Max Streak</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ site.data.wordleStats.numberGames }}</td>
+        <td>{{ site.data.wordleStats.winPct }}</td>
+        <td>{{ site.data.wordleStats.currentStreak }}</td>
+        <td>{{ site.data.wordleStats.maxStreak }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 class="centertext">Guess Distribution</h2>
+  <label class="wordle-label"
+    >1:
+    <meter
+      min="0"
+      max="{{ site.data.wordleStats.numberGames }}"
+      value="{{ site.data.wordleStats.guess1 }}"
+      class="meter"
+    >
+      {{ site.data.wordleStats.guess1 }}/{{ site.data.wordleStats.numberGames }}
+    </meter>
+  </label>
+  <label class="wordle-label"
+    >2:
+    <meter
+      min="0"
+      max="{{ site.data.wordleStats.numberGames }}"
+      value="{{ site.data.wordleStats.guess2 }}"
+      class="meter"
+    >
+      {{ site.data.wordleStats.guess2 }}/{{ site.data.wordleStats.numberGames }}
+    </meter>
+  </label>
+  <label class="wordle-label"
+    >3:
+    <meter
+      min="0"
+      max="{{ site.data.wordleStats.numberGames }}"
+      value="{{ site.data.wordleStats.guess3 }}"
+      class="meter"
+    >
+      {{ site.data.wordleStats.guess3 }}/{{ site.data.wordleStats.numberGames }}
+    </meter>
+  </label>
+  <label class="wordle-label"
+    >4:
+    <meter
+      min="0"
+      max="{{ site.data.wordleStats.numberGames }}"
+      value="{{ site.data.wordleStats.guess4 }}"
+      class="meter"
+    >
+      {{ site.data.wordleStats.guess4 }}/{{ site.data.wordleStats.numberGames }}
+    </meter>
+  </label>
+  <label class="wordle-label"
+    >5:
+    <meter
+      min="0"
+      max="{{ site.data.wordleStats.numberGames }}"
+      value="{{ site.data.wordleStats.guess5 }}"
+      class="meter"
+    >
+      {{ site.data.wordleStats.guess5 }}/{{ site.data.wordleStats.numberGames }}
+    </meter>
+  </label>
+  <label class="wordle-label"
+    >6:
+    <meter
+      min="0"
+      max="{{ site.data.wordleStats.numberGames }}"
+      value="{{ site.data.wordleStats.guess6 }}"
+      class="meter"
+    >
+      {{ site.data.wordleStats.guess6 }}/{{ site.data.wordleStats.numberGames }}
+    </meter>
+  </label>
+</div>
+
+<div class="wordle-cards">
+  {% for wordle in site.data.wordleStats.plays reversed %}
+  <div class="wordle-card">
+    <p><b>{{ wordle.num }}</b></p>
+    <p>{{ wordle.res }}/6</p>
+    <div class="wordle-guesses">
+      {%- assign g = wordle.guess | split: '' -%} {%- for i in
+      (0..wordle.guess.size) -%} {{g[i]}} {%- assign m = i | plus: 1 | modulo: 5
+      -%} {%- if m == 0 -%}
+      <br />
+      {%- endif -%} {%- endfor -%}
+    </div>
+  </div>
+  {% endfor %}
+</div>

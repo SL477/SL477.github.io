@@ -93,6 +93,8 @@
           name: Blog Roll
         - href: /bookmarks.xml
           name: Bookmarks
+        - href: /wordle
+          name: Wordle
 - name: Data Structures
   id: dataStructures
   items:
