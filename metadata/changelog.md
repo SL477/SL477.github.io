@@ -11,6 +11,10 @@ permalink: /changelog
 
 - Wordle page
 
+### Modified
+
+- Colour Grid game, fixed buttons' CSS
+
 ## 2025-06-29
 
 ### Added
