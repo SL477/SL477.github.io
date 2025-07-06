@@ -20,18 +20,18 @@ if (statsBtn) {
     const fileText = await fileBlob.text();
     // console.log(fileText);
     const matches = fileText.match(regex);
-
+    // Add balancing figures for the missing data
     const stats = {
-      numberGames: 0,
+      numberGames: 32,
       numberWon: 0,
       currentStreak: 0,
       maxStreak: 0,
       guess1: 0,
       guess2: 0,
-      guess3: 0,
-      guess4: 0,
-      guess5: 0,
-      guess6: 0,
+      guess3: 6,
+      guess4: 10,
+      guess5: 8,
+      guess6: 3,
       guessX: 0,
       winPct: 0,
       plays: [],
