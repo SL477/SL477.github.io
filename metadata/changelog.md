@@ -1,9 +1,19 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-07-06
+last_modified_at: 2025-07-20
 permalink: /changelog
 ---
+
+## 2025-07-20
+
+### Added
+
+- Story support
+
+### Modified
+
+- Switched off web-mentions
 
 ## 2025-07-06
 
