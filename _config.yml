@@ -40,7 +40,8 @@ author:
   uri: 'https://link477.com'
 
 show_excerpts: true
-show_comments: true
+show_comments: false
+show_story: true
 
 # Build settings
 markdown: kramdown

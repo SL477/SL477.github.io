@@ -4,7 +4,7 @@
 
 layout: home_modified
 title: Home
-last_modified_at: 2025-02-09
+last_modified_at: 2025-07-20
 is_home: true
 ---
 
@@ -13,11 +13,17 @@ is_home: true
 <h1 class="centertext">Thomas Fishwick</h1>
 
 <div class="top-group">
-  <picture class="imgmain">
-    <source srcset="{{ site.photo_webp }}" type="image/webp" />
-    <source srcset="{{ site.photo }}" type="image/jpg" />
-    <img src="{{ site.photo }}" alt="Tom." width="250" height="250" />
-  </picture>
+  {% if site.show_story %}
+  <a href="/story">
+    {% endif %}
+    <picture class="imgmain{% if site.show_story %} story{%- endif -%}">
+      <source srcset="{{ site.photo_webp }}" type="image/webp" />
+      <source srcset="{{ site.photo }}" type="image/jpg" />
+      <img src="{{ site.photo }}" alt="Tom." width="250" height="250" />
+    </picture>
+    {% if site.show_story %}
+  </a>
+  {% endif %}
 
   <div class="inner-group">
     <h2>Nice to meet you!<br />I'm Tom Fishwick</h2>
