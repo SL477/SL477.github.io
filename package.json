@@ -25,11 +25,11 @@
   },
   "homepage": "https://github.com/SL477/SL477.github.io#readme",
   "devDependencies": {
-    "eslint": "^9.30.1",
+    "eslint": "^9.31.0",
     "imagemin": "^9.0.1",
     "imagemin-webp": "^8.0.0",
     "prettier": "^3.6.2",
-    "stylelint": "^16.21.1",
+    "stylelint": "^16.22.0",
     "stylelint-config-standard-scss": "^15.0.1"
   }
 }
