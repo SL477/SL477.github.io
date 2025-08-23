@@ -41,6 +41,7 @@
         ]
       }
     ],
-    "manifest-is-valid": "off"
+    "manifest-is-valid": "off",
+    "apple-touch-icons": "off"
   }
 }
