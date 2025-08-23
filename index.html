@@ -19,7 +19,13 @@ is_home: true
     <picture class="imgmain{% if site.show_story %} story{%- endif -%}">
       <source srcset="{{ site.photo_webp }}" type="image/webp" />
       <source srcset="{{ site.photo }}" type="image/jpg" />
-      <img src="{{ site.photo }}" alt="Tom." width="250" height="250" />
+      <img
+        src="{{ site.photo }}"
+        alt="Tom."
+        width="250"
+        height="250"
+        fetchpriority="high"
+      />
     </picture>
     {% if site.show_story %}
   </a>

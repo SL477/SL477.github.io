@@ -13,6 +13,7 @@ permalink: /changelog
 - Fixed Exorcism image
 - Fixed issue with snow
 - Fixed duplicated CSS properties
+- Made the main image fetch priority high
 
 ## 2025-08-03
 
