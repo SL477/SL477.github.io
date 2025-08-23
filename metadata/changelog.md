@@ -14,6 +14,7 @@ permalink: /changelog
 - Fixed issue with snow
 - Fixed duplicated CSS properties
 - Made the main image fetch priority high
+- Update Wordle stats
 
 ## 2025-08-03
 
