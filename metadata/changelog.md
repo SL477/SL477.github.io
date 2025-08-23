@@ -1,9 +1,16 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-08-03
+last_modified_at: 2025-08-23
 permalink: /changelog
 ---
+
+## 2025-08-23
+
+### Modified
+
+- Lazy load bottom images
+- Fixed Exorcism image
 
 ## 2025-08-03
 
