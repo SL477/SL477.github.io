@@ -11,6 +11,8 @@ permalink: /changelog
 
 - Lazy load bottom images
 - Fixed Exorcism image
+- Fixed issue with snow
+- Fixed duplicated CSS properties
 
 ## 2025-08-03
 
