@@ -8,7 +8,8 @@
     "watcher": "npx babel --watch assets/js/reactsrc --out-dir assets/js/react --presets react-app/prod",
     "lint": "eslint .",
     "csslint": "npx stylelint \"**/*.*css\"",
-    "htmllint": "npx hint \"_site\""
+    "htmllint": "npx hint \"_site\"",
+    "wordle": "node assets/js/buildWordleData.js"
   },
   "repository": {
     "type": "git",

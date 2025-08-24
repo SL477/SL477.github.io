@@ -1,4 +1,26 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
 const regex = /(Wordle [\d,]+ .\/6\s*[⬛🟨🟩\s]+)/gm;
+
+function buildWordleStatsNode() {
+  process.loadEnvFile();
+  fs.readFile(path.normalize(process.env.WORDLEDATA), 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    const WordleData = buildWordleStats(data);
+    fs.writeFile('_data/wordleStats.yml', WordleData, err => {
+      if (err) {
+        console.error(err);
+      }
+      else {
+        console.log('Created wordle stats');
+      }
+    });
+  });
+}
 
 /**
  * Build Wordle stats from the data
@@ -86,29 +108,29 @@ plays:`;
   return resultStr;
 }
 
-const statsBtn = document.getElementById('BuildWordleStats');
-if (statsBtn) {
-  statsBtn.addEventListener('click', async () => {
-    const fileHandle = await window.showOpenFilePicker({
-      types: [
-        {
-          description: 'Text',
-          accept: {
-            'text/plain': ['.txt'],
-          },
-        },
-      ],
-      excludeAcceptAllOption: true,
-      multiple: false,
-    });
-    // console.log(fileHandle);
-    const fileBlob = await fileHandle[0].getFile();
-    const fileText = await fileBlob.text();
-    // console.log(fileText);
-    const resultStr = buildWordleStats(fileText);
-    console.log(resultStr);
-  });
-}
+// const statsBtn = document.getElementById('BuildWordleStats');
+// if (statsBtn) {
+//   statsBtn.addEventListener('click', async () => {
+//     const fileHandle = await window.showOpenFilePicker({
+//       types: [
+//         {
+//           description: 'Text',
+//           accept: {
+//             'text/plain': ['.txt'],
+//           },
+//         },
+//       ],
+//       excludeAcceptAllOption: true,
+//       multiple: false,
+//     });
+//     // console.log(fileHandle);
+//     const fileBlob = await fileHandle[0].getFile();
+//     const fileText = await fileBlob.text();
+//     // console.log(fileText);
+//     const resultStr = buildWordleStats(fileText);
+//     console.log(resultStr);
+//   });
+// }
 
 class play {
   constructor(number, guessArray, result) {
@@ -117,3 +139,5 @@ class play {
     this.result = result;
   }
 }
+
+buildWordleStatsNode();
