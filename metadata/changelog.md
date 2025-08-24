@@ -1,11 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-08-23
+last_modified_at: 2025-08-24
 permalink: /changelog
 ---
 
-## 2025-08-23
+## 2025-08-24
+
+### Added
+
+- HTAccess file. Using [Evil Genius's tutorial on writing them to block bots](https://evilgeniuschronicles.org/posts/2024/04/15/blockin-bots-with-eleventy/)
 
 ### Modified
 
