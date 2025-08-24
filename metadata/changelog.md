@@ -19,6 +19,8 @@ permalink: /changelog
 - Fixed duplicated CSS properties
 - Made the main image fetch priority high
 - Update Wordle stats
+- Converted Wordle stats to run through command line
+- Try to stop impossible moves on Snake game
 
 ## 2025-08-03
 

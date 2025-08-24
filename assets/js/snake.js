@@ -19,6 +19,7 @@ let xv = 0;
 let yv = 0; //velocity
 let trail = [];
 let tail = 5;
+let xy = 0;
 
 function game() {
   px += xv;
@@ -63,18 +64,17 @@ function game() {
 }
 
 function keyPush(evt) {
-  //console.log('keycode', evt.keyCode);
   const keyCode = evt.keyCode;
-  if (keyCode == 37 || keyCode == 65) {
+  if ((keyCode == 37 || keyCode == 65) && xv != 1) {
     xv = -1;
     yv = 0;
-  } else if (keyCode == 38 || keyCode == 87) {
+  } else if ((keyCode == 38 || keyCode == 87) && yv != 1) {
     xv = 0;
     yv = -1;
-  } else if (keyCode == 39 || keyCode == 68) {
+  } else if ((keyCode == 39 || keyCode == 68) && xv != -1) {
     xv = 1;
     yv = 0;
-  } else if (keyCode == 40 || keyCode == 83) {
+  } else if ((keyCode == 40 || keyCode == 83) && yv != -1) {
     xv = 0;
     yv = 1;
   }
@@ -97,23 +97,47 @@ function mouseClick(evt) {
   const mouseYPos = (evt.clientY - rect.top) / gs;
   const deltaXPos = mouseXPos - px;
   const deltaYPos = mouseYPos - py;
-  if (Math.abs(deltaXPos) > Math.abs(deltaYPos)) {
+  if ((Math.abs(deltaXPos) > Math.abs(deltaYPos))) {
     // moving in x
     if (deltaXPos >= 0) {
-      xv = 1;
-      yv = 0;
+      if (xv === -1) {
+        xv = 0;
+        yv = deltaYPos >= 0? 1 : -1;
+      }
+      else {
+        xv = 1;
+        yv = 0;
+      }
     } else {
-      xv = -1;
-      yv = 0;
+      if (xv === 1) {
+        xv = 0;
+        yv = deltaYPos >= 0? 1 : -1;
+      }
+      else {
+        xv = -1;
+        yv = 0;
+      }
     }
   } else {
     // moving in y
     if (deltaYPos >= 0) {
-      xv = 0;
-      yv = 1;
+      if (yv === -1) {
+        xv = deltaXPos >= 0? 1 : -1;
+        yv = 0;
+      }
+      else {
+        xv = 0;
+        yv = 1;
+      }
     } else {
-      xv = 0;
-      yv = -1;
+      if (yv === 1) {
+        xv = deltaXPos >= 0? 1 : -1;
+        yv = 0;
+      }
+      else {
+        xv = 0;
+        yv = -1;
+      }
     }
   }
 }
