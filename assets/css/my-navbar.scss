@@ -93,7 +93,7 @@
     font-family: inherit;
     text-decoration: none;
     text-align: center;
-    display: inline-block;
+    // display: inline-block;
     font: inherit;
     display: inline-flex;
     align-items: center;
@@ -113,7 +113,7 @@
     transform: rotateX(-90deg);
     transform-origin: top center;
     opacity: 0.3;
-    transition: 280ms all ease-out;
+    //transition: 280ms all ease-out;
     height: 0;
     visibility: hidden;
     transition: 280ms all 120ms ease-out;

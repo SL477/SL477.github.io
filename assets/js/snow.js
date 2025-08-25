@@ -7,7 +7,7 @@ function snow() {
   snowHolder.ariaHidden = true;
   for (let i = 0; i < 12; i++) {
     const flake = document.createElement('div');
-    flake.style.color = 'white';
+    // flake.style.color = 'white';
     flake.className = 'snowflake';
     const inner = document.createElement('div');
     inner.className = 'snowflake-inner';
@@ -18,7 +18,6 @@ function snow() {
   main.appendChild(snowHolder);
 }
 
-const now = new Date();
-if (now.getMonth() == 11) {
+if (new Date().getMonth() == 11) {
   snow();
 }

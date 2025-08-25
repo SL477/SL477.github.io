@@ -1,0 +1,10 @@
+---
+permalink: /.htaccess
+---
+
+RewriteEngine on
+RewriteBase /
+
+# block "AI" bots
+RewriteCond %{HTTP_USER_AGENT} ({%- for robot in site.data.robots -%}{{robot}}{% unless forloop.last %}|{% endunless %}{%- endfor -%}) [NC]
+RewriteRule ^ – [F]

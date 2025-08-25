@@ -7,7 +7,8 @@
       "default",
       {
         "ignore": [
-          "meta[name=theme-color]"
+          "meta[name=theme-color]",
+          "img[fetchpriority]"
         ]
       }
     ],
@@ -34,10 +35,13 @@
           "background-color: light-dark(#000, #fff)",
           "color: light-dark(#fff, #000)",
           "color: light-dark(#000, #fff)",
-          "color: light-dark(blue, #2a7ae2)"
+          "color: light-dark(blue, #2a7ae2)",
+          "color: light-dark(#015ed8, #559bf7)",
+          "color: light-dark(#015ed8, #2a7ae2)"
         ]
       }
     ],
-    "manifest-is-valid": "off"
+    "manifest-is-valid": "off",
+    "apple-touch-icons": "off"
   }
 }

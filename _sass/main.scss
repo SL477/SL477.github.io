@@ -308,6 +308,8 @@ td {
   animation-name: snowflakes-shake;
   animation-duration: 3s;
   animation-timing-function: ease-in-out;
+  color: #eef;
+  background-color: black;
 }
 
 @keyframes snowflakes-fall {

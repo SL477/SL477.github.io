@@ -37,6 +37,10 @@ function startGame() {
   ballY = 40;
   vballX = 4;
   vballY = 4;
+
+  myGameArea.canvas.onclick = (ev) => {
+    playerY = ev.clientY;
+  };
 }
 
 function resetBall() {

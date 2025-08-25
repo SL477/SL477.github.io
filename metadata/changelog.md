@@ -1,9 +1,27 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-08-03
+last_modified_at: 2025-08-25
 permalink: /changelog
 ---
+
+## 2025-08-25
+
+### Added
+
+- HTAccess file. Using [Evil Genius's tutorial on writing them to block bots](https://evilgeniuschronicles.org/posts/2024/04/15/blockin-bots-with-eleventy/)
+
+### Modified
+
+- Lazy load bottom images
+- Fixed Exorcism image
+- Fixed issue with snow
+- Fixed duplicated CSS properties
+- Made the main image fetch priority high
+- Update Wordle stats
+- Converted Wordle stats to run through command line
+- Try to stop impossible moves on Snake game
+- Try to sort out the pong game for mobile
 
 ## 2025-08-03
 
