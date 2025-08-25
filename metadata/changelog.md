@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-08-24
+last_modified_at: 2025-08-25
 permalink: /changelog
 ---
 
-## 2025-08-24
+## 2025-08-25
 
 ### Added
 
@@ -21,6 +21,7 @@ permalink: /changelog
 - Update Wordle stats
 - Converted Wordle stats to run through command line
 - Try to stop impossible moves on Snake game
+- Try to sort out the pong game for mobile
 
 ## 2025-08-03
 
