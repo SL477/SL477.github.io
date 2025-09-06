@@ -46,3 +46,6 @@
 - tag: 'Fiction'
   background: orange
   colour: black
+- tag: 'Trench-Crusade'
+  background: brown
+  colour: white
