@@ -43,3 +43,6 @@
 - tag: 'Doctor-Who'
   background: '#333877'
   colour: white
+- tag: 'Fiction'
+  background: orange
+  colour: black
