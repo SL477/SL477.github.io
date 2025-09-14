@@ -1,16 +1,17 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-09-09
+last_modified_at: 2025-09-14
 permalink: /changelog
 ---
 
-## 2025-09-09
+## 2025-09-14
 
 ### Added
 
 - Agents.md from [rossabaker's no-agents](https://codeberg.org/rossabaker/no-agents.md/).
 - LLMS.txt from [llms txt.org](https://llmstxt.org/).
+- Social.org from [org social](https://github.com/tanrax/org-social/)
 
 ## 2025-08-25
 
