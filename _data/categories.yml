@@ -40,6 +40,12 @@
 - tag: Meta
   background: greenyellow
   colour: black
-- tag: 'Doctor Who'
+- tag: 'Doctor-Who'
   background: '#333877'
+  colour: white
+- tag: 'Fiction'
+  background: orange
+  colour: black
+- tag: 'Trench-Crusade'
+  background: brown
   colour: white

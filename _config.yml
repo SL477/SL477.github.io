@@ -41,7 +41,7 @@ author:
 
 show_excerpts: true
 show_comments: false
-show_story: true
+show_story: false
 
 # Build settings
 markdown: kramdown

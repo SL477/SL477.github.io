@@ -1,0 +1,24 @@
+---
+title: Social
+last_modified_at: 2025-09-14
+permalink: /social.org
+---
+
+#+TITLE: Tom Fishwick's Blog
+#+NICK: Link477
+#+DESCRIPTION: {{ site.description }}
+#+AVATAR: {{ site.site_url }}{{ site.logo }}
+#+LINK: {{ site.site_url }}
+
+* Posts
+
+{%- for post in site.notes -%}
+**
+:PROPERTIES:
+:ID: {{ post.date | date_to_xmlschema }}
+:LANG: en
+:END:
+
+{{ post.content | markdownify | strip_html }}
+
+{%- endfor -%}
