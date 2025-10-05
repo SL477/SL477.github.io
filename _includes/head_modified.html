@@ -41,6 +41,7 @@
   <meta name="twitter:image" content="{{ site.logo }}"/>
   <meta name="twitter:description" content="{{ site.description }}"/>
   <meta name="twitter:url" content="{{ page.url | absolute_url}}"/>
+  <meta name="twitter:dnt" content="on"/>
   {%- if site.twitter_username -%}
   <meta name="twitter:creator" content="@{{ site.twitter_username }}"/>
   {%- endif -%}
@@ -53,4 +54,7 @@
   <link rel="alternate" type="application/json+oembed" href="/oembed.json" title="Toms oEmbed Profile"/>
   <!-- Blog roll-->
   <link rel="blogroll" type="application/xml" title="Blogroll" href="/blogroll.xml" />
+  <!-- Facebook instant articles-->
+  <meta property="op:markup_version" content="v1.0"/>
+  <meta property="fb:article_style" content="myarticlestyle"/>
 </head>

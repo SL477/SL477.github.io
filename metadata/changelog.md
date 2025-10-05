@@ -1,9 +1,18 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-09-14
+last_modified_at: 2025-10-05
 permalink: /changelog
 ---
+
+## 2025-10-05
+
+### Modified
+
+- Updated Wordle stats
+- Updated Robots.txt
+- Added Twitter don't track
+- Added Facebook instant articles support. From [github.com/joshbuchea/HEAD](https://github.com/joshbuchea/HEAD)
 
 ## 2025-09-14
 

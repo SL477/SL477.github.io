@@ -25,6 +25,7 @@
 - Cotoyogi
 - Crawlspace
 - Datenbank Crawler
+- DeepSeekBot
 - Devin
 - Diffbot
 - DuckAssistBot
@@ -55,6 +56,7 @@
 - Meta-ExternalAgent
 - meta-externalfetcher
 - Meta-ExternalFetcher
+- meta-webindexer
 - MistralAI-User
 - MistralAI-User/1.0
 - MyCentralAIScraperBot
@@ -82,6 +84,7 @@
 - SemrushBot-SWA
 - ShapBot
 - Sidetrade indexer bot
+- TerraCotta
 - Thinkbot
 - TikTokSpider
 - Timpibot
