@@ -12,6 +12,7 @@ permalink: /changelog
 - Updated Wordle stats
 - Updated Robots.txt
 - Added Twitter don't track
+- Added Facebook instant articles support. From [github.com/joshbuchea/HEAD](https://github.com/joshbuchea/HEAD)
 
 ## 2025-09-14
 
