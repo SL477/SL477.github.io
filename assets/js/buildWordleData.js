@@ -75,6 +75,10 @@ function buildWordleStats(fileText) {
     stats.numberGames++;
   }
 
+  if (stats.currentStreak > stats.maxStreak) {
+    stats.maxStreak = stats.currentStreak;
+  }
+
   stats.numberWon =
     stats.guess1 +
     stats.guess2 +

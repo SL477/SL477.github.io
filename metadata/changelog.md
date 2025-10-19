@@ -1,9 +1,16 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-10-05
+last_modified_at: 2025-10-19
 permalink: /changelog
 ---
+
+## 2025-10-19
+
+### Modified
+
+- Fixed issue with BuildWordleStats
+- Updated Wordle Stats
 
 ## 2025-10-05
 
