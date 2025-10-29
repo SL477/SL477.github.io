@@ -5,7 +5,7 @@ last_modified_at: 2025-10-29
 permalink: /changelog
 ---
 
-## TBC
+## 2025-10-29
 
 ### Modified
 
