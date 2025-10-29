@@ -3,13 +3,16 @@
 - Ai2Bot-Dolma
 - aiHitBot
 - Amazonbot
+- amazon-kendra-
 - Andibot
+- Anomura
 - anthropic-ai
 - Applebot
 - Applebot-Extended
 - Awario
 - bedrockbot
 - bigsur.ai
+- Bravebot
 - Brightbot 1.0
 - Bytespider
 - CCBot
@@ -19,6 +22,7 @@
 - Claude-User
 - Claude-Web
 - ClaudeBot
+- Cloudflare-AutoRAG
 - CloudVertexBot
 - cohere-ai
 - cohere-training-data-crawler
@@ -40,6 +44,7 @@
 - Google-CloudVertexBot
 - Google-Extended
 - Google-Firebase
+- Google-NotebookLM
 - GoogleAgent-Mariner
 - GoogleOther
 - GoogleOther-Image
