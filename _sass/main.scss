@@ -191,7 +191,17 @@ fieldset {
   border: transparent;
   display: inline-block;
   text-align: center;
+  text-decoration: none;
   vertical-align: middle;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.85);
+  }
+
+  &:active {
+    filter: brightness(1);
+  }
 }
 
 .btn-primary {

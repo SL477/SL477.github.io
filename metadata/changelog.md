@@ -11,6 +11,7 @@ permalink: /changelog
 
 - Added the bundle command to NPM Scripts
 - Fixed Twitter image
+- Fixed button CSS
 
 ## 2025-10-19
 
