@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-10-19
+last_modified_at: 2025-10-29
 permalink: /changelog
 ---
+
+## TBC
+
+### Modified
+
+- Added the bundle command to NPM Scripts
 
 ## 2025-10-19
 
