@@ -1,9 +1,18 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-10-19
+last_modified_at: 2025-10-29
 permalink: /changelog
 ---
+
+## 2025-10-29
+
+### Modified
+
+- Added the bundle command to NPM Scripts
+- Fixed Twitter image
+- Fixed button CSS
+- Updated Robots.txt
 
 ## 2025-10-19
 
