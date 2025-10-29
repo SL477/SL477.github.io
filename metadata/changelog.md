@@ -10,6 +10,7 @@ permalink: /changelog
 ### Modified
 
 - Added the bundle command to NPM Scripts
+- Fixed Twitter image
 
 ## 2025-10-19
 
