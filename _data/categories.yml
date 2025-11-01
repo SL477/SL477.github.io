@@ -49,3 +49,6 @@
 - tag: 'Trench-Crusade'
   background: brown
   colour: white
+- tag: Baking
+  background: greenyellow
+  colour: black
