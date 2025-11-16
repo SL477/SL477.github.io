@@ -1,9 +1,16 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-10-29
+last_modified_at: 2025-11-16
 permalink: /changelog
 ---
+
+## 2025-11-16
+
+### Modified
+
+- Updated NavBar to use the [menu element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/menu) rather than UL.
+- Updated triangle on the navbar to change with the UI mode too.
 
 ## 2025-10-29
 
