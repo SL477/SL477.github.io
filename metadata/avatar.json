@@ -1,0 +1,12 @@
+---
+permalink: .well-known/avatar
+---
+
+{
+    "links": [
+        "rel": "http:webfinger.net/rel/avatar",
+        "type": "image/png",
+        "href": "{{ site.site_url }}/assets/images/icons/android-chrome-192x192.png",
+        "sizes": "192x192"
+    ]
+}

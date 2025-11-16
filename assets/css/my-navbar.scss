@@ -44,7 +44,7 @@
     transition: max-height 0.3s ease-in-out;
     overflow: hidden;
 
-    ul {
+    ul, menu {
       list-style: none;
     }
   }
@@ -101,14 +101,14 @@
     &:before {
       content: '';
       border: 0.35rem solid transparent;
-      border-top-color: black;
+      border-top-color: light-dark(black, white);
       margin-left: 0.25em;
       transform: rotate(-90deg);
     }
   }
 
   .dropdown_menu {
-    box-shadow: 0 0.15em 0.25em rgba($color: black, $alpha: 0.25);
+    box-shadow: 0 0.15em 0.25em rgba($color:black, $alpha: 0.25);
     border-radius: 4px;
     transform: rotateX(-90deg);
     transform-origin: top center;
