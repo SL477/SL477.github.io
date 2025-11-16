@@ -7,6 +7,10 @@ permalink: /changelog
 
 ## 2025-11-16
 
+### Added
+
+- [.well-known/avatar.json](/.well-known/avatar.json) idea from [shakspr.mobi](https://shkspr.mobi/blog/2025/10/alpha-launch-well-known-avatar-feedback-wanted/).
+
 ### Modified
 
 - Updated NavBar to use the [menu element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/menu) rather than UL.
