@@ -1,15 +1,21 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-11-23
+last_modified_at: 2025-11-25
 permalink: /changelog
 ---
 
-## 2025-11-23
+## 2025-11-25
+
+### Added
+
+- Frontend Mentor Profile card
+- Blank layout
 
 ### Modified
 
 - Updated Robots.txt
+- Added rule for custom CSS
 
 ## 2025-11-16
 
