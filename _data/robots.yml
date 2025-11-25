@@ -2,8 +2,10 @@
 - AI2Bot
 - Ai2Bot-Dolma
 - aiHitBot
+- AmazonBuyForMe
+- atlassian-bot
+- amazon-kendra
 - Amazonbot
-- amazon-kendra-
 - Andibot
 - Anomura
 - anthropic-ai
@@ -14,6 +16,7 @@
 - bigsur.ai
 - Bravebot
 - Brightbot 1.0
+- BuddyBot
 - Bytespider
 - CCBot
 - ChatGPT Agent
@@ -51,12 +54,15 @@
 - GoogleOther-Video
 - GPTBot
 - iaskspider/2.0
+- IbouBot
 - ICC-Crawler
 - ImagesiftBot
 - img2dataset
 - ISSCyberRiskCrawler
 - Kangaroo Bot
+- KlaviyoAIBot
 - LinerBot
+- Linguee Bot
 - meta-externalagent
 - Meta-ExternalAgent
 - meta-externalfetcher
@@ -66,6 +72,7 @@
 - MistralAI-User/1.0
 - MyCentralAIScraperBot
 - netEstate Imprint Crawler
+- NotebookLM
 - NovaAct
 - OAI-SearchBot
 - omgili

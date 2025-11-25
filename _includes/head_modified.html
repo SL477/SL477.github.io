@@ -11,6 +11,12 @@
   <noscript><link rel="stylesheet" href="/assets/css/styles.css"/></noscript>
   <link rel="stylesheet" media="print" href="/assets//css/print.css"/>
   <script src="/assets/js/dark_mode_picker.js" async="async"></script>
+
+  {%- if page.css_file -%}
+  <link rel="preload" href="/assets/css/{{ page.css_file }}" as="style" onload="this.rel='stylesheet'"/>
+  <noscript><link rel="stylesheet" href="/assets/css/{{ page.css_file }}"/></noscript>
+  {%- endif -%}
+
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
