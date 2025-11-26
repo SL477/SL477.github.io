@@ -26,12 +26,13 @@ layout: default_modified
       >
       {%- endif -%} {%- if page.author -%} •
       <span itemprop="author" itemscope itemtype="http://schema.org/Person"
-        ><span
+        ><a
           class="p-author h-card"
           href="{{ site.site_url }}"
           itemprop="name"
+          rel="author"
           >{{ page.author }}</span
-        ></span
+        ></a
       >
       {%- endif -%} {%- if page.tags != empty -%}
       <span> • Tags: </span>

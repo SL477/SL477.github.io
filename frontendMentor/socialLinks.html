@@ -1,0 +1,25 @@
+---
+layout: plain_layout
+title: Social Links
+last_modified_at: 2025-11-26
+css_file: socialLinks.css
+---
+<!-- For Frontend Mentor -->
+
+<div class="sl-container">
+    <picture class="sl-img">
+        <source srcset="/assets/images/tom.webp" type="image/webp">
+        <source srcset="/assets/images/tom.jpg" type="image/jpg">
+        <img src="/assets/images/tom.jpg" alt="Tom." width="100" height="100" fetchpriority="high">
+    </picture>
+
+    <h1>Tom Fishwick</h1>
+    <p>London, United Kingdom</p>
+    <p>{{ site.description }}</p>
+    <ul>
+        {%- if site.github_username -%}<li><a href="https://github.com/{{ site.github_username| cgi_escape | escape }}" rel="me">GitHub</a></li>{%- endif -%}
+        {%- if site.frontendmentor_link -%}<li><a href="{{ site.frontendmentor_link }}" rel="me">Frontend Mentor</a></li>{%- endif -%}
+        {%- if site.linkedin_username -%}<li><a href="https://www.linkedin.com/in/{{ site.linkedin_username| cgi_escape | escape }}" rel="me">LinkedIn</a></li>{%- endif -%}
+        {%- if site.twitter_username -%}<li><a href="https://www.twitter.com/{{ site.twitter_username| cgi_escape | escape }}" rel="me">Twitter</a></li>{%- endif -%}
+    </ul>
+</div>
