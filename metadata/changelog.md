@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-11-25
+last_modified_at: 2025-11-27
 permalink: /changelog
 ---
+
+## 2025-11-27
+
+### Added
+
+- [Converter to/from Base64 and atto-light-years](/pages/converter.html)
 
 ## 2025-11-25
 

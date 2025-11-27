@@ -1,0 +1,71 @@
+---
+layout: page
+title: Converter
+last_modified_at: 2025-11-27
+---
+
+<label for="conversion">Conversion:
+    <select id="conversion" name="conversion" class="form-control">
+        <option value="meterToAttoLightYear">Meter to Atto-Light-Year</option>
+        <option value="plainToBase64">To Base 64</option>
+        <option value="base64ToPlain">From Base 64</option>
+    </select>
+</label>
+
+<label for="meter" id="meterLbl">Meter(s):
+    <input class="form-control" type="number" id="meter" name="meter" placeholder="1"/>
+</label>
+
+<label for="input" id="inputLbl">Input:
+    <textarea id="input" class="form-control"></textarea>
+</label>
+
+<button class="btn btn-primary" type="button" id="convert">Convert</button>
+
+<output for="meter input" class="form-control" id="output"></output>
+
+<script>
+const convertBtn = document.getElementById('convert');
+const outputCtl = document.getElementById('output');
+const meterInp = document.getElementById('meter');
+const conversionSel = document.getElementById('conversion');
+const inputInp = document.getElementById('input');
+const inputLbl = document.getElementById('inputLbl');
+const meterLbl = document.getElementById('meterLbl');
+
+conversionSel.addEventListener('change', (e) => {
+    switch (e.target.value) {
+        case 'meterToAttoLightYear':
+            inputLbl.style.display = 'none';
+            meterLbl.style.display = '';
+            break;
+        case 'base64ToPlain':
+        case 'plainToBase64':
+            inputLbl.style.display = '';
+            meterLbl.style.display = 'none';
+            break;
+    }
+});
+
+convertBtn.addEventListener('click', () => {
+    switch (conversionSel.value) {
+        case 'meterToAttoLightYear':
+            let startMeter = meterInp.value? meterInp.value : '1';
+            startMeter = Number.parseFloat(startMeter) / 0.009460730472580800;
+            outputCtl.value = new Intl.NumberFormat('en-GB', {maximumSignificantDigits: 5}).format(startMeter);
+            break;
+        case 'plainToBase64':
+            let plainText = inputInp.value? inputInp.value : '';
+            plainText = btoa(plainText); //btoa(new TextEncoder().encode(plainText));
+            outputCtl.value = plainText;
+            break;
+        case 'base64ToPlain':
+            let base64Text = inputInp.value? inputInp.value : '';
+            base64Text = atob(base64Text);
+            outputCtl.value = base64Text;
+            break;
+    }
+});
+
+conversionSel.dispatchEvent(new Event('change'));
+</script>
