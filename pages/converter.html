@@ -1,0 +1,31 @@
+---
+layout: page
+title: Converter
+last_modified_at: 2025-11-27
+---
+
+<label for="conversion">Conversion:
+    <select id="conversion" name="conversion" class="form-control">
+        <option value="meterToAttoLightYear">Meter to Atto-Light-Year</option>
+    </select>
+</label>
+
+<label for="meter">Meter(s):
+    <input class="form-control" type="number" id="meter" name="meter" placeholder="1"/>
+</label>
+
+<button class="btn btn-primary" type="button" id="convert">Convert</button>
+
+<output for="meter" class="form-control" id="output"></output>
+
+<script>
+const convertBtn = document.getElementById('convert');
+const outputCtl = document.getElementById('output');
+const meterInp = document.getElementById('meter');
+
+convertBtn.addEventListener('click', () => {
+    let startMeter = meterInp.value? meterInp.value : '1';
+    startMeter = Number.parseFloat(startMeter) / 0.009460730472580800;
+    outputCtl.value = new Intl.NumberFormat('en-GB', {maximumSignificantDigits: 5}).format(startMeter);
+});
+</script>
