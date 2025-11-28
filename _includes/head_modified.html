@@ -17,6 +17,10 @@
   <noscript><link rel="stylesheet" href="/assets/css/{{ page.css_file }}"/></noscript>
   {%- endif -%}
 
+  {%- if page.js_file -%}
+  <script src="/assets/js/{{ page.js_file.path }}"{% if page.js_file.async %} async="async"{% endif %} {% if page.js_file.defer %} defer="defer"{% endif %}></script>
+  {%- endif -%}
+
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
