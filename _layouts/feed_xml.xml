@@ -31,11 +31,11 @@
     <div xmlns="http://www.w3.org/1999/xhtml">
     {%- if post.image -%}
     <figure>
-      <img src="{{ post.image | absolute_url }}" alt="{{ post.photo_alt}}" class="u-photo" height="{{ post.image_height }}" width="{{ post.image_width }}" />
+      <img src="{{ post.image.path | absolute_url }}" alt="{{ post.image.alt}}" class="u-photo" height="{{ post.image.height }}" width="{{ post.image.width }}" />
       <figcaption>
         <em>
           {%- if post.photo_caption -%} {{ post.photo_caption }} {%- else -%} {{
-          post.photo_alt }} {%- endif -%}
+          post.image.alt }} {%- endif -%}
         </em>
       </figcaption>
     </figure>
@@ -49,8 +49,8 @@
       <category term="{{ tag | xml_escape }}" />
     {%- endfor -%}
     {%- if post.image -%}
-      <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="{{ post.image | absolute_url | xml_escape }}" />
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" medium="image" url="{{ post.image | absolute_url | xml_escape }}" />
+      <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="{{ post.image.path | absolute_url | xml_escape }}" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" medium="image" url="{{ post.image.path | absolute_url | xml_escape }}" />
     {%- endif -%}
   </entry>
   {%- endfor -%}

@@ -5,10 +5,11 @@ tags: Data-Science
 excerpt: A brief summary of what I did in my university projects
 author: Tom Fishwick
 last_modified_at: 2025-03-16
-image: /assets/images/qcp.JPG
-photo_alt: QCP Web App
-image_width: 951
-image_height: 783
+image:
+    path: /assets/images/qcp.JPG
+    alt: QCP Web App
+    width: 951
+    height: 783
 ---
 
 I am now (hopefully) finished at university.

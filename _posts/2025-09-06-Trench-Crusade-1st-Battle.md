@@ -3,10 +3,6 @@ title: Trench Crusade 1st Battle
 layout: post
 tags: 'Trench-Crusade'
 author: Tom Fishwick
-# image: /assets/images/sitemap.jpg
-# image_height: 493
-# image_width: 740
-# photo_alt: Sitemap screenshot, showing the links between the pages.
 last_modified_at: 2025-09-06
 ---
 

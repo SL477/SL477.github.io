@@ -3,10 +3,11 @@ title: React Terminal
 layout: post
 tags: React Typescript
 author: Tom Fishwick
-image: /assets/images/ReactTerminal.jpg
-image_width: 729
-image_height: 340
-photo_alt: React Terminal
+image:
+  path: /assets/images/ReactTerminal.jpg
+  width: 729
+  height: 340
+  alt: React Terminal
 last_modified_at: 2025-01-11
 ---
 

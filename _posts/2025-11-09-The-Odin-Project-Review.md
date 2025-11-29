@@ -3,10 +3,6 @@ title: The Odin Project Review
 layout: post
 tags: Programming
 author: Tom Fishwick
-# image: /assets/images/creamHorns.jpg
-# image_height: 500
-# image_width: 454
-# photo_alt: 
 last_modified_at: 2025-11-09
 ---
 

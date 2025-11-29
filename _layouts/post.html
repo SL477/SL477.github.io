@@ -46,16 +46,16 @@ layout: default_modified
     {%- if page.image -%}
     <figure>
       <img
-        src="{{ page.image }}"
-        alt="{{ page.photo_alt}}"
+        src="{{ page.image.path }}"
+        alt="{{ page.image.alt}}"
         class="u-photo"
-        width="{{ page.image_width }}"
-        height="{{ page.image_height }}"
+        width="{{ page.image.width }}"
+        height="{{ page.image.height }}"
       />
       <figcaption>
         <em>
           {%- if page.photo_caption -%} {{ page.photo_caption }} {%- else -%} {{
-          page.photo_alt }} {%- endif -%}
+          page.image.alt }} {%- endif -%}
         </em>
       </figcaption>
     </figure>
