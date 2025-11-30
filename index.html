@@ -6,9 +6,10 @@ layout: home_modified
 title: Home
 last_modified_at: 2025-07-20
 is_home: true
+js_file:
+  path: snow.js
+  async: true
 ---
-
-<script src="/assets/js/snow.js" async></script>
 
 <h1 class="centertext">Thomas Fishwick</h1>
 
@@ -87,14 +88,10 @@ is_home: true
       <source
         srcset="/assets/images/{{ project.picture }}.webp"
         type="image/webp"
-        width="{{ project.picture_width }}"
-        height="{{ project.picture_height }}"
       />
       <source
         srcset="/assets/images/{{ project.picture }}.jpg"
         type="image/jpeg"
-        width="{{ project.picture_width }}"
-        height="{{ project.picture_height }}"
       />
       <img
         src="/assets/images/{{ project.picture }}.jpg"
@@ -148,14 +145,10 @@ is_home: true
       <source
         srcset="/assets/images/{{cert.src}}.webp"
         type="image/webp"
-        width="150"
-        height="150"
       />
       <source
         srcset="/assets/images/{{cert.src}}.png"
         type="image/png"
-        width="150"
-        height="150"
       />
       <img
         src="/assets/images/{{cert.src}}.png"

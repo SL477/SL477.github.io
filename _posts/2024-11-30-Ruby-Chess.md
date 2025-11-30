@@ -3,10 +3,11 @@ title: Ruby Chess
 layout: post
 tags: Ruby
 author: Tom Fishwick
-image: /assets/images/rubyChess.jpg
-image_width: 273
-image_height: 277
-photo_alt: Chess Game
+image:
+    path: /assets/images/rubyChess.jpg
+    width: 273
+    height: 277
+    alt: Chess Game
 last_modified_at: 2025-03-16
 ---
 

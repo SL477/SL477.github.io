@@ -3,10 +3,11 @@ title: Farewell to Railway
 layout: post
 tags: Hosting Python Typescript
 author: Tom Fishwick
-image: /assets/images/ChartTheStockMarket.jpg
-image_width: 710
-image_height: 296
-photo_alt: Chart the Stock Market
+image:
+    path: /assets/images/ChartTheStockMarket.jpg
+    width: 710
+    height: 296
+    alt: Chart the Stock Market
 last_modified_at: 2025-03-16
 ---
 

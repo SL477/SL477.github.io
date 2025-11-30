@@ -1,7 +1,91 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  {%- seo -%}
+  <!-- SEO stuff -->
+  {% if page.title %}
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta property="og:title" content="{{ page.title }}"/>
+  <meta name="twitter:title" content="{{ page.title }}" />
+  {% endif %}
+  <meta name="generator" content="Jekyll v{{ jekyll.version }}"/>
+  {% if site.author.name %}
+  <meta name="author" content="{{ site.author.name }}" />
+  {% endif %}
+  <meta property="og:locale" content="{{ site.lang }}"/>
+  {% if page.description %}
+  <meta name="description" content="{{ page.description | strip_html | normalize_whitespace }}"/>
+  <meta name="twitter:description" property="og:description" content="{{ page.description | strip_html | normalize_whitespace }}" />
+  {% elsif page.excerpt %}
+  <meta name="description" content="{{ page.excerpt | strip_html | normalize_whitespace }}"/>
+  <meta name="twitter:description" property="og:description" content="{{ page.excerpt | strip_html | normalize_whitespace }}" />
+  {% else %}
+  <meta name="description" content="{{ site.description | strip_html | normalize_whitespace }}"/>
+  <meta name="twitter:description" property="og:description" content="{{ site.description | strip_html | normalize_whitespace }}" />
+  {% endif %}
+  <link rel="canonical" href="{{page.url | absolute_url }}"/>
+  <meta property="og:url" content="{{ page.url | absolute_url }}"/>
+  <meta name="twitter:url" content="{{ page.url | absolute_url}}"/>
+  {% if site.title %}
+  <meta property="og:site_name" content="{{ site.title }}"/>
+  {% endif %}
+
+  {% if page.image %}
+    <meta property="og:image" content="{{ page.image.path | absolute_url }}" />
+    {% if page.image.height %}
+      <meta property="og:image:height" content="{{ page.image.height }}" />
+    {% endif %}
+    {% if page.image.width %}
+      <meta property="og:image:width" content="{{ page.image.width }}" />
+    {% endif %}
+    {% if page.image.alt %}
+      <meta property="og:image:alt" content="{{ page.image.alt }}" />
+      <meta name="twitter:image:alt" content="{{ page.image.alt }}" />
+    {% endif %}
+    <meta name="twitter:card" content="{{ page.twitter.card | default: site.twitter.card | default: "summary_large_image" }}" />
+    <meta name="twitter:image" content="{{ page.image.path | absolute_url }}" />
+  {% else %}
+    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="{{ site.logo | absolute_url }}"/>
+    <meta property="og:image:width" content="{{ site.logo_width }}"/>
+    <meta property="og:image:height" content="{{ site.logo_height }}"/>
+    <meta property="og:image:alt" content="{{ site.logo_alt }}"/>
+    <meta name="twitter:image" content="{{ site.logo | absolute_url }}"/>
+  {% endif %}
+
+  {% if page.date %}
+  <meta property="og:type" content="article" />
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+  {% else %}
+  <meta property="og:type" content="website" />
+  {% endif %}
+  <meta name="twitter:description" content="{{ site.description }}"/>
+  <meta name="twitter:dnt" content="on"/>
+  {%- if site.twitter_username -%}
+  <meta name="twitter:creator" content="@{{ site.twitter_username }}"/>
+  {%- endif -%}
+  <!-- For Slack's metadata-->
+  <link rel="alternate" type="application/json+oembed" href="/oembed.json" title="Toms oEmbed Profile"/>
+  <!-- Blog roll-->
+  <link rel="blogroll" type="application/xml" title="Blogroll" href="/blogroll.xml" />
+  <!-- Facebook instant articles-->
+  <meta property="op:markup_version" content="v1.0"/>
+  <meta property="fb:article_style" content="myarticlestyle"/>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": {% if page.layout == 'post' %}"BlogPosting"{% else %}"WebSite"{% endif %},
+      "author": {"@type":"Person","name":"{{ site.author.name }}"},
+      "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+      {%- if page.date %}"datePublished": "{{ page.date | date_to_xmlschema }}",{%- endif %}
+      "description": {% if page.description %}"{{ page.description | strip_html | normalize_whitespace }}"{% elsif page.excerpt %}"{{ page.excerpt | strip_html | normalize_whitespace }}"{% else %}"{{ site.description | strip_html | normalize_whitespace }}"{% endif %},
+      "headline": "{{ page.title }}",
+      {%- if page.layout == 'post' %}"mainEntityOfPage": {"@type": "WebPage","@id": "{{ page.url | absolute_url}}}",{% endif %}
+      "publisher": {"@type": "Organization","logo": "{{ site.logo | absolute_url }}"},
+      "name": "{{ site.author.name }}",
+      "url": "{{ site.url }}"
+    }
+  </script>
+
   <!-- CSS only -->
   <link rel="preconnect" href="/assets/css/my-navbar.css"/>
   <link rel="stylesheet" href="/assets/css/my-navbar.css"/>
@@ -17,16 +101,18 @@
   <noscript><link rel="stylesheet" href="/assets/css/{{ page.css_file }}"/></noscript>
   {%- endif -%}
 
+  {%- if page.js_file -%}
+  <script src="/assets/js/{{ page.js_file.path }}"{% if page.js_file.async %} async="async"{% endif %} {% if page.js_file.defer %} defer="defer"{% endif %}></script>
+  {%- endif -%}
+
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
   {%- endif -%}
-  <link rel="icon" href="/assets/images/link477.png"/>
-  <meta name="facebook-domain-verification" content="wzpmg9812dx4tnuv0mo7m580wp8r75" />
-  <link type="text/plain" rel="author" href="/humans.txt"/>
-  <link rel="meta" type="application/rdf+xml" title="FOAF" href="/foaf.rdf"/>
+  
   <meta name="color-scheme" content="light dark"/>
   <!--Icons-->
+  <link rel="icon" href="/assets/images/link477.png"/>
   <link rel="icon" href="/assets/images/icons/favicon-16x16.png" sizes="16x16" type="image/png"/>
   <link rel="icon" href="/assets/images/icons/favicon-32x32.png" sizes="32x32" type="image/png"/>
   <link rel="apple-touch-icon" href="/assets/images/icons/apple-touch-icon.png" sizes="180x180"/>
@@ -39,28 +125,18 @@
   {% endif %}
   <meta name="theme-color" content="#ffffff"/>
   <link rel="mask-icon" href="/assets/images/icons/maskicon.svg" color="#ffffff"/>
+
+  <!--Feeds-->
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom 0.3"/>
+  <link href="{{ site.site_url }}/feed_rss.xml" rel="alternate" title="RSS" type="application/rss+xml"/>
   <link rel="alternate" type="application/json" title="JSON Feed" href="/feed.json" />
-  <meta property="og:image" content="{{ site.logo | absolute_url }}"/>
-  <meta property="og:image:width" content="{{ site.logo_width }}"/>
-  <meta property="og:image:height" content="{{ site.logo_height }}"/>
-  <meta property="og:image:alt" content="{{ site.logo_alt }}"/>
-  <meta name="twitter:image" content="{{ site.logo | absolute_url }}"/>
-  <meta name="twitter:description" content="{{ site.description }}"/>
-  <meta name="twitter:url" content="{{ page.url | absolute_url}}"/>
-  <meta name="twitter:dnt" content="on"/>
-  {%- if site.twitter_username -%}
-  <meta name="twitter:creator" content="@{{ site.twitter_username }}"/>
-  {%- endif -%}
+
+  <!--Misc-->
+  <meta name="facebook-domain-verification" content="wzpmg9812dx4tnuv0mo7m580wp8r75" />
+  <link type="text/plain" rel="author" href="/humans.txt"/>
+  <link rel="meta" type="application/rdf+xml" title="FOAF" href="/foaf.rdf"/>
   <link rel="alternate" href="https://link477.com/" hreflang="x-default" />
-  <link rel="alternate" type="application/atom+xml" href="/feed.xml"/>
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml"/>
   <link rel="webmention" href="https://webmention.io/link477.com/webmention"/>
   <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Link477 Search"/>
-  <!-- For Slack's metadata-->
-  <link rel="alternate" type="application/json+oembed" href="/oembed.json" title="Toms oEmbed Profile"/>
-  <!-- Blog roll-->
-  <link rel="blogroll" type="application/xml" title="Blogroll" href="/blogroll.xml" />
-  <!-- Facebook instant articles-->
-  <meta property="op:markup_version" content="v1.0"/>
-  <meta property="fb:article_style" content="myarticlestyle"/>
 </head>

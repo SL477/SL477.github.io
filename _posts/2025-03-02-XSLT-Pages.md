@@ -3,10 +3,11 @@ title: XSLT Pages
 layout: post
 tags: Meta Programming
 author: Tom Fishwick
-image: /assets/images/sitemap.jpg
-image_height: 493
-image_width: 740
-photo_alt: Sitemap screenshot, showing the links between the pages.
+image:
+  path: /assets/images/sitemap.jpg
+  height: 493
+  width: 740
+  alt: Sitemap screenshot, showing the links between the pages.
 last_modified_at: 2025-03-16
 ---
 

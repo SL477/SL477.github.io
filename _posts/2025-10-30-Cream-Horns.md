@@ -3,10 +3,11 @@ title: Cream Horns
 layout: post
 tags: Baking
 author: Tom Fishwick
-image: /assets/images/creamHorns.jpg
-image_height: 500
-image_width: 454
-photo_alt: Six Cream Horns (basically they look like chocolate filled cornettos with ice cream in them but made out of pastry).
+image: 
+    path: /assets/images/creamHorns.jpg
+    height: 500
+    width: 454
+    alt: Six Cream Horns (basically they look like chocolate filled cornettos with ice cream in them but made out of pastry).
 last_modified_at: 2025-10-30
 ---
 

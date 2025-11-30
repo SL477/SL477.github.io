@@ -17,6 +17,10 @@ body {
   padding: 5px;
   max-width: 426px;
   border-radius: 5%;
+
+  @media screen and (width < 426px) {
+    overflow-x: scroll;
+  }
 }
 
 .card-text {
@@ -32,10 +36,4 @@ body {
   width: auto;
   background-color: #1f3251;
   border-radius: 5%;
-}
-
-@media screen and (width < 426px) {
-  .card {
-    overflow-x: scroll;
-  }
 }

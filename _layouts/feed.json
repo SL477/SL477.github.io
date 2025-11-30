@@ -39,7 +39,7 @@
         "language": "en-GB",
         "tags": {{ post.tags | jsonify }}
         {%- if post.image -%}
-          ,"image": {{ post.image | absolute_url | jsonify }}
+          ,"image": {{ post.image.path | absolute_url | jsonify }}
         {%- endif -%}
       }{% unless forloop.last %},{% endunless %}
       {%- endfor -%}

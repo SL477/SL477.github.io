@@ -3,10 +3,11 @@ title: Trench Crusade 2
 layout: post
 tags: Trench-Crusade
 author: Tom Fishwick
-image: /assets/images/TrenchCrusade.jpg
-image_height: 283
-image_width: 500
-photo_alt: My New Antioch War Band arrayed for battle.
+image:
+    path: /assets/images/TrenchCrusade.jpg
+    height: 283
+    width: 500
+    alt: My New Antioch War Band arrayed for battle.
 last_modified_at: 2025-11-15
 ---
 

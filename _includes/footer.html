@@ -9,11 +9,9 @@
   <picture hidden="hidden">
     <source
       srcset="{{ site.logo_webp }}"
-      height="50"
-      width="50"
       type="image/webp"
     />
-    <source srcset="{{ site.logo }}" height="50" width="50" type="image/png" />
+    <source srcset="{{ site.logo }}" type="image/png" />
     <img
       src="{{ site.logo | relative_url }}"
       alt="{{ site.logo_alt }}"

@@ -1,9 +1,21 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-11-27
+last_modified_at: 2025-11-30
 permalink: /changelog
 ---
+
+## 2025-11-30
+
+### Added
+
+- RSS feed
+
+### Modified
+
+- Swapped Jekyll SEO for own version
+- Updated photo front matter
+- Fixed some of the HTML validation errors
 
 ## 2025-11-27
 

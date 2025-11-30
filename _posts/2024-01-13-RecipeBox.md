@@ -4,6 +4,12 @@ layout: post
 tags: Hosting Typescript
 edited: Changed links
 author: Tom Fishwick
+image:
+    path: /assets/images/RecipeBox.png
+    height: 500
+    width: 677
+    alt: Recipe Box
+last_modified_at: 2025-11-29
 ---
 
 The time finally came when this site got too big and I started moving things.
@@ -15,5 +21,3 @@ To enable it to look like it is still a part of this site, I converted my NavBar
 The recipe box is my first Vite react app. As a user of Create-React-App its nice to see NPM Audit bring back no errors. I'm not sure I noticed any differences in performance, but it is only a one-page app (which I'm sure could be done with pure JavaScript like the NavBar).
 
 Previously the recipe box was a JavaScript class based component (I learnt React from FreeCodeCamp which loved the class based version), before I turned it into a functional component and now it is a TypeScript functional component.
-
-<iframe src="https://link477.com/Link477-React/#/recipeBox/" title="Recipe Box" width="80%" height="500px">
