@@ -1,13 +1,13 @@
-currentStreak: 167
+currentStreak: 168
 guess1: 1
 guess2: 54
 guess3: 267
 guess4: 478
-guess5: 364
+guess5: 365
 guess6: 137
 guessX: 40
-maxStreak: 167
-numberGames: 1346
+maxStreak: 168
+numberGames: 1347
 winPct: 97
 plays:
   - num: 283
@@ -3952,3 +3952,6 @@ plays:
   - num: 1624
     guess: ⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛🟨⬛🟩⬛⬛🟩🟩🟩🟩🟩
     res: 4
+  - num: 1625
+    guess: ⬛⬛⬛⬛⬛🟨⬛⬛⬛⬛🟩🟩⬛⬛🟩🟩🟩⬛⬛🟩🟩🟩🟩🟩🟩
+    res: 5
