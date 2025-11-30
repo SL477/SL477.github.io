@@ -109,12 +109,10 @@
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
   {%- endif -%}
-  <link rel="icon" href="/assets/images/link477.png"/>
-  <meta name="facebook-domain-verification" content="wzpmg9812dx4tnuv0mo7m580wp8r75" />
-  <link type="text/plain" rel="author" href="/humans.txt"/>
-  <link rel="meta" type="application/rdf+xml" title="FOAF" href="/foaf.rdf"/>
+  
   <meta name="color-scheme" content="light dark"/>
   <!--Icons-->
+  <link rel="icon" href="/assets/images/link477.png"/>
   <link rel="icon" href="/assets/images/icons/favicon-16x16.png" sizes="16x16" type="image/png"/>
   <link rel="icon" href="/assets/images/icons/favicon-32x32.png" sizes="32x32" type="image/png"/>
   <link rel="apple-touch-icon" href="/assets/images/icons/apple-touch-icon.png" sizes="180x180"/>
@@ -127,9 +125,17 @@
   {% endif %}
   <meta name="theme-color" content="#ffffff"/>
   <link rel="mask-icon" href="/assets/images/icons/maskicon.svg" color="#ffffff"/>
+
+  <!--Feeds-->
+  <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="Atom 0.3"/>
+  <link href="{{ site.site_url }}/feed_rss.xml" rel="alternate" title="RSS" type="application/rss+xml"/>
   <link rel="alternate" type="application/json" title="JSON Feed" href="/feed.json" />
+
+  <!--Misc-->
+  <meta name="facebook-domain-verification" content="wzpmg9812dx4tnuv0mo7m580wp8r75" />
+  <link type="text/plain" rel="author" href="/humans.txt"/>
+  <link rel="meta" type="application/rdf+xml" title="FOAF" href="/foaf.rdf"/>
   <link rel="alternate" href="https://link477.com/" hreflang="x-default" />
-  <link rel="alternate" type="application/atom+xml" href="/feed.xml"/>
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml"/>
   <link rel="webmention" href="https://webmention.io/link477.com/webmention"/>
   <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Link477 Search"/>

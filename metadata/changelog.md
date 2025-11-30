@@ -5,6 +5,17 @@ last_modified_at: 2025-11-27
 permalink: /changelog
 ---
 
+## 2025-11-30
+
+### Added
+
+- RSS feed
+
+### Modified
+
+- Swapped Jekyll SEO for own version
+- Updated photo front matter
+
 ## 2025-11-27
 
 ### Added
