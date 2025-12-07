@@ -10,6 +10,7 @@ permalink: /changelog
 ### Modifed
 
 - Fixed issues with RSS feed and added to Feeds page
+- Fixed issues with Feed Validator and HTML validator
 
 ## 2025-11-30
 
