@@ -8,7 +8,7 @@ image:
   height: 493
   width: 740
   alt: Sitemap screenshot, showing the links between the pages.
-last_modified_at: 2025-03-16
+last_modified_at: 2025-12-07
 ---
 
 I have updated my Sitemap and Atom feeds to display as though they are HTML. Inspired by the idea of not repeating myself, which I wasn't because generally Jekyll had one copy of this data in the source code, but then two copies in the output.
