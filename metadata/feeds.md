@@ -1,13 +1,14 @@
 ---
 layout: page
 title: Feeds
-last_modified_at: 2025-03-08
+last_modified_at: 2025-12-07
 permalink: /feeds
 ---
 
 These are various feeds:
 
-- [RSS Feed](/feed.xml)
+- [Atom Feed](/feed.xml)
+- [RSS Feed](/feed_rss.xml)
 - [JSON Feed](/feed.json)
 - [Subscribe to Posts Feed](https://subscribeopenly.net/subscribe/?url={{ site.site_url }}/feed.xml)
 - [Notes](/feed/notes.xml)

@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-11-30
+last_modified_at: 2025-12-07
 permalink: /changelog
 ---
+
+## 2025-12-07
+
+### Modifed
+
+- Fixed issues with RSS feed and added to Feeds page
 
 ## 2025-11-30
 
