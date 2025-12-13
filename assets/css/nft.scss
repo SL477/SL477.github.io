@@ -1,0 +1,86 @@
+---
+---
+
+:root {
+    --blue500: rgb(139, 172, 218);
+    --cyan400: rgb(0, 255, 247);
+    --blue950: rgb(13, 25, 43);
+    --blue900: rgb(20, 37, 61);
+    --blue800: rgb(47, 65, 91);
+    --white: rgb(255, 255, 255);
+}
+
+body, .page-content {
+    background-color: var(--blue950);
+}
+
+.nft-container {
+    background-color: var(--blue900);
+    margin: auto;
+    margin-top: 30%;
+    border-radius: 2.5rem;
+    padding: 1rem;
+    max-width: 350px;
+
+    .nft-img {
+        margin: auto;
+        display: block;
+        border-radius: 5%;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    h2 {
+        color: var(--white);
+
+        &:hover {
+            color: var(--cyan400);
+            cursor: pointer;
+        }
+    }
+
+    p {
+        color: var(--blue500);
+    }
+
+    .nft-price-timer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding-bottom: 1rem;
+
+        div:nth-child(1) {
+            color: var(--cyan400);
+        }
+
+        div:nth-child(2) {
+            text-align: right;
+            color: var(--blue500);
+        }
+    }
+
+    hr {
+        border-color: var(--blue800);
+    }
+
+    .ntf-user {
+        border-radius: 50%;
+        border: 1px solid var(--white);
+    }
+
+    .nft-footer {
+        color: var(--blue500);
+        padding-left: 2ch;
+
+        a {
+            color: var(--white);
+
+            &:hover {
+                text-decoration: none;
+                color: var(--cyan400);
+                cursor: pointer;
+            }
+        }
+    }
+}

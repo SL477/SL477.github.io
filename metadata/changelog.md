@@ -10,6 +10,7 @@ permalink: /changelog
 ### Added
 
 - RSS validation badge
+- NFT preview component
 
 ## 2025-12-07
 
