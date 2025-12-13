@@ -12,6 +12,10 @@ permalink: /changelog
 - RSS validation badge
 - NFT preview component
 
+### Modified
+
+- Added social image to QR code
+
 ## 2025-12-07
 
 ### Modifed
