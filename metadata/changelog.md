@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-12-07
+last_modified_at: 2025-12-13
 permalink: /changelog
 ---
+
+## 2025-12-13
+
+### Added
+
+- RSS validation badge
 
 ## 2025-12-07
 
