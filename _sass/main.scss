@@ -287,3 +287,14 @@ td {
   border: solid 2px blue;
   border-radius: 50%;
 }
+
+.screen-reader-text {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+
+  &:focus {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
