@@ -11,6 +11,10 @@ permalink: /changelog
 
 - Skip link [from Morgan Web Dev](https://www.morganwebdev.org/posts/skip-link/)
 
+### Modified
+
+- Merged Print Stylesheet into the main stylesheet
+
 ## 2025-12-13
 
 ### Added

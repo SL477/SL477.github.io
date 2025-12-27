@@ -178,6 +178,11 @@ fieldset {
   border: 1px solid #000;
   border-radius: 30px;
   padding: 5px;
+
+  @media print {
+    background-color: white;
+    color: black;
+  }
 }
 
 .li-no-decoration {
@@ -296,5 +301,47 @@ td {
   &:focus {
     left: 50%;
     transform: translateX(-50%);
+  }
+}
+
+// From https://indieweb.org/printing
+@media print {
+  html {
+    font-family: monospace;
+    font-size: 9pt;
+    line-height: 1.2em;
+  }
+
+  a,
+  a:visited,
+  a:link {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  a:after {
+    content: '(' attr(href) ')';
+    display: inline-block;
+    width: auto;
+    text-decoration: none;
+    margin-left: 0.3em;
+    font-style: italic;
+  }
+
+  .my-nav,
+  footer,
+  #contact-container,iframe,.snowflake {
+    display: none;
+  }
+
+  .project-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
