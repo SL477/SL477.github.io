@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-12-27
+last_modified_at: 2025-12-28
 permalink: /changelog
 ---
 
-## 2025-12-27
+## 2025-12-28
 
 ### Added
 
@@ -14,6 +14,8 @@ permalink: /changelog
 ### Modified
 
 - Merged Print Stylesheet into the main stylesheet
+- On React sub-site converted a load of pictures into WebP
+- Updated Basket on the fake shop for front end mentors challenge
 
 ## 2025-12-13
 
