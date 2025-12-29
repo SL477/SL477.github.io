@@ -10,7 +10,8 @@
     "csslint": "npx stylelint \"**/*.*css\"",
     "htmllint": "npx hint \"_site\"",
     "wordle": "node assets/js/buildWordleData.js",
-    "dev": "bundle exec jekyll serve --livereload"
+    "dev": "bundle exec jekyll serve --livereload",
+    "whodle": "node assets/js/buildWhodleData.js"
   },
   "repository": {
     "type": "git",

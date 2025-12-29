@@ -1,15 +1,16 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-12-28
+last_modified_at: 2025-12-29
 permalink: /changelog
 ---
 
-## 2025-12-28
+## 2025-12-29
 
 ### Added
 
 - Skip link [from Morgan Web Dev](https://www.morganwebdev.org/posts/skip-link/)
+- [Whodle stats](/whodle)
 
 ### Modified
 

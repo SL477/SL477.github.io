@@ -1,0 +1,86 @@
+---
+layout: page
+title: Whodle
+last_modified_at: 2025-12-29
+permalink: /whodle
+---
+
+<div class="wordle-stats">
+  <table>
+    <caption>
+      STATISTICS
+    </caption>
+    <thead>
+      <tr>
+        <th>Games Played</th>
+        <th>Win %</th>
+        <th>Current Streak</th>
+        <th>Max Streak</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ site.data.whodleStats.numberGames }}</td>
+        <td>{{ site.data.whodleStats.winPct }}</td>
+        <td>{{ site.data.whodleStats.currentStreak }}</td>
+        <td>{{ site.data.whodleStats.maxStreak }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 class="centertext">Guess Distribution</h2>
+  <label class="wordle-label"
+    >1:
+    <meter
+      min="0"
+      max="{{ site.data.whodleStats.numberGames }}"
+      value="{{ site.data.whodleStats.guess1 }}"
+      class="meter"
+    >
+      {{ site.data.whodleStats.guess1 }}/{{ site.data.whodleStats.numberGames }}
+    </meter>
+  </label>
+  <label class="wordle-label"
+    >2:
+    <meter
+      min="0"
+      max="{{ site.data.whodleStats.numberGames }}"
+      value="{{ site.data.whodleStats.guess2 }}"
+      class="meter"
+    >
+      {{ site.data.whodleStats.guess2 }}/{{ site.data.whodleStats.numberGames }}
+    </meter>
+  </label>
+  <label class="wordle-label"
+    >3:
+    <meter
+      min="0"
+      max="{{ site.data.whodleStats.numberGames }}"
+      value="{{ site.data.whodleStats.guess3 }}"
+      class="meter"
+    >
+      {{ site.data.whodleStats.guess3 }}/{{ site.data.whodleStats.numberGames }}
+    </meter>
+  </label>
+  <label class="wordle-label"
+    >4:
+    <meter
+      min="0"
+      max="{{ site.data.whodleStats.numberGames }}"
+      value="{{ site.data.whodleStats.guess4 }}"
+      class="meter"
+    >
+      {{ site.data.whodleStats.guess4 }}/{{ site.data.whodleStats.numberGames }}
+    </meter>
+  </label>
+  <label class="wordle-label"
+    >5:
+    <meter
+      min="0"
+      max="{{ site.data.whodleStats.numberGames }}"
+      value="{{ site.data.whodleStats.guess5 }}"
+      class="meter"
+    >
+      {{ site.data.whodleStats.guess5 }}/{{ site.data.whodleStats.numberGames }}
+    </meter>
+  </label>
+</div>
