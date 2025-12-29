@@ -17,6 +17,7 @@ permalink: /changelog
 - Merged Print Stylesheet into the main stylesheet
 - On React sub-site converted a load of pictures into WebP
 - Updated Basket on the fake shop for front end mentors challenge
+- Added in reply to ability on post layout
 
 ## 2025-12-13
 

@@ -64,6 +64,10 @@ layout: default_modified
     {%- endif -%}
   </header>
 
+  {%- if page.in_reply_to -%}
+    <p>In reply to: <a href="{{ page.in_reply_to }}" class="u-in-reply-to">{{ page.in_reply_to }}</a></p>
+  {%- endif -%}
+
   <div class="post-content e-content" itemprop="articleBody">{{ content }}</div>
 
   {%- if site.disqus.shortname -%} {%- include disqus_comments.html -%} {%-
