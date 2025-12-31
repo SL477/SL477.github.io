@@ -45,13 +45,18 @@ layout: default_modified
     </p>
     {%- if page.image -%}
     <figure>
+      {%- if page.image.webp -%}<picture>
+        <source srcset="{{ page.image.webp }}" type="image/webp"/>
+        <source srcset="{{ page.image.path }}" type="image/{{ page.image.filetype }}"/>{%- endif -%}
       <img
         src="{{ page.image.path }}"
         alt="{{ page.image.alt}}"
         class="u-photo"
         width="{{ page.image.width }}"
         height="{{ page.image.height }}"
+        {%- if page.image.image_map -%}usemap="#{{ page.image.image_map }}"{%- endif -%}
       />
+      {%- if page.image.webp -%}</picture>{%- endif -%}
       <figcaption>
         <em>
           {%- if page.photo_caption -%} {{ page.photo_caption }} {%- else -%} {{

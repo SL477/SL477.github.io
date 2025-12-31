@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-12-29
+last_modified_at: 2025-12-31
 permalink: /changelog
 ---
 
-## 2025-12-29
+## 2025-12-31
 
 ### Added
 
@@ -18,6 +18,7 @@ permalink: /changelog
 - On React sub-site converted a load of pictures into WebP
 - Updated Basket on the fake shop for front end mentors challenge
 - Added in reply to ability on post layout
+- Modified Post layout to accept image maps and WebP images. For [my Space Marine post](/notes/2025-12-31-Space-Marines.html)
 
 ## 2025-12-13
 
