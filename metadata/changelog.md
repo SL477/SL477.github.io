@@ -19,6 +19,7 @@ permalink: /changelog
 - Updated Basket on the fake shop for front end mentors challenge
 - Added in reply to ability on post layout
 - Modified Post layout to accept image maps and WebP images. For [my Space Marine post](/notes/2025-12-31-Space-Marines.html)
+- Limited posts in NavBar to the last 10.
 
 ## 2025-12-13
 

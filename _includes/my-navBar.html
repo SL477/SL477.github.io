@@ -69,7 +69,7 @@
           Blog
         </button>
         <ul class="dropdown_menu" id="blog-dropdown">
-          {%- for post in site.posts -%}
+          {%- for post in site.posts limit:10 -%}
           <li>
             <a href="{{ post.url | relative_url }}" {% if post.url==page.url %}aria-current="page"{% endif %}
               >{{ post.title | escape }}</a
