@@ -95,6 +95,8 @@
           name: Bookmarks
         - href: /wordle
           name: Wordle
+        - href: /whodle
+          name: Whodle
 - name: Data Structures
   id: dataStructures
   items:

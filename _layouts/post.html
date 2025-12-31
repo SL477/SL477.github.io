@@ -45,13 +45,18 @@ layout: default_modified
     </p>
     {%- if page.image -%}
     <figure>
+      {%- if page.image.webp -%}<picture>
+        <source srcset="{{ page.image.webp }}" type="image/webp"/>
+        <source srcset="{{ page.image.path }}" type="image/{{ page.image.filetype }}"/>{%- endif -%}
       <img
         src="{{ page.image.path }}"
         alt="{{ page.image.alt}}"
         class="u-photo"
         width="{{ page.image.width }}"
         height="{{ page.image.height }}"
+        {%- if page.image.image_map -%}usemap="#{{ page.image.image_map }}"{%- endif -%}
       />
+      {%- if page.image.webp -%}</picture>{%- endif -%}
       <figcaption>
         <em>
           {%- if page.photo_caption -%} {{ page.photo_caption }} {%- else -%} {{
@@ -63,6 +68,10 @@ layout: default_modified
     <data href="{{ site.photo }}" class="u-photo"></data>
     {%- endif -%}
   </header>
+
+  {%- if page.in_reply_to -%}
+    <p>In reply to: <a href="{{ page.in_reply_to }}" class="u-in-reply-to">{{ page.in_reply_to }}</a></p>
+  {%- endif -%}
 
   <div class="post-content e-content" itemprop="articleBody">{{ content }}</div>
 

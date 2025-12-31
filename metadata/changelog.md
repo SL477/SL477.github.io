@@ -1,9 +1,25 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-12-13
+last_modified_at: 2025-12-31
 permalink: /changelog
 ---
+
+## 2025-12-31
+
+### Added
+
+- Skip link [from Morgan Web Dev](https://www.morganwebdev.org/posts/skip-link/)
+- [Whodle stats](/whodle)
+
+### Modified
+
+- Merged Print Stylesheet into the main stylesheet
+- On React sub-site converted a load of pictures into WebP
+- Updated Basket on the fake shop for front end mentors challenge
+- Added in reply to ability on post layout
+- Modified Post layout to accept image maps and WebP images. For [my Space Marine post](/notes/2025-12-31-Space-Marines.html)
+- Limited posts in NavBar to the last 10.
 
 ## 2025-12-13
 
