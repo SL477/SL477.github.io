@@ -12,6 +12,7 @@ permalink: /changelog
 - Updated H-Entry to move the URL to the date.
 - Updated XSLT to put the URL on the date.
 - Fixed Space Marine post so it doesn't break XML.
+- Fixed Whodle stats for max streak.
 
 ## 2025-12-31
 
