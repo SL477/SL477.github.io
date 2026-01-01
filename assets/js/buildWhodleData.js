@@ -81,6 +81,9 @@ function buildWhodleStats(fileText) {
   stats.numberWon =
     stats.guess1 + stats.guess2 + stats.guess3 + stats.guess4 + stats.guess5;
   stats.winPct = ((stats.numberWon / stats.numberGames) * 100).toFixed(0);
+  if (stats.currentStreak > stats.maxStreak) {
+    stats.maxStreak = stats.currentStreak;
+  }
   return `currentStreak: ${stats.currentStreak}
 guess1: ${stats.guess1}
 guess2: ${stats.guess2}

@@ -18,7 +18,8 @@ layout: default_modified
         itemprop="datePublished"
       >
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y"
-        -%} {{ page.date | date: date_format }}
+        -%}
+        <a class="u-url u-uid" href="{{ page.url | relative_url }}">{{ page.date | date: date_format }}</a> 
       </time>
       {%- if page.last_modified_at -%}
       <time class="dt-updated" hidden
@@ -78,9 +79,6 @@ layout: default_modified
   {%- if site.disqus.shortname -%} {%- include disqus_comments.html -%} {%-
   endif -%}
 
-  <a class="u-url u-uid" href="{{ page.url | relative_url }}" hidden
-    >{{ page.title }}</a
-  >
   {%- if site.show_comments -%} {%- unless page.no_comments -%}
   <div id="comments"></div>
   <script src="/assets/js/webMentions.js" async></script>

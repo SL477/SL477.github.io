@@ -76,6 +76,9 @@
             >
           </li>
           {%- endfor -%}
+          <li>
+            <a href="/posts" {% if page.url=="/posts" %}aria-current="page"{% endif %}>More Posts</a>
+          </li>
         </ul>
       </li>
       <li><a href="/about" {% if page.url=="/about" %}aria-current="page"{% endif %}>About</a></li>

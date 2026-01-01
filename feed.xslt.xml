@@ -53,6 +53,10 @@ layout: xslt
               <xsl:attribute name="datetime">
                 <xsl:value-of select="atom:published"/>
               </xsl:attribute>
+              <a class="u-url u-uid">
+                <xsl:attribute name="href">
+                <xsl:value-of select="atom:link/@href"/>
+                </xsl:attribute>
               <xsl:choose>
                 <xsl:when test="substring(atom:published, 6, 2)='01'">
                   <xsl:value-of select="'Jan'"/>
@@ -100,7 +104,9 @@ layout: xslt
                   <xsl:value-of select="substring(atom:published, 9, 2)"/>
                 </xsl:otherwise>
               </xsl:choose>
-              <xsl:value-of select="concat(', ', substring(atom:published, 1, 4))"/>
+              
+                <xsl:value-of select="concat(', ', substring(atom:published, 1, 4))"/>
+              </a>
             </time>
             <xsl:if test="atom:author">
               <xsl:value-of select="' • '"/>
@@ -131,12 +137,6 @@ layout: xslt
           <!-- <xsl:copy-of select="atom:content/node()"/> -->
           <xsl:apply-templates select="atom:content"/>
         </div>
-        <a class="u-url u-uid" hidden="hidden">
-          <xsl:attribute name="href">
-            <xsl:value-of select="atom:link/@href"/>
-          </xsl:attribute>
-          <xsl:value-of select="atom:title"/>
-        </a>
         <xsl:if test="not(position() = last())">
           <hr/>
         </xsl:if>
