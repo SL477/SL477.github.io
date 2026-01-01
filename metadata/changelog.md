@@ -7,12 +7,17 @@ permalink: /changelog
 
 ## 2026-01-01
 
+### Added
+
+- Posts index page.
+
 ### Modified
 
 - Updated H-Entry to move the URL to the date.
 - Updated XSLT to put the URL on the date.
 - Fixed Space Marine post so it doesn't break XML.
 - Fixed Whodle stats for max streak.
+- Limited posts on home page to first 10.
 
 ## 2025-12-31
 
