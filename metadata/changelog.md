@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2025-12-31
+last_modified_at: 2026-01-01
 permalink: /changelog
 ---
+
+## 2026-01-01
+
+### Modified
+
+- Updated H-Entry to move the URL to the date.
 
 ## 2025-12-31
 
