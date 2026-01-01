@@ -10,6 +10,8 @@ permalink: /changelog
 ### Modified
 
 - Updated H-Entry to move the URL to the date.
+- Updated XSLT to put the URL on the date.
+- Fixed Space Marine post so it doesn't break XML.
 
 ## 2025-12-31
 
