@@ -10,6 +10,7 @@ permalink: /changelog
 ### Added
 
 - [Admin dashboard from Odin Project](/odinProject/adminDashboard.html)
+- [Battleship from Odin Project](/odinProject/battleship.html)
 
 ## 2026-01-01
 
