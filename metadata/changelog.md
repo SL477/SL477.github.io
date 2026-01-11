@@ -14,7 +14,8 @@ permalink: /changelog
 - [Calculator from Odin Project](/odinProject/calculator.html)
 - [Home Page from Odin Project](/odinProject/homePage.html)
 - [Library from Odin Project](/odinProject/library.html)
-- [Recipes from Odin Project](/odinProject/recipies.html)
+- [Recipes from Odin Project](/odinProject/recipes.html)
+- [Product Landing Page from Odin Project](/odinProject/productLandingPage.html)
 
 ## 2026-01-01
 
