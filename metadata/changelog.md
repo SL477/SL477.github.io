@@ -1,16 +1,17 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-01-10
+last_modified_at: 2026-01-11
 permalink: /changelog
 ---
 
-## 2026-01-10
+## 2026-01-11
 
 ### Added
 
 - [Admin dashboard from Odin Project](/odinProject/adminDashboard.html)
 - [Battleship from Odin Project](/odinProject/battleship.html)
+- [Calculator from Odin Project](/odinProject/calculator.html)
 
 ## 2026-01-01
 
