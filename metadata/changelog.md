@@ -16,6 +16,7 @@ permalink: /changelog
 - [Library from Odin Project](/odinProject/library.html)
 - [Recipes from Odin Project](/odinProject/recipes.html)
 - [Product Landing Page from Odin Project](/odinProject/productLandingPage.html)
+- [Restaurant Page from Odin Project](/odinProject/restaurantPage/index.html)
 
 ## 2026-01-01
 
