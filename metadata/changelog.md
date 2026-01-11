@@ -13,6 +13,7 @@ permalink: /changelog
 - [Battleship from Odin Project](/odinProject/battleship.html)
 - [Calculator from Odin Project](/odinProject/calculator.html)
 - [Home Page from Odin Project](/odinProject/homePage.html)
+- [Library from Odin Project](/odinProject/library.html)
 
 ## 2026-01-01
 
