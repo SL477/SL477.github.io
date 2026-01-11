@@ -1,0 +1,165 @@
+---
+title: Tom Fishwick
+last_modified_at: 2026-01-11
+css_file: odinHome.css
+---
+
+<!doctype html>
+<html lang="en">
+    {%- include head_modified.html -%}
+    <body>
+        <div class="top-section">
+            <div class="top-clip"></div>
+            <div class="title-pic-container">
+                <div class="title-pic">
+                    <img
+                        src="{{ site.photo }}"
+                        alt=""
+                    />
+                    <div class="title-text"><h1>Tom Fishwick</h1></div>
+                </div>
+            </div>
+            <div class="about-me">
+                <div class="about-me-inner">
+                    <h2>About me</h2>
+                    <p>
+                        My main experience from work is as a developer for
+                        <a
+                            href="https://www.elite.com/3e/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >Elite 3E</a
+                        >
+                        (VB.Net &amp; SQL) and
+                        <a
+                            href="https://www.thomsonreuters.com/content/dam/openweb/documents/pdf/mena/brochures/3e-matter-management-brochure.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >MatterSphere</a
+                        >
+                        (C#). This involves creating new screens and workflows
+                        and integrating them with various APIs. As well as these
+                        I have made an ASP.Net site serving a Vue.JS
+                        application, and various other JavaScript applications.
+                    </p>
+                    <p>
+                        In my spare time I have created various apps in Python,
+                        JavaScript, React Native and Android. Plus I have some
+                        experience in PHP.
+                    </p>
+                    <div class="about-me-links">
+                        <a
+                            href="https://github.com/{{ site.github_username }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            ><img
+                                width="24"
+                                height="24"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+                                alt="GitHub"
+                        /></a>
+                        <a
+                            href="https://www.linkedin.com/in/{{ site.linkedin_username }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <img
+                                width="24"
+                                height="24"
+                                alt="LinkedIn"
+                                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-plain.svg"
+                        /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="my-work">
+            <h2>My work</h2>
+            <div class="project-container">
+                {% for project in site.data.projects %}
+                <div class="project-tile">
+                    <picture class="border-image">
+                        <source srcset="/assets/images/{{ project.picture }}.webp" type="image/webp"/>
+                        <source srcset="/assets/images/{{ project.picture }}.jpg" type="image/jpeg"/>
+                        <img
+                            src="/assets/images/{{ project.picture }}.jpg"
+                            alt="{{ prject.picture_text }}"
+                            class="border-image"
+                            loading="lazy"
+                        />
+                    </picture>
+                    <div class="project-description">
+                        <div class="project-header">
+                            <h3>{{ project.name }}</h3>
+                            <div class="project-links">
+                                {% if project.repository != "/" %}
+                                <a
+                                    href="https://github.com/SL477/{{ project.repository }}"
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                >
+                                    <img
+                                        width="16"
+                                        height="16"
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+                                        alt="Source" /></a
+                                >
+                                {% endif %}
+                                {% if project.url != "/" %}
+                                <a
+                                    href="{{ project.url }}"
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                    ><img
+                                        width="16"
+                                        height="16"
+                                        alt="Live Link"
+                                        src="/assets/images/odinProject/newlink.svg"
+                                /></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="project-pre">{{ project.mini_desc }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        <footer>
+            <div class="contact-me">
+                <h2>Contact me</h2>
+                <p>
+                    Please get in touch if you think our work could be mutually
+                    beneficial!
+                </p>
+                <address>London, UK</address>
+                <div class="contact-me-links">
+                    <a
+                        href="https://github.com/{{ site.github_username }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><img
+                            width="32"
+                            height="32"
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
+                            alt="GitHub"
+                    /></a>
+                    <a
+                        href="https://www.linkedin.com/in/{{ site.linkedin_username }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            width="32"
+                            height="32"
+                            alt="LinkedIn"
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-plain.svg"
+                    /></a>
+                </div>
+            </div>
+            <div class="contact-me-img">
+                <img src="{{ site.photo }}" alt="" height="200" width="200"/>
+            </div>
+        </footer>
+    </body>
+</html>
