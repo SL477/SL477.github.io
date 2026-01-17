@@ -19,6 +19,7 @@ permalink: /changelog
 - [Restaurant Page from Odin Project](/odinProject/restaurantPage/index.html)
 - [Signup page from Odin Project](/odinProject/signup.html)
 - [TODOs page from Odin Project](/odinProject/todos.html)
+- [Moved index page](/odinProject/)
 
 ## 2026-01-01
 
