@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-01-11
+last_modified_at: 2026-01-17
 permalink: /changelog
 ---
 
-## 2026-01-11
+## 2026-01-17
 
 ### Added
 
@@ -17,6 +17,7 @@ permalink: /changelog
 - [Recipes from Odin Project](/odinProject/recipes.html)
 - [Product Landing Page from Odin Project](/odinProject/productLandingPage.html)
 - [Restaurant Page from Odin Project](/odinProject/restaurantPage/index.html)
+- [TODOs page from Odin Project](/odinProject/todos.html)
 
 ## 2026-01-01
 
