@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-01-17
+last_modified_at: 2026-01-18
 permalink: /changelog
 ---
 
-## 2026-01-17
+## 2026-01-18
 
 ### Added
 
@@ -20,6 +20,10 @@ permalink: /changelog
 - [Signup page from Odin Project](/odinProject/signup.html)
 - [TODOs page from Odin Project](/odinProject/todos.html)
 - [Moved index page](/odinProject/)
+
+## Modified
+
+- Updated NavBar
 
 ## 2026-01-01
 

@@ -67,10 +67,12 @@
           name: Etch A Sketch
         - href: https://link477.com/Link477-React/#/rockPaperScissors
           name: Rock, Paper, Scissors
-        - href: https://link477.com/Link477-React/#/battleship
+        - href: /odinProject/battleship.html
           name: Battleship
-        - href: https://link477.com/OdinProject/productLandingPage/
+        - href: /odinProject/productLandingPage.html
           name: Product Landing Page
+        - href: /odinProject/
+          name: Index
 - name: Games
   id: games
   items:
