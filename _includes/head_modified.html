@@ -101,14 +101,13 @@
   {%- endif -%}
 
   {%- if page.js_file -%}
-  <script src="/assets/js/{{ page.js_file.path }}"{% if page.js_file.async %} async="async"{% endif %} {% if page.js_file.defer %} defer="defer"{% endif %}></script>
+  <script src="/assets/js/{{ page.js_file.path }}"{% if page.js_file.async %} async="async"{% endif %} {% if page.js_file.defer %} defer="defer"{% endif %} {% if page.js_file.module %}type="module"{% endif %}></script>
   {%- endif -%}
 
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
   {%- endif -%}
-  
   <meta name="color-scheme" content="light dark"/>
   <!--Icons-->
   <link rel="icon" href="/assets/images/link477.png"/>

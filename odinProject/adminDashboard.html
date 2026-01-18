@@ -1,0 +1,235 @@
+---
+title: Admin Dashboard
+last_modified_at: 2026-01-10
+css_file: adminDashboard.css
+---
+
+<!doctype html>
+<html lang="en">
+    {%- include head_modified.html -%}
+    <body>
+        <div class="grid-container">
+            <nav>
+                <a href="#"
+                    ><div class="centerImg">
+                        <img
+                            src="/assets/images/odinProject/dashboard.svg"
+                            alt="Dashboard"
+                            width="32px"
+                        />
+                    </div>
+                    Dashboard</a
+                >
+                <br />
+                <div>
+                    <a
+                        href="https://link477.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><img
+                            src="/assets/images/odinProject/home.svg"
+                            alt="Home"
+                            width="16px"
+                        />Home</a
+                    >
+                    <a
+                        href="/about"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        ><img
+                            src="/assets/images/odinProject/card-account-details-outline.svg"
+                            alt="Profile"
+                            width="16px"
+                        />Profile</a
+                    >
+                    <a href="#"
+                        ><img
+                            src="/assets/images/odinProject/message.svg"
+                            alt="Message"
+                            width="16px"
+                        />Messages</a
+                    >
+                    <a href="#"
+                        ><img
+                            src="/assets/images/odinProject/history.svg"
+                            alt="History"
+                            width="16px"
+                        />History</a
+                    >
+                    <a href="#"
+                        ><img
+                            src="/assets/images/odinProject/note-multiple.svg"
+                            alt="Tasks"
+                            width="16px"
+                        />Tasks</a
+                    >
+                    <a href="#"
+                        ><img
+                            src="/assets/images/odinProject/account-group.svg"
+                            alt="Communities"
+                            width="16px"
+                        />Communities</a
+                    >
+                </div>
+                <br />
+                <div>
+                    <a href="#"
+                        ><img
+                            src="/assets/images/odinProject/cog.svg"
+                            alt="Cog"
+                            width="16px"
+                        />Settings</a
+                    >
+                    <a href="#"
+                        ><img
+                            src="/assets/images/odinProject/help-box.svg"
+                            alt="Help Box"
+                            width="16px"
+                        />Support</a
+                    >
+                    <a href="#"
+                        ><img
+                            src="/assets/images/odinProject/shield-check.svg"
+                            alt="Shield Check"
+                            width="16px"
+                        />Privacy</a
+                    >
+                </div>
+            </nav>
+            <div>
+                <header>
+                    <div class="headerFirstRow">
+                        <div>
+                            <div class="centerImg">
+                                <img
+                                    src="/assets/images/odinProject/magnify.svg"
+                                    alt="Search"
+                                    width="16px"
+                                />
+                            </div>
+                            <input
+                                type="search"
+                                name="search"
+                                id="search"
+                                aria-label="search"
+                            />
+                        </div>
+                        <div class="headerFirstRowRight">
+                            <div class="centerImg">
+                                <img
+                                    src="/assets/images/odinProject/bell-ring.svg"
+                                    alt="Alerts"
+                                    width="16px"
+                                />
+                                <img
+                                    src="{{ site.logo }}"
+                                    alt="Tom"
+                                    width="32px"
+                                />
+                            </div>
+                            <span>Tom Fishwick</span>
+                        </div>
+                    </div>
+                    <div class="headerSecondRow">
+                        <div class="headerSecondRowLeft">
+                            <div class="centerImg">
+                                <img
+                                    src="{{ site.logo }}"
+                                    alt="Tom"
+                                    width="128px"
+                                />
+                            </div>
+                            <div>
+                                <p>Hi there,</p>
+                                <h1>Tom Fishwick (@SL477)</h1>
+                            </div>
+                        </div>
+                        <div class="btns">
+                            <button type="button">New</button>
+                            <button type="button">Upload</button>
+                            <button type="button">Share</button>
+                        </div>
+                    </div>
+                </header>
+                <div class="mainContentContainer">
+                    <main>
+                        <h2>Your Projects</h2>
+                        <div class="projects">
+                            {% for project in site.data.projects %}
+                            <div>
+                                <legend>{{ project.name }}</legend>
+                                <p>{{ project.short_desc }}</p>
+                                <div>
+                                    <img
+                                        src="/assets/images/odinProject/star-check-outline.svg"
+                                        alt="No Star"
+                                        width="16px"
+                                    />
+                                    {%- if project.url != "/" -%}
+                                    <a
+                                        href="{{project.url}}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        ><img
+                                            src="/assets/images/odinProject/eye-plus-outline.svg"
+                                            alt="Live"
+                                            width="16px"
+                                    /></a>
+                                    {% endif %}
+                                    {%- if project.repository != "/" -%}
+                                        <a
+                                            href="https://github.com/SL477/{{project.repository}}"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            ><img
+                                                src="/assets/images/odinProject/source-branch.svg"
+                                                alt="Source"
+                                                width="16px"
+                                        /></a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </main>
+                    <aside>
+                        <h3>Announcements</h3>
+                        <div class="announcements">
+                            <div>
+                                <legend>Site Maintenance</legend>
+                                <p>
+                                    This site goes down whenever Github performs
+                                    maintenance.
+                                </p>
+                            </div>
+                            <div>
+                                <legend>Community Share Day</legend>
+                                <p>Have fun sharing!</p>
+                            </div>
+                            <div>
+                                <legend>Updated Privacy Policy</legend>
+                                <p>Have some privacy.</p>
+                            </div>
+                        </div>
+                        <h3>Trending</h3>
+                        <div class="trending">
+                            <div>
+                                <div class="centerImg">
+                                    <img
+                                        src="{{ site.logo }}"
+                                        alt="Tom"
+                                        width="32px"
+                                    />
+                                </div>
+                                <div>
+                                    <legend>@SL477</legend>
+                                    <p>Site Builder</p>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
