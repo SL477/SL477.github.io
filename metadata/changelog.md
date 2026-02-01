@@ -14,6 +14,7 @@ permalink: /changelog
 ### Modified
 
 - Sorted out SVGs
+- Added links on Whodle and Wordle pages
 
 ## 2026-01-18
 
