@@ -1,9 +1,20 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-01-18
+last_modified_at: 2026-02-01
 permalink: /changelog
 ---
+
+## 2026-02-01
+
+### Added
+
+- [Human Badge](https://cadence.moe/blog/2024-10-05-created-by-a-human-badges)
+
+### Modified
+
+- Sorted out SVGs
+- Added links on Whodle and Wordle pages
 
 ## 2026-01-18
 

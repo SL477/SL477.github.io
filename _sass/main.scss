@@ -25,7 +25,7 @@ a:visited {
 .stackoverflow,
 .email,
 .credly {
-  background-color: aliceblue;
+  color: light-dark(black, aliceblue);
 }
 
 .home {
@@ -103,6 +103,7 @@ code {
 .icon-my {
   width: 15px;
   height: 15px;
+  padding-right: 23px;
 }
 
 .borderimage {
