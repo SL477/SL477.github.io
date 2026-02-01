@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-01-18
+last_modified_at: 2026-02-01
 permalink: /changelog
 ---
+
+## 2026-02-01
+
+### Modified
+
+- Sorted out SVGs
 
 ## 2026-01-18
 
