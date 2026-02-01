@@ -7,6 +7,10 @@ permalink: /changelog
 
 ## 2026-02-01
 
+### Added
+
+- [Human Badge](https://cadence.moe/blog/2024-10-05-created-by-a-human-badges)
+
 ### Modified
 
 - Sorted out SVGs
