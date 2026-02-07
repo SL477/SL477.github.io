@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-02-01
+last_modified_at: 2026-02-07
 permalink: /changelog
 ---
+
+## 2026-02-07
+
+### Modified
+
+- Fetch priority high and add missing image dimensions
 
 ## 2026-02-01
 
