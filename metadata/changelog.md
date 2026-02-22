@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-02-07
+last_modified_at: 2026-02-22
 permalink: /changelog
 ---
+
+## 2026-02-22
+
+### Added
+
+- First movie review
 
 ## 2026-02-07
 
