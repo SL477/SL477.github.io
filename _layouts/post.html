@@ -3,7 +3,7 @@ layout: default_modified
 ---
 
 <article
-  class="post h-entry"
+  class="post h-entry {% if page.type == 'review' %}h-review{% endif %}"
   itemscope
   itemtype="http://schema.org/BlogPosting"
 >
@@ -72,6 +72,11 @@ layout: default_modified
 
   {%- if page.in_reply_to -%}
     <p>In reply to: <a href="{{ page.in_reply_to }}" class="u-in-reply-to">{{ page.in_reply_to }}</a></p>
+  {%- endif -%}
+
+  {%- if page.type == 'review' -%}
+    <p>Rating: {{ page.rating }}</p>
+    <p>Watched: <time datetime="{{ page.watched }}">{{ page.watched | date: date_format }}</time></p>
   {%- endif -%}
 
   <div class="post-content e-content" itemprop="articleBody">{{ content }}</div>
