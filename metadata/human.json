@@ -1,0 +1,17 @@
+---
+permalink: /human.json
+---
+{
+  "version": "0.1.1",
+  "url": "https://link477.com",
+  "vouches": [
+    {
+      "url": "https://link477.com/",
+      "vouched_at": "2026-03-15"
+    },
+    {
+      "url": "https://willswills.uk/",
+      "vouched_at": "2026-03-15"
+    }
+  ]
+}

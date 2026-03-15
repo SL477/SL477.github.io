@@ -10,6 +10,7 @@ permalink: /changelog
 ### Added
 
 - New blog post and movie review
+- [Human JSON support](https://robida.net/entries/2026/03/08/the-humanjson-protocol)
 
 ## 2026-03-08
 
