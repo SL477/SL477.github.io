@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-03-15
+last_modified_at: 2026-03-29
 permalink: /changelog
 ---
+
+## 2026-03-29
+
+### Modified
+
+- Updated post layout to support the Rogue Trader review
 
 ## 2026-03-15
 
