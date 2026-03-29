@@ -7,7 +7,7 @@ last_modified_at: 2026-03-29
 rating: 5
 watched: 2026-03-26
 type: review
-date: 2026-02-22
+date: 2026-03-29
 ---
 
 A weird and wacky steampunk comedy loosely based on the Jules Verne book.

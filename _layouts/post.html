@@ -76,7 +76,11 @@ layout: default_modified
 
   {%- if page.type == 'review' -%}
     <p>Rating: {{ page.rating }}</p>
+    {%- if page.watched -%}
     <p>Watched: <time datetime="{{ page.watched }}">{{ page.watched | date: date_format }}</time></p>
+    {%- else if page.finished -%}
+    <p>Finished: <time datetime="{{ page.finished }}">{{ page.finished | date: date_format }}</time></p>
+    {%- endif -%}
   {%- endif -%}
 
   <div class="post-content e-content" itemprop="articleBody">{{ content }}</div>
