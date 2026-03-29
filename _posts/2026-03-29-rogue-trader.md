@@ -7,7 +7,6 @@ last_modified_at: 2026-03-29
 rating: 4
 finished: 2026-03-29
 type: review
-date: 2026-03-29
 ---
 
 How to sum up the life of the noble Rogue Trader Darius Von Valensius, bearer of the holy warrant of trade, saviour of Dagonus. Once I was nought but a humble crime lord. Then my great aunt Theodora recognised my natural heroism and recruited me to be her heir[^1]. She may have been a despicable heretic, but she ensured that the sacred warrant of trade fell into my noble hands[^2].
