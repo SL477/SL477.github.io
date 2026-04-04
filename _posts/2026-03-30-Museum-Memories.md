@@ -5,6 +5,7 @@ tags: Meta
 author: Tom Fishwick
 last_modified_at: 2026-04-04
 in_reply_to: https://jamesg.blog/2026/03/01/indieweb-carnival-museum-memories
+excerpt: The Natural History Museum in London is my favourite museum. As a lifelong lover of dinosaurs (walking with dinosaurs has a lot to answer for) it was brilliant looking at good old Dippy the Diplodocus. 
 ---
 
 The Natural History Museum in London is my favourite museum.
