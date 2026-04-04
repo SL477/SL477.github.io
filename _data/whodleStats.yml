@@ -1,10 +1,10 @@
-currentStreak: 8
-guess1: 24
+currentStreak: 11
+guess1: 25
 guess2: 30
 guess3: 30
-guess4: 12
+guess4: 14
 guess5: 8
 guessX: 5
 maxStreak: 30
-numberGames: 109
-winPct: 95
+numberGames: 112
+winPct: 96
