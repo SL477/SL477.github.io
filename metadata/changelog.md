@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-03-29
+last_modified_at: 2026-04-04
 permalink: /changelog
 ---
+
+## 2026-04-04
+
+### Modified
+
+- Added missing category to CSS
 
 ## 2026-03-29
 

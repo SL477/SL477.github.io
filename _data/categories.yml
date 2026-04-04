@@ -52,3 +52,6 @@
 - tag: Baking
   background: greenyellow
   colour: black
+- tag: Movie
+  background: purple
+  colour: white
