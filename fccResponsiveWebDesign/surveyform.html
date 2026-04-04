@@ -2,7 +2,7 @@
 title: FCC - Survey Form
 layout: page
 permalink: fccresponsivewebdesign/surveyform
-last_modified_at: 2025-02-09
+last_modified_at: 2026-04-04
 ---
 
 <style>
@@ -87,8 +87,8 @@ last_modified_at: 2025-02-09
         <br />
 
         <!--Radio Buttons-->
-        <div class="form-check">
-          <label>Please select whether or not you took a photo:</label><br />
+        <fieldset class="form-check">
+          <legend>Please select whether or not you took a photo:</legend>
           <input
             type="radio"
             name="hasPhoto"
@@ -112,11 +112,11 @@ last_modified_at: 2025-02-09
           <label id="hasPhotoNo-label" for="hasPhotoNo" class="form-check-label"
             >No</label
           ><br />
-        </div>
+        </fieldset>
 
         <!--Checkboxes-->
-        <div class="form-check mb-3">
-          <label>Please select what happened in your encounter:</label><br />
+        <fieldset class="form-check mb-3">
+          <legend>Please select what happened in your encounter:</legend>
           <input
             id="beamedShip"
             value="beamedShip"
@@ -157,7 +157,7 @@ last_modified_at: 2025-02-09
           <label id="questioned-label" for="questioned" class="form-check-label"
             >Questioned by aliens/others</label
           >
-        </div>
+        </fieldset>
         <label for="comments">Any other comments:</label><br />
         <textarea
           id="comments"

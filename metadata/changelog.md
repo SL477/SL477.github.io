@@ -11,6 +11,8 @@ permalink: /changelog
 
 - Added missing category to CSS
 - Updated [NavBar to use Popovers](https://modern-css.com/dropdown-menus-without-javascript-toggles/) rather than the CSS only way (who knows what it will use next!). Some of the JavaScript I have left to do the aria-expands and some keyboard shortcuts (Home and End buttons).
+- Updated colour theme, [sometimes following this guide on OKLCH](https://manuel-strehl.de/easy_theming_with_oklch).
+- Fixed HTML of the survey form.
 
 ## 2026-03-29
 
