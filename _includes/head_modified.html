@@ -104,6 +104,11 @@
   <script src="/assets/js/{{ page.js_file.path }}"{% if page.js_file.async %} async="async"{% endif %} {% if page.js_file.defer %} defer="defer"{% endif %} {% if page.js_file.module %}type="module"{% endif %}></script>
   {%- endif -%}
 
+  {%- if page.layout == 'post' && site.show_likes -%}
+  <!-- For the like button -->
+  <script src="/assets/js/iine.mini.js"></script>
+  {%- endif -%}
+
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}

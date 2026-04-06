@@ -35,11 +35,11 @@
             type="button"
             class="dropdown_title"
             aria-expanded="false"
-            aria-controls="{{ item.id }}-dropdown"
+            popovertarget="{{ item.id }}-dropdown"
           >
             {{ item.name }}
           </button>
-          <ul class="dropdown_menu" id="{{ item.id }}-dropdown">
+          <ul class="dropdown_menu" id="{{ item.id }}-dropdown" popover="auto">
             {% for links in item.items %}
               {% unless item.name == "" %}
                 <li>{{ links.name }}</li>
@@ -64,11 +64,11 @@
           type="button"
           class="dropdown_title"
           aria-expanded="false"
-          aria-controls="blog-dropdown"
+          popovertarget="blog-dropdown"
         >
           Blog
         </button>
-        <ul class="dropdown_menu" id="blog-dropdown">
+        <ul class="dropdown_menu" id="blog-dropdown" popover="auto">
           {%- for post in site.posts limit:10 -%}
           <li>
             <a href="{{ post.url | relative_url }}" {% if post.url==page.url %}aria-current="page"{% endif %}

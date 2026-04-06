@@ -5,6 +5,7 @@ tags: Fiction
 author: Tom Fishwick
 last_modified_at: 2026-03-29
 in_reply_to: https://www.dozenialdragons.me.uk/2026/03/01/iwfc_march_26
+excerpt: This should likely have a trigger warning for plenty of gore!
 ---
 
 It was supposed to be an easy job.

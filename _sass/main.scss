@@ -1,15 +1,23 @@
+:root {
+  --off-white: oklch(97.515% 0.01276 244.483);
+  --off-black: oklch(12.515% 0.01276 64.483);
+  --black-white: light-dark(var(--off-black), var(--off-white));
+  --white-black: light-dark(var(--off-white), var(--off-black));
+  --accent-color: oklch(0.45 0.2 359deg);
+}
+
 .page-content,
 .site-footer {
-  background-color: light-dark(white, black);
-  color: light-dark(black, aliceblue);
+  background-color: var(--white-black);
+  color: var(--black-white);
 }
 
 caption {
-  color: light-dark(black, aliceblue);
+  color: var(--black-white);
 }
 
 .black {
-  color: black;
+  color: var(--off-black);
 }
 
 a,
@@ -18,14 +26,14 @@ a:visited {
 }
 
 .site-footer .black {
-  color: light-dark(black, aliceblue);
+  color: var(--black-white);
 }
 
 .sitemap,
 .stackoverflow,
 .email,
 .credly {
-  color: light-dark(black, aliceblue);
+  color: var(--black-white);
 }
 
 .home {
@@ -238,6 +246,10 @@ fieldset {
   display: block;
 }
 
+.form-check-input {
+  accent-color: var(--accent-color) !important;
+}
+
 th,
 td {
   background-color: light-dark(white, black) !important;
@@ -250,7 +262,7 @@ td {
 
 .post-meta {
   font-size: 14px;
-  color: light-dark(black, white);
+  color: var(--black-white)
 }
 
 /* Wordle */
