@@ -40,6 +40,9 @@ layout: default_modified
       {%- for tag in page.tags -%}
       <span class="p-category" data-tag="{{ tag }}">{{ tag }}</span>
       {%- endfor -%} {%- endif -%}
+      {%- if page.syndication != empty -%}
+      <span> • <a href="{{ page.syndication }}" class="u-syndication">Syndicated URL</a></span>
+      {%- endif -%}
       <data class="p-summary" hidden
         >{{ page.excerpt | strip_html | normalize_whitespace }}</data
       >
