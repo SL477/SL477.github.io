@@ -74,7 +74,11 @@ layout: default_modified
   </header>
 
   {%- if page.in_reply_to -%}
-    <p>In reply to: <a href="{{ page.in_reply_to }}" class="u-in-reply-to">{{ page.in_reply_to }}</a></p>
+    {%- if page.in_reply_to.url -%}
+      <p>In reply to: <a href="{{ page.in_reply_to.url }}" class="u-in-reply-to">{{ page.in_reply_to.text }}</a></p>
+    {%- else -%}
+      <p>In reply to: <a href="{{ page.in_reply_to }}" class="u-in-reply-to">{{ page.in_reply_to }}</a></p>
+    {%- endif -%}
   {%- endif -%}
 
   {%- if page.type == 'review' -%}

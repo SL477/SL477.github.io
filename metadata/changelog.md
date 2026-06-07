@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-04-12
+last_modified_at: 2026-06-07
 permalink: /changelog
 ---
+
+## 2026-06-07
+
+### Modified
+
+- Updated Post layout to sort out the in reply to
 
 ## 2026-04-12
 
