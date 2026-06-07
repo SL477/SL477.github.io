@@ -10,6 +10,7 @@ permalink: /changelog
 ### Modified
 
 - Updated Post layout to sort out the in reply to
+- Updated Post layout to add next/previous posts
 
 ## 2026-04-12
 
