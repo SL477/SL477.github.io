@@ -5,6 +5,12 @@ last_modified_at: 2026-04-12
 permalink: /changelog
 ---
 
+## 2026-06-13
+
+### Modified
+
+- Fixed issue with NavBar in Edge and Chrome on Mobile, where the links weren't being clicked due to the hover animation.
+
 ## 2026-04-12
 
 ### Modified
