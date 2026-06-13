@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-04-12
+last_modified_at: 2026-06-07
 permalink: /changelog
 ---
 
@@ -10,6 +10,13 @@ permalink: /changelog
 ### Modified
 
 - Fixed issue with NavBar in Edge and Chrome on Mobile, where the links weren't being clicked due to the hover animation.
+
+## 2026-06-07
+
+### Modified
+
+- Updated Post layout to sort out the in reply to
+- Updated Post layout to add next/previous posts
 
 ## 2026-04-12
 
