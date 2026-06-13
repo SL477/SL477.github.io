@@ -7,9 +7,14 @@ permalink: /changelog
 
 ## 2026-06-13
 
+### Added
+
+- H-Feed on home page.
+
 ### Modified
 
 - Fixed issue with NavBar in Edge and Chrome on Mobile, where the links weren't being clicked due to the hover animation.
+- Updated H-Card.
 
 ## 2026-06-07
 
