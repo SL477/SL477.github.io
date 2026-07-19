@@ -9,6 +9,7 @@ permalink: /changelog
 
 ### Modified
 
+- Updated Robots.txt
 - Updated Wordle stats to only show the last 10 games
 
 ## 2026-06-13
