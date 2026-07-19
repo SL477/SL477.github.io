@@ -4,6 +4,12 @@ layout: post
 tags: Trench-Crusade
 author: Tom Fishwick
 last_modified_at: 2026-07-19
+image:
+  path: /assets/images/AntiochVAntiochTurn3.jpg
+  webp: /assets/images/AntiochVAntiochTurn3.webp
+  width: 730
+  height: 723
+  alt: Trech Crusade Turn 3. Lieutenant gets to cross. Observer in mud. Prussian gets objective
 ---
 
 New Antioch versus New Antioch (my noble vanilla New Antioch force (Albia), versus the perfidious Prussian force).
@@ -71,6 +77,25 @@ Prussian victory, 10 victory points for holding the relic at the end.
 
 Here the scenario was breakout.
 The two sides need to cross the trench system and exit on their opponent's side.
+
+<figure>
+    <picture>
+        <source srcset="/assets/images/AntiochVPilgrimsTurn1.jpg" type="image/webp"/>
+        <source srcset="/assets/images/AntiochVPilgrimsTurn1.webp" type="image/{{ page.image.filetype }}"/>
+        <img
+            src="/assets/images/AntiochVPilgrimsTurn1.jpg"
+            alt="Trench Crusade New Antioch versus Trench Pilgrims. Antioch view of trenches."
+            class="u-photo"
+            width="730"
+            height="401"
+        />
+    </picture>
+    <figcaption>
+    <em>
+        Trench Crusade New Antioch versus Trench Pilgrims. Antioch view of trenches.
+    </em>
+    </figcaption>
+</figure>
 
 ## Turn 1
 
