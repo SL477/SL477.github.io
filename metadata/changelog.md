@@ -1,9 +1,16 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-06-07
+last_modified_at: 2026-07-19
 permalink: /changelog
 ---
+
+## 2026-07-19
+
+### Modified
+
+- Updated Robots.txt
+- Updated Wordle stats to only show the last 10 games
 
 ## 2026-06-13
 

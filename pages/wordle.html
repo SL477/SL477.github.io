@@ -99,7 +99,7 @@ permalink: /wordle
 </div>
 
 <div class="wordle-cards">
-  {% for wordle in site.data.wordleStats.plays reversed %}
+  {% for wordle in site.data.wordleStats.plays reversed limit:10 %}
   <div class="wordle-card">
     <p><b>{{ wordle.num }}</b></p>
     <p>{{ wordle.res }}/6</p>

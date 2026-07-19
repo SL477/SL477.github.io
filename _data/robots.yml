@@ -4,7 +4,9 @@
 - AI2Bot-DeepResearchEval
 - Ai2Bot-Dolma
 - aiHitBot
+- AIWebIndex
 - amazon-kendra
+- amazon-QBusiness
 - Amazonbot
 - AmazonBuyForMe
 - Amzn-SearchBot
@@ -43,8 +45,10 @@
 - cohere-ai
 - cohere-training-data-crawler
 - Cotoyogi
+- CragCrawler
 - Crawl4AI
 - Crawlspace
+- Cursor
 - Datenbank Crawler
 - DeepSeekBot
 - Devin
@@ -58,6 +62,7 @@
 - Factset_spyderbot
 - FirecrawlAgent
 - FriendlyCrawler
+- GeistHaus-PageFetcher
 - Gemini-Deep-Research
 - Google-Agent
 - Google-CloudVertexBot
@@ -66,6 +71,7 @@
 - Google-Gemini-CLI
 - Google-NotebookLM
 - GoogleAgent-Mariner
+- GoogleAgent-URLContext
 - GoogleOther
 - GoogleOther-Image
 - GoogleOther-Video
@@ -82,6 +88,7 @@
 - ISSCyberRiskCrawler
 - kagi-fetcher
 - Kangaroo Bot
+- Kimi-User
 - KlaviyoAIBot
 - KunatoCrawler
 - laion-huggingface-processor
@@ -98,6 +105,7 @@
 - meta-webindexer
 - MistralAI-User
 - MistralAI-User/1.0
+- Mozilla-Tabstack
 - MyCentralAIScraperBot
 - NagetBot
 - netEstate Imprint Crawler
@@ -120,6 +128,8 @@
 - Poggio-Citations
 - Poseidon Research Crawler
 - QualifiedBot
+- Querit-SearchBot
+- QueritBot
 - QuillBot
 - quillbot.com
 - SBIntuitionsBot
@@ -136,8 +146,10 @@
 - Thinkbot
 - TikTokSpider
 - Timpibot
+- TongyiBot
 - Trae
 - TwinAgent
+- UseAI
 - VelenPublicWebCrawler
 - WARDBot
 - Webzio-Extended
@@ -147,5 +159,6 @@
 - YaK
 - YandexAdditional
 - YandexAdditionalBot
+- YiyanBot
 - YouBot
 - ZanistaBot
