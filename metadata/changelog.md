@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-07-19
+last_modified_at: 2026-08-02
 permalink: /changelog
 ---
+
+## 2026-08-02
+
+### Modified
+
+- Added new tab CSS
 
 ## 2026-07-19
 
