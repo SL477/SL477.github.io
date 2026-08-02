@@ -55,3 +55,9 @@
 - tag: Movie
   background: purple
   colour: white
+- tag: Book
+  background: brown
+  colour: white
+- tag: Game
+  background: purple
+  colour: white
