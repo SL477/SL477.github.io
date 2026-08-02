@@ -1,9 +1,22 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-07-19
+last_modified_at: 2026-08-02
 permalink: /changelog
 ---
+
+## 2026-08-02
+
+### Added
+
+- [AI page](/AI)
+
+### Modified
+
+- Added new tab CSS
+- Update robots.txt
+- Added disallow training meta tag
+- Added tags to H-feed
 
 ## 2026-07-19
 
