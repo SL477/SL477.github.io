@@ -7,6 +7,10 @@ permalink: /changelog
 
 ## 2026-08-02
 
+### Added
+
+- [AI page](/AI)
+
 ### Modified
 
 - Added new tab CSS
