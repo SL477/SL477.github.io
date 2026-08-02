@@ -15,6 +15,7 @@ permalink: /changelog
 
 - Added new tab CSS
 - Update robots.txt
+- Added disallow training meta tag
 
 ## 2026-07-19
 
