@@ -14,6 +14,7 @@ permalink: /changelog
 ### Modified
 
 - Added new tab CSS
+- Update robots.txt
 
 ## 2026-07-19
 
