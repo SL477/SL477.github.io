@@ -10,6 +10,7 @@ permalink: /changelog
 ### Modified
 
 - Updated Robots.txt
+- Updated Light/Dark mode toggle. I read [Lea Verou's blog post about using a two state toggle](https://lea.verou.me/blog/2026/dark-mode-toggles/).
 
 ## 2026-08-15
 

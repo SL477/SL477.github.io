@@ -15,9 +15,41 @@ function get_initial_ui_mode() {
   const mode = localStorage.getItem('uiMode');
   if (mode) {
     change_ui_mode(mode);
+    updateUIModeBtn(mode == 'dark');
+  } else {
+    updateUIModeBtn(isSystemDarkMode());
   }
 }
 get_initial_ui_mode();
+
+function updateUIModeBtn(isDark) {
+  const btn = document.getElementById('ui-mode-picker');
+  btn.classList.toggle('dark', isDark);
+  btn.setAttribute('aria-label', isDark ? 'Activate light mode' : 'Activate dark mode');
+}
+
+function isSystemDarkMode() {
+  const darkModeMql = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+  return darkModeMql && darkModeMql.matches;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const uiModePicker = document.getElementById('ui-mode-picker');
+
+  uiModePicker?.addEventListener('click', () => {
+    const mode = localStorage.getItem('uiMode');
+    if (mode) {
+      localStorage.removeItem('uiMode');
+      const colorScheme = document.querySelector('meta[name="color-scheme"]');
+      colorScheme.setAttribute('content', 'light dark');
+      updateUIModeBtn(isSystemDarkMode());
+    } else {
+      const newMode = isSystemDarkMode();
+      change_ui_mode(newMode ? 'light' : 'dark');
+      updateUIModeBtn(!newMode);
+    }
+  });
+});
 
 // Drop down menus
 const dropdowns = document.querySelectorAll('.dropdown_menu a');
