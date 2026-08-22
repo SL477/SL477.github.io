@@ -11,6 +11,7 @@ permalink: /changelog
 
 - Updated Robots.txt
 - Updated Light/Dark mode toggle. I read [Lea Verou's blog post about using a two state toggle](https://lea.verou.me/blog/2026/dark-mode-toggles/).
+- Made the NavBar Home/End code a bit more efficient
 
 ## 2026-08-15
 
