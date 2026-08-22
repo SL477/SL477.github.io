@@ -1,9 +1,15 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-08-15
+last_modified_at: 2026-08-22
 permalink: /changelog
 ---
+
+## 2026-08-22
+
+### Modified
+
+- Updated Robots.txt
 
 ## 2026-08-15
 
