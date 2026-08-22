@@ -181,3 +181,11 @@
     }
   }
 }
+
+#ui-mode-picker::before {
+  content: '🌙';
+}
+
+#ui-mode-picker.dark::before { 
+  content: '🔆';
+}
