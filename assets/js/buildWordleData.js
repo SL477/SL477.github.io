@@ -61,7 +61,7 @@ function buildWordleStats(fileText) {
     //   console.log(result, number, cells);
     stats.plays.push(new play(number, cells, result));
 
-    if (result != 'X' && (number === lastPlay + 1 || lastPlay === 0)) {
+    if (result !== 'X' && (number === lastPlay + 1 || lastPlay === 0)) {
       stats.currentStreak++;
     } else {
       if (stats.currentStreak > stats.maxStreak) {
