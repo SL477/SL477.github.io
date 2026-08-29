@@ -14,7 +14,6 @@ function instrumentChange() {
       if (INSTRUMENT_FORM) {
         INSTRUMENT_FORM.remove();
       }
-      // eslint-disable-next-line no-undef
       playKeyboard(instrument);
     }
   }

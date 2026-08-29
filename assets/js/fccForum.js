@@ -26,7 +26,7 @@ fetch('https://forum-proxy.freecodecamp.rocks/latest')
         // get the users
         const topicUsers = document.createElement('td');
         topic.posters.forEach((user) => {
-          const usrIndex = users.findIndex((u) => u.id == user.user_id);
+          const usrIndex = users.findIndex((u) => u.id === user.user_id);
           if (usrIndex > -1) {
             const userLink = document.createElement('a');
             userLink.href = `https://forum.freecodecamp.org/u/${users[usrIndex].username}`;

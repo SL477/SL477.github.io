@@ -34,7 +34,7 @@ export const fleet = [
 
 export class GameBoard {
     constructor() {
-        this.board = [...Array(10)].map((e) => Array(10));
+        this.board = [...Array(10)].map(() => Array(10));
     }
 
     /**

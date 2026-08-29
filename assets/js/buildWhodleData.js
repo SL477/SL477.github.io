@@ -54,10 +54,10 @@ function buildWhodleStats(fileText) {
     for (const line of result) {
       const matches = line.match(regex);
       const m = matches[0];
-      let d = new Date(line.slice(-11));
-      let tomorrow = new Date(lastPlay);
+      const d = new Date(line.slice(-11));
+      const tomorrow = new Date(lastPlay);
       tomorrow.setDate(tomorrow.getDate() + 1);
-      if (m === "I didn't") {
+      if (m === 'I didn\'t') {
         stats.guessX += 1;
         if (stats.currentStreak > stats.maxStreak) {
           stats.maxStreak = stats.currentStreak;
@@ -76,7 +76,9 @@ function buildWhodleStats(fileText) {
       stats.numberGames++;
       lastPlay = d;
     }
-  } catch (e) {}
+  } catch (e) {
+    console.error(e);
+  }
 
   stats.numberWon =
     stats.guess1 + stats.guess2 + stats.guess3 + stats.guess4 + stats.guess5;

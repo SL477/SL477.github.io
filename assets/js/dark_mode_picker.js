@@ -15,7 +15,7 @@ function get_initial_ui_mode() {
   const mode = localStorage.getItem('uiMode');
   if (mode) {
     change_ui_mode(mode);
-    updateUIModeBtn(mode == 'dark');
+    updateUIModeBtn(mode === 'dark');
   } else {
     updateUIModeBtn(isSystemDarkMode());
   }
@@ -50,7 +50,7 @@ document.getElementById('ui-mode-picker')?.addEventListener('click', () => {
 // Drop down menus
 const dropdowns = document.querySelectorAll('.dropdown_menu');
 dropdowns.forEach(menu => {
-  const toggleBtn = menu.closest('.dropdown_title');
+  // const toggleBtn = menu.closest('.dropdown_title');
   menu.addEventListener('keydown', e => {
     if (e.key === 'Home' || e.key === 'End') {
       e.preventDefault();
@@ -63,7 +63,7 @@ dropdowns.forEach(menu => {
 
 const dropdownLinks = document.querySelectorAll('.dropdown_menu a');
 for (const dropdownLink of dropdownLinks) {
-  dropdownLink.addEventListener('focus', (e) => {
+  dropdownLink.addEventListener('focus', () => {
     dropdownLink.parentNode.parentNode.parentNode.querySelector(
       'button'
     ).ariaExpanded = true;

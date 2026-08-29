@@ -11,15 +11,15 @@ window.onload = function () {
 
 let px = 10;
 let py = 10; //position x & y
-let gs = 15;
-let tc = 20;
+const gs = 15;
+const tc = 20;
 let ax = 15;
 let ay = 15; //apple
 let xv = 0;
 let yv = 0; //velocity
-let trail = [];
+const trail = [];
 let tail = 5;
-let xy = 0;
+// const xy = 0;
 
 function game() {
   px += xv;
@@ -43,7 +43,7 @@ function game() {
 
   trail.forEach((t) => {
     ctx.fillRect(t.x * gs, t.y * gs, gs - 2, gs - 2);
-    if (t.x == px && t.y == py) {
+    if (t.x === px && t.y === py) {
       tail = 5;
     }
     ctx.fillStyle = 'lime';
@@ -53,7 +53,7 @@ function game() {
   while (trail.length > tail) {
     trail.shift();
   }
-  if (ax == px && ay == py) {
+  if (ax === px && ay === py) {
     tail++;
     ax = Math.floor(Math.random() * tc);
     ay = Math.floor(Math.random() * tc);
@@ -65,16 +65,16 @@ function game() {
 
 function keyPush(evt) {
   const keyCode = evt.keyCode;
-  if ((keyCode == 37 || keyCode == 65) && xv != 1) {
+  if ((keyCode === 37 || keyCode === 65) && xv !== 1) {
     xv = -1;
     yv = 0;
-  } else if ((keyCode == 38 || keyCode == 87) && yv != 1) {
+  } else if ((keyCode === 38 || keyCode === 87) && yv !== 1) {
     xv = 0;
     yv = -1;
-  } else if ((keyCode == 39 || keyCode == 68) && xv != -1) {
+  } else if ((keyCode === 39 || keyCode === 68) && xv !== -1) {
     xv = 1;
     yv = 0;
-  } else if ((keyCode == 40 || keyCode == 83) && yv != -1) {
+  } else if ((keyCode === 40 || keyCode === 83) && yv !== -1) {
     xv = 0;
     yv = 1;
   }

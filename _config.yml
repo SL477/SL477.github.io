@@ -85,3 +85,4 @@ exclude:
   - package.json
   - package-lock.json
   - stylelint.config.mjs
+  - eslint.config.js

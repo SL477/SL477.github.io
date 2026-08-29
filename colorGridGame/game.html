@@ -1,60 +1,25 @@
 ---
 layout: page
 title: Colour Grid
-last_modified_at: 2025-07-06
+last_modified_at: 2026-08-29
 css_file: colorGrid.css
-js_file: 
+js_file:
   path: colorGrid.js
-  async: true
+  defer: true
 ---
 
 <div id="wrapper">
   <canvas id="canvas" width="280" height="280" class="center"></canvas>
-  <br id="hi" />
-  <div class="center">
-    <button
-      onclick="changeColor('White')"
-      class="button-cls white"
-      aria-label="white"
-      type="button"
-    ></button>
-    <button
-      onclick="changeColor('Blue')"
-      class="button-cls blue"
-      aria-label="blue"
-      type="button"
-    ></button>
-    <button
-      onclick="changeColor('Green')"
-      class="button-cls green"
-      aria-label="green"
-      type="button"
-    ></button>
-    <button
-      onclick="changeColor('Purple')"
-      class="button-cls purple"
-      aria-label="purple"
-      type="button"
-    ></button>
-    <button
-      onclick="changeColor('#e6e600')"
-      class="button-cls yellow"
-      aria-label="yellow"
-      type="button"
-    ></button>
-    <button
-      onclick="changeColor('Red')"
-      class="button-cls red"
-      aria-label="red"
-      type="button"
-    ></button>
+  <div class="center controls">
+    <button data-colour="White" class="button-cls white" aria-label="white" type="button"></button>
+    <button data-colour="Blue" class="button-cls blue" aria-label="blue" type="button"></button>
+    <button data-colour="Green" class="button-cls green" aria-label="green" type="button"></button>
+    <button data-colour="Purple" class="button-cls purple" aria-label="purple" type="button"></button>
+    <button data-colour="#e6e600" class="button-cls yellow" aria-label="yellow" type="button"></button>
+    <button data-colour="Red" class="button-cls red" aria-label="red" type="button"></button>
   </div>
-  <br />
   <p id="NumMoves" class="center">Number of Moves: 0</p>
-  <button onclick="restartGame()" class="btn button center" type="button">
-    Restart</button
-  ><br /><br />
-  <a href="index.html" class="center"
-    ><img src="/assets/images/home.png" alt="Home" id="home" class="center"
-  /></a>
+  <button id="restart" class="btn button center" type="button">
+    Restart</button>
+  <a href="index.html" class="center"><img src="/assets/images/home.png" alt="Home" id="home" /></a>
 </div>

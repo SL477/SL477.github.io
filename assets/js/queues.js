@@ -28,7 +28,7 @@ class Queue {
   }
 
   empty() {
-    if (this.dataStore.length == 0) {
+    if (this.dataStore.length === 0) {
       return true;
     } else {
       return false;
@@ -36,7 +36,7 @@ class Queue {
   }
 
   insertToFront(element) {
-    let temp = [];
+    const temp = [];
     temp.push(element);
     this.dataStore.forEach((i) => {
       temp.push(i);
@@ -96,7 +96,7 @@ function palindromeChecker(input) {
   let f = p.dequeue();
   let b = p.removeFromEnd();
   while (f && b) {
-    if (f != b) {
+    if (f !== b) {
       return false;
     }
     f = p.dequeue();
@@ -125,7 +125,7 @@ class Patient {
   }
 }
 
-let patientQueue = new Queue();
+const patientQueue = new Queue();
 
 function showListOfPatients() {
   // patientList
