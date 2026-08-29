@@ -31,7 +31,7 @@ function sitemap_map() {
           path += (path === '/' ? '' : '/') + s;
           if (!pageDict[path]) {
             pageDict[path] = path === '#' ? '<p>#</p>' : path;
-            preTag.textContent += `\n    ${last}${!shownTags[last] ? '[' + pageDict[last] + ']' : ''} --> ${path}${!shownTags[path] ? '[' + (s == '#' ? '<p>#</p>' : cnt === split.length - 1 ? '<a href="' + link.getAttribute('href') + '">' + s + '</a>' : s) + ']' : ''}`;
+            preTag.textContent += `\n    ${last}${!shownTags[last] ? '[' + pageDict[last] + ']' : ''} --> ${path}${!shownTags[path] ? '[' + (s === '#' ? '<p>#</p>' : cnt === split.length - 1 ? '<a href="' + link.getAttribute('href') + '">' + s + '</a>' : s) + ']' : ''}`;
             shownTags[last] = last === '#' ? '<p>#</p>"' : last;
             shownTags[path] = path === '#' ? '<p>#</p>' : path;
           }

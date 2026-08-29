@@ -105,7 +105,7 @@ async function networkFirst(req) {
       cache.put(req, res.clone());
     }
     return res;
-  } catch (err) {
+  } catch {
     const cachedResponse = await cache.match(req, { ignoreSearch: true });
     return cachedResponse || new Response(null, { status: 404 });
   }

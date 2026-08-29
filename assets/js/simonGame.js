@@ -49,7 +49,7 @@ function simonButton(num, human = false) {
     btn.classList.remove('active-button');
   }, 500);
   if (human) {
-    if (num == buttonArray[humanStep]) {
+    if (num === buttonArray[humanStep]) {
       console.log('num equals buttonArray');
       setCorrect(true);
       humanStep++;

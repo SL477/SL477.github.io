@@ -18,6 +18,6 @@ function snow() {
   main.appendChild(snowHolder);
 }
 
-if (new Date().getMonth() == 11) {
+if (new Date().getMonth() === 11) {
   snow();
 }

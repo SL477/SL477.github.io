@@ -5,6 +5,12 @@ last_modified_at: 2026-08-22
 permalink: /changelog
 ---
 
+## 2026-08-29
+
+### Modified
+
+- Updated ESLint and reran it
+
 ## 2026-08-22
 
 ### Modified

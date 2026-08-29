@@ -8,8 +8,8 @@ const yBox = document.getElementById('y');
 const mapYBox = document.getElementById('mapY');
 const curCellBox = document.getElementById('curCell');
 
-let width = 800;
-let height = 600;
+const width = 800;
+const height = 600;
 
 let x = (width + 10) / 2;
 let y = (height + 10) / 2;
@@ -18,14 +18,14 @@ let right = false;
 let up = false;
 let down = false;
 
-let speed = 10;
+const speed = 10;
 
 let health = 100;
 let maxHealth = 100;
 let level = 1;
 let exp = 0;
 let levelExp = 100;
-let damageAmt = 30;
+const damageAmt = 30;
 
 const cellWidth = 30;
 
@@ -245,7 +245,7 @@ const orgmap = [
 ];
 
 //let maxMapY = map.length * cellWidth;
-let maxMapY = 1300;
+const maxMapY = 1300;
 //let mapY = maxMapY - (7.5 * cellWidth);//7.5 * cellWidth;
 //let mapY = 7.5 * cellWidth;
 let mapY = 160;
@@ -254,7 +254,7 @@ let enemyArray = [];
 
 const draw = (reducedMap) => {
   if (canvas.getContext) {
-    let ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d');
 
     //clear
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -291,12 +291,12 @@ const draw = (reducedMap) => {
           );
           ctx.fillStyle = 'brown';
         } else if (block > 1) {
-        /*else if (block === 2) {
-                    ctx.fillStyle = "orange";
-                    ctx.fillRect(blockIndex * cellWidth, i * cellWidth, cellWidth,cellWidth);
-                    ctx.fillStyle = "brown";
-                }*/
-          let enemy = enemyArray[block - 2];
+          /*else if (block === 2) {
+                      ctx.fillStyle = "orange";
+                      ctx.fillRect(blockIndex * cellWidth, i * cellWidth, cellWidth,cellWidth);
+                      ctx.fillStyle = "brown";
+                  }*/
+          const enemy = enemyArray[block - 2];
           if (enemy.hp > 0) {
             ctx.fillStyle = enemy.color;
             ctx.fillRect(
@@ -357,8 +357,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function gameLoop() {
-  let lastX = x;
-  let lastY = mapY;
+  const lastX = x;
+  const lastY = mapY;
   if (left) {
     x -= speed;
     if (x <= 0) {
@@ -392,7 +392,7 @@ function gameLoop() {
     }
   }
 
-  let colCheck = collisionCheck(lastX, x, lastY, mapY);
+  const colCheck = collisionCheck(lastX, x, lastY, mapY);
   //console.log('collisionCheck', colCheck);
   x = colCheck.x;
   mapY = colCheck.y;
@@ -400,7 +400,7 @@ function gameLoop() {
   //Starts with showing the bottom fifteen cells
   //need the 7.5 cells above and the 7.5 cells below the current position
   //console.log('map stuff', mapY / cellWidth);
-  let curCell = mapY / cellWidth;
+  const curCell = mapY / cellWidth;
   //console.log('Map stuff', map.filter((m,i) => {
   /*if (curCell < 15 && i <= 15) {
         return true;
@@ -435,7 +435,7 @@ function gameLoop() {
   y = (height + 10) / 2;
   //}
 
-  let reducedMap = map.filter((m, i) => {
+  const reducedMap = map.filter((m, i) => {
     //return (curCell < 15 && i < 15) || (curCell > 15 && map.length - curCell < 15 && i >= map.length - 15);
     //return (curCell <= 10 && i >= map.length - 20) || (curCell >= map.length - 10 && i < 20) || (curCell > 10 && curCell < map.length - 10 && i > map.length - Math.floor(curCell) - 10 && i < map.length - Math.floor(curCell) + 10);
     return (
@@ -463,7 +463,7 @@ function collisionCheck(x, nextX, y, nextY) {
 
   //check x
   let nextCellX = Math.floor(nextX / cellWidth);
-  let nextCellY = Math.floor(y / cellWidth) - 1;
+  const nextCellY = Math.floor(y / cellWidth) - 1;
   let nextCell = map[map.length - nextCellY][nextCellX];
   let hasFought = false;
   if (nextCell > 0) {
@@ -562,7 +562,7 @@ function startGame() {
 }
 
 function fight(row, column) {
-  let enemy = enemyArray[map[row][column] - 2];
+  const enemy = enemyArray[map[row][column] - 2];
   //you strike first
   enemy.hp -= damageAmt * level;
   console.log('enemy', enemy);
