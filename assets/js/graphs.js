@@ -1,5 +1,4 @@
 
-// eslint-disable-next-line no-unused-vars
 class Vertex {
     constructor(label) {
         this.label = label;
@@ -36,7 +35,7 @@ class Graph {
         for (let i = 0; i < this.vertices; ++i) {
             ret += '<p>' + i.toString() + ' -> ';
             for (let j = 0; j < this.vertices; ++j) {
-                if (this.adj[i][j] != undefined) {
+                if (this.adj[i][j] !== undefined) {
                     ret += this.adj[i][j] + ' ';
                 }
             }
@@ -47,7 +46,7 @@ class Graph {
 
     showGraph() {
         let ret = '<ul>';
-        let visited = [];
+        const visited = [];
         for (let i = 0; i < this.vertices; i++) {
             ret += '<li>' + this.vertexList[i] + ' -> ';
             visited.push(this.vertexList[i]);
@@ -63,7 +62,7 @@ class Graph {
                 }
             }*/
             for (let j = 0; j < this.adj[i].length; j++) {
-                let s = this.vertexList[this.adj[i][j]];
+                const s = this.vertexList[this.adj[i][j]];
                 if (s) {
                     if (visited.indexOf(s) < 0) {
                         ret += delim + s;
@@ -87,9 +86,9 @@ class Graph {
         });
 
         for (let i = 0; i < this.vertices; ++i) {
-            //let temp = '\n' + i 
+            //let temp = '\n' + i
             for (let j = 0; j < this.vertices; ++j) {
-                if (this.adj[i][j] != undefined && this.adj[i][j]) {
+                if (this.adj[i][j] !== undefined && this.adj[i][j]) {
                     if (this.adj[i][j] > i)
                     {
                         ret += '\n' + i + ',' + this.adj[i][j];
@@ -103,7 +102,7 @@ class Graph {
     dfs(v) {
         //depth first search
         this.marked[v] = true;
-        if (this.adj[v] != undefined) {
+        if (this.adj[v] !== undefined) {
             console.log('Visited vertex:',v);
         }
         if (this.adj[v]) {
@@ -117,13 +116,13 @@ class Graph {
 
     bfs(s) {
         //breadth first search
-        let queue = [];
+        const queue = [];
         this.marked[s] = true;
         queue.push(s);//add to back of queue
         let ret = '';
         while (queue.length > 0) {
-            let v = queue.shift();//remove from front of queue
-            if (v != undefined) {
+            const v = queue.shift();//remove from front of queue
+            if (v !== undefined) {
                 if (v.toString().length > 0) {
                     ret += '<p>Visited vertex: ' + v + '</p>';
                 }
@@ -142,12 +141,12 @@ class Graph {
     }
 
     pathTo(v) {
-        let source = 0;
+        const source = 0;
         if (!this.hasPathTo(v)) {
             return undefined;
         }
-        let path = [];
-        for (let i = v; i != source; i = this.edgeTo[i]) {
+        const path = [];
+        for (let i = v; i !== source; i = this.edgeTo[i]) {
             path.push(i);
         }
         path.push(source);
@@ -160,18 +159,18 @@ class Graph {
 
     topSort() {
         let ret = '<ul>';
-        let stack = [];
-        let visited = [];
+        const stack = [];
+        const visited = [];
         for (let i = 0; i < this.vertices; i++) {
             visited[i] = false;
         }
         for (let i = 0; i < this.vertices; i++) {
-            if (visited[i] == false) {
+            if (visited[i] === false) {
                 this.topSortHelper(i, visited, stack);
             }
         }
         for (let i = 0; i < stack.length; i++) {
-            if (stack[i] != undefined && stack[i] != false) {
+            if (stack[i] !== undefined && stack[i] !== false) {
                 ret += '<li>' + this.vertexList[stack[i]] + '</li>';
             }
         }
@@ -191,21 +190,21 @@ class Graph {
         stack.push(v);
     }
 }
-let g2 = new Graph(6);
+const g2 = new Graph(6);
 function startup() {
-    const exampleDiv = document.getElementById("example");
-    const textTextArea = document.getElementById("text");
-    const outputDiv = document.getElementById("output");
-    const ex4Div = document.getElementById("ex4");
+    const exampleDiv = document.getElementById('example');
+    const textTextArea = document.getElementById('text');
+    const outputDiv = document.getElementById('output');
+    const ex4Div = document.getElementById('ex4');
 
     if (exampleDiv && textTextArea && outputDiv && ex4Div) {
-        let g = new Graph(5);
+        const g = new Graph(5);
         g.addEdge(0,1);
         g.addEdge(0,2);
         g.addEdge(1,3);
         g.addEdge(2,4);
         g.vertexList = ['0','1','2','3','4'];
-        exampleDiv.innerHTML = "";
+        exampleDiv.innerHTML = '';
         exampleDiv.innerHTML += g.showGraphOld();
         //g.dfs(0);
         exampleDiv.innerHTML += '<p>Breadth First Search:</p>' + g.bfs(0);
@@ -223,7 +222,7 @@ function startup() {
         }
         ret += '</p>';
         exampleDiv.innerHTML += ret;
-        
+
         g2.addEdge(1,2);
         g2.addEdge(2,5);
         g2.addEdge(1,3);
@@ -234,11 +233,11 @@ function startup() {
         textTextArea.value = g2.saveFormat();
 
         document.getElementById('fileLoad').addEventListener('change', function() {
-            let fr = new FileReader();
-            
+            const fr = new FileReader();
+
             fr.onload = function() {
                 console.log('results', fr.result);
-                let uploadGraph = createGraphFromText(fr.result);
+                const uploadGraph = createGraphFromText(fr.result);
                 outputDiv.innerHTML = uploadGraph.showGraph();
             };
             fr.readAsText(this.files[0]);
@@ -279,12 +278,12 @@ startup();
 
 // eslint-disable-next-line no-unused-vars
 function download() {
-    let element = document.createElement('a');
-    const textTextArea = document.getElementById("text");
-    const fileNameInput = document.getElementById("filename");
+    const element = document.createElement('a');
+    const textTextArea = document.getElementById('text');
+    const fileNameInput = document.getElementById('filename');
 
     if (textTextArea && fileNameInput) {
-        let text = textTextArea.value;
+        const text = textTextArea.value;
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
         element.setAttribute('download', fileNameInput.value);
 
@@ -297,15 +296,15 @@ function download() {
 }
 
 function createGraphFromText(uploadText) {
-    let split = uploadText.split('\n');
+    const split = uploadText.split('\n');
     if (split.length > 0) {
-        let verticesList = split[0].split(',');
-        let uploadGraph = new Graph(verticesList.length);
+        const verticesList = split[0].split(',');
+        const uploadGraph = new Graph(verticesList.length);
         uploadGraph.vertexList = verticesList;
 
         for (let i = 1; i < split.length; i++) {
             if (split[i].length > 0) {
-                let s = split[i].split(',');
+                const s = split[i].split(',');
                 uploadGraph.addEdge(s[0],s[1]);
             }
         }

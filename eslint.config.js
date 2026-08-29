@@ -20,6 +20,7 @@ export default defineConfig([
       'my-navbar.js',
       'assets/js/jspiano/audiosynth.js',
       'assets/js/jspiano/playKeyboard.js',
+      'assets/js/components/my-navbar.js',
       'assets/js/components/my-navbar2.js',
       'odinProject/restaurantPage/main.js',
       'assets/js/webMentions.js',
