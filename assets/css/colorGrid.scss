@@ -8,6 +8,7 @@ body {
 canvas {
   border: 1px solid #d3d3d3;
   background-color: #f1f1f1;
+  margin-bottom: 1rem;
 }
 
 .button-cls {
@@ -16,6 +17,7 @@ canvas {
   width: 43px;
   height: 25px;
   display: inline-block;
+  cursor: pointer;
 }
 
 .btn {
@@ -113,4 +115,12 @@ button:active {
 #home {
   width: 35px;
   height: 35px;
+}
+
+.controls {
+  margin-bottom: 1rem;
+}
+
+#restart {
+  margin-bottom: 2rem;
 }

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-08-22
+last_modified_at: 2026-08-29
 permalink: /changelog
 ---
 
@@ -10,6 +10,7 @@ permalink: /changelog
 ### Modified
 
 - Updated ESLint and reran it
+- Updated the JS for the Colour Grid game
 
 ## 2026-08-22
 
