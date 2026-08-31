@@ -346,7 +346,6 @@ function SetWordCountAns(htmlContent) {
   }
 }
 
-// eslint-disable-next-line no-unused-vars
 function getTextCounts() {
   let textInput = GetTextInput();
   textInput = textInput.toLowerCase();
@@ -371,4 +370,7 @@ function getTextCounts() {
   SetWordCountAns(ret);
 }
 
-startUp();
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('getTextCounts').addEventListener('click', getTextCounts);
+  startUp();
+});
