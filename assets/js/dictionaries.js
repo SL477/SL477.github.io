@@ -62,7 +62,6 @@ function SetDivHtml(divID, setHtml) {
   }
 }
 
-// eslint-disable-next-line no-unused-vars
 function phoneDictionary() {
   const phoneNames = GetTextAreaValue('phoneNames');
   console.log('phoneNames', phoneNames);
@@ -75,7 +74,6 @@ function phoneDictionary() {
   SetDivHtml('phoneDictAns', '<ul>' + PD.showAll() + '</ul>')
 }
 
-// eslint-disable-next-line no-unused-vars
 function wordCounterDict() {
   let wordCounter = GetTextAreaValue('wordCounter');
   wordCounter = wordCounter.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
@@ -93,3 +91,8 @@ function wordCounterDict() {
   });
   SetDivHtml('wordCountAns', '<ul>' + dict.showAll() + '</ul>');
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('phoneDictionary').addEventListener('click', phoneDictionary);
+  document.getElementById('wordCounterDict').addEventListener('click', wordCounterDict);
+});

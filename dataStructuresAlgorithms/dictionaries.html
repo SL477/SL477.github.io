@@ -5,7 +5,7 @@ layout: page
 last_modified_at: 2025-02-01
 js_file:
   path: dictionaries.js
-  async: true
+  defer: true
 ---
 
 <p>
@@ -33,7 +33,7 @@ Jennifer,987
 Danny,012
 Jonathan,666</textarea
   >
-  <button type="button" class="btn btn-primary" onclick="phoneDictionary();">
+  <button type="button" class="btn btn-primary" id="phoneDictionary">
     Create Dictionary
   </button>
   <div id="phoneDictAns"></div>
@@ -50,7 +50,7 @@ Jonathan,666</textarea
   >
 The brown fox jumped over the blue fox,</textarea
   >
-  <button type="button" class="btn btn-primary" onclick="wordCounterDict();">
+  <button type="button" class="btn btn-primary" id="wordCounterDict">
     Count Words
   </button>
   <div id="wordCountAns"></div>
