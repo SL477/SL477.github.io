@@ -1,313 +1,315 @@
 
 class Vertex {
-    constructor(label) {
-        this.label = label;
-    }
+  constructor(label) {
+    this.label = label;
+  }
 }
 
 class Graph {
-    constructor(v) {
-        this.vertices = v;
-        this.vertexList = [];
-        this.edges = 0;
-        this.adj = [];
-        for ( let i = 0; i < this.vertices; ++i) {
-            this.adj[i] = [];
-            this.adj[i].push('');
-        }
-
-        this.marked = [];
-        for (let i = 0; i < this.vertices; ++i) {
-            this.marked[i] = false;
-        }
-
-        this.edgeTo = [];
+  constructor(v) {
+    this.vertices = v;
+    this.vertexList = [];
+    this.edges = 0;
+    this.adj = [];
+    for (let i = 0; i < this.vertices; ++i) {
+      this.adj[i] = [];
+      this.adj[i].push('');
     }
 
-    addEdge(v,w) {
-        this.adj[v].push(w);
-        this.adj[w].push(v);
-        this.edges++;
+    this.marked = [];
+    for (let i = 0; i < this.vertices; ++i) {
+      this.marked[i] = false;
     }
 
-    showGraphOld() {
-        let ret = '';
-        for (let i = 0; i < this.vertices; ++i) {
-            ret += '<p>' + i.toString() + ' -> ';
-            for (let j = 0; j < this.vertices; ++j) {
-                if (this.adj[i][j] !== undefined) {
-                    ret += this.adj[i][j] + ' ';
-                }
-            }
-            ret += '</p>';
+    this.edgeTo = [];
+  }
+
+  addEdge(v, w) {
+    this.adj[v].push(w);
+    this.adj[w].push(v);
+    this.edges++;
+  }
+
+  showGraphOld() {
+    let ret = '';
+    for (let i = 0; i < this.vertices; ++i) {
+      ret += '<p>' + i.toString() + ' -> ';
+      for (let j = 0; j < this.vertices; ++j) {
+        if (this.adj[i][j] !== undefined) {
+          ret += this.adj[i][j] + ' ';
         }
-        return ret;
+      }
+      ret += '</p>';
     }
+    return ret;
+  }
 
-    showGraph() {
-        let ret = '<ul>';
-        const visited = [];
-        for (let i = 0; i < this.vertices; i++) {
-            ret += '<li>' + this.vertexList[i] + ' -> ';
-            visited.push(this.vertexList[i]);
-            let delim = '';
-            //console.log(this.adj[i]);
-            /*for (let j = 0; j < this.vertices; j++) {
-                //console.log(this.adj[i][j], this.vertexList[j]);
-                if (this.adj[i][j] != undefined) {
-                    if (visited.indexOf(this.vertexList[j]) < 0) {
-                        ret += delim + this.vertexList[j];
-                        delim = ', ';
-                    }
-                }
-            }*/
-            for (let j = 0; j < this.adj[i].length; j++) {
-                const s = this.vertexList[this.adj[i][j]];
-                if (s) {
-                    if (visited.indexOf(s) < 0) {
-                        ret += delim + s;
-                        delim = ', ';
-                    }
-                }
-            }
-            ret += '</li>';
+  showGraph() {
+    let ret = '<ul>';
+    const visited = [];
+    for (let i = 0; i < this.vertices; i++) {
+      ret += '<li>' + this.vertexList[i] + ' -> ';
+      visited.push(this.vertexList[i]);
+      let delim = '';
+      //console.log(this.adj[i]);
+      /*for (let j = 0; j < this.vertices; j++) {
+          //console.log(this.adj[i][j], this.vertexList[j]);
+          if (this.adj[i][j] != undefined) {
+              if (visited.indexOf(this.vertexList[j]) < 0) {
+                  ret += delim + this.vertexList[j];
+                  delim = ', ';
+              }
+          }
+      }*/
+      for (let j = 0; j < this.adj[i].length; j++) {
+        const s = this.vertexList[this.adj[i][j]];
+        if (s) {
+          if (visited.indexOf(s) < 0) {
+            ret += delim + s;
+            delim = ', ';
+          }
         }
-        //console.log('visited',visited);
-        ret += '</ul>';
-        return ret;
+      }
+      ret += '</li>';
     }
+    //console.log('visited',visited);
+    ret += '</ul>';
+    return ret;
+  }
 
-    saveFormat() {
-        let ret = '';
-        let delim = '';
-        this.vertexList.forEach(v => {
-            ret += delim + v;
-            delim = ',';
+  saveFormat() {
+    let ret = '';
+    let delim = '';
+    this.vertexList.forEach(v => {
+      ret += delim + v;
+      delim = ',';
+    });
+
+    for (let i = 0; i < this.vertices; ++i) {
+      //let temp = '\n' + i
+      for (let j = 0; j < this.vertices; ++j) {
+        if (this.adj[i][j] !== undefined && this.adj[i][j]) {
+          if (this.adj[i][j] > i) {
+            ret += '\n' + i + ',' + this.adj[i][j];
+          }
+        }
+      }
+    }
+    return ret;
+  }
+
+  dfs(v) {
+    //depth first search
+    this.marked[v] = true;
+    if (this.adj[v] !== undefined) {
+      console.log('Visited vertex:', v);
+    }
+    if (this.adj[v]) {
+      this.adj[v].forEach(w => {
+        if (!this.marked[w]) {
+          this.dfs(w);
+        }
+      });
+    }
+  }
+
+  bfs(s) {
+    //breadth first search
+    const queue = [];
+    this.marked[s] = true;
+    queue.push(s);//add to back of queue
+    let ret = '';
+    while (queue.length > 0) {
+      const v = queue.shift();//remove from front of queue
+      if (v !== undefined) {
+        if (v.toString().length > 0) {
+          ret += '<p>Visited vertex: ' + v + '</p>';
+        }
+      }
+      if (this.adj[v]) {
+        this.adj[v].forEach(w => {
+          if (!this.marked[w]) {
+            this.edgeTo[w] = v;
+            this.marked[w] = true;
+            queue.push(w);
+          }
         });
-
-        for (let i = 0; i < this.vertices; ++i) {
-            //let temp = '\n' + i
-            for (let j = 0; j < this.vertices; ++j) {
-                if (this.adj[i][j] !== undefined && this.adj[i][j]) {
-                    if (this.adj[i][j] > i)
-                    {
-                        ret += '\n' + i + ',' + this.adj[i][j];
-                    }
-                }
-            }
-        }
-        return ret;
+      }
     }
+    return ret;
+  }
 
-    dfs(v) {
-        //depth first search
-        this.marked[v] = true;
-        if (this.adj[v] !== undefined) {
-            console.log('Visited vertex:',v);
-        }
-        if (this.adj[v]) {
-            this.adj[v].forEach(w => {
-                if (!this.marked[w]) {
-                    this.dfs(w);
-                }
-            });
-        }
+  pathTo(v) {
+    const source = 0;
+    if (!this.hasPathTo(v)) {
+      return undefined;
     }
+    const path = [];
+    for (let i = v; i !== source; i = this.edgeTo[i]) {
+      path.push(i);
+    }
+    path.push(source);
+    return path;
+  }
 
-    bfs(s) {
-        //breadth first search
-        const queue = [];
-        this.marked[s] = true;
-        queue.push(s);//add to back of queue
-        let ret = '';
-        while (queue.length > 0) {
-            const v = queue.shift();//remove from front of queue
-            if (v !== undefined) {
-                if (v.toString().length > 0) {
-                    ret += '<p>Visited vertex: ' + v + '</p>';
-                }
-            }
-            if (this.adj[v]) {
-                this.adj[v].forEach(w => {
-                    if (!this.marked[w]) {
-                        this.edgeTo[w] = v;
-                        this.marked[w] = true;
-                        queue.push(w);
-                    }
-                });
-            }
-        }
-        return ret;
-    }
+  hasPathTo(v) {
+    return this.marked[v];
+  }
 
-    pathTo(v) {
-        const source = 0;
-        if (!this.hasPathTo(v)) {
-            return undefined;
-        }
-        const path = [];
-        for (let i = v; i !== source; i = this.edgeTo[i]) {
-            path.push(i);
-        }
-        path.push(source);
-        return path;
+  topSort() {
+    let ret = '<ul>';
+    const stack = [];
+    const visited = [];
+    for (let i = 0; i < this.vertices; i++) {
+      visited[i] = false;
     }
+    for (let i = 0; i < this.vertices; i++) {
+      if (visited[i] === false) {
+        this.topSortHelper(i, visited, stack);
+      }
+    }
+    for (let i = 0; i < stack.length; i++) {
+      if (stack[i] !== undefined && stack[i] !== false) {
+        ret += '<li>' + this.vertexList[stack[i]] + '</li>';
+      }
+    }
+    ret += '</ul>';
+    return ret;
+  }
 
-    hasPathTo(v) {
-        return this.marked[v];
+  topSortHelper(v, visited, stack) {
+    visited[v] = true;
+    if (this.adj[v]) {
+      this.adj[v].forEach(w => {
+        if (!visited[w]) {
+          this.topSortHelper(visited[w], visited, stack);
+        }
+      });
     }
-
-    topSort() {
-        let ret = '<ul>';
-        const stack = [];
-        const visited = [];
-        for (let i = 0; i < this.vertices; i++) {
-            visited[i] = false;
-        }
-        for (let i = 0; i < this.vertices; i++) {
-            if (visited[i] === false) {
-                this.topSortHelper(i, visited, stack);
-            }
-        }
-        for (let i = 0; i < stack.length; i++) {
-            if (stack[i] !== undefined && stack[i] !== false) {
-                ret += '<li>' + this.vertexList[stack[i]] + '</li>';
-            }
-        }
-        ret += '</ul>';
-        return ret;
-    }
-
-    topSortHelper(v, visited, stack) {
-        visited[v] = true;
-        if (this.adj[v]) {
-            this.adj[v].forEach(w => {
-                if (!visited[w]) {
-                    this.topSortHelper(visited[w], visited, stack);
-                }
-            });
-        }
-        stack.push(v);
-    }
+    stack.push(v);
+  }
 }
 const g2 = new Graph(6);
 function startup() {
-    const exampleDiv = document.getElementById('example');
-    const textTextArea = document.getElementById('text');
-    const outputDiv = document.getElementById('output');
-    const ex4Div = document.getElementById('ex4');
+  const exampleDiv = document.getElementById('example');
+  const textTextArea = document.getElementById('text');
+  const outputDiv = document.getElementById('output');
+  const ex4Div = document.getElementById('ex4');
 
-    if (exampleDiv && textTextArea && outputDiv && ex4Div) {
-        const g = new Graph(5);
-        g.addEdge(0,1);
-        g.addEdge(0,2);
-        g.addEdge(1,3);
-        g.addEdge(2,4);
-        g.vertexList = ['0','1','2','3','4'];
-        exampleDiv.innerHTML = '';
-        exampleDiv.innerHTML += g.showGraphOld();
-        //g.dfs(0);
-        exampleDiv.innerHTML += '<p>Breadth First Search:</p>' + g.bfs(0);
+  if (exampleDiv && textTextArea && outputDiv && ex4Div) {
+    const g = new Graph(5);
+    g.addEdge(0, 1);
+    g.addEdge(0, 2);
+    g.addEdge(1, 3);
+    g.addEdge(2, 4);
+    g.vertexList = ['0', '1', '2', '3', '4'];
+    exampleDiv.innerHTML = '';
+    exampleDiv.innerHTML += g.showGraphOld();
+    //g.dfs(0);
+    exampleDiv.innerHTML += '<p>Breadth First Search:</p>' + g.bfs(0);
 
-        let vertex = 4;
-        let paths = g.pathTo(vertex);
-        let ret = '<p>Shortest path from 0 to 4</p><p>';
-        while (paths.length > 0) {
-            if (paths.length > 1) {
-                ret += paths.pop() + ' - ';
-            }
-            else {
-                ret += paths.pop();
-            }
-        }
-        ret += '</p>';
-        exampleDiv.innerHTML += ret;
-
-        g2.addEdge(1,2);
-        g2.addEdge(2,5);
-        g2.addEdge(1,3);
-        g2.addEdge(1,4);
-        g2.addEdge(0,1);
-        g2.vertexList = ['CS1', 'CS2', 'Data Structures', 'Assembly Language', 'Operating Systems', 'Algorithms'];
-        exampleDiv.innerHTML += '<p>Topological Graph:</p>' + g2.showGraph() + g2.topSort();
-        textTextArea.value = g2.saveFormat();
-
-        document.getElementById('fileLoad').addEventListener('change', function() {
-            const fr = new FileReader();
-
-            fr.onload = function() {
-                console.log('results', fr.result);
-                const uploadGraph = createGraphFromText(fr.result);
-                outputDiv.innerHTML = uploadGraph.showGraph();
-            };
-            fr.readAsText(this.files[0]);
-        });
-
-        const localArea = new Graph(8);
-        localArea.vertexList = ['Reedham','Purley','Coulsdon Town','Coulsdon South','Caterham','Purley Oaks','South Croydon','East Croydon'];
-        localArea.addEdge(0,1);
-        localArea.addEdge(0,2);
-        localArea.addEdge(1,3);
-        localArea.addEdge(1,4);
-        localArea.addEdge(1,5);
-        localArea.addEdge(5,6);
-        localArea.addEdge(6,7);
-        ex4Div.innerHTML = localArea.showGraph();
-
-        vertex = 7;
-        ex4Div.innerHTML += '<legend>Exercise 5</legend><p>Breadth First Search:</p>' + localArea.bfs(0);
-        paths = localArea.pathTo(vertex);
-        //console.log('has path to 7', localArea.hasPathTo(vertex));
-        //console.log('paths',paths);
-        ret = '<p>Shortest path from Reedham to East Croydon</p><p>';
-        while (paths.length > 0) {
-            if (paths.length > 1) {
-                ret += localArea.vertexList[paths.pop()] + ' - ';
-            }
-            else {
-                ret += localArea.vertexList[paths.pop()];
-            }
-        }
-        ret += '</p>';
-        ex4Div.innerHTML += ret;
-        localArea.marked = [];
-        localArea.dfs(0);
+    let vertex = 4;
+    let paths = g.pathTo(vertex);
+    let ret = '<p>Shortest path from 0 to 4</p><p>';
+    while (paths.length > 0) {
+      if (paths.length > 1) {
+        ret += paths.pop() + ' - ';
+      }
+      else {
+        ret += paths.pop();
+      }
     }
+    ret += '</p>';
+    exampleDiv.innerHTML += ret;
+
+    g2.addEdge(1, 2);
+    g2.addEdge(2, 5);
+    g2.addEdge(1, 3);
+    g2.addEdge(1, 4);
+    g2.addEdge(0, 1);
+    g2.vertexList = ['CS1', 'CS2', 'Data Structures', 'Assembly Language', 'Operating Systems', 'Algorithms'];
+    exampleDiv.innerHTML += '<p>Topological Graph:</p>' + g2.showGraph() + g2.topSort();
+    textTextArea.value = g2.saveFormat();
+
+    document.getElementById('fileLoad').addEventListener('change', function () {
+      const fr = new FileReader();
+
+      fr.onload = function () {
+        console.log('results', fr.result);
+        const uploadGraph = createGraphFromText(fr.result);
+        outputDiv.innerHTML = uploadGraph.showGraph();
+      };
+      fr.readAsText(this.files[0]);
+    });
+
+    const localArea = new Graph(8);
+    localArea.vertexList = ['Reedham', 'Purley', 'Coulsdon Town', 'Coulsdon South', 'Caterham', 'Purley Oaks', 'South Croydon', 'East Croydon'];
+    localArea.addEdge(0, 1);
+    localArea.addEdge(0, 2);
+    localArea.addEdge(1, 3);
+    localArea.addEdge(1, 4);
+    localArea.addEdge(1, 5);
+    localArea.addEdge(5, 6);
+    localArea.addEdge(6, 7);
+    ex4Div.innerHTML = localArea.showGraph();
+
+    vertex = 7;
+    ex4Div.innerHTML += '<legend>Exercise 5</legend><p>Breadth First Search:</p>' + localArea.bfs(0);
+    paths = localArea.pathTo(vertex);
+    //console.log('has path to 7', localArea.hasPathTo(vertex));
+    //console.log('paths',paths);
+    ret = '<p>Shortest path from Reedham to East Croydon</p><p>';
+    while (paths.length > 0) {
+      if (paths.length > 1) {
+        ret += localArea.vertexList[paths.pop()] + ' - ';
+      }
+      else {
+        ret += localArea.vertexList[paths.pop()];
+      }
+    }
+    ret += '</p>';
+    ex4Div.innerHTML += ret;
+    localArea.marked = [];
+    localArea.dfs(0);
+  }
 }
-startup();
 
-// eslint-disable-next-line no-unused-vars
 function download() {
-    const element = document.createElement('a');
-    const textTextArea = document.getElementById('text');
-    const fileNameInput = document.getElementById('filename');
+  const element = document.createElement('a');
+  const textTextArea = document.getElementById('text');
+  const fileNameInput = document.getElementById('filename');
 
-    if (textTextArea && fileNameInput) {
-        const text = textTextArea.value;
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-        element.setAttribute('download', fileNameInput.value);
+  if (textTextArea && fileNameInput) {
+    const text = textTextArea.value;
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', fileNameInput.value);
 
-        element.style.display = 'none';
-        document.body.appendChild(element);
+    element.style.display = 'none';
+    document.body.appendChild(element);
 
-        element.click();
-        document.body.removeChild(element);
-    }
+    element.click();
+    document.body.removeChild(element);
+  }
 }
 
 function createGraphFromText(uploadText) {
-    const split = uploadText.split('\n');
-    if (split.length > 0) {
-        const verticesList = split[0].split(',');
-        const uploadGraph = new Graph(verticesList.length);
-        uploadGraph.vertexList = verticesList;
+  const split = uploadText.split('\n');
+  if (split.length > 0) {
+    const verticesList = split[0].split(',');
+    const uploadGraph = new Graph(verticesList.length);
+    uploadGraph.vertexList = verticesList;
 
-        for (let i = 1; i < split.length; i++) {
-            if (split[i].length > 0) {
-                const s = split[i].split(',');
-                uploadGraph.addEdge(s[0],s[1]);
-            }
-        }
-        return uploadGraph;
+    for (let i = 1; i < split.length; i++) {
+      if (split[i].length > 0) {
+        const s = split[i].split(',');
+        uploadGraph.addEdge(s[0], s[1]);
+      }
     }
+    return uploadGraph;
+  }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  startup();
+  document.getElementById('download').addEventListener('click', download);
+});

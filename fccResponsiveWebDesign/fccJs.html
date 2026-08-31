@@ -5,19 +5,14 @@ permalink: fccresponsivewebdesign/fccJS
 last_modified_at: 2025-02-09
 js_file:
   path: fccjs.js
-  async: true
+  defer: true
 ---
 
 <h2>Palindrome Checker</h2>
 <fieldset>
   <label for="palindromeInput">Test Value:</label>
-  <input
-    id="palindromeInput"
-    name="palindromeInput"
-    type="text"
-    class="form-control"
-  />
-  <button type="button" onclick="palindromeChecker();" class="btn btn-primary">
+  <input id="palindromeInput" name="palindromeInput" type="text" class="form-control" />
+  <button type="button" id="palindromeChecker" class="btn btn-primary">
     Test
   </button>
   <p>Result: <span id="palindromeResult"></span></p>
@@ -26,18 +21,8 @@ js_file:
 <h2>Roman Numeral Converter</h2>
 <fieldset>
   <label for="romanInput">Test Value:</label>
-  <input
-    id="romanInput"
-    name="romanInput"
-    type="number"
-    min="0"
-    class="form-control"
-  />
-  <button
-    type="button"
-    onclick="romanNumeralChecker();"
-    class="btn btn-primary"
-  >
+  <input id="romanInput" name="romanInput" type="number" min="0" class="form-control" />
+  <button type="button" id="romanNumeralChecker" class="btn btn-primary">
     Test
   </button>
   <p>Result: <span id="romanResult"></span></p>
@@ -47,18 +32,9 @@ js_file:
 <h2>Caesars Cipher</h2>
 <fieldset>
   <label for="cipherInput">Test Value:</label>
-  <input
-    id="cipherInput"
-    name="cipherInput"
-    type="text"
-    class="form-control"
-    value="GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT."
-  />
-  <button
-    type="button"
-    onclick="caesarCipherChecker();"
-    class="btn btn-primary"
-  >
+  <input id="cipherInput" name="cipherInput" type="text" class="form-control"
+    value="GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT." />
+  <button type="button" id="caesarCipherChecker" class="btn btn-primary">
     Test
   </button>
   <p>Result: <span id="cipherResult"></span></p>
@@ -68,14 +44,8 @@ js_file:
 <h2>American Phone Number Checker</h2>
 <fieldset>
   <label for="phoneInput">Test Value:</label>
-  <input
-    id="phoneInput"
-    name="phoneInput"
-    type="text"
-    class="form-control"
-    value="555-555-5555"
-  />
-  <button type="button" onclick="phoneNumberChecker();" class="btn btn-primary">
+  <input id="phoneInput" name="phoneInput" type="text" class="form-control" value="555-555-5555" />
+  <button type="button" id="phoneNumberChecker" class="btn btn-primary">
     Test
   </button>
   <p>Valid: <span id="phoneResult"></span></p>
@@ -85,120 +55,39 @@ js_file:
 <h2>Cash Register</h2>
 <fieldset>
   <label for="price">Price:</label>
-  <input
-    id="price"
-    name="price"
-    type="number"
-    class="form-control"
-    min="0"
-    value="19.5"
-  />
+  <input id="price" name="price" type="number" class="form-control" min="0" value="19.5" />
 
   <label for="cash">Cash Received:</label>
-  <input
-    id="cash"
-    name="cash"
-    type="number"
-    class="form-control"
-    min="0"
-    value="20"
-  />
+  <input id="cash" name="cash" type="number" class="form-control" min="0" value="20" />
 
   <label for="penny">Pennies:</label>
-  <input
-    id="penny"
-    name="penny"
-    type="number"
-    class="form-control"
-    min="0"
-    value="101"
-  />
+  <input id="penny" name="penny" type="number" class="form-control" min="0" value="101" />
 
   <label for="nickel">Nickels (5p):</label>
-  <input
-    id="nickel"
-    name="nickel"
-    type="number"
-    class="form-control"
-    min="0"
-    value="41"
-  />
+  <input id="nickel" name="nickel" type="number" class="form-control" min="0" value="41" />
 
   <label for="dime">Dimes (10p):</label>
-  <input
-    id="dime"
-    name="dime"
-    type="number"
-    class="form-control"
-    min="0"
-    value="31"
-  />
+  <input id="dime" name="dime" type="number" class="form-control" min="0" value="31" />
 
   <label for="quarter">Quarters (25p):</label>
-  <input
-    id="quarter"
-    name="quarter"
-    type="number"
-    class="form-control"
-    min="0"
-    value="17"
-  />
+  <input id="quarter" name="quarter" type="number" class="form-control" min="0" value="17" />
 
   <label for="dollar">Dollar coins ($1):</label>
-  <input
-    id="dollar"
-    name="dollar"
-    type="number"
-    class="form-control"
-    min="0"
-    value="90"
-  />
+  <input id="dollar" name="dollar" type="number" class="form-control" min="0" value="90" />
 
   <label for="five">Five Dollar Notes:</label>
-  <input
-    id="five"
-    name="five"
-    type="number"
-    class="form-control"
-    min="0"
-    value="11"
-  />
+  <input id="five" name="five" type="number" class="form-control" min="0" value="11" />
 
   <label for="ten">Ten Dollar Notes:</label>
-  <input
-    id="ten"
-    name="ten"
-    type="number"
-    class="form-control"
-    min="0"
-    value="2"
-  />
+  <input id="ten" name="ten" type="number" class="form-control" min="0" value="2" />
 
   <label for="twenty">Twenty Dollar Notes:</label>
-  <input
-    id="twenty"
-    name="twenty"
-    type="number"
-    class="form-control"
-    min="0"
-    value="3"
-  />
+  <input id="twenty" name="twenty" type="number" class="form-control" min="0" value="3" />
 
   <label for="hundred">Hundred Dollar Notes:</label>
-  <input
-    id="hundred"
-    name="hundred"
-    type="number"
-    class="form-control"
-    min="0"
-    value="1"
-  />
+  <input id="hundred" name="hundred" type="number" class="form-control" min="0" value="1" />
 
-  <button
-    type="button"
-    onclick="cashRegisterChecker();"
-    class="btn btn-primary"
-  >
+  <button type="button" id="cashRegisterChecker" class="btn btn-primary">
     Test
   </button>
 

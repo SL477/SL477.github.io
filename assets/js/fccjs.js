@@ -1,6 +1,6 @@
 
 // Palindromes
-const palindrome = (str) => {
+function palindrome(str) {
   const str2 = str.toLowerCase();
 
   let arr = str2.split('');
@@ -19,30 +19,10 @@ const palindrome = (str) => {
     j--;
   }
   return true;
-};
-
-// eslint-disable-next-line no-unused-vars
-const palindromeChecker = () => {
-  const palindromeInput = document.getElementById('palindromeInput');
-  const palindromeResultSpan = document.getElementById('palindromeResult');
-  if (palindromeInput && palindromeResultSpan) {
-    const res = palindrome(palindromeInput.value);
-    palindromeResultSpan.textContent = res.toString();
-  }
-};
+}
 
 //Roman Numerals
-// eslint-disable-next-line no-unused-vars
-const romanNumeralChecker = () => {
-  const romanInput = document.getElementById('romanInput');
-  const romanResultSpan = document.getElementById('romanResult');
-  if (romanInput && romanResultSpan) {
-    const input = romanInput.value;
-    romanResultSpan.textContent = convertToRoman(input);
-  }
-};
-
-const convertToRoman = (num) => {
+function convertToRoman(num) {
   let x = num;
   let numThousands = 0;//M
   // let numFiveHundreds = 0;//D
@@ -113,20 +93,10 @@ const getSymbolStr = (num, currentSym, nextSym, halfSym) => {
       break;
   }
   return str;
-};
+}
 
 //Caesar's Cipher
-// eslint-disable-next-line no-unused-vars
-const caesarCipherChecker = () => {
-  const cipherInput = document.getElementById('cipherInput');
-  const cipherResultSpan = document.getElementById('cipherResult');
-  if (cipherInput) {
-    const res = rot13(cipherInput.value);
-    cipherResultSpan.textContent = res;
-  }
-};
-
-const rot13 = (str) => {
+function rot13(str) {
   const dict = {
     A: 'N',
     B: 'O',
@@ -155,51 +125,27 @@ const rot13 = (str) => {
     Y: 'L',
     Z: 'M'
   };
-  //console.log(getDecodedLetter(dict, '!'))
 
-  let retStr = '';
-  const arr = str.split('');
-  //console.log(arr);
-  //console.log(arr.length);
-  for (let i = 0; i < arr.length; i++) {
-    retStr += getDecodedLetter(dict, arr[i]);
-    //console.log(getDecodedLetter(dict, arr[i]));
-    //console.log(arr[i]);
-  }
-  //console.log(retStr);
-
-  return retStr;
-};
+  return str.split('').map(a => getDecodedLetter(dict, a)).join('');
+}
 
 const getDecodedLetter = (dict, input) => {
-  let retStr = input;
   if (dict.hasOwnProperty(input)) {
-    retStr = dict[input];
+    return dict[input];
   }
-  return retStr;
+  return input;
 };
 
 //Telephone number checker
-const telephoneCheck = (str) => {
+function telephoneCheck(str) {
   // Good luck!
   //^\d{10}$|^\d{3}-\d{3}-\d{4}$
   //console.log(/^(1|1-|1 |)(\d{3}|\(\d{3}\))(-| |)\d{3}(-| |)\d{4}$/.test('1 (757) 622-7382'));
   return /^(1|1-|1 |)(\d{3}|\(\d{3}\))(-| |)\d{3}(-| |)\d{4}$/.test(str);
-};
-
-// eslint-disable-next-line no-unused-vars
-const phoneNumberChecker = () => {
-  const phoneInput = document.getElementById('phoneInput');
-  const phoneResult = document.getElementById('phoneResult')
-  if (phoneInput) {
-    const res = telephoneCheck(phoneInput.value);
-    phoneResult.textContent = res.toString();
-  }
-};
+}
 
 // Cash Register
-// eslint-disable-next-line no-unused-vars
-const cashRegisterChecker = () => {
+function cashRegisterChecker() {
   const priceInput = document.getElementById('price');
   const cashInput = document.getElementById('cash');
   const pennyInput = document.getElementById('penny');
@@ -260,12 +206,11 @@ const cashRegisterChecker = () => {
     });
     cashRegisterChange.innerHTML = changeText;
   }
-};
+}
 
-const checkCashRegister = (price, cash, cid) => {
+function checkCashRegister(price, cash, cid) {
   // Here is your change, ma'am.
   const changeObj = { status: '', change: [] };
-
 
   const cashObj = {};
   let totalCash = 0;
@@ -362,16 +307,56 @@ const checkCashRegister = (price, cash, cid) => {
     }
     return changeObj;
   }
-};
+}
 
 // e.g. "HUNDRED", 100, 2, 270
-const getNumMoney = (moneyType, moneyValue, drawerNum, changeDue) => {
+function getNumMoney(moneyType, moneyValue, drawerNum, changeDue) {
   const NumNeeded = Math.floor(changeDue / moneyValue);
   const hasNum = Math.floor(drawerNum / moneyValue);
   if (hasNum < NumNeeded) {
     return [moneyType, hasNum * moneyValue];
   }
-  else {
-    return [moneyType, NumNeeded * moneyValue];
+  return [moneyType, NumNeeded * moneyValue];
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const palindromeInput = document.getElementById('palindromeInput');
+  const palindromeResultSpan = document.getElementById('palindromeResult');
+  function palindromeChecker() {
+    if (palindromeInput && palindromeResultSpan) {
+      const res = palindrome(palindromeInput.value);
+      palindromeResultSpan.textContent = res.toString();
+    }
   }
-};
+
+  const romanInput = document.getElementById('romanInput');
+  const romanResultSpan = document.getElementById('romanResult');
+  function romanNumeralChecker() {
+    if (romanInput && romanResultSpan) {
+      const input = romanInput.value;
+      romanResultSpan.textContent = convertToRoman(input);
+    }
+  }
+
+  const cipherInput = document.getElementById('cipherInput');
+  const cipherResultSpan = document.getElementById('cipherResult');
+  function caesarCipherChecker() {
+    if (cipherInput) {
+      const res = rot13(cipherInput.value);
+      cipherResultSpan.textContent = res;
+    }
+  };
+
+  const phoneInput = document.getElementById('phoneInput');
+  const phoneResult = document.getElementById('phoneResult')
+  function phoneNumberChecker() {
+    const res = telephoneCheck(phoneInput?.value);
+    phoneResult.textContent = res.toString();
+  }
+
+  document.getElementById('palindromeChecker').addEventListener('click', palindromeChecker);
+  document.getElementById('romanNumeralChecker').addEventListener('click', romanNumeralChecker);
+  document.getElementById('caesarCipherChecker').addEventListener('click', caesarCipherChecker);
+  document.getElementById('phoneNumberChecker').addEventListener('click', phoneNumberChecker);
+  document.getElementById('cashRegisterChecker').addEventListener('click', cashRegisterChecker);
+});

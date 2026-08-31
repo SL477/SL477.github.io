@@ -5,25 +5,28 @@ layout: page
 last_modified_at: 2025-02-01
 js_file:
     path: graphs.js
-    async: true
+    defer: true
 ---
-<p>My answers to the exercises in <a href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms &amp; Data Structures with JS</a></p>
+
+<p>My answers to the exercises in <a
+        href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms
+        &amp; Data Structures with JS</a></p>
 
 <div id="example"></div>
 
 <fieldset>
     <legend>Exercise 2:</legend>
     <label for="filename">File Name:</label>
-    <input id="filename" name="filename" type="text" class="form-control" value="test.txt"/>
+    <input id="filename" name="filename" type="text" class="form-control" value="test.txt" />
     <label for="text">Text:</label>
     <textarea id="text" name="text" class="form-control" rows="10"></textarea>
-    <button type="button" class="btn btn-primary" onclick="download();">Download</button>
+    <button type="button" class="btn btn-primary" id="download">Download</button>
 </fieldset>
 
 <fieldset>
     <legend>Exercise 3:</legend>
     <label for="fileLoad">Upload File</label>
-    <input id="fileLoad" name="fileLoad" type="file" class="form-control"/>
+    <input id="fileLoad" name="fileLoad" type="file" class="form-control" />
     <div id="output"></textarea>
 </fieldset>
 

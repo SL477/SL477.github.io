@@ -9,7 +9,7 @@ in_reply_to:
     text: IWFC Symbiosis
 ---
 
-Sly O'Hara relaxed in the hideout, discarded boxes of fish and chips littered the floor..
+Sly O'Hara relaxed in the hideout, discarded boxes of fish and chips littered the floor.
 He and his crew had taken over the apartment above a fish and chip shop.
 Stanley Jenson was a new member of the crew, he had arrived on the habitat a few months ago and found out the hard way that the first ship to anywhere could see you stranded somewhere that wasn't great.
 Chris Carey had been using the crew's van in various street races and it was now a bit faster than it had been before.

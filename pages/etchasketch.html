@@ -4,21 +4,17 @@ layout: page
 last_modified_at: 2025-02-09
 js_file:
   path: etchASketch.js
-  async: true
+  defer: true
 ---
 
 <p>
   My answer for
-  <a
-    href="https://www.theodinproject.com/courses/foundations/lessons/etch-a-sketch-project"
-    target="_blank"
-    rel="noopener noreferrer"
-    >Project Odin Etch-A-Sketch</a
-  >
+  <a href="https://www.theodinproject.com/courses/foundations/lessons/etch-a-sketch-project" target="_blank"
+    rel="noopener noreferrer">Project Odin Etch-A-Sketch</a>
 </p>
 
 <div id="sketchpad" class="flex-container"></div>
-<button type="button" class="btn btn-primary" onclick="userCreateGrid();">
+<button type="button" class="btn btn-primary" id="userCreateGrid">
   Reset
 </button>
 
@@ -30,6 +26,7 @@ js_file:
     width: 90%;
     flex-wrap: nowrap;
   }
+
   .col {
     border: 1px solid light-dark(black, white);
     min-width: 0;
@@ -41,6 +38,7 @@ js_file:
     background-color: brown;
     color: brown;
   }
+
   h1 {
     color: red;
   }
