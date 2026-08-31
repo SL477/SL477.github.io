@@ -5,22 +5,20 @@ layout: page
 last_modified_at: 2025-02-01
 js_file:
   path: hashing.js
-  async: true
+  defer: true
 ---
 
 <p>
   My answers to the exercises in
   <a
-    href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf"
-    >Algorithms &amp; Data Structures with JS</a
-  >
+    href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms
+    &amp; Data Structures with JS</a>
 </p>
 
 <label for="inputText">Test Text:</label>
 <textarea id="inputText" class="form-control" cols="30" rows="15">
-The small brown fox jumps over the red fox.</textarea
->
+The small brown fox jumps over the red fox.</textarea>
 <ul id="wordCount"></ul>
-<button type="button" class="btn btn-primary" onclick="buildHashTable();">
+<button type="button" class="btn btn-primary" id="buildHashTable">
   Word Count
 </button>
