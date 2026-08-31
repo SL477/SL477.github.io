@@ -5,15 +5,14 @@ permalink: /dataStructuresAlgorithms/advancedAlgorithms
 last_modified_at: 2024-02-03
 js_file:
   path: advancedAlgorithms.js
-  async: true
+  defer: true
 ---
 
 <p>
   My answers to the exercises in
   <a
-    href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf"
-    >Algorithms &amp; Data Structures with JS</a
-  >
+    href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms
+    &amp; Data Structures with JS</a>
 </p>
 
 <div id="app">
@@ -21,26 +20,11 @@ js_file:
   <fieldset>
     <legend>Brute force algorithm to find the longest common substring</legend>
     <label for="string1">String 1:</label>
-    <input
-      type="text"
-      class="form-control"
-      id="string1"
-      name="string1"
-      value="test"
-    />
+    <input type="text" class="form-control" id="string1" name="string1" value="test" />
     <label for="string2">String 2:</label>
-    <input
-      type="text"
-      class="form-control"
-      id="string2"
-      name="string2"
-      value="the short brown fox jumped over the lazy dog"
-    />
-    <button
-      type="button"
-      onclick="bruteForceSubstring()"
-      class="btn btn-primary"
-    >
+    <input type="text" class="form-control" id="string2" name="string2"
+      value="the short brown fox jumped over the lazy dog" />
+    <button id="bruteForceSubstring" type="button" class="btn btn-primary">
       Find Longest Substring
     </button>
     <p>Result: <span id="longSubString"></span></p>
@@ -49,18 +33,12 @@ js_file:
   <fieldset>
     <legend>Knapsack problem</legend>
     <label for="capacity">Capacity:</label>
-    <input
-      type="number"
-      id="capacity"
-      name="capacity"
-      class="form-control"
-      value="16"
-    />
+    <input type="number" id="capacity" name="capacity" class="form-control" value="16" />
     <div id="potentialItems"></div>
-    <button type="button" class="btn btn-primary" onclick="addPotentialItem()">
+    <button type="button" class="btn btn-primary" id="addPotentialItem">
       Add Potential Item
     </button>
-    <button type="button" class="btn btn-primary" onclick="knapSackSolution()">
+    <button type="button" class="btn btn-primary" id="knapSackSolution">
       Solve Knapsack
     </button>
     <p>Max value: <span id="knapsackResult"></span>{{knapsackResult}}</p>
@@ -74,7 +52,7 @@ js_file:
       <label for="useDimes" class="form-check-label">Use Dimes (10c)</label>
       <input type="checkbox" id="useDimes" class="form-check-input" />
     </div>
-    <button type="button" class="btn btn-primary" onclick="workoutChange()">
+    <button type="button" class="btn btn-primary" id="workoutChange">
       Solution
     </button>
     <div id="coins"></div>

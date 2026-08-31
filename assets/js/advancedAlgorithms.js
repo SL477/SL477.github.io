@@ -1,5 +1,4 @@
 //#region "Substring"
-// eslint-disable-next-line no-unused-vars
 function bruteForceSubstring() {
   let ret = '';
   const string1 = document.getElementById('string1');
@@ -152,7 +151,6 @@ function updateKnapsack() {
   });
 }
 
-// eslint-disable-next-line no-unused-vars
 function addPotentialItem() {
   updateKnapsack();
   potentialItems.push(new knapsackItem('', 0, 0));
@@ -171,7 +169,6 @@ function max(a, b) {
   return (a > b) ? [a, false] : [b, true];
 }
 
-// eslint-disable-next-line no-unused-vars
 function knapSackSolution() {
   const k = [];
   const capacity = getCapacity();
@@ -252,7 +249,6 @@ function getUseDimes() {
   return false;
 }
 
-// eslint-disable-next-line no-unused-vars
 function workoutChange() {
   let remainAmt = getAmount();
   const coins = [
@@ -298,3 +294,10 @@ function workoutChange() {
   }
 }
 //#endregion
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('bruteForceSubstring').addEventListener('click', bruteForceSubstring);
+  document.getElementById('addPotentialItem').addEventListener('click', addPotentialItem);
+  document.getElementById('knapSackSolution').addEventListener('click', knapSackSolution);
+  document.getElementById('workoutChange').addEventListener('click', workoutChange);
+});
