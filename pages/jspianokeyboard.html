@@ -1,38 +1,28 @@
 ---
 layout: page
 title: JS Keyboard
-last_modified_at: 2025-11-28
+last_modified_at: 2026-09-05
 permalink: pages/jspianokeyboard
 css_file: piano.css
 ---
 
-<script src="/assets/js/jspiano/audiosynth.js"></script>
-<script src="/assets/js/jspiano/playKeyboard.js"></script>
 <p>
   From
-  <a href="https://www.freecodecamp.org/news/javascript-piano-keyboard/"
-    >freecodecamp.org/news/javascript-piano-keyboard</a
-  >
+  <a
+    href="https://www.freecodecamp.org/news/javascript-piano-keyboard/">freecodecamp.org/news/javascript-piano-keyboard</a>
   tutorial. The audiosynth and playKeyboard JavaScript were given. The CSS, HTML
-  and keyboard_me.ts was me.
+  and keyboard_me.js was me.
 </p>
-<fieldset onchange="instrumentChange()" id="instrument">
+<fieldset id="instrument">
   <legend>Choose instrument:</legend>
-  <input type="radio" value="0" name="instrument" id="piano" /><label
-    for="piano"
-    >Piano</label
-  ><br />
-  <input type="radio" value="1" name="instrument" id="organ" /><label
-    for="organ"
-    >Organ</label
-  ><br />
-  <input type="radio" value="2" name="instrument" id="acoustic" /><label
-    for="acoustic"
-    >Acoustic</label
-  ><br />
-  <input type="radio" value="3" name="instrument" id="edm" /><label for="edm"
-    >EDM</label
-  ><br />
+  <label for="piano"><input type="radio" value="0" name="instrument" id="piano" />Piano</label><br />
+  <label for="organ"><input type="radio" value="1" name="instrument" id="organ" />Organ</label><br />
+  <label for="acoustic"><input type="radio" value="2" name="instrument" id="acoustic" />Acoustic</label><br />
+  <label for="edm"><input type="radio" value="3" name="instrument" id="edm" />EDM</label><br />
 </fieldset>
-<div id="kbordContainer"></div>
-<script src="/assets/js/jspiano/keyboard_me.js"></script>
+<div id="kbordContainer">
+  <div id="keyboard"></div>
+</div>
+<script src="/assets/js/jspiano/audiosynth.js" defer></script>
+<script src="/assets/js/jspiano/playKeyboard.js" defer type="module"></script>
+<script src="/assets/js/jspiano/keyboard_me.js" defer type="module"></script>

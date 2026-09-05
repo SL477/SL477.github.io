@@ -35,6 +35,13 @@
   text-align: center;
 }
 
+// #keyboard { position: absolute; user-select: none; }
+// .key { position: absolute; bottom: 0; transition: all .05s; }
+// .white { background:#fff; border:1px solid #000; }
+// .black { background:#000; border:1px solid #000; }
+// .label { text-align:center; font-size:10px; }
+.playing { transform:translateY(5px); box-shadow:none; }
+
 /* #keyboard > .key :hover {
     background-color: lime;
 } */

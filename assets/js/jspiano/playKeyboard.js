@@ -1,357 +1,195 @@
-function playKeyboard(sound) {
-  let pressColor = '#1BC0EA'; //color when key is pressed
+export class Keyboard {
+  static PRESS_COLOR = '#1BC0EA'; //color when key is pressed
+  static OCTAVE = 4;
+  static NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B',];
 
-  var isMobile = !!navigator.userAgent.match(
-    /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i
-  );
-  if (isMobile) {
-    var evtListener = ['touchstart', 'touchend'];
-  } else {
-    var evtListener = ['mousedown', 'mouseup'];
-  }
+  //  keyCode → {note, octaveShift}
+  static KEY_MAP = new Map([
+    [192, { note: 'C', octave: -2 }], [49, { note: 'C#', octave: -2 }], [50, { note: 'D', octave: -2 }],
+    [51, { note: 'D#', octave: -2 }], [52, { note: 'E', octave: -2 }], [53, { note: 'F', octave: -2 }],
+    [54, { note: 'F#', octave: -2 }], [55, { note: 'G', octave: -2 }], [56, { note: 'G#', octave: -2 }],
+    [57, { note: 'A', octave: -2 }], [48, { note: 'A#', octave: -2 }], [189, { note: 'B', octave: -2 }],
+    [187, { note: 'C', octave: -1 }], [81, { note: 'C#', octave: -1 }], [87, { note: 'D', octave: -1 }],
+    [69, { note: 'D#', octave: -1 }], [82, { note: 'E', octave: -1 }], [84, { note: 'F', octave: -1 }],
+    [89, { note: 'F#', octave: -1 }], [85, { note: 'G', octave: -1 }], [73, { note: 'G#', octave: -1 }],
+    [79, { note: 'A', octave: -1 }], [80, { note: 'A#', octave: -1 }], [219, { note: 'B', octave: -1 }],
+    [221, { note: 'C', octave: 0 }], [65, { note: 'C#', octave: 0 }], [83, { note: 'D', octave: 0 }],
+    [68, { note: 'D#', octave: 0 }], [70, { note: 'E', octave: 0 }], [71, { note: 'F', octave: 0 }],
+    [72, { note: 'F#', octave: 0 }], [74, { note: 'G', octave: 0 }], [75, { note: 'G#', octave: 0 }],
+    [76, { note: 'A', octave: 0 }], [186, { note: 'A#', octave: 0 }], [222, { note: 'B', octave: 0 }],
+    [90, { note: 'C', octave: 1 }], [88, { note: 'C#', octave: 1 }], [67, { note: 'D', octave: 1 }],
+    [86, { note: 'D#', octave: 1 }], [66, { note: 'E', octave: 1 }], [78, { note: 'F', octave: 1 }],
+    [77, { note: 'F#', octave: 1 }], [188, { note: 'G', octave: 1 }], [190, { note: 'G#', octave: 1 }],
+    [191, { note: 'A', octave: 1 }], [37, { note: 'A#', octave: 1 }], [39, { note: 'B', octave: 1 }],
+  ]);
 
-  var __audioSynth = new AudioSynth();
-  __audioSynth.setVolume(0.5);
-  var __octave = 4; //sets position of middle C, normally the 4th octave
+  static KEYCODE_MAP = {
+    // Numbers (top row)
+    48: '0', 49: '1', 50: '2', 51: '3', 52: '4',
+    53: '5', 54: '6', 55: '7', 56: '8', 57: '9',
 
-  // Key bindings, notes to keyCodes.
-  var keyboard = {
-    /* ~ */
-    192: 'C,-2',
+    // Letters (a–z)
+    65: 'A', 66: 'B', 67: 'C', 68: 'D', 69: 'E',
+    70: 'F', 71: 'G', 72: 'H', 73: 'I', 74: 'J',
+    75: 'K', 76: 'L', 77: 'M', 78: 'N', 79: 'O',
+    80: 'P', 81: 'Q', 82: 'R', 83: 'S', 84: 'T',
+    85: 'U', 86: 'V', 87: 'W', 88: 'X', 89: 'Y',
+    90: 'Z',
 
-    /* 1 */
-    49: 'C#,-2',
+    // Function keys
+    112: 'F1', 113: 'F2', 114: 'F3', 115: 'F4',
+    116: 'F5', 117: 'F6', 118: 'F7', 119: 'F8',
+    120: 'F9', 121: 'F10', 122: 'F11', 123: 'F12',
 
-    /* 2 */
-    50: 'D,-2',
+    // Special keys
+    13: 'Enter', 16: 'Shift', 17: 'Control',
+    18: 'Alt', 20: 'CapsLock', 27: 'Escape',
+    32: 'Space', 33: 'PageUp', 34: 'PageDown',
+    35: 'End', 36: 'Home', 37: 'ArrowLeft',
+    38: 'ArrowUp', 39: 'ArrowRight', 40: 'ArrowDown',
+    46: 'Delete', 45: 'Insert', 91: 'Meta',
+    144: 'NumLock', 145: 'ScrollLock',
 
-    /* 3 */
-    51: 'D#,-2',
-
-    /* 4 */
-    52: 'E,-2',
-
-    /* 5 */
-    53: 'F,-2',
-
-    /* 6 */
-    54: 'F#,-2',
-
-    /* 7 */
-    55: 'G,-2',
-
-    /* 8 */
-    56: 'G#,-2',
-
-    /* 9 */
-    57: 'A,-2',
-
-    /* 0 */
-    48: 'A#,-2',
-
-    /* - */
-    189: 'B,-2',
-
-    /* = */
-    187: 'C,-1',
-
-    /* Q */
-    81: 'C#,-1',
-
-    /* W */
-    87: 'D,-1',
-
-    /* E */
-    69: 'D#,-1',
-
-    /* R */
-    82: 'E,-1',
-
-    /* T */
-    84: 'F,-1',
-
-    /* Y */
-    89: 'F#,-1',
-
-    /* U */
-    85: 'G,-1',
-
-    /* I */
-    73: 'G#,-1',
-
-    /* O */
-    79: 'A,-1',
-
-    /* P */
-    80: 'A#,-1',
-
-    /* [ */
-    219: 'B,-1',
-
-    /* ] */
-    221: 'C,0',
-
-    /* A */
-    65: 'C#,0',
-
-    /* S */
-    83: 'D,0',
-
-    /* D */
-    68: 'D#,0',
-
-    /* F */
-    70: 'E,0',
-
-    /* G */
-    71: 'F,0',
-
-    /* H */
-    72: 'F#,0',
-
-    /* J */
-    74: 'G,0',
-
-    /* K */
-    75: 'G#,0',
-
-    /* L */
-    76: 'A,0',
-
-    /* ; */
-    186: 'A#,0',
-
-    /* " */
-    222: 'B,0',
-
-    /* Z */
-    90: 'C,1',
-
-    /* X */
-    88: 'C#,1',
-
-    /* C */
-    67: 'D,1',
-
-    /* V */
-    86: 'D#,1',
-
-    /* B */
-    66: 'E,1',
-
-    /* N */
-    78: 'F,1',
-
-    /* M */
-    77: 'F#,1',
-
-    /* , */
-    188: 'G,1',
-
-    /* . */
-    190: 'G#,1',
-
-    /* / */
-    191: 'A,1',
-
-    /* <- */
-    37: 'A#,1',
-
-    /* -> */
-    39: 'B,1',
+    // Punctuation (US layout)
+    186: ';', 187: '=', 188: ',', 189: '-', 190: '.',
+    191: '/', 192: '`', 219: '[', 220: '\\', 221: ']',
+    222: '\''
   };
 
-  var reverseLookupText = {};
-  var reverseLookup = {};
+  constructor(containerId, instrument = '0') {
+    this.container = document.getElementById(containerId);
+    if (!this.container) throw new Error('Missing keyboard container');
 
-  // Create a reverse lookup table.
-  for (var i in keyboard) {
-    var val;
+    this.instrument = instrument;
+    this.synth = new AudioSynth();
+    this.synth.setVolume(0.5);
+    this.pressed = new Set();
+    this.keyElements = new Map();
 
-    switch (
-      i | 0 //some characters don't display like they are supposed to, so need correct values
-    ) {
-      case 187: //equal sign
-        val = 61; //???
-        break;
-
-      case 219: //open bracket
-        val = 91; //left window key
-        break;
-
-      case 221: //close bracket
-        val = 93; //select key
-        break;
-
-      case 188: //comma
-        val = 44; //print screen
-        break;
-      //the fraction 3/4 is displayed for some reason if 190 wasn't replaced by 46; it's still the period key either way
-      case 190: //period
-        val = 46; //delete
-        break;
-
-      default:
-        val = i;
-        break;
-    }
-
-    reverseLookupText[keyboard[i]] = val;
-    reverseLookup[keyboard[i]] = i;
+    this._buildUI();
+    this._attachListeners();
   }
 
-  // Keys you have pressed down.
-  var keysPressed = [];
+  _buildUI() {
+    // build the keys
+    const whiteNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+    let xWhite = 0;
+    for (let octave = -2; octave <= 1; octave++) {
+      for (let i = 0; i < Keyboard.NOTE_NAMES.length; i++) {
+        const note = Keyboard.NOTE_NAMES[i];
+        const isSharp = note.includes('#');
 
-  // Generate keyboard
-  let visualKeyboard = document.getElementById('keyboard');
-  let selectSound = {
-    value: sound, //"0" //piano
-  };
+        // Skip black keys that don't exist in the target octave
+        if (isSharp && !whiteNotes.includes(note.replace('#', ''))) continue;
 
-  var iKeys = 0;
-  var iWhite = 0;
-  var notes = __audioSynth._notes; //C, C#, D....A#, B
 
-  for (var i = -2; i <= 1; i++) {
-    for (var n in notes) {
-      if (n[2] != 'b') {
-        var thisKey = document.createElement('div');
-        if (n.length > 1) {
-          //adding sharp sign makes 2 characters
-          thisKey.className = 'black key'; //2 classes
-          thisKey.style.width = '30px';
-          thisKey.style.height = '120px';
-          thisKey.style.left = 40 * (iWhite - 1) + 25 + 'px';
-        } else {
-          thisKey.className = 'white key';
-          thisKey.style.width = '40px';
-          thisKey.style.height = '200px';
-          thisKey.style.left = 40 * iWhite + 'px';
-          iWhite++;
-        }
-
-        var label = document.createElement('div');
-        label.className = 'label';
-
-        let s = getDispStr(n, i, reverseLookupText);
-
-        label.innerHTML =
-          '<b class="key-label">' +
-          s +
-          '</b>' +
-          '<br /><br />' +
-          n.substr(0, 1) +
-          '<span name="OCTAVE_LABEL" value="' +
-          i +
-          '">' +
-          (__octave + parseInt(i)) +
-          '</span>' +
-          (n.substr(1, 1) ? n.substr(1, 1) : '');
-        thisKey.appendChild(label);
-        thisKey.setAttribute('ID', 'KEY_' + n + ',' + i);
-        thisKey.addEventListener(
-          evtListener[0],
-          (function (_temp) {
-            return function () {
-              fnPlayKeyboard({ keyCode: _temp });
-            };
-          })(reverseLookup[n + ',' + i])
-        );
-        visualKeyboard[n + ',' + i] = thisKey;
-        visualKeyboard.appendChild(thisKey);
-
-        iKeys++;
+        const keyCode = [...Keyboard.KEY_MAP.entries()].find(([, v]) => v.note === note && v.octave === octave)?.[0];
+        const key = this._makeKey(note, octave, isSharp, xWhite, keyCode);
+        this.container.appendChild(key);
+        if (keyCode) this.keyElements.set(keyCode, key);
+        if (!isSharp) xWhite++;
       }
     }
+    this.container.style.width = `${xWhite * 40}px`;
   }
 
-  visualKeyboard.style.width = iWhite * 40 + 'px';
+  _makeKey(note, octave, isSharp, xWhite, keyCode) {
+    const key = document.createElement('div');
+    key.className = isSharp ? 'key black' : 'key white';
+    key.dataset.note = note;
+    key.dataset.octave = octave;
+    key.dataset.keycode = keyCode;
 
-  window.addEventListener(evtListener[1], function () {
-    n = keysPressed.length;
-    while (n--) {
-      fnRemoveKeyBinding({ keyCode: keysPressed[n] });
-    }
-  });
-
-  // Detect keypresses, play notes.
-
-  var fnPlayKeyboard = function (e) {
-    var i = keysPressed.length;
-    while (i--) {
-      if (keysPressed[i] == e.keyCode) {
-        return false;
-      }
-    }
-    keysPressed.push(e.keyCode);
-
-    if (keyboard[e.keyCode]) {
-      if (visualKeyboard[keyboard[e.keyCode]]) {
-        visualKeyboard[keyboard[e.keyCode]].style.backgroundColor = pressColor;
-        //visualKeyboard[keyboard[e.keyCode]].classList.add('playing'); //adding class only affects keypress and not mouse click
-        visualKeyboard[keyboard[e.keyCode]].style.marginTop = '5px';
-        visualKeyboard[keyboard[e.keyCode]].style.boxShadow = 'none';
-      }
-      var arrPlayNote = keyboard[e.keyCode].split(',');
-      var note = arrPlayNote[0];
-      var octaveModifier = arrPlayNote[1] | 0;
-      fnPlayNote(note, __octave + octaveModifier);
+    // position
+    if (isSharp) {
+      key.style.left = `${40 * (xWhite - 1) + 25}px`;
+      key.style.width = '30px';
+      key.style.height = '120px';
     } else {
-      return false;
+      key.style.left = `${40 * xWhite}px`;
+      key.style.width = '40px';
+      key.style.height = '200px';
+      xWhite++;
     }
-  };
-  // Remove key bindings once note is done.
-  var fnRemoveKeyBinding = function (e) {
-    var i = keysPressed.length;
-    while (i--) {
-      if (keysPressed[i] == e.keyCode) {
-        if (visualKeyboard[keyboard[e.keyCode]]) {
-          //visualKeyboard[keyboard[e.keyCode]].classList.remove('playing');
-          visualKeyboard[keyboard[e.keyCode]].style.backgroundColor = '';
-          visualKeyboard[keyboard[e.keyCode]].style.marginTop = '';
-          visualKeyboard[keyboard[e.keyCode]].style.boxShadow = '';
-        }
-        keysPressed.splice(i, 1);
-      }
-    }
-  };
-  // Generates audio for pressed note and returns that to be played
-  var fnPlayNote = function (note, octave) {
-    src = __audioSynth.generate(selectSound.value, note, octave, 2);
-    container = new Audio(src);
-    container.addEventListener('ended', function () {
-      container = null;
-    });
-    container.addEventListener('loadeddata', function (e) {
-      e.target.play();
-    });
-    container.autoplay = false;
-    container.setAttribute('type', 'audio/wav');
-    container.load();
-    return container;
-  };
 
-  //returns correct string for display
-  function getDispStr(n, i, lookup) {
-    if (n == 'C' && i == -2) {
-      return '~';
-    } else if (n == 'B' && i == -2) {
-      return '-';
-    } else if (n == 'A#' && i == 0) {
-      return ';';
-    } else if (n == 'B' && i == 0) {
-      return '"';
-    } else if (n == 'A' && i == 1) {
-      return '/';
-    } else if (n == 'A#' && i == 1) {
-      return '<-';
-    } else if (n == 'B' && i == 1) {
-      return '->';
-    } else {
-      return String.fromCharCode(lookup[n + ',' + i]);
-    }
+    const label = document.createElement('div');
+    label.className = 'label';
+    // label.textContent = note;
+    label.innerHTML = `<b class="key-label">${Keyboard.KEYCODE_MAP[keyCode]}</b><br/><br/>${note}`;
+    // const b = document.createElement('b');
+    // b.className = 'key-label';
+    // b.textContent = Keyboard.KEYCODE_MAP[keyCode];
+    // label.appendChild(b);
+    key.appendChild(label);
+    return key;
   }
-  window.addEventListener('keydown', fnPlayKeyboard);
-  window.addEventListener('keyup', fnRemoveKeyBinding);
+
+  _attachListeners() {
+    const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+    const startEvt = isMobile ? 'touchstart' : 'mousedown';
+    const endEvt = isMobile ? 'touchend' : 'mouseup';
+
+    // 1) mouse / touch on the keys
+    this.container.addEventListener(startEvt, ev => this._handlePress(ev));
+    this.container.addEventListener(endEvt, ev => this._handleRelease(ev));
+
+    // 2) keyboard events
+    window.addEventListener('keydown', ev => this._handleKeyDown(ev));
+    window.addEventListener('keyup', ev => this._handleKeyUp(ev));
+  }
+
+  _handlePress(e) {
+    // get the key that was pressed
+    const keyEl = e.target.closest('.key');
+    if (!keyEl) return;
+
+    const note = keyEl.dataset.note;
+    // const octave = parseInt(keyEl.dataset.octave, 10);
+    const keyCode = parseInt(keyEl.dataset.keycode, 10);
+
+    const map = Keyboard.KEY_MAP.get(keyCode);
+
+    // visual feedback
+    keyEl.classList.add('playing');
+    keyEl.style.backgroundColor = Keyboard.PRESS_COLOR;
+
+    // play the note
+    this._playNote(note, Keyboard.OCTAVE + map.octave);
+  }
+
+  _handleRelease(e) {
+    const keyEl = e.target.closest('.key');
+    if (!keyEl) return;
+
+    keyEl.classList.remove('playing');
+    keyEl.style.backgroundColor = '';
+  }
+
+  _handleKeyDown(ev) {
+    if (this.pressed.has(ev.keyCode)) return;      // already held
+    this.pressed.add(ev.keyCode);
+
+    const map = Keyboard.KEY_MAP.get(ev.keyCode);
+    if (!map) return;
+
+    const keyEl = this.keyElements.get(ev.keyCode);
+    if (keyEl) keyEl.classList.add('playing');
+
+    this._playNote(map.note, Keyboard.OCTAVE + map.octave);
+  }
+
+  _handleKeyUp(ev) {
+    this.pressed.delete(ev.keyCode);
+
+    const keyEl = this.keyElements.get(ev.keyCode);
+    if (keyEl) keyEl.classList.remove('playing');
+  }
+
+  _playNote(note, octave) {
+    console.log('octave', octave, 'note', note);
+    const src = this.synth.generate(this.instrument, note, octave, 2);
+    const audio = new Audio(src);
+    audio.addEventListener('loadeddata', () => audio.play());
+    audio.load();      // triggers load & play when ready
+  }
 }
