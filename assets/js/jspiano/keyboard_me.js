@@ -1,5 +1,5 @@
 'use strict';
-import { Keyboard } from '/assets/js/jspiano/playKeyboard.js';
+import { Keyboard } from './playKeyboard.js';
 
 const instrumentFieldset = document.getElementById('instrument');
 
