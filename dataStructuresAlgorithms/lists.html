@@ -2,18 +2,17 @@
 title: Lists
 permalink: dataStructuresAlgorithms/lists
 layout: page
-last_modified_at: 2025-02-09
+last_modified_at: 2026-09-06
 js_file:
   path: list.js
-  async: true
+  defer: true
 ---
 
 <p>
   My answers to the exercises in
   <a
-    href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf"
-    >Algorithms &amp; Data Structures with JS</a
-  >
+    href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms
+    &amp; Data Structures with JS</a>
 </p>
 
 <fieldset>
@@ -23,7 +22,7 @@ js_file:
     <option value="Female">Female</option>
     <option value="Male">Male</option>
   </select>
-  <button type="button" class="btn btn-primary" onclick="showPeople();">
+  <button type="button" class="btn btn-primary" id="showPeople">
     Search
   </button>
 </fieldset>
@@ -42,19 +41,14 @@ js_file:
   <label for="checkoutMovie">Checkout Movie:</label>
   <select id="checkoutMovie" name="checkoutMovie" class="form-control"></select>
   <label for="customerName">Customer Name:</label>
-  <input
-    type="text"
-    id="customerName"
-    name="customerName"
-    class="form-control"
-  />
-  <button type="button" class="btn btn-primary" onclick="checkoutMovie();">
+  <input type="text" id="customerName" name="customerName" class="form-control" />
+  <button type="button" class="btn btn-primary" id="checkoutMovieBtn">
     Checkout Movie
   </button>
   <br />
   <label for="checkInMovie">Check In Movie:</label>
   <select id="checkInMovie" name="checkInMovie" class="form-control"></select>
-  <button type="button" class="btn btn-primary" onclick="checkInMovie();">
+  <button type="button" class="btn btn-primary" id="checkInMovieBtn">
     Check In Movie
   </button>
 </fieldset>
