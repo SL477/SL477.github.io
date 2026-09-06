@@ -105,18 +105,6 @@ function palindromeChecker(input) {
   return true;
 }
 
-// eslint-disable-next-line no-unused-vars
-function palindromeCheck() {
-  const palindromeCheckerInput = document.getElementById('palindromeChecker');
-  const palindromeAnswerSpan = document.getElementById('palindromeAnswer');
-  if (palindromeCheckerInput && palindromeAnswerSpan) {
-    const input = palindromeCheckerInput.value;
-    const ret = palindromeChecker(input);
-    console.log('ans2', ret);
-    palindromeAnswerSpan.textContent = ret.toString();
-  }
-}
-
 // Exercise 4
 class Patient {
   constructor(name, code) {
@@ -132,21 +120,6 @@ function showListOfPatients() {
   const patientListTBody = document.getElementById('patientList');
   if (patientListTBody) {
     patientListTBody.innerHTML = patientQueue.toTablePriority();
-  }
-}
-
-// eslint-disable-next-line no-unused-vars
-function addPatient() {
-  // patientName
-  // patientCode
-  const patientNameInput = document.getElementById('patientName');
-  const patientCodeInput = document.getElementById('patientCode');
-  if (patientNameInput && patientCodeInput) {
-    const pName = patientNameInput.value;
-    const pCode = patientCodeInput.value;
-
-    patientQueue.enqueue(new Patient(pName, pCode));
-    showListOfPatients();
   }
 }
 
@@ -168,4 +141,33 @@ function startUp() {
     ex1Input.value = q1.toString();
   }
 }
-startUp();
+
+document.addEventListener('DOMContentLoaded', () => {
+  startUp();
+
+  const palindromeCheckerInput = document.getElementById('palindromeChecker');
+  const palindromeAnswerSpan = document.getElementById('palindromeAnswer');
+  const patientNameInput = document.getElementById('patientName');
+  const patientCodeInput = document.getElementById('patientCode');
+
+  function palindromeCheck() {
+    if (palindromeCheckerInput && palindromeAnswerSpan) {
+      const input = palindromeCheckerInput.value;
+      const ret = palindromeChecker(input);
+      console.log('ans2', ret);
+      palindromeAnswerSpan.textContent = ret.toString();
+    }
+  }
+
+  function addPatient() {
+    // patientName
+    // patientCode
+    if (patientNameInput && patientCodeInput) {
+      patientQueue.enqueue(new Patient(patientNameInput.value, patientCodeInput.value));
+      showListOfPatients();
+    }
+  }
+
+  document.getElementById('palindromeCheck').addEventListener('click', palindromeCheck);
+  document.getElementById('addPatient').addEventListener('click', addPatient);
+});
