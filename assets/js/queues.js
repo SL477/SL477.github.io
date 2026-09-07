@@ -68,18 +68,26 @@ class Queue {
   }
 
   toTablePriority() {
-    let retStr = '';
-    for (let i = 0; i < this.dataStore.length; ++i) {
-      retStr +=
-        '<tr><td>' +
-        this.dataStore[i].name +
-        '</td><td>' +
-        this.dataStore[i].code +
-        '</td><td><button class="btn btn-danger" onclick="removePatient(' +
-        i +
-        ')">Remove</button>';
-    }
-    return retStr;
+    const frag = document.createDocumentFragment();
+    this.dataStore.forEach((d, i) => {
+      const tr = document.createElement('tr');
+      const tdName = document.createElement('td');
+      tdName.textContent = d.name;
+      tr.appendChild(tdName);
+      const tdCode = document.createElement('td');
+      tdCode.textContent = d.code;
+      tr.appendChild(tdCode);
+      const tdBtn = document.createElement('td');
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'btn btn-danger';
+      btn.addEventListener('click', () => removePatient(i));
+      btn.textContent = 'Remove';
+      tdBtn.appendChild(btn);
+      tr.appendChild(tdBtn);
+      frag.appendChild(tr);
+    });
+    return frag;
   }
 }
 
@@ -119,11 +127,11 @@ function showListOfPatients() {
   // patientList
   const patientListTBody = document.getElementById('patientList');
   if (patientListTBody) {
-    patientListTBody.innerHTML = patientQueue.toTablePriority();
+    patientListTBody.innerHTML = '';
+    patientListTBody.appendChild(patientQueue.toTablePriority());
   }
 }
 
-// eslint-disable-next-line no-unused-vars
 function removePatient(index) {
   patientQueue.dataStore.splice(index, 1);
   showListOfPatients();
