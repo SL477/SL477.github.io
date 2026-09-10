@@ -17,7 +17,6 @@ export default defineConfig([
   {
     ignores: [
       '_site/*',
-      'my-navbar.js',
       'assets/js/components/my-navbar2.js',
       'odinProject/restaurantPage/main.js',
       'assets/js/webMentions.js',

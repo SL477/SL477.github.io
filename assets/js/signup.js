@@ -10,9 +10,9 @@ function getMessageNode(input) {
 
 /**
  * Display the validity message
- * @param {HTMLInputElement} input 
+ * @param {HTMLInputElement} input
  */
-function showMessage(input){
+function showMessage(input) {
   const msgNode = getMessageNode(input);
   if (!input.validity.valid) {
     msgNode.textContent = input.validationMessage;
@@ -40,7 +40,7 @@ function validatePasswords() {
 
 /**
  * Generic input handler
- * @param {Event} ev 
+ * @param {Event} ev
  */
 function onInput(ev) {
   const target = ev.target;
@@ -59,8 +59,8 @@ function onInput(ev) {
  * Form submit handler
  * @param {Event} ev
  */
-function onSubmit(ev){
-  const form =  ev.target;
+function onSubmit(ev) {
+  const form = ev.target;
   if (!form.checkValidity()) {
     ev.preventDefault();
     form.querySelectorAll('input').forEach(showMessage);
