@@ -1,62 +1,74 @@
 /**
- * @param {HTMLInputElement} ev
+ * Get the p element that will display the error message
+ * @param {HTMLInputElement} input
+ * @returns {HTMLParagraphElement}
  */
-// eslint-disable-next-line no-unused-vars
-function onChangeValidationMessage(ev) {
-    ev.parentNode.querySelector('.validationMessage').textContent =
-        ev.validationMessage;
+function getMessageNode(input) {
+  const id = input.getAttribute('aria-describedby')
+  return document.getElementById(id);
 }
 
-const passwordInput = document.getElementById('password');
-const passwordConfirmInput = document.getElementById('passwordConfirm');
+/**
+ * Display the validity message
+ * @param {HTMLInputElement} input 
+ */
+function showMessage(input){
+  const msgNode = getMessageNode(input);
+  if (!input.validity.valid) {
+    msgNode.textContent = input.validationMessage;
+    input.setAttribute('aria-invalid', 'true');
+  } else {
+    msgNode.textContent = '';
+    input.removeAttribute('aria-invalid');
+  }
+}
 
-// eslint-disable-next-line no-unused-vars
-passwordInput.addEventListener('input', (_ev) => {
-    passwordInput.setCustomValidity('');
-    const validationMessageNode =
-        passwordInput.parentNode.querySelector('.validationMessage');
-    validationMessageNode.textContent = '';
-    if (!passwordInput.validity.valid) {
-        validationMessageNode.textContent = passwordInput.validationMessage;
-        return;
-    }
+function validatePasswords() {
+  const passwordInput = document.getElementById('password');
+  const passwordConfirmInput = document.getElementById('passwordConfirm');
+  passwordInput.setCustomValidity('');
+  passwordConfirmInput.setCustomValidity('');
 
-    // Check the confirm input
-    if (passwordInput.value !== passwordConfirmInput.value) {
-        passwordInput.setCustomValidity(
-            'Password and Confirm Password do not match'
-        );
-        validationMessageNode.textContent = passwordInput.validationMessage;
-    } else if (
-        passwordConfirmInput.parentNode.querySelector('.validationMessage')
-            .textContent
-    ) {
-        passwordConfirmInput.dispatchEvent(new Event('input'));
-    }
-});
+  if (!passwordInput.value || !passwordConfirmInput.value) return;
 
-// eslint-disable-next-line no-unused-vars
-passwordConfirmInput.addEventListener('input', (_ev) => {
-    passwordInput.setCustomValidity('');
-    const validationMessageNode =
-        passwordConfirmInput.parentNode.querySelector('.validationMessage');
-    validationMessageNode.textContent = '';
-    if (!passwordConfirmInput.validity.valid) {
-        validationMessageNode.textContent =
-            passwordConfirmInput.validationMessage;
-        return;
-    }
+  if (passwordInput.value !== passwordConfirmInput.value) {
+    const msg = 'Password and Confirm Password do not match';
+    passwordInput.setCustomValidity(msg);
+    passwordConfirmInput.setCustomValidity(msg);
+  }
+}
 
-    // Check the confirm input
-    if (passwordInput.value !== passwordConfirmInput.value) {
-        passwordConfirmInput.setCustomValidity(
-            'Password and Confirm Password do not match'
-        );
-        validationMessageNode.textContent =
-            passwordConfirmInput.validationMessage;
-    } else if (
-        passwordInput.parentNode.querySelector('.validationMessage').textContent
-    ) {
-        passwordInput.dispatchEvent(new Event('input'));
-    }
+/**
+ * Generic input handler
+ * @param {Event} ev 
+ */
+function onInput(ev) {
+  const target = ev.target;
+  if (!(target instanceof HTMLInputElement)) return;
+
+  showMessage(target);
+
+  if (target.id === 'password' || target.id === 'passwordConfirm') {
+    validatePasswords();
+    showMessage(document.getElementById('password'));
+    showMessage(document.getElementById('passwordConfirm'));
+  }
+}
+
+/**
+ * Form submit handler
+ * @param {Event} ev
+ */
+function onSubmit(ev){
+  const form =  ev.target;
+  if (!form.checkValidity()) {
+    ev.preventDefault();
+    form.querySelectorAll('input').forEach(showMessage);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('signup-form');
+  form.addEventListener('input', onInput);
+  form.addEventListener('submit', onSubmit);
 });
