@@ -1,0 +1,9 @@
+---
+import site from '../content/site.json';
+const mainClass = `imgmain${site.show_story ? ' story' : ''}`;
+---
+<picture class={mainClass}>
+    <source srcset={site.photo_webp} type="image/webp"/>
+    <source srcset={site.photo} type="image/jpg"/>
+    <img src={site.photo} alt="Tom." width="250" height="250" fetchpriority="high"/>
+</picture>

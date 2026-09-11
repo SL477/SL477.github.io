@@ -1,10 +1,127 @@
 ---
-import Head from "../components/head.astro";
+import Head from '../components/head.astro';
+import site from '../content/site.json';
+import MainPicture from '../components/mainPicture.astro';
+import skills from '../content/skills.json';
+import projects from '../content/projects.json';
 ---
 
 <html lang="en">
-	<Head/>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <Head />
+  <body>
+    <h1 class="centertext">Thomas Fishwick</h1>
+    <div class="top-group">
+      {
+        site.show_story ? (
+          <a href="/story">
+            <MainPicture />
+          </a>
+        ) : (
+          <MainPicture />
+        )
+      }
+      <div class="inner-group">
+        <h2>Nice to meet you!<br />I'm Tom Fishwick</h2>
+        <p>
+          My main experience from work is as a developer for
+          <a
+            href="https://www.elite.com/3e/"
+            target="_blank"
+            rel="noopener noreferrer">Elite 3E</a
+          >
+          (VB.Net & SQL) and
+          <a
+            href="https://www.thomsonreuters.com/content/dam/openweb/documents/pdf/mena/brochures/3e-matter-management-brochure.pdf"
+            target="_blank"
+            rel="noopener noreferrer">MatterSphere</a
+          >
+          (C#). This involves creating new screens and workflows and integrating them
+          with various APIs. As well as these I have made an ASP.Net site serving
+          a Vue.JS application, and various other JavaScript applications.
+        </p>
+
+        <p>
+          In my spare time I have created various apps in Python, JavaScript,
+          React Native and Android. Plus I have some experience in PHP.
+        </p>
+      </div>
+    </div>
+
+    <hr />
+
+    <h2>Skills</h2>
+    <div class="skills-container">
+      {
+        skills.skills
+          .filter((s) => !s.hide)
+          .map((s) => (
+            <div class="skills-card">
+              <h3>{s.name}</h3>
+              <p>
+                {s.years} Year{s.years > 1 && 's'} Experience
+              </p>
+            </div>
+          ))
+      }
+    </div>
+
+    <hr />
+
+    <h2>Projects</h2>
+    <div class="project-container">
+      {
+        projects.projects.map((project) => (
+          <div class="project-tile">
+            <picture class="borderimage">
+              <source
+                srcset={`/assets/images/${project.picture}.webp`}
+                type="image/webp"
+              />
+              <source
+                srcset={`/assets/images/${project.picture}.jpg`}
+                type="image/jpeg"
+              />
+              <img
+                src={`/assets/images/${project.picture}.jpg`}
+                alt={project.picture_text}
+                class="borderimage"
+                loading="lazy"
+                width={project.picture_width}
+                height={project.picture_height}
+              />
+            </picture>
+
+            <details>
+              <summary>{project.name}</summary>
+              <pre class="project-pre">{project.description}</pre>
+            </details>
+            {(project.url || project.repository) && (
+              <>
+                <br />
+                {project.url && (
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    Live Link
+                  </a>
+                )}
+                {project.url && project.repository && <span> </span>}
+                {project.repository && (
+                  <a
+                    href={project.repository}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    Source
+                  </a>
+                )}
+              </>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </body>
 </html>
