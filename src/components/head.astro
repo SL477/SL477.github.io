@@ -1,0 +1,25 @@
+---
+const { title = 'Thomas Fishwick', ...props } = Astro.props;
+const author = { name: 'Thomas Fishwick', uri: 'https://link477.com' };
+const lang = 'en-GB';
+const description =
+  'Thomas Fishwick is a software developer and data scientist';
+const url = '/';
+---
+
+<head>
+  <meta charset="utf-8" />
+  <!-- SEO stuff -->
+  <title>{title}</title>
+  <meta property="og:title" content={title} />
+  <meta name="twitter:title" content={title} />
+  <meta name="generator" content={Astro.generator} />
+  <meta name="author" content={author.name} />
+  <meta property="og:locale" content={lang} />
+  <meta name="description" content={description} />
+  <meta name="twitter:description" content={description} />
+  <link rel="canonical" href={url} />
+  <meta property="og:url" content={url} />
+  <meta name="twitter:url" content={url} />
+  <meta property="og:site_name" content={title} />
+</head>
