@@ -1,0 +1,92 @@
+---
+import site from '../content/site.json';
+import navData from '../content/navbar.json';
+const currentPath = Astro.url.pathname;
+---
+
+<a href="#main-content" class="screen-reader-text">Skip to main content</a>
+<input
+  type="checkbox"
+  name="expandNavbar"
+  id="expandNavbar"
+  aria-label="Toggle Navigation"
+/>
+<nav class="my-nav" aria-label="Main Navigation">
+  <a
+    class="brand"
+    href="/"
+    aria-current={currentPath === '/' ? 'page' : 'false'}
+  >
+    <picture>
+      <source srcset={`/${site.logo_webp}`} type="image/webp" />
+      <source srcset={`/${site.logo}`} type="image/png" />
+      <img src={`/${site.logo}`} alt="Link477" height="50" width="50" />
+    </picture>
+  </a>
+  <label for="expandNavbar" id="expand-navbar-icon" class="hamburger">
+    <span></span><span></span><span></span>
+  </label>
+  <div class="inner-nav">
+    <menu class="inner-nav-top-level">
+      {
+        navData.map((item) => (
+          <li class="dropdown">
+            <button
+              type="button"
+              class="dropdown_title"
+              aria-expanded="false"
+              popovertarget={`${item.id}-dropdown`}
+            >
+              {item.name}
+            </button>
+            <ul class="dropdown_menu" id={`${item.id}-dropdown`} popover="auto">
+              {item.items.map((links) => (
+                <>
+                  {item.name && <li>{links.name}</li>}
+
+                  {links.links.map((url) => (
+                    <li>
+                      <a
+                        href={url.href}
+                        aria-current={
+                          currentPath === url.href ? 'page' : 'false'
+                        }
+                      >
+                        {url.name}
+                      </a>
+                    </li>
+                  ))}
+                </>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+      <li class="dropdown">
+        <button
+          type="button"
+          class="dropdown_title"
+          aria-expanded="false"
+          popovertarget="blog-dropdown"
+        >
+          Blog
+        </button>
+        <ul class="dropdown_menu" id="blog-dropdown" popover="auto">
+          <!-- {%- for post in site.posts limit:10 -%}
+          <li>
+            <a href="{{ post.url | relative_url }}" {% if post.url==page.url %}aria-current="page"{% endif %}
+              >{{ post.title | escape }}</a
+            >
+          </li>
+          {%- endfor -%} -->
+          <li>
+            <a href="/posts" aria-current={currentPath === "/posts" ? 'page' : 'false'}>More Posts</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="/about" aria-current={currentPath === '/about' ? 'page' : 'false'}>About</a></li>
+      <li><a href="/feeds" aria-current={currentPath === '/feeds' ? 'page' : 'false'}>Feeds</a></li>
+      <!-- <li>{%- include dark_mode_picker.html -%}</li> -->
+    </menu>
+  </div>
+</nav>

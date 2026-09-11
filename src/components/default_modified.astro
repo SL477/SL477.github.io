@@ -1,14 +1,15 @@
 ---
 import site from '../content/site.json';
-import Header from './head.astro';
+import Head from './head.astro';
+import Header from './header.astro';
 const { title } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang={site.lang} dir="ltr">
-  <Header title={title}/>
+  <Head title={title}/>
   <body>
 
-    <!-- {%- include header.html -%} -->
+    <Header/>
     <main class="page-content" id="main-content" aria-label="Content">
       <div class="wrapper">
         <slot />
