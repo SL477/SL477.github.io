@@ -1,9 +1,20 @@
 ---
 layout: page
 title: Changelog
-last_modified_at: 2026-08-29
+last_modified_at: 2026-09-11
 permalink: /changelog
 ---
+
+## 2026-09-11
+
+### Modified
+
+- Updated JS keyboard to make the keyboard code better
+- Various ESLint fixes
+
+### Removed
+
+- Removed the original navBar component
 
 ## 2026-08-29
 

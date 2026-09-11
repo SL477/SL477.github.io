@@ -2,18 +2,17 @@
 title: Queues
 permalink: dataStructuresAlgorithms/queues
 layout: page
-last_modified_at: 2025-02-09
+last_modified_at: 2026-09-06
 js_file:
   path: queues.js
-  async: true
+  defer: true
 ---
 
 <p>
   My answers to the exercises in
   <a
-    href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf"
-    >Algorithms &amp; Data Structures with JS</a
-  >
+    href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">Algorithms
+    &amp; Data Structures with JS</a>
 </p>
 
 <label for="ex1">Output from queue</label>
@@ -21,13 +20,8 @@ js_file:
 
 <fieldset>
   <label for="palindromeChecker">Palindrome Checker</label>
-  <input
-    id="palindromeChecker"
-    name="palindromeChecker"
-    type="text"
-    class="form-control"
-  />
-  <button type="button" class="btn btn-primary" onclick="palindromeCheck();">
+  <input id="palindromeChecker" name="palindromeChecker" type="text" class="form-control" />
+  <button type="button" class="btn btn-primary" id="palindromeCheck">
     Check
   </button>
   <p>Answer: <span id="palindromeAnswer"></span></p>
@@ -37,13 +31,8 @@ js_file:
   <label for="patientName">Patient Name:</label>
   <input id="patientName" name="patientName" type="text" class="form-control" />
   <label for="patientCode">Patient Priority Code:</label>
-  <input
-    id="patientCode"
-    name="patientCode"
-    type="number"
-    class="form-control"
-  />
-  <button type="button" class="btn btn-primary" onclick="addPatient();">
+  <input id="patientCode" name="patientCode" type="number" class="form-control" />
+  <button type="button" class="btn btn-primary" id="addPatient">
     Add Patient
   </button>
 </fieldset>

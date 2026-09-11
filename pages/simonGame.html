@@ -1,69 +1,34 @@
 ---
 layout: page
 title: Simon Game
-last_modified_at: 2025-06-22
+last_modified_at: 2026-09-07
 permalink: /pages/simonGame
 css_file: simonGame.css
 js_file:
   path: simonGame.js
+  defer: true
 ---
 
 <div id="app">
-  <audio
-    id="aud0"
-    src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"
-  ></audio>
-  <audio
-    id="aud1"
-    src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"
-  ></audio>
-  <audio
-    id="aud2"
-    src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"
-  ></audio>
-  <audio
-    id="aud3"
-    src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
-  ></audio>
+  <audio id="aud0" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio>
+  <audio id="aud1" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
+  <audio id="aud2" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
+  <audio id="aud3" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
   <fieldset>
     <label for="useStrict">Strict Mode:</label>
-    <input id="useStrict" type="checkbox" onchange="setStrict(this)" />
+    <input id="useStrict" type="checkbox" />
   </fieldset>
 
   <p><b>Current Step:</b> <span id="currentStep"></span></p>
 
   <div class="grid-container">
-    <button
-      type="button"
-      aria-label="red"
-      class="grid-item button red"
-      onclick="simonButton(0, true);"
-      id="btn0"
-    ></button>
-    <button
-      type="button"
-      aria-label="yellow"
-      class="grid-item button yellow"
-      onclick="simonButton(1, true);"
-      id="btn1"
-    ></button>
-    <button
-      type="button"
-      aria-label="green"
-      class="grid-item button green"
-      onclick="simonButton(2, true);"
-      id="btn2"
-    ></button>
-    <button
-      type="button"
-      aria-label="blue"
-      class="grid-item button blue"
-      onclick="simonButton(3, true);"
-      id="btn3"
-    ></button>
+    <button type="button" data-num="0" aria-label="red" class="grid-item button red" id="btn0"></button>
+    <button type="button" data-num="1" aria-label="yellow" class="grid-item button yellow" id="btn1"></button>
+    <button type="button" data-num="2" aria-label="green" class="grid-item button green" id="btn2"></button>
+    <button type="button" data-num="3" aria-label="blue" class="grid-item button blue" id="btn3"></button>
   </div>
   <div id="correct" class="display-none">
     <p>Wrong!!!</p>
   </div>
-  <button type="button" class="btn btn-danger" onclick="reset();">Reset</button>
+  <button type="button" class="btn btn-danger" id="reset">Reset</button>
 </div>

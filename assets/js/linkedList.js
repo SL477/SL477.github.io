@@ -258,7 +258,6 @@ const grades = new DoublyLinkedList();
 const gradeInput = document.getElementById('grade');
 const gradesDiv = document.getElementById('grades');
 let latestGrade = 'head';
-// eslint-disable-next-line no-unused-vars
 function addGrade() {
   if (gradeInput && gradesDiv) {
     grades.insert(gradeInput.value, latestGrade);
@@ -384,7 +383,6 @@ class CirclularLinkedList {
 }
 
 
-// eslint-disable-next-line no-unused-vars
 function determineSurvivors() {
   const startingNumberInput = document.getElementById('startingNumber');
   const ex6ShowDiv = document.getElementById('ex6Show');
@@ -424,3 +422,8 @@ function determineSurvivors() {
     ex6AnsSpan.textContent = soldiers.displayText();
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('addGrade').addEventListener('click', addGrade);
+  document.getElementById('determineSurvivors').addEventListener('click', determineSurvivors);
+});

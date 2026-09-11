@@ -247,7 +247,6 @@ function showLists() {
   }
 }
 
-// eslint-disable-next-line no-unused-vars
 function checkoutMovie() {
   const customerNameInput = document.getElementById('customerName');
   const checkoutMovieInput = document.getElementById('checkoutMovie');
@@ -267,7 +266,6 @@ function checkIn(customerName, movie, custIndex) {
   checkedOutMovies.remove(movie);
 }
 
-// eslint-disable-next-line no-unused-vars
 function checkInMovie() {
   const checkInMovieSelect = document.getElementById('checkInMovie');
   if (checkInMovieSelect) {
@@ -285,4 +283,10 @@ function startup() {
   checkOut('Jane Doe', 'The Godfather', movieList, customers);
   checkOut('Jane Doe', 'The Godfather', movieList, customers);
 }
-startup();
+
+document.addEventListener('DOMContentLoaded', () => {
+  startup();
+  document.getElementById('showPeople').addEventListener('click', showPeople);
+  document.getElementById('checkoutMovieBtn').addEventListener('click', checkoutMovie);
+  document.getElementById('checkInMovieBtn').addEventListener('click', checkInMovie);
+});

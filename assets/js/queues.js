@@ -68,18 +68,26 @@ class Queue {
   }
 
   toTablePriority() {
-    let retStr = '';
-    for (let i = 0; i < this.dataStore.length; ++i) {
-      retStr +=
-        '<tr><td>' +
-        this.dataStore[i].name +
-        '</td><td>' +
-        this.dataStore[i].code +
-        '</td><td><button class="btn btn-danger" onclick="removePatient(' +
-        i +
-        ')">Remove</button>';
-    }
-    return retStr;
+    const frag = document.createDocumentFragment();
+    this.dataStore.forEach((d, i) => {
+      const tr = document.createElement('tr');
+      const tdName = document.createElement('td');
+      tdName.textContent = d.name;
+      tr.appendChild(tdName);
+      const tdCode = document.createElement('td');
+      tdCode.textContent = d.code;
+      tr.appendChild(tdCode);
+      const tdBtn = document.createElement('td');
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'btn btn-danger';
+      btn.addEventListener('click', () => removePatient(i));
+      btn.textContent = 'Remove';
+      tdBtn.appendChild(btn);
+      tr.appendChild(tdBtn);
+      frag.appendChild(tr);
+    });
+    return frag;
   }
 }
 
@@ -105,18 +113,6 @@ function palindromeChecker(input) {
   return true;
 }
 
-// eslint-disable-next-line no-unused-vars
-function palindromeCheck() {
-  const palindromeCheckerInput = document.getElementById('palindromeChecker');
-  const palindromeAnswerSpan = document.getElementById('palindromeAnswer');
-  if (palindromeCheckerInput && palindromeAnswerSpan) {
-    const input = palindromeCheckerInput.value;
-    const ret = palindromeChecker(input);
-    console.log('ans2', ret);
-    palindromeAnswerSpan.textContent = ret.toString();
-  }
-}
-
 // Exercise 4
 class Patient {
   constructor(name, code) {
@@ -131,26 +127,11 @@ function showListOfPatients() {
   // patientList
   const patientListTBody = document.getElementById('patientList');
   if (patientListTBody) {
-    patientListTBody.innerHTML = patientQueue.toTablePriority();
+    patientListTBody.innerHTML = '';
+    patientListTBody.appendChild(patientQueue.toTablePriority());
   }
 }
 
-// eslint-disable-next-line no-unused-vars
-function addPatient() {
-  // patientName
-  // patientCode
-  const patientNameInput = document.getElementById('patientName');
-  const patientCodeInput = document.getElementById('patientCode');
-  if (patientNameInput && patientCodeInput) {
-    const pName = patientNameInput.value;
-    const pCode = patientCodeInput.value;
-
-    patientQueue.enqueue(new Patient(pName, pCode));
-    showListOfPatients();
-  }
-}
-
-// eslint-disable-next-line no-unused-vars
 function removePatient(index) {
   patientQueue.dataStore.splice(index, 1);
   showListOfPatients();
@@ -168,4 +149,33 @@ function startUp() {
     ex1Input.value = q1.toString();
   }
 }
-startUp();
+
+document.addEventListener('DOMContentLoaded', () => {
+  startUp();
+
+  const palindromeCheckerInput = document.getElementById('palindromeChecker');
+  const palindromeAnswerSpan = document.getElementById('palindromeAnswer');
+  const patientNameInput = document.getElementById('patientName');
+  const patientCodeInput = document.getElementById('patientCode');
+
+  function palindromeCheck() {
+    if (palindromeCheckerInput && palindromeAnswerSpan) {
+      const input = palindromeCheckerInput.value;
+      const ret = palindromeChecker(input);
+      console.log('ans2', ret);
+      palindromeAnswerSpan.textContent = ret.toString();
+    }
+  }
+
+  function addPatient() {
+    // patientName
+    // patientCode
+    if (patientNameInput && patientCodeInput) {
+      patientQueue.enqueue(new Patient(patientNameInput.value, patientCodeInput.value));
+      showListOfPatients();
+    }
+  }
+
+  document.getElementById('palindromeCheck').addEventListener('click', palindromeCheck);
+  document.getElementById('addPatient').addEventListener('click', addPatient);
+});

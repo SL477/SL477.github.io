@@ -5,10 +5,7 @@ class SetCls {
   }
 
   contains(data) {
-    if (this.dataStore.indexOf(data) > -1) {
-      return true;
-    }
-    return false;
+    return this.dataStore.indexOf(data) > -1;
   }
 
   add(data) {
@@ -30,11 +27,7 @@ class SetCls {
   }
 
   show() {
-    let ret = '<ul>';
-    this.dataStore.forEach(s => {
-      ret += '<li>' + s + '</li>';
-    });
-    return ret + '</ul>';
+    return `<ul>${this.dataStore.map(s => `<li>${s}</li>`).join('')}</ul>`;
   }
 
   union(otherSet) {
@@ -104,39 +97,40 @@ class SetCls {
   }
 }
 
-// Exercise 1
-const one = new SetCls();
-// eslint-disable-next-line no-unused-vars
-function createSet() {
+document.addEventListener('DOMContentLoaded', () => {
+  // Exercise 1
+  const one = new SetCls();
   const txtInput = document.getElementById('txtInput');
   const ex1Div = document.getElementById('ex1');
-  if (txtInput && ex1Div) {
-    const inp = txtInput.value;
-    inp.split('').forEach(s => {
-      one.add(s);
-    });
-    ex1Div.innerHTML = one.show();
-  }
-}
-
-// Exercise 3
-// eslint-disable-next-line no-unused-vars
-function getGreater() {
   const higherElementInput = document.getElementById('higherElement');
   const greaterResultSpan = document.getElementById('greaterResult');
-  if (higherElementInput && greaterResultSpan) {
-    const inp = higherElementInput.value;
-    greaterResultSpan.textContent = one.higher(inp);
-  }
-}
-
-// Exercise 4
-// eslint-disable-next-line no-unused-vars
-function getLower() {
   const lowerElementInput = document.getElementById('lowerElement');
   const lowerResultSpan = document.getElementById('lowerResult');
-  if (lowerElementInput && lowerResultSpan) {
-    const inp = lowerElementInput.value;
-    lowerResultSpan.textContent = one.lower(inp);
+
+  function createSet() {
+    if (txtInput && ex1Div) {
+      txtInput.value.split('').forEach(s => {
+        console.log('createSet', s)
+        one.add(s);
+      });
+      ex1Div.innerHTML = one.show();
+    }
   }
-}
+  document.getElementById('createSet').addEventListener('click', createSet);
+
+  // Exercise 3
+  function getGreater() {
+    if (higherElementInput && greaterResultSpan) {
+      greaterResultSpan.textContent = one.higher(higherElementInput.value);
+    }
+  }
+  document.getElementById('getGreater').addEventListener('click', getGreater);
+
+  // Exercise 4
+  function getLower() {
+    if (lowerElementInput && lowerResultSpan) {
+      lowerResultSpan.textContent = one.lower(lowerElementInput.value);
+    }
+  }
+  document.getElementById('getLower').addEventListener('click', getLower);
+});
