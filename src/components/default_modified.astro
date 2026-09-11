@@ -2,21 +2,20 @@
 import site from '../content/site.json';
 import Head from './head.astro';
 import Header from './header.astro';
+import Footer from './footer.astro';
 const { title } = Astro.props;
 ---
-<!DOCTYPE html>
-<html lang={site.lang} dir="ltr">
-  <Head title={title}/>
-  <body>
 
-    <Header/>
+<!doctype html>
+<html lang={site.lang} dir="ltr">
+  <Head title={title} />
+  <body>
+    <Header />
     <main class="page-content" id="main-content" aria-label="Content">
       <div class="wrapper">
         <slot />
       </div>
     </main>
-    <!-- {%- include footer.html -%} -->
-
+    <Footer />
   </body>
-
 </html>
