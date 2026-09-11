@@ -53,9 +53,12 @@
 - DeepSeekBot
 - Devin
 - Diffbot
+- Diffbot-User
+- DoubaoBot
 - DuckAssistBot
 - Echobot Bot
 - EchoboxBot
+- ERNIEBot
 - ExaBot
 - ExaSearchBot
 - FacebookBot
@@ -88,7 +91,9 @@
 - ISSCyberRiskCrawler
 - kagi-fetcher
 - Kangaroo Bot
+- Kimi-SearchBot
 - Kimi-User
+- KimiBot
 - KlaviyoAIBot
 - KunatoCrawler
 - laion-huggingface-processor
@@ -104,6 +109,8 @@
 - meta-externalfetcher
 - Meta-ExternalFetcher
 - meta-webindexer
+- MistralAI-Index
+- MistralAI-Training
 - MistralAI-User
 - MistralAI-User/1.0
 - Mozilla-Tabstack
@@ -113,6 +120,7 @@
 - newsai
 - NotebookLM
 - NovaAct
+- OAI-AdsBot
 - OAI-SearchBot
 - omgili
 - omgilibot
@@ -133,6 +141,7 @@
 - QueritBot
 - QuillBot
 - quillbot.com
+- QwenBot
 - Reflectionbot
 - SBIntuitionsBot
 - Scrapy
