@@ -4,6 +4,7 @@ import site from '../content/site.json';
 import MainPicture from '../components/mainPicture.astro';
 import skills from '../content/skills.json';
 import projects from '../content/projects.json';
+import certifications from '../content/certifications.json';
 ---
 
 <html lang="en">
@@ -93,7 +94,7 @@ import projects from '../content/projects.json';
 
             <details>
               <summary>{project.name}</summary>
-              <pre class="project-pre">{project.description}</pre>
+              <pre class="project-pre" set:html={project.description} />
             </details>
             {(project.url || project.repository) && (
               <>
@@ -122,6 +123,93 @@ import projects from '../content/projects.json';
           </div>
         ))
       }
+    </div>
+
+    <hr />
+
+    <h2>Certifications</h2>
+    <div class="project-container">
+      {
+        certifications.certifications.map((cert) => (
+          <a
+            href={`https://www.credly.com/badges/${cert.id}/public_url`}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <picture>
+              <source
+                srcset={`/assets/images/${cert.src}.webp`}
+                type="image/webp"
+              />
+              <source
+                srcset={`/assets/images/${cert.src}.png`}
+                type="image/png"
+              />
+              <img
+                src={`/assets/images/${cert.src}.png`}
+                alt={cert.name}
+                width="150"
+                height="150"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          </a>
+        ))
+      }
+    </div>
+
+    <hr />
+
+    <h2>Contact</h2>
+
+    <div id="contact-container">
+      <p id="contact-text">
+        I would love to hear about your company and how I could help. Please
+        fill in the form, and I'll get back to you as soon as possible.
+      </p>
+
+      <form
+        action="https://link477255648240.wordpress.com/contact/"
+        method="post"
+        id="contact-form"
+      >
+        <div class="mb-3 row">
+          <label for="g32-name" class="col-form-label">Name:</label>
+          <div class="col-input">
+            <input
+              type="text"
+              name="g32-name"
+              required
+              id="g32-name"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="g32-email" class="col-form-label">Email:</label>
+          <div class="col-input">
+            <input
+              type="email"
+              name="g32-email"
+              required
+              id="g32-email"
+              class="form-control"
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="g32-message" class="col-form-label">Message:</label>
+          <div class="col-input">
+            <textarea
+              name="g32-message"
+              id="g32-message"
+              class="form-control"
+              rows="2"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Send Message</button>
+      </form>
     </div>
   </body>
 </html>
