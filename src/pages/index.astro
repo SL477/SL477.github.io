@@ -5,11 +5,10 @@ import MainPicture from '../components/mainPicture.astro';
 import skills from '../content/skills.json';
 import projects from '../content/projects.json';
 import certifications from '../content/certifications.json';
+import Home from '../components/home.astro';
 ---
 
-<html lang="en">
-  <Head />
-  <body>
+<Home title="Home">
     <h1 class="centertext">Thomas Fishwick</h1>
     <div class="top-group">
       {
@@ -211,5 +210,4 @@ import certifications from '../content/certifications.json';
         <button type="submit" class="btn btn-primary mb-3">Send Message</button>
       </form>
     </div>
-  </body>
-</html>
+</Home>
