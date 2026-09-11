@@ -1,6 +1,7 @@
 ---
 import site from '../content/site.json';
 import navData from '../content/navbar.json';
+import DarkModePicker from './darkModePicker.astro';
 const currentPath = Astro.url.pathname;
 ---
 
@@ -80,13 +81,25 @@ const currentPath = Astro.url.pathname;
           </li>
           {%- endfor -%} -->
           <li>
-            <a href="/posts" aria-current={currentPath === "/posts" ? 'page' : 'false'}>More Posts</a>
+            <a
+              href="/posts"
+              aria-current={currentPath === '/posts' ? 'page' : 'false'}
+              >More Posts</a
+            >
           </li>
         </ul>
       </li>
-      <li><a href="/about" aria-current={currentPath === '/about' ? 'page' : 'false'}>About</a></li>
-      <li><a href="/feeds" aria-current={currentPath === '/feeds' ? 'page' : 'false'}>Feeds</a></li>
-      <!-- <li>{%- include dark_mode_picker.html -%}</li> -->
+      <li>
+        <a
+          href="/about"
+          aria-current={currentPath === '/about' ? 'page' : 'false'}>About</a>
+      </li>
+      <li>
+        <a
+          href="/feeds"
+          aria-current={currentPath === '/feeds' ? 'page' : 'false'}>Feeds</a>
+      </li>
+      <li><DarkModePicker /></li>
     </menu>
   </div>
 </nav>
