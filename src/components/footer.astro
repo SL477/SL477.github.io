@@ -7,11 +7,11 @@ import Social from './social.astro';
   <a class="u-url u-uid" href={site.site_url} hidden="hidden">My Site</a>
 
   <picture hidden="hidden">
-    <source srcset={site.logo_webp} type="image/webp" />
-    <source srcset={site.logo} type="image/png" />
+    <source srcset={site.logo.webp} type="image/webp" />
+    <source srcset={site.logo.src} type="image/png" />
     <img
-      src={site.logo}
-      alt={site.logo_alt}
+      src={site.logo.src}
+      alt={site.logo.alt}
       height="50"
       width="50"
       class="u-logo"

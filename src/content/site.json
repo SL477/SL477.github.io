@@ -11,13 +11,15 @@
   "credly_username": "thomas-fishwick.519c62f9",
   "exercism_username": "Link477",
   "frontendmentor_link": "https://www.frontendmentor.io/profile/SL477",
-  "logo": "/assets/images/link477.png",
   "photo": "/assets/images/tom.jpg",
   "photo_webp": "/assets/images/tom.webp",
-  "logo_width": 366,
-  "logo_height": 256,
-  "logo_alt": "My logo of Link477 built in Lego",
-  "logo_webp": "/assets/images/link477.webp",
+  "logo": {
+    "src": "/assets/images/link477.png",
+    "width": 366,
+    "height": 256,
+    "alt": "My logo of Link477 built in Lego",
+    "webp": "/assets/images/link477.webp"
+  },
   "lang": "en-GB",
   "author": {
     "name": "Thomas Fishwick",
