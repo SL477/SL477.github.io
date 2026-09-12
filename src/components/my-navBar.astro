@@ -19,9 +19,9 @@ const currentPath = Astro.url.pathname;
     aria-current={currentPath === '/' ? 'page' : 'false'}
   >
     <picture>
-      <source srcset={`/${site.logo.webp}`} type="image/webp" />
-      <source srcset={`/${site.logo.src}`} type="image/png" />
-      <img src={`/${site.logo.src}`} alt="Link477" height="50" width="50" />
+      <source srcset={site.logo.webp} type="image/webp" />
+      <source srcset={site.logo.src} type="image/png" />
+      <img src={site.logo.src} alt="Link477" height="50" width="50" />
     </picture>
   </a>
   <label for="expandNavbar" id="expand-navbar-icon" class="hamburger">
