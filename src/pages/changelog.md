@@ -1,9 +1,14 @@
 ---
-layout: page
+layout: ../layouts/page.astro
 title: Changelog
-last_modified_at: 2026-09-11
-permalink: /changelog
+last_modified_at: 2026-09-12
 ---
+
+## 2026-09-12
+
+### Modified
+
+- Replace Jekyll with Astro
 
 ## 2026-09-11
 

@@ -1,9 +1,10 @@
 ---
-import Page from '../components/page.astro';
+import Page from '../layouts/page.astro';
 const lastModifiedAt = '2024-02-16';
+const frontmatter = {title: '404'}
 ---
 
-<Page title="404">
+<Page frontmatter={frontmatter}>
   <style type="text/css" media="screen">
     .container {
       margin: 10px auto;
