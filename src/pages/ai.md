@@ -1,8 +1,7 @@
 ---
-layout: page
+layout: ../layouts/page.astro
 title: AI
 last_modified_at: 2026-08-08
-permalink: AI
 ---
 
 To summarise, it's just a tool.
