@@ -1,0 +1,107 @@
+[
+  {
+    "tag": "React",
+    "background": "orange",
+    "colour": "black"
+  },
+  {
+    "tag": "Typescript",
+    "background": "greenyellow",
+    "colour": "black"
+  },
+  {
+    "tag": "Ruby",
+    "background": "red",
+    "colour": "black"
+  },
+  {
+    "tag": "Hosting",
+    "background": "lightdark(black, white)",
+    "colour": "lightdark(white, black)"
+  },
+  {
+    "tag": "Python",
+    "background": "yellow",
+    "colour": "black"
+  },
+  {
+    "tag": "Warhammer40k",
+    "background": "#d6d6d6",
+    "colour": "#791b25"
+  },
+  {
+    "tag": "SpaceMarines",
+    "background": "#41509d",
+    "colour": "white"
+  },
+  {
+    "tag": "DataScience",
+    "background": "#1cc8ee",
+    "colour": "black"
+  },
+  {
+    "tag": "ModelRailway",
+    "background": "#e6b99a",
+    "colour": "black"
+  },
+  {
+    "tag": "Programming",
+    "background": "green",
+    "colour": "white"
+  },
+  {
+    "tag": "KillTeam",
+    "background": "#b02734",
+    "colour": "white"
+  },
+  {
+    "tag": "BloodBowl",
+    "background": "#264030",
+    "colour": "white"
+  },
+  {
+    "tag": "IndieWeb",
+    "background": "#ff5c00",
+    "colour": "black"
+  },
+  {
+    "tag": "Meta",
+    "background": "greenyellow",
+    "colour": "black"
+  },
+  {
+    "tag": "DoctorWho",
+    "background": "#333877",
+    "colour": "white"
+  },
+  {
+    "tag": "Fiction",
+    "background": "orange",
+    "colour": "black"
+  },
+  {
+    "tag": "TrenchCrusade",
+    "background": "brown",
+    "colour": "white"
+  },
+  {
+    "tag": "Baking",
+    "background": "greenyellow",
+    "colour": "black"
+  },
+  {
+    "tag": "Movie",
+    "background": "purple",
+    "colour": "white"
+  },
+  {
+    "tag": "Book",
+    "background": "brown",
+    "colour": "white"
+  },
+  {
+    "tag": "Game",
+    "background": "purple",
+    "colour": "white"
+  }
+]
