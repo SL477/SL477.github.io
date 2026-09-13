@@ -1,7 +1,7 @@
 ---
 title: If you can have dinner with anyone in the world who would it be?
 layout: post
-tags: Meta
+tags: ["Meta"]
 author: Tom Fishwick
 last_modified_at: 2026-08-31
 in_reply_to: 

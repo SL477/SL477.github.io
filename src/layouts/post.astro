@@ -1,0 +1,186 @@
+---
+import DefaultModified from './default_modified.astro';
+import site from '../content/site.json';
+import BlogPicture from '../components/blogPicture.astro';
+const { frontmatter, slug, prevPost, nextPost } = Astro.props;
+const formatter = new Intl.DateTimeFormat(site.lang, {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+});
+---
+
+<DefaultModified title={frontmatter.title} layout="post">
+  <article
+    class={`post h-entry ${frontmatter.type === 'review' ? 'h-review' : ''}`}
+    itemscope
+    itemtype="http://schema.org/BlogPosting"
+  >
+    <header class="post-header">
+      <h1 class="post-title p-name" itemprop="name headline">
+        {frontmatter.title}
+      </h1>
+      <p class="post-meta">
+        <time
+          class="dt-published"
+          datetime={frontmatter.date}
+          itemprop="datePublished"
+        >
+          <a class="u-url u-uid" href={slug}
+            >{formatter.format(frontmatter.date)}</a
+          >
+        </time>
+        {
+          frontmatter.last_modified_at && (
+            <time class="dt-updated" hidden>
+              {frontmatter.last_modified_at}
+            </time>
+          )
+        }
+        {
+          frontmatter.author && (
+            <>
+              {' '}
+              •
+              <span
+                itemprop="author"
+                itemscope
+                itemtype="http://schema.org/Person"
+              >
+                <a
+                  class="p-author h-card"
+                  href={site.site_url}
+                  itemprop="name"
+                  rel="author"
+                >
+                  {frontmatter.author}
+                </a>
+              </span>
+            </>
+          )
+        }
+        {
+          frontmatter.tags.length > 0 && (
+            <>
+              <span> • Tags: </span>
+              {frontmatter.tags.map((tag: string) => (
+                <span class="p-category" data-tag={tag}>
+                  {tag}
+                </span>
+              ))}
+            </>
+          )
+        }
+        {
+          frontmatter.syndication && (
+            <span>
+              {' '}
+              •{' '}
+              <a href={frontmatter.syndication.url} class="u-syndication">
+                {frontmatter.syndication.text}
+              </a>
+            </span>
+          )
+        }
+        <data class="p-summary" hidden>{frontmatter.excerpt}</data>
+        {
+          frontmatter.image ? (
+            <figure>
+              {frontmatter.image.webp ? (
+                <picture>
+                  <source srcset={frontmatter.image.webp} type="image/webp" />
+                  <source
+                    srcset={frontmatter.image.path}
+                    type={`image/${frontmatter.image.filetype}`}
+                  />
+                  <BlogPicture image={frontmatter.image} />
+                </picture>
+              ) : (
+                <BlogPicture image={frontmatter.image} />
+              )}
+            </figure>
+          ) : (
+            <a href={site.photo} class="u-photo" hidden />
+          )
+        }
+      </p>
+    </header>
+    {
+      frontmatter.in_reply_to && (
+        <p>
+          In reply to:{' '}
+          <a href={frontmatter.in_reply_to.url} class="u-in-reply-to">
+            {frontmatter.in_reply_to.text}
+          </a>
+        </p>
+      )
+    }
+    {
+      frontmatter.type === 'review' && (
+        <>
+          <p>Rating: {frontmatter.rating}</p>
+          {frontmatter.watched && (
+            <p>
+              Watched:{' '}
+              <time datetime={frontmatter.watched}>
+                {formatter.format(frontmatter.watched)}
+              </time>
+            </p>
+          )}
+          {frontmatter.finished && (
+            <p>
+              Finished:{' '}
+              <time datetime={frontmatter.finished}>
+                {formatter.format(frontmatter.finished)}
+              </time>
+            </p>
+          )}
+        </>
+      )
+    }
+    <div class="post-content e-content" itemprop="articleBody"><slot /></div>
+
+    <div>
+      {
+        prevPost && (
+          <p>
+            &lt; Previous <a href={prevPost.slug}>{prevPost.title}</a>
+          </p>
+        )
+      }
+      {
+        nextPost && (
+          <p>
+            &gt; Next <a href={nextPost.slug}>{nextPost.title}</a>
+          </p>
+        )
+      }
+    </div>
+
+    {
+      site.show_comments && !frontmatter.no_comments && (
+        <>
+          <div id="comments" />
+          <script is:inline src="/assets/js/webMentions.js" async />
+        </>
+      )
+    }
+
+    {
+      site.show_likes && (
+        <>
+          {/* <!--Like button--> */}
+          <form
+            action="https://vhiweeypifbwacashxjz.supabase.co/rest/v1/rpc/increment_hits?apikey=sb_publishable_EoB7MFJhCmb6PiAk-GPJ4w_PGhQ44Ru"
+            method="post"
+          >
+            <input type="hidden" name="page_slug" value={slug} />
+            <button type="submit" class="iine-button" aria-hidden="true">
+              <noscript>❤️</noscript>
+            </button>
+          </form>
+        </>
+      )
+    }
+  </article>
+</DefaultModified>
