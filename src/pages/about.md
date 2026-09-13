@@ -1,7 +1,6 @@
 ---
-layout: page
+layout: ../layouts/page.astro
 title: About
-permalink: /about
 last_modified_at: 2025-03-02
 ---
 

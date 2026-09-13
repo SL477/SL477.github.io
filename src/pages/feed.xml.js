@@ -1,5 +1,4 @@
 import { getCollection } from 'astro:content';
-import sanitizeHtml from 'sanitize-html';
 import MarkdownIt from 'markdown-it';
 import site from '../content/site.json';
 
