@@ -3,12 +3,12 @@ import site from '../content/site.json';
 import Head from '../components/head.astro';
 import Header from '../components/header.astro';
 import Footer from '../components/footer.astro';
-const { title, layout='page' } = Astro.props;
+const { title, layout='page', js_file=null } = Astro.props;
 ---
 
 <!doctype html>
 <html lang={site.lang} dir="ltr">
-  <Head title={title} layout={layout} />
+  <Head title={title} layout={layout} js_file={js_file} />
   <body>
     <Header />
     <main class="page-content" id="main-content" aria-label="Content">

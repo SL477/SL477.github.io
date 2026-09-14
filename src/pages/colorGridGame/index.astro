@@ -1,0 +1,17 @@
+---
+import '../../../public/assets/css/colorGrid.css';
+import Page from '../../layouts/page.astro';
+const frontmatter = {
+  title: 'Colour Grid',
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <div id="wrapper1">
+    <img src="/assets/images/BigLogo.png" alt="Logo" />
+    <br />
+    <a href="/colorGridGame/game" class="btn">Start Game</a>
+    <br />
+    <a href="/colorGridGame/about" class="btn">About</a>
+  </div>
+</Page>

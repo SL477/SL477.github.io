@@ -84,14 +84,14 @@ const url = Astro.url.pathname;
   <link rel="stylesheet" href="/assets/css/my-navbar.css"/>
   <link rel="preload" href="/assets/css/styles.css" as="style" onload="this.rel='stylesheet'"/>
   <noscript><link rel="stylesheet" href="/assets/css/styles.css"/></noscript>
-  <script src="/assets/js/dark_mode_picker.js" async="async"></script>
+  <script is:inline src="/assets/js/dark_mode_picker.js" async="async"></script>
 
   {css_file &&
   <link rel="preload" href={`/assets/css/${css_file}`} as="style" onload="this.rel='stylesheet'"/>
   <noscript><link rel="stylesheet" href={`/assets/css/${css_file}`}/></noscript>
   }
 
-  {js_file && <script src={`/assets/js/${js_file.path }`} async={js_file.async ? 'async' : 'false'} defer="js_file.defer ? 'defer' : 'false" type="js_file.module ? 'module' : 'false'"></script>}
+  {js_file && <script is:inline src={`/assets/js/${js_file.path}`} {...(js_file.async && { async: true })} {...(js_file.defer && { defer: true })} {...(js_file.module && { type: 'module' })}></script>}
 
   {(layout === 'post' && site.show_likes) && <>
   <!-- For the like button -->
