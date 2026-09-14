@@ -1,7 +1,0 @@
----
-permalink: /feed.xml
-title: 'Toms Post Feed'
-subtitle: 'My longer ramblings'
-layout: feed_xml
-feed: main
----
