@@ -1,6 +1,24 @@
 ---
 import DefaultModified from './default_modified.astro';
+import { getCollection } from 'astro:content';
+import site from '../content/site.json';
 const { title } = Astro.props;
+
+const posts = (await getCollection('blog')).toSorted(
+  (a, b) =>
+    new Date(b.id.substring(0, 10)).valueOf() -
+    new Date(a.id.substring(0, 10)).valueOf()
+);
+
+const formatter = new Intl.DateTimeFormat(site.lang, {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+});
+
+function getSlug(id: string) {
+  return `${id.split('-')[0]}/${id.split('-')[1]}/${id.split('-')[2]}/${id.substring(11)}`;
+}
 ---
 
 <DefaultModified title={title}>
@@ -11,44 +29,60 @@ const { title } = Astro.props;
   </script>
   <div class="home">
     <slot />
-    <!-- {%- if site.posts.size > 0 and 1 == 1 -%}
-    <hr/>
-    <div class="h-feed hfeed">
-      <a class="u-url p-name p-author u-author" hidden="hidden" href="{{ site.site_url | relative_url }}">{{ site.title | escape }}</a>
-      <h2 class="post-list-heading p-name">{{ page.list_title | default: "Posts" }}</h2>
-      <ul class="post-list">
-        {%- for post in site.posts limit:10 -%}
-        <li class="h-entry hentry">
-          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-          <span class="post-meta dt-published published"><date datetime="{{ post.date | date_to_xmlschema}}">{{ post.date | date: date_format }}</date></span>
-          <h3>
-            <a class="post-link u-url" href="{{ post.url | relative_url }}">
-              <h3 class="p-name entry-title">{{ post.title | escape }}</h3>
+    {
+      posts.length > 0 && (
+        <>
+          <hr />
+          <div class="h-feed hfeed">
+            <a
+              class="u-url p-name p-author u-author"
+              hidden="hidden"
+              href={site.site_url}
+            >
+              {site.title}
             </a>
-          </h3>
-          {%- if site.show_excerpts -%}
-            <div class="p-summary entry-summary">
-              {{ post.excerpt }}
-            </div>
-          {%- endif -%}
-          {%- if post.tags != empty -%}
-          <div>
-          {%- for tag in post.tags -%}
-          <span class="p-category" data-tag="{{ tag }}">{{ tag }}</span>
-          {%- endfor -%} 
+            <h2 class="post-list-heading p-name">Posts</h2>
+            <ul class="post-list">
+              {posts.slice(0, 10).map((post) => (
+                <li class="h-entry hentry">
+                  <span class="post-meta dt-published published">
+                    <date datetime={post.id.substring(0, 10)}>
+                      {formatter.format(new Date(post.id.substring(0, 10)))}
+                    </date>
+                  </span>
+                  <h3>
+                    <a class="post-link u-url" href={getSlug(post.id)}>
+                      <h3 class="p-name entry-title">{post.data.title}</h3>
+                    </a>
+                  </h3>
+                  {site.show_excerpts && (
+                    <div class="p-summary entry-summary">
+                      {post.data.excerpt}
+                    </div>
+                  )}
+                  {post.data.tags.length > 0 && (
+                    <div>
+                      {post.data.tags.map((tag) => (
+                        <span class="p-category" data-tag={tag}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              ))}
+              {posts.length > 10 && (
+                <li>
+                  <a href="/posts">More Posts</a>
+                </li>
+              )}
+            </ul>
           </div>
-          {%- endif -%}
-        </li>
-        {%- endfor -%}
-        {%- if site.posts.size > 10 -%}
-        <li>
-          <a href="/posts">More Posts</a>
-        </li>
-        {%- endif -%}
-      </ul>
-    </div>
-
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-  {%- endif -%} -->
+          <p class="rss-subscribe">
+            subscribe <a href="/feed.xml">via RSS</a>
+          </p>
+        </>
+      )
+    }
   </div>
 </DefaultModified>

@@ -29,15 +29,16 @@ export async function getStaticPaths() {
         slug,
         prevPost: getOtherPost(posts[index + 1]?.id, posts[index + 1]?.data.title) || null,
         nextPost: getOtherPost(posts[index - 1]?.id, posts[index - 1]?.data.title) || null,
+        date: new Date(post.id.substring(0, 10))
       },
     };
   });
 }
 
-const { post, slug, prevPost, nextPost } = Astro.props;
+const { post, slug, prevPost, nextPost, date } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Post frontmatter={post.data} slug={`/${slug}`} prevPost={prevPost} nextPost={nextPost}>
+<Post frontmatter={post.data} slug={`/${slug}`} prevPost={prevPost} nextPost={nextPost} date={date}>
   <Content />
 </Post>

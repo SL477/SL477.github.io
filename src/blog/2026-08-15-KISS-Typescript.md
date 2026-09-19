@@ -10,6 +10,7 @@ image:
   width: 215
   alt: PostCSS Path traversal in previous source map.
   filetype: jpg
+excerpt: I had a fun day the other day updating the Vue JS part of my website. DependaBot’s 30 minute adventure, easy in easy out.
 ---
 
 I had a fun day the other day updating the Vue JS part of my website.

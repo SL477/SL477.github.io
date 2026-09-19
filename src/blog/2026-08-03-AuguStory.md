@@ -7,6 +7,7 @@ last_modified_at: 2026-08-03
 in_reply_to: 
   url: https://robertbirming.com/augustory-story-blog/
   text: AuguStory
+excerpt: How did you first start blogging (what got you into it)
 ---
 
 How did you first start blogging (what got you into it)

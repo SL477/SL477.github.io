@@ -4,6 +4,7 @@ layout: post
 tags: ['Doctor-Who']
 author: Tom Fishwick
 last_modified_at: 2026-08-26
+excerpt: This is at least the fourth time I have re-watched this series. But this time I had a lot less time for the terrible parts of this series. Doctor Who’s greatest strength is its variability, but it is also it’s greatest weakness. You have the wonderful Dark Water/Death in Heaven and then you have Kill the Moon, representing all that went horrifyingly wrong.
 ---
 
 This is at least the fourth time I have re-watched this series.

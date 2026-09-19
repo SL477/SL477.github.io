@@ -7,6 +7,7 @@ last_modified_at: 2026-06-06
 in_reply_to: 
     url: https://werd.io/indieweb-fiction-carnival-may-2026/
     text: IndieWeb Fiction Carnival - Sticks and Stones
+excerpt: Vice Admiral Hasha Gonzalez stood in front of the vast screen window in the CIC of the starship General Calista. She had after many years of command learnt to stop nervously pacing. Today wasn’t a day to be nervous of budget meetings or exercises, today looked to be the real deal.
 ---
 
 Vice Admiral Hasha Gonzalez stood in front of the vast screen window in the CIC of the starship *General Calista*.

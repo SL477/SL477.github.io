@@ -5,8 +5,9 @@ tags: ["Meta"]
 author: Tom Fishwick
 last_modified_at: 2026-08-31
 in_reply_to: 
-    url: https://khoaly.xyz/if-you-can-have-dinner-with-anyone-in-the-world/
-    text: BearBlog if you could have dinner with anyone in the world
+  url: https://khoaly.xyz/if-you-can-have-dinner-with-anyone-in-the-world/
+  text: BearBlog if you could have dinner with anyone in the world
+excerpt: If I could have dinner with anyone in the world, I would be tempted to say Dan Abbnet, the author of the End and the Death and the Bequin trilogy. Then I could try to get the answer of what happens in the last book Pandemonium out of him. As apparently it was finished a couple of years ago, but strayed into territory that Games Workshop decided that didn’t want to get into for a while. Which makes me even more intrigued by it.
 ---
 
 If I could have dinner with anyone in the world, I would be tempted to say Dan Abbnet, the author of the End and the Death and the Bequin trilogy.

@@ -7,6 +7,7 @@ last_modified_at: 2026-08-23
 in_reply_to: 
   url: https://www.dozenialdragons.me.uk/2026/08/01/iwfc_august_26/
   text: IWFC Symbiosis
+excerpt: Sly O'Hara relaxed in the hideout, discarded boxes of fish and chips littered the floor. He and his crew had taken over the apartment above a fish and chip shop. Stanley Jenson was a new member of the crew, he had arrived on the habitat a few months ago and found out the hard way that the first ship to anywhere could see you stranded somewhere that wasn't great.
 ---
 
 Sly O'Hara relaxed in the hideout, discarded boxes of fish and chips littered the floor.

@@ -11,6 +11,7 @@ image:
   height: 723
   alt: Trech Crusade Turn 3. Lieutenant gets to cross. Observer in mud. Prussian gets objective
   filetype: jpg
+excerpt: New Antioch versus New Antioch (my noble vanilla New Antioch force (Albia), versus the perfidious Prussian force).
 ---
 
 New Antioch versus New Antioch (my noble vanilla New Antioch force (Albia), versus the perfidious Prussian force).

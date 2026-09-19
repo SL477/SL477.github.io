@@ -7,6 +7,7 @@ last_modified_at: 2026-04-26
 in_reply_to:
   url: https://lifeofpablo.com/blog/indieweb-carnival-2026-adventure
   text: IWC Adventure
+excerpt: It seems that my moving adventure might finally happen soon… I might finally be able to rescue my stuff from storage and stop living out of a suitcase.
 ---
 
 It seems that my moving adventure might finally happen soon...
