@@ -1,0 +1,23 @@
+.row {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  flex-wrap: nowrap;
+}
+
+.col {
+  border: 1px solid light-dark(black, white);
+  min-width: 0;
+  flex-basis: 0;
+  flex: 1;
+}
+
+.hovered {
+  background-color: brown;
+  color: brown;
+}
+
+h1 {
+  color: red;
+}
