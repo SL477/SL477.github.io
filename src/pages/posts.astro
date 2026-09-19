@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import { getSlug } from '../scripts/posts';
+import Page from '../layouts/page.astro';
+
+const frontmatter = {
+  title: 'Blog Posts',
+  last_modified_at: '2026-01-01',
+};
+
+const posts = (await getCollection('blog')).toSorted(
+  (a, b) =>
+    new Date(b.id.substring(0, 10)).valueOf() -
+    new Date(a.id.substring(0, 10)).valueOf()
+);
+---
+
+<Page frontmatter={frontmatter}>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <a href={getSlug(post.id)}>{post.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Page>

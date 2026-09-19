@@ -2,6 +2,7 @@
 import DefaultModified from './default_modified.astro';
 import { getCollection } from 'astro:content';
 import site from '../content/site.json';
+import { getSlug } from '../scripts/posts';
 const { title } = Astro.props;
 
 const posts = (await getCollection('blog')).toSorted(
@@ -15,10 +16,6 @@ const formatter = new Intl.DateTimeFormat(site.lang, {
   day: 'numeric',
   year: 'numeric',
 });
-
-function getSlug(id: string) {
-  return `${id.split('-')[0]}/${id.split('-')[1]}/${id.split('-')[2]}/${id.substring(11)}`;
-}
 ---
 
 <DefaultModified title={title}>
