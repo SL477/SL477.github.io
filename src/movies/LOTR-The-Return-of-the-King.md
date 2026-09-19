@@ -1,7 +1,7 @@
 ---
 title: Lord of the Rings The Return of the King
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-05-22
 rating: 5

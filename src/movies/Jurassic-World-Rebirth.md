@@ -1,7 +1,7 @@
 ---
 title: Jurassic World Rebirth
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-04-04
 rating: 3

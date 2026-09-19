@@ -1,7 +1,7 @@
 ---
 title: Star Wars Episode 3 - Revenge of the Sith
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-05-18
 rating: 3

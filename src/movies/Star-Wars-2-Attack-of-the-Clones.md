@@ -1,7 +1,7 @@
 ---
 title: Star Wars Episode 2 Attack of the Clones
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-05-12
 rating: 3.75

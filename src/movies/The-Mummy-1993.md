@@ -1,7 +1,7 @@
 ---
 title: The Mummy (1993)
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-04-26
 rating: 5

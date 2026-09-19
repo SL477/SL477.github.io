@@ -1,7 +1,7 @@
 ---
 title: Lord of the Rings The Fellowship of the Ring
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-05-09
 rating: 5

@@ -1,7 +1,7 @@
 ---
 title: Star Wars Episode 5 The Empire Strikes Back
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-06-15
 rating: 5

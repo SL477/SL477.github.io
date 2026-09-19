@@ -1,14 +1,16 @@
 ---
 title: Arrival (2016)
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-04-26
 rating: 4.5
 watched: 2026-04-12
 type: review
 date: 2026-04-12
-in_reply_to: https://gregorlove.com/2026/04/arrival-indieweb-movie-club/
+in_reply_to:
+  url: https://gregorlove.com/2026/04/arrival-indieweb-movie-club/
+  text: IWMC Arrival
 ---
 
 This movie raised some interesting philosophical questions, if you know the future should you follow it.

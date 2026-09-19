@@ -1,7 +1,7 @@
 ---
 title: Around the World in 80 Days
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-03-29
 rating: 5

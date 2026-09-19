@@ -1,7 +1,7 @@
 ---
 title: Star Wars Episode 1 The Phantom Menace 
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-06-18
 rating: 4.5

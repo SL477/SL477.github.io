@@ -1,7 +1,7 @@
 ---
 title: The Hitchhiker's Guide to the Galaxy
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-06-27
 rating: 4.5

@@ -1,7 +1,7 @@
 ---
 title: Jurassic Park
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-08-15
 rating: 5

@@ -1,12 +1,14 @@
 ---
 title: Alien Review
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-02-26
 rating: 4
 watched: 2026-02-21
-in_reply_to: https://alabut.com/writing/alien1979/
+in_reply_to:
+  url: https://alabut.com/writing/alien1979/
+  text: IWMC Alien
 type: review
 date: 2026-02-22
 ---

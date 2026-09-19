@@ -1,7 +1,7 @@
 ---
 title: Star Wars Episode 4 A New Hope
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-06-05
 rating: 5

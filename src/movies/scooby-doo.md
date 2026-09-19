@@ -1,7 +1,7 @@
 ---
 title: Scooby Doo Review 
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-03-08
 rating: 3

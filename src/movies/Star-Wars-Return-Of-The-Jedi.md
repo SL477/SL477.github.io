@@ -1,7 +1,7 @@
 ---
 title: Star Wars Episode 6 Return of the Jedi
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-07-04
 rating: 5

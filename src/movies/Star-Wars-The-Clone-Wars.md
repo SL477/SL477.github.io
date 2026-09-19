@@ -1,7 +1,7 @@
 ---
 title: Star Wars The Clone Wars
 layout: post
-tags: Movie
+tags: ['Movie']
 author: Tom Fishwick
 last_modified_at: 2026-05-15
 rating: 4
