@@ -10,7 +10,7 @@ const formatter = new Intl.DateTimeFormat(site.lang, {
 });
 ---
 
-<DefaultModified title={frontmatter.title} layout="post">
+<DefaultModified title={frontmatter.title} js_file={frontmatter.js_file} layout="post">
   <article
     class={`post h-entry ${frontmatter.type === 'review' ? 'h-review' : ''}`}
     itemscope
