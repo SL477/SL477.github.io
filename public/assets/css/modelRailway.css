@@ -1,6 +1,3 @@
----
----
-
 .carousel {
   --accent: red;
   overflow-x: scroll;
@@ -9,7 +6,7 @@
   anchor-name: --myCarousel;
 
   li {
-    // scroll-snap-type: center;
+    /* scroll-snap-type: center; */
     scroll-snap-align: center;
   }
 
