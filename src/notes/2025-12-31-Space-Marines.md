@@ -31,5 +31,6 @@ js_file:
     <area alt="Alpha Legion" title="Alpha Legion" coords="3135,107,2891,575" shape="rect"/>
 </map>
 
-<p>After about a year I have finished painting my Space Marine diversity wall!</p>
-<p>My intention was to paint every loyalist first founding chapter. Plus an Alpha Legionnaire for fun. My favourite was the Alpha Legionary, but with the Salamander a close second.</p>
+After about a year I have finished painting my Space Marine diversity wall!
+
+My intention was to paint every loyalist first founding chapter. Plus an Alpha Legionnaire for fun. My favourite was the Alpha Legionary, but with the Salamander a close second.
