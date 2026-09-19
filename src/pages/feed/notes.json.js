@@ -1,4 +1,4 @@
-import site from '../content/site.json';
+import site from '../../content/site.json';
 import { getCollection } from 'astro:content';
 import MarkdownIt from 'markdown-it';
 
