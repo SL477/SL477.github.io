@@ -2,7 +2,17 @@
 import site from '../content/site.json';
 import navData from '../content/navbar.json';
 import DarkModePicker from './darkModePicker.astro';
+import { getCollection } from 'astro:content';
+import { getSlug } from '../scripts/posts';
 const currentPath = Astro.url.pathname;
+
+const posts = (await getCollection('blog'))
+  .toSorted(
+    (a, b) =>
+      new Date(b.id.substring(0, 10)).valueOf() -
+      new Date(a.id.substring(0, 10)).valueOf()
+  )
+  .slice(0, 10);
 ---
 
 <a href="#main-content" class="screen-reader-text">Skip to main content</a>
@@ -73,13 +83,20 @@ const currentPath = Astro.url.pathname;
           Blog
         </button>
         <ul class="dropdown_menu" id="blog-dropdown" popover="auto">
-          <!-- {%- for post in site.posts limit:10 -%}
-          <li>
-            <a href="{{ post.url | relative_url }}" {% if post.url==page.url %}aria-current="page"{% endif %}
-              >{{ post.title | escape }}</a
-            >
-          </li>
-          {%- endfor -%} -->
+          {
+            posts.map((post) => (
+              <li>
+                <a
+                  href={getSlug(post.id)}
+                  aria-current={
+                    currentPath === getSlug(post.id) ? 'page' : 'false'
+                  }
+                >
+                  {post.data.title}
+                </a>
+              </li>
+            ))
+          }
           <li>
             <a
               href="/posts"
@@ -92,12 +109,14 @@ const currentPath = Astro.url.pathname;
       <li>
         <a
           href="/about"
-          aria-current={currentPath === '/about' ? 'page' : 'false'}>About</a>
+          aria-current={currentPath === '/about' ? 'page' : 'false'}>About</a
+        >
       </li>
       <li>
         <a
           href="/feeds"
-          aria-current={currentPath === '/feeds' ? 'page' : 'false'}>Feeds</a>
+          aria-current={currentPath === '/feeds' ? 'page' : 'false'}>Feeds</a
+        >
       </li>
       <li><DarkModePicker /></li>
     </menu>
