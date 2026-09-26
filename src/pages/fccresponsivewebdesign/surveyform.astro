@@ -1,8 +1,9 @@
 ---
-title: FCC - Survey Form
-layout: page
-permalink: fccresponsivewebdesign/surveyform
-last_modified_at: 2026-04-04
+import Page from '../../layouts/page.astro';
+const frontmatter = {
+  title: 'FCC - Survey Form',
+  last_modified_at: '2026-04-04',
+};
 ---
 
 <style>
@@ -33,9 +34,10 @@ last_modified_at: 2026-04-04
   }
 </style>
 
-<div id="main">
-      <h2 id="title">Alien Spaceship Sightings</h1>
-      <hr />
+<Page frontmatter={frontmatter}>
+  <div id="main">
+    <h2 id="title">Alien Spaceship Sightings</h2>
+    <hr />
     <p id="description">
       This survey is to find out about UFO sighting in order to gather
       information about how many alien spaceships have visited the planet.
@@ -99,8 +101,7 @@ last_modified_at: 2026-04-04
           <label
             id="hasPhotoYes-label"
             for="hasPhotoYes"
-            class="form-check-label"
-            >Yes</label
+            class="form-check-label">Yes</label
           ><br />
           <input
             type="radio"
@@ -163,12 +164,12 @@ last_modified_at: 2026-04-04
           id="comments"
           name="comments"
           rows="5"
-          columns="145"
+          cols="145"
           class="form-control"
-          placeholder="Any other comments"
-        ></textarea>
+          placeholder="Any other comments"></textarea>
       </fieldset>
       <input id="submit" type="submit" class="btn btn-primary" value="Submit" />
     </form>
-  <br />
-</div>
+    <br />
+  </div>
+</Page>
