@@ -1,25 +1,48 @@
 'use strict';
-let canv;
-let ctx;
-window.onload = function () {
-  canv = document.getElementById('canvas');
-  ctx = canv.getContext('2d');
-  document.addEventListener('keydown', keyPush);
-  document.addEventListener('mousedown', mouseClick);
-  setInterval(game, 1000 / 15);
-};
 
-let px = 10;
-let py = 10; //position x & y
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+document.addEventListener('keydown', keyPush);
+document.getElementById('arrow-left').addEventListener('click', () => setDirection(-1, 0));
+document.getElementById('arrow-right').addEventListener('click', () => setDirection(1, 0));
+document.getElementById('arrow-up').addEventListener('click', () => setDirection(0, -1));
+document.getElementById('arrow-down').addEventListener('click', () => setDirection(0, 1));
+document.addEventListener('mousedown', mouseClick);
+
 const gs = 15;
 const tc = 20;
+let px = 10;
+let py = 10; //position x & y
+
 let ax = 15;
 let ay = 15; //apple
 let xv = 0;
 let yv = 0; //velocity
 const trail = [];
 let tail = 5;
-// const xy = 0;
+const KEY = {
+  LEFT: 37, RIGHT: 39, UP: 38, DOWN: 40,
+  A: 65, D: 68, W: 87, S: 83
+};
+setInterval(game, 1000 / 15);
+
+function setDirection(dx, dy) {
+  if (dx === -xv && dy === -yv) return;
+  xv = dx; yv = dy;
+}
+
+function keyPush(evt) {
+  switch (evt.keyCode) {
+    case KEY.LEFT: setDirection(-1, 0); break;
+    case KEY.UP:    setDirection(0, -1); break;
+    case KEY.RIGHT: setDirection(1, 0); break;
+    case KEY.DOWN:  setDirection(0, 1);  break;
+    case KEY.A: setDirection(-1, 0); break;
+    case KEY.W: setDirection(0, -1); break;
+    case KEY.D: setDirection(1, 0); break;
+    case KEY.S: setDirection(0, 1);  break;
+  }
+}
 
 function game() {
   px += xv;
@@ -37,7 +60,7 @@ function game() {
     py = 0;
   }
   ctx.fillStyle = 'black';
-  ctx.fillRect(0, 0, canv.width, canv.height);
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   ctx.fillStyle = 'darkgreen';
 
@@ -63,36 +86,33 @@ function game() {
   ctx.fillRect(ax * gs, ay * gs, gs - 2, gs - 2);
 }
 
-function keyPush(evt) {
-  const keyCode = evt.keyCode;
-  if ((keyCode === 37 || keyCode === 65) && xv !== 1) {
-    xv = -1;
-    yv = 0;
-  } else if ((keyCode === 38 || keyCode === 87) && yv !== 1) {
-    xv = 0;
-    yv = -1;
-  } else if ((keyCode === 39 || keyCode === 68) && xv !== -1) {
-    xv = 1;
-    yv = 0;
-  } else if ((keyCode === 40 || keyCode === 83) && yv !== -1) {
-    xv = 0;
-    yv = 1;
+let touchStartX = 0, touchStartY = 0;
+canvas.addEventListener('touchstart', e => {
+  const t = e.touches[0];
+  touchStartX = t.clientX;
+  touchStartY = t.clientY;
+});
+
+canvas.addEventListener('touchend', e => {
+  const t = e.changedTouches[0];
+  const dx = t.clientX - touchStartX;
+  const dy = t.clientY - touchStartY;
+
+  // ignore very small swipes
+  if (Math.abs(dx) < 20 && Math.abs(dy) < 20) return;
+  if (Math.abs(dx) > Math.abs(dy)) {
+    setDirection(dx > 0 ? 1 : -1, 0);
+  } else {
+    setDirection(0, dy > 0 ? 1 : -1);
   }
-}
+})
 
 /**
  * Mouse control
  * @param {MouseEvent} evt
  */
 function mouseClick(evt) {
-  const rect = canv.getBoundingClientRect();
-  //   console.log(
-  //     'mouse',
-  //     (evt.clientX - rect.left) / gs,
-  //     (evt.clientY - rect.top) / gs,
-  //     px,
-  //     py
-  //   );
+  const rect = canvas.getBoundingClientRect();
   const mouseXPos = (evt.clientX - rect.left) / gs;
   const mouseYPos = (evt.clientY - rect.top) / gs;
   const deltaXPos = mouseXPos - px;
