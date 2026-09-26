@@ -1,0 +1,127 @@
+---
+import Page from '../layouts/page.astro';
+import wordleStats from '../content/wordleStats.json';
+const frontmatter = {
+  title: 'Wordle',
+  last_modified_at: '2026-02-01',
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <a href="https://www.nytimes.com/games/wordle/index.html">Play Wordle</a>
+
+  <div class="wordle-stats">
+    <table>
+      <caption> STATISTICS </caption>
+      <thead>
+        <tr>
+          <th>Games Played</th>
+          <th>Win %</th>
+          <th>Current Streak</th>
+          <th>Max Streak</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{wordleStats.numberGames}</td>
+          <td>{wordleStats.winPct}</td>
+          <td>{wordleStats.currentStreak}</td>
+          <td>{wordleStats.maxStreak}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 class="centertext">Guess Distribution</h2>
+    <label class="wordle-label"
+      >1:
+      <meter
+        min="0"
+        max={wordleStats.numberGames}
+        value={wordleStats.guess1}
+        class="meter"
+      >
+        {wordleStats.guess1}/{wordleStats.numberGames}
+      </meter>
+    </label>
+    <label class="wordle-label"
+      >2:
+      <meter
+        min="0"
+        max={wordleStats.numberGames}
+        value={wordleStats.guess2}
+        class="meter"
+      >
+        {wordleStats.guess2}/{wordleStats.numberGames}
+      </meter>
+    </label>
+    <label class="wordle-label"
+      >3:
+      <meter
+        min="0"
+        max={wordleStats.numberGames}
+        value={wordleStats.guess3}
+        class="meter"
+      >
+        {wordleStats.guess3}/{wordleStats.numberGames}
+      </meter>
+    </label>
+    <label class="wordle-label"
+      >4:
+      <meter
+        min="0"
+        max={wordleStats.numberGames}
+        value={wordleStats.guess4}
+        class="meter"
+      >
+        {wordleStats.guess4}/{wordleStats.numberGames}
+      </meter>
+    </label>
+    <label class="wordle-label"
+      >5:
+      <meter
+        min="0"
+        max={wordleStats.numberGames}
+        value={wordleStats.guess5}
+        class="meter"
+      >
+        {wordleStats.guess5}/{wordleStats.numberGames}
+      </meter>
+    </label>
+    <label class="wordle-label"
+      >6:
+      <meter
+        min="0"
+        max={wordleStats.numberGames}
+        value={wordleStats.guess6}
+        class="meter"
+      >
+        {wordleStats.guess6}/{wordleStats.numberGames}
+      </meter>
+    </label>
+  </div>
+
+  <div class="wordle-cards">
+    {
+      [...wordleStats.plays]
+        .reverse()
+        .slice(0, 10)
+        .map((wordle) => (
+          <div class="wordle-card">
+            <p>
+              <b>{wordle.num}</b>
+            </p>
+            <p>{wordle.res}/6</p>
+            <div class="wordle-guesses">
+              {Array.from(wordle.guess)
+                .filter((ch) => ch === '⬛' || ch === '🟨' || ch === '🟩')
+                .map((g, idx) => (
+                  <>
+                    {g}
+                    {(idx + 1) % 5 === 0 && <br />}
+                  </>
+                ))}
+            </div>
+          </div>
+        ))
+    }
+  </div>
+</Page>
