@@ -1,0 +1,54 @@
+---
+import DefaultModified from '../../layouts/default_modified.astro';
+const frontmatter = {
+  title: 'Markdown Previewer',
+  last_modified_at: '2025-02-09',
+};
+
+const initialText = `# Markdown Previewer
+## By [Link477](https://Link477.com/)
+**Here** is the sort of code you can write: \`<p>Hi</p>\`
+
+Alternatively you can have multiple lines of code:
+\`\`\`
+<div>
+    <p>hi</p>
+</div>
+\`\`\`
+
+* \` - lets you escape code
+* \# - h1
+* \## - h2
+* \### - h3
+* \#### - h4
+* \##### - h5
+* \###### - h6
+
+> There is a great disturbance in the force.
+> I have felt it.
+> We have a new enemy. The young rebel who destroyed the Death Star.
+    > He's just a boy, Obi-Wan can no longer help him.
+
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)`;
+---
+
+<DefaultModified title={frontmatter.title}>
+  <!--Markdown-->
+  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.7.0/marked.js"
+  ></script>
+  
+  <h1 class="centertext">Markdown Previewer</h1>
+  <div id="edit" class="container-fluid">
+    <label for="editor">Raw Markdown:</label>
+    <textarea
+      id="editor"
+      rows="10"
+      cols="150"
+      class="form-control"
+      onchange="updatePreview();"
+      onkeyup="updatePreview();">{initialText}</textarea
+    >
+  </div>
+  <div id="preview" class="container-fluid"></div>
+  <script is:inline src="/assets/js/markdownpreviewer.js"></script>
+</DefaultModified>

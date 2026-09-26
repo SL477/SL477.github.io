@@ -1,8 +1,9 @@
 ---
-title: FCC - Random Quote Machine
-layout: page
-permalink: fccresponsivewebdesign/randomquotemachine
-last_modified_at: 2025-02-09
+import Page from '../../layouts/page.astro';
+const frontmatter = {
+  title: 'FCC - Random Quote Machine',
+  last_modified_at: '2025-02-09',
+};
 ---
 
 <style>
@@ -16,21 +17,18 @@ last_modified_at: 2025-02-09
   }
 </style>
 
-<main>
-  <div id="quote-box" class="container-fluid text-center center">
-    <p>"<span id="text"></span>"</p>
-    <p>-<span id="author"></span></p>
-    <button
-      type="button"
-      id="new-quote"
-      onClick="newQuote();"
-      class="btn btn-primary"
-    >
-      New Quote</button
-    ><br />
-    <a id="tweet-quote" href="twitter.com/intent/tweet">Tweet</a>
-  </div>
-</main>
+<Page frontmatter={frontmatter}>
+  <main>
+    <div id="quote-box" class="container-fluid text-center center">
+      <p>"<span id="text"></span>"</p>
+      <p>-<span id="author"></span></p>
+      <button type="button" id="new-quote" class="btn btn-primary">
+        New Quote</button
+      ><br />
+      <a id="tweet-quote" href="twitter.com/intent/tweet">Tweet</a>
+    </div>
+  </main>
+</Page>
 
 <script>
   const quotes = [
@@ -63,13 +61,15 @@ last_modified_at: 2025-02-09
   const textSpan = document.getElementById('text');
   const authorSpan = document.getElementById('author');
 
-  const newQuote = () => {
+  function newQuote() {
     if (textSpan && authorSpan) {
       const rand = Math.floor(Math.random() * 15);
       const quote = quotes[rand];
       textSpan.textContent = quote.quote;
       authorSpan.textContent = quote.author;
     }
-  };
+  }
   newQuote();
+
+  document.getElementById('new-quote')?.addEventListener('click', newQuote);
 </script>
