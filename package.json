@@ -12,7 +12,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "upgrade": "npx @astrojs/upgrade",
-    "wordle": "node src/scripts/buildWordleData.js"
+    "wordle": "node src/scripts/buildWordleData.js",
+    "whodle": "node src/scripts/buildWhodleData.js"
   },
   "repository": {
     "type": "git",
