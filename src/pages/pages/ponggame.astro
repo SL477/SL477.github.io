@@ -1,0 +1,24 @@
+---
+import Page from '../../layouts/page.astro';
+const frontmatter = {
+  title: 'Pong Game',
+  last_modified_at: '2025-08-25',
+  css_file: 'ponggame.css',
+  js_file: { path: 'ponggame.js', defer: true },
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <div class="container">
+    <canvas id="canvas" class="mycanvas"></canvas>
+  </div>
+</Page>
+<!--Pong Game
+For FreeCodeCamp Unbeatable Pong game
+
+Player Paddle to match mouse y position
+AI Paddle to match ball y position
+
+Left mouse click to start/restart game
+
+https://www.freecodecamp.org/learn/coding-interview-prep/take-home-projects/build-a-pong-game-->
