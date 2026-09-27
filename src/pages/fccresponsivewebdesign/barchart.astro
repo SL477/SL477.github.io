@@ -1,8 +1,9 @@
 ---
-title: FCC - Visualise Data with a Bar Chart
-layout: page
-permalink: fccresponsivewebdesign/barchart
-last_modified_at: 2025-02-09
+import Page from '../../layouts/page.astro';
+const frontmatter = {
+  title: 'FCC - Visualise Data with a Bar Chart',
+  last_modified_at: '2025-02-09',
+};
 ---
 
 <style>
@@ -37,39 +38,36 @@ last_modified_at: 2025-02-09
   }
 </style>
 
-<div id="navbar"></div>
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<Page frontmatter={frontmatter}>
+  <div id="navbar"></div>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
 
-<h1 id="title">USA GDP Bar Chart</h1>
-<div id="holder" class="holder"></div>
+  <h1 id="title">USA GDP Bar Chart</h1>
+  <div id="holder" class="holder"></div>
+</Page>
 
 <script>
+  import * as d3 from 'd3';
   // Variables
-  const holderDiv = document.querySelector('.post');
-  const w = holderDiv.clientWidth <= 740 ? holderDiv.clientWidth : 740;
+  const holderDiv = document.querySelector('.post') as HTMLDivElement;
+  const w = Math.min(holderDiv.clientWidth, 740);
   const h = 500;
   const padding = 100;
 
   //Get the data
-  const req = new XMLHttpRequest();
-  req.open(
-    'GET',
-    'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json',
-    true
-  );
-  req.send();
-  req.onload = function () {
-    const json = JSON.parse(req.responseText);
-    visualize(json);
-  };
+  fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json')
+  .then(res => res.json())
+  .then(res => visualize(res))
+  .catch(ex => console.error(ex));
 
-  function parseDate(dateStr) {
-    var parts = dateStr.split('-');
-    return new Date(parts[0], parts[1] - 1, parts[2]);
-  }
+  // function parseDate(dateStr: string) {
+  //   var parts = dateStr.split('-');
+  //   return new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+  // }
+  const parseDate = d3.timeParse("%Y-%m-%d")!;
 
-  function getQuarter(month) {
-    switch (month) {
+  function getQuarter(month: number) {
+    switch (month / 3) {
       case 0:
         return 'Q1';
       case 3:
@@ -81,33 +79,59 @@ last_modified_at: 2025-02-09
     }
   }
 
-  function visualize(dataset) {
+  interface gdpData {
+    errors: any;
+    id: string;
+    source_name: string;
+    source_code: string;
+    code: string;
+    name: string;
+    urlize_name: string;
+    display_url: string;
+    description: string;
+    updated_at: string;
+    frequency: string;
+    from_date: string;
+    to_date: string;
+    column_names: string[];
+    private: boolean;
+    type: any;
+    premium: false;
+    data: [string, number][];
+  }
+
+  function visualize(dataset: gdpData) {
     const svg = d3
       .select('#holder')
       .append('svg')
       .attr('width', w)
       .attr('height', h);
 
-    const dat = dataset.data.map((d, i) => {
-      const ret = [0, 0, 0, 0, 0];
-      // get the year
-      const dat2 = parseDate(d[0]);
-      ret[0] = dat2.getFullYear() + dat2.getMonth();
-      ret[1] = d[1];
-      ret[2] = getQuarter(dat2.getMonth());
-      ret[3] = dat2;
-      ret[4] = d[0];
-      return ret;
-    });
+    const dat: [string, number, string, Date, string][] = dataset.data.map(
+      (d) => {
+        // get the year
+        const dat2 = parseDate(d[0]) ?? new Date;
+        return [
+          dat2.getFullYear().toString() + dat2.getMonth().toString(),
+          d[1],
+          getQuarter(dat2.getMonth()) ?? '',
+          dat2,
+          d[0],
+        ];
+      }
+    );
 
+    const ymax = d3.max(dat, (d) => d[1]) ?? 0;
     const yScale = d3
       .scaleLinear()
-      .domain([0, d3.max(dat, (d) => d[1])])
+      .domain([0, ymax])
       .range([h - padding, padding]);
 
+    const xmin = d3.min(dat, (d, i) => d[3]) ?? new Date();
+    const xmax = d3.max(dat, (d, i) => d[3]) ?? new Date();
     let xScale = d3
       .scaleTime()
-      .domain([d3.min(dat, (d, i) => d[3]), d3.max(dat, (d, i) => d[3])])
+      .domain([xmin, xmax])
       .range([padding, w - padding]);
 
     let tooltip = d3
@@ -115,11 +139,6 @@ last_modified_at: 2025-02-09
       .append('div')
       .style('opacity', 0)
       .attr('class', 'tooltip')
-      .style('background-color', 'blue')
-      .style('border', 'solid')
-      .style('border-width', '2px')
-      .style('border-radius', '5px')
-      .style('padding', '5px')
       .attr('id', 'tooltip')
       .attr('class', 'tooltip');
 
@@ -129,11 +148,11 @@ last_modified_at: 2025-02-09
       .enter()
       .append('rect')
       .attr('class', 'bar :hover')
-      .attr('x', (d, i) => {
+      .attr('x', (d) => {
         return xScale(d[3]);
       })
       .attr('width', w / dat.length)
-      .attr('y', (d, i) => {
+      .attr('y', (d) => {
         return yScale(d[1]);
       })
       .attr('height', (d, i) => {
@@ -146,11 +165,11 @@ last_modified_at: 2025-02-09
         tooltip.style('opacity', 1);
         d3.select(this).style('stroke', 'black').style('opacity', 1);
       })
-      .on('mousemove', function (d) {
+      .on('mousemove', (evt, d) => {
         tooltip
           .html(d[0] + ' ' + d[2] + ' <br/>$' + d[1] + ' billion')
-          .style('left', d3.mouse(this)[0] + 70 + 'px')
-          .style('top', d3.mouse(this)[1] + 'px')
+          .style('left', evt.pageX + 70 + 'px')
+          .style('top', evt.pageY + 'px')
           .attr('data-gdp', d[1])
           .attr('data-date', d[4]);
       })
