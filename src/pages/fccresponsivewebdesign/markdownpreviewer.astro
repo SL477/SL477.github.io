@@ -34,21 +34,40 @@ Alternatively you can have multiple lines of code:
 
 <DefaultModified title={frontmatter.title}>
   <!--Markdown-->
-  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.7.0/marked.js"
-  ></script>
-  
+
   <h1 class="centertext">Markdown Previewer</h1>
   <div id="edit" class="container-fluid">
     <label for="editor">Raw Markdown:</label>
-    <textarea
-      id="editor"
-      rows="10"
-      cols="150"
-      class="form-control"
-      onchange="updatePreview();"
-      onkeyup="updatePreview();">{initialText}</textarea
+    <textarea id="editor" rows="10" cols="150" class="form-control"
+      >{initialText}</textarea
     >
   </div>
   <div id="preview" class="container-fluid"></div>
-  <script is:inline src="/assets/js/markdownpreviewer.js"></script>
 </DefaultModified>
+
+<script>
+  import MarkdownIt from 'markdown-it';
+  const parser = new MarkdownIt({
+    html: true,
+    xhtmlOut: true,
+    breaks: true,
+  });
+
+  const previewElement = document.getElementById('preview') as HTMLDivElement;
+  const editorElement = document.getElementById(
+    'editor'
+  ) as HTMLTextAreaElement;
+
+  function updatePreview() {
+    if (previewElement) {
+      if (editorElement && editorElement.value) {
+        previewElement.innerHTML = parser.render(editorElement.value);
+      } else {
+        previewElement.innerHTML = '';
+      }
+    }
+  }
+  editorElement.addEventListener('change', updatePreview);
+  editorElement.addEventListener('keyup', updatePreview);
+  updatePreview();
+</script>
