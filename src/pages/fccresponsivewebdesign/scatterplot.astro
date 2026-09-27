@@ -1,8 +1,9 @@
 ---
-title: FCC - Visualise Data with a Scatter Plot
-layout: page
-permalink: fccresponsivewebdesign/scatterplot
-last_modified_at: 2025-02-09
+import Page from '../../layouts/page.astro';
+const frontmatter = {
+  title: 'FCC - Visualise Data with a Scatter Plot',
+  last_modified_at: '2025-02-09',
+};
 ---
 
 <style>
@@ -46,45 +47,46 @@ last_modified_at: 2025-02-09
   }
 </style>
 
-<script src="https://d3js.org/d3.v4.min.js"></script>
-
-<h2 id="title">Doping in Professional Bike Racing</h1>
-<div id="holder" class="holder">
-  <div id="legend">
-    <span class="red">-- </span>-Dopers<br />
-    <span class="green">-- </span>-Non-Dopers
+<Page frontmatter={frontmatter}>
+  <h2 id="title">Doping in Professional Bike Racing</h2>
+  <div id="holder" class="holder">
+    <div id="legend">
+      <span class="red">-- </span>-Dopers<br />
+      <span class="green">-- </span>-Non-Dopers
+    </div>
   </div>
-</div>
+</Page>
 
 <script>
+  import * as d3 from 'd3';
   // Variables
-  const holderDiv = document.querySelector('.post');
-  const w = holderDiv.clientWidth <= 740 ? holderDiv.clientWidth : 740;
+  const holderDiv = document.querySelector('.post') as HTMLDivElement;
+  const w = Math.min(holderDiv.clientWidth, 740);
   const h = 500;
   const padding = 50;
 
-  // Get the data
-  const req = new XMLHttpRequest();
-  req.open(
-    'GET',
-    'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json',
-    true
-  );
-  req.send();
-  req.onload = function () {
-    const json = JSON.parse(req.responseText);
-    visualize(json);
-  };
-
-  function toDate(timeStr, yearStr) {
-    const now = new Date();
-    now.setHours(0);
-    now.setMinutes(timeStr.substr(0, timeStr.indexOf(':')));
-    now.setSeconds(timeStr.substr(timeStr.indexOf(':') + 1));
-    return now;
+  interface cyclist {
+    Time: string;
+    Place: number;
+    Seconds: number;
+    Name: string;
+    Year: number;
+    Nationality: string;
+    Doping: string;
+    URL: string;
   }
 
-  function visualize(dataset) {
+  // Get the data
+  fetch(
+    'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json'
+  )
+    .then((res) => res.json())
+    .then((res) => visualize(res))
+    .catch((ex) => console.error(ex));
+
+  const parseTime = d3.timeParse('%M:%S')!;
+
+  function visualize(dataset: cyclist[]) {
     const dat = dataset.map((d) => {
       return {
         Time: d.Time,
@@ -95,18 +97,18 @@ last_modified_at: 2025-02-09
         Nationality: d.Nationality,
         Doping: d.Doping,
         URL: d.URL,
-        timeObj: toDate(d.Time, d.Year),
+        timeObj: parseTime(d.Time)!,
       };
     });
 
     const xScale = d3
       .scaleLinear()
-      .domain([d3.min(dat, (d) => d.Year) - 1, d3.max(dat, (d) => d.Year)])
+      .domain([d3.min(dat, (d) => d.Year)! - 1, d3.max(dat, (d) => d.Year)!])
       .range([padding, w - padding]);
 
     const yScale = d3
       .scaleTime()
-      .domain([d3.min(dat, (d) => d.timeObj), d3.max(dat, (d) => d.timeObj)])
+      .domain([d3.min(dat, (d) => d.timeObj)!, d3.max(dat, (d) => d.timeObj)!])
       .range([h - padding, padding]);
 
     const svg = d3
@@ -125,6 +127,7 @@ last_modified_at: 2025-02-09
       .style('border-width', '2px')
       .style('border-radius', '5px')
       .style('padding', '5px')
+      .style('color', 'white')
       .attr('id', 'tooltip')
       .attr('class', 'tooltip');
 
@@ -139,7 +142,7 @@ last_modified_at: 2025-02-09
       .attr('r', 5)
       .attr('class', 'dot')
       .attr('data-xvalue', (d) => d.Year)
-      .attr('data-yvalue', (d) => d.timeObj)
+      .attr('data-yvalue', (d) => d.timeObj.toString())
       .style('fill', (d) => {
         return d.Doping == '' ? 'green' : 'red';
       })
@@ -149,20 +152,20 @@ last_modified_at: 2025-02-09
       .on('mousemove', function (d, i) {
         tooltip
           .html(
-            d.Name +
+            i.Name +
               ': ' +
-              d.Nationality +
+              i.Nationality +
               '<br/>Year:' +
-              d.Year +
+              i.Year +
               ', Time: ' +
-              d.Time +
+              i.Time +
               '<br/><br/>' +
-              d.Doping
+              i.Doping
           )
-          .attr('data-year', d.Year)
-          .attr('data-time', d.Time)
-          .style('left', d3.mouse(this)[0] + 70 + 'px')
-          .style('top', d3.mouse(this)[1] + 'px');
+          .attr('data-year', i.Year)
+          .attr('data-time', i.Time)
+          .style('left', d.pageX + 70 + 'px')
+          .style('top', d.pageY + 'px');
       })
       .on('mouseleave', (d, i) => {
         tooltip.style('visibility', 'hidden').style('opacity', 0);
@@ -176,7 +179,9 @@ last_modified_at: 2025-02-09
       .attr('id', 'x-axis')
       .call(xAxis);
 
-    const yAxis = d3.axisLeft(yScale).tickFormat(d3.timeFormat('%M:%S'));
+    const yAxis = d3
+      .axisLeft(yScale)
+      .tickFormat((a: any) => d3.timeFormat('%M:%S')(a));
     svg
       .append('g')
       .attr('transform', 'translate(' + padding + ',0)')
