@@ -1,0 +1,211 @@
+---
+import Page from '../../layouts/page.astro';
+const frontmatter = {
+  title: 'FCC - Visualise Data Treemap',
+  last_modified_at: '2025-02-09',
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <style is:inline>
+    #title {
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .tooltip {
+      fill: blue;
+      background-color: blue;
+      color: white;
+      text-align: center;
+    }
+
+    #holder,
+    svg {
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .dynamicText {
+      font-size: 12px;
+    }
+  </style>
+
+  <h2 id="title">Movie Sales</h2>
+  <div id="holder" class="holder">
+    <span id="description">Top 100 Movies</span>
+  </div>
+  <div id="legend"></div>
+</Page>
+
+<script>
+  import * as d3 from 'd3';
+  // Variables
+  const holderDiv = document.querySelector('.post') as HTMLDivElement;
+  const w = Math.min(holderDiv.clientWidth, 740);
+  const h = 500;
+  const padding = 50;
+
+  interface singleMovie {
+    name: string;
+    category: string;
+    value: string;
+  }
+
+  interface movieCategory {
+    name: string;
+    children: singleMovie[];
+  }
+
+  interface movieData {
+    name: string;
+    children: movieCategory[];
+    value: string;
+  }
+
+  function visualise(data: movieData) {
+    console.log('data', data);
+
+    const svg = d3
+      .select('#holder')
+      .append('svg')
+      .attr('width', w)
+      .attr('height', h);
+
+    // Flatten the data
+    const dat: singleMovie[] = [];
+    data.children.forEach((e) => {
+      //console.log(e);
+      e.children.forEach((mov) => {
+        //console.log(mov);
+        dat.push(mov);
+      });
+    });
+
+    // Colours
+    function colorDict(colour: string): string {
+      if (colour === 'Action') return 'blue';
+      if (colour === 'Drama') return 'yellow';
+      if (colour === 'Adventure') return 'green';
+      if (colour === 'Family') return 'purple';
+      if (colour === 'Animation') return 'red';
+      if (colour === 'Comedy') return 'brown';
+      if (colour === 'Biography') return 'orange';
+      return '';
+    }
+
+    console.log('dat', dat);
+
+    //Give the data to the cluster layout
+    const root = d3.hierarchy(data).sum((d) => Number(d.value));
+    console.log('root', root);
+    // calculate the x & y values for the treemap
+    d3.treemap().size([w, h]).padding(1)(root as d3.HierarchyNode<unknown>);
+    console.log('root', root);
+
+    // Tooltip
+    const tooltip = d3
+      .select('body')
+      .append('div')
+      .style('position', 'absolute')
+      .style('z-index', '10')
+      .style('visibility', 'hidden')
+      .text('a simple tooltip')
+      .attr('class', 'tooltip')
+      .attr('id', 'tooltip');
+
+    const box = svg.selectAll('g').data(root.leaves()).enter().append('g');
+
+    // Rect
+    box
+      .append('rect')
+      .attr('x', (d: any) => d.x0)
+      .attr('y', (d: any) => d.y0)
+      .attr('width', (d: any) => d.x1 - d.x0)
+      .attr('height', (d: any) => d.y1 - d.y0)
+      .style('fill', (d: any) => colorDict(d.data.category as string))
+      .attr('class', 'tile')
+      .attr('data-name', (d) => d.data.name)
+      .attr('data-category', (d: any) => d.data.category)
+      .attr('data-value', (d) => d.data.value)
+      .on('mouseover', (d, i: any) => {
+        return tooltip
+          .style('visibility', 'visible')
+          .style('left', d.pageX + 20 + 'px')
+          .style('top', d.pageY + 20 + 'px')
+          .html(
+            'Name: ' +
+              i.data.name +
+              '<br/>Category: ' +
+              i.data.category +
+              '<br/>Value: ' +
+              i.data.value
+          )
+          .attr('data-value', i.data.value)
+          .attr('data-name', i.data.name)
+          .attr('data-category', i.data.category)
+          .style('opacity', 1);
+      })
+      .on('mouseout', (d) =>
+        tooltip.style('visibility', 'hidden').style('opacity', 0)
+      );
+
+    // Text
+    box
+      .append('text')
+      .attr('x', (d: any) => d.x0 + 10)
+      .attr('y', (d: any) => d.y0 + 10)
+      .text((d) => d.data.name)
+      .attr('dy', '.35em')
+      .attr('class', 'dynamicText');
+
+    //$(".dynamicText").fitText(0.8, { minFontSize: '12px', maxFontSize: '36px' });
+
+    // Legend
+    const h2 = h / 5;
+    const svg2 = d3
+      .select('#legend')
+      .append('svg')
+      .attr('width', w)
+      .attr('height', h2);
+
+    const dat2 = [
+      'Action',
+      'Drama',
+      'Adventure',
+      'Family',
+      'Animation',
+      'Comedy',
+      'Biography',
+    ];
+
+    const box2 = svg2.selectAll('g').data(dat2).enter().append('g');
+
+    // Legend Items
+    box2
+      .append('rect')
+      .style('fill', (d) => colorDict(d))
+      .attr('width', w / 7)
+      .attr('y', 0)
+      .attr('x', (d, i) => (w / 7) * i)
+      .attr('height', h2)
+      .attr('class', 'legend-item');
+
+    // Text
+    box2
+      .append('text')
+      .attr('x', (d, i) => (w / 7) * i + 10)
+      .attr('y', 10)
+      .text((d) => d)
+      .attr('dy', '.35em');
+  }
+
+  // Movie Sales
+  fetch(
+    'https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/movie-data.json'
+  )
+    .then((res) => res.json())
+    .then((res) => visualise(res))
+    .catch((ex) => console.error(ex));
+</script>
