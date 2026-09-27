@@ -1,8 +1,9 @@
 ---
-title: FCC - Visualise Data with a Heat Map
-layout: page
-permalink: fccresponsivewebdesign/heatmap
-last_modified_at: 2025-02-09
+import Page from '../../layouts/page.astro';
+const frontmatter = {
+  title: 'FCC - Visualise Data with a Heat Map',
+  last_modified_at: '2025-02-09',
+};
 ---
 
 <style>
@@ -33,45 +34,52 @@ last_modified_at: 2025-02-09
   }
 </style>
 
-<script src="https://d3js.org/d3.v4.min.js"></script>
-
-<h2 id="title">Monthly Global Land-Surface Temperature</h1>
-<div id="holder" class="holder">
-  <span id="description"
-    >1753 - 2015: base temperature <span id="temp"></span>℃</span
-  >
-</div>
-<div id="legend"></div>
+<Page frontmatter={frontmatter}>
+  <h2 id="title">Monthly Global Land-Surface Temperature</h2>
+  <div id="holder" class="holder">
+    <span id="description"
+      >1753 - 2015: base temperature <span id="temp"></span>℃</span
+    >
+  </div>
+  <div id="legend"></div>
+</Page>
 
 <script>
+  import * as d3 from 'd3';
   // Variables
-  const holderDiv = document.querySelector('.post');
-  const w = holderDiv.clientWidth <= 740 ? holderDiv.clientWidth : 740;
+  const holderDiv = document.querySelector('.post') as HTMLDivElement;
+  const w = Math.min(holderDiv.clientWidth, 740);
   const h = 500;
   const padding = 50;
 
   // Get the data
-  const req = new XMLHttpRequest();
-  req.open(
-    'GET',
-    'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/global-temperature.json',
-    true
-  );
-  req.send();
-  req.onload = function () {
-    const json = JSON.parse(req.responseText);
-    visualize(json);
-  };
+  fetch(
+    'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/global-temperature.json'
+  )
+    .then((res) => res.json())
+    .then((res) => visualize(res))
+    .catch((ex) => console.error(ex));
 
-  function visualize(dataset) {
+  interface monthlyVar {
+    year: number;
+    month: number;
+    variance: number;
+  }
+
+  interface heatmap {
+    baseTemperature: number;
+    monthlyVariance: monthlyVar[];
+  }
+
+  function visualize(dataset: heatmap) {
     const svg = d3
       .select('#holder')
       .append('svg')
       .attr('width', w)
       .attr('height', h);
 
-    const temp = document.getElementById('temp');
-    temp.innerHTML = dataset.baseTemperature;
+    const temp = document.getElementById('temp') as HTMLSpanElement;
+    temp.textContent = dataset.baseTemperature.toString();
 
     const dat = dataset.monthlyVariance;
 
@@ -79,20 +87,20 @@ last_modified_at: 2025-02-09
     // Y months
     const yScale = d3
       .scaleBand()
-      .domain([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+      .domain(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'])
       .range([h - padding, padding]);
 
     // X years
-    const minYear = d3.min(dat, (d) => d.year);
-    const maxYear = d3.max(dat, (d) => d.year);
+    const minYear = d3.min(dat, (d) => d.year)!;
+    const maxYear = d3.max(dat, (d) => d.year)!;
     const xScale = d3
       .scaleLinear()
       .domain([minYear, maxYear + 1])
       .range([padding, w - padding]);
 
     // Z variance
-    const minVar = d3.min(dat, (d) => d.variance);
-    const maxVar = d3.max(dat, (d) => d.variance);
+    const minVar = d3.min(dat, (d) => d.variance)!;
+    const maxVar = d3.max(dat, (d) => d.variance)!;
     const zScale = d3.scaleLinear().domain([minVar, maxVar]).range([0, 255]);
 
     const monthLabels = [
@@ -121,6 +129,7 @@ last_modified_at: 2025-02-09
       .style('border', 'solid')
       .style('border-width', '2px')
       .style('border-radius', '5px')
+      .style('color', 'white')
       .style('padding', '5px')
       .attr('id', 'tooltip')
       .attr('class', 'tooltip');
@@ -132,7 +141,7 @@ last_modified_at: 2025-02-09
       .enter()
       .append('rect')
       .attr('x', (d) => xScale(d.year))
-      .attr('y', (d) => yScale(d.month - 1))
+      .attr('y', (d) => yScale((d.month - 1).toString())!)
       .attr('width', w / (maxYear - minYear))
       .attr('height', (h - padding) / 12)
       .style('fill', (d) => 'rgb(' + zScale(d.variance) + ',0,0)')
@@ -143,20 +152,20 @@ last_modified_at: 2025-02-09
       .on('mouseover', (d, i) => {
         return tooltip
           .style('visibility', 'visible')
-          .style('left', d3.event.pageX + 20 + 'px')
-          .style('top', d3.event.pageY + 20 + 'px')
+          .style('left', d.pageX + 20 + 'px')
+          .style('top', d.pageY + 20 + 'px')
           .html(
-            d.year +
+            i.year +
               ' - ' +
-              monthLabels[d.month - 1] +
+              monthLabels[i.month - 1] +
               '<br/>' +
-              (dataset.baseTemperature + d.variance).toFixed(1) +
+              (dataset.baseTemperature + i.variance).toFixed(1) +
               '°C<br/>' +
-              d.variance.toFixed(1) +
+              i.variance.toFixed(1) +
               '°C'
           )
-          .attr('data-year', d.year)
-          .attr('data-temp', dataset.baseTemperature + d.variance)
+          .attr('data-year', i.year)
+          .attr('data-temp', dataset.baseTemperature + i.variance)
           .style('opacity', 1);
       })
       .on('mouseout', () => {
@@ -173,7 +182,7 @@ last_modified_at: 2025-02-09
       .call(xAxis);
 
     // y axis month
-    const yAxis = d3.axisLeft(yScale).tickFormat((d) => monthLabels[d]);
+    const yAxis = d3.axisLeft(yScale).tickFormat((d: any) => monthLabels[d]);
     svg
       .append('g')
       .attr('transform', 'translate(' + padding + ',0)')
