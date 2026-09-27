@@ -1,0 +1,216 @@
+---
+import Page from '../../layouts/page.astro';
+const frontmatter = {
+  title: 'FCC - Pomodoro Clock',
+  last_modified_at: '2025-02-09',
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <fieldset>
+    <label id="break-label" for="break-length">Break Length:</label>
+    <input
+      id="break-length"
+      type="number"
+      value="5"
+      min="1"
+      max="60"
+      class="form-control"
+    />
+    <button
+      type="button"
+      id="break-decrement"
+      aria-label="down"
+      class="btn btn-primary"
+    >
+      &#8897;
+    </button>
+    <button
+      type="button"
+      id="break-increment"
+      aria-label="up"
+      class="btn btn-primary"
+    >
+      &#8896;
+    </button>
+    <br />
+
+    <label id="session-label" for="session-length">Session Length:</label>
+    <input
+      id="session-length"
+      type="number"
+      value="25"
+      min="1"
+      max="60"
+      class="form-control"
+    />
+    <button
+      type="button"
+      id="session-decrement"
+      aria-label="down"
+      class="btn btn-primary"
+    >
+      &#8897;
+    </button>
+    <button
+      type="button"
+      id="session-increment"
+      aria-label="up"
+      class="btn btn-primary"
+    >
+      &#8896;
+    </button>
+  </fieldset>
+
+  <div id="timerBox" class="container-fluid">
+    <br />
+    <div id="timer-label">Session</div>
+    <br />
+    <span id="time-left">25:00</span>
+    <br />
+    <button
+      type="button"
+      id="start_stop"
+      aria-label="start/stop"
+      class="btn btn-primary"
+    >
+      &#8883;||
+    </button>
+    <button type="button" id="reset" aria-label="reset" class="btn btn-primary">
+      &#8635;
+    </button>
+  </div>
+  <audio id="beep" src="/assets/audio/BeepSound.wav"></audio>
+</Page>
+
+<script>
+  let running = false;
+  let myTimer: number | null;
+  let isSession = true;
+  let remainingTime;
+  const breakLength = document.getElementById(
+    'break-length'
+  ) as HTMLInputElement;
+  const sessionLength = document.getElementById(
+    'session-length'
+  ) as HTMLInputElement;
+  const timeLeft = document.getElementById('time-left');
+  const timerLabel = document.getElementById('timer-label');
+  const e = document.getElementById('beep') as HTMLAudioElement;
+
+  function breakDecrement(i: number) {
+    if (breakLength) {
+      let b = parseInt(breakLength.value) + i;
+      if (b < 1) {
+        b = 1;
+      } else if (b > 60) {
+        b = 60;
+      }
+      console.log('breakDecrement', b);
+      breakLength.value = b.toString();
+    }
+  }
+
+  function sessionDecrement(i: number) {
+    if (sessionLength && timeLeft) {
+      let b = parseInt(sessionLength.value) + i;
+      if (b < 1) {
+        b = 1;
+      } else if (b > 60) {
+        b = 60;
+      }
+      console.log('sessionDecrement', b);
+      sessionLength.value = b.toString();
+      if (!running) {
+        timeLeft.textContent = b + ':00';
+      }
+    }
+  }
+
+  function startStop() {
+    console.log('startStop');
+    if (timeLeft) {
+      if (running == false) {
+        console.log('start timer');
+        running = true;
+        const i = timeLeft.textContent.split(':');
+        remainingTime = parseInt(i[0]) * 60 + parseInt(i[1]);
+        console.log(remainingTime);
+
+        myTimer = window.setInterval(eachSecond, 30);
+        console.log('myTimer: ' + myTimer);
+      } else {
+        running = false;
+        if (myTimer != null) {
+          window.clearInterval(myTimer);
+          myTimer = null;
+        }
+      }
+    }
+  }
+
+  function resetFunc() {
+    console.log('reset');
+    if (breakLength && sessionLength && timeLeft && timerLabel) {
+      running = false;
+      timeLeft.textContent = '25:00';
+      breakLength.value = '5';
+      sessionLength.value = '25';
+      timerLabel.textContent = 'Session';
+      myTimer = null;
+      e.pause();
+      e.currentTime = 0;
+    }
+  }
+
+  function eachSecond() {
+    if (breakLength && sessionLength && timeLeft && timerLabel) {
+      if (running == false) {
+        return;
+      }
+
+      const i = timeLeft.textContent.split(':');
+      remainingTime = parseInt(i[0]) * 60 + parseInt(i[1]);
+      remainingTime -= 1;
+
+      if (remainingTime < 0) {
+        if (timerLabel.textContent === 'Break') {
+          remainingTime = parseInt(breakLength.value) * 60 + 1;
+          isSession = false;
+        } else {
+          remainingTime = parseInt(sessionLength.value) * 60 + 0;
+          isSession = true;
+        }
+      }
+
+      const mins = Math.floor(remainingTime / 60);
+      const secs = remainingTime - mins * 60;
+
+      const s =
+        (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+      timeLeft.textContent = s;
+      if (remainingTime == 0) {
+        e.play();
+        timeLeft.textContent = '00:00';
+        timerLabel.textContent =
+          timerLabel.textContent === 'Session' ? 'Break' : 'Session';
+      }
+      console.log('clock text: ' + s);
+    }
+  }
+
+  document
+    .getElementById('break-decrement')
+    ?.addEventListener('click', () => breakDecrement(-1));
+  document
+    .getElementById('break-increment')
+    ?.addEventListener('click', () => breakDecrement(1));
+  document
+    .getElementById('session-decrement')
+    ?.addEventListener('click', () => sessionDecrement(-1));
+  document
+    .getElementById('session-increment')
+    ?.addEventListener('click', () => sessionDecrement(1));
+  document.getElementById('start_stop')?.addEventListener('click', startStop);
+  document.getElementById('reset')?.addEventListener('click', resetFunc);
+</script>
