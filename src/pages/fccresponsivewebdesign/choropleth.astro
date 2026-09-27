@@ -1,54 +1,58 @@
 ---
-title: FCC - Visualise Data Choropleth Map
-layout: page
-permalink: fccresponsivewebdesign/choropleth
-last_modified_at: 2025-02-09
+import Page from '../../layouts/page.astro';
+const frontmatter = {
+  title: 'FCC - Visualise Data Choropleth Map',
+  last_modified_at: '2025-02-09',
+};
 ---
 
-<style>
-  #title {
-    font-weight: bold;
-    text-align: center;
-  }
+<Page frontmatter={frontmatter}>
+  <style is:inline>
+    #title {
+      font-weight: bold;
+      text-align: center;
+    }
 
-  .tooltip {
-    fill: blue;
-    background-color: blue;
-    color: white;
-    text-align: center;
-  }
+    .tooltip {
+      fill: blue;
+      background-color: blue;
+      color: white;
+      text-align: center;
+    }
 
-  h1 {
-    text-align: center;
-  }
+    h1 {
+      text-align: center;
+    }
 
-  #holder,
-  svg {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-  }
+    #holder,
+    svg {
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+    }
 
-  #holder {
-    overflow-x: scroll;
-  }
-</style>
+    #holder {
+      overflow-x: scroll;
+    }
+  </style>
+  <h2 id="title">United States Educational Attainment</h2>
+  <div id="holder" class="holder">
+    <span id="description"
+      >Percentage of adults age 25 and older with a bachelor's degree or higher
+      (2010-2014)</span
+    >
+  </div>
+  <div id="legend"></div>
+</Page>
 
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<script is:inline src="https://d3js.org/d3.v4.min.js"></script>
 
 <!--D3 topojson-->
-<script src="https://d3js.org/topojson.v1.min.js"></script>
-
-<h1 id="title">United States Educational Attainment</h1>
-<div id="holder" class="holder">
-  <span id="description"
-    >Percentage of adults age 25 and older with a bachelor's degree or higher
-    (2010-2014)</span
-  >
-</div>
-<div id="legend"></div>
-
-<script>
+<script is:inline src="https://d3js.org/topojson.v1.min.js"></script>
+<script is:inline>
+  //import * as d3 from 'https://d3js.org/d3.v4.min.js';
+  // D3 topojson
+  //import * as topojson from 'https://d3js.org/topojson.v1.min.js';
   // Variables
   const w = 1000;
   const h = 600;
@@ -59,7 +63,7 @@ last_modified_at: 2025-02-09
   //var eduData = "";
   //var countryData = "";
 
-  let data = {};
+  const data = {};
 
   // Get Data function
   const getDataJson = (url, variable) => {
