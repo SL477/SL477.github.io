@@ -1,0 +1,410 @@
+---
+import Page from '../../layouts/page.astro';
+const frontmatter = {
+  title: 'Advanced Algorithms',
+  last_modified_at: '2024-02-03',
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <p>
+    My answers to the exercises in
+    <a
+      href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf"
+      >Algorithms &amp; Data Structures with JS</a
+    >
+  </p>
+
+  <div id="app">
+    <h3>Exercise 1</h3>
+    <fieldset>
+      <legend>Brute force algorithm to find the longest common substring</legend
+      >
+      <label for="string1">String 1:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="string1"
+        name="string1"
+        value="test"
+      />
+      <label for="string2">String 2:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="string2"
+        name="string2"
+        value="the short brown fox jumped over the lazy dog"
+      />
+      <button id="bruteForceSubstring" type="button" class="btn btn-primary">
+        Find Longest Substring
+      </button>
+      <p>Result: <span id="longSubString"></span></p>
+    </fieldset>
+    <h3>Exercise 2</h3>
+    <fieldset>
+      <legend>Knapsack problem</legend>
+      <label for="capacity">Capacity:</label>
+      <input
+        type="number"
+        id="capacity"
+        name="capacity"
+        class="form-control"
+        value="16"
+      />
+      <div id="potentialItems"></div>
+      <button type="button" class="btn btn-primary" id="addPotentialItem">
+        Add Potential Item
+      </button>
+      <button type="button" class="btn btn-primary" id="knapSackSolution">
+        Solve Knapsack
+      </button>
+      <p>Max value: <span id="knapsackResult"></span></p>
+    </fieldset>
+    <h3>Exercise 3</h3>
+    <fieldset>
+      <legend>Coin Changing</legend>
+      <label for="amount">Amount:</label>
+      <input type="number" class="form-control" id="amount" value="0.3" />
+      <div class="form-check">
+        <label for="useDimes" class="form-check-label">Use Dimes (10c)</label>
+        <input type="checkbox" id="useDimes" class="form-check-input" />
+      </div>
+      <button type="button" class="btn btn-primary" id="workoutChange">
+        Solution
+      </button>
+      <div id="coins"></div>
+    </fieldset>
+  </div>
+</Page>
+
+<script>
+  //#region "Substring"
+  function bruteForceSubstring() {
+    let ret = '';
+    const string1 = document.getElementById('string1') as HTMLInputElement;
+    const string2 = document.getElementById('string2') as HTMLInputElement;
+
+    if (string1 && string2) {
+      const a = string1.value;
+      const b = string2.value;
+      for (let i = 0; i < a.length; i++) {
+        // find index in string2
+        const r = new RegExp(a[i], 'g');
+        //let foundStuff = r.exec(b);
+        //console.log('matches',foundStuff);
+        let match;
+        while ((match = r.exec(b)) !== null) {
+          console.log('match', match);
+          let temp = a[i];
+          const tempB = b.substring(match.index);
+          let ind = 0;
+          if (temp.length > ret.length) {
+            ret = temp;
+            console.log('test2');
+          }
+          for (let j = i + 1; j < a.length; j++) {
+            ind++;
+            console.log('temp', temp);
+            if (tempB[ind] !== a[j]) {
+              console.log('test');
+              break;
+            } else {
+              temp += a[j];
+              if (temp.length > ret.length) {
+                ret = temp;
+                console.log('test2', ret);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    console.log('ret', ret);
+    const longSubString = document.getElementById('longSubString');
+    if (longSubString) {
+      longSubString.textContent = ret;
+    }
+  }
+  //#endregion
+
+  //#region "Knapsack"
+
+  class knapsackItem {
+    name: string;
+    value: number;
+    weight: number;
+    constructor(name: string, value: number, weight: number) {
+      this.name = name;
+      this.value = value;
+      this.weight = weight;
+    }
+  }
+
+  const potentialItems = [
+    new knapsackItem('A', 4, 3),
+    new knapsackItem('B', 5, 4),
+    new knapsackItem('C', 10, 7),
+    new knapsackItem('D', 11, 8),
+    new knapsackItem('E', 13, 9),
+  ];
+
+  /**
+   * This is to run on startup and when the Knapsack changes
+   */
+  function displayKnapsack() {
+    const potentialItemsDiv = document.getElementById('potentialItems');
+    if (potentialItemsDiv) {
+      potentialItemsDiv.innerHTML = '';
+
+      potentialItems.forEach((item, idx) => {
+        const itemDiv = document.createElement('div');
+        itemDiv.id = `item${idx}`;
+        itemDiv.className = 'form-group';
+
+        const itemHdr = document.createElement('h4');
+        itemHdr.textContent = `Item ${idx + 1}`;
+        itemDiv.appendChild(itemHdr);
+
+        const itemNameLbl = document.createElement('label');
+        itemNameLbl.textContent = 'Name:';
+
+        const itemNameTxt = document.createElement('input');
+        itemNameTxt.type = 'text';
+        itemNameTxt.className = 'form-control';
+        itemNameTxt.id = `itemName${idx}`;
+        itemNameTxt.defaultValue = item.name;
+        itemNameLbl.appendChild(itemNameTxt);
+        itemDiv.appendChild(itemNameLbl);
+
+        const itemValueLbl = document.createElement('label');
+        itemValueLbl.textContent = 'Value:';
+
+        const itemValueTxt = document.createElement('input');
+        itemValueTxt.type = 'number';
+        itemValueTxt.className = 'form-control';
+        itemValueTxt.id = `itemValue${idx}`;
+        itemValueTxt.defaultValue = item.value.toString();
+        itemValueLbl.appendChild(itemValueTxt);
+        itemDiv.appendChild(itemValueLbl);
+
+        const itemWeightLbl = document.createElement('label');
+        itemWeightLbl.textContent = 'Weight:';
+
+        const itemWeightTxt = document.createElement('input');
+        itemWeightTxt.type = 'number';
+        itemWeightTxt.className = 'form-control';
+        itemWeightTxt.id = `itemWeight${idx}`;
+        itemWeightTxt.defaultValue = item.weight.toString();
+        itemWeightLbl.appendChild(itemWeightTxt);
+        itemDiv.appendChild(itemWeightLbl);
+
+        potentialItemsDiv.appendChild(itemDiv);
+      });
+    }
+  }
+  displayKnapsack();
+
+  /**
+   * Update the Knapsack array
+   */
+  function updateKnapsack() {
+    potentialItems.forEach((item, idx) => {
+      const itemNameTxt = document.getElementById(
+        `itemName${idx}`
+      ) as HTMLInputElement;
+      if (itemNameTxt) {
+        item.name = itemNameTxt.value;
+      }
+
+      const itemValueTxt = document.getElementById(
+        `itemValue${idx}`
+      ) as HTMLInputElement;
+      if (itemValueTxt && itemValueTxt.value) {
+        item.value = parseFloat(itemValueTxt.value);
+      } else {
+        item.value = 0;
+      }
+
+      const itemWeightTxt = document.getElementById(
+        `itemWeight${idx}`
+      ) as HTMLInputElement;
+      if (itemWeightTxt && itemWeightTxt.value) {
+        item.weight = parseFloat(itemWeightTxt.value);
+      } else {
+        item.weight = 0;
+      }
+    });
+  }
+
+  function addPotentialItem() {
+    updateKnapsack();
+    potentialItems.push(new knapsackItem('', 0, 0));
+    displayKnapsack();
+  }
+
+  function getCapacity() {
+    const capacityTxt = document.getElementById('capacity') as HTMLInputElement;
+    if (capacityTxt && capacityTxt.value) {
+      return parseFloat(capacityTxt.value);
+    }
+    return 0;
+  }
+
+  function max(a: number, b: number): [number, boolean] {
+    return a > b ? [a, false] : [b, true];
+  }
+
+  function knapSackSolution() {
+    const k: number[][] = [];
+    const capacity = getCapacity();
+    for (let i = 0; i <= capacity + 1; i++) {
+      k[i] = [];
+    }
+
+    const value: number[] = [];
+    const size: number[] = [];
+    updateKnapsack();
+    potentialItems.forEach((element) => {
+      value.push(element.value);
+      size.push(element.weight);
+    });
+    const n = potentialItems.length;
+    console.log('value', value);
+    console.log('size', size);
+    console.log('capacity', capacity);
+    const ret = [];
+
+    for (let i = 0; i <= n; i++) {
+      for (let w = 0; w <= capacity; w++) {
+        if (i === 0 || w === 0) {
+          k[i][w] = 0;
+        } else if (size[i - 1] <= w) {
+          const t = max(value[i - 1] + k[i - 1][w - size[i - 1]], k[i - 1][w]);
+          k[i][w] = t[0];
+          //if (w == this.capacity) {
+          console.log(
+            'size',
+            size[i - 1],
+            'value',
+            value[i - 1],
+            t[1],
+            'item',
+            i,
+            'k',
+            k[i][w]
+          );
+          if (k[i][w] > k[i][w - 1]) {
+            if (ret.indexOf(i - 1) < 0) {
+              ret.push(i - 1);
+            }
+          }
+          //}
+        } else {
+          k[i][w] = k[i - 1][w];
+        }
+        //console.log(k[i][w]);
+      }
+    }
+    console.log('knapsack return', k[n][capacity], ret);
+    const knapsackResultSpn = document.getElementById(
+      'knapsackResult'
+    ) as HTMLSpanElement;
+    if (knapsackResultSpn) {
+      knapsackResultSpn.textContent = k[n][capacity].toString();
+    }
+    return k[n][capacity];
+  }
+
+  //#endregion
+
+  //#region "Coin Changing"
+  /**
+   * Get the amount to change
+   * @returns {number}
+   */
+  function getAmount(): number {
+    const amountTxt = document.getElementById('amount') as HTMLInputElement;
+    if (amountTxt && amountTxt.value) {
+      return parseFloat(amountTxt.value);
+    }
+    return 0;
+  }
+
+  /**
+   * Whether or not to use dimes
+   * @returns {boolean}
+   */
+  function getUseDimes(): boolean {
+    const useDimesChk = document.getElementById('useDimes') as HTMLInputElement;
+    return useDimesChk && useDimesChk.checked;
+  }
+
+  function workoutChange() {
+    let remainAmt = getAmount();
+    const coins = [
+      { amt: 100, quantity: 0 },
+      { amt: 50, quantity: 0 },
+      { amt: 20, quantity: 0 },
+      { amt: 10, quantity: 0 },
+      { amt: 5, quantity: 0 },
+      { amt: 1, quantity: 0 },
+      { amt: 0.25, quantity: 0 },
+      { amt: 0.1, quantity: 0 },
+      { amt: 0.05, quantity: 0 },
+      { amt: 0.01, quantity: 0 },
+    ];
+
+    const coinsDiv = document.getElementById('coins') as HTMLDivElement;
+
+    if (coinsDiv) {
+      coinsDiv.innerHTML = '';
+      let remainAmtTxt = '';
+      coins.forEach((coin) => {
+        if (remainAmt % coin.amt < remainAmt) {
+          if ((coin.amt === 0.1 && getUseDimes()) || coin.amt !== 0.1) {
+            coin.quantity = Math.floor(remainAmt / coin.amt);
+            //remainAmt = remainAmt - (coin.amt * coin.quantity);
+            remainAmt %= coin.amt;
+            remainAmtTxt = remainAmt.toFixed(2);
+          } else {
+            coin.quantity = 0;
+          }
+        } else {
+          coin.quantity = 0;
+        }
+        console.log(
+          'coin amt',
+          coin.amt,
+          'coin quantity',
+          coin.quantity,
+          'remainAmt',
+          remainAmtTxt
+        );
+
+        if (coin.quantity > 0) {
+          const coinTxt = document.createElement('p');
+          coinTxt.textContent = `Number of ${coin.amt}: ${coin.quantity.toLocaleString()}`;
+          coinsDiv.appendChild(coinTxt);
+        }
+      });
+    }
+  }
+  //#endregion
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document
+      .getElementById('bruteForceSubstring')
+      ?.addEventListener('click', bruteForceSubstring);
+    document
+      .getElementById('addPotentialItem')
+      ?.addEventListener('click', addPotentialItem);
+    document
+      .getElementById('knapSackSolution')
+      ?.addEventListener('click', knapSackSolution);
+    document
+      .getElementById('workoutChange')
+      ?.addEventListener('click', workoutChange);
+  });
+</script>
