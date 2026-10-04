@@ -1,0 +1,403 @@
+---
+import Page from '../../layouts/page.astro';
+const frontmatter = {
+  title: 'Binary Trees and Binary Search Trees',
+  last_modified_at: '2025-06-22',
+};
+// js_file:
+//   path: binarytrees.js
+//   defer: true
+const startText = 'The quick brown fox jumped over the red fox.';
+---
+
+<Page frontmatter={frontmatter}>
+  <p>
+    My answers to the exercises in
+    <a
+      href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf"
+      >Algorithms &amp; Data Structures with JS</a
+    >
+  </p>
+
+  <fieldset>
+    <label for="textInput">Input Text:</label>
+    <textarea id="textInput" name="textInput" class="form-control"
+      >{startText}</textarea
+    >
+    <button type="button" class="btn btn-primary" id="getTextCounts">
+      Get Word Counts
+    </button>
+    <div id="wordCountAns"></div>
+  </fieldset>
+</Page>
+
+<script>
+  class NodeCls {
+    data: number | string;
+    left: NodeCls | null;
+    right: NodeCls | null;
+    count: number;
+    constructor(
+      data: number | string,
+      left: NodeCls | null,
+      right: NodeCls | null
+    ) {
+      this.data = data;
+      this.left = left;
+      this.right = right;
+      this.count = 1;
+    }
+
+    show() {
+      return this.data;
+    }
+  }
+
+  let maxret = -1;
+  let minret: number;
+
+  class BST {
+    root: NodeCls | null;
+    constructor() {
+      this.root = null;
+    }
+
+    insert(data: number | string) {
+      const n = new NodeCls(data, null, null);
+      if (this.root === null) {
+        this.root = n;
+      } else {
+        let current: NodeCls | null = this.root;
+        let parent;
+        while (true) {
+          parent = current;
+          if (data < current.data) {
+            current = current.left;
+            if (current === null) {
+              parent.left = n;
+              break;
+            }
+          } else {
+            current = current.right;
+            if (current === null) {
+              parent.right = n;
+              break;
+            }
+          }
+        }
+      }
+    }
+
+    inOrder(node: NodeCls | null) {
+      if (!(node === null)) {
+        this.inOrder(node.left) + ' ';
+        console.log(node.show());
+        this.inOrder(node.right) + ' ';
+      }
+    }
+
+    preOrder(node: NodeCls | null) {
+      if (!(node === null)) {
+        console.log(node.show());
+        this.preOrder(node.left);
+        this.preOrder(node.right);
+      }
+    }
+
+    postOrder(node: NodeCls | null) {
+      if (!(node === null)) {
+        this.postOrder(node.left);
+        this.postOrder(node.right);
+        console.log(node.show());
+      }
+    }
+
+    getMin() {
+      let current = this.root;
+      while (current?.left) {
+        current = current?.left ?? null;
+      }
+      return current?.data;
+    }
+
+    getMax() {
+      let current = this.root;
+      while (current?.right) {
+        current = current.right;
+      }
+      return current?.data;
+    }
+
+    find(data: number | string) {
+      let current = this.root;
+      while (current && current.data !== data) {
+        if (data < current.data) {
+          current = current.left;
+        } else {
+          current = current.right;
+        }
+        if (!current || current === null) {
+          return null;
+        }
+      }
+      return current;
+    }
+
+    remove(data: number) {
+      this.root = this.removeNode(this.root, data);
+    }
+
+    removeNode(node: NodeCls | null, data: number | string) {
+      if (node === null) {
+        return null;
+      }
+
+      if (data === node.data) {
+        // node has no children
+        if (node.left === null && node.right === null) {
+          return null;
+        }
+
+        // node has no left child
+        if (node.left === null) {
+          return node.right;
+        }
+        // node has no right child
+        if (node.right === null) {
+          return node.left;
+        }
+        // node has two children
+        const tempNode = node.right;
+        node.data = tempNode.data;
+        node.right = this.removeNode(node.right, tempNode.data);
+        return node;
+      } else if (data < node.data) {
+        node.left = this.removeNode(node.left, data);
+        return node;
+      } else {
+        node.right = this.removeNode(node.right, data);
+        return node;
+      }
+    }
+
+    update(data: number | string) {
+      const grade = this.find(data);
+      if (grade) grade.count++;
+      return grade;
+    }
+
+    // Exercise 1
+    // Count nodes
+    /*inOrder(node) {
+      if (!(node == null)) {
+          this.inOrder(node.left) + ' ';
+          console.log(node.show());
+          this.inOrder(node.right) + ' ';
+      }
+  }*/
+    countNodes() {
+      let ret = this.countNode(this.root);
+      return ret;
+    }
+
+    countNode(node: NodeCls | null) {
+      let ret = 0;
+      if (!(node === null)) {
+        ret += 1;
+        ret += this.countNode(node.left);
+        ret += this.countNode(node.right);
+      }
+      return ret;
+    }
+
+    // Exercise 3
+    /*getArray(node) {
+      let ret = [];
+      if (!(node == null)) {
+          ret.push(node.count);
+          this.getArray(node.left).forEach(r => {
+              if (r) {
+                  ret.push(r.count);
+              }
+          });
+          this.getArray(node.right).forEach(r => {
+              if (r) {
+                  ret.push(r.count);
+              }
+          });
+      }
+      return ret;
+  }*/
+
+    goThroughArrayGetMax(node: NodeCls | null) {
+      try {
+        if (node && node !== null) {
+          this.goThroughArrayGetMax(node.left);
+          if (node.count > maxret) {
+            maxret = node.count;
+          }
+          this.goThroughArrayGetMax(node.right);
+          //console.log('test', node.count);
+        }
+      } catch (e) {
+        console.error('error', e, node);
+      }
+    }
+
+    /*getArray() {
+      let arr = [];
+      this.goThroughArray(this.root, arr.push);
+      return arr;
+  }*/
+
+    max() {
+      maxret = -1;
+      //let arr = this.getArray();
+      //console.log('Get array:',arr);
+      this.goThroughArrayGetMax(this.root);
+      return maxret;
+    }
+
+    //Exercise 4
+    goThroughArrayGetMin(node: NodeCls | null) {
+      if (node && node !== null) {
+        this.goThroughArrayGetMin(node.left);
+        if (node.count < minret) {
+          minret = node.count;
+        }
+        this.goThroughArrayGetMin(node.right);
+      }
+    }
+
+    min() {
+      minret = this.root?.count ?? 0;
+      this.goThroughArrayGetMin(this.root);
+      return minret;
+    }
+
+    printBST(node: NodeCls | null): string {
+      if (node && node !== null) {
+        return `<li>${node.data}: ${node.count}</li>${this.printBST(node.left)}${this.printBST(node.right)}`;
+      }
+      return '';
+    }
+  }
+
+  function prArray(arr: number[]) {
+    const rows: string[] = [];
+    for (let i = 0; i < arr.length; i += 10) {
+      const chunk = arr.slice(i, i + 10);
+      rows.push(chunk.join(' '));
+    }
+    return rows.join('\n') + '\n';
+  }
+
+  function getArray(length: number) {
+    return Array.from({ length: length }, () =>
+      Math.floor(Math.random() * 101)
+    );
+  }
+
+  function startUp() {
+    //Test
+    const nums = new BST();
+    nums.insert(23);
+    nums.insert(45);
+    nums.insert(16);
+    nums.insert(37);
+    nums.insert(3);
+    nums.insert(99);
+    nums.insert(22);
+
+    console.log('Count nodes, should be 7: ', nums.countNodes());
+    console.log('max:', nums.max());
+    console.log('min:', nums.min());
+
+    console.log('Inorder traversals:');
+    nums.inOrder(nums.root);
+    console.log('Preorder traversal:');
+    nums.preOrder(nums.root);
+    console.log('Postorder traversal:');
+    nums.postOrder(nums.root);
+    console.log('This minimum value of the BST is: ', nums.getMin());
+    console.log('The maximum value of the BST is:', nums.getMax());
+    let searchFor = 23;
+    let found = nums.find(searchFor);
+    if (found !== null) {
+      console.log('Found ' + searchFor + ' in the BST.');
+    } else {
+      console.log(searchFor + ' was not found in the BST.');
+    }
+    searchFor = 13;
+    found = nums.find(searchFor);
+    if (found !== null) {
+      console.log('Found ' + searchFor + ' in the BST.');
+    } else {
+      console.log(searchFor + ' was not found in the BST.');
+    }
+
+    const grades = getArray(100);
+    console.log('Print grade array:\n', prArray(grades));
+    const gradeddistro = new BST();
+    for (let i = 0; i < grades.length; ++i) {
+      const g = grades[i];
+      //console.log('g',g);
+      const grade = gradeddistro.find(g);
+      if (grade === null) {
+        gradeddistro.insert(g);
+      } else {
+        gradeddistro.update(g);
+      }
+    }
+
+    //console.log('Inorder traversals:');
+    //gradeddistro.inOrder(gradeddistro.root)
+  }
+
+  function GetTextInput() {
+    const textInputArea = document.getElementById(
+      'textInput'
+    ) as HTMLInputElement;
+    if (textInputArea) {
+      return textInputArea.value;
+    }
+    return '';
+  }
+
+  /**
+   * @param {string} htmlContent
+   */
+  function SetWordCountAns(htmlContent: string) {
+    const wordCountAnsDiv = document.getElementById('wordCountAns');
+    if (wordCountAnsDiv) {
+      wordCountAnsDiv.innerHTML = htmlContent;
+    }
+  }
+
+  function getTextCounts() {
+    let textInput = GetTextInput()
+      .toLowerCase()
+      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+    const txtCounter = new BST();
+
+    textInput.split(' ').forEach((element) => {
+      const inp = txtCounter.find(element);
+      if (inp === null) {
+        txtCounter.insert(element);
+      } else {
+        txtCounter.update(element);
+      }
+    });
+    console.log('txtCounter:', txtCounter);
+
+    const ret = `<ul>${txtCounter.printBST(txtCounter.root)}</ul>`;
+    SetWordCountAns(ret);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document
+      .getElementById('getTextCounts')
+      ?.addEventListener('click', getTextCounts);
+    startUp();
+  });
+</script>
