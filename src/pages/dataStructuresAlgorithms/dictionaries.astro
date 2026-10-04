@@ -1,0 +1,157 @@
+---
+import Page from '../../layouts/page.astro';
+const frontmatter = { title: 'Dictionaries', last_modified_at: '2025-02-01' };
+const phoneTextArea = `Raymond,123
+David,345
+Cynthia,456
+Mike,723
+Jennifer,987
+Danny,012
+Jonathan,666`;
+const wordCounterTxt = 'The brown fox jumped over the blue fox,';
+---
+
+<Page frontmatter={frontmatter}>
+  <p>
+    My answers to the exercises in
+    <a
+      href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf"
+      >Algorithms &amp; Data Structures with JS</a
+    >
+  </p>
+
+  <fieldset>
+    <label for="phoneNames">Phone Names:</label>
+    <textarea
+      id="phoneNames"
+      name="phoneNames"
+      class="form-control"
+      cols="50"
+      rows="10">{phoneTextArea}</textarea
+    >
+    <button type="button" class="btn btn-primary" id="phoneDictionary">
+      Create Dictionary
+    </button>
+    <div id="phoneDictAns"></div>
+  </fieldset>
+
+  <fieldset>
+    <label for="wordCounter">Word Counter:</label>
+    <textarea
+      id="wordCounter"
+      name="wordCounter"
+      class="form-control"
+      cols="50"
+      rows="10">{wordCounterTxt}</textarea
+    >
+    <button type="button" class="btn btn-primary" id="wordCounterDict">
+      Count Words
+    </button>
+    <div id="wordCountAns"></div>
+  </fieldset>
+</Page>
+
+<script>
+  class Dictionary {
+    datastore: Record<string, number|string>;
+    constructor() {
+      this.datastore = {};
+    }
+
+    add(key: string, value: number|string) {
+      this.datastore[key] = value;
+    }
+
+    find(key: string) {
+      return this.datastore[key];
+    }
+
+    remove(key: string) {
+      delete this.datastore[key];
+    }
+
+    showAll() {
+      let ret = '';
+      Object.keys(this.datastore)
+        .sort()
+        .forEach((key) =>
+        {
+          ret += `<li>${key} -> ${this.datastore[key]}</li>`;
+        });
+      return ret;
+    }
+
+    count() {
+      return Object.keys(this.datastore).length
+    }
+
+    clear() {
+      Object.keys(this.datastore).forEach((key) => {
+        delete this.datastore[key];
+      });
+    }
+  }
+
+  /**
+   * @param {string} textAreaID
+   * @returns {string}
+   */
+  function GetTextAreaValue(textAreaID: string): string {
+    const textAreaItem = document.getElementById(
+      textAreaID
+    ) as HTMLTextAreaElement;
+    if (textAreaItem) {
+      return textAreaItem.value;
+    }
+    return '';
+  }
+
+  /**
+   * @param {string} divID
+   * @param {string} setHtml
+   */
+  function SetDivHtml(divID: string, setHtml: string) {
+    const divItem = document.getElementById(divID) as HTMLDivElement;
+    if (divItem) {
+      divItem.innerHTML = setHtml;
+    }
+  }
+
+  function phoneDictionary() {
+    const phoneNames = GetTextAreaValue('phoneNames');
+    console.log('phoneNames', phoneNames);
+    const PD = new Dictionary();
+    phoneNames.split('\n').forEach((s) => {
+      console.log('s', s);
+      const p = s.split(',');
+      PD.add(p[0], p[1]);
+    });
+    SetDivHtml('phoneDictAns', '<ul>' + PD.showAll() + '</ul>');
+  }
+
+  function wordCounterDict() {
+    let wordCounter = GetTextAreaValue('wordCounter');
+    wordCounter = wordCounter.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
+    wordCounter = wordCounter.toLowerCase();
+    console.log('wordCounter', wordCounter);
+    const dict = new Dictionary();
+    wordCounter.split(' ').forEach((s) => {
+      const c = dict.find(s);
+      if (c) {
+        dict.add(s, Number.parseFloat(c.toString()) + 1);
+      } else {
+        dict.add(s, 1);
+      }
+    });
+    SetDivHtml('wordCountAns', '<ul>' + dict.showAll() + '</ul>');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document
+      .getElementById('phoneDictionary')
+      ?.addEventListener('click', phoneDictionary);
+    document
+      .getElementById('wordCounterDict')
+      ?.addEventListener('click', wordCounterDict);
+  });
+</script>
