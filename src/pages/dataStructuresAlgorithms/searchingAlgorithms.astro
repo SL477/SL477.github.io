@@ -1,0 +1,417 @@
+---
+import Page from '../../layouts/page.astro';
+const frontmatter = {
+  title: 'Searching Algorithms',
+  last_modified_at: '2026-09-07',
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <p>
+    My answers to the exercises in
+    <a
+      href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf"
+      >Algorithms &amp; Data Structures with JS</a
+    >
+  </p>
+
+  <div id="searchDiv"></div>
+  <fieldset>
+    <legend>Sequential Search</legend>
+    <label for="seqSearchNum">Search For:</label>
+    <input
+      type="number"
+      id="seqSearchNum"
+      name="seqSearchNum"
+      class="form-control"
+    />
+    <button type="button" class="btn btn-primary" id="seqSearch">
+      Search For Number</button
+    ><br />
+    <button type="button" class="btn btn-primary" id="seqSearchReverse">
+      Search for last occurrence of number</button
+    ><br />
+    <button type="button" class="btn btn-primary" id="compareTimings">
+      Compare Timings
+    </button>
+    <p>Number Array Position: <span id="seqSearchRes"></span></p>
+    <p>
+      Sequential Search took <span id="seqSearchTiming"></span> milliseconds. Binary
+      Search took: <span id="binSearchTiming"></span> milliseconds.
+    </p>
+  </fieldset>
+
+  <h3>Self Sorting</h3>
+  <div id="selfSort"></div>
+  <fieldset>
+    <legend>Sequential Search Self Sorting</legend>
+    <label for="seqSearchNum1">Search For:</label>
+    <input
+      type="number"
+      id="seqSearchNum1"
+      name="seqSearchNum1"
+      class="form-control"
+    />
+    <button type="button" class="btn btn-primary" id="seqSearch1">
+      Search For Number
+    </button>
+    <p>Is in array: <span id="seqSearchRes1"></span></p>
+  </fieldset>
+
+  <h2>Binary Search</h2>
+  <div id="binArr"></div>
+  <fieldset>
+    <legend>Binary Search</legend>
+    <label for="binSearchNum">Search For:</label>
+    <input
+      type="number"
+      id="binSearchNum"
+      name="binSearchNum"
+      class="form-control"
+    />
+    <button type="button" class="btn btn-primary" id="binSearch">
+      Search For Number
+    </button>
+    <p>Number Array Position: <span id="binSearchRes"></span></p>
+    <p>Number of occurrences: <span id="binCount"></span></p>
+  </fieldset>
+
+  <h2>Word Search</h2>
+  <div id="wordSearch"></div>
+
+  <fieldset>
+    <legend>Exercise 3 minimum number search</legend>
+    <label for="minSearch">Enter Nth minimum to search for:</label>
+    <input type="number" id="minSearch" name="minSearch" class="form-control" />
+    <button type="button" class="btn btn-primary" id="minSearchBtn">
+      Search For Minimum
+    </button>
+    <p>Number Result: <span id="minSearchRes"></span></p>
+    <p>Word Result: <span id="minWordSearchRes"></span></p>
+  </fieldset>
+</Page>
+
+<script>
+  // Sequential Search
+  function sequentialSearch(arr: any[], data: any) {
+    for (let i = 0; i < arr.length; ++i) {
+      if (arr[i] === data) return i;
+    }
+    return -1;
+  }
+
+  function sequentialSearchReverse(arr: any[], data: any) {
+    for (let i = arr.length - 1; i > -1; i--) {
+      if (arr[i] === data) return i;
+    }
+    return -1;
+  }
+
+  function sequentialSearchSelfOrganizing(arr: any[], data: any) {
+    for (let i = 0; i < arr.length; ++i) {
+      if (arr[i] === data) {
+        /*if (i > 0) {
+          swap(arr, i, i - 1);
+      }*/
+        if (i > arr.length * 0.2) {
+          swap(arr, i, 0);
+        }
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function swap(arr: any[], index: number, index1: number) {
+    const temp = arr[index];
+    arr[index] = arr[index1];
+    arr[index1] = temp;
+  }
+
+  function displayArray(arr: any[]) {
+    let ret = '<div><p>';
+    for (let i = 0; i < arr.length; ++i) {
+      ret += arr[i] + ' ';
+      if (i % 10 === 0 && i > 0) {
+        ret += '</p><p>';
+      }
+    }
+    return ret + '</p></div>';
+  }
+
+  function findMinimum(arr: any[]) {
+    let min = arr[0];
+    for (let i = 1; i < arr.length; ++i) {
+      if (arr[i] < min) {
+        min = arr[i];
+      }
+    }
+    return min;
+  }
+
+  function findMaximum(arr: any[]) {
+    let max = arr[0];
+    for (let i = 1; i < arr.length; ++i) {
+      if (arr[i] > max) {
+        max = arr[i];
+      }
+    }
+    return max;
+  }
+
+  const numbers = Array.from({ length: 100 }, () =>
+    Math.floor(Math.random() * 101)
+  );
+  const numbers2 = Array.from({ length: 10 }, () =>
+    Math.floor(Math.random() * 101)
+  );
+  const numbers3 = Array.from({ length: 100 }, () =>
+    Math.floor(Math.random() * 101)
+  );
+
+  // Binary search
+  function binSearcher(arr: any[], data: any) {
+    let upperBound = arr.length - 1;
+    let lowerBound = 0;
+    let cnt = 1000;
+    while (lowerBound <= upperBound && cnt > 0) {
+      cnt -= 1;
+      const mid = Math.floor((upperBound + lowerBound) / 2);
+      console.log('Current Midpoint', mid);
+      if (arr[mid] < data) {
+        lowerBound = mid + 1;
+      } else if (arr[mid] > data) {
+        upperBound = mid + 1;
+      } else {
+        return mid;
+      }
+    }
+    return -1;
+  }
+
+  function insertionSort(arr: any[]) {
+    let inner;
+    let temp;
+    for (let outer = 1; outer <= arr.length - 1; ++outer) {
+      temp = arr[outer];
+      inner = outer;
+      while (inner > 0 && arr[inner - 1] >= temp) {
+        arr[inner] = arr[inner - 1];
+        --inner;
+      }
+      arr[inner] = temp;
+    }
+  }
+
+  // count sorted data
+  function count(arr: any[], data: any) {
+    let count = 0;
+    const position = binSearcher(arr, data);
+    if (position > -1) {
+      ++count;
+      for (let i = position - 1; i > 0; --i) {
+        if (arr[i] === data) {
+          ++count;
+        } else {
+          break;
+        }
+      }
+      for (let i = position + 1; i < arr.length; ++i) {
+        if (arr[i] === data) {
+          ++count;
+        } else {
+          break;
+        }
+      }
+    }
+    console.log('count', count);
+    return count;
+  }
+
+  // Exercise 3
+  // Find smallest element in dataset, generalise to any other position
+  class MinSet {
+    datastore: any[];
+    constructor(arr: any[]) {
+      this.datastore = [];
+      const newArr = [...arr];
+      insertionSort(newArr);
+      for (let i = 0; i < newArr.length; i++) {
+        if (this.datastore.indexOf(newArr[i]) === -1) {
+          this.datastore.push(newArr[i]);
+        }
+      }
+    }
+  }
+
+  function nthSmallestElement(arr: any[], n: number) {
+    const s = new MinSet(arr);
+    if (n > -1 && n < s.datastore.length) {
+      return s.datastore[n];
+    } else {
+      return 'Invalid N';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchDiv = document.getElementById('searchDiv') as HTMLDivElement;
+    const selfSortDiv = document.getElementById('selfSort') as HTMLDivElement;
+    const binArrDiv = document.getElementById('binArr') as HTMLDivElement;
+    const wordSearchDiv = document.getElementById(
+      'wordSearch'
+    ) as HTMLDivElement;
+    const seqSearchNumInput = document.getElementById(
+      'seqSearchNum'
+    ) as HTMLInputElement;
+    const seqSearchResSpan = document.getElementById(
+      'seqSearchRes'
+    ) as HTMLSpanElement;
+    const seqSearchTimingSpan = document.getElementById(
+      'seqSearchTiming'
+    ) as HTMLSpanElement;
+    const binSearchTimingSpan = document.getElementById(
+      'binSearchTiming'
+    ) as HTMLSpanElement;
+    const seqSearchNum1Input = document.getElementById(
+      'seqSearchNum1'
+    ) as HTMLInputElement;
+    const seqSearchRes1Span = document.getElementById(
+      'seqSearchRes1'
+    ) as HTMLSpanElement;
+    const binSearchNumInput = document.getElementById(
+      'binSearchNum'
+    ) as HTMLInputElement;
+    const binSearchResSpan = document.getElementById(
+      'binSearchRes'
+    ) as HTMLSpanElement;
+    const binCountSpan = document.getElementById('binCount') as HTMLSpanElement;
+    const minSearchInput = document.getElementById(
+      'minSearch'
+    ) as HTMLInputElement;
+    const minSearchResSpan = document.getElementById(
+      'minSearchRes'
+    ) as HTMLSpanElement;
+    const minWordSearchResSpan = document.getElementById(
+      'minWordSearchRes'
+    ) as HTMLSpanElement;
+
+    if (searchDiv && selfSortDiv && binArrDiv && wordSearchDiv) {
+      // for (let i = 0; i < 100; i++) {
+      //   numbers[i] = Math.floor(Math.random() * 101);
+      // }
+      searchDiv.innerHTML = `<h2>Sequential Search</h2>${displayArray(numbers)}
+<p>The minimum value is: ${findMinimum(numbers)}</p>
+<p>The maximum value is: ${findMaximum(numbers)}</p>`;
+
+      //self sorting
+      selfSortDiv.innerHTML += displayArray(numbers2);
+
+      insertionSort(numbers3);
+      binArrDiv.innerHTML += displayArray(numbers3);
+
+      const words = 'the quick brown fox jumped over the lazy dog';
+      const wordArr = words.split(' ');
+      wordSearchDiv.innerHTML += `<p>${wordArr}</p>
+<p>Find fox at position ${sequentialSearch(wordArr, 'fox')}</p>`;
+    }
+
+    // seq search
+    function seqSearch() {
+      if (seqSearchNumInput && seqSearchResSpan) {
+        const searchNum = Number(seqSearchNumInput.value);
+        // console.log('searchNum',searchNum,numbers);
+        seqSearchResSpan.textContent = sequentialSearch(
+          numbers,
+          searchNum
+        ).toString();
+      }
+    }
+    document.getElementById('seqSearch')?.addEventListener('click', seqSearch);
+
+    function seqSearchReverse() {
+      // Exercise 1
+      if (seqSearchNumInput && seqSearchResSpan) {
+        const searchNum = Number(seqSearchNumInput.value);
+        seqSearchResSpan.textContent = sequentialSearchReverse(
+          numbers,
+          searchNum
+        ).toString();
+      }
+    }
+    document
+      .getElementById('seqSearchReverse')
+      ?.addEventListener('click', seqSearchReverse);
+
+    function compareTimings() {
+      // Exercise 2
+      // compare timings of sequential search and binary search on numbers
+      if (seqSearchNumInput && seqSearchResSpan && seqSearchTimingSpan) {
+        const searchNum = Number(seqSearchNumInput.value);
+        let start = new Date().getTime();
+        let seqRes = sequentialSearch(numbers, searchNum);
+        let end = new Date().getTime();
+        seqSearchResSpan.textContent = seqRes.toString();
+        seqSearchTimingSpan.textContent = (end - start).toString();
+        // binary search
+        const binNumbersArr = [...numbers];
+        start = new Date().getTime();
+        insertionSort(binNumbersArr);
+        seqRes = binSearcher(binNumbersArr, searchNum);
+        end = new Date().getTime();
+        binSearchTimingSpan.textContent = (end - start).toString();
+      }
+    }
+    document
+      .getElementById('compareTimings')
+      ?.addEventListener('click', compareTimings);
+
+    // self sorting
+    function seqSearch1() {
+      if (seqSearchNum1Input && seqSearchRes1Span && selfSortDiv) {
+        const searchNum = Number(seqSearchNum1Input.value);
+        seqSearchRes1Span.textContent = sequentialSearchSelfOrganizing(
+          numbers2,
+          searchNum
+        ).toString();
+        selfSortDiv.innerHTML = displayArray(numbers2);
+      }
+    }
+    document
+      .getElementById('seqSearch1')
+      ?.addEventListener('click', seqSearch1);
+
+    // binary search
+    function binSearch() {
+      if (binSearchNumInput) {
+        const searchNum = Number(binSearchNumInput.value);
+        binSearchResSpan.textContent = binSearcher(
+          numbers3,
+          searchNum
+        ).toString();
+        binCountSpan.textContent = count(numbers3, searchNum).toString();
+      }
+    }
+    document.getElementById('binSearch')?.addEventListener('click', binSearch);
+
+    // min search
+    function minSearch() {
+      if (minSearchInput) {
+        const posSearch = Number(minSearchInput.value);
+        const num1k = Array.from({ length: 1000 }, () =>
+          Math.floor(Math.random() * 1001)
+        );
+        minSearchResSpan.textContent = nthSmallestElement(num1k, posSearch);
+
+        const words = 'the quick brown fox jumped over the lazy dog';
+        const wordArr = words.split(' ');
+        minWordSearchResSpan.textContent = nthSmallestElement(
+          wordArr,
+          posSearch
+        );
+      }
+    }
+    document
+      .getElementById('minSearchBtn')
+      ?.addEventListener('click', minSearch);
+  });
+</script>
