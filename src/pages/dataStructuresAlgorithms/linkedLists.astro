@@ -1,0 +1,515 @@
+---
+import Page from '../../layouts/page.astro';
+const frontmatter = { title: 'Linked Lists', last_modified_at: '2026-09-06' };
+---
+
+<Page frontmatter={frontmatter}>
+  <p>
+    My answers to the exercises in
+    <a
+      href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf"
+      >Algorithms &amp; Data Structures with JS</a
+    >
+  </p>
+
+  <div id="cities"></div>
+  <p>Exercise 1 - Advance</p>
+  <div id="citiesNext"></div>
+  <p>Exercise 2 - Prev</p>
+  <div id="citiesPrev"></div>
+  <p>Exercise 3 - Show</p>
+  <p id="ex3Show"></p>
+
+  <p>Exercise 4/5:</p>
+  <fieldset>
+    <label for="grade">Grade:</label>
+    <input id="grade" name="grade" type="text" class="form-control" />
+    <button type="button" class="btn btn-primary" id="addGrade">
+      Add Grade
+    </button>
+  </fieldset>
+  <div id="grades"></div>
+
+  <p>Exercise 6:</p>
+  <fieldset>
+    <label for="startingNumber">Number of Soldiers:</label>
+    <input
+      id="startingNumber"
+      name="startingNumber"
+      class="form-control"
+      value="40"
+      type="number"
+    />
+    <label for="everyNth">Remove Every Nth Soldier:</label>
+    <input
+      id="everyNth"
+      name="everyNth"
+      class="form-control"
+      value="3"
+      type="number"
+    />
+    <button type="button" class="btn btn-primary" id="determineSurvivors">
+      Determine Survivors
+    </button>
+    <p>Answer: <span id="ex6Ans"></span></p>
+    <div id="ex6Show"></div>
+  </fieldset>
+</Page>
+
+<script>
+  class Nodel {
+    element: string;
+    next: Nodel | null;
+    constructor(element: string) {
+      this.element = element;
+      this.next = null;
+    }
+  }
+
+  class LinkedList {
+    head: Nodel;
+    constructor() {
+      this.head = new Nodel('head');
+    }
+
+    remove(item: string) {
+      const prevNode = this.findPrevious(item);
+      if (prevNode.next) {
+        prevNode.next = prevNode.next.next;
+      }
+    }
+
+    findPrevious(item: string) {
+      let currNode = this.head;
+      while (currNode.next && currNode.next.element !== item) {
+        currNode = currNode.next;
+      }
+      return currNode;
+    }
+
+    display() {
+      let currNode = this.head;
+      let ret = '<ol>';
+      while (currNode.next) {
+        console.log('element', currNode.next.element);
+        ret += `<li>${currNode.next.element}</li>`;
+        currNode = currNode.next;
+      }
+      ret += '</ol>';
+      return ret;
+    }
+
+    find(item: string) {
+      let currNode: Nodel | null = this.head;
+      while (currNode && currNode.element !== item) {
+        currNode = currNode.next;
+      }
+      //return currNode == this.head? null : currNode;
+      return currNode;
+    }
+
+    insert(newElement: string, item: string) {
+      const newNode = new Nodel(newElement);
+      const current = this.find(item);
+      newNode.next = current?.next ?? null;
+      if (current) current.next = newNode;
+    }
+
+    //exercise 1
+    advance(item: string, n: number) {
+      //advance the item n places ahead
+      const current = this.find(item);
+      const prevNode = this.findPrevious(item);
+      console.log('prevNode', prevNode);
+      if (prevNode.next) {
+        prevNode.next = prevNode.next.next;
+        if (prevNode.next && current && current.next) {
+          prevNode.next.next = current.next.next;
+        }
+
+        //move the nodes onwards
+        let currNode = prevNode.next;
+        while (n > 1 && currNode) {
+          currNode = currNode.next;
+          n -= 1;
+        }
+        if (currNode && current) {
+          const temp = currNode.next;
+          currNode.next = current;
+          current.next = temp;
+        }
+      }
+    }
+
+    //exercise 2
+    back(item: string, n: number) {
+      const current = this.find(item);
+      let prevNode = this.findPrevious(item);
+      prevNode.next = current?.next ?? null;
+      //n -= 1;
+      while (n > 0) {
+        prevNode = this.findPrevious(prevNode.element);
+        n -= 1;
+      }
+      const temp = prevNode.next;
+      prevNode.next = current;
+      if (current) current.next = temp;
+    }
+
+    //Exercise 3
+    show(item: string) {
+      const current = this.find(item);
+      return `Element: ${current?.element}, Next: ${current?.next}`;
+    }
+  }
+
+  //Exercise 1
+  //cities
+  const cities = new LinkedList();
+  cities.insert('Conway', 'head');
+  cities.insert('Russellville', 'Conway');
+  cities.insert('Carlisle', 'Russellville');
+  cities.insert('Alma', 'Carlisle');
+  const citiesDiv = document.getElementById('cities') as HTMLDivElement;
+  if (citiesDiv) {
+    citiesDiv.innerHTML = cities.display();
+  }
+  cities.advance('Conway', 2);
+  console.log(cities);
+  const citiesNextDiv = document.getElementById('citiesNext') as HTMLDivElement;
+  if (citiesNextDiv) {
+    citiesNextDiv.innerHTML = cities.display();
+  }
+  cities.back('Alma', 2);
+  const citiesPrevDiv = document.getElementById('citiesPrev') as HTMLDivElement;
+  if (citiesPrevDiv) {
+    citiesPrevDiv.innerHTML = cities.display();
+  }
+  const ex3ShowDiv = document.getElementById('ex3Show') as HTMLParagraphElement;
+  if (ex3ShowDiv) {
+    ex3ShowDiv.innerText = cities.show('Alma');
+  }
+
+  /*$( document ).load(() => {
+});*/
+
+  //Exercise 4
+  /*let grades = new LinkedList();
+let latestGrade = 'head';
+function addGrade() {
+    grades.insert($('#grade').val(), latestGrade);
+    latestGrade = $('#grade').val();
+    $('#grades').empty();
+    $('#grades').append(grades.display());
+}*/
+
+  //Exercise 5
+  class DoubleNode {
+    element: string;
+    next: DoubleNode | null;
+    previous: DoubleNode | null;
+    constructor(element: string) {
+      this.element = element;
+      this.next = null;
+      this.previous = null;
+    }
+  }
+  class DoublyLinkedList {
+    head: DoubleNode;
+    constructor() {
+      this.head = new DoubleNode('head');
+    }
+
+    dispReverse() {
+      let currNode = this.head;
+      currNode = this.findLast();
+      let ret = '<ol>';
+      while (!(currNode.previous === null)) {
+        ret += `<li>${currNode.next?.element}</li>`;
+        currNode = currNode.previous;
+      }
+      ret += '</ol>';
+      return ret;
+    }
+
+    remove(item: string) {
+      const currNode = this.find(item);
+      if (currNode?.next) {
+        if (currNode.previous) currNode.previous.next = currNode.next;
+        currNode.next.previous = currNode.previous;
+        currNode.next = null;
+        currNode.previous = null;
+      }
+    }
+
+    findLast() {
+      let currNode = this.head;
+      while (currNode.next) {
+        currNode = currNode.next;
+      }
+      return currNode;
+    }
+
+    display() {
+      let currNode = this.head;
+      let ret = '<ol>';
+      while (currNode.next) {
+        //console.log('element', currNode.next.element);
+        ret += `<li>${currNode.next.element}</li>`;
+        currNode = currNode.next;
+      }
+      ret += '</ol>';
+      return ret;
+    }
+
+    find(item: string) {
+      let currNode: DoubleNode | null = this.head;
+      while (currNode && currNode.element !== item) {
+        currNode = currNode.next;
+      }
+      //return currNode == this.head? null : currNode;
+      return currNode;
+    }
+
+    insert(newElement: string, item: string) {
+      const newNode = new DoubleNode(newElement);
+      const current = this.find(item);
+      newNode.next = current?.next ?? null;
+      newNode.previous = current;
+      if (current) current.next = newNode;
+    }
+
+    //exercise 1
+    // advance(item: string, n: number) {
+    //   //advance the item n places ahead
+    //   const current = this.find(item);
+    //   const prevNode = this.findPrevious(item);
+    //   console.log('prevNode', prevNode);
+    //   if (!(prevNode.next === null)) {
+    //     prevNode.next = prevNode.next.next;
+    //     prevNode.next.next = current.next.next;
+
+    //     //move the nodes onwards
+    //     let currNode = prevNode.next;
+    //     while (n > 1 && currNode) {
+    //       currNode = currNode.next;
+    //       n -= 1;
+    //     }
+    //     const temp = currNode.next;
+    //     currNode.next = current;
+    //     current.next = temp;
+    //   }
+    // }
+    findPrevious(item: any) {
+      throw new Error('Method not implemented.');
+    }
+
+    //exercise 2
+    // back(item: string, n: number) {
+    //   const current = this.find(item);
+    //   let prevNode = this.findPrevious(item);
+    //   prevNode.next = current.next;
+    //   //n -= 1;
+    //   while (n > 0) {
+    //     prevNode = this.findPrevious(prevNode.element);
+    //     n -= 1;
+    //   }
+    //   const temp = prevNode.next;
+    //   prevNode.next = current;
+    //   current.next = temp;
+    // }
+
+    //Exercise 3
+    show(item: string) {
+      const current = this.find(item);
+      return `Element: ${current?.element}, Next: ${current?.next}`;
+    }
+  }
+
+  const grades = new DoublyLinkedList();
+  const gradeInput = document.getElementById('grade') as HTMLInputElement;
+  const gradesDiv = document.getElementById('grades') as HTMLDivElement;
+  let latestGrade = 'head';
+  function addGrade() {
+    if (gradeInput && gradesDiv) {
+      grades.insert(gradeInput.value, latestGrade);
+      latestGrade = gradeInput.value;
+      gradesDiv.innerHTML = grades.display();
+    }
+  }
+
+  //Exercise 6
+  class CirclularLinkedList {
+    head: Nodel;
+    constructor() {
+      this.head = new Nodel('head');
+      this.head.next = this.head;
+    }
+
+    remove(item: string) {
+      const prevNode = this.findPrevious(item);
+      if (prevNode.next) {
+        prevNode.next = prevNode.next.next;
+      }
+    }
+
+    findPrevious(item: string) {
+      let currNode = this.head;
+      while (currNode.next && currNode.next.element !== item) {
+        currNode = currNode.next;
+      }
+      return currNode;
+    }
+
+    display() {
+      let currNode = this.head;
+      let ret = '<ol>';
+      while (currNode.next && !(currNode.next.element === 'head')) {
+        console.log('element', currNode.next.element);
+        ret += `<li>${currNode.next.element}, next: ${currNode.next?.next?.element}</li>`;
+        currNode = currNode.next;
+      }
+      ret += '</ol>';
+      return ret;
+    }
+
+    displayText() {
+      let currNode = this.head;
+      let ret = '';
+      let delim = '';
+      while (currNode.next && !(currNode.next.element === 'head')) {
+        ret += delim + currNode.next.element;
+        delim = ', ';
+        currNode = currNode.next;
+      }
+      return ret;
+    }
+
+    total() {
+      let ret = 0;
+      let currNode = this.head;
+      while (currNode.next && !(currNode.next.element === 'head')) {
+        ret += 1;
+        currNode = currNode.next;
+      }
+      return ret;
+    }
+
+    find(item: string) {
+      let currNode: Nodel | null = this.head;
+      while (currNode && currNode.element !== item) {
+        currNode = currNode.next;
+      }
+      //return currNode == this.head? null : currNode;
+      return currNode;
+    }
+
+    insert(newElement: string, item: string) {
+      const newNode = new Nodel(newElement);
+      const current = this.find(item);
+      newNode.next = current?.next ?? null;
+      if (current) current.next = newNode;
+    }
+
+    //exercise 1
+    advance(item: string, n: number) {
+      //advance the item n places ahead
+      const current = this.find(item);
+      const prevNode = this.findPrevious(item);
+      console.log('prevNode', prevNode);
+      if (prevNode.next) {
+        prevNode.next = prevNode.next.next;
+        if (prevNode?.next?.next)
+          prevNode.next.next = current?.next?.next ?? null;
+
+        //move the nodes onwards
+        let currNode = prevNode.next;
+        while (n > 1 && currNode) {
+          currNode = currNode.next;
+          n -= 1;
+        }
+        const temp = currNode?.next ?? null;
+        if (currNode?.next) currNode.next = current;
+        if (current) current.next = temp;
+      }
+    }
+
+    //exercise 2
+    back(item: string, n: number) {
+      const current = this.find(item);
+      let prevNode = this.findPrevious(item);
+      prevNode.next = current?.next ?? null;
+      //n -= 1;
+      while (n > 0) {
+        prevNode = this.findPrevious(prevNode.element);
+        n -= 1;
+      }
+      const temp = prevNode.next;
+      prevNode.next = current;
+      if (current) current.next = temp;
+    }
+
+    //Exercise 3
+    show(item: string) {
+      const current = this.find(item);
+      return `Element: ${current?.element}, Next: ${current?.next}`;
+    }
+  }
+
+  function determineSurvivors() {
+    const startingNumberInput = document.getElementById(
+      'startingNumber'
+    ) as HTMLInputElement;
+    const ex6ShowDiv = document.getElementById('ex6Show') as HTMLDivElement;
+    const everyNthInput = document.getElementById(
+      'everyNth'
+    ) as HTMLInputElement;
+    const ex6AnsSpan = document.getElementById('ex6Ans') as HTMLSpanElement;
+
+    if (
+      startingNumberInput &&
+      ex6ShowDiv &&
+      everyNthInput &&
+      ex6AnsSpan &&
+      ex6ShowDiv
+    ) {
+      const startingNumber = Number(startingNumberInput.value);
+      //ex6Show
+      //ex6Ans
+      const soldiers = new CirclularLinkedList();
+      let last = 'head';
+      for (let i = 0; i < startingNumber; i++) {
+        soldiers.insert(i.toString(), last);
+        last = i.toString();
+      }
+      ex6ShowDiv.innerHTML = soldiers.display();
+
+      // every Nth
+      const everyNth = Number(everyNthInput.value);
+      //let total =
+      let currNode: Nodel | null = soldiers.head;
+      let j = 0;
+      while (soldiers.total() >= everyNth && soldiers.total() > 0 && j < 1000) {
+        let n = everyNth;
+        let removeNode: Nodel | null = currNode;
+        while ((n > 0 || removeNode?.element === 'head') && j < 1000) {
+          removeNode = removeNode?.next ?? null;
+          n -= 1;
+          j += 1;
+        }
+        currNode = removeNode?.next ?? null;
+        soldiers.remove(removeNode?.element ?? '');
+      }
+      console.log(j);
+      ex6ShowDiv.innerHTML = soldiers.display();
+      ex6AnsSpan.textContent = soldiers.displayText();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('addGrade')?.addEventListener('click', addGrade);
+    document
+      .getElementById('determineSurvivors')
+      ?.addEventListener('click', determineSurvivors);
+  });
+</script>
