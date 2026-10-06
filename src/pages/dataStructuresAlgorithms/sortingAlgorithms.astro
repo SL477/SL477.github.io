@@ -1,7 +1,32 @@
+---
+import Page from '../../layouts/page.astro';
+const frontmatter = {
+  title: 'Sorting Algorithms',
+  last_modified_at: '2025-02-01',
+};
+---
 
+<Page frontmatter={frontmatter}>
+  <p>
+    My answers to the exercises in{' '}
+    <a
+      href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf"
+      >Algorithms &amp; Data Structures with JS</a
+    >
+  </p>
+
+  <div id="testCArray"></div>
+</Page>
+
+<script>
+  
 // Testing bed
 class CArray {
-  constructor(numElements) {
+  dataStore: any[];
+  pos: number;
+  numElements: number;
+  gaps: number[];
+  constructor(numElements: number) {
     this.dataStore = [];
     this.pos = 0;
     this.numElements = numElements;
@@ -25,7 +50,7 @@ class CArray {
     }
   }
 
-  insert(element) {
+  insert(element: any) {
     this.dataStore[this.pos++] = element;
   }
 
@@ -41,7 +66,7 @@ class CArray {
     return ret;
   }
 
-  swap(arr, index1, index2) {
+  swap(arr: any[], index1: number, index2: number) {
     const temp = arr[index1];
     arr[index1] = arr[index2];
     arr[index2] = temp;
@@ -98,7 +123,7 @@ class CArray {
   }
 
   //Shell Sort
-  setGaps(arr) {
+  setGaps(arr: number[]) {
     this.gaps = arr;
   }
 
@@ -158,7 +183,7 @@ class CArray {
     }
   }
 
-  mergeArrays(arr, startLeft, stopLeft, startRight, stopRight) {
+  mergeArrays(arr: any[], startLeft: number, stopLeft: number, startRight: number, stopRight: number) {
     const rightArr = new Array(stopRight - startRight + 1);
     const leftArr = new Array(stopLeft - startLeft + 1);
     let k = startRight;
@@ -191,7 +216,7 @@ class CArray {
   }
 
   // Quick Sort
-  qSort(list) {
+  qSort(list: any[]): any[] {
     if (list.length === 0) {
       return [];
     }
@@ -213,67 +238,62 @@ class CArray {
 function startUp() {
   const myNumbers = new CArray(10);
   myNumbers.setData();
-  const testCArrayDiv = document.getElementById('testCArray');
+  const testCArrayDiv = document.getElementById('testCArray') as HTMLDivElement;
   if (testCArrayDiv) {
     let start = new Date().getTime();
-    testCArrayDiv.innerHTML += '<h4>Unsorted</h4>' + myNumbers.toString();
-    testCArrayDiv.innerHTML += '<h4>Intermediate Sorting</h4>' + myNumbers.bubbleSort();
-    testCArrayDiv.innerHTML += '<h4>Bubble Sorted</h4>' + myNumbers.toString();
+    testCArrayDiv.innerHTML += `<h4>Unsorted</h4>${myNumbers.toString()}
+<h4>Intermediate Sorting</h4>${myNumbers.bubbleSort()};
+<h4>Bubble Sorted</h4>${myNumbers.toString()}`;
     let stop = new Date().getTime();
-    let elapsed = stop - start;
-    testCArrayDiv.innerHTML += '<p>Elapsed time ' + elapsed + ' milliseconds<p>';
+    testCArrayDiv.innerHTML += `<p>Elapsed time ${stop - start} milliseconds<p>`;
 
     const selNumbers = new CArray(10);
     selNumbers.setData();
     start = new Date().getTime();
-    testCArrayDiv.innerHTML += '<h4>Unsorted</h4>' + selNumbers.toString();
-    testCArrayDiv.innerHTML += '<h4>Intermediate Sorting</h4>' + selNumbers.selectionSort();
-    testCArrayDiv.innerHTML += '<h4>Selection Sorted</h4>' + selNumbers.toString();
+    testCArrayDiv.innerHTML += `<h4>Unsorted</h4>${selNumbers.toString()}
+<h4>Intermediate Sorting</h4>${selNumbers.selectionSort()}
+<h4>Selection Sorted</h4>${selNumbers.toString()}`;
     stop = new Date().getTime();
-    elapsed = stop - start;
-    testCArrayDiv.innerHTML += '<p>Elapsed time ' + elapsed + ' milliseconds<p>';
+    testCArrayDiv.innerHTML += `<p>Elapsed time ${stop - start} milliseconds<p>`;
 
     const insNumbers = new CArray(10);
     insNumbers.setData();
     start = new Date().getTime();
-    testCArrayDiv.innerHTML += '<h4>Unsorted</h4>' + insNumbers.toString();
-    testCArrayDiv.innerHTML += '<h4>Intermediate Sorting</h4>' + insNumbers.insertionSort();
-    testCArrayDiv.innerHTML += '<h4>Insertion Sorted</h4>' + insNumbers.toString();
+    testCArrayDiv.innerHTML += `<h4>Unsorted</h4>${insNumbers.toString()}
+<h4>Intermediate Sorting</h4>${insNumbers.insertionSort()}
+<h4>Insertion Sorted</h4>${insNumbers.toString()}`;
     stop = new Date().getTime();
-    elapsed = stop - start;
-    testCArrayDiv.innerHTML += '<p>Elapsed time ' + elapsed + ' milliseconds<p>';
+    testCArrayDiv.innerHTML += `<p>Elapsed time ${stop - start} milliseconds<p>`;
 
     const shellNumbers = new CArray(10);
     shellNumbers.setData();
     start = new Date().getTime();
-    testCArrayDiv.innerHTML += '<h4>Unsorted</h4>' + shellNumbers.toString();
-    testCArrayDiv.innerHTML += '<h4>Intermediate Sorting</h4>' + shellNumbers.shellSort();
-    testCArrayDiv.innerHTML += '<h4>Shell Sorted</h4>' + shellNumbers.toString();
+    testCArrayDiv.innerHTML += `<h4>Unsorted</h4>${shellNumbers.toString()};
+<h4>Intermediate Sorting</h4>${shellNumbers.shellSort()}
+<h4>Shell Sorted</h4>${shellNumbers.toString()}`;
     stop = new Date().getTime();
-    elapsed = stop - start;
-    testCArrayDiv.innerHTML += '<p>Elapsed time ' + elapsed + ' milliseconds<p>';
+    testCArrayDiv.innerHTML += `<p>Elapsed time ${stop - start} milliseconds<p>`;
 
     const shellNumbers1 = new CArray(10);
     shellNumbers1.setData();
     start = new Date().getTime();
-    testCArrayDiv.innerHTML += '<h4>Unsorted</h4>' + shellNumbers1.toString();
-    testCArrayDiv.innerHTML += '<h4>Intermediate Sorting</h4>' + shellNumbers1.shellSort1();
-    testCArrayDiv.innerHTML += '<h4>Shell Sorted v2</h4>' + shellNumbers1.toString();
+    testCArrayDiv.innerHTML += `<h4>Unsorted</h4>${shellNumbers1.toString()}
+<h4>Intermediate Sorting</h4>${shellNumbers1.shellSort1()}
+<h4>Shell Sorted v2</h4>${shellNumbers1.toString()}`;
     stop = new Date().getTime();
-    elapsed = stop - start;
-    testCArrayDiv.innerHTML += '<p>Elapsed time ' + elapsed + ' milliseconds<p>';
+    testCArrayDiv.innerHTML += `<p>Elapsed time ${stop - start} milliseconds<p>`;
 
     const mergeNumbers = new CArray(10);
     mergeNumbers.setData();
-    testCArrayDiv.innerHTML += '<h4>Unsorted</h4>' + mergeNumbers.toString();
+    testCArrayDiv.innerHTML += `<h4>Unsorted</h4>${mergeNumbers.toString()}`;
     mergeNumbers.mergeSort();
-    testCArrayDiv.innerHTML += '<h4>Merge Sorted</h4>' + mergeNumbers.toString();
+    testCArrayDiv.innerHTML += `<h4>Merge Sorted</h4>${mergeNumbers.toString()}`;
 
     const quickNumbers = new CArray(100);
     quickNumbers.setData();
-    testCArrayDiv.innerHTML += '<h3>Quick Sort</h3><h4>Unsorted</h4>' + quickNumbers.toString();
+    testCArrayDiv.innerHTML += `<h3>Quick Sort</h3><h4>Unsorted</h4>${quickNumbers.toString()}`;
     quickNumbers.dataStore = quickNumbers.qSort(quickNumbers.dataStore);
-    testCArrayDiv.innerHTML += '<h4>Quick Sorted</h4>' + quickNumbers.toString();
+    testCArrayDiv.innerHTML += `<h4>Quick Sorted</h4>${quickNumbers.toString()}`;
 
     //Exercise 1
     // Bubble sorted
@@ -284,10 +304,9 @@ function startUp() {
     strBubble.dataStore = [...letterArray];
     testCArrayDiv.innerHTML += strBubble.toString();
     strBubble.bubbleSort();
-    testCArrayDiv.innerHTML += '<h3>Bubble Sorting Sorted</h3>' + strBubble.toString();
+    testCArrayDiv.innerHTML += `<h3>Bubble Sorting Sorted</h3>${strBubble.toString()}`;
     stop = new Date().getTime();
-    elapsed = stop - start;
-    testCArrayDiv.innerHTML += '<p>Elapsed time ' + elapsed + ' milliseconds<p>';
+    testCArrayDiv.innerHTML += `<p>Elapsed time ${stop - start} milliseconds<p>`;
 
     // Selection sorted
     start = new Date().getTime();
@@ -296,10 +315,9 @@ function startUp() {
     selSorting.dataStore = [...letterArray];
     testCArrayDiv.innerHTML += selSorting.toString();
     selSorting.selectionSort();
-    testCArrayDiv.innerHTML += '<h3>Selection Sorted</h3>' + selSorting.toString();
+    testCArrayDiv.innerHTML += `<h3>Selection Sorted</h3>${selSorting.toString()}`;
     stop = new Date().getTime();
-    elapsed = stop - start;
-    testCArrayDiv.innerHTML += '<p>Elapsed time ' + elapsed + ' milliseconds<p>';
+    testCArrayDiv.innerHTML += `<p>Elapsed time ${stop - start} milliseconds<p>`;
 
     // Shell Sorted
     start = new Date().getTime();
@@ -308,10 +326,9 @@ function startUp() {
     shellSorting.dataStore = [...letterArray];
     testCArrayDiv.innerHTML += shellSorting.toString();
     shellSorting.shellSort1();
-    testCArrayDiv.innerHTML += '<h3>Shell Sorted</h3>' + shellSorting.toString();
+    testCArrayDiv.innerHTML += `<h3>Shell Sorted</h3>${shellSorting.toString()}`;
     stop = new Date().getTime();
-    elapsed = stop - start;
-    testCArrayDiv.innerHTML += '<p>Elapsed time ' + elapsed + ' milliseconds<p>';
+    testCArrayDiv.innerHTML += `<p>Elapsed time ${stop - start} milliseconds<p>`;
 
     // Exercise 2
     const bubble1k = new CArray(1000);
@@ -321,20 +338,17 @@ function startUp() {
     start = new Date().getTime();
     bubble1k.bubbleSort();
     stop = new Date().getTime();
-    elapsed = stop - start;
-    testCArrayDiv.innerHTML += '<p>Bubble sort time: ' + elapsed + ' milliseconds</p>';
+    testCArrayDiv.innerHTML += `<p>Bubble sort time: ${stop - start} milliseconds</p>`;
 
     start = new Date().getTime();
     bubble1k.selectionSort();
     stop = new Date().getTime();
-    elapsed = stop - start;
-    testCArrayDiv.innerHTML += '<p>Selection sort time: ' + elapsed + ' milliseconds</p>';
+    testCArrayDiv.innerHTML += `<p>Selection sort time: ${stop - start} milliseconds</p>`;
 
     start = new Date().getTime();
     bubble1k.insertionSort();
     stop = new Date().getTime();
-    elapsed = stop - start;
-    testCArrayDiv.innerHTML += '<p>Insertion sort time: ' + elapsed + ' milliseconds</p>';
+    testCArrayDiv.innerHTML += `<p>Insertion sort time: ${stop - start} milliseconds</p>`;
 
     // Exercise 3
     testCArrayDiv.innerHTML += '<h2>Exercise 3 - sorting reverse sorted array</h2>';
@@ -342,22 +356,19 @@ function startUp() {
     start = new Date().getTime();
     bubble1k.bubbleSort();
     stop = new Date().getTime();
-    elapsed = stop - start;
-    testCArrayDiv.innerHTML += '<p>Bubble sort time: ' + elapsed + ' milliseconds</p>';
+    testCArrayDiv.innerHTML += `<p>Bubble sort time: ${stop - start} milliseconds</p>`;
 
     bubble1k.dataStore.reverse();
     start = new Date().getTime();
     bubble1k.selectionSort();
     stop = new Date().getTime();
-    elapsed = stop - start;
-    testCArrayDiv.innerHTML += '<p>Selection sort time: ' + elapsed + ' milliseconds</p>';
+    testCArrayDiv.innerHTML += `<p>Selection sort time: ${stop - start} milliseconds</p>`;
 
     bubble1k.dataStore.reverse();
     start = new Date().getTime();
     bubble1k.insertionSort();
     stop = new Date().getTime();
-    elapsed = stop - start;
-    testCArrayDiv.innerHTML += '<p>Insertion sort time: ' + elapsed + ' milliseconds</p>';
+    testCArrayDiv.innerHTML += `<p>Insertion sort time: ${stop - start} milliseconds</p>`;
 
     // Exercise 4
     testCArrayDiv.innerHTML += '<h2>Exercise 4 - Quicksort v stock sort</h2>';
@@ -367,14 +378,13 @@ function startUp() {
     start = new Date().getTime();
     ex4Data.qSort(ex4Data.dataStore);
     stop = new Date().getTime();
-    elapsed = stop - start;
-    testCArrayDiv.innerHTML += '<p>Quick sort time: ' + elapsed + ' milliseconds</p>';
+    testCArrayDiv.innerHTML += `<p>Quick sort time: ${stop - start} milliseconds</p>`;
 
     start = new Date().getTime();
     ex4Data.dataStore.sort();
     stop = new Date().getTime();
-    elapsed = stop - start;
-    testCArrayDiv.innerHTML += '<p>Stock sort time: ' + elapsed + ' milliseconds</p>';
+    testCArrayDiv.innerHTML += `<p>Stock sort time: ${stop - start} milliseconds</p>`;
   }
 }
 startUp();
+</script>
