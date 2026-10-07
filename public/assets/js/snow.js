@@ -5,16 +5,17 @@ function snow() {
   const main = document.body;
   const snowHolder = document.createElement('div');
   snowHolder.ariaHidden = true;
+  const fragment = document.createDocumentFragment();
   for (let i = 0; i < 12; i++) {
     const flake = document.createElement('div');
-    // flake.style.color = 'white';
     flake.className = 'snowflake';
     const inner = document.createElement('div');
     inner.className = 'snowflake-inner';
     inner.textContent = '❅';
     flake.appendChild(inner);
-    snowHolder.appendChild(flake);
+    fragment.appendChild(flake);
   }
+  snowHolder.appendChild(fragment);
   main.appendChild(snowHolder);
 }
 

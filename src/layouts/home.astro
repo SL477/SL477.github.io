@@ -16,9 +16,13 @@ const formatter = new Intl.DateTimeFormat(site.lang, {
   day: 'numeric',
   year: 'numeric',
 });
+const js_file = {
+  path: 'snow.js',
+  async: true
+}
 ---
 
-<DefaultModified title={title}>
+<DefaultModified title={title} js_file={js_file}>
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/service-workers.js');
