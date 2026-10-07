@@ -1,7 +1,3 @@
----
-layout: none
----
-
 /**
  * Fetch the web mentions for a page
  * @param {string} pageUrl
@@ -11,18 +7,6 @@ function getWebMentions(pageUrl) {
     .then((res) => res.json())
     .then((res) => { console.log(res, pageUrl); fillWebMentionComments(res); })
     .catch((ex) => console.error(ex));
-}
-
-/**
- * This is to get the page URL and get the web mentions for a page
- */
-function getUrlAndCallWebMentions() {
-  const webMentionLink = document.querySelector(".u-uid");
-  if (webMentionLink) {
-    const link = webMentionLink.getAttribute("href");
-    console.log("page url", `{{ site.site_url }}${link}`);
-    getWebMentions(`{{ site.site_url }}${link}`);
-  }
 }
 
 /**
@@ -39,5 +23,3 @@ function fillWebMentionComments(webMentionData) {
     commentsDiv.innerHTML = `<h2>Comments</h2><p>Number of comments: ${numComments}</p>${commentsHtml}`;
   }
 }
-
-getUrlAndCallWebMentions();
