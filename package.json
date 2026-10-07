@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "build:astro": "astro build",
     "build:pagefind": "npx pagefind",
-    "build": "build:astro && build:pagefind",
+    "build": "npm run build:astro && npm run build:pagefind",
     "preview": "astro preview",
     "astro": "astro",
     "upgrade": "npx @astrojs/upgrade",
