@@ -1,5 +1,13 @@
 //<?xml-stylesheet type="text/xsl" href="/blogroll.xsl"?>
 import site from '../content/site.json';
+import blogroll from '../content/blogroll.json';
+
+function createOutlines(blogs: { description: string, url: string }[]) {
+  return blogs.map(b => `<outline text="${b.description}" description="${b.description}" htmlUrl="${b.url}" language="unknown" title="${b.description}" type="rss" version="RSS2" xmlUrl="${b.url}"/>`);
+}
+
+const blogs = blogroll.map(outline => `<outline text="${outline.outline}">${createOutlines(outline.blogs)}</outline>`);
+
 const now = (new Date()).toUTCString();
 const str = `<?xml version="1.0" encoding="utf-8"?>
 <opml version="2.0">
@@ -10,15 +18,7 @@ const str = `<?xml version="1.0" encoding="utf-8"?>
       <ownerName>${site.author.name}</ownerName>
   </head>
   <body>
-    <outline text="IndieWeb">
-      <outline text="James' Coffee Blog" description="James' Coffee Blog" htmlUrl="https://jamesg.blog/feeds/posts.xml" language="unknown" title="James' Coffee Blog" type="rss" version="RSS2" xmlUrl="https://jamesg.blog/feeds/posts.xml"/>
-      <outline text="Jo's Blog" description="Jo's Blog" htmlUrl="https://dead.garden/blog/feed.rss" language="unknown" title="Jo's Blog" type="rss" version="RSS2" xmlUrl="https://dead.garden/blog/feed.rss"/>
-      <outline text="Lars-Christian's website - Posts" description="Lars-Christian's website - Posts" htmlUrl="https://lars-christian.com/posts/feed.xml" language="unknown" title="Lars-Christian's website - Posts" type="rss" version="RSS2" xmlUrl="https://lars-christian.com/posts/feed.xml"/>
-      <outline text="Tracy Durnell's Mind Garden" description="Tracy Durnell's Mind Garden" htmlUrl="https://tracydurnell.com" language="unknown" title="Tracy Durnell's Mind Garden" type="rss" version="RSS2" xmlUrl="https://tracydurnell.com"/>
-    </outline>
-    <outline text="Me">
-      <outline text="Toms Post Feed" description="Toms Post Feed" htmlUrl="https://link477.com/feed.xml" language="unknown" title="Toms Post Feed" type="rss" version="RSS2" xmlUrl="https://link477.com/feed.xml"/>
-    </outline>
+    ${blogs}
   </body>
 </opml>`;
 

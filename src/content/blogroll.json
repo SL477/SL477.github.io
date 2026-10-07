@@ -1,0 +1,32 @@
+[
+  {
+    "outline": "IndieWeb",
+    "blogs": [
+      {
+        "description": "James' Coffee Blog",
+        "url": "https://jamesg.blog/feeds/posts.xml"
+      },
+      {
+        "description": "Jo's Blog",
+        "url": "https://dead.garden/blog/feed.rss"
+      },
+      {
+        "description": "Lars-Christian's website - Posts",
+        "url": "https://lars-christian.com/posts/feed.xml"
+      },
+      {
+        "description": "Tracy Durnell's Mind Garden",
+        "url": "https://tracydurnell.com"
+      }
+    ]
+  },
+  {
+    "outline": "Me",
+    "blogs": [
+      {
+        "description": "Toms Post Feed",
+        "url": "https://link477.com/feed.xml"
+      }
+    ]
+  }
+]
