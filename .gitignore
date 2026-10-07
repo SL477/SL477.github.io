@@ -29,3 +29,5 @@ pnpm-debug.log*
 .DS_Store
 
 old/
+
+public/pagefind/
