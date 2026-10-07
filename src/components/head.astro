@@ -13,6 +13,33 @@ const {
   ...props
 } = Astro.props;
 const url = Astro.url.pathname;
+
+const dteStr = Astro.props.last_modified_at ?? Astro.props.date;
+const lastModified: Date = dteStr? new Date(dteStr) : new Date;
+
+const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": layout === 'post' ? "BlogPosting" : "WebSite",
+      "author": {"@type":"Person","name": site.author.name},
+      "dateModified": lastModified,
+      ...(Astro.props.date && {
+    "datePublished": new Date(Astro.props.date).toISOString()
+  }),
+      "description": description
+    ?.replace(/<[^>]*>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim(),
+      "headline": title,
+      ...(layout === 'post' && {
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": url
+        }
+      }),
+      "publisher": {"@type": "Organization","logo": site.logo.src},
+      "name": site.author.name,
+      "url": site.site_url
+    }
 ---
 
 <head>
@@ -64,21 +91,7 @@ const url = Astro.url.pathname;
   <!-- Facebook instant articles-->
   <meta property="op:markup_version" content="v1.0"/>
   <meta property="fb:article_style" content="myarticlestyle"/>
-  <!-- <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": {% if page.layout == 'post' %}"BlogPosting"{% else %}"WebSite"{% endif %},
-      "author": {"@type":"Person","name":"{{ site.author.name }}"},
-      "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
-      {%- if page.date %}"datePublished": "{{ page.date | date_to_xmlschema }}",{%- endif %}
-      "description": {% if page.description %}"{{ page.description | strip_html | normalize_whitespace }}"{% elsif page.excerpt %}"{{ page.excerpt | strip_html | normalize_whitespace }}"{% else %}"{{ site.description | strip_html | normalize_whitespace }}"{% endif %},
-      "headline": "{{ page.title }}",
-      {%- if page.layout == 'post' %}"mainEntityOfPage": {"@type": "WebPage","@id": "{{ page.url | absolute_url}}}",{% endif %}
-      "publisher": {"@type": "Organization","logo": "{{ site.logo | absolute_url }}"},
-      "name": "{{ site.author.name }}",
-      "url": "{{ site.url }}"
-    }
-  </script> -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
 
   <!-- CSS only -->
   <link rel="preconnect" href="/assets/css/my-navbar.css"/>
