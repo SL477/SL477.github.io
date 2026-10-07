@@ -18,8 +18,8 @@ const formatter = new Intl.DateTimeFormat(site.lang, {
 });
 const js_file = {
   path: 'snow.js',
-  async: true
-}
+  async: true,
+};
 ---
 
 <DefaultModified title={title} js_file={js_file}>
@@ -80,7 +80,11 @@ const js_file = {
             </ul>
           </div>
           <p class="rss-subscribe">
-            subscribe <a href="/feed.xml">via RSS</a>
+            <a
+              href={`https://subscribeopenly.net/subscribe/?url=${site.site_url}/feed.xml`}
+            >
+              Subscribe to feed
+            </a>
           </p>
         </>
       )
