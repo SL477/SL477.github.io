@@ -1,14 +1,22 @@
 ---
 layout: ../layouts/page.astro
 title: Changelog
-last_modified_at: 2026-09-12
+last_modified_at: 2026-10-07
 ---
 
-## 2026-09-12
+## 2026-10-07
+
+### Added
+
+- Proper Sitemap HTML page
 
 ### Modified
 
 - Replace Jekyll with Astro
+
+### Removed
+
+- XSLT pages
 
 ## 2026-09-11
 
