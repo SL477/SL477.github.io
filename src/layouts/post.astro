@@ -65,7 +65,7 @@ const formatter = new Intl.DateTimeFormat(site.lang, {
               <span> • Tags: </span>
               {frontmatter.tags.map((tag: string) => (
                 <span class="p-category" data-tag={tag}>
-                  {tag}
+                  <a href={`/tags/${tag}`}>{tag}</a>
                 </span>
               ))}
             </>

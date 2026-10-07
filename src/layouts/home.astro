@@ -65,7 +65,7 @@ const js_file = {
                     <div>
                       {post.data.tags.map((tag) => (
                         <span class="p-category" data-tag={tag}>
-                          {tag}
+                          <a href={`/tags/${tag}`}>{tag}</a>
                         </span>
                       ))}
                     </div>

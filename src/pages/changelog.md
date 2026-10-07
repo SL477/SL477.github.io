@@ -9,6 +9,7 @@ last_modified_at: 2026-10-07
 ### Added
 
 - Proper Sitemap HTML page
+- Tags page
 
 ### Modified
 
