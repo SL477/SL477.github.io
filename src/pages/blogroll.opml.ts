@@ -1,4 +1,3 @@
-//<?xml-stylesheet type="text/xsl" href="/blogroll.xsl"?>
 import site from '../content/site.json';
 import blogroll from '../content/blogroll.json';
 

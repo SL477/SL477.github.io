@@ -1,5 +1,3 @@
-//<?xml-stylesheet type="text/xsl" href="/bookmarks.xsl"?>
-
 import bookmarks from '../content/bookmarks.json';
 
 const bookmarkData = bookmarks.map(bookmark => `<bookmark href="${bookmark.url}">
