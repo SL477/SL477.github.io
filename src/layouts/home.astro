@@ -54,7 +54,7 @@ const formatter = new Intl.DateTimeFormat(site.lang, {
                   </h3>
                   {site.show_excerpts && (
                     <div class="p-summary entry-summary">
-                      {post.data.excerpt}
+                      <p>{post.data.excerpt}</p>
                     </div>
                   )}
                   {post.data.tags.length > 0 && (

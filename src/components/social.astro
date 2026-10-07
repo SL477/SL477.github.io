@@ -8,7 +8,7 @@ import site from '../content/site.json';
       <li>
         <a href={`https://github.com/${site.github_username}`} rel="me">
           <svg class="svg-icon">
-            <use xlink:href="/assets/minima-social-icons.svg#github" />
+            <use xlink:href="/assets/images/github.svg" />
           </svg>{' '}
           <span class="username">{site.github_username}</span>
         </a>
@@ -23,31 +23,19 @@ import site from '../content/site.json';
           rel="me"
         >
           <svg class="svg-icon">
-            <use xlink:href="/assets/minima-social-icons.svg#linkedin" />
+            <use xlink:href="/assets/images/linkedin.svg" />
           </svg>{' '}
           <span class="username">{site.linkedin_username}</span>
         </a>
       </li>
     )
   }
-  <!-- {
-    site.twitter_username && (
-      <li>
-        <a href={`https://www.twitter.com/${site.twitter_username}`} rel="me">
-          <svg class="svg-icon">
-            <use xlink:href="/assets/minima-social-icons.svg#twitter" />
-          </svg>{' '}
-          <span class="username">{site.twitter_username}</span>
-        </a>
-      </li>
-    )
-  } -->
   {
     site.rss && (
       <li>
         <a href="/feed.xml">
           <svg class="svg-icon">
-            <use xlink:href="/assets/minima-social-icons.svg#rss" />
+            <use xlink:href="/assets/images/rss.svg" />
           </svg>{' '}
           <span>{site.rss}</span>
         </a>
