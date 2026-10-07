@@ -1,0 +1,95 @@
+---
+import Page from '../../layouts/page.astro';
+const frontmatter = { title: 'Drum Machine', last_modified_at: '2025-11-28' };
+---
+
+<Page frontmatter={frontmatter}>
+  <div id="drum-machine" class="centertext">
+    <p>Last played: <span id="display"></span></p>
+    <button type="button" class="btn btn-primary" id="q">
+      <audio
+        id="Q"
+        src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"
+        class="clip"></audio>Q
+    </button>
+
+    <button type="button" class="btn btn-primary" id="w">
+      <audio
+        id="W"
+        src="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3"
+        class="clip"></audio>W
+    </button>
+
+    <button type="button" class="btn btn-primary" id="e">
+      <audio
+        id="E"
+        src="https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3"
+        class="clip"></audio>E
+    </button>
+
+    <button type="button" class="btn btn-primary" id="a">
+      <audio
+        id="A"
+        src="https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3"
+        class="clip"></audio>A
+    </button>
+
+    <button type="button" class="btn btn-primary" id="s">
+      <audio
+        id="S"
+        src="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3"
+        class="clip"></audio>S
+    </button>
+
+    <button type="button" class="btn btn-primary" id="d">
+      <audio
+        id="D"
+        src="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3"
+        class="clip"></audio>D
+    </button>
+
+    <button type="button" class="btn btn-primary" id="z">
+      <audio
+        id="Z"
+        src="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3"
+        class="clip"></audio>Z
+    </button>
+
+    <button type="button" class="btn btn-primary" id="x">
+      <audio
+        id="X"
+        src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"
+        class="clip"></audio>X
+    </button>
+
+    <button type="button" class="btn btn-primary" id="c">
+      <audio
+        id="C"
+        class="clip"
+        src="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"></audio>C
+    </button>
+  </div>
+</Page>
+
+<script>
+  const keys = ['A', 'Q', 'W', 'E', 'S', 'D', 'Z', 'X', 'C'];
+  const display = document.getElementById('display') as HTMLSpanElement;
+  function player(element: string) {
+    const elem = document.getElementById(element) as HTMLAudioElement;
+    elem.play();
+    console.log(element);
+    display.textContent = element;
+  }
+
+  document.querySelector('body')?.addEventListener('keydown', (ev) => {
+    if (keys.includes(ev.key.toUpperCase())) {
+      player(ev.key.toUpperCase());
+    }
+  });
+
+  keys.forEach((k) => {
+    document
+      .getElementById(k.toLowerCase())
+      ?.addEventListener('click', () => player(k));
+  });
+</script>

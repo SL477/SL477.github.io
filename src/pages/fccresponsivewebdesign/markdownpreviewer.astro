@@ -1,0 +1,73 @@
+---
+import DefaultModified from '../../layouts/default_modified.astro';
+const frontmatter = {
+  title: 'Markdown Previewer',
+  last_modified_at: '2025-02-09',
+};
+
+const initialText = `# Markdown Previewer
+## By [Link477](https://Link477.com/)
+**Here** is the sort of code you can write: \`<p>Hi</p>\`
+
+Alternatively you can have multiple lines of code:
+\`\`\`
+<div>
+    <p>hi</p>
+</div>
+\`\`\`
+
+* \` - lets you escape code
+* \# - h1
+* \## - h2
+* \### - h3
+* \#### - h4
+* \##### - h5
+* \###### - h6
+
+> There is a great disturbance in the force.
+> I have felt it.
+> We have a new enemy. The young rebel who destroyed the Death Star.
+    > He's just a boy, Obi-Wan can no longer help him.
+
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)`;
+---
+
+<DefaultModified title={frontmatter.title}>
+  <!--Markdown-->
+
+  <h1 class="centertext">Markdown Previewer</h1>
+  <div id="edit" class="container-fluid">
+    <label for="editor">Raw Markdown:</label>
+    <textarea id="editor" rows="10" cols="150" class="form-control"
+      >{initialText}</textarea
+    >
+  </div>
+  <div id="preview" class="container-fluid"></div>
+</DefaultModified>
+
+<script>
+  import MarkdownIt from 'markdown-it';
+  const parser = new MarkdownIt({
+    html: true,
+    xhtmlOut: true,
+    breaks: true,
+  });
+
+  const previewElement = document.getElementById('preview') as HTMLDivElement;
+  const editorElement = document.getElementById(
+    'editor'
+  ) as HTMLTextAreaElement;
+
+  function updatePreview() {
+    if (previewElement) {
+      if (editorElement && editorElement.value) {
+        previewElement.innerHTML = parser.render(editorElement.value);
+      } else {
+        previewElement.innerHTML = '';
+      }
+    }
+  }
+  editorElement.addEventListener('change', updatePreview);
+  editorElement.addEventListener('keyup', updatePreview);
+  updatePreview();
+</script>

@@ -1,0 +1,203 @@
+---
+import Page from '../../layouts/page.astro';
+const frontmatter = { title: 'Sets', last_modified_at: '2026-09-07' };
+---
+
+<Page frontmatter={frontmatter}>
+  <p>
+    My answers to the exercises in
+    <a
+      href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf"
+      >Algorithms &amp; Data Structures with JS</a
+    >
+  </p>
+
+  <fieldset>
+    <div class="mb-3">
+      <label for="txtInput" class="form-label">Input Text:</label>
+      <input
+        id="txtInput"
+        name="txtInput"
+        type="text"
+        class="form-control"
+        value="946875202"
+      />
+      <button type="button" class="btn btn-primary" id="createSet">
+        Create Set
+      </button>
+    </div>
+    <div class="mb-3">
+      <label for="higherElement" class="form-label"
+        >First Element Greater Than:</label
+      >
+      <input
+        id="higherElement"
+        name="higherElement"
+        type="text"
+        class="form-control"
+        value="6"
+      />
+      <button type="button" class="btn btn-primary" id="getGreater">
+        Get Greater
+      </button>
+      <p>Result: <span id="greaterResult"></span></p>
+    </div>
+    <div class="mb-3">
+      <label for="lowerElement" class="form-label"
+        >First Element Lower Than:</label
+      >
+      <input
+        id="lowerElement"
+        name="lowerElement"
+        type="text"
+        class="form-control"
+        value="6"
+      />
+      <button type="button" class="btn btn-primary" id="getLower">
+        Get Lower
+      </button>
+      <p>Result: <span id="lowerResult"></span></p>
+    </div>
+  </fieldset>
+  <div id="ex1"></div>
+</Page>
+
+<script>
+  
+class SetCls {
+  dataStore: string[];
+  constructor() {
+    this.dataStore = [];
+  }
+
+  contains(data: string) {
+    return this.dataStore.indexOf(data) > -1;
+  }
+
+  add(data: string) {
+    if (!this.contains(data)) {
+      this.dataStore.push(data);
+      this.dataStore.sort();
+      return true;
+    }
+    return false;
+  }
+
+  remove(data: string) {
+    const pos = this.dataStore.indexOf(data);
+    if (pos > -1) {
+      this.dataStore.splice(pos, 1);
+      return true;
+    }
+    return false;
+  }
+
+  show() {
+    return `<ul>${this.dataStore.map(s => `<li>${s}</li>`).join('')}</ul>`;
+  }
+
+  union(otherSet: SetCls) {
+    const tempSet = new SetCls();
+    this.dataStore.forEach(s => {
+      tempSet.add(s);
+    });
+    otherSet.dataStore.forEach(s => {
+      tempSet.add(s);
+    });
+    return tempSet;
+  }
+
+  intersect(otherSet: SetCls) {
+    const tempSet = new SetCls();
+    this.dataStore.forEach(s => {
+      if (otherSet.contains(s)) {
+        tempSet.add(s);
+      }
+    });
+    return tempSet;
+  }
+
+  size() {
+    return this.dataStore.length;
+  }
+
+  subset(otherSet: SetCls) {
+    if (this.size() > otherSet.size()) {
+      return false;
+    }
+    this.dataStore.forEach(member => {
+      if (!otherSet.contains(member)) {
+        return false;
+      }
+    });
+    return true;
+  }
+
+  difference(otherSet: SetCls) {
+    const tempSet = new SetCls();
+    this.dataStore.forEach(member => {
+      if (!otherSet.contains(member)) {
+        tempSet.add(member);
+      }
+    });
+    return tempSet;
+  }
+
+  higher(element: string) {
+    /*for (let i = 0; i < this.size(); i++) {
+        if (this.dataStore[i] > element) {
+            return this.dataStore[i];
+        }
+    }*/
+    const ind = this.dataStore.indexOf(element);
+    if (ind > 0 && ind < this.size() - 1) {
+      return this.dataStore[ind + 1];
+    }
+  }
+
+  lower(element: string) {
+    const ind = this.dataStore.indexOf(element);
+    if (ind > 0) {
+      return this.dataStore[ind - 1];
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Exercise 1
+  const one = new SetCls();
+  const txtInput = document.getElementById('txtInput') as HTMLInputElement;
+  const ex1Div = document.getElementById('ex1') as HTMLDivElement;
+  const higherElementInput = document.getElementById('higherElement') as HTMLInputElement;
+  const greaterResultSpan = document.getElementById('greaterResult') as HTMLSpanElement;
+  const lowerElementInput = document.getElementById('lowerElement') as HTMLInputElement;
+  const lowerResultSpan = document.getElementById('lowerResult') as HTMLSpanElement;
+
+  function createSet() {
+    if (txtInput && ex1Div) {
+      txtInput.value.split('').forEach(s => {
+        console.log('createSet', s)
+        one.add(s);
+      });
+      ex1Div.innerHTML = one.show();
+    }
+  }
+  document.getElementById('createSet')?.addEventListener('click', createSet);
+
+  // Exercise 3
+  function getGreater() {
+    if (higherElementInput && greaterResultSpan) {
+      greaterResultSpan.textContent = one.higher(higherElementInput.value) ?? '';
+    }
+  }
+  document.getElementById('getGreater')?.addEventListener('click', getGreater);
+
+  // Exercise 4
+  function getLower() {
+    if (lowerElementInput && lowerResultSpan) {
+      lowerResultSpan.textContent = one.lower(lowerElementInput.value) ?? '';
+    }
+  }
+  document.getElementById('getLower')?.addEventListener('click', getLower);
+});
+</script>

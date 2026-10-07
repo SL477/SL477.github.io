@@ -1,0 +1,22 @@
+---
+import Page from '../layouts/page.astro';
+import bookmarks from '../content/bookmarks.json';
+const frontmatter = {
+  title: 'Useful bookmarks',
+  last_modified_at: '2026-10-07',
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <ul>
+    {
+      bookmarks.map((b) => (
+        <li>
+          <a target="_blank" rel="noopener noreferrer" href={b.url}>
+            {b.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Page>

@@ -1,0 +1,90 @@
+---
+import Page from '../layouts/page.astro';
+import whodleStats from '../content/whodleStats.json';
+const frontmatter = {
+  title: 'Whodle',
+  last_modified_at: '2026-02-01',
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <a href="https://whodle.dixonary.co.uk">Play Whodle</a>
+
+  <div class="wordle-stats">
+    <table>
+      <caption> STATISTICS </caption>
+      <thead>
+        <tr>
+          <th>Games Played</th>
+          <th>Win %</th>
+          <th>Current Streak</th>
+          <th>Max Streak</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{whodleStats.numberGames}</td>
+          <td>{whodleStats.winPct}</td>
+          <td>{whodleStats.currentStreak}</td>
+          <td>{whodleStats.maxStreak}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 class="centertext">Guess Distribution</h2>
+    <label class="wordle-label"
+      >1:
+      <meter
+        min="0"
+        max={whodleStats.numberGames}
+        value={whodleStats.guess1}
+        class="meter"
+      >
+        {whodleStats.guess1}/{whodleStats.numberGames}
+      </meter>
+    </label>
+    <label class="wordle-label"
+      >2:
+      <meter
+        min="0"
+        max={whodleStats.numberGames}
+        value={whodleStats.guess2}
+        class="meter"
+      >
+        {whodleStats.guess2}/{whodleStats.numberGames}
+      </meter>
+    </label>
+    <label class="wordle-label"
+      >3:
+      <meter
+        min="0"
+        max={whodleStats.numberGames}
+        value={whodleStats.guess3}
+        class="meter"
+      >
+        {whodleStats.guess3}/{whodleStats.numberGames}
+      </meter>
+    </label>
+    <label class="wordle-label"
+      >4:
+      <meter
+        min="0"
+        max={whodleStats.numberGames}
+        value={whodleStats.guess4}
+        class="meter"
+      >
+        {whodleStats.guess4}/{whodleStats.numberGames}
+      </meter>
+    </label>
+    <label class="wordle-label"
+      >5:
+      <meter
+        min="0"
+        max={whodleStats.numberGames}
+        value={whodleStats.guess5}
+        class="meter"
+      >
+        {whodleStats.guess5}/{whodleStats.numberGames}
+      </meter>
+    </label>
+  </div>
+</Page>

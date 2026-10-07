@@ -1,0 +1,46 @@
+---
+import DefaultModified from '../../layouts/default_modified.astro';
+const title = 'Profile Card';
+const last_modified_at = 2025 - 11 - 25;
+const css_file = 'profileCard.css';
+---
+
+<DefaultModified title={title} css_file={css_file}>
+  <!-- For Frontend Mentor -->
+  <div class="pc-container">
+    <div class="pc-container-top"></div>
+    <picture class="pc-img">
+      <source srcset="/assets/images/tom.webp" type="image/webp" />
+      <source srcset="/assets/images/tom.jpg" type="image/jpg" />
+      <img
+        src="/assets/images/tom.jpg"
+        alt="Tom."
+        width="100"
+        height="100"
+        fetchpriority="high"
+      />
+    </picture>
+
+    <div class="pc-header">
+      <h1>Tom Fishwick</h1>
+      <span>35</span>
+    </div>
+
+    <p class="pc-location">London</p>
+
+    <div class="pc-stats">
+      <div>
+        <span>20</span>
+        <span>Followers</span>
+      </div>
+      <div>
+        <span>1K</span>
+        <span>Likes</span>
+      </div>
+      <div>
+        <span>1.4K</span>
+        <span>Photoes</span>
+      </div>
+    </div>
+  </div>
+</DefaultModified>

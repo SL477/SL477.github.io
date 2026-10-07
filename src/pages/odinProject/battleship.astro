@@ -1,0 +1,16 @@
+---
+import DefaultModified from '../../layouts/default_modified.astro';
+const frontmatter = {
+  title: 'Battleship',
+  last_modified_at: '2026-01-10',
+  css_file: 'battleship.css',
+  js_file: { path: 'battleship/battleship.js', defer: true, module: true },
+};
+---
+
+<DefaultModified title={frontmatter.title} js_file={frontmatter.js_file} css_file={frontmatter.css_file}>
+  <div id="battleshipContainer"></div>
+  <p class="centertext">
+    <b>Message: </b><span id="msg">Fire at the enemy!</span>
+  </p>
+</DefaultModified>

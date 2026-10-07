@@ -1,0 +1,24 @@
+---
+import Page from '../layouts/page.astro';
+import blogroll from '../content/blogroll.json';
+const frontmatter = {
+  title: 'Blogroll',
+  last_modified_at: '2026-10-07',
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <ul>
+    {
+      blogroll
+        .filter((o) => o.outline !== 'Me')
+        .map((o) =>
+          o.blogs.map((b) => (
+            <li>
+              <a href={b.url}>{b.description}</a>
+            </li>
+          ))
+        )
+    }
+  </ul>
+</Page>

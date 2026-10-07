@@ -1,0 +1,32 @@
+---
+const { image } = Astro.props;
+const caption = image.photo_caption ?? image.alt;
+---
+
+<>
+  {
+    image.image_map ? (
+      <img
+        src={image.path}
+        alt={image.alt}
+        class="u-photo"
+        width={image.width}
+        height={image.height}
+        usemap={image.image_map}
+      />
+    ) : (
+      <img
+        src={image.path}
+        alt={image.alt}
+        class="u-photo"
+        width={image.width}
+        height={image.height}
+      />
+    )
+  }
+  <figcaption>
+    <em>
+      {caption}
+    </em>
+  </figcaption>
+</>

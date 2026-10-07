@@ -1,9 +1,0 @@
----
-layout: none
-permalink: /robots.txt
----
-{%- for robot in site.data.robots -%}
-User-agent: {{robot}}
-{% endfor -%}
-
-Disallow: /

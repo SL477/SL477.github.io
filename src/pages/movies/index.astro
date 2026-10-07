@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import Page from '../../layouts/page.astro';
+
+const posts = (await getCollection('movie')).toSorted(
+  (a, b) =>
+    new Date(b.id.substring(0, 10)).valueOf() -
+    new Date(a.id.substring(0, 10)).valueOf()
+);
+
+const frontmatter = {
+  title: 'Movies',
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <ul>
+    {
+      posts.map((p) => (
+        <li>
+          <a href={`/movies/${p.id}`}>{p.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Page>

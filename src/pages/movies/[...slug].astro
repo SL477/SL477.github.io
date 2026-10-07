@@ -1,0 +1,29 @@
+---
+import { getCollection, render } from 'astro:content';
+import Post from '../../layouts/post.astro';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('movie')).toSorted(
+    (a, b) =>
+      new Date(b.id.substring(0, 10)).valueOf() -
+      new Date(a.id.substring(0, 10)).valueOf()
+  );
+
+  return posts.map((post) => {
+    const slug = post.id;
+    return {
+      params: { slug: slug },
+      props: {
+        post,
+        slug,
+      },
+    };
+  });
+}
+const { post, slug } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Post frontmatter={post.data} slug={`/${slug}`}>
+  <Content />
+</Post>

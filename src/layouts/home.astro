@@ -1,0 +1,93 @@
+---
+import DefaultModified from './default_modified.astro';
+import { getCollection } from 'astro:content';
+import site from '../content/site.json';
+import { getSlug } from '../scripts/posts';
+const { title } = Astro.props;
+
+const posts = (await getCollection('blog')).toSorted(
+  (a, b) =>
+    new Date(b.id.substring(0, 10)).valueOf() -
+    new Date(a.id.substring(0, 10)).valueOf()
+);
+
+const formatter = new Intl.DateTimeFormat(site.lang, {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+});
+const js_file = {
+  path: 'snow.js',
+  async: true,
+};
+---
+
+<DefaultModified title={title} js_file={js_file}>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-workers.js');
+    }
+  </script>
+  <div class="home">
+    <slot />
+    {
+      posts.length > 0 && (
+        <>
+          <hr />
+          <div class="h-feed hfeed">
+            <a
+              class="u-url p-name p-author u-author"
+              hidden="hidden"
+              href={site.site_url}
+            >
+              {site.title}
+            </a>
+            <h2 class="post-list-heading p-name">Posts</h2>
+            <ul class="post-list">
+              {posts.slice(0, 10).map((post) => (
+                <li class="h-entry hentry">
+                  <span class="post-meta dt-published published">
+                    <date datetime={post.id.substring(0, 10)}>
+                      {formatter.format(new Date(post.id.substring(0, 10)))}
+                    </date>
+                  </span>
+                  <h3>
+                    <a class="post-link u-url" href={getSlug(post.id)}>
+                      <h3 class="p-name entry-title">{post.data.title}</h3>
+                    </a>
+                  </h3>
+                  {site.show_excerpts && (
+                    <div class="p-summary entry-summary">
+                      <p>{post.data.excerpt}</p>
+                    </div>
+                  )}
+                  {post.data.tags.length > 0 && (
+                    <div>
+                      {post.data.tags.map((tag) => (
+                        <span class="p-category" data-tag={tag}>
+                          <a href={`/tags/${tag}`}>{tag}</a>
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              ))}
+              {posts.length > 10 && (
+                <li>
+                  <a href="/posts">More Posts</a>
+                </li>
+              )}
+            </ul>
+          </div>
+          <p class="rss-subscribe">
+            <a
+              href={`https://subscribeopenly.net/subscribe/?url=${site.site_url}/feed.xml`}
+            >
+              Subscribe to feed
+            </a>
+          </p>
+        </>
+      )
+    }
+  </div>
+</DefaultModified>

@@ -1,0 +1,25 @@
+---
+import Page from '../../layouts/page.astro';
+const frontmatter = {
+  title: 'Etch A Sketch',
+  last_modified_at: '2025-02-09',
+  css_file: 'etchasketch.css',
+  js_file: { path: 'etchASketch.js', defer: true },
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <p>
+    My answer for
+    <a
+      href="https://www.theodinproject.com/courses/foundations/lessons/etch-a-sketch-project"
+      target="_blank"
+      rel="noopener noreferrer">Project Odin Etch-A-Sketch</a
+    >
+  </p>
+
+  <div id="sketchpad" class="flex-container"></div>
+  <button type="button" class="btn btn-primary" id="userCreateGrid">
+    Reset
+  </button>
+</Page>

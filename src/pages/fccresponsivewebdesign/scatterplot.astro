@@ -1,0 +1,214 @@
+---
+import Page from '../../layouts/page.astro';
+const frontmatter = {
+  title: 'FCC - Visualise Data with a Scatter Plot',
+  last_modified_at: '2025-02-09',
+};
+---
+
+<style>
+  .red {
+    fill: red;
+    background-color: red;
+    color: red;
+  }
+
+  .green {
+    background-color: green;
+    color: green;
+  }
+
+  .tooltip {
+    fill: blue;
+    background-color: blue;
+    color: white;
+    text-align: center;
+  }
+
+  #title {
+    font-weight: bold;
+  }
+
+  #holder,
+  svg {
+    display: block;
+    margin: 0 auto;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  #holder,
+  #legend {
+    background-color: white;
+    color: black;
+    border: solid 1px white;
+  }
+</style>
+
+<Page frontmatter={frontmatter}>
+  <h2 id="title">Doping in Professional Bike Racing</h2>
+  <div id="holder" class="holder">
+    <div id="legend">
+      <span class="red">-- </span>-Dopers<br />
+      <span class="green">-- </span>-Non-Dopers
+    </div>
+  </div>
+</Page>
+
+<script>
+  import * as d3 from 'd3';
+  // Variables
+  const holderDiv = document.querySelector('.post') as HTMLDivElement;
+  const w = Math.min(holderDiv.clientWidth, 740);
+  const h = 500;
+  const padding = 50;
+
+  interface cyclist {
+    Time: string;
+    Place: number;
+    Seconds: number;
+    Name: string;
+    Year: number;
+    Nationality: string;
+    Doping: string;
+    URL: string;
+  }
+
+  // Get the data
+  fetch(
+    'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json'
+  )
+    .then((res) => res.json())
+    .then((res) => visualize(res))
+    .catch((ex) => console.error(ex));
+
+  const parseTime = d3.timeParse('%M:%S')!;
+
+  function visualize(dataset: cyclist[]) {
+    const dat = dataset.map((d) => {
+      return {
+        Time: d.Time,
+        Place: d.Place,
+        Seconds: d.Seconds,
+        Name: d.Name,
+        Year: d.Year,
+        Nationality: d.Nationality,
+        Doping: d.Doping,
+        URL: d.URL,
+        timeObj: parseTime(d.Time)!,
+      };
+    });
+
+    const xScale = d3
+      .scaleLinear()
+      .domain([d3.min(dat, (d) => d.Year)! - 1, d3.max(dat, (d) => d.Year)!])
+      .range([padding, w - padding]);
+
+    const yScale = d3
+      .scaleTime()
+      .domain([d3.min(dat, (d) => d.timeObj)!, d3.max(dat, (d) => d.timeObj)!])
+      .range([h - padding, padding]);
+
+    const svg = d3
+      .select('#holder')
+      .append('svg')
+      .attr('width', w)
+      .attr('height', h);
+
+    const tooltip = d3
+      .select('#holder')
+      .append('div')
+      .style('opacity', 0)
+      .attr('class', 'tooltip')
+      .style('background-color', 'blue')
+      .style('border', 'solid')
+      .style('border-width', '2px')
+      .style('border-radius', '5px')
+      .style('padding', '5px')
+      .style('color', 'white')
+      .attr('id', 'tooltip')
+      .attr('class', 'tooltip');
+
+    // Add the circles
+    svg
+      .selectAll('circle')
+      .data(dat)
+      .enter()
+      .append('circle')
+      .attr('cx', (d) => xScale(d.Year))
+      .attr('cy', (d) => yScale(d.timeObj))
+      .attr('r', 5)
+      .attr('class', 'dot')
+      .attr('data-xvalue', (d) => d.Year)
+      .attr('data-yvalue', (d) => d.timeObj.toString())
+      .style('fill', (d) => {
+        return d.Doping == '' ? 'green' : 'red';
+      })
+      .on('mouseover', () => {
+        tooltip.style('visibility', 'visible').style('opacity', 1);
+      })
+      .on('mousemove', function (d, i) {
+        tooltip
+          .html(
+            i.Name +
+              ': ' +
+              i.Nationality +
+              '<br/>Year:' +
+              i.Year +
+              ', Time: ' +
+              i.Time +
+              '<br/><br/>' +
+              i.Doping
+          )
+          .attr('data-year', i.Year)
+          .attr('data-time', i.Time)
+          .style('left', d.pageX + 70 + 'px')
+          .style('top', d.pageY + 'px');
+      })
+      .on('mouseleave', (d, i) => {
+        tooltip.style('visibility', 'hidden').style('opacity', 0);
+      });
+
+    // Axes
+    const xAxis = d3.axisBottom(xScale).tickFormat(d3.format('d'));
+    svg
+      .append('g')
+      .attr('transform', 'translate(0, ' + (h - padding) + ')')
+      .attr('id', 'x-axis')
+      .call(xAxis);
+
+    const yAxis = d3
+      .axisLeft(yScale)
+      .tickFormat((a: any) => d3.timeFormat('%M:%S')(a));
+    svg
+      .append('g')
+      .attr('transform', 'translate(' + padding + ',0)')
+      .attr('id', 'y-axis')
+      .call(yAxis);
+
+    // Labels
+    // X label
+    d3.select('svg')
+      .append('text')
+      .attr('class', 'x label')
+      .attr('text-anchor', 'end')
+      .style('text-align', 'center')
+      .attr('x', w / 2)
+      .attr('y', h - 6)
+      .text('Year');
+
+    // Y Label
+    d3.select('svg')
+      .append('text')
+      .attr('class', 'y label')
+      .attr('text-anchor', 'end')
+      .style('text-align', 'end')
+      .attr('y', 6)
+      .attr('dy', '.75em')
+      .attr('x', -200)
+      .attr('transform', 'rotate(-90)')
+      .text('Time');
+  }
+</script>

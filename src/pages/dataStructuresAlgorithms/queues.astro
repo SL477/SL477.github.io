@@ -1,0 +1,266 @@
+---
+import Page from '../../layouts/page.astro';
+const frontmatter = { title: 'Queues', last_modified_at: '2026-09-06' };
+---
+
+<Page frontmatter={frontmatter}>
+  <p>
+    My answers to the exercises in
+    <a
+      href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf"
+      >Algorithms &amp; Data Structures with JS</a
+    >
+  </p>
+
+  <label for="ex1">Output from queue</label>
+  <textarea id="ex1" rows="5" cols="50" disabled class="form-control"
+  ></textarea>
+
+  <fieldset>
+    <label for="palindromeChecker">Palindrome Checker</label>
+    <input
+      id="palindromeChecker"
+      name="palindromeChecker"
+      type="text"
+      class="form-control"
+    />
+    <button type="button" class="btn btn-primary" id="palindromeCheck">
+      Check
+    </button>
+    <p>Answer: <span id="palindromeAnswer"></span></p>
+  </fieldset>
+
+  <fieldset>
+    <label for="patientName">Patient Name:</label>
+    <input
+      id="patientName"
+      name="patientName"
+      type="text"
+      class="form-control"
+    />
+    <label for="patientCode">Patient Priority Code:</label>
+    <input
+      id="patientCode"
+      name="patientCode"
+      type="number"
+      class="form-control"
+    />
+    <button type="button" class="btn btn-primary" id="addPatient">
+      Add Patient
+    </button>
+  </fieldset>
+
+  <table
+    class="table table-striped table-bordered table-hover table-responsive"
+  >
+    <thead>
+      <tr>
+        <th>Patient Name</th>
+        <th>Patient Code</th>
+        <th>Remove Patient</th>
+      </tr>
+    </thead>
+    <tbody id="patientList"></tbody>
+  </table>
+</Page>
+
+<script>
+  class Queue {
+    dataStore: any[];
+    constructor() {
+      this.dataStore = [];
+    }
+
+    enqueue(element: any) {
+      this.dataStore.push(element);
+    }
+
+    dequeue() {
+      return this.dataStore.shift();
+    }
+
+    front() {
+      return this.dataStore[0];
+    }
+
+    back() {
+      return this.dataStore[this.dataStore.length - 1];
+    }
+
+    toString() {
+      let retStr = '';
+      for (let i = 0; i < this.dataStore.length; ++i) {
+        retStr += this.dataStore[i] + '\n';
+      }
+      return retStr;
+    }
+
+    empty() {
+      if (this.dataStore.length === 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    insertToFront(element: string) {
+      const temp = [];
+      temp.push(element);
+      this.dataStore.forEach((i) => {
+        temp.push(i);
+      });
+      this.dataStore = temp;
+    }
+
+    removeFromEnd() {
+      return this.dataStore.pop();
+    }
+
+    dequeuePriority() {
+      let priority = this.dataStore[0].code;
+      for (let i = 1; i < this.dataStore.length; ++i) {
+        if (this.dataStore[i].code > priority) {
+          priority = i;
+        }
+      }
+      return this.dataStore.splice(priority, 1);
+    }
+
+    toStringPriority() {
+      let retStr = '';
+      for (let i = 0; i < this.dataStore.length; ++i) {
+        retStr +=
+          this.dataStore[i].name + 'code: ' + this.dataStore[i].code + '\n';
+      }
+      return retStr;
+    }
+
+    toTablePriority() {
+      const frag = document.createDocumentFragment();
+      this.dataStore.forEach((d, i) => {
+        const tr = document.createElement('tr');
+        const tdName = document.createElement('td');
+        tdName.textContent = d.name;
+        tr.appendChild(tdName);
+        const tdCode = document.createElement('td');
+        tdCode.textContent = d.code;
+        tr.appendChild(tdCode);
+        const tdBtn = document.createElement('td');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'btn btn-danger';
+        btn.addEventListener('click', () => removePatient(i));
+        btn.textContent = 'Remove';
+        tdBtn.appendChild(btn);
+        tr.appendChild(tdBtn);
+        frag.appendChild(tr);
+      });
+      return frag;
+    }
+  }
+
+  // Exercise 2
+  function palindromeChecker(input: string) {
+    if (!input) {
+      return false;
+    }
+    const p = new Queue();
+    input.split('').forEach((l) => {
+      p.enqueue(l);
+    });
+
+    let f = p.dequeue();
+    let b = p.removeFromEnd();
+    while (f && b) {
+      if (f !== b) {
+        return false;
+      }
+      f = p.dequeue();
+      b = p.removeFromEnd();
+    }
+    return true;
+  }
+
+  // Exercise 4
+  class Patient {
+    name: string;
+    code: string;
+    constructor(name: string, code: string) {
+      this.name = name;
+      this.code = code;
+    }
+  }
+
+  const patientQueue = new Queue();
+
+  function showListOfPatients() {
+    // patientList
+    const patientListTBody = document.getElementById('patientList');
+    if (patientListTBody) {
+      patientListTBody.innerHTML = '';
+      patientListTBody.appendChild(patientQueue.toTablePriority());
+    }
+  }
+
+  function removePatient(index: number) {
+    patientQueue.dataStore.splice(index, 1);
+    showListOfPatients();
+  }
+
+  function startUp() {
+    // Exercise 1
+    const q1 = new Queue();
+    q1.enqueue('hi');
+    q1.enqueue('there');
+    q1.insertToFront('front');
+
+    const ex1Input = document.getElementById('ex1') as HTMLTextAreaElement;
+    if (ex1Input) {
+      ex1Input.value = q1.toString();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    startUp();
+
+    const palindromeCheckerInput = document.getElementById(
+      'palindromeChecker'
+    ) as HTMLInputElement;
+    const palindromeAnswerSpan = document.getElementById(
+      'palindromeAnswer'
+    ) as HTMLSpanElement;
+    const patientNameInput = document.getElementById(
+      'patientName'
+    ) as HTMLInputElement;
+    const patientCodeInput = document.getElementById(
+      'patientCode'
+    ) as HTMLInputElement;
+
+    function palindromeCheck() {
+      if (palindromeCheckerInput && palindromeAnswerSpan) {
+        const input = palindromeCheckerInput.value;
+        const ret = palindromeChecker(input);
+        console.log('ans2', ret);
+        palindromeAnswerSpan.textContent = ret.toString();
+      }
+    }
+
+    function addPatient() {
+      // patientName
+      // patientCode
+      if (patientNameInput && patientCodeInput) {
+        patientQueue.enqueue(
+          new Patient(patientNameInput.value, patientCodeInput.value)
+        );
+        showListOfPatients();
+      }
+    }
+
+    document
+      .getElementById('palindromeCheck')
+      ?.addEventListener('click', palindromeCheck);
+    document
+      .getElementById('addPatient')
+      ?.addEventListener('click', addPatient);
+  });
+</script>

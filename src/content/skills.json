@@ -1,0 +1,45 @@
+{
+  "skills": [
+    {
+      "name": "Python",
+      "years": 5
+    },
+    {
+      "name": "SQL (MS SQL Server, SQLite, MariaDB)",
+      "years": 10
+    },
+    {
+      "name": "VB.Net",
+      "years": 10
+    },
+    {
+      "name": "C#",
+      "years": 7
+    },
+    {
+      "name": "JavaScript",
+      "years": 12
+    },
+    {
+      "name": "SQL Server Reporting Services (SSRS)",
+      "years": 6
+    },
+    {
+      "name": "MATLAB",
+      "years": 1
+    },
+    {
+      "name": "Tableau",
+      "years": 1,
+      "hide": true
+    },
+    {
+      "name": "HTML",
+      "years": 12
+    },
+    {
+      "name": "Docker",
+      "years": 2
+    }
+  ]
+}

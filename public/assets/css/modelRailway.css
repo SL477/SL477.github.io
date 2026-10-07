@@ -1,0 +1,80 @@
+.carousel {
+  --accent: red;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-marker-group: after;
+  anchor-name: --myCarousel;
+
+  li {
+    /* scroll-snap-type: center; */
+    scroll-snap-align: center;
+  }
+
+  &::scroll-button(*) {
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    -webkit-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: none;
+    position-anchor: --myCarousel;
+    align-self: anchor-center;
+  }
+
+  &::scroll-button(left) {
+    content: '<' / 'Scroll Left';
+    cursor: pointer;
+    position: absolute;
+    right: calc(anchor(left) - 45px);
+  }
+
+  &::scroll-button(*):hover {
+    background-color: #000c;
+    color: #ff000080;
+  }
+
+  &::scroll-button(*):disabled {
+    background-color: #000c;
+    color: #ff000080;
+  }
+
+  &::scroll-button(right) {
+    content: '>' / 'Scroll Right';
+    cursor: pointer;
+    position: absolute;
+    left: calc(anchor(right) - 45px);
+  }
+
+  &::scroll-button(*):focus-visible {
+    outline-offset: 5px;
+  }
+
+  li::scroll-marker {
+    content: ' ';
+    border: 1px solid grey;
+    border-radius: 50%;
+    scroll-snap-align: center;
+    outline-offset: 4px;
+  }
+
+  li::scroll-marker:target-current {
+    background: var(--accent);
+  }
+
+  ul {
+    list-style: none;
+    display: grid;
+    grid: 544px / auto-flow 544px;
+  }
+
+  &::scroll-marker-group {
+    justify-content: center;
+    display: grid;
+    grid: 30px / auto-flow 30px;
+  }
+}

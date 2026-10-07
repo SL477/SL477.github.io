@@ -1,0 +1,116 @@
+---
+import Page from '../layouts/page.astro';
+import pages from '../content/generated-pages.json';
+const frontmatter = {
+  title: 'Sitemap',
+  last_modified_at: '2026-10-07',
+};
+
+type SitemapNode = {
+  name: string;
+  path: string;
+  children: SitemapNode[];
+};
+
+function buildSitemapTree(paths: string[]): SitemapNode[] {
+  const root: SitemapNode[] = [];
+
+  for (const path of paths) {
+    const segments = path
+      .replace(/^\/|\/$/g, '')
+      .split('/')
+      .filter(Boolean);
+
+    if (segments.length === 0) continue;
+
+    let current = root;
+    let accumulatedPath = '';
+
+    segments.forEach((segment, index) => {
+      accumulatedPath += `/${segment}`;
+
+      let node = current.find((node) => node.path === accumulatedPath);
+
+      if (!node) {
+        node = {
+          name: segment,
+          path: accumulatedPath + '/',
+          children: [],
+        };
+        current.push(node);
+      }
+      current = node.children;
+    });
+  }
+  return root;
+}
+
+function mergeNode(target: SitemapNode, source: SitemapNode) {
+  if (!target.children) target.children = [];
+
+  for (const srcChild of source.children ?? []) {
+    let tgtChild = target.children.find((c) => c.path === srcChild.path);
+
+    if (!tgtChild) {
+      tgtChild = { name: srcChild.name, path: srcChild.path, children: [] };
+      target.children.push(tgtChild);
+    }
+    mergeNode(tgtChild, srcChild);
+  }
+}
+
+function deDuplicateSitemapTree(nodes: SitemapNode[]): SitemapNode {
+  const root: SitemapNode = { name: 'root', path: '/', children: [] };
+
+  const pathMap = new Map<string, SitemapNode>();
+  pathMap.set('/', root);
+
+  for (const node of nodes) {
+    const parts = node.path.split('/').filter(Boolean);
+    let currentPath = '';
+    let parent = root;
+
+    // walk down the path
+    for (const part of parts) {
+      currentPath += '/' + part;
+      let child = pathMap.get(currentPath);
+
+      if (!child) {
+        child = {
+          name: part,
+          path: currentPath + '/',
+          children: [],
+        };
+        pathMap.set(currentPath, child);
+        parent.children!.push(child);
+      }
+      parent = child;
+    }
+
+    mergeNode(parent, node);
+  }
+  return root;
+}
+
+const tree = deDuplicateSitemapTree(buildSitemapTree(pages));
+
+function renderChildren(nodes: SitemapNode[]): string {
+  return nodes
+    .map((node) => {
+      if (node.children.length > 0) {
+        return `<li><details><summary>${node.name}</summary><ul>${renderChildren(node.children)}</ul></details></li>`;
+      } else {
+        return `<li><a href="${node.path}">${node.name}</a></li>`;
+      }
+    })
+    .join('');
+}
+
+const htmlStr = `<li>
+  <a href="/">Home</a>
+</li>${renderChildren(tree.children)}`;
+---
+
+<Page frontmatter={frontmatter}>
+  <ul set:html={htmlStr} />
+</Page>

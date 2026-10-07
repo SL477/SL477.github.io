@@ -1,0 +1,24 @@
+---
+import DefaultModified from '../../layouts/default_modified.astro';
+const frontmatter = {
+  title: 'Snake Game',
+  last_modified_at: '2025-03-06',
+  css_file: 'snake.css',
+  js_file: { path: 'snake.js', defer: true },
+};
+---
+
+<DefaultModified
+  title={frontmatter.title}
+  js_file={frontmatter.js_file}
+  css_file={frontmatter.css_file}
+>
+  <canvas id="canvas" width="300" height="300" class="center"></canvas>
+
+  <div>
+    <button id="arrow-left" type="button" class="btn btn-primary">&lt;</button>
+    <button id="arrow-right" type="button" class="btn btn-primary">&gt;</button>
+    <button id="arrow-up" type="button" class="btn btn-primary">↑</button>
+    <button id="arrow-down" type="button" class="btn btn-primary">↓</button>
+  </div>
+</DefaultModified>
