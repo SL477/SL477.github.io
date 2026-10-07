@@ -13,6 +13,7 @@ last_modified_at: 2026-10-07
 ### Modified
 
 - Replace Jekyll with Astro
+- Used Pagefind to run the Search
 
 ### Removed
 
