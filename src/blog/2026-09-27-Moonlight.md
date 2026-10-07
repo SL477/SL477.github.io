@@ -25,7 +25,7 @@ It was currently in the full glare of the local star, but as Joseph watched the 
 The giant ring was comfortably several times the size of the moon.
 The Apollo gas giant was a mixture of dirty brown and red bands of gas.
 
-Joseph was there as one of the representative of the Cassiopeia Reconstruction Initiative.
+Joseph was there as one of the representatives of the Cassiopeia Reconstruction Initiative.
 The company had been setup by Exelsius Corporation, a company which dreamed of one day being as galaxy spanning as Collective Industries or the Jovian Consortium.
 A few passengers had arrived early like him.
 The Pandora's Heart was a giant cruise ship, its legendary windows perfect for the coming spectacle.
