@@ -76,7 +76,7 @@ const currentPath = Astro.url.pathname;
                   </span>
                 ) : (
                   <span class="p-category" data-tag={tag}>
-                    <a href={`/tags/${tag}`}>{tag}</a>
+                    <a href={`/${tag === 'Movie' ? 'movies' : 'tags/' + tag}`}>{tag}</a>
                   </span>
                 )
               )}

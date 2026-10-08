@@ -15,6 +15,7 @@ last_modified_at: 2026-10-08
 - Updated link in notes RSS feed
 - Fixed blog links in NavBar
 - Cut link to tags in Notes
+- Fixed tag link in Movies pages to point at Movies
 
 ## 2026-10-07
 
