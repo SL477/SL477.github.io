@@ -17,6 +17,7 @@ last_modified_at: 2026-10-08
 - Cut link to tags in Notes
 - Fixed tag link in Movies pages to point at Movies
 - Fixed Code block's CSS
+- Sorted out footer icons
 
 ## 2026-10-07
 
