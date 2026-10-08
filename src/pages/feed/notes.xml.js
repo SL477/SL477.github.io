@@ -5,7 +5,7 @@ import MarkdownIt from 'markdown-it';
 const parser = new MarkdownIt();
 
 export async function GET(context) {
-  const posts = await getCollection("note");
+  const posts = await getCollection('note');
   return rss({
     title: 'Toms Notes Feed',
     description: 'My shorter ramblings',
@@ -14,7 +14,7 @@ export async function GET(context) {
     items: posts.map(post => ({
       title: post.data.title,
       pubDate: post.id.substring(0, 10),
-      link: `${context.site}${post.id}`,
+      link: `${context.site}notes/${post.id}`,
       categories: post.data.tags,
       content: sanitizeHtml(parser.render(post.body), {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])

@@ -1,8 +1,24 @@
 ---
 layout: ../layouts/page.astro
 title: Changelog
-last_modified_at: 2026-10-07
+last_modified_at: 2026-10-08
 ---
+
+## 2026-10-08
+
+### Added
+
+- Notes index page and updated the link in the feeds page
+
+### Modified
+
+- Updated link in notes RSS feed
+- Fixed blog links in NavBar
+- Cut link to tags in Notes
+- Fixed tag link in Movies pages to point at Movies
+- Fixed Code block's CSS
+- Sorted out footer icons
+- Attempt redirection
 
 ## 2026-10-07
 

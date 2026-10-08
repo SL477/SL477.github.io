@@ -1,12 +1,5 @@
 import site from '../content/site.json';
 import { getCollection } from 'astro:content';
-import MarkdownIt from 'markdown-it';
-
-const parser = new MarkdownIt({
-  html: true,
-  xhtmlOut: true,
-  breaks: true,
-});
 
 const posts = (await getCollection('note')).toSorted(
   (a, b) =>

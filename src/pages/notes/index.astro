@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import Page from '../../layouts/page.astro';
+
+const frontmatter = {
+  title: 'Notes',
+  last_modified_at: '2026-10-08',
+};
+
+const posts = (await getCollection('note')).toSorted(
+  (a, b) =>
+    new Date(a.id.substring(0, 10)).valueOf() -
+    new Date(b.id.substring(0, 10)).valueOf()
+);
+---
+
+<Page frontmatter={frontmatter}>
+  <ul>
+    {
+      posts.map((p) => (
+        <li>
+          <a href={`/notes/${p.id}`}>{p.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Page>

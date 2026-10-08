@@ -1,3 +1,5 @@
 assets/css/bootstrap.min.css
 assets/css/styles.scss
 _site/*
+dist/
+public/pagefind/

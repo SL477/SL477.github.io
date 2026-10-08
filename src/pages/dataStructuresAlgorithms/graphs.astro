@@ -236,7 +236,7 @@ const frontmatter = { title: 'Graphs', last_modified_at: '2025-02-01' };
       stack.push(v);
     }
   }
-  
+
   function startup() {
     const exampleDiv = document.getElementById('example') as HTMLDivElement;
     const textTextArea = document.getElementById('text') as HTMLTextAreaElement;
@@ -284,15 +284,17 @@ const frontmatter = { title: 'Graphs', last_modified_at: '2025-02-01' };
       textTextArea.value = g2.saveFormat();
 
       document
-        .getElementById('fileLoad')?.addEventListener('change', event => {
+        .getElementById('fileLoad')
+        ?.addEventListener('change', (event) => {
           const target = event.target as HTMLInputElement;
           const fr = new FileReader();
 
           fr.onload = () => {
             console.log('results', fr.result);
             const uploadGraph = createGraphFromText(fr.result as string);
-            if (uploadGraph){
-            outputDiv.innerHTML = uploadGraph.showGraph();}
+            if (uploadGraph) {
+              outputDiv.innerHTML = uploadGraph.showGraph();
+            }
           };
           if (target.files?.[0]) fr.readAsText(target.files[0]);
         });
@@ -325,12 +327,15 @@ const frontmatter = { title: 'Graphs', last_modified_at: '2025-02-01' };
       //console.log('has path to 7', localArea.hasPathTo(vertex));
       //console.log('paths',paths);
       let ret2 = '<p>Shortest path from Reedham to East Croydon</p><p>';
-        if (paths2){
-      while (paths2.length > 0) {
-
-        const idx = paths2.pop() as number;
-        ret2 += paths2.length > 1 ? `${localArea.vertexList[idx]} - ` : localArea.vertexList[idx];
-      }}
+      if (paths2) {
+        while (paths2.length > 0) {
+          const idx = paths2.pop() as number;
+          ret2 +=
+            paths2.length > 1
+              ? `${localArea.vertexList[idx]} - `
+              : localArea.vertexList[idx];
+        }
+      }
       ret2 += '</p>';
       ex4Div.innerHTML += ret2;
       localArea.marked = [];
