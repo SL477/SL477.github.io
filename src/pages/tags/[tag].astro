@@ -4,24 +4,35 @@ import { getCollection } from 'astro:content';
 import { getSlug } from '../../scripts/posts';
 
 export async function getStaticPaths() {
-  const posts = (await getCollection('blog'));
-  const tags = [...new Set(posts.map(post => post.data.tags).flat().toSorted())];
-  return tags.map(tag => ({
-    params: {tag: tag},
-    props: {posts}
+  const posts = await getCollection('blog');
+  const tags = [
+    ...new Set(
+      posts
+        .map((post) => post.data.tags)
+        .flat()
+        .toSorted()
+    ),
+  ];
+  return tags.map((tag) => ({
+    params: { tag: tag },
+    props: { posts },
   }));
 }
 
-const {tag} = Astro.params;
-const {posts} = Astro.props;
+const { tag } = Astro.params;
+const { posts } = Astro.props;
 const filteredPosts = posts.filter((post) => post.data.tags?.includes(tag));
 ---
 
-<Page frontmatter={{title: tag}}>
+<Page frontmatter={{ title: tag }}>
   <p>Posts tagged with {tag}</p>
   <ul>
-    {filteredPosts.map(post => (<li>
-      <a href={`/${getSlug(post.id)}`}>{post.data.title}</a>
-    </li>))}
+    {
+      filteredPosts.map((post) => (
+        <li>
+          <a href={`/${getSlug(post.id)}`}>{post.data.title}</a>
+        </li>
+      ))
+    }
   </ul>
 </Page>

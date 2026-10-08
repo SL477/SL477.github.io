@@ -62,7 +62,7 @@ function buildWordleStats(fileText) {
     // Get the guess cells
     const cells = splitStr[1].replace(/\s/g, '').substring(1);
 
-    stats.plays.push({number, guessArray: cells, result});
+    stats.plays.push({ number, guessArray: cells, result });
 
     if (result !== 'X' && (number === lastPlay + 1 || lastPlay === 0)) {
       stats.currentStreak++;
@@ -88,10 +88,10 @@ function buildWordleStats(fileText) {
     winPct: stats.winPct,
     ...Object.fromEntries(Object.entries(stats.guess).map(([k, v]) => [`guess${k}`, v])),
     plays: stats.plays.map(p => ({
-      
-        num: p.number,
-        guess: p.guessArray,
-        res: p.result
+
+      num: p.number,
+      guess: p.guessArray,
+      res: p.result
     }))
   });
 }

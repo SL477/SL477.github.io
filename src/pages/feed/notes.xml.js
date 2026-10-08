@@ -5,7 +5,7 @@ import MarkdownIt from 'markdown-it';
 const parser = new MarkdownIt();
 
 export async function GET(context) {
-  const posts = await getCollection("note");
+  const posts = await getCollection('note');
   return rss({
     title: 'Toms Notes Feed',
     description: 'My shorter ramblings',

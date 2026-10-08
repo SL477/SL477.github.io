@@ -7,13 +7,13 @@ const frontmatter = {
 ---
 
 <Page frontmatter={frontmatter}>
-  <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
   <div id="searchContainer"></div>
 </Page>
 
 <script is:inline src="/pagefind/pagefind-ui.js"></script>
 <script is:inline>
-    window.addEventListener('DOMContentLoaded', (event) => {
-        new PagefindUI({ element: "#searchContainer" });
-    });
+  window.addEventListener('DOMContentLoaded', () => {
+    new PagefindUI({ element: '#searchContainer' });
+  });
 </script>

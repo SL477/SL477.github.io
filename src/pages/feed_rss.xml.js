@@ -9,7 +9,7 @@ function getSlug(id, url) {
 }
 
 export async function GET(context) {
-  const posts = await getCollection("blog");
+  const posts = await getCollection('blog');
   return rss({
     title: 'Toms Post Feed',
     description: 'My longer ramblings',
