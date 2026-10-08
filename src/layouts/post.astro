@@ -15,6 +15,7 @@ const formatter = new Intl.DateTimeFormat(site.lang, {
   day: 'numeric',
   year: 'numeric',
 });
+const currentPath = Astro.url.pathname;
 ---
 
 <DefaultModified
@@ -33,7 +34,7 @@ const formatter = new Intl.DateTimeFormat(site.lang, {
       </h1>
       <p class="post-meta">
         <time class="dt-published" datetime={date} itemprop="datePublished">
-          <a class="u-url u-uid" href={slug}>{formatter.format(date)}</a>
+          <a class="u-url u-uid" href={currentPath}>{formatter.format(date)}</a>
         </time>
         {
           frontmatter.last_modified_at && (

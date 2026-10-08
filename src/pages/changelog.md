@@ -6,6 +6,10 @@ last_modified_at: 2026-10-08
 
 ## 2026-10-08
 
+### Added
+
+- Notes index page and updated the link in the feeds page
+
 ### Modified
 
 - Updated link in notes RSS feed
