@@ -16,6 +16,7 @@ last_modified_at: 2026-10-08
 - Fixed blog links in NavBar
 - Cut link to tags in Notes
 - Fixed tag link in Movies pages to point at Movies
+- Fixed Code block's CSS
 
 ## 2026-10-07
 
