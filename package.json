@@ -15,7 +15,8 @@
     "astro": "astro",
     "upgrade": "npx @astrojs/upgrade",
     "wordle": "node src/scripts/buildWordleData.js",
-    "whodle": "node src/scripts/buildWhodleData.js"
+    "whodle": "node src/scripts/buildWhodleData.js",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,7 @@
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
-    "astro": "^7.3.6",
+    "astro": "^7.3.7",
     "d3": "^7.9.0",
     "markdown-it": "^15.0.2",
     "sanitize-html": "^2.18.0"
@@ -44,8 +45,10 @@
   "devDependencies": {
     "@types/d3": "^7.4.3",
     "eslint": "^10.12.0",
+    "eslint-plugin-astro": "^3.2.1",
     "pagefind": "^1.5.2",
     "prettier": "^3.9.9",
+    "prettier-plugin-astro": "^1.1.0",
     "stylelint": "^17.16.0"
   }
 }
