@@ -17,7 +17,8 @@
     "wordle": "node src/scripts/buildWordleData.js",
     "whodle": "node src/scripts/buildWhodleData.js",
     "lint": "eslint .",
-    "csslint": "npx stylelint \"**/*.*css\""
+    "csslint": "npx stylelint \"**/*.*css\"",
+    "htmllint": "npx hint \"dist\""
   },
   "repository": {
     "type": "git",
