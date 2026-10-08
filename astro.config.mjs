@@ -10,4 +10,7 @@ export default defineConfig({
   integrations: [sitemap({
     customPages: otherLinks
   }), generatedPages()],
+  redirects: {
+    '/github': 'https://github.com/SL477'
+  }
 });

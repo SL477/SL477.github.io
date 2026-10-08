@@ -18,6 +18,7 @@ last_modified_at: 2026-10-08
 - Fixed tag link in Movies pages to point at Movies
 - Fixed Code block's CSS
 - Sorted out footer icons
+- Attempt redirection
 
 ## 2026-10-07
 
