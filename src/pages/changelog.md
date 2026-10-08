@@ -1,8 +1,16 @@
 ---
 layout: ../layouts/page.astro
 title: Changelog
-last_modified_at: 2026-10-07
+last_modified_at: 2026-10-08
 ---
+
+## 2026-10-08
+
+### Modified
+
+- Updated link in notes RSS feed
+- Fixed blog links in NavBar
+- Cut link to tags in Notes
 
 ## 2026-10-07
 

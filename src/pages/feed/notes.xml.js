@@ -14,7 +14,7 @@ export async function GET(context) {
     items: posts.map(post => ({
       title: post.data.title,
       pubDate: post.id.substring(0, 10),
-      link: `${context.site}${post.id}`,
+      link: `${context.site}notes/${post.id}`,
       categories: post.data.tags,
       content: sanitizeHtml(parser.render(post.body), {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])

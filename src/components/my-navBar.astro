@@ -87,7 +87,7 @@ const posts = (await getCollection('blog'))
             posts.map((post) => (
               <li>
                 <a
-                  href={getSlug(post.id)}
+                  href={`/${getSlug(post.id)}`}
                   aria-current={
                     currentPath === getSlug(post.id) ? 'page' : 'false'
                   }
