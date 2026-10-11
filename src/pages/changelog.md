@@ -4,6 +4,12 @@ title: Changelog
 last_modified_at: 2026-10-08
 ---
 
+## 2026-10-11
+
+### Added
+
+- Moved the Vue site inside the Astro site
+
 ## 2026-10-08
 
 ### Added

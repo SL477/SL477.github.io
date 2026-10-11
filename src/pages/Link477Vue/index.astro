@@ -1,0 +1,13 @@
+---
+import Page from '../../layouts/page.astro';
+import Main from '../../components/Main.vue';
+import Nav from '../../components/Nav.vue';
+const frontmatter = {
+  title: 'Vue',
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <Nav/>
+  <Main client:load />
+</Page>
