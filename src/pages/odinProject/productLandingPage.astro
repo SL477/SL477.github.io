@@ -1,4 +1,5 @@
 ---
+import Image from 'astro/components/Image.astro';
 import Head from '../../components/head.astro';
 import MyNavBarAstroComponent from '../../components/my-navBar.astro';
 const frontmatter = {
@@ -33,11 +34,12 @@ const frontmatter = {
           </button>
         </div>
         <div class="column">
-          <img
+          <Image
             src="/assets/images/odinProject/UltraTrain.jpg"
             alt="Calth Type 20 passing signal box"
-            width="218px"
-            height="124px"
+            width={218}
+            height={124}
+            loading="eager"
           />
         </div>
       </div>
@@ -48,11 +50,12 @@ const frontmatter = {
         <div class="row">
           <div class="colTrio">
             <figure>
-              <img
+              <Image
                 src="/assets/video/Train.gif"
                 alt="Train Video"
-                width="218px"
-                height="124px"
+                width={218}
+                height={124}
+                loading="eager"
               />
               <figcaption>
                 The Type 20 is normally run on promethium. But can be run on
@@ -62,11 +65,12 @@ const frontmatter = {
           </div>
           <div class="colTrio">
             <figure>
-              <img
+              <Image
                 src="/assets/images/odinProject/RedemptionForMonarchia.jpg"
                 alt="Redemption For Monarchia"
-                width="218px"
-                height="124px"
+                width={218}
+                height={124}
+                loading="eager"
               />
               <figcaption>
                 The Redemption for Monarchia on Bulk Carrier Zephyr
@@ -75,11 +79,12 @@ const frontmatter = {
           </div>
           <div class="colTrio">
             <figure>
-              <img
+              <Image
                 src="/assets/images/odinProject/UltraTrain2.jpg"
                 alt="Train at an angle"
-                width="218px"
-                height="124px"
+                width={218}
+                height={124}
+                loading="eager"
               />
               <figcaption>The Redemption for Monarchia on Iax</figcaption>
             </figure>
@@ -117,7 +122,9 @@ const frontmatter = {
     </footer>
 
     <dialog>
-      <button type="button" autofocus aria-label="Close.">&times;</button>
+      <button type="button" autofocus aria-label="Close.">
+        &times;
+      </button>
       <h5 class="modal-title">How to get one of your own</h5>
       <p>
         I got the shell from Budget Modal Railways. The chassis is from Kato.
