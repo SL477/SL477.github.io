@@ -4,12 +4,13 @@ layout: post
 tags: ['Hosting', 'Python', 'Typescript']
 author: Tom Fishwick
 image:
-    path: /assets/images/ChartTheStockMarket.jpg
-    width: 710
-    height: 296
-    alt: Chart the Stock Market
-    filetype: jpg
+  path: /assets/images/ChartTheStockMarket.jpg
+  width: 710
+  height: 296
+  alt: Chart the Stock Market
+  filetype: jpg
 last_modified_at: 2025-03-16
+excerpt: Recently Railway.app announced a change to their pricing structure, so I took the opportunity to revamp my flask app that ran on there to chart the stock market. It now uses Chart JS instead of MatPlotLib as the most visible difference from before.
 ---
 
 Recently Railway.app announced a change to their pricing structure, so I took the opportunity to revamp my flask app that ran on there to chart the stock market. It now uses Chart JS instead of MatPlotLib as the most visible difference from before.

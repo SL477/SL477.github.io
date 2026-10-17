@@ -7,6 +7,7 @@ last_modified_at: 2025-12-27
 in_reply_to: 
   url: https://joelchrono.xyz/blog/desert-island-games/
   text: Desert Island Games
+excerpt: The question is if you were stranded on a desert island, which game would you bring? No internet and everything magically works.
 ---
 
 The question is: if you were stranded on a desert island, which game would you bring? No internet and everything magically works.

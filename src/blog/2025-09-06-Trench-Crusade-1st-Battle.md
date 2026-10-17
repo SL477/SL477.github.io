@@ -4,6 +4,7 @@ layout: post
 tags: ['Trench-Crusade']
 author: Tom Fishwick
 last_modified_at: 2025-09-07
+excerpt: The prophet led his small congregation through the bombed out trenches on the edge of the front. The visions were clear, the relics were close.
 ---
 
 The prophet led his small congregation through the bombed out trenches on the edge of the front. The visions were clear, the relics were close.

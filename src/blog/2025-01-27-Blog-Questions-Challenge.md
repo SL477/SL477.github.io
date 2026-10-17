@@ -4,6 +4,7 @@ layout: post
 tags: ['Meta', 'Indie-Web']
 author: Tom Fishwick
 last_modified_at: 2025-02-01
+excerpt: I first saw this challenge on Adactio's blog.
 ---
 
 I first saw this challenge [on Adactio's blog](https://adactio.com/journal/21674).

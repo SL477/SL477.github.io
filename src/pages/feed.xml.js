@@ -59,8 +59,8 @@ const postXml = posts.map(post => `<entry xml:lang="${ post.data.lang ?? site.la
   <title type="html">${post.data.title}</title>
   <link href="${getSlug(post.id, site.site_url)}" rel="alternate" type="text/html" title="${post.data.title}}" />
   <id>${getSlug(post.id, site.site_url)}</id>
-  <published>${post.id.substring(0, 10)}</published>
-  <updated>${formatDate(post.data.last_modified_at).split('T')[0] ?? post.id.substring(0, 10)}</updated>
+  <published>${(new Date(post.id.substring(0, 10))).toISOString()}</published>
+  <updated>${(new Date(formatDate(post.data.last_modified_at).split('T')[0] ?? post.id.substring(0, 10))).toISOString()}</updated>
   <summary type="html">${(post.data.excerpt ?? '').replace(/<[^>]*>?/gm, '')}</summary>
   <content type="xhtml" xml:base="${getSlug(post.id, site.site_url)}">
   <div xmlns="http://www.w3.org/1999/xhtml">

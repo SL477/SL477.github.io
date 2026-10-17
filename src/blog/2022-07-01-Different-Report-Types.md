@@ -4,6 +4,7 @@ title: Different Report Types
 tags: ['Programming']
 author: Tom Fishwick
 last_modified_at: 2022-07-01
+excerpt: In my time at McMillan William's/Taylor Rose MW and as a student at City University I have used various different reporting packages.
 ---
 
 In my time at McMillan William's/Taylor Rose MW and as a student at City University I have used various different reporting packages.
