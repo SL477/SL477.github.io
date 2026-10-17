@@ -1,5 +1,7 @@
 ---
 import DefaultModified from '../../layouts/default_modified.astro';
+import tomPic from '../../assets/tom.jpg';
+import Picture from 'astro/components/Picture.astro';
 const title = 'Profile Card';
 // const last_modified_at = 2025 - 11 - 25;
 const css_file = 'profileCard.css';
@@ -9,17 +11,15 @@ const css_file = 'profileCard.css';
   <!-- For Frontend Mentor -->
   <div class="pc-container">
     <div class="pc-container-top"></div>
-    <picture class="pc-img">
-      <source srcset="/assets/images/tom.webp" type="image/webp" />
-      <source srcset="/assets/images/tom.jpg" type="image/jpg" />
-      <img
-        src="/assets/images/tom.jpg"
-        alt="Tom."
-        width="100"
-        height="100"
-        fetchpriority="high"
-      />
-    </picture>
+    <Picture
+      src={tomPic}
+      alt="Tom."
+      formats={['jpg', 'webp']}
+      loading="eager"
+      class="pc-img"
+      width={100}
+      height={100}
+    />
 
     <div class="pc-header">
       <h1>Tom Fishwick</h1>

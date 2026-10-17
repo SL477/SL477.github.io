@@ -4,12 +4,13 @@ layout: post
 tags: ['Baking']
 author: Tom Fishwick
 image: 
-    path: /assets/images/creamHorns.jpg
-    height: 500
-    width: 454
-    alt: Six Cream Horns (basically they look like chocolate filled cornettos with ice cream in them but made out of pastry).
-    filetype: jpg
+  path: /assets/images/creamHorns.jpg
+  height: 500
+  width: 454
+  alt: Six Cream Horns (basically they look like chocolate filled cornettos with ice cream in them but made out of pastry).
+  filetype: jpg
 last_modified_at: 2025-10-30
+excerpt: I mostly followed Paul Hollywood's cream horn recipe, apart from substituting milk chocolate for dark chocolate (as dark chocolate is disgusting) and ground ginger instead of crystallised stem ginger (Lidl didn't have it and I didn't have the faintest idea of what I was looking for).
 ---
 
 I mostly followed [Paul Hollywood's cream horn recipe](https://thegreatbritishbakeoff.co.uk/recipes/all/paul-hollywood-cream-horns/), apart from substituting milk chocolate for dark chocolate (as dark chocolate is disgusting) and ground ginger instead of crystallised stem ginger (Lidl didn't have it and I didn't have the faintest idea of what I was looking for).

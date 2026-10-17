@@ -4,6 +4,7 @@ layout: post
 tags: ['Programming']
 author: Tom Fishwick
 last_modified_at: 2025-11-09
+excerpt: I have now completed The Odin Project's Ruby on Rails track.
 ---
 
 I have now completed [The Odin Project](https://www.theodinproject.com/dashboard)'s Ruby on Rails track.

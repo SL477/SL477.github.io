@@ -4,6 +4,7 @@ layout: post
 tags: ['Meta']
 author: Tom Fishwick
 last_modified_at: 2025-10-29
+excerpt: The original 10 questions challenge
 ---
 
 [The original 10 questions challenge](https://forkingmad.blog/ten-pointless-facts-about-me/)

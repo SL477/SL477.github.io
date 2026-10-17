@@ -10,6 +10,7 @@ image:
   alt: React Terminal
   filetype: jpg
 last_modified_at: 2025-01-11
+excerpt: We do this not because it is easy, but because we thought it would be easy - Some guy on Reddit
 ---
 
 `We do this not because it is easy, but because we thought it would be easy` - Some guy on Reddit

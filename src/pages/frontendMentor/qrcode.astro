@@ -10,71 +10,66 @@ const frontmatter = {
     alt: 'link477.com',
   },
 };
+import qrPic from '../../assets/qrcode_link477_blue.png';
+import Picture from 'astro/components/Picture.astro';
 ---
 
-<style>
-  .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-  }
-
-  .card {
-    background-color: #fff;
-    padding: 5px;
-    max-width: 426px;
-    border-radius: 5%;
-
-    @media screen and (width < 426px) {
-      overflow-x: scroll;
-    }
-  }
-
-  .card-text {
-    font-size: 15px;
-    color: #7b879d;
-    display: block;
-  }
-
-  .qr-pic > img {
-    max-height: 419px;
-    max-width: 419px;
-    height: auto;
-    width: auto;
-    background-color: #1f3251;
-    border-radius: 5%;
-  }
-</style>
-
 <Page frontmatter={frontmatter}>
+  <style>
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 5px;
+      max-width: 426px;
+      border-radius: 5%;
+
+      @media screen and (width < 426px) {
+        overflow-x: scroll;
+      }
+    }
+
+    .card-text {
+      font-size: 15px;
+      color: #7b879d;
+      display: block;
+    }
+
+    .qr-pic {
+      max-height: 419px;
+      max-width: 419px;
+      height: auto;
+      width: auto;
+      background-color: #1f3251;
+      border-radius: 5%;
+    }
+  </style>
   <div class="center card">
     <a href="https://link477.com" target="_blank" rel="noopener noreferrer">
-      <picture class="center qr-pic">
-        <source
-          srcset="/assets/images/qrcode_link477_blue.webp"
-          type="image/webp"
-        />
-        <source
-          srcset="/assets/images/qrcode_link477_blue.png"
-          type="image/png"
-        />
-        <img src="/assets/images/qrcode_link477_blue.png" alt="link477.com" />
-      </picture>
+      <Picture
+        src={qrPic}
+        alt="link477.com"
+        class="center qr-pic"
+        formats={['png', 'webp']}
+        loading='eager'
+      />
     </a>
     <h2>
-      Visit <a
-        href="https://link477.com"
-        target="_blank"
-        rel="noopener noreferrer">Link477.com</a
-      >
+      Visit{' '}
+      <a href="https://link477.com" target="_blank" rel="noopener noreferrer">
+        Link477.com
+      </a>
     </h2>
     <p class="card-text">
-      Scan the QR code to visit <a
-        href="https://link477.com"
-        target="_blank"
-        rel="noopener noreferrer">Link477.com</a
-      >
+      Scan the QR code to visit{' '}
+      <a href="https://link477.com" target="_blank" rel="noopener noreferrer">
+        Link477.com
+      </a>
     </p>
   </div>
 

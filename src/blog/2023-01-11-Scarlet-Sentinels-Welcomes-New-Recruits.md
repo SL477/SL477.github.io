@@ -5,12 +5,13 @@ tags: ['Warhammer-40k', 'Space-Marines']
 author: Tom Fishwick
 last_modified_at: 2025-03-16
 image:
-    path: /assets/images/SpaceMarinesLibrarianAndLieutenant.jpg
-    alt: Lieutenant Kieran Cadmus and Librarian Zao Urbane
-    height: 522
-    width: 740
-    filetype: jpg
+  path: /assets/images/SpaceMarinesLibrarianAndLieutenant.jpg
+  alt: Lieutenant Kieran Cadmus and Librarian Zao Urbane
+  height: 522
+  width: 740
+  filetype: jpg
 photo_caption: Lieutenant Kieran Cadmus and Librarian Zao Urbane with the Outrider squad
+excerpt: The Scarlet Sentinels Chapter welcomes Lieutenant Kieran Cadmus and Librarian Zao Urbane as its first Primaris Space Marines.
 ---
 
 The Scarlet Sentinels Chapter welcomes Lieutenant Kieran Cadmus and Librarian Zao Urbane as its first Primaris Space Marines.

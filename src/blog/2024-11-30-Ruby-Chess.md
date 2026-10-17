@@ -4,12 +4,13 @@ layout: post
 tags: ['Ruby']
 author: Tom Fishwick
 image:
-    path: /assets/images/rubyChess.jpg
-    width: 273
-    height: 277
-    alt: Chess Game
-    filetype: jpg
+  path: /assets/images/rubyChess.jpg
+  width: 273
+  height: 277
+  alt: Chess Game
+  filetype: jpg
 last_modified_at: 2025-03-16
+excerpt: I created a chess game as part of the Odin Project.
 ---
 
 I created a chess game as part of the [Odin Project](https://www.theodinproject.com/).

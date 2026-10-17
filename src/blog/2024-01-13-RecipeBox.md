@@ -5,12 +5,13 @@ tags: ['Hosting', 'Typescript']
 edited: Changed links
 author: Tom Fishwick
 image:
-    path: /assets/images/RecipeBox.png
-    height: 500
-    width: 677
-    alt: Recipe Box
-    filetype: pngs
+  path: /assets/images/RecipeBox.png
+  height: 500
+  width: 677
+  alt: Recipe Box
+  filetype: pngs
 last_modified_at: 2025-11-29
+excerpt: The time finally came when this site got too big and I started moving things.
 ---
 
 The time finally came when this site got too big and I started moving things.

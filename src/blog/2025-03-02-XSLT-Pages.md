@@ -10,6 +10,7 @@ image:
   alt: Sitemap screenshot, showing the links between the pages.
   filetype: jpg
 last_modified_at: 2025-12-07
+excerpt: I have updated my Sitemap and Atom feeds to display as though they are HTML. Inspired by the idea of not repeating myself, which I wasn't because generally Jekyll had one copy of this data in the source code, but then two copies in the output.
 ---
 
 I have updated my Sitemap and Atom feeds to display as though they are HTML. Inspired by the idea of not repeating myself, which I wasn't because generally Jekyll had one copy of this data in the source code, but then two copies in the output.

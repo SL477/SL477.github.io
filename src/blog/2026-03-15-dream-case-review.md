@@ -7,6 +7,7 @@ last_modified_at: 2026-03-15
 in_reply_to:
   url: https://zacharykai.net/notes/ifcfeb26
   text: My submission for the IndieWeb prompt we've got to dream past it
+excerpt: Reverend Arthur Peachy heard the letter drop into his virtual inbox as he made his way to bed. He skimmed its contents quickly in his peripheral vision as he brushed his teeth.
 ---
 
 Reverend Arthur Peachy heard the letter drop into his virtual inbox as he made his way to bed. He skimmed its contents quickly in his peripheral vision as he brushed his teeth.

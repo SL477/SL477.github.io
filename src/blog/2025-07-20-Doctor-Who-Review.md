@@ -5,6 +5,7 @@ tags: ['Doctor-Who']
 author: Tom Fishwick
 last_modified_at: 2025-07-20
 # permalink: /story
+excerpt: Warning, contains spoilers!
 ---
 
 Warning, contains spoilers!

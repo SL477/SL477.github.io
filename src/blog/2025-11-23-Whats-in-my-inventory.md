@@ -4,6 +4,7 @@ layout: post
 tags: ['Meta']
 author: Tom Fishwick
 last_modified_at: 2025-11-23
+excerpt: Originally from the Bear Blog challenge
 ---
 
 Originally from the [Bear Blog challenge](https://blog.absurdpirate.com/bear-blog-carnival-november-whats-in-my-inventory/).

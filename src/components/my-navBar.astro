@@ -4,6 +4,7 @@ import navData from '../content/navbar.json';
 import DarkModePicker from './darkModePicker.astro';
 import { getCollection } from 'astro:content';
 import { getSlug } from '../scripts/posts';
+import Image from 'astro/components/Image.astro';
 const currentPath = Astro.url.pathname;
 
 const posts = (await getCollection('blog'))
@@ -31,7 +32,7 @@ const posts = (await getCollection('blog'))
     <picture>
       <source srcset={site.logo.webp} type="image/webp" />
       <source srcset={site.logo.src} type="image/png" />
-      <img src={site.logo.src} alt="Link477" height="50" width="50" />
+      <Image src={site.logo.src} alt="Link477" height="50" width="50" loading="eager" />
     </picture>
   </a>
   <label for="expandNavbar" id="expand-navbar-icon" class="hamburger">

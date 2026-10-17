@@ -4,12 +4,13 @@ layout: post
 tags: ['Trench-Crusade']
 author: Tom Fishwick
 image:
-    path: /assets/images/TrenchCrusade.jpg
-    height: 283
-    width: 500
-    alt: My New Antioch War Band arrayed for battle.
-    filetype: jpg
+  path: /assets/images/TrenchCrusade.jpg
+  height: 283
+  width: 500
+  alt: My New Antioch War Band arrayed for battle.
+  filetype: jpg
 last_modified_at: 2025-11-15
+excerpt: New Antioch versus Court of the seven headed serpent. This was the play test of Guy's Statue of unknown faith scenario.
 ---
 
 New Antioch versus Court of the seven headed serpent.

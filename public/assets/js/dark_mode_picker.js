@@ -26,6 +26,7 @@ function updateUIModeBtn(isDark) {
   const btn = document.getElementById('ui-mode-picker');
   btn.classList.toggle('dark', isDark);
   btn.setAttribute('aria-label', isDark ? 'Activate light mode' : 'Activate dark mode');
+  btn.setAttribute('aria-checked', 'true');
 }
 
 function isSystemDarkMode() {

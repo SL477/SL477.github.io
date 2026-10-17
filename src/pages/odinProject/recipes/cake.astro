@@ -1,4 +1,5 @@
 ---
+import Image from 'astro/components/Image.astro';
 import Page from '../../../layouts/page.astro';
 const frontmatter = {
   title: 'Cake',
@@ -7,11 +8,12 @@ const frontmatter = {
 ---
 
 <Page frontmatter={frontmatter}>
-  <img
+  <Image
     alt="Cake"
     src="/assets/images/odinProject/cake.jpg"
-    width="350px"
-    height="300px"
+    width={350}
+    height={300}
+    loading='eager'
   />
   <h2>Description</h2>
   <p>This is a simple but good cake which you can customise as you like.</p>
