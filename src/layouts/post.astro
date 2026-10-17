@@ -130,7 +130,7 @@ const currentPath = Astro.url.pathname;
     {
       frontmatter.type === 'review' && (
         <>
-          <p>Rating: {frontmatter.rating}</p>
+          <p>Rating: <span class="p-rating">{frontmatter.rating}</span></p>
           {frontmatter.watched && (
             <p>
               Watched:{' '}
