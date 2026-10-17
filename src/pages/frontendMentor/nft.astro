@@ -1,19 +1,22 @@
 ---
+import Image from 'astro/components/Image.astro';
 import DefaultModified from '../../layouts/default_modified.astro';
 const title = 'NFT Preview Card';
 // const last_modified_at = 2025-12-13;
 const css_file = 'nft.css';
+import tomPic from '../../assets/tom.jpg';
 ---
 
 <DefaultModified title={title} css_file={css_file}>
   <!-- For Frontend Mentor -->
   <div class="nft-container">
-    <img
+    <Image
       src="/assets/images/icons/large-310x310.png"
       alt="Link477"
       height="310"
       width="310"
       class="nft-img"
+      loading='eager'
     />
     <h2>Equilibrium #3429</h2>
     <p>Our Equilibrium collection promotes balance and calm.</p>
@@ -39,12 +42,13 @@ const css_file = 'nft.css';
     </div>
     <hr />
     <br />
-    <img
-      src="/assets/images/tom.jpg"
+    <Image
+      src={tomPic}
       alt="Tom"
       height="32"
       width="32"
       class="ntf-user"
+      loading='eager'
     />
     <span class="nft-footer">Creation of <a href="/">Tom Fishwick</a></span>
   </div>
