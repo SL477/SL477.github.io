@@ -1,8 +1,14 @@
 ---
 layout: ../layouts/page.astro
 title: Changelog
-last_modified_at: 2026-10-08
+last_modified_at: 2026-10-07
 ---
+
+## 2026-10-17
+
+### Modified
+
+- Fixed issue with Atom feed
 
 ## 2026-10-11
 
