@@ -1,10 +1,15 @@
 ---
+import Image from 'astro/components/Image.astro';
 import site from '../content/site.json';
 import Social from './social.astro';
+import Picture from 'astro/components/Picture.astro';
+import tomPic from '../assets/tom.jpg';
 ---
 
 <footer class="site-footer h-card">
-  <a class="u-url u-uid" href={site.site_url} hidden="hidden">My Site</a>
+  <a class="u-url u-uid" href={site.site_url} hidden="hidden">
+    My Site
+  </a>
 
   <picture hidden="hidden">
     <source srcset={site.logo.webp} type="image/webp" />
@@ -21,11 +26,13 @@ import Social from './social.astro';
 
   <div class="wrapper">
     <h2 class="footer-heading p-name">
-      <picture>
-        <source srcset={site.photo_webp} type="image/webp" />
-        <source srcset={site.photo} type="image/jpg" />
-        <img src={site.photo} alt="" class="u-photo img-main-small" />
-      </picture>{site.title}
+      <Picture
+        src={tomPic}
+        formats={['jpg', 'webp']}
+        alt={'Me'}
+        class="u-photo img-main-small"
+      />{' '}
+      {site.title}
     </h2>
 
     <div class="footer-col-wrapper">
@@ -38,14 +45,15 @@ import Social from './social.astro';
       </div>
       <div class="footer-col footer-col-3">
         <a href="/sitemap">
-          <svg class="svg-icon icon-my sitemap"
-            ><use xlink:href="/assets/images/sitemap.svg"></use></svg
-          >Site Map
+          <svg class="svg-icon icon-my sitemap">
+            <use xlink:href="/assets/images/sitemap.svg"></use>
+          </svg>
+          Site Map
         </a>
       </div>
       <div class="footer-col footer-col-3">
         <a href="/">
-          <img
+          <Image
             src="/assets/images/human.svg"
             alt="Human made."
             width="88"

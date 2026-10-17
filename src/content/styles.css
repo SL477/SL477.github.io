@@ -507,10 +507,7 @@ code {
   margin-right: auto;
   width: 250px;
   height: 250px;
-
-  img {
-    border-radius: 50%;
-  }
+  border-radius: 50%;
 
   @media screen and (width >=600px) {
     float: right;
