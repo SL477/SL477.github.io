@@ -14,6 +14,8 @@ last_modified_at: 2026-10-07
 
 - Fixed issue with Atom feed
 - Updated aria-checked on dark mode picker
+- Moved Vue site
+- Used some of Astro's tricks to optimise images
 
 ## 2026-10-11
 
