@@ -6,9 +6,14 @@ last_modified_at: 2026-10-07
 
 ## 2026-10-17
 
+### Added
+
+- Linkedin redirect
+
 ### Modified
 
 - Fixed issue with Atom feed
+- Updated aria-checked on dark mode picker
 
 ## 2026-10-11
 
