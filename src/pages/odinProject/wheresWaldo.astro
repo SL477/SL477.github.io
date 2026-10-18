@@ -1,0 +1,12 @@
+---
+import Page from '../../layouts/page.astro';
+import WheresWaldo from '../../components/WheresWaldo';
+const frontmatter = {
+  title: 'Where\'s George',
+  last_modified_date: '2026-10-18'
+}
+---
+
+<Page frontmatter={frontmatter}>
+  <WheresWaldo client:load/>
+</Page>

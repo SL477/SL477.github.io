@@ -17,3 +17,4 @@ last_modified_at: 2026-10-18
 - [Rock, Paper, Scissors](/odinProject/rockPaperScissors)
 - [Signup page from Odin Project](/odinProject/signup)
 - [TODOs page from Odin Project](/odinProject/todos)
+- [Where's George](/odinProject/wheresWaldo)
