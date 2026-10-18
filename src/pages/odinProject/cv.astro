@@ -1,0 +1,11 @@
+---
+import Page from '../../layouts/page.astro';
+import CV from '../../components/cv';
+const frontmatter = {
+  title: 'CV',
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <CV client:load/>
+</Page>

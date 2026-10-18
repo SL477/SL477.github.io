@@ -7,6 +7,7 @@ last_modified_at: 2026-10-18
 - [Admin dashboard from Odin Project](/odinProject/adminDashboard.html)
 - [Battleship from Odin Project](/odinProject/battleship.html)
 - [Calculator from Odin Project](/odinProject/calculator)
+- [CV](/odinProject/cv)
 - [Home Page from Odin Project](/odinProject/homepage)
 - [Library from Odin Project](/odinProject/library)
 - [Recipes from Odin Project](/odinProject/recipes.html)
