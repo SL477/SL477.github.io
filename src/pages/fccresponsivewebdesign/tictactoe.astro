@@ -1,0 +1,58 @@
+---
+import Page from '../../layouts/page.astro';
+import TicTacToe from '../../components/TicTacToe';
+const frontmatter = {
+  title: 'Tic Tac Toe',
+  last_modified_at: '2026-10-18',
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <style is:global>
+    .tbl {
+      width: 300px;
+      height: 300px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 50px;
+      vertical-align: middle;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .td {
+      width: 100px;
+      vertical-align: middle;
+      height: 100px;
+      text-align: center;
+    }
+
+    .centre {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .choose {
+      font-weight: bold;
+      font-size: 30;
+    }
+
+    .scores {
+      text-align: center;
+    }
+
+    .scoresTbl {
+      width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .th {
+      text-align: center;
+      width: 150px;
+    }
+  </style>
+  <TicTacToe client:load />
+</Page>
