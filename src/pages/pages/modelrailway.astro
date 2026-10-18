@@ -1,4 +1,5 @@
 ---
+import Image from 'astro/components/Image.astro';
 import Page from '../../layouts/page.astro';
 const frontmatter = {
   title: 'Model Railway Pics',
@@ -37,13 +38,17 @@ const modelRailPics = [
 <Page frontmatter={frontmatter}>
   <div class="carousel">
     <ul>
-      {
-        modelRailPics.map((pic) => (
-          <li>
-            <img src={pic.src} alt={pic.alt} width="544" height="408" />
-          </li>
-        ))
-      }
+      {modelRailPics.map((pic) => (
+        <li>
+          <Image
+            src={pic.src}
+            alt={pic.alt}
+            width="544"
+            height="408"
+            loading="eager"
+          />
+        </li>
+      ))}
     </ul>
   </div>
 </Page>

@@ -1,16 +1,20 @@
 ---
 layout: '../../layouts/page.astro'
 title: Odin Project
-last_modified_at: 2026-01-17
+last_modified_at: 2026-10-18
 ---
 
 - [Admin dashboard from Odin Project](/odinProject/adminDashboard.html)
 - [Battleship from Odin Project](/odinProject/battleship.html)
 - [Calculator from Odin Project](/odinProject/calculator)
+- [CV](/odinProject/cv)
 - [Home Page from Odin Project](/odinProject/homepage)
 - [Library from Odin Project](/odinProject/library)
+- [Memory Card](/odinProject/memoryCard)
 - [Recipes from Odin Project](/odinProject/recipes.html)
 - [Product Landing Page from Odin Project](/odinProject/productLandingPage)
 - [Restaurant Page from Odin Project](/odinProject/restaurantPage/index.html)
+- [Rock, Paper, Scissors](/odinProject/rockPaperScissors)
 - [Signup page from Odin Project](/odinProject/signup)
 - [TODOs page from Odin Project](/odinProject/todos)
+- [Where's George](/odinProject/wheresWaldo)

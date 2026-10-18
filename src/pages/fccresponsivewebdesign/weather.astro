@@ -1,0 +1,22 @@
+---
+import Page from '../../layouts/page.astro';
+import Weather from '../../components/Weather';
+const frontmatter = {
+  title: 'FreeCodeCamp Weather App',
+  last_modified_date: '2026-10-18',
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <style is:global>
+    .cap {
+      text-transform: capitalize;
+    }
+
+    .weatherBox {
+      text-align: center;
+      color: light-dark(black, gold);
+    }
+  </style>
+  <Weather client:load />
+</Page>

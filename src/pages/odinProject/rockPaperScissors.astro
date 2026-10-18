@@ -1,0 +1,21 @@
+---
+import Page from '../../layouts/page.astro';
+import RockPaperScissors from '../../components/RockPaperScissors';
+const frontmatter = {
+  title: 'Rock, Paper, Scissors',
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <p class="centertext">
+    My answer to{' '}
+    <a
+      target="_blank"
+      rel="noopener"
+      href="https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors"
+    >
+      Odin Rock, Paper, Scissors
+    </a>
+  </p>
+  <RockPaperScissors client:load />
+</Page>

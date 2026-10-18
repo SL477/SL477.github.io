@@ -1,0 +1,59 @@
+---
+import Page from '../layouts/page.astro';
+import Terminal from '../components/terminal'
+const frontmatter = {
+  title: 'React Terminal',
+  last_modified_at: '2026-10-18',
+};
+---
+
+<Page frontmatter={frontmatter}>
+  <style is:global>
+    .banner {
+      color: blue;
+      text-align: center;
+      background-color: black;
+    }
+
+    .terminalBox {
+      color: light-dark(black, gold) sd;
+      /* min-height: 100vh; */
+      /* background-color: black; */
+    }
+
+    .terminal {
+      background-color: transparent;
+      color: light-dark(black, white);
+      border: none;
+      width: 80%;
+      height: 200px;
+      text-wrap: wrap;
+      caret-color: green;
+    }
+
+    .terminalLabel {
+      color: green;
+    }
+
+    .greyText {
+      color: grey;
+    }
+
+    .blueText {
+      color: blue;
+    }
+
+    .redText {
+      color: red;
+    }
+
+    .outputText {
+      text-wrap: wrap;
+    }
+
+    .whiteText {
+      color: white;
+    }
+  </style>
+  <Terminal client:load/>
+</Page>

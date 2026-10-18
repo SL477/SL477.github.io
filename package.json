@@ -34,12 +34,17 @@
   },
   "homepage": "https://github.com/SL477/SL477.github.io#readme",
   "dependencies": {
+    "@astrojs/react": "^7.1.0",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "@astrojs/vue": "^7.1.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "astro": "^7.4.0",
     "d3": "^7.9.0",
     "markdown-it": "^15.0.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "sanitize-html": "^2.18.0",
     "vue": "^3.5.43"
   },

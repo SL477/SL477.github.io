@@ -87,15 +87,15 @@
         "name": "Take Home Projects",
         "links": [
           {
-            "href": "https://link477.com/Link477-React/#/weather",
+            "href": "/fccresponsivewebdesign/weather",
             "name": "Weather"
           },
           {
-            "href": "https://link477.com/Link477-React/#/tictactoe",
+            "href": "/fccresponsivewebdesign/tictactoe",
             "name": "Tic Tac Toe"
           },
           {
-            "href": "https://link477.com/Link477-React/#/recipeBox",
+            "href": "/fccresponsivewebdesign/recipeBox",
             "name": "Recipe Box"
           },
           {
@@ -111,7 +111,7 @@
             "name": "Free Code Camp Forum Homepage"
           },
           {
-            "href": "https://link477.com/Link477-React/#/gameoflife",
+            "href": "/fccresponsivewebdesign/gameOfLife",
             "name": "Game of Life"
           }
         ]
@@ -138,7 +138,7 @@
           "name": "Etch A Sketch"
         },
         {
-          "href": "https://link477.com/Link477-React/#/rockPaperScissors",
+          "href": "/odinProject/rockPaperScissors",
           "name": "Rock, Paper, Scissors"
         },
         {
@@ -184,7 +184,7 @@
           "name": "Model Railway"
         },
         {
-          "href": "https://link477.com/Link477-React/#/terminal",
+          "href": "/terminal",
           "name": "React Terminal"
         },
         {
@@ -217,7 +217,7 @@
       "name": "",
       "links": [
         {
-          "href": "https://link477.com/Link477-React/#/arrays",
+          "href": "/dataStructuresAlgorithms/arrays",
           "name": "Arrays"
         },
         {
