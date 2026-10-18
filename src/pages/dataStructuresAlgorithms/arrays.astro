@@ -1,0 +1,33 @@
+---
+import Page from '../../layouts/page.astro';
+import StudentGrades from '../../components/dsaArrays';
+const frontmatter = {
+  title: 'Arrays',
+};
+const words = [
+  'The',
+  'quick',
+  'brown',
+  'fox',
+  'jumps',
+  'over',
+  'the',
+  'lazy',
+  'dog',
+];
+---
+
+<Page frontmatter={frontmatter}>
+  <p>
+    My answers to the exercises in{' '}
+    <a href="https://github.com/GauravWalia19/Free-Algorithms-Books/blob/master/Library/src/JAVASCRIPT/Data-Structures-%26-Algorithms-with-JavaScript.pdf">
+      Algorithms &amp; Data Structures with JS
+    </a>
+  </p>
+  <StudentGrades client:load />
+  <p>
+    <b>2. Words</b>
+  </p>
+  <p>{words.toString()}</p>
+  <p>{words.reverse().toString()}</p>
+</Page>

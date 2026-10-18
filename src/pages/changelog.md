@@ -1,8 +1,14 @@
 ---
 layout: ../layouts/page.astro
 title: Changelog
-last_modified_at: 2026-10-07
+last_modified_at: 2026-10-18
 ---
+
+## 2026-10-18
+
+### Modified
+
+- Started moving React into site
 
 ## 2026-10-17
 
