@@ -10,6 +10,7 @@ last_modified_at: 2026-10-18
 - [CV](/odinProject/cv)
 - [Home Page from Odin Project](/odinProject/homepage)
 - [Library from Odin Project](/odinProject/library)
+- [Memory Card](/odinProject/memoryCard)
 - [Recipes from Odin Project](/odinProject/recipes.html)
 - [Product Landing Page from Odin Project](/odinProject/productLandingPage)
 - [Restaurant Page from Odin Project](/odinProject/restaurantPage/index.html)
