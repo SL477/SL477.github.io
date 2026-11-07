@@ -1,8 +1,14 @@
 ---
 layout: ../layouts/page.astro
 title: Changelog
-last_modified_at: 2026-10-18
+last_modified_at: 2026-11-07
 ---
+
+## 2026-11-07
+
+### Modified
+
+- Updated Blog Image to use the Astro component.
 
 ## 2026-10-18
 
