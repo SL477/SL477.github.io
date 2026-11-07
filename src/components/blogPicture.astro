@@ -1,4 +1,6 @@
 ---
+import Image from "astro/components/Image.astro";
+
 const { image } = Astro.props;
 const caption = image.photo_caption ?? image.alt;
 ---
@@ -6,21 +8,23 @@ const caption = image.photo_caption ?? image.alt;
 <>
   {
     image.image_map ? (
-      <img
+      <Image
         src={image.path}
         alt={image.alt}
         class="u-photo"
         width={image.width}
         height={image.height}
         usemap={image.image_map}
+        loading='eager'
       />
     ) : (
-      <img
+      <Image
         src={image.path}
         alt={image.alt}
         class="u-photo"
         width={image.width}
         height={image.height}
+        loading='eager'
       />
     )
   }
