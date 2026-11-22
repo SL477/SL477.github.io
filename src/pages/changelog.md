@@ -1,8 +1,19 @@
 ---
 layout: ../layouts/page.astro
 title: Changelog
-last_modified_at: 2026-11-07
+last_modified_at: 2026-11-22
 ---
+
+## 2026-11-22
+
+### Added
+
+- Created about.md as part of [About Spec](https://aboutspec.org/)
+- Created contact.vcf as part of [Contact Spec](https://contactspec.org/)
+
+### Modified
+
+- Moved the blogroll XML as part of [Follow Spec](https://followspec.org/)
 
 ## 2026-11-07
 
