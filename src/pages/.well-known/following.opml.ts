@@ -1,11 +1,11 @@
-import site from '../content/site.json';
-import blogroll from '../content/blogroll.json';
+import site from '../../content/site.json';
+import blogroll from '../../content/blogroll.json';
 
 function createOutlines(blogs: { description: string, url: string }[]) {
-  return blogs.map(b => `<outline text="${b.description}" description="${b.description}" htmlUrl="${b.url}" language="unknown" title="${b.description}" type="rss" version="RSS2" xmlUrl="${b.url}"/>`);
+  return blogs.map(b => `<outline text="${b.description}" description="${b.description}" htmlUrl="${b.url}" language="unknown" title="${b.description}" type="rss" version="RSS2" xmlUrl="${b.url}"/>`).join('');
 }
 
-const blogs = blogroll.map(outline => `<outline text="${outline.outline}">${createOutlines(outline.blogs)}</outline>`);
+const blogs = blogroll.map(outline => `<outline text="${outline.outline}">${createOutlines(outline.blogs)}</outline>`).join('');
 
 const now = (new Date()).toUTCString();
 const str = `<?xml version="1.0" encoding="utf-8"?>

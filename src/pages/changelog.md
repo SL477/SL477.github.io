@@ -4,6 +4,12 @@ title: Changelog
 last_modified_at: 2026-11-07
 ---
 
+## 2026-11-22
+
+### Modified
+
+- Moved the blogroll XML as part of [Follow Spec](https://followspec.org/)
+
 ## 2026-11-07
 
 ### Modified
