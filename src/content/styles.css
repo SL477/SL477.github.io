@@ -22,8 +22,8 @@ dd,
 ol,
 ul,
 figure {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -39,13 +39,10 @@ body {
     "Segoe UI Emoji",
     "Segoe UI Symbol";
   -webkit-text-size-adjust: 100%;
-  -webkit-font-feature-settings: "kern" 1;
-  -moz-font-feature-settings: "kern" 1;
-  -o-font-feature-settings: "kern" 1;
   font-feature-settings: "kern" 1;
   font-kerning: normal;
   display: flex;
-  min-height: 100vh;
+  min-height: 100dvh;
   flex-direction: column;
 }
 
@@ -147,7 +144,6 @@ pre>code {
 }
 
 .wrapper {
-  max-width: -webkit-calc(800px - (30px * 2));
   max-width: calc(800px - (30px * 2));
   margin-right: auto;
   margin-left: auto;
@@ -157,7 +153,6 @@ pre>code {
 
 @media screen and (max-width: 800px) {
   .wrapper {
-    max-width: -webkit-calc(800px - (30px));
     max-width: calc(800px - (30px));
     padding-right: 15px;
     padding-left: 15px;
@@ -339,17 +334,14 @@ table td {
 }
 
 .footer-col-1 {
-  width: -webkit-calc(35% - (30px / 2));
   width: calc(35% - (30px / 2));
 }
 
 .footer-col-2 {
-  width: -webkit-calc(20% - (30px / 2));
   width: calc(20% - (30px / 2));
 }
 
 .footer-col-3 {
-  width: -webkit-calc(45% - (30px / 2));
   width: calc(45% - (30px / 2));
 }
 
@@ -357,12 +349,10 @@ table td {
 
   .footer-col-1,
   .footer-col-2 {
-    width: -webkit-calc(50% - (30px / 2));
     width: calc(50% - (30px / 2));
   }
 
   .footer-col-3 {
-    width: -webkit-calc(100% - (30px / 2));
     width: calc(100% - (30px / 2));
   }
 }
@@ -370,7 +360,6 @@ table td {
 @media screen and (max-width: 600px) {
   .footer-col {
     float: none;
-    width: -webkit-calc(100% - (30px / 2));
     width: calc(100% - (30px / 2));
   }
 }
